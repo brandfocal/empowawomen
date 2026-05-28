@@ -8,49 +8,67 @@ interface NavLinkItem {
     label: string;
     href: string;
     hasDropdown?: boolean;
+    dropdownItems?: { label: string; href: string }[];
 }
 
 const NAV_LINKS: NavLinkItem[] = [
     { id: "nav-home", label: "Home", href: "/" },
-    { id: "nav-about", label: "About", href: "/about" },
-    { id: "nav-summits", label: "Summits", href: "/summits-hub", hasDropdown: true },
-    { id: "nav-pillars", label: "Pillars", href: "/#pillars", hasDropdown: true },
-    { id: "nav-academy", label: "Academy", href: "/academy" },
-    { id: "nav-partners", label: "Partners", href: "/partnerships" },
-    { id: "nav-industry-series", label: "Industry Series", href: "/executive-industry-series" },
-    { id: "nav-awards-gala", label: "Awards Gala", href: "/leadership-awards-gala" },
-    { id: "nav-iwd-summit", label: "IWD Summit", href: "/iwd-summit" },
-    { id: "nav-provincial-summits", label: "Provincial Summits", href: "/provincial-summits" },
-    { id: "nav-contact", label: "Contact", href: "/contact" }
+    { id: "nav-about", label: "About Us", href: "/about" },
+    {
+        id: "nav-summits",
+        label: "Executive Summits",
+        href: "/summits-hub",
+        hasDropdown: true,
+        dropdownItems: [
+            { label: "International Women's Day Summit 2027", href: "/iwd-summit" },
+            { label: "Provincial Summit Series 2027", href: "/provincial-summits" },
+            { label: "Executive Industry Series 2027", href: "/executive-industry-series" },
+            { label: "Bubbles & Nibbles Soirée & Leadership Awards", href: "/leadership-awards-gala" }
+        ]
+    },
+    {
+        id: "nav-pillars",
+        label: "Growth Pillars",
+        href: "/#pillars",
+        hasDropdown: true,
+        dropdownItems: [
+            { label: "Green Economy, Mining, Energy & Sustainability", href: "/#pillars" },
+            { label: "Infrastructure, Property & Transport", href: "/#pillars" },
+            { label: "Agriculture, Manufacturing & Consumer Markets", href: "/#pillars" },
+            { label: "Capital, Marketing, Creative & Leadership Systems", href: "/#pillars" }
+        ]
+    },
+    { id: "nav-academy", label: "EmpowaHER™ Academy", href: "/academy" },
+    { id: "nav-partners", label: "Partnerships & ESG", href: "/partnerships" },
+    { id: "nav-contact", label: "Contact Us", href: "/contact" }
 ];
 
 const FOOTER_SECTION_ROWS = [{
     id: "row-pages",
-    label: "Pages",
+    label: "Ecosystem",
     links: [
-        { id: "fp-1", label: "About", href: "/about" },
-        { id: "fp-2", label: "Summits", href: "/#summits" },
-        { id: "fp-3", label: "Pillars", href: "/#pillars" },
+        { id: "fp-1", label: "Home", href: "/" },
+        { id: "fp-2", label: "About Us", href: "/about" },
+        { id: "fp-3", label: "Summits Hub", href: "/summits-hub" },
         { id: "fp-4", label: "Academy", href: "/academy" },
-        { id: "fp-5", label: "Partners", href: "/partnerships" },
-        { id: "fp-6", label: "Contact", href: "/contact" }
+        { id: "fp-5", label: "Partnerships", href: "/partnerships" },
+        { id: "fp-6", label: "Contact Us", href: "/contact" }
     ]
 }, {
-    id: "row-programs",
-    label: "Programs",
+    id: "row-summits",
+    label: "Summits",
     links: [
-        { id: "fp-7", label: "EmpowaHER", href: "/academy" },
-        { id: "fp-8", label: "Partnerships", href: "/partnerships" },
-        { id: "fp-9", label: "ESG Programs", href: "#" },
-        { id: "fp-10", label: "Resources", href: "#" }
+        { id: "fp-s1", label: "IWD Summit", href: "/iwd-summit" },
+        { id: "fp-s2", label: "Provincial Series", href: "/provincial-summits" },
+        { id: "fp-s3", label: "Industry Series", href: "/executive-industry-series" },
+        { id: "fp-s4", label: "Bubbles & Nibbles", href: "/leadership-awards-gala" }
     ]
 }, {
     id: "row-legal",
     label: "Legal",
     links: [
         { id: "fp-11", label: "Privacy Policy", href: "#" },
-        { id: "fp-12", label: "Terms", href: "#" },
-        { id: "fp-13", label: "FAQ", href: "#" }
+        { id: "fp-12", label: "Terms of Service", href: "#" }
     ]
 }];
 
@@ -104,40 +122,166 @@ export const TopNav = () => {
                 gap: "0px"
             }} className="hidden md:flex">
                 {NAV_LINKS.map((link, idx) => {
-                    // Consider it active if we are on the exact path, or if we're not on home and the current path starts with the link's href.
                     const isActive = link.href === '/' ? location.pathname === '/' : (link.href.startsWith('/#') ? false : location.pathname.startsWith(link.href));
                     const isHoveredOrActive = isActive || hoveredLink === link.id;
 
                     return (
                         <React.Fragment key={link.id}>
-                            {link.href.startsWith('/#') ? (
-                                <a href={link.href} onMouseEnter={() => setHoveredLink(link.id)} onMouseLeave={() => setHoveredLink(null)} style={{
-                                    fontFamily: "Figtree", fontSize: "12px", fontWeight: 400, letterSpacing: "0.08em",
-                                    color: isHoveredOrActive ? "rgba(255,255,255,0.80)" : "rgba(255,255,255,0.40)",
-                                    textDecoration: "none", padding: "6px 12px", transition: "color 150ms ease-out",
-                                    position: "relative", display: "inline-flex", flexDirection: "column", alignItems: "center", gap: "3px"
-                                }}>
-                                    <span style={{ display: "inline-flex", alignItems: "center", gap: "3px" }}>
-                                        <span>{link.label}</span>
-                                        {link.hasDropdown && <ChevronDown size={11} style={{ color: isHoveredOrActive ? "rgba(255,255,255,0.60)" : "rgba(255,255,255,0.25)", transition: "color 150ms ease-out", flexShrink: 0 }} />}
-                                    </span>
-                                    <span style={{ display: "block", height: "1.5px", width: "100%", backgroundColor: "#FF2D87", transformOrigin: "left", transform: isHoveredOrActive ? "scaleX(1)" : "scaleX(0)", transition: "transform 200ms ease-out" }} />
-                                </a>
-                            ) : (
-                                <Link to={link.href} onMouseEnter={() => setHoveredLink(link.id)} onMouseLeave={() => setHoveredLink(null)} style={{
-                                    fontFamily: "Figtree", fontSize: "12px", fontWeight: 400, letterSpacing: "0.08em",
-                                    color: isHoveredOrActive ? "rgba(255,255,255,0.80)" : "rgba(255,255,255,0.40)",
-                                    textDecoration: "none", padding: "6px 12px", transition: "color 150ms ease-out",
-                                    position: "relative", display: "inline-flex", flexDirection: "column", alignItems: "center", gap: "3px"
-                                }}>
-                                    <span style={{ display: "inline-flex", alignItems: "center", gap: "3px" }}>
-                                        <span>{link.label}</span>
-                                        {link.hasDropdown && <ChevronDown size={11} style={{ color: isHoveredOrActive ? "rgba(255,255,255,0.60)" : "rgba(255,255,255,0.25)", transition: "color 150ms ease-out", flexShrink: 0 }} />}
-                                    </span>
-                                    <span style={{ display: "block", height: "1.5px", width: "100%", backgroundColor: "#FF2D87", transformOrigin: "left", transform: isHoveredOrActive ? "scaleX(1)" : "scaleX(0)", transition: "transform 200ms ease-out" }} />
-                                </Link>
-                            )}
-                            {idx < NAV_LINKS.length - 1 && <span style={{ color: "rgba(255,255,255,0.15)", fontSize: "8px" }}>·</span>}
+                            <div
+                                onMouseEnter={() => setHoveredLink(link.id)}
+                                onMouseLeave={() => setHoveredLink(null)}
+                                style={{ position: "relative", display: "inline-flex", alignItems: "center", height: `${navHeight}px` }}
+                            >
+                                {link.href.startsWith('/#') ? (
+                                    <a href={link.href} style={{
+                                        fontFamily: "Figtree", fontSize: "12px", fontWeight: 400, letterSpacing: "0.08em",
+                                        color: isHoveredOrActive ? "rgba(255,255,255,0.80)" : "rgba(255,255,255,0.40)",
+                                        textDecoration: "none", padding: "6px 12px", transition: "color 150ms ease-out",
+                                        position: "relative", display: "inline-flex", flexDirection: "column", alignItems: "center", gap: "3px"
+                                    }}>
+                                        <span style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
+                                            <span>{link.label}</span>
+                                            {link.hasDropdown && <ChevronDown size={11} style={{ 
+                                                color: isHoveredOrActive ? "rgba(255,255,255,0.80)" : "rgba(255,255,255,0.25)", 
+                                                transition: "all 200ms ease-out", 
+                                                transform: hoveredLink === link.id ? "rotate(180deg)" : "rotate(0deg)",
+                                                flexShrink: 0 
+                                            }} />}
+                                        </span>
+                                        <span style={{ display: "block", height: "1.5px", width: "100%", backgroundColor: "#FF2D87", transformOrigin: "left", transform: isHoveredOrActive ? "scaleX(1)" : "scaleX(0)", transition: "transform 200ms ease-out" }} />
+                                    </a>
+                                ) : (
+                                    <Link to={link.href} style={{
+                                        fontFamily: "Figtree", fontSize: "12px", fontWeight: 400, letterSpacing: "0.08em",
+                                        color: isHoveredOrActive ? "rgba(255,255,255,0.80)" : "rgba(255,255,255,0.40)",
+                                        textDecoration: "none", padding: "6px 12px", transition: "color 150ms ease-out",
+                                        position: "relative", display: "inline-flex", flexDirection: "column", alignItems: "center", gap: "3px"
+                                    }}>
+                                        <span style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
+                                            <span>{link.label}</span>
+                                            {link.hasDropdown && <ChevronDown size={11} style={{ 
+                                                color: isHoveredOrActive ? "rgba(255,255,255,0.80)" : "rgba(255,255,255,0.25)", 
+                                                transition: "all 200ms ease-out", 
+                                                transform: hoveredLink === link.id ? "rotate(180deg)" : "rotate(0deg)",
+                                                flexShrink: 0 
+                                            }} />}
+                                        </span>
+                                        <span style={{ display: "block", height: "1.5px", width: "100%", backgroundColor: "#FF2D87", transformOrigin: "left", transform: isHoveredOrActive ? "scaleX(1)" : "scaleX(0)", transition: "transform 200ms ease-out" }} />
+                                    </Link>
+                                )}
+
+                                {/* Hover dropdown menu */}
+                                <AnimatePresence>
+                                    {link.hasDropdown && link.dropdownItems && hoveredLink === link.id && (
+                                        <motion.div
+                                            initial={{ opacity: 0, y: 12, scale: 0.96 }}
+                                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                                            exit={{ opacity: 0, y: 12, scale: 0.96 }}
+                                            transition={{ duration: 0.15, ease: "easeOut" }}
+                                            style={{
+                                                position: "absolute",
+                                                top: "100%",
+                                                left: "50%",
+                                                marginLeft: "-150px", // Exact centering matching minWidth 300px
+                                                paddingTop: "12px",
+                                                zIndex: 1000,
+                                                minWidth: "300px"
+                                            }}
+                                        >
+                                            <div style={{
+                                                backgroundColor: "rgba(10, 10, 15, 0.98)",
+                                                backdropFilter: "blur(20px)",
+                                                WebkitBackdropFilter: "blur(20px)",
+                                                border: "1px solid rgba(255, 255, 255, 0.08)",
+                                                borderRadius: "12px",
+                                                padding: "12px 8px",
+                                                boxShadow: "0 20px 40px rgba(0, 0, 0, 0.7)",
+                                                display: "flex",
+                                                flexDirection: "column",
+                                                gap: "4px"
+                                            }}>
+                                                {link.dropdownItems.map((item, itemIdx) => {
+                                                    const isDropdownItemActive = item.href.startsWith('/#') ? false : location.pathname.startsWith(item.href);
+                                                    return (
+                                                        item.href.startsWith('/#') ? (
+                                                            <a
+                                                                key={itemIdx}
+                                                                href={item.href}
+                                                                className="nav-dropdown-item"
+                                                                style={{
+                                                                    fontFamily: "Figtree",
+                                                                    fontSize: "13px",
+                                                                    fontWeight: 400,
+                                                                    color: "rgba(255, 255, 255, 0.7)",
+                                                                    textDecoration: "none",
+                                                                    padding: "10px 16px",
+                                                                    borderRadius: "8px",
+                                                                    transition: "all 200ms ease-out",
+                                                                    display: "flex",
+                                                                    alignItems: "center",
+                                                                    justifyContent: "space-between",
+                                                                    gap: "12px"
+                                                                }}
+                                                                onMouseEnter={e => {
+                                                                    const el = e.currentTarget as HTMLAnchorElement;
+                                                                    el.style.backgroundColor = "rgba(255, 45, 135, 0.08)";
+                                                                    el.style.color = "#FFFFFF";
+                                                                    el.style.paddingLeft = "20px";
+                                                                }}
+                                                                onMouseLeave={e => {
+                                                                    const el = e.currentTarget as HTMLAnchorElement;
+                                                                    el.style.backgroundColor = "transparent";
+                                                                    el.style.color = "rgba(255, 255, 255, 0.7)";
+                                                                    el.style.paddingLeft = "16px";
+                                                                }}
+                                                            >
+                                                                <span>{item.label}</span>
+                                                                <ArrowRight size={12} className="dropdown-arrow" style={{ opacity: 0, transition: "all 200ms", color: "#FF2D87", transform: "translateX(-4px)" }} />
+                                                            </a>
+                                                        ) : (
+                                                            <Link
+                                                                key={itemIdx}
+                                                                to={item.href}
+                                                                className="nav-dropdown-item"
+                                                                style={{
+                                                                    fontFamily: "Figtree",
+                                                                    fontSize: "13px",
+                                                                    fontWeight: 400,
+                                                                    color: isDropdownItemActive ? "#FF2D87" : "rgba(255, 255, 255, 0.7)",
+                                                                    textDecoration: "none",
+                                                                    padding: "10px 16px",
+                                                                    borderRadius: "8px",
+                                                                    transition: "all 200ms ease-out",
+                                                                    display: "flex",
+                                                                    alignItems: "center",
+                                                                    justifyContent: "space-between",
+                                                                    gap: "12px"
+                                                                }}
+                                                                onMouseEnter={e => {
+                                                                    const el = e.currentTarget as HTMLAnchorElement;
+                                                                    el.style.backgroundColor = "rgba(255, 45, 135, 0.08)";
+                                                                    el.style.color = "#FFFFFF";
+                                                                    el.style.paddingLeft = "20px";
+                                                                }}
+                                                                onMouseLeave={e => {
+                                                                    const el = e.currentTarget as HTMLAnchorElement;
+                                                                    el.style.backgroundColor = "transparent";
+                                                                    el.style.color = isDropdownItemActive ? "#FF2D87" : "rgba(255, 255, 255, 0.7)";
+                                                                    el.style.paddingLeft = "16px";
+                                                                }}
+                                                            >
+                                                                <span>{item.label}</span>
+                                                                <ArrowRight size={12} className="dropdown-arrow" style={{ opacity: 0, transition: "all 200ms", color: "#FF2D87", transform: "translateX(-4px)" }} />
+                                                            </Link>
+                                                        )
+                                                    )
+                                                })}
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </div>
+                            {idx < NAV_LINKS.length - 1 && <span style={{ color: "rgba(255,255,255,0.15)", fontSize: "8px", pointerEvents: "none", margin: "0 4px" }}>·</span>}
                         </React.Fragment>
                     );
                 })}
@@ -177,17 +321,55 @@ export const TopNav = () => {
                 gap: "16px"
             }}>
                 {NAV_LINKS.map(link => (
-                    link.href.startsWith('/#') ? 
-                    <a key={link.id} href={link.href} style={{
-                        fontFamily: "Figtree", fontSize: "16px", fontWeight: 400, color: "rgba(255,255,255,0.70)", textDecoration: "none"
-                    }} onClick={() => setIsOpen(false)}>
-                        {link.label}
-                    </a> : 
-                    <Link key={link.id} to={link.href} style={{
-                        fontFamily: "Figtree", fontSize: "16px", fontWeight: 400, color: (link.href === '/' ? location.pathname === '/' : location.pathname.startsWith(link.href)) ? "#FF2D87" : "rgba(255,255,255,0.70)", textDecoration: "none"
-                    }} onClick={() => setIsOpen(false)}>
-                        {link.label}
-                    </Link>
+                    <div key={link.id} style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                        {link.href.startsWith('/#') ? (
+                            <a href={link.href} style={{
+                                fontFamily: "Figtree", fontSize: "16px", fontWeight: 500, color: "rgba(255,255,255,0.85)", textDecoration: "none",
+                                display: "flex", alignItems: "center", gap: "6px"
+                            }} onClick={() => setIsOpen(false)}>
+                                <span>{link.label}</span>
+                            </a>
+                        ) : (
+                            <Link to={link.href} style={{
+                                fontFamily: "Figtree", fontSize: "16px", fontWeight: 500, color: (link.href === '/' ? location.pathname === '/' : location.pathname.startsWith(link.href)) ? "#FF2D87" : "rgba(255,255,255,0.85)", textDecoration: "none",
+                                display: "flex", alignItems: "center", gap: "6px"
+                            }} onClick={() => setIsOpen(false)}>
+                                <span>{link.label}</span>
+                            </Link>
+                        )}
+
+                        {/* Indented dropdown items for Mobile */}
+                        {link.hasDropdown && link.dropdownItems && (
+                            <div style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: "10px",
+                                paddingLeft: "16px",
+                                borderLeft: "1px solid rgba(255, 255, 255, 0.1)",
+                                marginTop: "4px",
+                                marginBottom: "4px"
+                            }}>
+                                {link.dropdownItems.map((item, itemIdx) => {
+                                    const isSubActive = item.href.startsWith('/#') ? false : location.pathname.startsWith(item.href);
+                                    return (
+                                        item.href.startsWith('/#') ? (
+                                            <a key={itemIdx} href={item.href} style={{
+                                                fontFamily: "Figtree", fontSize: "14px", fontWeight: 400, color: "rgba(255,255,255,0.5)", textDecoration: "none"
+                                            }} onClick={() => setIsOpen(false)}>
+                                                {item.label}
+                                            </a>
+                                        ) : (
+                                            <Link key={itemIdx} to={item.href} style={{
+                                                fontFamily: "Figtree", fontSize: "14px", fontWeight: 400, color: isSubActive ? "#FF2D87" : "rgba(255,255,255,0.5)", textDecoration: "none"
+                                            }} onClick={() => setIsOpen(false)}>
+                                                {item.label}
+                                            </Link>
+                                        )
+                                    )
+                                })}
+                            </div>
+                        )}
+                    </div>
                 ))}
                 <a href="#" style={{
                     marginTop: "8px", fontFamily: "Figtree", fontSize: "14px", fontWeight: 500, color: "#FFFFFF",
@@ -204,6 +386,10 @@ export const TopNav = () => {
           0%   { transform: skewX(-20deg) translateX(-100%); }
           30%  { transform: skewX(-20deg) translateX(250%); }
           100% { transform: skewX(-20deg) translateX(250%); }
+        }
+        .nav-dropdown-item:hover .dropdown-arrow {
+          opacity: 1 !important;
+          transform: translateX(0) !important;
         }
       `}</style>
     </div>;
