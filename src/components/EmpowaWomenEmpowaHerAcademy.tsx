@@ -226,65 +226,65 @@ const PROGRAMME_PILLARS: PillarData[] = [{
     id: 1,
     title: 'Future Skills Lab',
     description: 'AI implementation, digital coding bootcamps, creator monetisation pathways, and professional CV/LinkedIn profiling.',
-    icon: <Cpu className="w-6 h-6 text-white" />,
+    icon: <Cpu size={24} color="#FFFFFF" />,
     bgColor: 'rgba(255,45,135,0.10)',
     borderColor: 'rgba(255,45,135,0.20)',
     iconBg: '#FF2D87',
-    gridClass: 'md:col-span-2 md:row-span-2'
+    gridClass: 'pillar-col-span-2 pillar-row-span-2'
 }, {
     id: 2,
     title: 'Entrepreneurship & Enterprise Lab',
     description: 'Moving from baseline side-hustles to legally scalable, bankable corporate models with procurement matching.',
-    icon: <Rocket className="w-6 h-6 text-white" />,
+    icon: <Rocket size={24} color="#FFFFFF" />,
     bgColor: 'rgba(0,180,166,0.10)',
     borderColor: 'rgba(0,180,166,0.30)',
     iconBg: '#00B4A6',
-    gridClass: 'md:col-span-1 md:row-span-2'
+    gridClass: 'pillar-row-span-2'
 }, {
     id: 3,
     title: 'Leadership & Influence Academy',
     description: 'Personal branding, executive presence cultivation, civic governance, and strategic peer mentorship structures.',
-    icon: <Users className="w-6 h-6 text-white" />,
+    icon: <Users size={24} color="#FFFFFF" />,
     bgColor: 'rgba(255,45,135,0.08)',
     borderColor: 'rgba(255,45,135,0.20)',
     iconBg: '#FF2D87',
-    gridClass: 'md:col-span-1'
+    gridClass: ''
 }, {
     id: 4,
     title: 'Wellness, Life & Resilience',
     description: 'Emotional intelligence coaching, corporate mental health protocols, gender-based violence support systems, and personal growth spaces.',
-    icon: <Heart className="w-6 h-6 text-white" />,
+    icon: <Heart size={24} color="#FFFFFF" />,
     bgColor: 'rgba(0,180,166,0.08)',
     borderColor: 'rgba(0,180,166,0.20)',
     iconBg: '#00B4A6',
-    gridClass: 'md:col-span-1'
+    gridClass: ''
 }, {
     id: 5,
     title: 'Creative & Digital Economy Lab',
     description: 'Content creator optimization, audio podcasting, digital video production skills, and brand sponsorship monetization systems.',
-    icon: <Camera className="w-6 h-6 text-white" />,
+    icon: <Camera size={24} color="#FFFFFF" />,
     bgColor: 'rgba(109,40,217,0.10)',
     borderColor: 'rgba(109,40,217,0.20)',
     iconBg: '#6D28D9',
-    gridClass: 'md:col-span-1'
+    gridClass: ''
 }, {
     id: 6,
     title: 'Careers & Employability Hub',
     description: 'Bridging the practical gap between academic transcripts, industry career showcases, learnership linkages, and corporate pathways.',
-    icon: <Briefcase className="w-6 h-6 text-white" />,
+    icon: <Briefcase size={24} color="#FFFFFF" />,
     bgColor: 'rgba(217,119,6,0.08)',
     borderColor: 'rgba(217,119,6,0.20)',
     iconBg: '#D97706',
-    gridClass: 'md:col-span-2'
+    gridClass: 'pillar-col-span-2'
 }, {
     id: 7,
     title: 'Summits & Activations',
     description: 'Access to high-energy, opportunity-driven environments, enterprise funding festivals, and national roadshow connectivity.',
-    icon: <Globe className="w-6 h-6 text-white" />,
+    icon: <Globe size={24} color="#FFFFFF" />,
     bgColor: 'rgba(217,119,6,0.10)',
     borderColor: 'rgba(217,119,6,0.30)',
     iconBg: '#D97706',
-    gridClass: 'md:col-span-1'
+    gridClass: ''
 }];
 const IMPACT_STATS: StatItem[] = [{
     id: 'stat-1',
@@ -415,7 +415,7 @@ const TopNav = () => {
                 justifyContent: 'center',
                 alignItems: 'center',
                 gap: '0px'
-            }} className="hidden md:flex">
+            }} className="academy-desktop-nav">
                 {NAV_LINKS.map((link, idx) => <React.Fragment key={link.id}>
                     <a href={link.href} onMouseEnter={() => setHoveredLink(link.id)} onMouseLeave={() => setHoveredLink(null)} style={{
                         fontFamily: 'Figtree',
@@ -487,7 +487,7 @@ const TopNav = () => {
                 }}>
                     Secure Your Seat
                 </a>
-                <button className="md:hidden text-white p-1" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
+                <button className="academy-mobile-nav-toggle" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
                     {mobileOpen ? <X size={22} /> : <Menu size={22} />}
                 </button>
             </div>
@@ -565,8 +565,8 @@ const HeroSection = () => {
         paddingBottom: '80px',
         paddingTop: '68px'
     }}>
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-            <motion.div className="absolute inset-0" initial={{
+        <div style={{ position: 'absolute', inset: 0, zIndex: 0, overflow: 'hidden', pointerEvents: 'none' }}>
+            <motion.div style={{ position: 'absolute', inset: 0 }} initial={{
                 scale: 1.06,
                 opacity: 0
             }} animate={{
@@ -581,7 +581,10 @@ const HeroSection = () => {
                     position: 'absolute',
                     inset: 0
                 }}>
-                    <img src="https://images.unsplash.com/photo-1598257006458-087169a1f08d?w=1920&q=90" alt="Young African women in a professional setting" className="w-full h-full object-cover" style={{
+                    <img src="https://images.unsplash.com/photo-1598257006458-087169a1f08d?w=1920&q=90" alt="Young African women in a professional setting" style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
                         objectPosition: 'center 30%'
                     }} />
                 </motion.div>
@@ -1080,16 +1083,16 @@ const ProgramPillars = () => {
                 </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
+            <div className="academy-pillars-grid">
                 {PROGRAMME_PILLARS.map(pillar => <motion.div key={pillar.id} whileHover={{
                     y: -5
-                }} className={cn('group relative rounded-[2rem] p-8 md:p-10 flex flex-col transition-all duration-500 overflow-hidden', pillar.gridClass)} style={{
+                }} className={`academy-pillar-card group ${pillar.gridClass}`} style={{
                     backgroundColor: pillar.bgColor,
                     border: `1px solid ${pillar.borderColor}`
                 }}>
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="relative z-10">
-                        <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-8 shadow-inner transition-transform duration-500 group-hover:scale-110" style={{
+                    <div className="academy-pillar-gradient-overlay" />
+                    <div style={{ position: 'relative', zIndex: 10 }}>
+                        <div className="academy-pillar-icon-wrapper" style={{
                             backgroundColor: pillar.iconBg
                         }}>
                             {pillar.icon}
@@ -1114,7 +1117,7 @@ const ProgramPillars = () => {
                             {pillar.description}
                         </p>
                     </div>
-                    <div className="absolute bottom-6 right-8 transition-colors duration-500" style={{
+                    <div className="academy-pillar-number" style={{
                         color: 'rgba(255,255,255,0.05)'
                     }}>
                         <span style={{
@@ -1147,10 +1150,7 @@ const ImpactStats = () => {
             paddingLeft: 'clamp(24px, 6vw, 96px)',
             paddingRight: 'clamp(24px, 6vw, 96px)'
         }}>
-            <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(4, 1fr)'
-            }} className="grid-cols-2 md:grid-cols-4">
+            <div className="academy-stats-grid">
                 {IMPACT_STATS.map((stat, i) => <motion.div key={stat.id} initial={{
                     opacity: 0,
                     y: 16
@@ -1160,13 +1160,7 @@ const ImpactStats = () => {
                 } : {}} transition={{
                     duration: 0.6,
                     delay: i * 0.08
-                }} style={{
-                    paddingTop: '40px',
-                    paddingBottom: '40px',
-                    paddingLeft: i === 0 ? '0' : '40px',
-                    paddingRight: '40px',
-                    borderLeft: i > 0 ? '1px solid rgba(255,255,255,0.08)' : 'none'
-                }}>
+                }} className="academy-stat-card">
                     <div style={{
                         fontFamily: 'Figtree',
                         fontWeight: 200,
@@ -1234,12 +1228,7 @@ const PeerTestimonials = () => {
             }}>
                 From the cohort. In their own words.
             </h2>
-            <div style={{
-                marginTop: '48px',
-                display: 'grid',
-                gridTemplateColumns: 'repeat(3, 1fr)',
-                gap: '24px'
-            }} className="grid-cols-1 md:grid-cols-3">
+            <div className="academy-testimonials-grid">
                 {TESTIMONIALS.map((t, i) => <motion.div key={t.id} initial={{
                     opacity: 0,
                     y: 20
@@ -1326,16 +1315,10 @@ const ApplicationForm = () => {
     }}>
         <div style={{
             maxWidth: '1200px',
-            margin: '0 auto',
-            display: 'flex',
-            flexDirection: 'row',
-            gap: 'clamp(48px, 6vw, 96px)',
-            alignItems: 'flex-start'
-        }} className="flex-col lg:flex-row">
+            margin: '0 auto'
+        }} className="academy-form-flex-container">
             {/* Left */}
-            <div style={{
-                flex: '0 0 45%'
-            }}>
+            <div className="academy-form-left-col">
                 <p style={{
                     fontFamily: 'Figtree',
                     fontWeight: 600,
@@ -1406,9 +1389,7 @@ const ApplicationForm = () => {
             </div>
 
             {/* Right: Form */}
-            <div style={{
-                flex: '0 0 55%'
-            }}>
+            <div className="academy-form-right-col">
                 <form style={{
                     backgroundColor: 'rgba(255,255,255,0.04)',
                     border: '1px solid rgba(255,255,255,0.08)',
@@ -1418,11 +1399,7 @@ const ApplicationForm = () => {
                     flexDirection: 'column',
                     gap: '20px'
                 }}>
-                    <div style={{
-                        display: 'grid',
-                        gridTemplateColumns: '1fr 1fr',
-                        gap: '16px'
-                    }} className="grid-cols-1 sm:grid-cols-2">
+                    <div className="academy-form-row-grid">
                         <div style={{
                             display: 'flex',
                             flexDirection: 'column',
@@ -1663,12 +1640,7 @@ const WhatHappensNext = () => {
                 What happens next.
             </h2>
 
-            <div style={{
-                marginTop: '64px',
-                display: 'flex',
-                alignItems: 'flex-start',
-                gap: '0'
-            }} className="flex-col md:flex-row">
+            <div className="academy-process-flow-container">
                 {PROCESS_STEPS.map((step, i) => <motion.div key={step.id} initial={{
                     opacity: 0,
                     y: 16
@@ -1693,7 +1665,7 @@ const WhatHappensNext = () => {
                         right: 'calc(-50% + 28px)',
                         height: '1px',
                         backgroundColor: 'rgba(0,0,0,0.10)'
-                    }} className="hidden md:block" />}
+                    }} className="academy-process-connector" />}
                     <div style={{
                         width: '56px',
                         height: '56px',
@@ -2186,5 +2158,212 @@ export const EmpowaHerAcademy: React.FC = () => {
             <ApplicationForm />
             <WhatHappensNext />
         </main>
+        <style>{`
+          /* Navigation */
+          .academy-desktop-nav {
+            display: none !important;
+          }
+          .academy-mobile-nav-toggle {
+            display: block !important;
+            background: none;
+            border: none;
+            color: #FFFFFF;
+            padding: 4px;
+            cursor: pointer;
+          }
+          @media (min-width: 768px) {
+            .academy-desktop-nav {
+              display: flex !important;
+            }
+            .academy-mobile-nav-toggle {
+              display: none !important;
+            }
+          }
+
+          /* Pillars Grid */
+          .academy-pillars-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+          }
+          @media (min-width: 768px) {
+            .academy-pillars-grid {
+              grid-template-columns: repeat(3, 1fr);
+              grid-auto-rows: minmax(280px, auto);
+            }
+            .pillar-col-span-2 {
+              grid-column: span 2 / span 2;
+            }
+            .pillar-row-span-2 {
+              grid-row: span 2 / span 2;
+            }
+          }
+
+          /* Pillar Cards */
+          .academy-pillar-card {
+            position: relative;
+            border-radius: 2rem;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            transition: all 500ms ease;
+            overflow: hidden;
+          }
+          @media (min-width: 768px) {
+            .academy-pillar-card {
+              padding: 40px;
+            }
+          }
+          .academy-pillar-card:hover {
+            transform: translateY(-5px);
+          }
+          .academy-pillar-gradient-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 500ms ease;
+          }
+          .group:hover .academy-pillar-gradient-overlay {
+            opacity: 1;
+          }
+          .academy-pillar-icon-wrapper {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 32px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 500ms ease;
+          }
+          .group:hover .academy-pillar-icon-wrapper {
+            transform: scale(1.1);
+          }
+          .academy-pillar-number {
+            position: absolute;
+            bottom: 24px;
+            right: 32px;
+            transition: color 500ms ease;
+          }
+          .group:hover .academy-pillar-number {
+            color: rgba(255, 255, 255, 0.15) !important;
+          }
+
+          /* Impact Stats */
+          .academy-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+          }
+          .academy-stat-card {
+            padding: 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+          }
+          @media (max-width: 767px) {
+            .academy-stat-card:nth-child(odd) {
+              border-right: 1px solid rgba(255,255,255,0.08) !important;
+              padding-left: 0 !important;
+            }
+            .academy-stat-card:nth-child(even) {
+              padding-right: 0 !important;
+            }
+            .academy-stat-card:nth-child(3), .academy-stat-card:nth-child(4) {
+              border-bottom: none !important;
+            }
+          }
+          @media (min-width: 768px) {
+            .academy-stats-grid {
+              grid-template-columns: repeat(4, 1fr) !important;
+              gap: 0 !important;
+            }
+            .academy-stat-card {
+              padding-top: 40px !important;
+              padding-bottom: 40px !important;
+              padding-left: 40px !important;
+              padding-right: 40px !important;
+              border-bottom: none !important;
+              border-left: 1px solid rgba(255,255,255,0.08) !important;
+            }
+            .academy-stat-card:first-child {
+              border-left: none !important;
+              padding-left: 0 !important;
+            }
+          }
+
+          /* Testimonials */
+          .academy-testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            margin-top: 48px;
+          }
+          @media (min-width: 768px) {
+            .academy-testimonials-grid {
+              grid-template-columns: repeat(3, 1fr);
+            }
+          }
+
+          /* Application Form */
+          .academy-form-flex-container {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(48px, 6vw, 96px);
+            align-items: stretch;
+          }
+          .academy-form-left-col {
+            width: 100%;
+          }
+          .academy-form-right-col {
+            width: 100%;
+          }
+          .academy-form-row-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+          }
+          @media (min-width: 640px) {
+            .academy-form-row-grid {
+              grid-template-columns: 1fr 1fr;
+            }
+          }
+          @media (min-width: 1024px) {
+            .academy-form-flex-container {
+              flex-direction: row !important;
+              align-items: flex-start !important;
+            }
+            .academy-form-left-col {
+              flex: 0 0 45% !important;
+              width: 45% !important;
+            }
+            .academy-form-right-col {
+              flex: 0 0 55% !important;
+              width: 55% !important;
+            }
+          }
+
+          /* What Happens Next */
+          .academy-process-flow-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            margin-top: 64px;
+          }
+          .academy-process-connector {
+            display: none;
+          }
+          @media (min-width: 768px) {
+            .academy-process-flow-container {
+              flex-direction: row !important;
+              align-items: flex-start !important;
+              gap: 0 !important;
+            }
+            .academy-process-connector {
+              display: block !important;
+            }
+          }
+        `}</style>
     </div>;
 };

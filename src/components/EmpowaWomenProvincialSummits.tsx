@@ -171,6 +171,7 @@ export const ProvincialSummitSeries = () => {
         }
         return PROVINCIAL_SUMMITS;
     }, [activeFilter]);
+
     return <div style={{
         backgroundColor: '#0A0A0F',
         minHeight: '100vh',
@@ -245,7 +246,7 @@ export const ProvincialSummitSeries = () => {
             </div>
 
             {/* Hero content */}
-            <div className="relative z-10 w-full max-w-[1200px] px-6 sm:px-10 lg:px-20 pt-16 pb-16 md:pt-20 md:pb-20 flex flex-col items-center text-center">
+            <div style={{ position: "relative", zIndex: 10, width: "100%", maxWidth: "1200px", paddingLeft: "clamp(24px, 6vw, 80px)", paddingRight: "clamp(24px, 6vw, 80px)", paddingTop: "clamp(64px, 10vw, 96px)", paddingBottom: "clamp(64px, 10vw, 96px)", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
                 {/* Eyebrow */}
                 <motion.p initial={{
                     opacity: 0,
@@ -256,17 +257,30 @@ export const ProvincialSummitSeries = () => {
                 }} transition={{
                     duration: 0.6,
                     delay: 0.2
-                }} className="text-[10px] font-semibold tracking-[0.15em] uppercase mb-6 md:mb-8" style={{
+                }} style={{
+                    fontFamily: 'Figtree',
+                    fontSize: '10px',
+                    fontWeight: 600,
+                    letterSpacing: '0.15em',
+                    textTransform: 'uppercase',
+                    marginBottom: '28px',
                     color: 'rgba(255,255,255,0.60)'
                 }}>
                     SUMMIT SERIES 2027
                 </motion.p>
 
                 {/* Headline */}
-                <h1 className="font-light leading-none tracking-tight mb-10 md:mb-12 flex flex-wrap justify-center" style={{
-                    fontSize: 'clamp(44px, 8vw, 112px)',
-                    letterSpacing: '-0.04em',
-                    gap: '0.22em'
+                <h1 style={{
+                    fontFamily: "Figtree",
+                    fontWeight: 300,
+                    fontSize: "clamp(44px, 8vw, 112px)",
+                    letterSpacing: "-0.04em",
+                    gap: "0.22em",
+                    lineHeight: 1.0,
+                    marginBottom: "40px",
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "center"
                 }}>
                     {HERO_WORDS.map((item, i) => <motion.span key={item.id} initial={{
                         opacity: 0,
@@ -314,8 +328,8 @@ export const ProvincialSummitSeries = () => {
                 }} transition={{
                     duration: 0.8,
                     delay: 1.2
-                }} className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-4 mb-12 md:mb-16 w-full sm:w-auto">
-                    <button className="w-full sm:w-auto" style={{
+                }} className="cta-container" style={{ display: "flex", gap: "16px", justifyContent: "center", alignItems: "center", marginBottom: "48px" }}>
+                    <button className="cta-button" style={{
                         fontFamily: 'Figtree',
                         fontSize: '15px',
                         fontWeight: 500,
@@ -331,7 +345,8 @@ export const ProvincialSummitSeries = () => {
                         cursor: 'pointer',
                         transition: 'all 200ms ease-out',
                         letterSpacing: '0.02em',
-                        boxShadow: '0 0 32px rgba(255,45,135,0.25)'
+                        boxShadow: '0 0 32px rgba(255,45,135,0.25)',
+                        width: '200px'
                     }} onMouseEnter={e => {
                         const el = e.currentTarget as HTMLButtonElement;
                         el.style.filter = 'brightness(1.1)';
@@ -343,7 +358,7 @@ export const ProvincialSummitSeries = () => {
                     }}>
                         Register Now
                     </button>
-                    <button className="w-full sm:w-auto" style={{
+                    <button className="cta-button" style={{
                         fontFamily: 'Figtree',
                         fontSize: '15px',
                         fontWeight: 400,
@@ -358,7 +373,8 @@ export const ProvincialSummitSeries = () => {
                         justifyContent: 'center',
                         cursor: 'pointer',
                         transition: 'all 200ms ease-out',
-                        letterSpacing: '0.02em'
+                        letterSpacing: '0.02em',
+                        width: '200px'
                     }} onMouseEnter={e => {
                         const el = e.currentTarget as HTMLButtonElement;
                         el.style.backgroundColor = 'rgba(255,255,255,0.08)';
@@ -382,20 +398,22 @@ export const ProvincialSummitSeries = () => {
                 }} transition={{
                     duration: 0.8,
                     delay: 1.4
-                }} className="flex flex-row items-center justify-center flex-wrap gap-0 w-full">
+                }} style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", flexWrap: "wrap", width: "100%" }}>
                     {HERO_STATS.map((stat, idx) => {
                         const {
                             numeric,
                             suffix
                         } = parseStatValue(stat.value);
                         return <React.Fragment key={stat.id}>
-                            <div className="flex flex-col items-center px-5 sm:px-8 py-4 sm:py-0">
-                                <div className="flex items-baseline gap-[2px]">
-                                    <span className="font-light leading-none" style={{
+                            <div className="stat-box" style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "16px 32px" }}>
+                                <div style={{ display: "flex", alignItems: "baseline", gap: "2px" }}>
+                                    <span style={{
                                         fontFamily: 'Figtree',
                                         fontSize: 'clamp(36px, 6vw, 52px)',
-                                        letterSpacing: '-0.04em',
-                                        color: '#FFFFFF'
+                                        fontWeight: 300,
+                                        lineHeight: 1.0,
+                                        color: '#FFFFFF',
+                                        letterSpacing: '-0.04em'
                                     }}>
                                         {numeric}
                                     </span>
@@ -454,10 +472,10 @@ export const ProvincialSummitSeries = () => {
             paddingTop: '80px',
             paddingBottom: '80px',
             color: '#0A0A0F'
-        }} className="md:pt-[128px] md:pb-[128px]">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
+        }} className="provincial-section-pad">
+            <div style={{ maxWidth: "1280px", margin: "0 auto", paddingLeft: "clamp(24px, 6vw, 48px)", paddingRight: "clamp(24px, 6vw, 48px)" }}>
                 {/* Heading block */}
-                <div className="mb-12 md:mb-20">
+                <div style={{ marginBottom: "48px" }}>
                     <motion.div initial={{
                         opacity: 0,
                         y: 10
@@ -469,7 +487,7 @@ export const ProvincialSummitSeries = () => {
                     }} transition={{
                         duration: 0.6
                     }}>
-                        <span className="text-[10px] font-bold tracking-[0.25em] text-[#FF2D87] uppercase block mb-4">
+                        <span style={{ fontFamily: "Figtree", fontSize: "10px", fontWeight: 700, letterSpacing: "0.25em", color: "#FF2D87", textTransform: "uppercase", display: "block", marginBottom: "16px" }}>
                             THE PROVINCIAL MATRIX
                         </span>
                     </motion.div>
@@ -484,18 +502,13 @@ export const ProvincialSummitSeries = () => {
                     }} transition={{
                         duration: 0.8,
                         delay: 0.1
-                    }} className="text-4xl sm:text-5xl md:text-6xl font-light tracking-tight" style={{
-                        lineHeight: 1.1
-                    }}>
+                    }} style={{ fontFamily: "Figtree", fontSize: "clamp(32px, 5vw, 56px)", fontWeight: 300, letterSpacing: "-0.03em", lineHeight: 1.1, margin: 0, color: "#0A0A0F" }}>
                         Nine provinces. One ecosystem.
                     </motion.h2>
                 </div>
 
                 {/* Animated toggle bar */}
-                <div className="flex w-full rounded-xl p-1 mb-12 md:mb-16" style={{
-                    backgroundColor: 'rgba(0,0,0,0.06)',
-                    position: 'relative'
-                }}>
+                <div style={{ display: "flex", width: "100%", borderRadius: "12px", padding: "4px", marginBottom: "48px", backgroundColor: "rgba(0,0,0,0.06)", position: "relative" }}>
                     <AnimatePresence>
                         {FILTER_OPTIONS.map(filter => <button key={filter} onClick={() => setActiveFilter(filter)} style={{
                             flex: 1,
@@ -542,7 +555,7 @@ export const ProvincialSummitSeries = () => {
                 </div>
 
                 {/* Provincial Cards List */}
-                <div className="space-y-0">
+                <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
                     <AnimatePresence mode="popLayout">
                         {filteredSummits.map((summit, index) => <motion.div key={summit.id} layout initial={{
                             opacity: 0,
@@ -580,7 +593,7 @@ export const ProvincialSummitSeries = () => {
                             }} />
 
                             {/* Index number */}
-                            <div className="hidden sm:block" style={{
+                            <div className="summit-index-badge" style={{
                                 position: 'absolute',
                                 top: '16px',
                                 left: '20px',
@@ -594,51 +607,49 @@ export const ProvincialSummitSeries = () => {
                             </div>
 
                             {/* Card inner layout: stacks on mobile, row on desktop */}
-                            <div className="flex flex-col lg:flex-row lg:items-center px-4 sm:px-6 lg:px-4 py-8 sm:py-10 lg:py-10 gap-6 lg:gap-0">
+                            <div className="summit-inner-layout" style={{ display: "flex", flexDirection: "row", alignItems: "center", padding: "32px 16px", gap: "24px" }}>
                                 {/* Left Column: City & Date */}
-                                <div className="w-full lg:w-56 shrink-0 lg:pl-2">
-                                    <h3 className="text-2xl sm:text-3xl font-light tracking-tight mb-2 text-[#0A0A0F]">
+                                <div className="summit-left-col" style={{ width: "240px", flexShrink: 0 }}>
+                                    <h3 style={{ fontFamily: "Figtree", fontSize: "clamp(20px, 2.5vw, 28px)", fontWeight: 300, letterSpacing: "-0.02em", color: "#0A0A0F", margin: "0 0 8px 0" }}>
                                         {summit.city}
                                     </h3>
-                                    <div className="text-[13px] text-[#64748b] font-medium mb-3">
+                                    <div style={{ fontFamily: "Figtree", fontSize: "13px", color: "#64748b", fontWeight: 500, marginBottom: "12px" }}>
                                         {summit.date}
                                     </div>
-                                    <div className="inline-flex bg-[#FF2D87]/10 text-[#FF2D87] text-[10px] font-bold tracking-wider uppercase px-3 py-1 rounded-full">
+                                    <div style={{ display: "inline-flex", backgroundColor: "rgba(255, 45, 135, 0.1)", color: "#FF2D87", fontSize: "10px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", padding: "4px 12px", borderRadius: "999px" }}>
                                         {summit.province}
                                     </div>
                                 </div>
 
                                 {/* Divider (Desktop) */}
-                                <div className="hidden lg:block w-px h-24 bg-black/5 mx-8 shrink-0" />
+                                <div className="summit-vertical-divider" style={{ width: "1px", height: "96px", backgroundColor: "rgba(0,0,0,0.06)", margin: "0 24px", flexShrink: 0 }} />
 
                                 {/* Center Column: Summit Focus */}
-                                <div className="flex-1 w-full lg:px-8">
-                                    <h4 className="text-lg sm:text-xl font-semibold text-[#0A0A0F] mb-4" style={{
-                                        lineHeight: 1.3
-                                    }}>
+                                <div className="summit-center-col" style={{ flex: 1 }}>
+                                    <h4 style={{ fontFamily: "Figtree", fontSize: "clamp(16px, 2vw, 20px)", fontWeight: 600, color: "#0A0A0F", margin: "0 0 16px 0", lineHeight: 1.35 }}>
                                         {summit.focusTitle}
                                     </h4>
-                                    <div className="flex flex-wrap gap-2">
-                                        {summit.strategicDrivers.map(driver => <span key={driver} className="px-3 py-1 rounded-full border border-black/10 text-[11px] text-[#64748b] font-medium">
+                                    <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+                                        {summit.strategicDrivers.map(driver => <span key={driver} style={{ display: "inline-flex", padding: "4px 12px", borderRadius: "999px", border: "1px solid rgba(0,0,0,0.1)", fontSize: "11px", color: "#64748b", fontWeight: 500 }}>
                                             {driver}
                                         </span>)}
                                     </div>
                                 </div>
 
                                 {/* Divider (Desktop) */}
-                                <div className="hidden lg:block w-px h-24 bg-black/5 mx-8 shrink-0" />
+                                <div className="summit-vertical-divider" style={{ width: "1px", height: "96px", backgroundColor: "rgba(0,0,0,0.06)", margin: "0 24px", flexShrink: 0 }} />
 
                                 {/* Right Column: Target Delegate & Action */}
-                                <div className="w-full lg:w-64 shrink-0">
-                                    <div className="text-[14px] text-[#64748b] leading-relaxed mb-5 font-medium">
-                                        <span className="text-[#0A0A0F]/40 text-[10px] font-bold uppercase tracking-widest block mb-1">
+                                <div className="summit-right-col" style={{ width: "260px", flexShrink: 0 }}>
+                                    <div style={{ fontFamily: "Figtree", fontSize: "14px", color: "#64748b", lineHeight: 1.6, marginBottom: "20px", fontWeight: 500 }}>
+                                        <span style={{ fontFamily: "Figtree", fontSize: "10px", color: "rgba(10,10,15,0.4)", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", display: "block", marginBottom: "4px" }}>
                                             Target Profile
                                         </span>
                                         {summit.targetDelegate}
                                     </div>
-                                    <button className="w-full flex items-center justify-between group/btn px-6 py-3 bg-[#FF2D87] text-white rounded-full font-bold text-[13px] tracking-wide transition-all hover:bg-[#0A0A0F] hover:shadow-lg">
+                                    <button className="summit-action-btn" style={{ width: "100%", boxSizing: "border-box", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 24px", backgroundColor: "#FF2D87", border: "none", color: "#FFFFFF", borderRadius: "999px", fontWeight: 700, fontSize: "13px", letterSpacing: "0.05em", cursor: "pointer", transition: "all 200ms ease-out" }}>
                                         Apply for Seat
-                                        <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                                        <ArrowRight size={15} style={{ transition: "transform 200ms" }} className="summit-arrow-icon" />
                                     </button>
                                 </div>
                             </div>
@@ -655,7 +666,7 @@ export const ProvincialSummitSeries = () => {
             paddingBottom: '80px',
             position: 'relative',
             overflow: 'hidden'
-        }} className="md:pt-[128px] md:pb-[128px]">
+        }} className="provincial-section-pad">
             {/* Architectural grid background */}
             <div style={{
                 position: 'absolute',
@@ -676,7 +687,7 @@ export const ProvincialSummitSeries = () => {
                 }} />
             </div>
 
-            <div className="relative z-10 max-w-4xl mx-auto px-6 sm:px-10 text-center">
+            <div style={{ position: "relative", zIndex: 10, maxWidth: "896px", margin: "0 auto", paddingLeft: "clamp(24px, 5vw, 40px)", paddingRight: "clamp(24px, 5vw, 40px)", textAlign: "center" }}>
                 {/* Eyebrow */}
                 <motion.div initial={{
                     opacity: 0,
@@ -741,8 +752,8 @@ export const ProvincialSummitSeries = () => {
                 }} transition={{
                     duration: 0.6,
                     delay: 0.3
-                }} className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-4">
-                    <button className="w-full sm:w-auto" style={{
+                }} className="cta-container" style={{ display: "flex", gap: "16px", justifyContent: "center", alignItems: "center" }}>
+                    <button className="cta-button" style={{
                         fontFamily: 'Figtree',
                         fontSize: '14px',
                         fontWeight: 500,
@@ -757,7 +768,8 @@ export const ProvincialSummitSeries = () => {
                         justifyContent: 'center',
                         cursor: 'pointer',
                         transition: 'filter 200ms ease-out',
-                        letterSpacing: '0.02em'
+                        letterSpacing: '0.02em',
+                        width: '200px'
                     }} onMouseEnter={e => {
                         (e.currentTarget as HTMLButtonElement).style.filter = 'brightness(1.1)';
                     }} onMouseLeave={e => {
@@ -765,7 +777,7 @@ export const ProvincialSummitSeries = () => {
                     }}>
                         Apply Now
                     </button>
-                    <button className="w-full sm:w-auto" style={{
+                    <button className="cta-button" style={{
                         fontFamily: 'Figtree',
                         fontSize: '14px',
                         fontWeight: 500,
@@ -781,7 +793,8 @@ export const ProvincialSummitSeries = () => {
                         gap: '8px',
                         cursor: 'pointer',
                         transition: 'background-color 200ms ease-out',
-                        letterSpacing: '0.02em'
+                        letterSpacing: '0.02em',
+                        width: '200px'
                     }} onMouseEnter={e => {
                         (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'rgba(255,255,255,0.06)';
                     }} onMouseLeave={e => {
@@ -812,7 +825,52 @@ export const ProvincialSummitSeries = () => {
         .group:hover .card-accent-line {
           transform: scaleY(1) !important;
         }
+        .summit-action-btn:hover .summit-arrow-icon {
+          transform: translateX(4px);
+        }
+        .provincial-section-pad {
+          padding-top: 80px !important;
+          padding-bottom: 80px !important;
+        }
+        .summit-index-badge {
+          display: none !important;
+        }
+        @media (min-width: 768px) {
+          .provincial-section-pad {
+            padding-top: 128px !important;
+            padding-bottom: 128px !important;
+          }
+        }
+        @media (min-width: 640px) {
+          .summit-index-badge {
+            display: block !important;
+          }
+        }
+        @media (max-width: 991px) {
+            .summit-inner-layout {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 24px !important;
+                padding: 24px 16px !important;
+            }
+            .summit-left-col, .summit-center-col, .summit-right-col {
+                width: 100% !important;
+            }
+            .summit-vertical-divider {
+                display: none !important;
+            }
+        }
+        @media (max-width: 640px) {
+            .cta-container {
+                flex-direction: column !important;
+                width: 100% !important;
+            }
+            .cta-button, .stat-box {
+                width: 100% !important;
+            }
+        }
       `}</style>
     </div>;
 };
+
 export default ProvincialSummitSeries;
