@@ -233,8 +233,8 @@ const HeroSection = () => {
         }} />
 
         {/* Background image */}
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-            <motion.div className="absolute inset-0" initial={{
+        <div style={{ position: "absolute", inset: 0, zIndex: 0, overflow: "hidden", pointerEvents: "none" }}>
+            <motion.div style={{ position: "absolute", inset: 0 }} initial={{
                 scale: 1.06,
                 opacity: 0
             }} animate={{
@@ -249,8 +249,8 @@ const HeroSection = () => {
                     position: "absolute",
                     inset: 0
                 }}>
-                    <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=1920&q=90" alt="IWD Summit 2027" className="w-full h-full object-cover" style={{
-                        objectPosition: "center 30%"
+                    <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=1920&q=90" alt="IWD Summit 2027" style={{
+                        width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 30%"
                     }} />
                 </motion.div>
             </motion.div>
@@ -423,9 +423,8 @@ const HeroSection = () => {
                 }} transition={{
                     duration: 0.8,
                     delay: 1.4
-                }} className="w-full sm:w-auto" style={{
+                }} className="cta-container" style={{
                     display: "flex",
-                    flexDirection: "column",
                     gap: "12px",
                     justifyContent: "center",
                     alignItems: "center",
@@ -433,7 +432,7 @@ const HeroSection = () => {
                     paddingLeft: "clamp(16px, 5vw, 0px)",
                     paddingRight: "clamp(16px, 5vw, 0px)"
                 }}>
-                    <a href="#" className="w-full sm:w-auto" style={{
+                    <a href="#" className="cta-button" style={{
                         fontFamily: "Figtree",
                         fontSize: "15px",
                         fontWeight: 500,
@@ -449,7 +448,6 @@ const HeroSection = () => {
                         borderRadius: "999px",
                         transition: "all 200ms ease-out",
                         boxShadow: "0 0 32px rgba(255,45,135,0.25)",
-                        width: "100%",
                         maxWidth: "400px"
                     }} onMouseEnter={e => {
                         const el = e.currentTarget as HTMLAnchorElement;
@@ -462,7 +460,7 @@ const HeroSection = () => {
                     }}>
                         Request Delegate Seat
                     </a>
-                    <a href="#" className="w-full sm:w-auto" style={{
+                    <a href="#" className="cta-button" style={{
                         fontFamily: "Figtree",
                         fontSize: "15px",
                         fontWeight: 400,
@@ -478,7 +476,6 @@ const HeroSection = () => {
                         letterSpacing: "0.02em",
                         borderRadius: "999px",
                         transition: "all 200ms ease-out",
-                        width: "100%",
                         maxWidth: "400px"
                     }} onMouseEnter={e => {
                         const el = e.currentTarget as HTMLAnchorElement;
@@ -631,8 +628,8 @@ export const IWDSummitDetail = () => {
                 {/* Main content */}
                 <div style={{
                     paddingTop: "clamp(32px, 5vw, 56px)"
-                }} className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-                    <div className="lg:col-span-7">
+                }} className="iwd-split-grid">
+                    <div className="iwd-left-col">
                         <motion.span initial={{
                             opacity: 0,
                             x: -20
@@ -661,7 +658,7 @@ export const IWDSummitDetail = () => {
                             y: 0
                         }} viewport={{
                             once: true
-                        }} className="text-4xl md:text-6xl font-light text-[#0A0A0F] leading-tight mb-6 tracking-tight">
+                        }} className="iwd-h2-light">
                             The Future Economy Will Be Led By Women Who Build Influence, Innovation &amp; Inclusive Growth.
                         </motion.h2>
                         <motion.p initial={{
@@ -672,12 +669,19 @@ export const IWDSummitDetail = () => {
                             y: 0
                         }} viewport={{
                             once: true
-                        }} className="text-[#64748b] text-base md:text-lg leading-relaxed max-w-xl">
+                        }} style={{
+                            fontFamily: "Figtree",
+                            color: "#64748b",
+                            fontSize: "clamp(15px, 2vw, 18px)",
+                            lineHeight: 1.7,
+                            maxWidth: "576px",
+                            margin: 0
+                        }}>
                             At the heart of the International Women's Day Summit 2027 is a commitment to shifting from mere
                             celebration to strategic economic participation. We gather global leaders to engineer the future.
                         </motion.p>
                     </div>
-                    <div className="lg:col-span-5">
+                    <div className="iwd-right-col">
                         <motion.div initial={{
                             opacity: 0,
                             scale: 0.95
@@ -686,13 +690,39 @@ export const IWDSummitDetail = () => {
                             scale: 1
                         }} viewport={{
                             once: true
-                        }} className="bg-[#0A0A0F] rounded-3xl p-8 md:p-12 lg:p-16 shadow-2xl relative overflow-hidden">
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-[#FF2D87]/10 rounded-full -mr-16 -mt-16 blur-3xl" />
-                            <p className="text-white/90 text-xl md:text-2xl lg:text-3xl font-light italic leading-relaxed mb-0">
+                        }} style={{
+                            backgroundColor: "#0A0A0F",
+                            borderRadius: "24px",
+                            padding: "clamp(24px, 4vw, 56px)",
+                            boxShadow: "0 24px 48px rgba(0, 0, 0, 0.4)",
+                            position: "relative",
+                            overflow: "hidden"
+                        }}>
+                            <div style={{
+                                position: "absolute",
+                                top: 0,
+                                right: 0,
+                                width: "128px",
+                                height: "128px",
+                                backgroundColor: "rgba(255, 45, 135, 0.1)",
+                                borderRadius: "50%",
+                                marginRight: "-64px",
+                                marginTop: "-64px",
+                                filter: "blur(32px)"
+                            }} />
+                            <p style={{
+                                fontFamily: "Figtree",
+                                color: "rgba(255, 255, 255, 0.9)",
+                                fontSize: "clamp(18px, 2vw, 24px)",
+                                fontWeight: 300,
+                                fontStyle: "italic",
+                                lineHeight: 1.6,
+                                margin: 0
+                            }}>
                                 "More Than A Celebration. A High-Impact Leadership &amp; Economic Influence Platform For Women Shaping Africa's Future."
                             </p>
-                            <div className="mt-8 flex items-center gap-4">
-                                <div className="w-12 h-[1px] bg-[#FF2D87]" />
+                            <div style={{ marginTop: "32px", display: "flex", alignItems: "center", gap: "16px" }}>
+                                <div style={{ width: "48px", height: "1px", backgroundColor: "#FF2D87" }} />
                                 <span style={{
                                     fontFamily: "Figtree",
                                     fontWeight: 600,
@@ -741,10 +771,10 @@ export const IWDSummitDetail = () => {
             </div>
 
             {/* 3-col grid — stacks on mobile */}
-            <div className="max-w-7xl mx-auto">
-                <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/[0.08]">
+            <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+                <div className="iwd-logistics-grid">
                     {/* DATE */}
-                    <div className="py-8 sm:pr-10 sm:pl-0 px-0">
+                    <div className="iwd-logistics-item" style={{ padding: "32px 0" }}>
                         <span style={{
                             fontFamily: "Figtree",
                             fontWeight: 600,
@@ -778,7 +808,7 @@ export const IWDSummitDetail = () => {
                         </span>
                     </div>
                     {/* TIME */}
-                    <div className="py-8 sm:px-10 px-0">
+                    <div className="iwd-logistics-item" style={{ padding: "32px 0" }}>
                         <span style={{
                             fontFamily: "Figtree",
                             fontWeight: 600,
@@ -812,7 +842,7 @@ export const IWDSummitDetail = () => {
                         </span>
                     </div>
                     {/* VENUE */}
-                    <div className="py-8 sm:pl-10 sm:pr-0 px-0">
+                    <div className="iwd-logistics-item" style={{ padding: "32px 0" }}>
                         <span style={{
                             fontFamily: "Figtree",
                             fontWeight: 600,
@@ -855,7 +885,7 @@ export const IWDSummitDetail = () => {
             paddingTop: "clamp(64px, 8vw, 96px)",
             paddingBottom: "clamp(64px, 8vw, 96px)"
         }}>
-            <div className="max-w-7xl mx-auto px-6 md:px-12">
+            <div style={{ maxWidth: "1280px", margin: "0 auto", paddingLeft: "clamp(24px, 6vw, 48px)", paddingRight: "clamp(24px, 6vw, 48px)" }}>
                 <motion.span initial={{
                     opacity: 0,
                     y: 10
@@ -915,7 +945,7 @@ export const IWDSummitDetail = () => {
                 </motion.p>
 
                 {/* Image-backed cards grid */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mt-12">
+                <div className="iwd-who-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "16px", marginTop: "48px" }}>
                     {WHO_ATTENDS_CARDS.map(card => <motion.div key={card.id} initial={{
                         opacity: 0,
                         y: 20
@@ -1029,7 +1059,7 @@ export const IWDSummitDetail = () => {
             paddingTop: "clamp(64px, 10vw, 128px)",
             paddingBottom: "clamp(64px, 10vw, 128px)"
         }}>
-            <div className="max-w-7xl mx-auto px-6 md:px-12">
+            <div style={{ maxWidth: "1280px", margin: "0 auto", paddingLeft: "clamp(24px, 6vw, 48px)", paddingRight: "clamp(24px, 6vw, 48px)" }}>
                 <motion.span initial={{
                     opacity: 0,
                     y: 10
@@ -1089,7 +1119,7 @@ export const IWDSummitDetail = () => {
                 </motion.p>
 
                 {/* 2×2 grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-12 lg:mt-16">
+                <div className="iwd-why-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "20px", marginTop: "48px" }}>
                     {WHY_ATTEND_CARDS.map((card, i) => <motion.div key={card.id} initial={{
                         opacity: 0,
                         y: 30
@@ -1150,12 +1180,12 @@ export const IWDSummitDetail = () => {
         </section>
 
         {/* ── 5. AGENDA TIMELINE ── */}
-        <section className="bg-[#0A0A0F] py-20 md:py-32 lg:py-48 overflow-hidden relative">
-            <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-[#FF2D87]/5 to-transparent pointer-events-none" />
+        <section style={{ backgroundColor: "#0A0A0F", paddingTop: "clamp(64px, 10vw, 128px)", paddingBottom: "clamp(64px, 10vw, 128px)", overflow: "hidden", position: "relative" }}>
+            <div style={{ position: "absolute", top: 0, right: 0, width: "33.333333%", height: "100%", background: "linear-gradient(to left, rgba(255, 45, 135, 0.05) 0%, transparent 100%)", pointerEvents: "none", zIndex: 0 }} />
 
-            <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+            <div style={{ maxWidth: "1280px", margin: "0 auto", paddingLeft: "clamp(24px, 6vw, 48px)", paddingRight: "clamp(24px, 6vw, 48px)", position: "relative", zIndex: 10 }}>
                 {/* Section header */}
-                <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-24 gap-6 md:gap-8">
+                <div className="iwd-agenda-header" style={{ display: "flex", flexDirection: "row", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "48px", gap: "24px" }}>
                     <div className="max-w-2xl">
                         <motion.span initial={{
                             opacity: 0,
@@ -1218,15 +1248,15 @@ export const IWDSummitDetail = () => {
                         opacity: 1
                     }} viewport={{
                         once: true
-                    }} className="flex items-center gap-3 text-white/40 text-sm font-light">
-                        <ShieldCheck className="text-[#FF2D87] shrink-0" size={18} />
+                    }} style={{ display: "flex", alignItems: "center", gap: "12px", color: "rgba(255,255,255,0.40)", fontFamily: "Figtree", fontSize: "14px", fontWeight: 300 }}>
+                        <ShieldCheck style={{ color: "#FF2D87", flexShrink: 0 }} size={18} />
                         <span>Executive Access Protocol Observed</span>
                     </motion.div>
                 </div>
 
                 {/* Agenda rows + sidebar */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
-                    <div className="lg:col-span-8">
+                <div className="iwd-agenda-grid" style={{ display: "grid", gridTemplateColumns: "repeat(12, 1fr)", gap: "48px" }}>
+                    <div className="iwd-agenda-left" style={{ gridColumn: "span 8" }}>
                         <div>
                             {AGENDA_ITEMS.map(item => <motion.div key={item.id} initial={{
                                 opacity: 0,
@@ -1374,7 +1404,7 @@ export const IWDSummitDetail = () => {
                     </div>
 
                     {/* Sidebar */}
-                    <div className="lg:col-span-4">
+                    <div className="iwd-agenda-right" style={{ gridColumn: "span 4" }}>
                         <motion.div initial={{
                             opacity: 0,
                             y: 20
@@ -1383,18 +1413,37 @@ export const IWDSummitDetail = () => {
                             y: 0
                         }} viewport={{
                             once: true
-                        }} className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 lg:sticky lg:top-32">
-                            <h4 className="text-white font-semibold text-lg mb-6 flex items-center gap-3">
-                                <Star className="text-[#FF2D87]" size={20} />
+                        }} className="iwd-sticky-sidebar" style={{ backgroundColor: "rgba(255, 255, 255, 0.04)", border: "1px solid rgba(255, 255, 255, 0.08)", borderRadius: "20px", padding: "32px", position: "sticky", top: "100px" }}>
+                            <h4 style={{ fontFamily: "Figtree", color: "#FFFFFF", fontWeight: 600, fontSize: "18px", margin: "0 0 24px 0", display: "flex", alignItems: "center", gap: "12px" }}>
+                                <Star style={{ color: "#FF2D87", flexShrink: 0 }} size={20} />
                                 <span>Delegate Inclusions</span>
                             </h4>
-                            <ul className="space-y-4">
-                                {DELEGATE_BENEFITS.map(benefit => <li key={benefit.id} className="flex items-start gap-3 text-sm text-white/60">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-[#FF2D87] mt-1.5 shrink-0" />
+                            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "16px" }}>
+                                {DELEGATE_BENEFITS.map(benefit => <li key={benefit.id} style={{ display: "flex", alignItems: "flex-start", gap: "12px", fontSize: "14px", color: "rgba(255, 255, 255, 0.60)", fontFamily: "Figtree" }}>
+                                    <div style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: "#FF2D87", marginTop: "6px", flexShrink: 0 }} />
                                     <span>{benefit.text}</span>
                                 </li>)}
                             </ul>
-                            <button className="w-full mt-8 py-4 bg-white/10 hover:bg-white/20 text-white rounded-xl text-xs font-bold uppercase tracking-widest transition-colors">
+                            <button style={{
+                                width: "100%",
+                                marginTop: "32px",
+                                padding: "16px",
+                                backgroundColor: "rgba(255, 255, 255, 0.05)",
+                                border: "1px solid rgba(255, 255, 255, 0.10)",
+                                color: "#FFFFFF",
+                                borderRadius: "12px",
+                                fontFamily: "Figtree",
+                                fontSize: "12px",
+                                fontWeight: 700,
+                                textTransform: "uppercase",
+                                letterSpacing: "0.1em",
+                                cursor: "pointer",
+                                transition: "all 200ms"
+                            }} onMouseEnter={e => {
+                                (e.currentTarget as HTMLButtonElement).style.backgroundColor = "rgba(255, 255, 255, 0.10)";
+                            }} onMouseLeave={e => {
+                                (e.currentTarget as HTMLButtonElement).style.backgroundColor = "rgba(255, 255, 255, 0.05)";
+                            }}>
                                 Download Full Brief
                             </button>
                         </motion.div>
@@ -1698,5 +1747,126 @@ export const IWDSummitDetail = () => {
                 </motion.div>
             </div>
         </section>
+
+        <style>{`
+            .iwd-split-grid {
+                max-width: 1280px;
+                margin: 0 auto;
+                padding-left: clamp(24px, 6vw, 48px);
+                padding-right: clamp(24px, 6vw, 48px);
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                gap: 40px;
+                align-items: center;
+            }
+            .iwd-left-col {
+                grid-column: span 7;
+            }
+            .iwd-right-col {
+                grid-column: span 5;
+            }
+            .iwd-h2-light {
+                font-family: Figtree;
+                font-weight: 300;
+                font-size: clamp(32px, 5vw, 52px);
+                color: #0A0A0F;
+                line-height: 1.15;
+                margin: 0 0 24px 0;
+                letter-spacing: -0.03em;
+            }
+            .iwd-logistics-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 40px;
+            }
+            .iwd-who-grid {
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                gap: 16px;
+                margin-top: 48px;
+            }
+            .iwd-why-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+                margin-top: 48px;
+            }
+            .iwd-agenda-header {
+                display: flex;
+                flex-direction: row;
+                align-items: flex-end;
+                justify-content: space-between;
+                margin-bottom: 48px;
+                gap: 24px;
+            }
+            .iwd-agenda-grid {
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                gap: 48px;
+            }
+            .iwd-agenda-left {
+                grid-column: span 8;
+            }
+            .iwd-agenda-right {
+                grid-column: span 4;
+            }
+            .cta-button {
+                width: 200px;
+                text-align: center;
+            }
+            .cta-container {
+                width: auto;
+            }
+            @media (max-width: 991px) {
+                .iwd-split-grid, .iwd-agenda-grid {
+                    grid-template-columns: 1fr !important;
+                    gap: 40px !important;
+                }
+                .iwd-left-col, .iwd-right-col, .iwd-agenda-left, .iwd-agenda-right {
+                    grid-column: span 12 !important;
+                }
+                .iwd-who-grid {
+                    grid-template-columns: repeat(3, 1fr) !important;
+                }
+                .iwd-agenda-header {
+                    flex-direction: column !important;
+                    align-items: flex-start !important;
+                    gap: 16px !important;
+                    margin-bottom: 32px !important;
+                }
+                .iwd-sticky-sidebar {
+                    position: static !important;
+                    padding: 24px !important;
+                }
+            }
+            @media (max-width: 767px) {
+                .iwd-logistics-grid {
+                    grid-template-columns: 1fr !important;
+                    gap: 20px !important;
+                }
+                .iwd-logistics-item {
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+                    padding: 24px 0 !important;
+                }
+                .iwd-logistics-item:last-child {
+                    border-bottom: none !important;
+                }
+                .iwd-why-grid {
+                    grid-template-columns: 1fr !important;
+                }
+            }
+            @media (max-width: 640px) {
+                .iwd-who-grid {
+                    grid-template-columns: repeat(2, 1fr) !important;
+                }
+                .cta-container {
+                    flex-direction: column !important;
+                    width: 100% !important;
+                }
+                .cta-button {
+                    width: 100% !important;
+                }
+            }
+        `}</style>
     </div>;
 };
