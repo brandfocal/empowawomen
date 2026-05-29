@@ -1,6 +1,6 @@
 import * as React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Globe, Target, Trophy } from "lucide-react";
+import { ArrowRight, Globe, Target, Trophy, ChevronLeft, ChevronRight } from "lucide-react";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 interface ImpactStat {
@@ -1312,6 +1312,22 @@ const PullQuoteSection = () => {
 
 // ─── Leadership Strip ─────────────────────────────────────────────────────────
 const LeadershipStrip = () => {
+  const scrollRef = React.useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const { scrollLeft } = scrollRef.current;
+      const cardWidth = 320; // base clamp width of card
+      const gap = 24;
+      const scrollAmount = cardWidth + gap;
+      
+      scrollRef.current.scrollTo({
+        left: direction === "left" ? scrollLeft - scrollAmount : scrollLeft + scrollAmount,
+        behavior: "smooth"
+      });
+    }
+  };
+
   return <section style={{
     paddingTop: "clamp(64px, 8vw, 128px)",
     paddingBottom: "clamp(64px, 8vw, 128px)",
@@ -1323,43 +1339,122 @@ const LeadershipStrip = () => {
       paddingLeft: "clamp(24px, 6vw, 96px)",
       paddingRight: "clamp(24px, 6vw, 96px)"
     }}>
-      <span style={{
-        display: "block",
-        fontFamily: "Figtree",
-        fontSize: "9px",
-        fontWeight: 600,
-        letterSpacing: "0.28em",
-        color: "#64748b",
-        textTransform: "uppercase"
+      <div style={{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "flex-end",
+        flexWrap: "wrap",
+        gap: "32px"
       }}>
-        THE TEAM
-      </span>
-      <h2 style={{
-        marginTop: "16px",
-        marginBottom: "0",
-        fontFamily: "Figtree",
-        fontWeight: 300,
-        fontSize: "clamp(28px, 4vw, 52px)",
-        color: "#0A0A0F",
-        letterSpacing: "-0.03em",
-        lineHeight: 1.1
-      }}>
-        The Movement Behind the Mission.
-      </h2>
-      <p style={{
-        marginTop: "20px",
-        marginBottom: "0",
-        fontFamily: "Figtree",
-        fontSize: "clamp(15px, 1.8vw, 17px)",
-        fontWeight: 400,
-        color: "#64748b",
-        lineHeight: 1.6,
-        maxWidth: "800px"
-      }}>
-        The EmpowaWomen Leadership Team comprises a diverse group of visionary leaders, strategists, partnership builders, and execution specialists united by a shared commitment to advancing women's leadership, entrepreneurship, economic participation, and influence across Africa.
-      </p>
+        <div style={{ flex: "1 1 60%", minWidth: "280px" }}>
+          <span style={{
+            display: "block",
+            fontFamily: "Figtree",
+            fontSize: "9px",
+            fontWeight: 600,
+            letterSpacing: "0.28em",
+            color: "#64748b",
+            textTransform: "uppercase"
+          }}>
+            THE TEAM
+          </span>
+          <h2 style={{
+            marginTop: "16px",
+            marginBottom: "0",
+            fontFamily: "Figtree",
+            fontWeight: 300,
+            fontSize: "clamp(28px, 4vw, 52px)",
+            color: "#0A0A0F",
+            letterSpacing: "-0.03em",
+            lineHeight: 1.1
+          }}>
+            The Movement Behind the Mission.
+          </h2>
+          <p style={{
+            marginTop: "20px",
+            marginBottom: "0",
+            fontFamily: "Figtree",
+            fontSize: "clamp(15px, 1.8vw, 17px)",
+            fontWeight: 400,
+            color: "#64748b",
+            lineHeight: 1.6,
+            maxWidth: "800px"
+          }}>
+            The EmpowaWomen Leadership Team comprises a diverse group of visionary leaders, strategists, partnership builders, and execution specialists united by a shared commitment to advancing women's leadership, entrepreneurship, economic participation, and influence across Africa.
+          </p>
+        </div>
 
-      <div className="about-team-scroll" style={{
+        {/* Navigation Buttons */}
+        <div style={{
+          display: "flex",
+          gap: "12px",
+          marginBottom: "8px"
+        }}>
+          <button 
+            onClick={() => scroll("left")}
+            aria-label="Previous team members"
+            style={{
+              width: "48px",
+              height: "48px",
+              borderRadius: "50%",
+              backgroundColor: "#FFFFFF",
+              border: "1px solid rgba(10,10,15,0.08)",
+              color: "#0A0A0F",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              transition: "all 200ms ease-out",
+              boxShadow: "0 2px 8px rgba(0,0,0,0.04)"
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.borderColor = "#FF2D87";
+              e.currentTarget.style.color = "#FF2D87";
+              e.currentTarget.style.transform = "scale(1.05)";
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.borderColor = "rgba(10,10,15,0.08)";
+              e.currentTarget.style.color = "#0A0A0F";
+              e.currentTarget.style.transform = "scale(1)";
+            }}
+          >
+            <ChevronLeft size={20} />
+          </button>
+          <button 
+            onClick={() => scroll("right")}
+            aria-label="Next team members"
+            style={{
+              width: "48px",
+              height: "48px",
+              borderRadius: "50%",
+              backgroundColor: "#FFFFFF",
+              border: "1px solid rgba(10,10,15,0.08)",
+              color: "#0A0A0F",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              transition: "all 200ms ease-out",
+              boxShadow: "0 2px 8px rgba(0,0,0,0.04)"
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.borderColor = "#FF2D87";
+              e.currentTarget.style.color = "#FF2D87";
+              e.currentTarget.style.transform = "scale(1.05)";
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.borderColor = "rgba(10,10,15,0.08)";
+              e.currentTarget.style.color = "#0A0A0F";
+              e.currentTarget.style.transform = "scale(1)";
+            }}
+          >
+            <ChevronRight size={20} />
+          </button>
+        </div>
+      </div>
+
+      <div ref={scrollRef} className="about-team-scroll" style={{
         display: "flex",
         overflowX: "auto",
         gap: "24px",
