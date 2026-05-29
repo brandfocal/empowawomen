@@ -70,6 +70,7 @@ interface PastSpeaker {
   name: string;
   role: string;
   company: string;
+  image: string;
 }
 
 // ─── Constants ────────────────────────────────────────────────────────────────
@@ -364,102 +365,122 @@ const PAST_SPEAKERS: PastSpeaker[] = [{
   id: "ps-1",
   name: "Phumzile Mlambo-Ngcuka",
   role: "Former Deputy President",
-  company: "South Africa"
+  company: "South Africa",
+  image: "/previous_speakers/Former-Deputy-President-Phumzile-Mlambo-Ngcuka.jpg"
 }, {
   id: "ps-2",
   name: "Gugulethu Mfuphi",
   role: "Financial Journalist & Broadcaster",
-  company: "Independent"
+  company: "Independent",
+  image: "/previous_speakers/Gugulethu-Mfuphi.jpg"
 }, {
   id: "ps-3",
   name: "Edna Montse",
   role: "Group Exec: Transformation & Sustainability",
-  company: "African Bank"
+  company: "African Bank",
+  image: "/previous_speakers/Edna-Montse.jpg"
 }, {
   id: "ps-4",
   name: "Gugu Mkhize",
   role: "CEO",
-  company: "INSETA"
+  company: "INSETA",
+  image: "/previous_speakers/Gugu-Mkhize.jpg"
 }, {
   id: "ps-5",
   name: "Happy MaKhumalo Ngidi",
   role: "Chief Marketing Officer",
-  company: "Proudly SA"
+  company: "Proudly SA",
+  image: "/previous_speakers/Happy-MaKhumalo-Ngidi.jpg"
 }, {
   id: "ps-6",
   name: "Immaculata Segooa",
   role: "Head: Integrated Marketing Communication",
-  company: "Discovery"
+  company: "Discovery",
+  image: "/previous_speakers/Immaculata-Segooa.jpg"
 }, {
   id: "ps-7",
   name: "Jessica Denyschen",
   role: "CEO",
-  company: "Arts & Culture Trust"
+  company: "Arts & Culture Trust",
+  image: "/previous_speakers/Jessica-Denyschen.jpg"
 }, {
   id: "ps-8",
   name: "Lihle Nqini",
   role: "Managing Director",
-  company: "MaXhosa Africa"
+  company: "MaXhosa Africa",
+  image: "/previous_speakers/Lihle-Nqini.jpg"
 }, {
   id: "ps-9",
   name: "Linda Maqoma",
   role: "Vice President: Professionals",
-  company: "Black Business Council"
+  company: "Black Business Council",
+  image: "/previous_speakers/Linda-Maqoma.jpg"
 }, {
   id: "ps-10",
   name: "Lungile Mahluza",
   role: "Chief People Officer",
-  company: "Deloitte South Africa"
+  company: "Deloitte South Africa",
+  image: "/previous_speakers/Lungile-Mahluza.jpg"
 }, {
   id: "ps-11",
   name: "Maphefo Anno-Frempong",
   role: "CEO",
-  company: "TETA"
+  company: "TETA",
+  image: "/previous_speakers/Maphefo-Anno-Frempong.jpg"
 }, {
   id: "ps-12",
   name: "Mesela Nhlapo",
   role: "CEO",
-  company: "African Rail Industry Association"
+  company: "African Rail Industry Association",
+  image: "/previous_speakers/Mesela-Nhlapo.jpg"
 }, {
   id: "ps-13",
   name: "Mogau Sebela (CA)",
   role: "CFO",
-  company: "AgriSETA"
+  company: "AgriSETA",
+  image: "/previous_speakers/Mogau-Sebela-(CA).jpg"
 }, {
   id: "ps-14",
   name: "Monalisa Zwambila",
   role: "Founder & CEO",
-  company: "Riverbed Agency"
+  company: "Riverbed Agency",
+  image: "/previous_speakers/Monalisa-Sibongile-Zwambila.jpg"
 }, {
   id: "ps-15",
   name: "Nomfundo Mcoyi",
   role: "Group CEO",
-  company: "Icebolethu Group"
+  company: "Icebolethu Group",
+  image: "/previous_speakers/Nomfundo-Nokubonga-Mcoyi.jpg"
 }, {
   id: "ps-16",
   name: "Mbali Sibisi",
   role: "Non-Executive Director",
-  company: "SA Women in Mining"
+  company: "SA Women in Mining",
+  image: "/previous_speakers/Mbali-Sibisi.jpg"
 }, {
   id: "ps-17",
   name: "Sithembile Ntombela maNdaba",
   role: "Acting CEO",
-  company: "Brand South Africa"
+  company: "Brand South Africa",
+  image: "/previous_speakers/Sithembile-Ntombela-maNdaba.jpg"
 }, {
   id: "ps-18",
   name: "Stavros Nicolaou",
   role: "Group Senior Executive",
-  company: "Aspen Pharmacare"
+  company: "Aspen Pharmacare",
+  image: "/previous_speakers/Stavros-Nicolaou.jpg"
 }, {
   id: "ps-19",
   name: "Delia Ndlovu",
   role: "Chair",
-  company: "Deloitte Africa"
+  company: "Deloitte Africa",
+  image: "/previous_speakers/Delia-Ndlovu.jpg"
 }, {
   id: "ps-20",
   name: "Dr Pulane Modiha",
   role: "COO: Home & Structured Lending",
-  company: "FNB SA"
+  company: "FNB SA",
+  image: "/previous_speakers/Dr-Pulane-Modiha.jpg"
 }];
 
 // ─── Accent colour helpers ────────────────────────────────────────────────────
@@ -2029,6 +2050,377 @@ const ExpectedAudienceSection: React.FC = () => {
     </section>;
 };
 
+// ─── Past Speakers Showcase ───────────────────────────────────────────────────
+const PastSpeakersShowcase: React.FC = () => {
+  const row1 = [...PAST_SPEAKERS.slice(0, 10), ...PAST_SPEAKERS.slice(0, 10)];
+  const row2 = [...PAST_SPEAKERS.slice(10), ...PAST_SPEAKERS.slice(10)];
+
+  return <section style={{
+    backgroundColor: "#0A0A0F",
+    paddingTop: "clamp(64px, 8vw, 128px)",
+    paddingBottom: "clamp(64px, 8vw, 128px)",
+    borderTop: "1px solid rgba(255,255,255,0.06)",
+    borderBottom: "1px solid rgba(255,255,255,0.06)",
+    overflow: "hidden",
+    position: "relative",
+    zIndex: 10
+  }}>
+    {/* CSS Styles for Pause on Hover and Endless Keyframes */}
+    <style>{`
+      @keyframes speakerMarqueeLeft {
+        0% { transform: translate3d(0, 0, 0); }
+        100% { transform: translate3d(-50%, 0, 0); }
+      }
+
+      @keyframes speakerMarqueeRight {
+        0% { transform: translate3d(-50%, 0, 0); }
+        100% { transform: translate3d(0, 0, 0); }
+      }
+
+      .speaker-marquee-row-1 {
+        display: flex;
+        gap: 24px;
+        width: max-content;
+        animation: speakerMarqueeLeft 55s linear infinite;
+      }
+
+      .speaker-marquee-row-2 {
+        display: flex;
+        gap: 24px;
+        width: max-content;
+        animation: speakerMarqueeRight 55s linear infinite;
+      }
+
+      .speaker-marquee-container:hover .speaker-marquee-row-1,
+      .speaker-marquee-container:hover .speaker-marquee-row-2 {
+        animation-play-state: paused;
+      }
+
+      .speaker-card-prominent {
+        transition: all 350ms cubic-bezier(0.21, 0.47, 0.32, 0.98) !important;
+      }
+
+      .speaker-card-prominent:hover {
+        background-color: rgba(255,255,255,0.05) !important;
+        border-color: #FF2D87 !important;
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: 0 12px 30px rgba(255, 45, 135, 0.15) !important;
+      }
+
+      .speaker-card-prominent:hover img {
+        transform: scale(1.05);
+      }
+    `}</style>
+
+    <div style={{
+      maxWidth: "1400px",
+      margin: "0 auto",
+      paddingLeft: "clamp(24px, 6vw, 96px)",
+      paddingRight: "clamp(24px, 6vw, 96px)"
+    }}>
+      <span style={{
+        display: "block",
+        fontFamily: "Figtree",
+        fontSize: "9px",
+        fontWeight: 600,
+        letterSpacing: "0.28em",
+        color: "#FF2D87",
+        textTransform: "uppercase"
+      }}>
+        PAST SUMMIT LUMINARIES
+      </span>
+      <h2 style={{
+        marginTop: "16px",
+        marginBottom: "0",
+        fontFamily: "Figtree",
+        fontWeight: 300,
+        fontSize: "clamp(28px, 4vw, 52px)",
+        color: "#FFFFFF",
+        letterSpacing: "-0.03em",
+        lineHeight: 1.1
+      }}>
+        Visionary Voices. Pioneers of Progress.
+      </h2>
+      <p style={{
+        marginTop: "20px",
+        marginBottom: "48px",
+        fontFamily: "Figtree",
+        fontSize: "clamp(15px, 1.8vw, 17px)",
+        fontWeight: 400,
+        color: "rgba(255,255,255,0.45)",
+        lineHeight: 1.6,
+        maxWidth: "800px"
+      }}>
+        EmpowaWomen has hosted exceptional change-makers, industry pioneers, and senior executives from leading institutions across Africa—raising the benchmark for women-led economic transformation.
+      </p>
+    </div>
+
+    {/* Dual Row Infinite Marquee */}
+    <div className="speaker-marquee-container" style={{
+      display: "flex",
+      flexDirection: "column",
+      gap: "32px",
+      width: "100%",
+      position: "relative"
+    }}>
+      {/* Fade Gradients left/right */}
+      <div style={{
+        position: "absolute",
+        inset: 0,
+        background: "linear-gradient(to right, #0A0A0F, transparent 15%, transparent 85%, #0A0A0F)",
+        pointerEvents: "none",
+        zIndex: 2
+      }} />
+
+      {/* Row 1: Left Scrolling */}
+      <div style={{ overflow: "hidden", width: "100%" }}>
+        <div className="speaker-marquee-row-1">
+          {row1.map((sp, i) => (
+            <div
+              key={`row1-sp-${sp.id}-${i}`}
+              className="speaker-card-prominent"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                width: "280px",
+                padding: "16px",
+                backgroundColor: "rgba(255,255,255,0.02)",
+                border: "1px solid rgba(255,255,255,0.05)",
+                borderRadius: "20px",
+                cursor: "default"
+              }}
+            >
+              {/* Prominent Image Header */}
+              <div style={{
+                position: "relative",
+                width: "100%",
+                height: "260px",
+                borderRadius: "14px",
+                overflow: "hidden",
+                border: `1px solid rgba(255,255,255,0.08)`,
+                backgroundColor: "rgba(255,255,255,0.02)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center"
+              }}>
+                {sp.image && (
+                  <img 
+                    src={sp.image} 
+                    alt={sp.name} 
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      objectPosition: "top",
+                      display: "block",
+                      transition: "transform 500ms ease-out"
+                    }}
+                    onError={e => {
+                      (e.currentTarget as HTMLImageElement).style.display = "none";
+                      const fallback = e.currentTarget.parentElement?.querySelector(".avatar-fallback");
+                      if (fallback) {
+                        (fallback as HTMLDivElement).style.display = "flex";
+                      }
+                    }}
+                  />
+                )}
+                <div 
+                  className="avatar-fallback"
+                  style={{
+                    display: sp.image ? "none" : "flex",
+                    width: "100%",
+                    height: "100%",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    backgroundColor: AVATAR_BG_CYCLE[i % 3],
+                    color: "#FFFFFF",
+                    fontWeight: 200,
+                    fontFamily: "Figtree",
+                    fontSize: "36px",
+                    letterSpacing: "0.05em"
+                  }}
+                >
+                  {sp.name.split(" ").map(w => w[0]).join("").slice(0, 2)}
+                </div>
+              </div>
+
+              {/* Speaker Metadata details */}
+              <div style={{ padding: "16px 4px 8px 4px", display: "flex", flexDirection: "column" }}>
+                <span style={{
+                  fontFamily: "Figtree",
+                  fontSize: "10px",
+                  fontWeight: 600,
+                  letterSpacing: "0.08em",
+                  color: getAccentColor(i),
+                  marginBottom: "6px",
+                  textTransform: "uppercase",
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis"
+                }}>
+                  {sp.company}
+                </span>
+                <span style={{
+                  fontFamily: "Figtree",
+                  fontSize: "17px",
+                  fontWeight: 500,
+                  color: "#FFFFFF",
+                  lineHeight: 1.25,
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  display: "-webkit-box",
+                  WebkitLineClamp: 1,
+                  WebkitBoxOrient: "vertical"
+                }}>
+                  {sp.name}
+                </span>
+                <span style={{
+                  fontFamily: "Figtree",
+                  fontSize: "13px",
+                  color: "rgba(255,255,255,0.4)",
+                  marginTop: "6px",
+                  lineHeight: 1.4,
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  display: "-webkit-box",
+                  WebkitLineClamp: 2,
+                  WebkitBoxOrient: "vertical",
+                  minHeight: "36px"
+                }}>
+                  {sp.role}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Row 2: Right Scrolling */}
+      <div style={{ overflow: "hidden", width: "100%" }}>
+        <div className="speaker-marquee-row-2">
+          {row2.map((sp, i) => (
+            <div
+              key={`row2-sp-${sp.id}-${i}`}
+              className="speaker-card-prominent"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                width: "280px",
+                padding: "16px",
+                backgroundColor: "rgba(255,255,255,0.02)",
+                border: "1px solid rgba(255,255,255,0.05)",
+                borderRadius: "20px",
+                cursor: "default"
+              }}
+            >
+              {/* Prominent Image Header */}
+              <div style={{
+                position: "relative",
+                width: "100%",
+                height: "260px",
+                borderRadius: "14px",
+                overflow: "hidden",
+                border: `1px solid rgba(255,255,255,0.08)`,
+                backgroundColor: "rgba(255,255,255,0.02)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center"
+              }}>
+                {sp.image && (
+                  <img 
+                    src={sp.image} 
+                    alt={sp.name} 
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      objectPosition: "top",
+                      display: "block",
+                      transition: "transform 500ms ease-out"
+                    }}
+                    onError={e => {
+                      (e.currentTarget as HTMLImageElement).style.display = "none";
+                      const fallback = e.currentTarget.parentElement?.querySelector(".avatar-fallback");
+                      if (fallback) {
+                        (fallback as HTMLDivElement).style.display = "flex";
+                      }
+                    }}
+                  />
+                )}
+                <div 
+                  className="avatar-fallback"
+                  style={{
+                    display: sp.image ? "none" : "flex",
+                    width: "100%",
+                    height: "100%",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    backgroundColor: AVATAR_BG_CYCLE[(i + 1) % 3],
+                    color: "#FFFFFF",
+                    fontWeight: 200,
+                    fontFamily: "Figtree",
+                    fontSize: "36px",
+                    letterSpacing: "0.05em"
+                  }}
+                >
+                  {sp.name.split(" ").map(w => w[0]).join("").slice(0, 2)}
+                </div>
+              </div>
+
+              {/* Speaker Metadata details */}
+              <div style={{ padding: "16px 4px 8px 4px", display: "flex", flexDirection: "column" }}>
+                <span style={{
+                  fontFamily: "Figtree",
+                  fontSize: "10px",
+                  fontWeight: 600,
+                  letterSpacing: "0.08em",
+                  color: getAccentColor(i + 1),
+                  marginBottom: "6px",
+                  textTransform: "uppercase",
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis"
+                }}>
+                  {sp.company}
+                </span>
+                <span style={{
+                  fontFamily: "Figtree",
+                  fontSize: "17px",
+                  fontWeight: 500,
+                  color: "#FFFFFF",
+                  lineHeight: 1.25,
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  display: "-webkit-box",
+                  WebkitLineClamp: 1,
+                  WebkitBoxOrient: "vertical"
+                }}>
+                  {sp.name}
+                </span>
+                <span style={{
+                  fontFamily: "Figtree",
+                  fontSize: "13px",
+                  color: "rgba(255,255,255,0.4)",
+                  marginTop: "6px",
+                  lineHeight: 1.4,
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  display: "-webkit-box",
+                  WebkitLineClamp: 2,
+                  WebkitBoxOrient: "vertical",
+                  minHeight: "36px"
+                }}>
+                  {sp.role}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>;
+};
+
 // ─── Countdown CTA ────────────────────────────────────────────────────────────
 const CountdownCtaSection: React.FC<{
   scrollToRegistration: () => void;
@@ -2615,6 +3007,7 @@ export const EmpowaWomenSummitPage: React.FC = () => {
       <WhoShouldAttendSection scrollToRegistration={scrollToRegistration} />
       <WhyAttendSection />
       <ExpectedAudienceSection />
+      <PastSpeakersShowcase />
       <CountdownCtaSection scrollToRegistration={scrollToRegistration} />
       <div ref={registrationRef}>
         <RegistrationFormSection />
