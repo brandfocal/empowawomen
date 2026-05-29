@@ -806,7 +806,7 @@ const HeroSection: React.FC<{
             e.preventDefault();
             scrollToRegistration();
           }}>
-              Register Now — R1,500
+              Register Now - R1,500
             </a>
             <a href="#" className="inline-flex items-center justify-center no-underline rounded-full" style={{
             fontFamily: "Figtree",
@@ -905,7 +905,7 @@ const IntroBridgeSection: React.FC = () => {
           letterSpacing: "-0.02em",
           margin: 0
         }}>
-            A sophisticated celebration of leadership, influence, growth, and excellence — where Africa's most influential women gather to connect, collaborate, and shape the future of business, governance, and society.
+            A sophisticated celebration of leadership, influence, growth, and excellence - where Africa's most influential women gather to connect, collaborate, and shape the future of business, governance, and society.
           </p>
         </motion.div>
 
@@ -1272,7 +1272,7 @@ const AgendaSection: React.FC = () => {
                 flex: 1,
                 lineHeight: 1.4
               }}>
-                    12h00 — Gourmet Networking Lunch
+                    12h00 - Gourmet Networking Lunch
                   </span>
                   <span className="uppercase" style={{
                 fontFamily: "Figtree",
@@ -1619,7 +1619,7 @@ const WhoShouldAttendSection: React.FC<{
                   lineHeight: 1.75,
                   margin: "24px 0 0 0"
                 }}>
-                    From C-suites to boardrooms, government halls to startup ecosystems — this is the room where decisions are made and futures are shaped.
+                    From C-suites to boardrooms, government halls to startup ecosystems - this is the room where decisions are made and futures are shaped.
                   </p>
                 </div>
                 <button style={{
@@ -2109,7 +2109,7 @@ const CountdownCtaSection: React.FC<{
             e.preventDefault();
             scrollToRegistration();
           }}>
-              <span>Register Now — R1,500</span>
+              <span>Register Now - R1,500</span>
               <ArrowRight size={18} />
             </a>
             <a href="#" className="inline-flex items-center justify-center no-underline" style={{

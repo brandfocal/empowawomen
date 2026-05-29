@@ -836,7 +836,7 @@ export const SummitsHub: React.FC = () => {
                 maxWidth: '28rem'
               }}>
                   Each EmpowaWomen summit is engineered as a high-value economic participation
-                  platform — not a conference. Every session, interaction, and experience is
+                  platform - not a conference. Every session, interaction, and experience is
                   designed to generate measurable strategic outcomes for every delegate in the room.
                 </p>
               </motion.div>
@@ -1014,7 +1014,7 @@ export const SummitsHub: React.FC = () => {
             margin: 0
           }}>
               EmpowaWomen is not a conference. It is a room where Africa's most powerful women
-              decide what comes next — and forge the relationships that make it happen.
+              decide what comes next - and forge the relationships that make it happen.
             </blockquote>
             <div style={{
             width: '48px',

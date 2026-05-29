@@ -2564,7 +2564,7 @@ const FooterCTA = () => {
                         lineHeight: 1.75,
                         margin: 0
                     }}>
-                        Partnership opportunities, summit sponsorships, and ESG engagement frameworks — delivered to the
+                        Partnership opportunities, summit sponsorships, and ESG engagement frameworks - delivered to the
                         right corporate decision-maker.
                     </motion.p>
                 </div>

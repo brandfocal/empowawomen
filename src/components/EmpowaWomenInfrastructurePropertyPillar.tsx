@@ -216,7 +216,7 @@ const CoreSegmentsSection: React.FC = () => {
           }}>
               SECTIONS <span style={{
               color: "#FF2D87"
-            }}>01—03</span>
+            }}>01-03</span>
             </span>
           </div>
 

@@ -442,7 +442,7 @@ export const FooterCTA = () => {
                     <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1, delay: 0.8 }} style={{
                         fontFamily: "Figtree", fontSize: "18px", color: "rgba(255,255,255,0.45)", maxWidth: "448px", lineHeight: 1.75, margin: 0
                     }}>
-                        Summit invitations, leadership insights, and curated opportunities for Africa's most ambitious women — delivered directly to you.
+                        Summit invitations, leadership insights, and curated opportunities for Africa's most ambitious women - delivered directly to you.
                     </motion.p>
                 </div>
                 <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 1.0 }} style={{

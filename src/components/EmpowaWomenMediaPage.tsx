@@ -54,7 +54,7 @@ const BROADCAST_ITEMS: BroadcastItem[] = [{
   id: "b-4",
   image: "https://empowawomen.co.za/wp-content/uploads/2025/10/Transport-Month-TETA-Empowawomen-in-Transport-Summit---Sabelo-Mbuku.jpg",
   title: "Transport Month | TETA Empowawomen in Transport Summit: Sabelo Mbuku",
-  description: "In light of Transport Month, TETA will be hosting the Women in Transport Summit — a landmark moment for women in the sector.",
+  description: "In light of Transport Month, TETA will be hosting the Women in Transport Summit - a landmark moment for women in the sector.",
   link: "https://www.youtube.com/watch?v=65MWmkZqlGo",
   ctaLabel: "Watch on YouTube",
   tagLabel: "YOUTUBE",
@@ -123,7 +123,7 @@ const HASHTAG_ITEMS = [{
 }];
 
 const HERO_WORDS = ["The", "Narrative", "Is", "Ours"];
-const HERO_SUBWORDS = ["We", "Don't", "Just", "Make", "News", "—", "We", "Make", "History."];
+const HERO_SUBWORDS = ["We", "Don't", "Just", "Make", "News", "-", "We", "Make", "History."];
 const PRE_FOOTER_HEADLINE_WORDS = ["The", "story", "isn't", "over.", "It's", "just", "getting", "started."];
 
 // ─── Eyebrow (body sections – pink) ──────────────────────────────────────────
@@ -389,7 +389,7 @@ const HeroSection = () => {
           lineHeight: 1.75,
           textAlign: "center"
         }}>
-            Broadcast coverage, feature articles, press releases, and media accreditation — every
+            Broadcast coverage, feature articles, press releases, and media accreditation - every
             platform, every story, every stage.
           </motion.p>
 
@@ -999,7 +999,7 @@ const PreFooterCTA = () => {
           margin: "16px 0 0 0",
           maxWidth: "448px"
         }}>
-            For media enquiries, accreditation, and press partnerships — get in touch.
+            For media enquiries, accreditation, and press partnerships - get in touch.
           </motion.p>
         </div>
 

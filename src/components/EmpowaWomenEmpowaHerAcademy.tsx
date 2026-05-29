@@ -1848,7 +1848,7 @@ const FooterCTA = () => {
                         maxWidth: '448px',
                         margin: '24px 0 0 0'
                     }}>
-                        Cohort invitations, summit access, leadership resources — all delivered to ambitious young women ready to rise.
+                        Cohort invitations, summit access, leadership resources - all delivered to ambitious young women ready to rise.
                     </motion.p>
                 </div>
 

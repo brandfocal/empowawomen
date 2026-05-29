@@ -98,7 +98,7 @@ export const AgricultureManufacturingPillar: React.FC = () => {
     fontFamily: "Figtree, sans-serif"
   }}>
       {/* Hero */}
-      <AgricultureManufacturingHeroBanner pillarTitle="Pillar 4.3 — Agriculture, Manufacturing & Consumer Markets" quote="Africa Must Shift From Consumption Economies to Industrial Competitiveness" narrative="The evolution of the African economy relies on the strategic integration of sophisticated manufacturing capabilities with the rapidly expanding consumer markets. By fostering industrial resilience and retail excellence, we create a sustainable blueprint for continental wealth." bgImage="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1600&q=85" />
+      <AgricultureManufacturingHeroBanner pillarTitle="Pillar 4.3 - Agriculture, Manufacturing & Consumer Markets" quote="Africa Must Shift From Consumption Economies to Industrial Competitiveness" narrative="The evolution of the African economy relies on the strategic integration of sophisticated manufacturing capabilities with the rapidly expanding consumer markets. By fostering industrial resilience and retail excellence, we create a sustainable blueprint for continental wealth." bgImage="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1600&q=85" />
 
       {/* ─── Focus Tracks — LIGHT SECTION ─────────────────────────────── */}
       <section id="focus-tracks" className="focus-tracks-section" style={{

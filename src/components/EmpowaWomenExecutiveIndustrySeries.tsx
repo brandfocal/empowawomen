@@ -1233,7 +1233,7 @@ export const ExecutiveIndustrySeries: React.FC = () => {
                                 }}>
                                     <option value="">Select a stream…</option>
                                     {STREAMS_DATA.map(s => <option key={s.id} value={String(s.id)}>
-                                        {s.number} — {s.title}
+                                        {s.number} - {s.title}
                                     </option>)}
                                 </select>
                             </div>
@@ -1553,7 +1553,7 @@ export const ExecutiveIndustrySeries: React.FC = () => {
                                 textOverflow: "ellipsis",
                                 whiteSpace: "nowrap"
                             }}>
-                                {drawerStreamObj ? `${drawerStreamObj.number} — ${drawerStreamObj.title}` : "All streams — select your preference below"}
+                                {drawerStreamObj ? `${drawerStreamObj.number} - ${drawerStreamObj.title}` : "All streams - select your preference below"}
                             </p>
                         </div>
                         <button onClick={closeDrawer} style={{
@@ -1686,7 +1686,7 @@ export const ExecutiveIndustrySeries: React.FC = () => {
                                 }}>
                                     <option value="">Select a stream…</option>
                                     {STREAMS_DATA.map(s => <option key={s.id} value={String(s.id)}>
-                                        {s.number} — {s.title}
+                                        {s.number} - {s.title}
                                     </option>)}
                                 </select>
                             </div>

@@ -1411,7 +1411,7 @@ const PathwaysSection = () => {
                             lineHeight: 1.75,
                             margin: 0
                         }}>
-                            From the C-suite to the starting line — EmpowaWomen meets you exactly where you are, and takes you further than you imagined.
+                            From the C-suite to the starting line - EmpowaWomen meets you exactly where you are, and takes you further than you imagined.
                         </p>
 
                         <a href="#" style={{
@@ -1968,7 +1968,7 @@ const VideoSection = () => {
                     lineHeight: 1.75,
                     margin: 0
                 }}>
-                    Packed stages. Historic deals. Defining conversations. The EmpowaWomen Annual Leadership Summit — captured in two minutes.
+                    Packed stages. Historic deals. Defining conversations. The EmpowaWomen Annual Leadership Summit - captured in two minutes.
                 </p>
                 <a href="#" style={{
                     marginTop: "24px",

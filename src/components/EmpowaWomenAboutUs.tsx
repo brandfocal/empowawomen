@@ -800,7 +800,7 @@ const VisionSection = () => {
             maxWidth: "480px"
           }}>
             Across boardrooms, industries, governments, media platforms, entrepreneurial
-            ecosystems, and innovation economies — with confidence, influence, resilience, and
+            ecosystems, and innovation economies - with confidence, influence, resilience, and
             strategic authority.
           </p>
         </motion.div>
@@ -1272,7 +1272,7 @@ const PullQuoteSection = () => {
         margin: 0
       }}>
         EmpowaWomen is not just a summit. It is the room where Africa's most powerful women
-        decide what comes next — and act on it.
+        decide what comes next - and act on it.
       </blockquote>
 
       <div style={{

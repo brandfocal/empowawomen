@@ -129,7 +129,7 @@ const IntroSection = () => {
           }}>
               Pillar 4.4 represents the command center of the Future Economy Growth Hub. By
               integrating capital access with strategic leadership and brand authority, we ensure
-              women leaders don't just participate in the economy — they define its future trajectory.
+              women leaders don't just participate in the economy - they define its future trajectory.
             </p>
 
             <div style={{ display: "flex", gap: "48px" }}>

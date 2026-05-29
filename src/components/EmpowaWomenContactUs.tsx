@@ -1813,7 +1813,7 @@ const FooterSection = () => {
                         lineHeight: 1.75,
                         margin: 0
                     }}>
-                        Summit invitations, leadership insights, and curated opportunities for Africa&apos;s most ambitious women — delivered directly to you.
+                        Summit invitations, leadership insights, and curated opportunities for Africa&apos;s most ambitious women - delivered directly to you.
                     </motion.p>
                 </div>
 
