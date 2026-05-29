@@ -499,7 +499,6 @@ const ActionStrip = () => {
           opacity: 0,
           y: 20
         }} whileInView={{
-          once: true,
           opacity: 1,
           y: 0
         }} viewport={{
