@@ -35,11 +35,12 @@ const NAV_LINKS: NavLinkItem[] = [
             { label: "Green Economy, Mining, Energy & Sustainability", href: "/green-economy" },
             { label: "Infrastructure, Property & Transport", href: "/infrastructure-property" },
             { label: "Agriculture, Manufacturing & Consumer Markets", href: "/agriculture-manufacturing" },
-            { label: "Capital, Marketing, Creative & Leadership Systems", href: "/#pillars" }
+            { label: "Capital, Marketing, Creative & Leadership Systems", href: "/capital-leadership" }
         ]
     },
     { id: "nav-academy", label: "EmpowaHER™ Academy", href: "/academy" },
-    { id: "nav-partners", label: "Partnerships & ESG", href: "/partnerships" },
+    { id: "nav-partners", label: "Partnerships", href: "/partnerships" },
+    { id: "nav-media", label: "Media", href: "/media" },
     { id: "nav-contact", label: "Contact Us", href: "/contact" }
 ];
 
@@ -52,6 +53,7 @@ const FOOTER_SECTION_ROWS = [{
         { id: "fp-3", label: "Summits Hub", href: "/summits-hub" },
         { id: "fp-4", label: "Academy", href: "/academy" },
         { id: "fp-5", label: "Partnerships", href: "/partnerships" },
+        { id: "fp-7", label: "Media", href: "/media" },
         { id: "fp-6", label: "Contact Us", href: "/contact" }
     ]
 }, {
