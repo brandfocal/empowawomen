@@ -13,6 +13,7 @@ interface FooterNavItem {
 interface LogoItem {
     id: string;
     name: string;
+    src: string;
 }
 interface NavLink {
     id: string;
@@ -79,33 +80,26 @@ const NAV_LINKS: NavLink[] = [{
 }];
 const LOGOS: LogoItem[] = [{
     id: "logo-1",
-    name: "ABSA"
+    name: "ABSA",
+    src: "/absa-logo.png"
 }, {
     id: "logo-2",
-    name: "DEPT. OF WOMEN"
+    name: "CCBSA",
+    src: "/ccbsa.png"
 }, {
     id: "logo-3",
-    name: "STANDARD BANK"
+    name: "Old Mutual",
+    src: "/old_mutual_logo - Copy.png"
 }, {
     id: "logo-4",
-    name: "ANGLO AMERICAN"
+    name: "WRSETA",
+    src: "/WRSETA.jpg"
 }, {
     id: "logo-5",
-    name: "NEDBANK"
-}, {
-    id: "logo-6",
-    name: "ESKOM"
-}, {
-    id: "logo-7",
-    name: "MTN"
-}, {
-    id: "logo-8",
-    name: "SASOL"
-}, {
-    id: "logo-9",
-    name: "OLD MUTUAL"
+    name: "EmpowaWomen",
+    src: "/logo.png"
 }];
-const EXTENDED_LOGOS = [...LOGOS, ...LOGOS, ...LOGOS];
+const EXTENDED_LOGOS = [...LOGOS, ...LOGOS, ...LOGOS, ...LOGOS, ...LOGOS];
 const PATHWAY_CARDS: PathwayCard[] = [{
     id: "pathway-1",
     category: "CORPORATE PARTNERS & ESG",
@@ -691,22 +685,28 @@ const HeroSection = () => {
                             display: "flex",
                             alignItems: "center"
                         }}>
-                            <span style={{
-                                fontFamily: "Figtree",
-                                fontSize: "12px",
-                                fontWeight: 600,
-                                letterSpacing: "0.18em",
-                                color: "rgba(255,255,255,0.20)",
-                                cursor: "default",
-                                textTransform: "uppercase",
-                                transition: "color 200ms ease-out"
-                            }} onMouseEnter={e => {
-                                (e.currentTarget as HTMLSpanElement).style.color = "rgba(255,255,255,0.60)";
-                            }} onMouseLeave={e => {
-                                (e.currentTarget as HTMLSpanElement).style.color = "rgba(255,255,255,0.20)";
-                            }}>
-                                {logo.name}
-                            </span>
+                            <img 
+                                src={logo.src} 
+                                alt={logo.name} 
+                                style={{
+                                    height: "32px",
+                                    width: "auto",
+                                    maxWidth: "130px",
+                                    objectFit: "contain",
+                                    opacity: 0.3,
+                                    filter: "grayscale(100%)",
+                                    transition: "opacity 200ms ease-out, filter 200ms ease-out",
+                                    cursor: "default"
+                                }}
+                                onMouseEnter={e => {
+                                    (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
+                                    (e.currentTarget as HTMLImageElement).style.filter = "grayscale(0%)";
+                                }}
+                                onMouseLeave={e => {
+                                    (e.currentTarget as HTMLImageElement).style.opacity = "0.3";
+                                    (e.currentTarget as HTMLImageElement).style.filter = "grayscale(100%)";
+                                }}
+                            />
                         </div>)}
                     </motion.div>
                 </motion.div>
@@ -1166,30 +1166,31 @@ const PartnerStrip = () => {
                     {doubled.map((logo, i) => <div key={`logo-${logo.id}-${i}`} style={{
                         display: "flex",
                         alignItems: "center",
-                        flexShrink: 0
+                        flexShrink: 0,
+                        marginRight: "48px"
                     }}>
-                        <span style={{
-                            fontFamily: "Figtree",
-                            fontSize: "11px",
-                            fontWeight: 600,
-                            letterSpacing: "0.18em",
-                            color: "rgba(255,255,255,0.15)",
-                            padding: "0 32px",
-                            whiteSpace: "nowrap",
-                            cursor: "default",
-                            transition: "color 200ms ease-out",
-                            textTransform: "uppercase"
-                        }} onMouseEnter={e => {
-                            (e.currentTarget as HTMLSpanElement).style.color = "rgba(255,255,255,0.50)";
-                        }} onMouseLeave={e => {
-                            (e.currentTarget as HTMLSpanElement).style.color = "rgba(255,255,255,0.15)";
-                        }}>
-                            {logo.name}
-                        </span>
-                        <span style={{
-                            color: "rgba(255,255,255,0.08)",
-                            fontSize: "14px"
-                        }}>|</span>
+                        <img 
+                            src={logo.src} 
+                            alt={logo.name} 
+                            style={{
+                                height: "30px",
+                                width: "auto",
+                                maxWidth: "120px",
+                                objectFit: "contain",
+                                opacity: 0.3,
+                                filter: "grayscale(100%)",
+                                transition: "opacity 200ms ease-out, filter 200ms ease-out",
+                                cursor: "default"
+                            }}
+                            onMouseEnter={e => {
+                                (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
+                                (e.currentTarget as HTMLImageElement).style.filter = "grayscale(0%)";
+                            }}
+                            onMouseLeave={e => {
+                                (e.currentTarget as HTMLImageElement).style.opacity = "0.3";
+                                (e.currentTarget as HTMLImageElement).style.filter = "grayscale(100%)";
+                            }}
+                        />
                     </div>)}
                 </div>
             </div>
@@ -2189,7 +2190,7 @@ const Testimonial = () => {
             marginBottom: "clamp(48px,6vw,80px)",
             display: "flex",
             justifyContent: "space-between",
-            alignItems: "flex-end",
+            alignItems: "flex-start",
             flexWrap: "wrap",
             gap: "32px",
             position: "relative",
@@ -2218,6 +2219,20 @@ const Testimonial = () => {
                 }}>
                     From the room's most powerful voices.
                 </h2>
+                <p style={{
+                    fontFamily: "Figtree",
+                    fontSize: "17px",
+                    fontStyle: "italic",
+                    color: "rgba(255,255,255,0.80)",
+                    lineHeight: 1.65,
+                    marginTop: "24px",
+                    marginBottom: 0,
+                    maxWidth: "720px",
+                    borderLeft: "2px solid #FF2D87",
+                    paddingLeft: "20px"
+                }}>
+                    "EmpowaWomen is not just a summit. It is where Africa's most influential women gather to shape what comes next. I left with strategic partnerships, invaluable insights, and a renewed sense of purpose. More importantly, I left knowing that when women unite around leadership, growth, and impact, entire economies move forward."
+                </p>
             </div>
             <p style={{
                 fontFamily: "Figtree",
@@ -2225,7 +2240,7 @@ const Testimonial = () => {
                 color: "rgba(255,255,255,0.40)",
                 maxWidth: "280px",
                 lineHeight: 1.65,
-                margin: 0
+                margin: "8px 0 0 0"
             }}>
                 Real words from the delegates, executives, and leaders who have sat at the table.
             </p>
@@ -2266,7 +2281,7 @@ const Testimonial = () => {
                 flexDirection: "column",
                 justifyContent: "space-between"
             }}>
-                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=85" alt="" aria-hidden="true" style={{
+                <img src="/Sindisiwe-Chikunga.jpg" alt="" aria-hidden="true" style={{
                     position: "absolute",
                     inset: 0,
                     width: "100%",
@@ -2311,7 +2326,7 @@ const Testimonial = () => {
                         marginTop: "24px",
                         marginBottom: 0
                     }}>
-                        EmpowaWomen is not just a summit. It is where Africa's most powerful women decide what comes next. I left with three strategic partnerships and a clarity of purpose I had never felt before.
+                        EmpowaWomen represents the kind of bold leadership platform Africa needs. It brings together exceptional women leaders, innovators, policymakers, entrepreneurs, and changemakers to accelerate economic participation, leadership excellence, and inclusive growth. It is a platform that inspires action, strengthens networks, and empowers women to lead with confidence and purpose.
                     </blockquote>
                     <div style={{
                         marginTop: "auto",
@@ -2321,7 +2336,7 @@ const Testimonial = () => {
                         alignItems: "center",
                         gap: "16px"
                     }}>
-                        <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=100&q=80" alt="Amara Osei-Mensah" style={{
+                        <img src="/Sindisiwe-Chikunga.jpg" alt="Sindisiwe Chikunga" style={{
                             width: "48px",
                             height: "48px",
                             borderRadius: "50%",
@@ -2337,7 +2352,7 @@ const Testimonial = () => {
                                 color: "#FFFFFF",
                                 display: "block"
                             }}>
-                                Amara Osei-Mensah
+                                Ms Sindisiwe Chikunga
                             </span>
                             <span style={{
                                 fontFamily: "Figtree",
@@ -2345,7 +2360,9 @@ const Testimonial = () => {
                                 color: "rgba(255,255,255,0.40)",
                                 display: "block"
                             }}>
-                                Chief Strategy Officer, Nairobi
+                                Minister in the Presidency for Women, Youth and Persons with Disabilities
+                                Republic of South Africa
+
                             </span>
                         </div>
                     </div>
@@ -2409,7 +2426,7 @@ const Testimonial = () => {
                         marginTop: "16px",
                         marginBottom: 0
                     }}>
-                        The mentorship connections I made here accelerated my career by five years in a single weekend.
+                        EmpowaWomen represents the future of women’s leadership on the African continent. It is a rare platform where governance, business excellence, entrepreneurship, and social impact intersect. The calibre of leaders, conversations, and opportunities creates an environment where meaningful partnerships are forged and lasting change begins. This is where ambitious women come to expand their influence and accelerate their legacy.
                     </blockquote>
                     <div style={{
                         marginTop: "24px",
@@ -2417,7 +2434,7 @@ const Testimonial = () => {
                         alignItems: "center",
                         gap: "12px"
                     }}>
-                        <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=100&q=80" alt="Priya Sharma" style={{
+                        <img src="/Delia-Ndlovu.jpg" alt="Delia Ndlovu" style={{
                             width: "40px",
                             height: "40px",
                             borderRadius: "50%",
@@ -2433,7 +2450,7 @@ const Testimonial = () => {
                                 color: "#FFFFFF",
                                 display: "block"
                             }}>
-                                Priya Sharma
+                                Delia Ndlovu
                             </span>
                             <span style={{
                                 fontFamily: "Figtree",
@@ -2441,7 +2458,7 @@ const Testimonial = () => {
                                 color: "rgba(255,255,255,0.60)",
                                 display: "block"
                             }}>
-                                Managing Director, London
+                                Former Chair, Deloitte Africa Board
                             </span>
                         </div>
                     </div>
@@ -2484,7 +2501,7 @@ const Testimonial = () => {
                         marginTop: "16px",
                         marginBottom: 0
                     }}>
-                        For the first time I was in a room where my ambition was not just understood — it was expected.
+                        EmpowaWomen is where vision meets execution. It brings together exceptional women leaders, entrepreneurs, policymakers, investors, and changemakers who are committed to transforming economies and creating opportunities for future generations. The platform inspires bold thinking, courageous leadership, and practical action. Every woman leaves empowered to lead more fearlessly, grow more intentionally, and create greater impact.
                     </blockquote>
                     <div style={{
                         marginTop: "24px",
@@ -2492,7 +2509,7 @@ const Testimonial = () => {
                         alignItems: "center",
                         gap: "12px"
                     }}>
-                        <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=100&q=80" alt="Maria Goncalves" style={{
+                        <img src="/Tryphosa-Ramano.jpg" alt="Tryphosa Ramano" style={{
                             width: "40px",
                             height: "40px",
                             borderRadius: "50%",
@@ -2508,7 +2525,7 @@ const Testimonial = () => {
                                 color: "#FFFFFF",
                                 display: "block"
                             }}>
-                                Maria Goncalves
+                                Tryphosa Ramano
                             </span>
                             <span style={{
                                 fontFamily: "Figtree",
@@ -2516,7 +2533,7 @@ const Testimonial = () => {
                                 color: "rgba(255,255,255,0.40)",
                                 display: "block"
                             }}>
-                                Founder, Sao Paulo
+                                Independent Non-Executive Director, Public Investment Corporation (PIC)
                             </span>
                         </div>
                     </div>
