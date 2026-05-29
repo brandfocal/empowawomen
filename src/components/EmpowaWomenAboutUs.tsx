@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link as RouterLink } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Globe, Target, Trophy, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -167,7 +168,7 @@ const HeroSection = () => {
         duration: 2.4,
         ease: "easeOut"
       }}>
-        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1920&q=90" alt="" style={{
+        <img src="/features-14.jpg" alt="" style={{
           width: "100%",
           height: "100%",
           objectFit: "cover",
@@ -338,7 +339,7 @@ const HeroSection = () => {
           gap: "16px",
           marginBottom: "48px"
         }}>
-          <a href="#" style={{
+          <RouterLink to="/contact" style={{
             fontFamily: "Figtree",
             fontSize: "clamp(13px, 2vw, 15px)",
             fontWeight: 500,
@@ -363,8 +364,8 @@ const HeroSection = () => {
             el.style.boxShadow = "0 0 32px rgba(255,45,135,0.25)";
           }}>
             Join the Ecosystem
-          </a>
-          <a href="#" style={{
+          </RouterLink>
+          <RouterLink to="/about" style={{
             fontFamily: "Figtree",
             fontSize: "clamp(13px, 2vw, 15px)",
             fontWeight: 400,
@@ -388,7 +389,7 @@ const HeroSection = () => {
             el.style.borderColor = "rgba(255,255,255,0.20)";
           }}>
             Our Story
-          </a>
+          </RouterLink>
         </motion.div>
 
         {/* Partner marquee */}
@@ -597,7 +598,7 @@ const MissionBridgeSection = () => {
           </div>
         </div>
 
-        <a href="#" style={{
+        <RouterLink to="/summits-hub" style={{
           marginTop: "32px",
           display: "inline-flex",
           alignItems: "center",
@@ -615,7 +616,7 @@ const MissionBridgeSection = () => {
         }}>
           <span>Explore Our Programs</span>
           <ArrowRight size={14} />
-        </a>
+        </RouterLink>
       </motion.div>
 
       {/* Right col */}
@@ -1320,7 +1321,7 @@ const LeadershipStrip = () => {
       const cardWidth = 320; // base clamp width of card
       const gap = 24;
       const scrollAmount = cardWidth + gap;
-      
+
       scrollRef.current.scrollTo({
         left: direction === "left" ? scrollLeft - scrollAmount : scrollLeft + scrollAmount,
         behavior: "smooth"
@@ -1391,7 +1392,7 @@ const LeadershipStrip = () => {
           gap: "12px",
           marginBottom: "8px"
         }}>
-          <button 
+          <button
             onClick={() => scroll("left")}
             aria-label="Previous team members"
             style={{
@@ -1421,7 +1422,7 @@ const LeadershipStrip = () => {
           >
             <ChevronLeft size={20} />
           </button>
-          <button 
+          <button
             onClick={() => scroll("right")}
             aria-label="Next team members"
             style={{

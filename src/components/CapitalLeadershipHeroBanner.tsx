@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link as RouterLink } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
@@ -315,7 +316,7 @@ export const CapitalLeadershipHeroBanner: React.FC<CapitalLeadershipHeroBannerPr
             gap: "16px",
             width: "100%"
           }} className="hero-cta-row">
-              <a href="#" style={{
+              <RouterLink to="/summit" style={{
               fontFamily: "Figtree, sans-serif",
               fontSize: "clamp(13px, 2vw, 15px)",
               fontWeight: 500,
@@ -362,7 +363,7 @@ export const CapitalLeadershipHeroBanner: React.FC<CapitalLeadershipHeroBannerPr
                 animation: "shimmerSlide 3s linear infinite",
                 pointerEvents: "none"
               }} />
-              </a>
+              </RouterLink>
               <a href="#matrices" style={{
               fontFamily: "Figtree, sans-serif",
               fontSize: "clamp(13px, 2vw, 15px)",

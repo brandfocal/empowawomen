@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link as RouterLink } from "react-router-dom";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { UniversalHero } from "./UniversalHero";
 import { ArrowRight, Camera, Link, MessageSquare, Video, Users, Briefcase, Rocket, ChevronDown } from "lucide-react";
@@ -29,6 +30,7 @@ interface PathwayCard {
     ctaLabel: string;
     accentColor: string;
     icon: React.ReactNode;
+    path: string;
 }
 interface SectionLinkRow {
     id: string;
@@ -107,7 +109,8 @@ const PATHWAY_CARDS: PathwayCard[] = [{
     description: "Aligned with leading corporate ESG frameworks, our platform positions your brand at the intersection of executive influence and commercial growth.",
     ctaLabel: "Explore Corporate Packages",
     accentColor: "#FF2D87",
-    icon: <Briefcase className="w-6 h-6 text-white" />
+    icon: <Briefcase className="w-6 h-6 text-white" />,
+    path: "/partnerships"
 }, {
     id: "pathway-2",
     category: "EXECUTIVE DELEGATES & CXOs",
@@ -115,7 +118,8 @@ const PATHWAY_CARDS: PathwayCard[] = [{
     description: "Access Africa's most consequential leadership rooms, cross-sector alliances, and the conversations that shape economic destiny.",
     ctaLabel: "View 2026–2027 Summit Schedules",
     accentColor: "#00B4A6",
-    icon: <Users className="w-6 h-6 text-white" />
+    icon: <Users className="w-6 h-6 text-white" />,
+    path: "/summits-hub"
 }, {
     id: "pathway-3",
     category: "NEXT-GEN LEADERS · AGES 18–34",
@@ -123,7 +127,8 @@ const PATHWAY_CARDS: PathwayCard[] = [{
     description: "EmpowaHER™ is Africa's definitive development track for young women ready to own their economic future.",
     ctaLabel: "Apply for EmpowaHER™",
     accentColor: "#D97706",
-    icon: <Rocket className="w-6 h-6 text-white" />
+    icon: <Rocket className="w-6 h-6 text-white" />,
+    path: "/academy"
 }];
 const FOOTER_SECTION_ROWS: SectionLinkRow[] = [{
     id: "row-pages",
@@ -363,8 +368,17 @@ const HeroSection = () => {
             animation: "grainShift 0.8s steps(1) infinite"
         }} />
 
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-            <motion.div className="absolute inset-0" initial={{
+        <div style={{
+            position: "absolute",
+            inset: 0,
+            zIndex: 0,
+            overflow: "hidden",
+            pointerEvents: "none"
+        }}>
+            <motion.div style={{
+                position: "absolute",
+                inset: 0
+            }} initial={{
                 scale: 1.06,
                 opacity: 0
             }} animate={{
@@ -379,9 +393,17 @@ const HeroSection = () => {
                     position: "absolute",
                     inset: 0
                 }}>
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1920&q=90" alt="" className="w-full h-full object-cover" style={{
-                        objectPosition: "center 30%"
-                    }} />
+                    <img
+                        src="/features-5.jpg"
+                        alt=""
+                        style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                            objectPosition: "center 30%",
+                            opacity: 0.55
+                        }}
+                    />
                 </motion.div>
             </motion.div>
             <div style={{
@@ -638,7 +660,7 @@ const HeroSection = () => {
                         justifyContent: "center",
                         gap: "20px"
                     }}>
-                        <a href="#" style={{
+                        <RouterLink to="/summit" style={{
                             fontFamily: "Figtree",
                             fontSize: "15px",
                             fontWeight: 500,
@@ -663,8 +685,8 @@ const HeroSection = () => {
                             el.style.boxShadow = "0 0 32px rgba(255,45,135,0.25)";
                         }}>
                             Secure Summit Delegate Pass
-                        </a>
-                        <a href="#" style={{
+                        </RouterLink>
+                        <RouterLink to="/partnerships" style={{
                             fontFamily: "Figtree",
                             fontSize: "15px",
                             fontWeight: 400,
@@ -689,7 +711,7 @@ const HeroSection = () => {
                             el.style.borderColor = "rgba(255,255,255,0.20)";
                         }}>
                             Partner With Us
-                        </a>
+                        </RouterLink>
                     </motion.div>
 
                     {/* Avatar row */}
@@ -779,9 +801,9 @@ const HeroSection = () => {
                             display: "flex",
                             alignItems: "center"
                         }}>
-                            <img 
-                                src={logo.src} 
-                                alt={logo.name} 
+                            <img
+                                src={logo.src}
+                                alt={logo.name}
                                 style={{
                                     height: "32px",
                                     width: "auto",
@@ -1110,7 +1132,7 @@ const AboutSection = () => {
                         }} style={{
                             width: "fit-content"
                         }}>
-                            <a href="#" style={{
+                            <RouterLink to="/about" style={{
                                 display: "inline-flex",
                                 alignItems: "center",
                                 gap: "10px",
@@ -1128,7 +1150,7 @@ const AboutSection = () => {
                             }}>
                                 <span>Our Story</span>
                                 <ArrowRight size={16} />
-                            </a>
+                            </RouterLink>
                         </motion.div>
                     </div>
 
@@ -1263,9 +1285,9 @@ const PartnerStrip = () => {
                         flexShrink: 0,
                         marginRight: "48px"
                     }}>
-                        <img 
-                            src={logo.src} 
-                            alt={logo.name} 
+                        <img
+                            src={logo.src}
+                            alt={logo.name}
                             style={{
                                 height: "30px",
                                 width: "auto",
@@ -1414,7 +1436,7 @@ const PathwaysSection = () => {
                             From the C-suite to the starting line - EmpowaWomen meets you exactly where you are, and takes you further than you imagined.
                         </p>
 
-                        <a href="#" style={{
+                        <RouterLink to="/summits-hub" style={{
                             display: "inline-flex",
                             alignItems: "center",
                             gap: "10px",
@@ -1435,7 +1457,7 @@ const PathwaysSection = () => {
                         }}>
                             <span>Explore All Pathways</span>
                             <ArrowRight size={16} />
-                        </a>
+                        </RouterLink>
                     </div>
                 </div>
 
@@ -1550,7 +1572,7 @@ const PathwaysSection = () => {
                                     }}>
                                         {card.description}
                                     </p>
-                                    <a href="#" style={{
+                                    <RouterLink to={card.path} style={{
                                         marginTop: "24px",
                                         display: "inline-flex",
                                         alignItems: "center",
@@ -1570,7 +1592,7 @@ const PathwaysSection = () => {
                                     }}>
                                         <span>{card.ctaLabel}</span>
                                         <ArrowRight size={14} />
-                                    </a>
+                                    </RouterLink>
                                 </div>
                             </motion.div>
                         </div>;
@@ -1736,7 +1758,7 @@ const CorePillarsSection = () => {
             position: "relative",
             zIndex: 1
         }}>
-            <a href="#" style={{
+            <RouterLink to="/summits-hub" style={{
                 fontFamily: "Figtree",
                 fontWeight: 500,
                 fontSize: "14px",
@@ -1752,7 +1774,7 @@ const CorePillarsSection = () => {
                 (e.currentTarget as HTMLAnchorElement).style.opacity = "1";
             }}>
                 <span>Explore All Growth Pillars →</span>
-            </a>
+            </RouterLink>
         </div>
 
         <style>{`
@@ -1986,6 +2008,9 @@ const VideoSection = () => {
                     (e.currentTarget as HTMLAnchorElement).style.color = "rgba(10,10,15,0.9)";
                 }} onMouseLeave={e => {
                     (e.currentTarget as HTMLAnchorElement).style.color = "rgba(10,10,15,0.55)";
+                }} onClick={e => {
+                    e.preventDefault();
+                    document.getElementById("home-video-player")?.scrollIntoView({ behavior: "smooth" });
                 }}>
                     <span>Watch the full reel</span>
                     <ArrowRight size={14} />
@@ -2015,7 +2040,7 @@ const VideoSection = () => {
             position: "relative",
             zIndex: 1
         }}>
-            <div style={{
+            <div id="home-video-player" style={{
                 aspectRatio: "16/9",
                 position: "relative",
                 borderRadius: "24px",
@@ -2663,7 +2688,7 @@ const Testimonial = () => {
                 }}>
                     10,000+ women have already found their place at the table.
                 </p>
-                <a href="#" style={{
+                <RouterLink to="/contact" style={{
                     display: "inline-flex",
                     alignItems: "center",
                     backgroundColor: "#FF2D87",
@@ -2682,7 +2707,7 @@ const Testimonial = () => {
                     (e.currentTarget as HTMLAnchorElement).style.filter = "brightness(1)";
                 }}>
                     Join the Community →
-                </a>
+                </RouterLink>
             </div>
         </div>
 

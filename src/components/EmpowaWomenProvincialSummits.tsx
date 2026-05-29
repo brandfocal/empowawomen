@@ -229,7 +229,7 @@ export const ProvincialSummitSeries = () => {
                         position: 'absolute',
                         inset: 0
                     }}>
-                        <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1920&q=90" alt="Cityscape" style={{
+                        <img src="/features-18.jpg" alt="Cityscape" style={{
                             width: '100%',
                             height: '100%',
                             objectFit: 'cover'

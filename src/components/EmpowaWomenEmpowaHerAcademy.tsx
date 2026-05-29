@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform, useInView } from 'framer-motion';
 import { UniversalHero } from './UniversalHero';
 import { ChevronRight, Menu, X, Cpu, Lightbulb, Users, Heart, Camera, Briefcase, Rocket, Globe, ArrowRight, ChevronDown, Link, MessageSquare, Video, CheckCircle, Star } from 'lucide-react';
@@ -460,7 +461,7 @@ const TopNav = () => {
                 gap: '12px',
                 flexShrink: 0
             }}>
-                <a href="#" style={{
+                <RouterLink to="/summit" style={{
                     fontFamily: 'Figtree',
                     fontSize: '12px',
                     fontWeight: 500,
@@ -480,7 +481,7 @@ const TopNav = () => {
                     (e.currentTarget as HTMLAnchorElement).style.filter = 'brightness(1)';
                 }}>
                     Secure Your Seat
-                </a>
+                </RouterLink>
                 <button className="academy-mobile-nav-toggle" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
                     {mobileOpen ? <X size={22} /> : <Menu size={22} />}
                 </button>
@@ -514,7 +515,7 @@ const TopNav = () => {
                 }}>
                     {link.label}
                 </a>)}
-                <a href="#" style={{
+                <RouterLink to="/summit" style={{
                     fontFamily: 'Figtree',
                     fontSize: '14px',
                     fontWeight: 500,
@@ -526,7 +527,7 @@ const TopNav = () => {
                     textAlign: 'center'
                 }}>
                     Secure Your Seat
-                </a>
+                </RouterLink>
             </motion.div>}
         </AnimatePresence>
         <style>{`
@@ -575,7 +576,7 @@ const HeroSection = () => {
                     position: 'absolute',
                     inset: 0
                 }}>
-                    <img src="https://images.unsplash.com/photo-1598257006458-087169a1f08d?w=1920&q=90" alt="Young African women in a professional setting" style={{
+                    <img src="/features-17.jpg" alt="Young African women in a professional setting" style={{
                         width: '100%',
                         height: '100%',
                         objectFit: 'cover',
@@ -749,7 +750,7 @@ const HeroSection = () => {
                     gap: '16px',
                     marginBottom: '48px'
                 }}>
-                    <a href="#" style={{
+                    <RouterLink to="/academy" style={{
                         fontFamily: 'Figtree',
                         fontSize: '15px',
                         fontWeight: 500,
@@ -774,8 +775,8 @@ const HeroSection = () => {
                         el.style.boxShadow = '0 0 32px rgba(255,45,135,0.25)';
                     }}>
                         Apply for EmpowaHER™
-                    </a>
-                    <a href="#" style={{
+                    </RouterLink>
+                    <RouterLink to="/about" style={{
                         fontFamily: 'Figtree',
                         fontSize: '15px',
                         fontWeight: 400,
@@ -800,7 +801,7 @@ const HeroSection = () => {
                         el.style.borderColor = 'rgba(255,255,255,0.20)';
                     }}>
                         Learn More
-                    </a>
+                    </RouterLink>
                 </motion.div>
                 <motion.div initial={{
                     opacity: 0
@@ -835,9 +836,9 @@ const HeroSection = () => {
                             display: 'flex',
                             alignItems: 'center'
                         }}>
-                            <img 
-                                src={logo.src} 
-                                alt={logo.name} 
+                            <img
+                                src={logo.src}
+                                alt={logo.name}
                                 style={{
                                     height: "32px",
                                     width: "auto",
@@ -2129,9 +2130,9 @@ const AcademyHero = () => {
         <div style={{ width: "100%", overflow: "hidden", position: "relative", maskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)", WebkitMaskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)" }}>
             <motion.div animate={{ x: ["0%", "-50%"] }} transition={{ duration: 35, ease: "linear", repeat: Infinity }} style={{ display: "flex", gap: "80px", alignItems: "center", whiteSpace: "nowrap", width: "max-content" }}>
                 {EXTENDED_LOGOS.map((logo, i) => <div key={`logo-${logo.id}-${i}`} style={{ flexShrink: 0, height: "72px", display: "flex", alignItems: "center" }}>
-                    <img 
-                        src={logo.src} 
-                        alt={logo.name} 
+                    <img
+                        src={logo.src}
+                        alt={logo.name}
                         style={{
                             height: "32px",
                             width: "auto",
@@ -2156,7 +2157,7 @@ const AcademyHero = () => {
         </div>
     );
 
-    return <UniversalHero 
+    return <UniversalHero
         bgImage="https://images.unsplash.com/photo-1598257006458-087169a1f08d?w=1920&q=90"
         pillText="YOUTH ACTIVATION ECOSYSTEM · AGES 18–34"
         headline={headline}

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link as RouterLink } from "react-router-dom";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { UniversalHero } from "./UniversalHero";
 import { ArrowRight, Check, ChevronDown, ChevronUp, Mail, Building2, Camera, Link, MessageSquare, Video, Users, TrendingUp, Radio, Star } from "lucide-react";
@@ -454,7 +455,7 @@ const TopNav = () => {
                 alignItems: "center",
                 flexShrink: 0
             }}>
-                <a href="#" style={{
+                <RouterLink to="/summit" style={{
                     fontFamily: "Figtree",
                     fontSize: "12px",
                     fontWeight: 500,
@@ -490,7 +491,7 @@ const TopNav = () => {
                         animation: "shimmerSlide 3s linear infinite",
                         pointerEvents: "none"
                     }} />
-                </a>
+                </RouterLink>
             </div>
         </header>
 
@@ -556,7 +557,7 @@ const HeroSection = () => {
                 duration: 2.4,
                 ease: "easeOut"
             }}>
-                <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=1920&q=90" alt="" className="w-full h-full object-cover" style={{
+                <img src="features-4.jpg" alt="" className="w-full h-full object-cover" style={{
                     objectPosition: "center"
                 }} />
             </motion.div>
@@ -772,6 +773,9 @@ const HeroSection = () => {
                         const el = e.currentTarget as HTMLAnchorElement;
                         el.style.backgroundColor = "transparent";
                         el.style.borderColor = "rgba(255,255,255,0.20)";
+                    }} onClick={e => {
+                        e.preventDefault();
+                        document.getElementById("partnership-form")?.scrollIntoView({ behavior: "smooth" });
                     }}>
                         Book Discovery Call
                     </a>
@@ -810,9 +814,9 @@ const HeroSection = () => {
                             display: "flex",
                             alignItems: "center"
                         }}>
-                            <img 
-                                src={logo.src} 
-                                alt={logo.name} 
+                            <img
+                                src={logo.src}
+                                alt={logo.name}
                                 style={{
                                     height: "32px",
                                     width: "auto",
@@ -2164,7 +2168,7 @@ const LeadGenForm = () => {
             </div>
 
             {/* Right column — form card */}
-            <motion.form initial={{
+            <motion.form id="partnership-form" initial={{
                 opacity: 0,
                 scale: 0.97
             }} whileInView={{
@@ -2828,9 +2832,9 @@ const PartnershipsHero = () => {
         <div style={{ width: "100%", overflow: "hidden", position: "relative", maskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)", WebkitMaskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)" }}>
             <motion.div animate={{ x: ["0%", "-50%"] }} transition={{ duration: 35, ease: "linear", repeat: Infinity }} style={{ display: "flex", gap: "80px", alignItems: "center", whiteSpace: "nowrap", width: "max-content" }}>
                 {EXTENDED_LOGOS.map((logo, i) => <div key={`logo-${logo.id}-${i}`} style={{ flexShrink: 0, height: "72px", display: "flex", alignItems: "center" }}>
-                    <img 
-                        src={logo.src} 
-                        alt={logo.name} 
+                    <img
+                        src={logo.src}
+                        alt={logo.name}
                         style={{
                             height: "32px",
                             width: "auto",
@@ -2855,7 +2859,7 @@ const PartnershipsHero = () => {
         </div>
     );
 
-    return <UniversalHero 
+    return <UniversalHero
         bgImage="https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=1920&q=90"
         pillText="CORPORATE BUDGET PORTAL · B2B ESG"
         headline={headline}

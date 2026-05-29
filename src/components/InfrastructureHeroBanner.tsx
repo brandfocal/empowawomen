@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link as RouterLink } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
@@ -373,7 +374,7 @@ export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
               justifyContent: "center",
               gap: "16px"
             }} className="flex-col sm:flex-row w-full sm:w-auto px-4 sm:px-0">
-              <a href="#" style={{
+              <RouterLink to="/summit" style={{
                 fontFamily: "Figtree",
                 fontSize: "clamp(13px, 2vw, 15px)",
                 fontWeight: 500,
@@ -422,7 +423,7 @@ export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
                   animation: "shimmerSlide 3s linear infinite",
                   pointerEvents: "none"
                 }} />
-              </a>
+              </RouterLink>
               <a href="#segments" style={{
                 fontFamily: "Figtree",
                 fontSize: "clamp(13px, 2vw, 15px)",

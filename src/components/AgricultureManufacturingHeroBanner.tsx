@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link as RouterLink } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
@@ -329,57 +330,57 @@ export const AgricultureManufacturingHeroBanner: React.FC<IndustrialHeroBannerPr
         gap: "16px",
         width: "100%"
       }} className="hero-cta-row">
-          <a href="#" style={{
-          fontFamily: "Figtree",
-          fontSize: "clamp(13px, 2vw, 15px)",
-          fontWeight: 500,
-          color: "#FFFFFF",
-          backgroundColor: "#FF2D87",
-          minHeight: "54px",
-          width: "220px",
-          padding: "0 28px",
-          display: "inline-flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "8px",
-          textDecoration: "none",
-          letterSpacing: "0.02em",
-          borderRadius: "999px",
-          transition: "all 200ms ease-out",
-          boxShadow: "0 0 32px rgba(255,45,135,0.25)",
-          whiteSpace: "nowrap",
-          position: "relative",
-          overflow: "hidden"
-        }} onMouseEnter={e => {
-          const el = e.currentTarget as HTMLAnchorElement;
-          el.style.filter = "brightness(1.1)";
-          el.style.boxShadow = "0 0 48px rgba(255,45,135,0.40)";
-        }} onMouseLeave={e => {
-          const el = e.currentTarget as HTMLAnchorElement;
-          el.style.filter = "brightness(1)";
-          el.style.boxShadow = "0 0 32px rgba(255,45,135,0.25)";
-        }}>
-            <span style={{
-            position: "relative",
-            zIndex: 1
-          }}>Secure Your Seat</span>
-            <ArrowRight size={16} style={{
-            position: "relative",
-            zIndex: 1,
-            flexShrink: 0
-          }} />
-            <span style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            height: "100%",
-            width: "40%",
-            background: "rgba(255,255,255,0.15)",
-            transform: "skewX(-20deg) translateX(-100%)",
-            animation: "shimmerSlide 3s linear infinite",
-            pointerEvents: "none"
-          }} />
-          </a>
+              <RouterLink to="/summit" style={{
+              fontFamily: "Figtree",
+              fontSize: "clamp(13px, 2vw, 15px)",
+              fontWeight: 500,
+              color: "#FFFFFF",
+              backgroundColor: "#FF2D87",
+              minHeight: "54px",
+              width: "220px",
+              padding: "0 28px",
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "8px",
+              textDecoration: "none",
+              letterSpacing: "0.02em",
+              borderRadius: "999px",
+              transition: "all 200ms ease-out",
+              boxShadow: "0 0 32px rgba(255,45,135,0.25)",
+              whiteSpace: "nowrap",
+              position: "relative",
+              overflow: "hidden"
+            }} onMouseEnter={e => {
+              const el = e.currentTarget as HTMLAnchorElement;
+              el.style.filter = "brightness(1.1)";
+              el.style.boxShadow = "0 0 48px rgba(255,45,135,0.40)";
+            }} onMouseLeave={e => {
+              const el = e.currentTarget as HTMLAnchorElement;
+              el.style.filter = "brightness(1)";
+              el.style.boxShadow = "0 0 32px rgba(255,45,135,0.25)";
+            }}>
+                <span style={{
+                position: "relative",
+                zIndex: 1
+              }}>Secure Your Seat</span>
+                <ArrowRight size={16} style={{
+                position: "relative",
+                zIndex: 1,
+                flexShrink: 0
+              }} />
+                <span style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                height: "100%",
+                width: "40%",
+                background: "rgba(255,255,255,0.15)",
+                transform: "skewX(-20deg) translateX(-100%)",
+                animation: "shimmerSlide 3s linear infinite",
+                pointerEvents: "none"
+              }} />
+              </RouterLink>
           <a href="#focus-tracks" style={{
           fontFamily: "Figtree",
           fontSize: "clamp(13px, 2vw, 15px)",

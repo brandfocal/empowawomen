@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link as RouterLink } from "react-router-dom";
 import { motion, AnimatePresence, useScroll } from "framer-motion";
 import { UniversalHero } from "./UniversalHero";
 import { Briefcase, Mic, Ticket, GraduationCap, MapPin, Phone, Clock, Navigation, ChevronRight, ChevronDown, Menu, X, ArrowRight, Camera, Link, MessageSquare, Video, Send, Zap, Calendar, BookOpen } from "lucide-react";
@@ -418,7 +419,7 @@ const TopNav = () => {
                 alignItems: "center",
                 flexShrink: 0
             }} className="hidden md:flex">
-                <a href="#" style={{
+                <RouterLink to="/summit" style={{
                     fontFamily: "Figtree",
                     fontSize: "12px",
                     fontWeight: 500,
@@ -438,7 +439,7 @@ const TopNav = () => {
                     (e.currentTarget as HTMLAnchorElement).style.filter = "brightness(1)";
                 }}>
                     Secure Your Seat
-                </a>
+                </RouterLink>
             </div>
 
             <button className="md:hidden ml-auto" style={{
@@ -481,7 +482,7 @@ const TopNav = () => {
                     }} onClick={() => setIsOpen(false)}>
                         {link.label}
                     </a>)}
-                    <a href="#" style={{
+                    <RouterLink to="/summit" style={{
                         fontFamily: "Figtree",
                         fontSize: "14px",
                         fontWeight: 500,
@@ -493,7 +494,7 @@ const TopNav = () => {
                         textAlign: "center"
                     }}>
                         Secure Your Seat
-                    </a>
+                    </RouterLink>
                 </div>
             </motion.div>}
         </AnimatePresence>
@@ -527,7 +528,7 @@ const HeroSection = () => {
             inset: 0,
             zIndex: 0
         }}>
-            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1920&q=90" alt="" style={{
+            <img src="/features.jpg" alt="" style={{
                 width: "100%",
                 height: "100%",
                 objectFit: "cover",
@@ -720,10 +721,13 @@ const HeroSection = () => {
                         (e.currentTarget as HTMLAnchorElement).style.filter = "brightness(1.1)";
                     }} onMouseLeave={e => {
                         (e.currentTarget as HTMLAnchorElement).style.filter = "brightness(1)";
+                    }} onClick={e => {
+                        e.preventDefault();
+                        document.getElementById("contact-form")?.scrollIntoView({ behavior: "smooth" });
                     }}>
                         Get in Touch
                     </a>
-                    <a href="#" style={{
+                    <RouterLink to="/summits-hub" style={{
                         fontFamily: "Figtree",
                         fontSize: "15px",
                         fontWeight: 400,
@@ -747,7 +751,7 @@ const HeroSection = () => {
                         el.style.borderColor = "rgba(255,255,255,0.20)";
                     }}>
                         View Our Summits
-                    </a>
+                    </RouterLink>
                 </motion.div>
 
                 <motion.div initial={{
@@ -783,9 +787,9 @@ const HeroSection = () => {
                             display: "flex",
                             alignItems: "center"
                         }}>
-                            <img 
-                                src={logo.src} 
-                                alt={logo.name} 
+                            <img
+                                src={logo.src}
+                                alt={logo.name}
                                 style={{
                                     height: "32px",
                                     width: "auto",
@@ -978,7 +982,7 @@ const SmartRoutingForm = () => {
                     boxShadow: "0 24px 64px rgba(0,0,0,0.06)",
                     border: "1px solid rgba(0,0,0,0.04)"
                 }}>
-                    <form style={{
+                    <form id="contact-form" style={{
                         display: "flex",
                         flexDirection: "column",
                         gap: "24px"
@@ -2060,9 +2064,9 @@ const ContactHero = () => {
         <div style={{ width: "100%", overflow: "hidden", position: "relative", maskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)", WebkitMaskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)" }}>
             <motion.div animate={{ x: ["0%", "-50%"] }} transition={{ duration: 35, ease: "linear", repeat: Infinity }} style={{ display: "flex", gap: "80px", alignItems: "center", whiteSpace: "nowrap", width: "max-content" }}>
                 {EXTENDED_LOGOS.map((logo, i) => <div key={`logo-${logo.id}-${i}`} style={{ flexShrink: 0, height: "72px", display: "flex", alignItems: "center" }}>
-                    <img 
-                        src={logo.src} 
-                        alt={logo.name} 
+                    <img
+                        src={logo.src}
+                        alt={logo.name}
                         style={{
                             height: "32px",
                             width: "auto",
@@ -2087,7 +2091,7 @@ const ContactHero = () => {
         </div>
     );
 
-    return <UniversalHero 
+    return <UniversalHero
         bgImage="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1920&q=90"
         pillText="ROUTING HEADQUARTERS · CONTACT US"
         headline={headline}
