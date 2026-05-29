@@ -1359,11 +1359,14 @@ const LeadershipStrip = () => {
         The EmpowaWomen Leadership Team comprises a diverse group of visionary leaders, strategists, partnership builders, and execution specialists united by a shared commitment to advancing women's leadership, entrepreneurship, economic participation, and influence across Africa.
       </p>
 
-      <div className="about-grid-3" style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(3, 1fr)",
+      <div className="about-team-scroll" style={{
+        display: "flex",
+        overflowX: "auto",
         gap: "24px",
-        marginTop: "48px"
+        marginTop: "48px",
+        paddingBottom: "24px",
+        scrollSnapType: "x mandatory",
+        WebkitOverflowScrolling: "touch"
       }}>
         {TEAM_MEMBERS.map((member, idx) => <motion.div key={member.id} initial={{
           opacity: 0,
@@ -1384,14 +1387,17 @@ const LeadershipStrip = () => {
           transition: "box-shadow 300ms ease-out, transform 300ms ease-out",
           borderRadius: "16px",
           overflow: "hidden",
-          cursor: "default"
+          cursor: "default",
+          flexShrink: 0,
+          width: "clamp(290px, 30vw, 360px)",
+          scrollSnapAlign: "start"
         }} whileHover={{
           y: -4,
           boxShadow: "0 8px 24px rgba(0,0,0,0.10)"
         } as any}>
           <div style={{
             overflow: "hidden",
-            aspectRatio: "3/4"
+            height: "230px"
           }}>
             <img src={member.image} alt={member.name} style={{
               width: "100%",
@@ -1855,10 +1861,6 @@ export const EmpowaWomenAboutPage: React.FC = () => {
             grid-template-columns: 1fr !important;
             gap: 40px !important;
           }
-          .about-grid-3 {
-            grid-template-columns: 1fr !important;
-            gap: 24px !important;
-          }
           .about-order-1-mobile {
             order: 1 !important;
             justify-content: flex-start !important;
@@ -1869,13 +1871,23 @@ export const EmpowaWomenAboutPage: React.FC = () => {
           }
         }
         @media (min-width: 768px) and (max-width: 1023px) {
-          .about-grid-3 {
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 24px !important;
-          }
           .about-grid-2 {
             gap: 40px !important;
           }
+        }
+        .about-team-scroll::-webkit-scrollbar {
+          height: 6px;
+        }
+        .about-team-scroll::-webkit-scrollbar-track {
+          background: rgba(10,10,15,0.05);
+          border-radius: 999px;
+        }
+        .about-team-scroll::-webkit-scrollbar-thumb {
+          background: rgba(255,45,135,0.3);
+          border-radius: 999px;
+        }
+        .about-team-scroll::-webkit-scrollbar-thumb:hover {
+          background: rgba(255,45,135,0.6);
         }
       `}</style>
   </div>;

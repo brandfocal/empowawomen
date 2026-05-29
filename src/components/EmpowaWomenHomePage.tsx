@@ -215,6 +215,86 @@ const FLAGSHIP_MINI_STATS: FlagshipMiniStat[] = [{
     label: "Speakers"
 }];
 
+// ─── Countdown Timer Helpers ──────────────────────────────────────────────────
+const TARGET_DATE = new Date("2026-08-28T00:00:00").getTime();
+function getTimeLeft() {
+    const now = Date.now();
+    const diff = Math.max(0, TARGET_DATE - now);
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(diff % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
+    const minutes = Math.floor(diff % (1000 * 60 * 60) / (1000 * 60));
+    const seconds = Math.floor(diff % (1000 * 60) / 1000);
+    return { days, hours, minutes, seconds };
+}
+
+const CountdownTimer = () => {
+    const [timeLeft, setTimeLeft] = React.useState(getTimeLeft());
+    React.useEffect(() => {
+        const interval = setInterval(() => {
+            setTimeLeft(getTimeLeft());
+        }, 1000);
+        return () => clearInterval(interval);
+    }, []);
+    const units = [
+        { id: "cd-days", value: timeLeft.days, label: "DAYS" },
+        { id: "cd-hours", value: timeLeft.hours, label: "HRS" },
+        { id: "cd-minutes", value: timeLeft.minutes, label: "MIN" },
+        { id: "cd-seconds", value: timeLeft.seconds, label: "SEC" }
+    ];
+    return (
+        <div style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "clamp(12px, 3vw, 16px)",
+            paddingTop: "24px",
+            paddingBottom: "24px",
+            marginBottom: "8px"
+        }}>
+            {units.map((unit, idx) => (
+                <div key={unit.id} style={{ display: "flex", alignItems: "flex-start", gap: "clamp(12px, 3vw, 16px)" }}>
+                    <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                        <span style={{
+                            fontFamily: "Figtree",
+                            fontWeight: 200,
+                            fontSize: "clamp(24px, 6vw, 56px)",
+                            color: "#FFFFFF",
+                            letterSpacing: "-0.04em",
+                            lineHeight: 1
+                        }}>
+                            {String(unit.value).padStart(2, "0")}
+                        </span>
+                        <span style={{
+                            fontFamily: "Figtree",
+                            fontSize: "9px",
+                            fontWeight: 600,
+                            letterSpacing: "0.20em",
+                            color: "rgba(255,255,255,0.35)",
+                            marginTop: "4px",
+                            textTransform: "uppercase"
+                        }}>
+                            {unit.label}
+                        </span>
+                    </div>
+                    {idx < units.length - 1 && (
+                        <span style={{
+                            fontFamily: "Figtree",
+                            fontWeight: 200,
+                            fontSize: "clamp(16px, 3vw, 40px)",
+                            color: "rgba(255,255,255,0.20)",
+                            lineHeight: 1,
+                            marginTop: "2px",
+                            flexShrink: 0
+                        }}>
+                            ·
+                        </span>
+                    )}
+                </div>
+            ))}
+        </div>
+    );
+};
+
 // ─── Hero Section ─────────────────────────────────────────────────────────────
 const HeroSection = () => {
     const HERO_LINES = [{
@@ -526,6 +606,20 @@ const HeroSection = () => {
                     }}>
                         EmpowaWomen™ is a high-impact leadership and economic empowerment ecosystem accelerating the rise of women shaping Africa's future industries, institutions, capital flows, and global influence.
                     </motion.p>
+
+                    {/* Countdown timer */}
+                    <motion.div initial={{
+                        opacity: 0,
+                        y: 20
+                    }} animate={{
+                        opacity: 1,
+                        y: 0
+                    }} transition={{
+                        duration: 0.8,
+                        delay: 1.3
+                    }}>
+                        <CountdownTimer />
+                    </motion.div>
 
                     {/* CTAs */}
                     <motion.div initial={{
@@ -2231,7 +2325,7 @@ const Testimonial = () => {
                     borderLeft: "2px solid #FF2D87",
                     paddingLeft: "20px"
                 }}>
-                    "EmpowaWomen is not just a summit. It is where Africa's most influential women gather to shape what comes next. I left with strategic partnerships, invaluable insights, and a renewed sense of purpose. More importantly, I left knowing that when women unite around leadership, growth, and impact, entire economies move forward."
+                    "EmpowaWomen is where Africa's most influential women gather to shape the future. I left with strategic partnerships, invaluable insights, and a renewed conviction that when women unite around leadership and impact, entire economies move forward."
                 </p>
             </div>
             <p style={{
@@ -2326,7 +2420,7 @@ const Testimonial = () => {
                         marginTop: "24px",
                         marginBottom: 0
                     }}>
-                        EmpowaWomen represents the kind of bold leadership platform Africa needs. It brings together exceptional women leaders, innovators, policymakers, entrepreneurs, and changemakers to accelerate economic participation, leadership excellence, and inclusive growth. It is a platform that inspires action, strengthens networks, and empowers women to lead with confidence and purpose.
+                        EmpowaWomen represents the bold leadership platform Africa needs. By uniting exceptional leaders, policymakers, and innovators, it accelerates economic participation, strengthens strategic networks, and empowers women to lead with purpose.
                     </blockquote>
                     <div style={{
                         marginTop: "auto",
@@ -2426,7 +2520,7 @@ const Testimonial = () => {
                         marginTop: "16px",
                         marginBottom: 0
                     }}>
-                        EmpowaWomen represents the future of women’s leadership on the African continent. It is a rare platform where governance, business excellence, entrepreneurship, and social impact intersect. The calibre of leaders, conversations, and opportunities creates an environment where meaningful partnerships are forged and lasting change begins. This is where ambitious women come to expand their influence and accelerate their legacy.
+                        EmpowaWomen represents the future of women’s leadership in Africa. It is a rare space where governance, business excellence, and social impact intersect, enabling ambitious women to forge powerful partnerships, expand their influence, and accelerate their legacy.
                     </blockquote>
                     <div style={{
                         marginTop: "24px",
@@ -2501,7 +2595,7 @@ const Testimonial = () => {
                         marginTop: "16px",
                         marginBottom: 0
                     }}>
-                        EmpowaWomen is where vision meets execution. It brings together exceptional women leaders, entrepreneurs, policymakers, investors, and changemakers who are committed to transforming economies and creating opportunities for future generations. The platform inspires bold thinking, courageous leadership, and practical action. Every woman leaves empowered to lead more fearlessly, grow more intentionally, and create greater impact.
+                        EmpowaWomen is where vision meets execution. By bringing together leaders committed to transforming economies, this platform inspires bold thinking and practical action, empowering every woman to lead fearlessly and grow intentionally.
                     </blockquote>
                     <div style={{
                         marginTop: "24px",

@@ -12,7 +12,6 @@ interface NavLinkItem {
 }
 
 const NAV_LINKS: NavLinkItem[] = [
-    { id: "nav-home", label: "Home", href: "/" },
     { id: "nav-about", label: "About Us", href: "/about" },
     {
         id: "nav-summits",
@@ -291,7 +290,7 @@ export const TopNav = () => {
 
             {/* Right actions */}
             <div style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
-                <a href="#" style={{
+                <Link to="/summit" style={{
                     fontFamily: "Figtree", fontSize: "12px", fontWeight: 500, color: "#FFFFFF", backgroundColor: "#FF2D87",
                     borderRadius: "999px", padding: "8px 20px", textDecoration: "none", whiteSpace: "nowrap",
                     letterSpacing: "0.02em", transition: "filter 200ms ease-out", position: "relative", overflow: "hidden", display: "inline-flex", alignItems: "center"
@@ -305,7 +304,7 @@ export const TopNav = () => {
                         position: "absolute", top: 0, left: 0, height: "100%", width: "40%", background: "rgba(255,255,255,0.15)",
                         transform: "skewX(-20deg) translateX(-100%)", animation: "shimmerSlide 3s linear infinite", pointerEvents: "none"
                     }} />
-                </a>
+                </Link>
 
                 <button className="md:hidden text-white p-2 ml-2" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu" style={{ background: "transparent", border: "none" }}>
                     {isOpen ? <X size={22} /> : <Menu size={22} />}
@@ -373,13 +372,13 @@ export const TopNav = () => {
                         )}
                     </div>
                 ))}
-                <a href="#" style={{
+                <Link to="/summit" onClick={() => setIsOpen(false)} style={{
                     marginTop: "8px", fontFamily: "Figtree", fontSize: "14px", fontWeight: 500, color: "#FFFFFF",
                     backgroundColor: "#FF2D87", borderRadius: "999px", padding: "10px 24px", textDecoration: "none",
                     display: "inline-block", textAlign: "center"
                 }}>
                     Secure Your Seat
-                </a>
+                </Link>
             </motion.div>}
         </AnimatePresence>
 
@@ -449,12 +448,12 @@ export const FooterCTA = () => {
                 <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 1.0 }} style={{
                     display: "flex", flexWrap: "wrap", gap: "20px"
                 }}>
-                    <button style={{
-                        display: "inline-flex", alignItems: "center", gap: "8px", padding: "16px 32px", backgroundColor: "#FF2D87", color: "#FFFFFF", fontFamily: "Figtree", fontSize: "18px", fontWeight: 500, border: "none", cursor: "pointer", transition: "filter 200ms ease-out"
-                    }} onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.filter = "brightness(1.1)"; }} onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.filter = "brightness(1)"; }}>
+                    <Link to="/summit" style={{
+                        display: "inline-flex", alignItems: "center", gap: "8px", padding: "16px 32px", backgroundColor: "#FF2D87", color: "#FFFFFF", fontFamily: "Figtree", fontSize: "18px", fontWeight: 500, border: "none", cursor: "pointer", transition: "filter 200ms ease-out", textDecoration: "none"
+                    }} onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.filter = "brightness(1.1)"; }} onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.filter = "brightness(1)"; }}>
                         <span>Secure Your Seat</span>
                         <ArrowRight size={18} />
-                    </button>
+                    </Link>
                     <Link to="/about" style={{
                         padding: "16px 32px", backgroundColor: "rgba(255,255,255,0.05)", color: "#FFFFFF", fontFamily: "Figtree", fontSize: "18px", fontWeight: 500, border: "1px solid rgba(255,255,255,0.10)", textDecoration: "none", cursor: "pointer", transition: "background-color 200ms ease-out", display: "inline-flex", alignItems: "center"
                     }} onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "rgba(255,255,255,0.10)"; }} onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "rgba(255,255,255,0.05)"; }}>
@@ -488,7 +487,9 @@ export const FooterCTA = () => {
                     <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "24px", width: "100%" }}>
                         <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
                             <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                                <img src="/logo.png" alt="EmpowaWomen logo mark" style={{ height: "28px", width: "auto" }} />
+                                <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+                                    <img src="/logo.png" alt="EmpowaWomen logo mark" style={{ height: "28px", width: "auto" }} />
+                                </Link>
                             </div>
                             <p style={{ fontFamily: "Figtree", fontSize: "14px", color: "rgba(255,255,255,0.25)", margin: 0 }}>
                                 © {new Date().getFullYear()} EmpowaWomen. All rights reserved.
