@@ -32,9 +32,9 @@ const NAV_LINKS: NavLinkItem[] = [
         href: "/#pillars",
         hasDropdown: true,
         dropdownItems: [
-            { label: "Green Economy, Mining, Energy & Sustainability", href: "/#pillars" },
-            { label: "Infrastructure, Property & Transport", href: "/#pillars" },
-            { label: "Agriculture, Manufacturing & Consumer Markets", href: "/#pillars" },
+            { label: "Green Economy, Mining, Energy & Sustainability", href: "/green-economy" },
+            { label: "Infrastructure, Property & Transport", href: "/infrastructure-property" },
+            { label: "Agriculture, Manufacturing & Consumer Markets", href: "/agriculture-manufacturing" },
             { label: "Capital, Marketing, Creative & Leadership Systems", href: "/#pillars" }
         ]
     },
