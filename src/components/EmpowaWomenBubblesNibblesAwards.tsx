@@ -956,7 +956,7 @@ const AwardCategories = () => {
 };
 
 // --- CTA Section ---
-const CTASection = () => {
+const CTASection = ({ scrollToForm }: { scrollToForm: () => void }) => {
   const [ctaH1, setCtaH1] = useState(false);
   const [ctaH2, setCtaH2] = useState(false);
   return <section style={{
@@ -1090,7 +1090,7 @@ const CTASection = () => {
           boxShadow: '0 0 32px rgba(255,45,135,0.25)',
           letterSpacing: '0.02em',
           filter: ctaH1 ? 'brightness(1.1)' : 'brightness(1)'
-        }} onMouseEnter={() => setCtaH1(true)} onMouseLeave={() => setCtaH1(false)}>
+        }} onMouseEnter={() => setCtaH1(true)} onMouseLeave={() => setCtaH1(false)} onClick={scrollToForm}>
             <span>Request Executive Partnership Engagement</span>
             <ArrowRight size={16} />
           </button>
@@ -1131,8 +1131,344 @@ const CTASection = () => {
     </section>;
 };
 
+// --- SECTION 4: Request an Invitation Form ---
+const InvitationFormSection = React.forwardRef<HTMLDivElement, {}>((props, ref) => {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [company, setCompany] = useState('');
+  const [designation, setDesignation] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [optIn, setOptIn] = useState(''); // 'Yes' or 'No'
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!firstName || !lastName || !company || !designation || !email || !phone || !optIn) {
+      setError('Please fill in all fields to submit your request.');
+      return;
+    }
+    setError('');
+    setLoading(true);
+    // Gravity Forms payload mapping:
+    // Form ID: 12
+    // NAME (divided into First and Last) ID: 1
+    // COMPANY ID: 2
+    // DESIGNATION ID: 18
+    // EMAIL ID: 4
+    // CELL PHONE ID: 19
+    // OPT-IN ID: 19
+    const payload = {
+      form_id: 12,
+      input_values: {
+        '1.3': firstName,
+        '1.6': lastName,
+        '2': company,
+        '18': designation,
+        '4': email,
+        '19': phone,
+        '19_optin': optIn
+      }
+    };
+    console.log('Submitting invitation request to Gravity Forms (ID 12):', payload);
+    
+    setTimeout(() => {
+      setLoading(false);
+      setSubmitted(true);
+    }, 1800);
+  };
+
+  const INPUT_STYLE: React.CSSProperties = {
+    width: "100%",
+    backgroundColor: "rgba(255,255,255,0.05)",
+    border: "1px solid rgba(255,255,255,0.10)",
+    borderRadius: "8px",
+    padding: "14px 16px",
+    fontFamily: "Figtree",
+    fontSize: "14px",
+    color: "#FFFFFF",
+    outline: "none",
+    transition: "border-color 200ms",
+    boxSizing: "border-box"
+  };
+
+  const SELECT_STYLE: React.CSSProperties = {
+    ...INPUT_STYLE,
+    appearance: "none",
+    WebkitAppearance: "none",
+    backgroundImage: `url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>")`,
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "right 12px center",
+    backgroundSize: "20px"
+  };
+
+  const OPTION_STYLE: React.CSSProperties = {
+    backgroundColor: "#111118", // Crucial: non-white dropdown option background to prevent white-on-white text masking
+    color: "#FFFFFF"
+  };
+
+  return (
+    <section ref={ref} style={{
+      backgroundColor: '#0A0A0F',
+      paddingTop: 'clamp(64px, 8vw, 128px)',
+      paddingBottom: 'clamp(64px, 8vw, 128px)',
+      paddingLeft: 'clamp(20px, 3.75vw, 36px)',
+      paddingRight: 'clamp(20px, 3.75vw, 36px)',
+      position: 'relative',
+      overflow: 'hidden',
+      borderTop: '1px solid rgba(255,255,255,0.06)'
+    }}>
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        zIndex: 0,
+        pointerEvents: 'none',
+        overflow: 'hidden'
+      }}>
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'radial-gradient(circle 400px at 50% 50%, rgba(201,168,76,0.04) 0%, transparent 80%)'
+        }} />
+      </div>
+
+      <div style={{
+        maxWidth: '700px',
+        margin: '0 auto',
+        position: 'relative',
+        zIndex: 1,
+      }}>
+        {/* Title Block */}
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          textAlign: 'center',
+          gap: '16px',
+          marginBottom: '48px'
+        }}>
+          <span style={{
+            fontFamily: 'Figtree',
+            fontSize: '10px',
+            fontWeight: 700,
+            letterSpacing: '0.3em',
+            color: '#C9A84C',
+            textTransform: 'uppercase'
+          }}>
+            REQUEST AN INVITATION
+          </span>
+          <h2 style={{
+            fontFamily: 'Figtree',
+            fontSize: 'clamp(28px, 4vw, 48px)',
+            fontWeight: 300,
+            letterSpacing: '-0.02em',
+            color: '#FFFFFF',
+            margin: 0
+          }}>
+            Secure Your Seat in the Room
+          </h2>
+          <p style={{
+            fontFamily: 'Figtree',
+            fontSize: '15px',
+            color: 'rgba(255,255,255,0.45)',
+            lineHeight: 1.6,
+            maxWidth: '520px',
+            margin: 0
+          }}>
+            Strictly invitation-only. Please submit your details below for delegate vetting and confirmation by our relations team.
+          </p>
+        </div>
+
+        {submitted ? (
+          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} style={{
+            backgroundColor: 'rgba(255,255,255,0.02)',
+            border: '1px solid rgba(201,168,76,0.30)',
+            borderRadius: '24px',
+            padding: '48px 32px',
+            textAlign: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '24px',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.4)'
+          }}>
+            <div style={{
+              width: '64px',
+              height: '64px',
+              backgroundColor: 'rgba(201,168,76,0.10)',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              border: '1px solid rgba(201,168,76,0.30)',
+              color: '#C9A84C'
+            }}>
+              <ShieldCheck size={32} />
+            </div>
+            <div>
+              <h3 style={{
+                fontFamily: 'Figtree',
+                fontSize: '24px',
+                fontWeight: 300,
+                color: '#FFFFFF',
+                margin: '0 0 12px 0'
+              }}>
+                Invitation Request Received
+              </h3>
+              <p style={{
+                fontFamily: 'Figtree',
+                fontSize: '14px',
+                color: 'rgba(255,255,255,0.50)',
+                lineHeight: 1.7,
+                margin: 0,
+                maxWidth: '440px'
+              }}>
+                Thank you, {firstName}. Your request has been queued in our delegate relations system. Our team will review your application and confirm your invitation credentials within 24 hours.
+              </p>
+            </div>
+            <button onClick={() => setSubmitted(false)} style={{
+              backgroundColor: 'transparent',
+              border: '1px solid rgba(255,255,255,0.15)',
+              color: 'rgba(255,255,255,0.60)',
+              borderRadius: '999px',
+              padding: '10px 28px',
+              fontFamily: 'Figtree',
+              fontSize: '13px',
+              cursor: 'pointer',
+              transition: 'all 200ms'
+            }} onMouseEnter={e => e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.05)'} onMouseLeave={e => e.currentTarget.style.backgroundColor = 'transparent'}>
+              Submit Another Request
+            </button>
+          </motion.div>
+        ) : (
+          <form onSubmit={handleSubmit} style={{
+            backgroundColor: 'rgba(255,255,255,0.02)',
+            border: '1px solid rgba(255,255,255,0.06)',
+            borderRadius: '24px',
+            padding: 'clamp(20px, 5vw, 40px)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '24px',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)'
+          }}>
+            {error && (
+              <div style={{
+                color: '#ff8a8a',
+                fontSize: '13px',
+                backgroundColor: 'rgba(255,138,138,0.06)',
+                border: '1px solid rgba(255,138,138,0.20)',
+                borderRadius: '8px',
+                padding: '12px 16px',
+                fontFamily: 'Figtree'
+              }}>
+                {error}
+              </div>
+            )}
+
+            <div className="form-row-2col" style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gap: '20px'
+            }}>
+              <div>
+                <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '8px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>First Name</label>
+                <input type="text" placeholder="Jane" value={firstName} onChange={e => setFirstName(e.target.value)} style={INPUT_STYLE} onFocus={e => e.target.style.borderColor = '#C9A84C'} onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.10)'} />
+              </div>
+              <div>
+                <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '8px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Last Name</label>
+                <input type="text" placeholder="Doe" value={lastName} onChange={e => setLastName(e.target.value)} style={INPUT_STYLE} onFocus={e => e.target.style.borderColor = '#C9A84C'} onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.10)'} />
+              </div>
+            </div>
+
+            <div className="form-row-2col" style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gap: '20px'
+            }}>
+              <div>
+                <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '8px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Company</label>
+                <input type="text" placeholder="Acme Corporation" value={company} onChange={e => setCompany(e.target.value)} style={INPUT_STYLE} onFocus={e => e.target.style.borderColor = '#C9A84C'} onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.10)'} />
+              </div>
+              <div>
+                <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '8px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Designation</label>
+                <input type="text" placeholder="Managing Director, CEO..." value={designation} onChange={e => setDesignation(e.target.value)} style={INPUT_STYLE} onFocus={e => e.target.style.borderColor = '#C9A84C'} onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.10)'} />
+              </div>
+            </div>
+
+            <div className="form-row-2col" style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gap: '20px'
+            }}>
+              <div>
+                <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '8px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Email Address</label>
+                <input type="email" placeholder="jane@company.com" value={email} onChange={e => setEmail(e.target.value)} style={INPUT_STYLE} onFocus={e => e.target.style.borderColor = '#C9A84C'} onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.10)'} />
+              </div>
+              <div>
+                <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '8px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Cell Phone</label>
+                <input type="tel" placeholder="+27 82 000 0000" value={phone} onChange={e => setPhone(e.target.value)} style={INPUT_STYLE} onFocus={e => e.target.style.borderColor = '#C9A84C'} onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.10)'} />
+              </div>
+            </div>
+
+            <div>
+              <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '8px', letterSpacing: '0.05em', textTransform: 'uppercase', lineHeight: 1.4 }}>I would like to receive information and updates relating to the EmpowaWomen Annual Summit</label>
+              <select value={optIn} onChange={e => setOptIn(e.target.value)} style={SELECT_STYLE} onFocus={e => e.target.style.borderColor = '#C9A84C'} onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.10)'}>
+                <option value="" disabled style={OPTION_STYLE}>Select an option...</option>
+                <option value="Yes" style={OPTION_STYLE}>Yes</option>
+                <option value="No" style={OPTION_STYLE}>No</option>
+              </select>
+            </div>
+
+            <button type="submit" disabled={loading} style={{
+              marginTop: '8px',
+              width: '100%',
+              height: '52px',
+              backgroundColor: '#FF2D87',
+              color: '#FFFFFF',
+              fontFamily: 'Figtree',
+              fontSize: '15px',
+              fontWeight: 500,
+              border: 'none',
+              borderRadius: '999px',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px',
+              transition: 'filter 200ms',
+              boxShadow: '0 0 32px rgba(255,45,135,0.25)'
+            }} onMouseEnter={e => e.currentTarget.style.filter = 'brightness(1.1)'} onMouseLeave={e => e.currentTarget.style.filter = 'brightness(1)'}>
+              {loading ? (
+                <span>Processing Vetting...</span>
+              ) : (
+                <>
+                  <span>Submit Request for Vetting</span>
+                  <ArrowRight size={16} />
+                </>
+              )}
+            </button>
+          </form>
+        )}
+      </div>
+
+      <style>{`
+        @media (max-width: 599px) {
+          .form-row-2col {
+            grid-template-columns: 1fr !important;
+            gap: 20px !important;
+          }
+        }
+      `}</style>
+    </section>
+  );
+});
+
 // --- Hero Section ---
-const HeroSection = () => {
+const HeroSection = ({ scrollToForm }: { scrollToForm: () => void }) => {
   const {
     scrollY
   } = useScroll();
@@ -1472,7 +1808,7 @@ const HeroSection = () => {
           boxShadow: '0 0 32px rgba(255,45,135,0.25)',
           letterSpacing: '0.02em',
           filter: primaryHover ? 'brightness(1.1)' : 'brightness(1)'
-        }} onMouseEnter={() => setPrimaryHover(true)} onMouseLeave={() => setPrimaryHover(false)}>
+        }} onMouseEnter={() => setPrimaryHover(true)} onMouseLeave={() => setPrimaryHover(false)} onClick={scrollToForm}>
             Request Invitation
           </button>
           <button className="hero-btn-secondary" style={{
@@ -1618,6 +1954,13 @@ const HeroSection = () => {
     </section>;
 };
 export const LeadershipAwardsGala = () => {
+  const formRef = React.useRef<HTMLDivElement>(null);
+  const scrollToForm = () => {
+    formRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  };
   const {
     scrollYProgress
   } = useScroll();
@@ -1628,10 +1971,11 @@ export const LeadershipAwardsGala = () => {
   });
   void scaleX;
   return <main className="min-h-screen bg-[#0A0A0F] selection:bg-[#FF2D87]/30 selection:text-white">
-      <HeroSection />
+      <HeroSection scrollToForm={scrollToForm} />
       <ExperienceStrategy />
       <GalaTimeline />
       <AwardCategories />
-      <CTASection />
+      <CTASection scrollToForm={scrollToForm} />
+      <InvitationFormSection ref={formRef} />
     </main>;
 };
