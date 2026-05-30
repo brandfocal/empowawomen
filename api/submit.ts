@@ -68,10 +68,17 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const result = await makeRequest();
     let responseBody;
     
-    try {
-      responseBody = JSON.parse(result.body);
-    } catch (e) {
-      responseBody = { message: result.body };
+    const isHtml = result.body.trim().startsWith('<!DOCTYPE') || result.body.trim().startsWith('<html');
+    if (isHtml) {
+      responseBody = {
+        message: 'The WordPress server returned an HTML page (likely a 404 Not Found or a server error). This usually indicates that the Gravity Forms REST API v2 is not enabled on your WordPress site, or the GF_API_URL environment variable is configured incorrectly in your Vercel dashboard. Please ensure the REST API is enabled in your WordPress dashboard (Forms > Settings > REST API).'
+      };
+    } else {
+      try {
+        responseBody = JSON.parse(result.body);
+      } catch (e) {
+        responseBody = { message: result.body };
+      }
     }
 
     if (result.statusCode && (result.statusCode < 200 || result.statusCode >= 300)) {

@@ -1163,8 +1163,8 @@ const InvitationFormSection = React.forwardRef<HTMLDivElement, {}>((props, ref) 
         body: JSON.stringify({
           form_id: 12,
           input_values: {
-            'input_1_3': firstName,
-            'input_1_6': lastName,
+            'input_1.3': firstName,
+            'input_1.6': lastName,
             'input_2': company,
             'input_18': designation,
             'input_4': email,
