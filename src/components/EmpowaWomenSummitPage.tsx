@@ -2763,7 +2763,7 @@ const RegistrationFormSection: React.FC = () => {
               </select>
             </div>
             <input type="email" placeholder="Email Address" value={email} onChange={e => setEmail(e.target.value)} style={inputStyle} />
-            <input type="tel" placeholder="+27 ..." value={phone} onChange={e => setPhone(e.target.value)} style={inputStyle} />
+            <input type="tel" placeholder="0 ..." value={phone} onChange={e => setPhone(e.target.value)} style={inputStyle} />
             <select value={referral} onChange={e => setReferral(e.target.value)} style={{
               ...inputStyle,
               appearance: "none",

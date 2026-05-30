@@ -998,7 +998,7 @@ const SmartRoutingForm = () => {
                         }, {
                             label: "Direct Mobile / WhatsApp",
                             type: "tel",
-                            placeholder: "+27 00 000 0000"
+                            placeholder: "082 000 0000"
                         }].map(field => <div key={field.label} style={{
                             display: "flex",
                             flexDirection: "column",

@@ -1410,7 +1410,7 @@ const InvitationFormSection = React.forwardRef<HTMLDivElement, {}>((props, ref) 
               </div>
               <div>
                 <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '8px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Cell Phone</label>
-                <input type="tel" placeholder="+27 82 000 0000" value={phone} onChange={e => setPhone(e.target.value)} style={INPUT_STYLE} onFocus={e => e.target.style.borderColor = '#C9A84C'} onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.10)'} />
+                <input type="tel" placeholder="082 000 0000" value={phone} onChange={e => setPhone(e.target.value)} style={INPUT_STYLE} onFocus={e => e.target.style.borderColor = '#C9A84C'} onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.10)'} />
               </div>
             </div>
 
