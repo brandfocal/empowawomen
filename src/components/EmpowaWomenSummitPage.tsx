@@ -2093,11 +2093,6 @@ const PastSpeakersShowcase: React.FC = () => {
         animation: speakerMarqueeRight 55s linear infinite;
       }
 
-      .speaker-marquee-container:hover .speaker-marquee-row-1,
-      .speaker-marquee-container:hover .speaker-marquee-row-2 {
-        animation-play-state: paused;
-      }
-
       .speaker-card-prominent {
         transition: all 350ms cubic-bezier(0.21, 0.47, 0.32, 0.98) !important;
       }
