@@ -1424,12 +1424,71 @@ const InvitationFormSection = React.forwardRef<HTMLDivElement, {}>((props, ref) 
             </div>
 
             <div>
-              <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '8px', letterSpacing: '0.05em', textTransform: 'uppercase', lineHeight: 1.4 }}>I would like to receive information and updates relating to the EmpowaWomen Annual Summit</label>
-              <select value={optIn} onChange={e => setOptIn(e.target.value)} style={SELECT_STYLE} onFocus={e => e.target.style.borderColor = '#C9A84C'} onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.10)'}>
-                <option value="" disabled style={OPTION_STYLE}>Select an option...</option>
-                <option value="Yes" style={OPTION_STYLE}>Yes</option>
-                <option value="No" style={OPTION_STYLE}>No</option>
-              </select>
+              <label style={{
+                display: 'block',
+                fontFamily: 'Figtree',
+                fontSize: '11px',
+                fontWeight: 600,
+                color: 'rgba(255,255,255,0.40)',
+                marginBottom: '12px',
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase',
+                lineHeight: 1.4
+              }}>
+                I would like to receive information and updates relating to the EmpowaWomen Annual Summit
+              </label>
+              <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
+                <label style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  fontFamily: 'Figtree',
+                  fontSize: '14px',
+                  color: '#FFFFFF',
+                  cursor: 'pointer',
+                  userSelect: 'none'
+                }}>
+                  <input
+                    type="radio"
+                    name="optIn"
+                    value="Yes"
+                    checked={optIn === 'Yes'}
+                    onChange={() => setOptIn('Yes')}
+                    style={{
+                      accentColor: '#FF2D87',
+                      width: '18px',
+                      height: '18px',
+                      cursor: 'pointer'
+                    }}
+                  />
+                  <span>Yes</span>
+                </label>
+                <label style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  fontFamily: 'Figtree',
+                  fontSize: '14px',
+                  color: '#FFFFFF',
+                  cursor: 'pointer',
+                  userSelect: 'none'
+                }}>
+                  <input
+                    type="radio"
+                    name="optIn"
+                    value="No"
+                    checked={optIn === 'No'}
+                    onChange={() => setOptIn('No')}
+                    style={{
+                      accentColor: '#FF2D87',
+                      width: '18px',
+                      height: '18px',
+                      cursor: 'pointer'
+                    }}
+                  />
+                  <span>No</span>
+                </label>
+              </div>
             </div>
 
             <button type="submit" disabled={loading} style={{
