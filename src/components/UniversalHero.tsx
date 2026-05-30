@@ -53,10 +53,26 @@ export const UniversalHero: React.FC<UniversalHeroProps> = ({
             }} />
 
             {/* Background Image Container */}
-            <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-                <motion.div className="absolute inset-0" initial={{ scale: 1.06, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 2.4, ease: "easeOut" }}>
+            <div style={{
+                position: "absolute",
+                inset: 0,
+                zIndex: 0,
+                overflow: "hidden",
+                pointerEvents: "none"
+            }}>
+                <motion.div style={{ position: "absolute", inset: 0 }} initial={{ scale: 1.06, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 2.4, ease: "easeOut" }}>
                     <motion.div style={{ y: imageY, position: "absolute", inset: 0 }}>
-                        <img src={bgImage} alt="" className="w-full h-full object-cover" style={{ objectPosition: bgImagePosition }} />
+                        <img
+                            src={bgImage}
+                            alt=""
+                            style={{
+                                width: "100%",
+                                height: "100%",
+                                objectFit: "cover",
+                                objectPosition: bgImagePosition,
+                                opacity: 0.55
+                            }}
+                        />
                     </motion.div>
                 </motion.div>
                 {/* Gradient Overlays */}

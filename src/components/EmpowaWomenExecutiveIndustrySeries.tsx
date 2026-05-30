@@ -232,8 +232,17 @@ export const ExecutiveIndustrySeries: React.FC = () => {
             }} />
 
             {/* Background image */}
-            <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-                <motion.div className="absolute inset-0" initial={{
+            <div style={{
+                position: "absolute",
+                inset: 0,
+                zIndex: 0,
+                overflow: "hidden",
+                pointerEvents: "none"
+            }}>
+                <motion.div style={{
+                    position: "absolute",
+                    inset: 0
+                }} initial={{
                     scale: 1.06,
                     opacity: 0
                 }} animate={{
@@ -248,7 +257,16 @@ export const ExecutiveIndustrySeries: React.FC = () => {
                         position: "absolute",
                         inset: 0
                     }}>
-                        <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=1920&q=90" alt="" className="w-full h-full object-cover" />
+                        <img
+                            src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=1920&q=90"
+                            alt=""
+                            style={{
+                                width: "100%",
+                                height: "100%",
+                                objectFit: "cover",
+                                opacity: 0.55
+                            }}
+                        />
                     </motion.div>
                 </motion.div>
                 <div style={{
