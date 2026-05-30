@@ -1144,7 +1144,7 @@ const InvitationFormSection = React.forwardRef<HTMLDivElement, {}>((props, ref) 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!firstName || !lastName || !company || !designation || !email || !phone || !optIn) {
       setError('Please fill in all fields to submit your request.');
@@ -1152,32 +1152,41 @@ const InvitationFormSection = React.forwardRef<HTMLDivElement, {}>((props, ref) 
     }
     setError('');
     setLoading(true);
-    // Gravity Forms payload mapping:
-    // Form ID: 12
-    // NAME (divided into First and Last) ID: 1
-    // COMPANY ID: 2
-    // DESIGNATION ID: 18
-    // EMAIL ID: 4
-    // CELL PHONE ID: 19
-    // OPT-IN ID: 19
-    const payload = {
-      form_id: 12,
-      input_values: {
-        '1.3': firstName,
-        '1.6': lastName,
-        '2': company,
-        '18': designation,
-        '4': email,
-        '19': phone,
-        '19_optin': optIn
+
+    try {
+      // Map form fields to flat input keys for Gravity Forms /submissions endpoint
+      const response = await fetch('/api/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          form_id: 12,
+          input_values: {
+            'input_1_3': firstName,
+            'input_1_6': lastName,
+            'input_2': company,
+            'input_18': designation,
+            'input_4': email,
+            'input_19': phone,        // CELL PHONE ID: 19
+            'input_20': optIn,        // Likely field 20 for updates
+            'input_21': optIn         // Fallback field 21
+          }
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to submit invitation request.');
       }
-    };
-    console.log('Submitting invitation request to Gravity Forms (ID 12):', payload);
-    
-    setTimeout(() => {
+
       setLoading(false);
       setSubmitted(true);
-    }, 1800);
+    } catch (err: any) {
+      setLoading(false);
+      setError(err.message || 'An error occurred while submitting. Please try again.');
+    }
   };
 
   const INPUT_STYLE: React.CSSProperties = {
