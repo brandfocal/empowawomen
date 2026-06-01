@@ -85,8 +85,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     if (result.statusCode && (result.statusCode < 200 || result.statusCode >= 300)) {
       console.error('Gravity Forms API responded with error status:', result.statusCode, responseBody);
+      let errorMsg = responseBody.message;
+      if (responseBody.validation_messages && typeof responseBody.validation_messages === 'object') {
+        const valErrors = Object.entries(responseBody.validation_messages)
+          .map(([id, msg]) => `Field ${id}: ${msg}`)
+          .join(', ');
+        errorMsg = `Validation failed: ${valErrors}`;
+      }
       return res.status(result.statusCode).json({ 
-        error: responseBody.message || `Gravity Forms responded with status ${result.statusCode}` 
+        error: errorMsg || `Gravity Forms responded with status ${result.statusCode}` 
       });
     }
 
