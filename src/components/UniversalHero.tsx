@@ -141,7 +141,15 @@ export const UniversalHero: React.FC<UniversalHeroProps> = ({
                                 display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center", gap: "20px", marginBottom: bottomSection ? "48px" : "0"
                             }}>
                                 {primaryCtaText && (
-                                    <a href={primaryCtaLink} style={{
+                                    <a href={primaryCtaLink} onClick={e => {
+                                        if (primaryCtaLink.startsWith("#")) {
+                                            e.preventDefault();
+                                            const target = document.getElementById(primaryCtaLink.substring(1));
+                                            if (target) {
+                                                target.scrollIntoView({ behavior: "smooth" });
+                                            }
+                                        }
+                                    }} style={{
                                         fontFamily: "Figtree", fontSize: "15px", fontWeight: 500, color: "#FFFFFF", backgroundColor: "#FF2D87",
                                         height: "50px", padding: "0 32px", display: "inline-flex", alignItems: "center", textDecoration: "none",
                                         letterSpacing: "0.02em", borderRadius: "999px", transition: "all 200ms ease-out", boxShadow: "0 0 32px rgba(255,45,135,0.25)"
@@ -154,7 +162,15 @@ export const UniversalHero: React.FC<UniversalHeroProps> = ({
                                     </a>
                                 )}
                                 {secondaryCtaText && (
-                                    <a href={secondaryCtaLink} style={{
+                                    <a href={secondaryCtaLink} onClick={e => {
+                                        if (secondaryCtaLink.startsWith("#")) {
+                                            e.preventDefault();
+                                            const target = document.getElementById(secondaryCtaLink.substring(1));
+                                            if (target) {
+                                                target.scrollIntoView({ behavior: "smooth" });
+                                            }
+                                        }
+                                    }} style={{
                                         fontFamily: "Figtree", fontSize: "15px", fontWeight: 400, color: "#FFFFFF", backgroundColor: "transparent",
                                         height: "50px", padding: "0 32px", display: "inline-flex", alignItems: "center", textDecoration: "none",
                                         border: "1px solid rgba(255,255,255,0.20)", letterSpacing: "0.02em", borderRadius: "999px", transition: "all 200ms ease-out"

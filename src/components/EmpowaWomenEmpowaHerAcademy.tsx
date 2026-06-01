@@ -1312,7 +1312,94 @@ const PeerTestimonials = () => {
 
 // ─── Application Form (Elevated) ──────────────────────────────────────────────
 const ApplicationForm = () => {
-    return <section style={{
+    const [fullName, setFullName] = React.useState("");
+    const [age, setAge] = React.useState("");
+    const [settlement, setSettlement] = React.useState("");
+    const [verticalInterest, setVerticalInterest] = React.useState("");
+    const [organization, setOrganization] = React.useState("");
+    const [mobile, setMobile] = React.useState("");
+    const [email, setEmail] = React.useState("");
+    const [loading, setLoading] = React.useState(false);
+    const [submitted, setSubmitted] = React.useState(false);
+    const [error, setError] = React.useState("");
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!fullName || !age || !settlement || !verticalInterest || !organization || !mobile || !email) {
+            setError("Please fill in all required fields.");
+            return;
+        }
+        setError("");
+        setLoading(true);
+
+        try {
+            const response = await fetch('/api/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    form_id: 15,
+                    input_values: {
+                        'input_10': fullName,
+                        'input_14': age,
+                        'input_15': settlement,
+                        'input_16': verticalInterest,
+                        'input_11': organization,
+                        'input_12': mobile,
+                        'input_4': email
+                    }
+                })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || 'Failed to submit application.');
+            }
+
+            setSubmitted(true);
+            setFullName("");
+            setAge("");
+            setSettlement("");
+            setVerticalInterest("");
+            setOrganization("");
+            setMobile("");
+            setEmail("");
+        } catch (err: any) {
+            setError(err.message || "An unexpected error occurred. Please try again.");
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const INPUT_STYLE: React.CSSProperties = {
+        fontFamily: 'Figtree',
+        fontWeight: 400,
+        fontSize: '14px',
+        width: '100%',
+        backgroundColor: 'rgba(255,255,255,0.06)',
+        border: '1px solid rgba(255,255,255,0.10)',
+        borderRadius: '12px',
+        padding: '16px 20px',
+        color: '#FFFFFF',
+        outline: 'none',
+        transition: 'all 200ms ease-out',
+        boxSizing: 'border-box'
+    };
+
+    const LABEL_STYLE: React.CSSProperties = {
+        fontFamily: 'Figtree',
+        fontWeight: 600,
+        fontSize: '9px',
+        letterSpacing: '0.28em',
+        textTransform: 'uppercase',
+        color: 'rgba(255,255,255,0.35)',
+        display: "block",
+        marginBottom: "8px"
+    };
+
+    return <section id="academy-apply-form" style={{
         backgroundColor: '#0A0A0F',
         paddingTop: '128px',
         paddingBottom: '128px',
@@ -1396,212 +1483,274 @@ const ApplicationForm = () => {
 
             {/* Right: Form */}
             <div className="academy-form-right-col">
-                <form style={{
-                    backgroundColor: 'rgba(255,255,255,0.04)',
-                    border: '1px solid rgba(255,255,255,0.08)',
-                    borderRadius: '24px',
-                    padding: 'clamp(32px, 4vw, 40px)',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '20px'
-                }}>
-                    <div className="academy-form-row-grid">
+                {submitted ? (
+                    <div style={{
+                        backgroundColor: 'rgba(255,255,255,0.04)',
+                        border: '1px solid rgba(255,255,255,0.08)',
+                        borderRadius: '24px',
+                        padding: 'clamp(32px, 4vw, 40px)',
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        textAlign: "center",
+                        gap: "24px"
+                    }}>
                         <div style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: '8px'
+                            width: 64,
+                            height: 64,
+                            borderRadius: "50%",
+                            backgroundColor: "rgba(255,45,135,0.12)",
+                            color: "#FF2D87",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            border: "1px solid rgba(255,45,135,0.2)"
                         }}>
-                            <label style={{
-                                fontFamily: 'Figtree',
-                                fontWeight: 600,
-                                fontSize: '9px',
-                                letterSpacing: '0.28em',
-                                textTransform: 'uppercase',
-                                color: 'rgba(255,255,255,0.35)'
-                            }}>Legal Name</label>
-                            <input type="text" placeholder="Your full legal name" style={{
-                                fontFamily: 'Figtree',
-                                fontWeight: 400,
-                                fontSize: '14px',
-                                width: '100%',
-                                backgroundColor: 'rgba(255,255,255,0.06)',
-                                border: '1px solid rgba(255,255,255,0.10)',
-                                borderRadius: '12px',
-                                padding: '16px 20px',
-                                color: '#FFFFFF',
-                                outline: 'none',
-                                transition: 'border-color 200ms',
-                                boxSizing: 'border-box'
-                            }} onFocus={e => {
-                                (e.currentTarget as HTMLInputElement).style.borderColor = '#FF2D87';
-                            }} onBlur={e => {
-                                (e.currentTarget as HTMLInputElement).style.borderColor = 'rgba(255,255,255,0.10)';
-                            }} />
+                            <CheckCircle size={28} />
                         </div>
                         <div style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: '8px'
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: "8px"
                         }}>
-                            <label style={{
-                                fontFamily: 'Figtree',
-                                fontWeight: 600,
-                                fontSize: '9px',
-                                letterSpacing: '0.28em',
-                                textTransform: 'uppercase',
-                                color: 'rgba(255,255,255,0.35)'
-                            }}>Age (18–34)</label>
-                            <input type="number" placeholder="e.g. 24" style={{
-                                fontFamily: 'Figtree',
-                                fontWeight: 400,
-                                fontSize: '14px',
-                                width: '100%',
-                                backgroundColor: 'rgba(255,255,255,0.06)',
-                                border: '1px solid rgba(255,255,255,0.10)',
-                                borderRadius: '12px',
-                                padding: '16px 20px',
-                                color: '#FFFFFF',
-                                outline: 'none',
-                                transition: 'border-color 200ms',
-                                boxSizing: 'border-box'
-                            }} onFocus={e => {
-                                (e.currentTarget as HTMLInputElement).style.borderColor = '#FF2D87';
-                            }} onBlur={e => {
-                                (e.currentTarget as HTMLInputElement).style.borderColor = 'rgba(255,255,255,0.10)';
-                            }} />
+                            <h3 style={{
+                                fontFamily: "Figtree",
+                                fontWeight: 500,
+                                fontSize: "24px",
+                                color: "#FFFFFF",
+                                margin: 0
+                            }}>
+                                Application Submitted
+                            </h3>
+                            <p style={{
+                                fontFamily: "Figtree",
+                                fontSize: "15px",
+                                color: "rgba(255,255,255,0.5)",
+                                lineHeight: 1.6,
+                                maxWidth: "400px",
+                                margin: 0
+                            }}>
+                                Thank you for applying to the EmpowaHER Academy. Your application has been received and our cohort selection committee is reviewing it.
+                            </p>
                         </div>
+                        <button onClick={() => setSubmitted(false)} style={{
+                            fontFamily: "Figtree",
+                            fontSize: "14px",
+                            fontWeight: 500,
+                            color: "#FFFFFF",
+                            backgroundColor: "#FF2D87",
+                            padding: "12px 28px",
+                            borderRadius: "999px",
+                            border: "none",
+                            cursor: "pointer",
+                            transition: "all 200ms ease-out"
+                        }} onMouseEnter={e => {
+                            (e.currentTarget as HTMLButtonElement).style.filter = "brightness(1.1)";
+                        }} onMouseLeave={e => {
+                            (e.currentTarget as HTMLButtonElement).style.filter = "brightness(1)";
+                        }}>
+                            Submit Another Application
+                        </button>
                     </div>
-                    <div style={{
+                ) : (
+                    <form onSubmit={handleSubmit} style={{
+                        backgroundColor: 'rgba(255,255,255,0.04)',
+                        border: '1px solid rgba(255,255,255,0.08)',
+                        borderRadius: '24px',
+                        padding: 'clamp(32px, 4vw, 40px)',
                         display: 'flex',
                         flexDirection: 'column',
-                        gap: '8px'
+                        gap: '20px'
                     }}>
-                        <label style={{
-                            fontFamily: 'Figtree',
-                            fontWeight: 600,
-                            fontSize: '9px',
-                            letterSpacing: '0.28em',
-                            textTransform: 'uppercase',
-                            color: 'rgba(255,255,255,0.35)'
-                        }}>Regional Settlement Type</label>
-                        <select style={{
+                        {error && (
+                            <div style={{
+                                padding: "12px 16px",
+                                backgroundColor: "rgba(239, 68, 68, 0.08)",
+                                border: "1px solid rgba(239, 68, 68, 0.2)",
+                                borderRadius: "12px",
+                                color: "#EF4444",
+                                fontSize: "13px",
+                                fontFamily: "Figtree",
+                                lineHeight: 1.4
+                            }}>
+                                {error}
+                            </div>
+                        )}
+
+                        <div className="academy-form-row-grid">
+                            {/* Full Name */}
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                <label style={LABEL_STYLE}>Legal Name*</label>
+                                <input
+                                    type="text"
+                                    required
+                                    value={fullName}
+                                    onChange={e => setFullName(e.target.value)}
+                                    placeholder="Your full legal name"
+                                    style={INPUT_STYLE}
+                                    onFocus={e => { e.currentTarget.style.borderColor = '#FF2D87'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.08)'; }}
+                                    onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.10)'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'; }}
+                                />
+                            </div>
+                            {/* Age */}
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                <label style={LABEL_STYLE}>Age (18–34)*</label>
+                                <input
+                                    type="number"
+                                    required
+                                    min="18"
+                                    max="34"
+                                    value={age}
+                                    onChange={e => setAge(e.target.value)}
+                                    placeholder="e.g. 24"
+                                    style={INPUT_STYLE}
+                                    onFocus={e => { e.currentTarget.style.borderColor = '#FF2D87'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.08)'; }}
+                                    onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.10)'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'; }}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="academy-form-row-grid">
+                            {/* Email */}
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                <label style={LABEL_STYLE}>Email Address*</label>
+                                <input
+                                    type="email"
+                                    required
+                                    value={email}
+                                    onChange={e => setEmail(e.target.value)}
+                                    placeholder="you@example.com"
+                                    style={INPUT_STYLE}
+                                    onFocus={e => { e.currentTarget.style.borderColor = '#FF2D87'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.08)'; }}
+                                    onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.10)'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'; }}
+                                />
+                            </div>
+                            {/* Mobile */}
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                <label style={LABEL_STYLE}>Direct Mobile / WhatsApp*</label>
+                                <input
+                                    type="tel"
+                                    required
+                                    value={mobile}
+                                    onChange={e => setMobile(e.target.value)}
+                                    placeholder="e.g. 082 000 0000"
+                                    style={INPUT_STYLE}
+                                    onFocus={e => { e.currentTarget.style.borderColor = '#FF2D87'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.08)'; }}
+                                    onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.10)'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'; }}
+                                />
+                            </div>
+                        </div>
+
+                        {/* Institutional Organization */}
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                            <label style={LABEL_STYLE}>Institutional / Corporate Organization*</label>
+                            <input
+                                type="text"
+                                required
+                                value={organization}
+                                onChange={e => setOrganization(e.target.value)}
+                                placeholder="Your university, employer, or startup name"
+                                style={INPUT_STYLE}
+                                onFocus={e => { e.currentTarget.style.borderColor = '#FF2D87'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.08)'; }}
+                                onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.10)'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'; }}
+                            />
+                        </div>
+
+                        {/* Regional Settlement */}
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                            <label style={LABEL_STYLE}>Regional Settlement Type*</label>
+                            <div style={{ position: "relative" }}>
+                                <select
+                                    required
+                                    value={settlement}
+                                    onChange={e => setSettlement(e.target.value)}
+                                    style={{
+                                        ...INPUT_STYLE,
+                                        appearance: 'none',
+                                        cursor: 'pointer'
+                                    }}
+                                    onFocus={e => { e.currentTarget.style.borderColor = '#FF2D87'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.08)'; }}
+                                    onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.10)'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'; }}
+                                >
+                                    <option value="" disabled style={{ backgroundColor: '#0A0A0F' }}>Select settlement type</option>
+                                    <option value="Township Hub" style={{ backgroundColor: '#0A0A0F' }}>Township Hub</option>
+                                    <option value="Rural Economic Corridor" style={{ backgroundColor: '#0A0A0F' }}>Rural Economic Corridor</option>
+                                    <option value="Academic / Tertiary Node" style={{ backgroundColor: '#0A0A0F' }}>Academic / Tertiary Node</option>
+                                </select>
+                                <div style={{ position: "absolute", right: "20px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "rgba(255,255,255,0.40)", display: "flex", alignItems: "center" }}>
+                                    <ChevronDown size={18} />
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Primary Vertical Interest */}
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                            <label style={LABEL_STYLE}>Primary Vertical Interest*</label>
+                            <div style={{ position: "relative" }}>
+                                <select
+                                    required
+                                    value={verticalInterest}
+                                    onChange={e => setVerticalInterest(e.target.value)}
+                                    style={{
+                                        ...INPUT_STYLE,
+                                        appearance: 'none',
+                                        cursor: 'pointer'
+                                    }}
+                                    onFocus={e => { e.currentTarget.style.borderColor = '#FF2D87'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.08)'; }}
+                                    onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.10)'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'; }}
+                                >
+                                    <option value="" disabled style={{ backgroundColor: '#0A0A0F' }}>Select interest area</option>
+                                    <option value="Future Skills & AI" style={{ backgroundColor: '#0A0A0F' }}>Future Skills & AI</option>
+                                    <option value="Entrepreneurship" style={{ backgroundColor: '#0A0A0F' }}>Entrepreneurship</option>
+                                    <option value="Creative Economy" style={{ backgroundColor: '#0A0A0F' }}>Creative Economy</option>
+                                    <option value="Leadership & Influence" style={{ backgroundColor: '#0A0A0F' }}>Leadership & Influence</option>
+                                </select>
+                                <div style={{ position: "absolute", right: "20px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "rgba(255,255,255,0.40)", display: "flex", alignItems: "center" }}>
+                                    <ChevronDown size={18} />
+                                </div>
+                            </div>
+                        </div>
+
+                        <button
+                            type="submit"
+                            disabled={loading}
+                            style={{
+                                fontFamily: 'Figtree',
+                                fontWeight: 500,
+                                fontSize: '15px',
+                                width: '100%',
+                                backgroundColor: '#FF2D87',
+                                color: '#FFFFFF',
+                                border: 'none',
+                                borderRadius: '999px',
+                                padding: '16px 32px',
+                                cursor: loading ? 'not-allowed' : 'pointer',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                gap: '12px',
+                                marginTop: '8px',
+                                opacity: loading ? 0.7 : 1,
+                                transition: 'filter 200ms'
+                            }}
+                            onMouseEnter={e => { if (!loading) (e.currentTarget as HTMLButtonElement).style.filter = 'brightness(1.1)'; }}
+                            onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.filter = 'brightness(1)'; }}
+                        >
+                            <span>{loading ? "Submitting Application..." : "Submit Application & Request Cohort Intake Entry"}</span>
+                            <ArrowRight size={20} />
+                        </button>
+                        <p style={{
                             fontFamily: 'Figtree',
                             fontWeight: 400,
-                            fontSize: '14px',
-                            width: '100%',
-                            backgroundColor: 'rgba(255,255,255,0.06)',
-                            border: '1px solid rgba(255,255,255,0.10)',
-                            borderRadius: '12px',
-                            padding: '16px 20px',
-                            color: '#FFFFFF',
-                            outline: 'none',
-                            appearance: 'none',
-                            cursor: 'pointer',
-                            transition: 'border-color 200ms'
-                        }} onFocus={e => {
-                            (e.currentTarget as HTMLSelectElement).style.borderColor = '#FF2D87';
-                        }} onBlur={e => {
-                            (e.currentTarget as HTMLSelectElement).style.borderColor = 'rgba(255,255,255,0.10)';
+                            fontSize: '11px',
+                            color: 'rgba(255,255,255,0.25)',
+                            textAlign: 'center',
+                            marginTop: '16px'
                         }}>
-                            <option value="" disabled style={{
-                                backgroundColor: '#0A0A0F'
-                            }}>Select settlement type</option>
-                            <option value="township" style={{
-                                backgroundColor: '#0A0A0F'
-                            }}>Township Hub</option>
-                            <option value="rural" style={{
-                                backgroundColor: '#0A0A0F'
-                            }}>Rural Economic Corridor</option>
-                            <option value="academic" style={{
-                                backgroundColor: '#0A0A0F'
-                            }}>Academic / Tertiary Node</option>
-                        </select>
-                    </div>
-                    <div style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: '8px'
-                    }}>
-                        <label style={{
-                            fontFamily: 'Figtree',
-                            fontWeight: 600,
-                            fontSize: '9px',
-                            letterSpacing: '0.28em',
-                            textTransform: 'uppercase',
-                            color: 'rgba(255,255,255,0.35)'
-                        }}>Primary Vertical Interest</label>
-                        <select style={{
-                            fontFamily: 'Figtree',
-                            fontWeight: 400,
-                            fontSize: '14px',
-                            width: '100%',
-                            backgroundColor: 'rgba(255,255,255,0.06)',
-                            border: '1px solid rgba(255,255,255,0.10)',
-                            borderRadius: '12px',
-                            padding: '16px 20px',
-                            color: '#FFFFFF',
-                            outline: 'none',
-                            appearance: 'none',
-                            cursor: 'pointer',
-                            transition: 'border-color 200ms'
-                        }} onFocus={e => {
-                            (e.currentTarget as HTMLSelectElement).style.borderColor = '#FF2D87';
-                        }} onBlur={e => {
-                            (e.currentTarget as HTMLSelectElement).style.borderColor = 'rgba(255,255,255,0.10)';
-                        }}>
-                            <option value="" disabled style={{
-                                backgroundColor: '#0A0A0F'
-                            }}>Select interest area</option>
-                            <option value="tech" style={{
-                                backgroundColor: '#0A0A0F'
-                            }}>Future Skills & AI</option>
-                            <option value="ent" style={{
-                                backgroundColor: '#0A0A0F'
-                            }}>Entrepreneurship</option>
-                            <option value="creative" style={{
-                                backgroundColor: '#0A0A0F'
-                            }}>Creative Economy</option>
-                            <option value="leadership" style={{
-                                backgroundColor: '#0A0A0F'
-                            }}>Leadership & Influence</option>
-                        </select>
-                    </div>
-                    <button type="submit" style={{
-                        fontFamily: 'Figtree',
-                        fontWeight: 500,
-                        fontSize: '15px',
-                        width: '100%',
-                        backgroundColor: '#FF2D87',
-                        color: '#FFFFFF',
-                        border: 'none',
-                        borderRadius: '999px',
-                        padding: '16px 32px',
-                        cursor: 'pointer',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        gap: '12px',
-                        marginTop: '8px',
-                        transition: 'filter 200ms'
-                    }} onMouseEnter={e => {
-                        (e.currentTarget as HTMLButtonElement).style.filter = 'brightness(1.1)';
-                    }} onMouseLeave={e => {
-                        (e.currentTarget as HTMLButtonElement).style.filter = 'brightness(1)';
-                    }}>
-                        <span>Submit Application & Request Cohort Intake Entry</span>
-                        <ArrowRight size={20} />
-                    </button>
-                    <p style={{
-                        fontFamily: 'Figtree',
-                        fontWeight: 400,
-                        fontSize: '11px',
-                        color: 'rgba(255,255,255,0.25)',
-                        textAlign: 'center',
-                        marginTop: '16px'
-                    }}>
-                        Applications reviewed within 5 business days. Limited cohort places available.
-                    </p>
-                </form>
+                            Applications reviewed within 5 business days. Limited cohort places available.
+                        </p>
+                    </form>
+                )}
             </div>
         </div>
     </section>;
@@ -2163,7 +2312,7 @@ const AcademyHero = () => {
         headline={headline}
         description="The EmpowaHER Academy is a rigorous, 12-month accelerator designed to fast-track Africa's most promising young women into boardrooms, investment committees, and scaling enterprises."
         primaryCtaText="Apply for 2025 Cohort"
-        secondaryCtaText="Nominate a Candidate"
+        primaryCtaLink="#academy-apply-form"
         bottomSection={bottomSection}
     />;
 };
