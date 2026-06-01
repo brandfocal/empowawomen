@@ -1132,29 +1132,259 @@ const CTASection = ({ scrollToForm }: { scrollToForm: () => void }) => {
 };
 
 // --- SECTION 4: Request an Invitation Form ---
+// --- SECTION 4: Request an Invitation Form ---
+const SectionCard = ({ title, children }: { title: string; children: React.ReactNode }) => (
+  <div style={{
+    backgroundColor: "rgba(255, 255, 255, 0.01)",
+    border: "1px solid rgba(255, 255, 255, 0.05)",
+    borderRadius: "16px",
+    padding: "clamp(20px, 4vw, 32px)",
+    display: "flex",
+    flexDirection: "column",
+    gap: "24px",
+    boxShadow: "0 4px 20px rgba(0,0,0,0.15)"
+  }}>
+    <h3 style={{
+      fontFamily: "Figtree",
+      fontSize: "13px",
+      fontWeight: 700,
+      letterSpacing: "0.08em",
+      color: "#C9A84C",
+      textTransform: "uppercase",
+      margin: 0,
+      borderBottom: "1px solid rgba(201,168,76,0.15)",
+      paddingBottom: "12px"
+    }}>
+      {title}
+    </h3>
+    {children}
+  </div>
+);
+
+const CustomCheckbox = ({ label, checked, onChange }: { label: string; checked: boolean; onChange: () => void }) => (
+  <label style={{
+    display: "flex",
+    alignItems: "flex-start",
+    gap: "12px",
+    cursor: "pointer",
+    userSelect: "none",
+    fontFamily: "Figtree",
+    fontSize: "14px",
+    color: checked ? "#FFFFFF" : "rgba(255,255,255,0.6)",
+    transition: "color 200ms ease"
+  }}>
+    <span onClick={onChange} style={{
+      width: "18px",
+      height: "18px",
+      borderRadius: "4px",
+      border: "1px solid rgba(255,255,255,0.2)",
+      display: "inline-flex",
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: checked ? "#FF2D87" : "transparent",
+      borderColor: checked ? "#FF2D87" : "rgba(255,255,255,0.2)",
+      transition: "all 200ms ease",
+      marginTop: "2px",
+      flexShrink: 0
+    }}>
+      {checked && (
+        <span style={{
+          width: "4px",
+          height: "8px",
+          border: "solid white",
+          borderWidth: "0 2px 2px 0",
+          transform: "rotate(45deg)",
+          display: "block",
+          marginTop: "-2px"
+        }} />
+      )}
+    </span>
+    <span onClick={onChange} style={{ lineHeight: 1.4 }}>{label}</span>
+  </label>
+);
+
+const CustomRadio = ({ label, checked, onChange }: { label: string; checked: boolean; onChange: () => void }) => (
+  <label style={{
+    display: "flex",
+    alignItems: "center",
+    gap: "10px",
+    cursor: "pointer",
+    userSelect: "none",
+    fontFamily: "Figtree",
+    fontSize: "14px",
+    color: checked ? "#FFFFFF" : "rgba(255,255,255,0.6)",
+    transition: "color 200ms ease"
+  }}>
+    <span onClick={onChange} style={{
+      width: "18px",
+      height: "18px",
+      borderRadius: "50%",
+      border: "1px solid rgba(255,255,255,0.2)",
+      display: "inline-flex",
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: "transparent",
+      borderColor: checked ? "#C9A84C" : "rgba(255,255,255,0.2)",
+      transition: "all 200ms ease",
+      flexShrink: 0
+    }}>
+      {checked && (
+        <span style={{
+          width: "8px",
+          height: "8px",
+          borderRadius: "50%",
+          backgroundColor: "#C9A84C",
+          display: "block"
+        }} />
+      )}
+    </span>
+    <span onClick={onChange}>{label}</span>
+  </label>
+);
+
+const LEADERSHIP_ROLES = [
+  "Chief Executive Officer (CEO)",
+  "Founder / Entrepreneur",
+  "Board Chairperson",
+  "Executive Director",
+  "Non-Executive Director",
+  "Investor / Venture Capital Executive",
+  "Government Executive",
+  "C-Suite Executive (CFO, COO, CIO, CHRO, CMO, etc.)",
+  "Media Executive",
+  "Professional Services Leader",
+  "Other"
+];
+
+const EMPLOYEE_SCALES = [
+  "1–10",
+  "11–50",
+  "51–250",
+  "251–1,000",
+  "1,000+"
+];
+
+const STRATEGIC_INTERESTS_LIST = [
+  "Executive Networking & Relationship Capital",
+  "Strategic Partnerships & Alliances",
+  "Investment & Capital Opportunities",
+  "Procurement & Supply Chain Opportunities",
+  "Market Expansion & Growth",
+  "Board & Governance Opportunities",
+  "Thought Leadership & Industry Influence",
+  "Brand Positioning & Visibility",
+  "Policy & Public Sector Engagement",
+  "Innovation & Future Economy Insights",
+  "Women Leadership Advancement",
+  "Enterprise Development Opportunities"
+];
+
+const MATCHMAKING_STAKEHOLDERS_LIST = [
+  "Corporate Leaders & Decision-Makers",
+  "Board Chairs & Directors",
+  "Investors & Venture Capital Leaders",
+  "Development Finance Institutions (DFIs)",
+  "Government Leaders & Policymakers",
+  "Women Entrepreneurs & Founders",
+  "Media & Communications Executives",
+  "Industry Influencers & Thought Leaders",
+  "Strategic Partners & Ecosystem Builders"
+];
+
+const DECLARATION_ITEMS_LIST = [
+  "The EmpowaWomen Bubbles & Nibbles Soirée™ & Leadership Awards™ is an invitation-only executive platform.",
+  "Submission of this form constitutes an expression of interest and does not guarantee attendance.",
+  "All applications are reviewed by the EmpowaWomen Executive Selection Committee.",
+  "Participation is based on leadership influence, strategic relevance, executive standing, and ecosystem value.",
+  "Approved guests will receive a formal invitation and confirmation from the EmpowaWomen Executive Office."
+];
+
 const InvitationFormSection = React.forwardRef<HTMLDivElement, {}>((props, ref) => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [company, setCompany] = useState('');
-  const [designation, setDesignation] = useState('');
+  // Executive Information
+  const [fullName, setFullName] = useState('');
+  const [organisation, setOrganisation] = useState('');
+  const [title, setTitle] = useState('');
+  const [industry, setIndustry] = useState('');
+  const [mobile, setMobile] = useState('');
   const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [optIn, setOptIn] = useState(''); // 'Yes' or 'No'
+  const [linkedin, setLinkedin] = useState('');
+  const [website, setWebsite] = useState('');
+
+  // Leadership Profile
+  const [leadershipRole, setLeadershipRole] = useState('');
+  const [otherRoleText, setOtherRoleText] = useState('');
+  const [employeeCount, setEmployeeCount] = useState('');
+
+  // Strategic Interests
+  const [strategicInterests, setStrategicInterests] = useState<string[]>([]);
+  
+  // Executive Matchmaking
+  const [matchmakingStakeholders, setMatchmakingStakeholders] = useState<string[]>([]);
+
+  // Leadership Impact Statement
+  const [impactStatement, setImpactStatement] = useState('');
+
+  // Awards & Recognition
+  const [awardsInfo, setAwardsInfo] = useState(''); // 'Yes' or 'No'
+  const [nominateLeader, setNominateLeader] = useState(''); // 'Yes' or 'No'
+
+  // Executive Declaration
+  const [declaration1, setDeclaration1] = useState(false);
+  const [declaration2, setDeclaration2] = useState(false);
+  const [declaration3, setDeclaration3] = useState(false);
+  const [declaration4, setDeclaration4] = useState(false);
+  const [declaration5, setDeclaration5] = useState(false);
+
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  const wordCount = impactStatement.trim() === '' ? 0 : impactStatement.trim().split(/\s+/).length;
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!firstName || !lastName || !company || !designation || !email || !phone || !optIn) {
-      setError('Please fill in all fields to submit your request.');
+    
+    if (!fullName || !organisation || !title || !industry || !mobile || !email) {
+      setError('Please fill in all required fields in the Executive Information section.');
       return;
     }
+    if (!leadershipRole) {
+      setError('Please select the category that best describes your current leadership role.');
+      return;
+    }
+    if (leadershipRole === 'Other' && !otherRoleText.trim()) {
+      setError('Please specify your other leadership role.');
+      return;
+    }
+    if (strategicInterests.length === 0) {
+      setError('Please select at least one Strategic Interest.');
+      return;
+    }
+    if (!impactStatement.trim()) {
+      setError('Please provide your Leadership Impact Statement.');
+      return;
+    }
+    if (wordCount > 200) {
+      setError('Your Leadership Impact Statement exceeds the 200-word limit.');
+      return;
+    }
+    if (!awardsInfo || !nominateLeader) {
+      setError('Please answer the Awards & Recognition questions.');
+      return;
+    }
+    if (!declaration1 || !declaration2 || !declaration3 || !declaration4 || !declaration5) {
+      setError('Please read and check all items in the Executive Declaration™ to submit your expression of interest.');
+      return;
+    }
+
     setError('');
     setLoading(true);
 
+    const [first, ...last] = fullName.trim().split(' ');
+    const firstName = first || '';
+    const lastName = last.join(' ') || '';
+
     try {
-      // Map form fields to flat input keys for Gravity Forms /submissions endpoint
       const response = await fetch('/api/submit', {
         method: 'POST',
         headers: {
@@ -1165,12 +1395,20 @@ const InvitationFormSection = React.forwardRef<HTMLDivElement, {}>((props, ref) 
           input_values: {
             'input_1.3': firstName,
             'input_1.6': lastName,
-            'input_2': company,
-            'input_18': designation,
+            'input_2': organisation,
+            'input_18': title,
             'input_4': email,
-            'input_19': phone,        // CELL PHONE ID: 19
-            'input_20': optIn,        // Likely field 20 for updates
-            'input_21': optIn         // Fallback field 21
+            'input_19': mobile,
+            'input_20': industry,
+            'input_21': linkedin || 'Not Provided',
+            'input_22': website || 'Not Provided',
+            'input_23': leadershipRole === 'Other' ? `Other: ${otherRoleText}` : leadershipRole,
+            'input_24': employeeCount || 'Not Provided',
+            'input_25': strategicInterests.join(', '),
+            'input_26': matchmakingStakeholders.join(', '),
+            'input_27': impactStatement,
+            'input_28': `Awards Info Interest: ${awardsInfo}`,
+            'input_29': `Nominate Leader: ${nominateLeader}`
           }
         })
       });
@@ -1178,7 +1416,7 @@ const InvitationFormSection = React.forwardRef<HTMLDivElement, {}>((props, ref) 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to submit invitation request.');
+        throw new Error(data.error || 'Failed to submit expression of interest.');
       }
 
       setLoading(false);
@@ -1191,35 +1429,36 @@ const InvitationFormSection = React.forwardRef<HTMLDivElement, {}>((props, ref) 
 
   const INPUT_STYLE: React.CSSProperties = {
     width: "100%",
-    backgroundColor: "rgba(255,255,255,0.05)",
-    border: "1px solid rgba(255,255,255,0.10)",
+    backgroundColor: "rgba(255,255,255,0.03)",
+    border: "1px solid rgba(255,255,255,0.08)",
     borderRadius: "8px",
     padding: "14px 16px",
     fontFamily: "Figtree",
     fontSize: "14px",
     color: "#FFFFFF",
     outline: "none",
-    transition: "border-color 200ms",
+    transition: "all 200ms ease",
     boxSizing: "border-box"
   };
 
-  const SELECT_STYLE: React.CSSProperties = {
-    ...INPUT_STYLE,
-    appearance: "none",
-    WebkitAppearance: "none",
-    backgroundImage: `url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>")`,
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "right 12px center",
-    backgroundSize: "20px"
+  const toggleInterest = (interest: string) => {
+    if (strategicInterests.includes(interest)) {
+      setStrategicInterests(strategicInterests.filter(i => i !== interest));
+    } else {
+      setStrategicInterests([...strategicInterests, interest]);
+    }
   };
 
-  const OPTION_STYLE: React.CSSProperties = {
-    backgroundColor: "#111118", // Crucial: non-white dropdown option background to prevent white-on-white text masking
-    color: "#FFFFFF"
+  const toggleStakeholder = (stakeholder: string) => {
+    if (matchmakingStakeholders.includes(stakeholder)) {
+      setMatchmakingStakeholders(matchmakingStakeholders.filter(s => s !== stakeholder));
+    } else {
+      setMatchmakingStakeholders([...matchmakingStakeholders, stakeholder]);
+    }
   };
 
   return (
-    <section ref={ref} style={{
+    <section ref={ref} id="invitation-form-section" style={{
       backgroundColor: '#0A0A0F',
       paddingTop: 'clamp(64px, 8vw, 128px)',
       paddingBottom: 'clamp(64px, 8vw, 128px)',
@@ -1229,6 +1468,7 @@ const InvitationFormSection = React.forwardRef<HTMLDivElement, {}>((props, ref) 
       overflow: 'hidden',
       borderTop: '1px solid rgba(255,255,255,0.06)'
     }}>
+      {/* Background radial overlay */}
       <div style={{
         position: 'absolute',
         inset: 0,
@@ -1239,12 +1479,12 @@ const InvitationFormSection = React.forwardRef<HTMLDivElement, {}>((props, ref) 
         <div style={{
           position: 'absolute',
           inset: 0,
-          background: 'radial-gradient(circle 400px at 50% 50%, rgba(201,168,76,0.04) 0%, transparent 80%)'
+          background: 'radial-gradient(circle 500px at 50% 50%, rgba(201,168,76,0.04) 0%, transparent 80%)'
         }} />
       </div>
 
       <div style={{
-        maxWidth: '700px',
+        maxWidth: '1200px',
         margin: '0 auto',
         position: 'relative',
         zIndex: 1,
@@ -1256,7 +1496,7 @@ const InvitationFormSection = React.forwardRef<HTMLDivElement, {}>((props, ref) 
           alignItems: 'center',
           textAlign: 'center',
           gap: '16px',
-          marginBottom: '48px'
+          marginBottom: '64px'
         }}>
           <span style={{
             fontFamily: 'Figtree',
@@ -1266,7 +1506,7 @@ const InvitationFormSection = React.forwardRef<HTMLDivElement, {}>((props, ref) 
             color: '#C9A84C',
             textTransform: 'uppercase'
           }}>
-            REQUEST AN INVITATION
+            EXECUTIVE REGISTRATION
           </span>
           <h2 style={{
             fontFamily: 'Figtree',
@@ -1276,258 +1516,546 @@ const InvitationFormSection = React.forwardRef<HTMLDivElement, {}>((props, ref) 
             color: '#FFFFFF',
             margin: 0
           }}>
-            Secure Your Seat in the Room
+            Expression of Interest Soirée™ &amp; Awards™
           </h2>
           <p style={{
             fontFamily: 'Figtree',
             fontSize: '15px',
             color: 'rgba(255,255,255,0.45)',
             lineHeight: 1.6,
-            maxWidth: '520px',
+            maxWidth: '560px',
             margin: 0
           }}>
-            Strictly invitation-only. Please submit your details below for delegate vetting and confirmation by our relations team.
+            Strictly invitation-only. Please submit your executive profile below to express interest in participating in this high-level room.
           </p>
         </div>
 
-        {submitted ? (
-          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} style={{
-            backgroundColor: 'rgba(255,255,255,0.02)',
-            border: '1px solid rgba(201,168,76,0.30)',
-            borderRadius: '24px',
-            padding: '48px 32px',
-            textAlign: 'center',
+        {/* Two-Column Form and Sidebar Grid */}
+        <div className="form-main-grid" style={{
+          display: 'grid',
+          gridTemplateColumns: '1.2fr 0.8fr',
+          gap: '40px',
+          alignItems: 'start'
+        }}>
+          
+          {/* Left Column: Form / Success state */}
+          <div>
+            {submitted ? (
+              <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} style={{
+                backgroundColor: 'rgba(255,255,255,0.02)',
+                border: '1px solid rgba(201,168,76,0.30)',
+                borderRadius: '24px',
+                padding: '48px 32px',
+                textAlign: 'center',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '24px',
+                boxShadow: '0 8px 32px rgba(0,0,0,0.4)',
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)'
+              }}>
+                <div style={{
+                  width: '64px',
+                  height: '64px',
+                  backgroundColor: 'rgba(201,168,76,0.10)',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  border: '1px solid rgba(201,168,76,0.30)',
+                  color: '#C9A84C'
+                }}>
+                  <ShieldCheck size={32} />
+                </div>
+                <div>
+                  <h3 style={{
+                    fontFamily: 'Figtree',
+                    fontSize: '24px',
+                    fontWeight: 300,
+                    color: '#FFFFFF',
+                    margin: '0 0 12px 0'
+                  }}>
+                    Expression of Interest Received
+                  </h3>
+                  <p style={{
+                    fontFamily: 'Figtree',
+                    fontSize: '14px',
+                    color: 'rgba(255,255,255,0.50)',
+                    lineHeight: 1.7,
+                    margin: 0,
+                    maxWidth: '440px'
+                  }}>
+                    Thank you, {fullName}. Your expression of interest has been queued in our delegate relations system. Our Selection Committee will review your application and confirm your invitation credentials shortly.
+                  </p>
+                </div>
+                <button onClick={() => setSubmitted(false)} style={{
+                  backgroundColor: 'transparent',
+                  border: '1px solid rgba(255,255,255,0.15)',
+                  color: 'rgba(255,255,255,0.60)',
+                  borderRadius: '999px',
+                  padding: '10px 28px',
+                  fontFamily: 'Figtree',
+                  fontSize: '13px',
+                  cursor: 'pointer',
+                  transition: 'all 200ms'
+                }} onMouseEnter={e => e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.05)'} onMouseLeave={e => e.currentTarget.style.backgroundColor = 'transparent'}>
+                  Submit Another Expression of Interest
+                </button>
+              </motion.div>
+            ) : (
+              <form onSubmit={handleSubmit} style={{
+                backgroundColor: 'rgba(255,255,255,0.02)',
+                border: '1px solid rgba(255,255,255,0.06)',
+                borderRadius: '24px',
+                padding: 'clamp(20px, 4vw, 40px)',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '32px',
+                boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)'
+              }}>
+                {error && (
+                  <div style={{
+                    color: '#ff8a8a',
+                    fontSize: '13px',
+                    backgroundColor: 'rgba(255,138,138,0.06)',
+                    border: '1px solid rgba(255,138,138,0.20)',
+                    borderRadius: '8px',
+                    padding: '12px 16px',
+                    fontFamily: 'Figtree'
+                  }}>
+                    {error}
+                  </div>
+                )}
+
+                {/* Section 1: Executive Information */}
+                <SectionCard title="Executive Information">
+                  <div className="form-row-2col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                    <div>
+                      <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '8px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Full Name*</label>
+                      <input type="text" placeholder="Sarah Jenkins" value={fullName} onChange={e => setFullName(e.target.value)} style={INPUT_STYLE} onFocus={e => { e.currentTarget.style.borderColor = '#C9A84C'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'; }} onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.03)'; }} />
+                    </div>
+                    <div>
+                      <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '8px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Organisation*</label>
+                      <input type="text" placeholder="Standard Bank Group" value={organisation} onChange={e => setOrganisation(e.target.value)} style={INPUT_STYLE} onFocus={e => { e.currentTarget.style.borderColor = '#C9A84C'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'; }} onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.03)'; }} />
+                    </div>
+                  </div>
+
+                  <div className="form-row-2col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                    <div>
+                      <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '8px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Current Position / Title*</label>
+                      <input type="text" placeholder="Chief Financial Officer" value={title} onChange={e => setTitle(e.target.value)} style={INPUT_STYLE} onFocus={e => { e.currentTarget.style.borderColor = '#C9A84C'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'; }} onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.03)'; }} />
+                    </div>
+                    <div>
+                      <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '8px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Industry / Sector*</label>
+                      <input type="text" placeholder="Financial Services, Technology..." value={industry} onChange={e => setIndustry(e.target.value)} style={INPUT_STYLE} onFocus={e => { e.currentTarget.style.borderColor = '#C9A84C'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'; }} onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.03)'; }} />
+                    </div>
+                  </div>
+
+                  <div className="form-row-2col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                    <div>
+                      <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '8px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Mobile Number*</label>
+                      <input type="tel" placeholder="082 000 0000" value={mobile} onChange={e => setMobile(e.target.value)} style={INPUT_STYLE} onFocus={e => { e.currentTarget.style.borderColor = '#C9A84C'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'; }} onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.03)'; }} />
+                    </div>
+                    <div>
+                      <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '8px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Email Address*</label>
+                      <input type="email" placeholder="sarah.jenkins@company.com" value={email} onChange={e => setEmail(e.target.value)} style={INPUT_STYLE} onFocus={e => { e.currentTarget.style.borderColor = '#C9A84C'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'; }} onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.03)'; }} />
+                    </div>
+                  </div>
+
+                  <div className="form-row-2col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                    <div>
+                      <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '8px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>LinkedIn Profile</label>
+                      <input type="url" placeholder="https://linkedin.com/in/sarahjenkins" value={linkedin} onChange={e => setLinkedin(e.target.value)} style={INPUT_STYLE} onFocus={e => { e.currentTarget.style.borderColor = '#C9A84C'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'; }} onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.03)'; }} />
+                    </div>
+                    <div>
+                      <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '8px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Organisation Website</label>
+                      <input type="url" placeholder="https://www.company.com" value={website} onChange={e => setWebsite(e.target.value)} style={INPUT_STYLE} onFocus={e => { e.currentTarget.style.borderColor = '#C9A84C'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'; }} onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.03)'; }} />
+                    </div>
+                  </div>
+                </SectionCard>
+
+                {/* Section 2: Leadership Profile */}
+                <SectionCard title="Leadership Profile">
+                  <div>
+                    <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '16px', letterSpacing: '0.05em', textTransform: 'uppercase', lineHeight: 1.4 }}>
+                      Please select the category that best describes your current leadership role.*
+                    </label>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                      {LEADERSHIP_ROLES.map(role => (
+                        <CustomRadio
+                          key={role}
+                          label={role === 'Other' ? 'Other' : role}
+                          checked={leadershipRole === role}
+                          onChange={() => {
+                            setLeadershipRole(role);
+                            if (role !== 'Other') setOtherRoleText('');
+                          }}
+                        />
+                      ))}
+                    </div>
+                    {leadershipRole === 'Other' && (
+                      <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} style={{ marginTop: '16px' }}>
+                        <input
+                          type="text"
+                          placeholder="Please specify your other leadership role..."
+                          value={otherRoleText}
+                          onChange={e => setOtherRoleText(e.target.value)}
+                          style={INPUT_STYLE}
+                          onFocus={e => e.currentTarget.style.borderColor = '#C9A84C'}
+                          onBlur={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'}
+                        />
+                      </motion.div>
+                    )}
+                  </div>
+
+                  <div>
+                    <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '16px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+                      Number of Employees Within Your Organisation
+                    </label>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
+                      {EMPLOYEE_SCALES.map(scale => (
+                        <CustomRadio
+                          key={scale}
+                          label={scale}
+                          checked={employeeCount === scale}
+                          onChange={() => setEmployeeCount(scale)}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </SectionCard>
+
+                {/* Section 3: Strategic Interests */}
+                <SectionCard title="Strategic Interests™">
+                  <div>
+                    <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '16px', letterSpacing: '0.05em', textTransform: 'uppercase', lineHeight: 1.4 }}>
+                      What outcomes would you most like to achieve through your participation?* (Select all applicable)
+                    </label>
+                    <div style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+                      gap: '14px'
+                    }} className="form-interests-grid">
+                      {STRATEGIC_INTERESTS_LIST.map(interest => (
+                        <CustomCheckbox
+                          key={interest}
+                          label={interest}
+                          checked={strategicInterests.includes(interest)}
+                          onChange={() => toggleInterest(interest)}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </SectionCard>
+
+                {/* Section 4: Executive Matchmaking */}
+                <SectionCard title="Executive Matchmaking™">
+                  <div>
+                    <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '16px', letterSpacing: '0.05em', textTransform: 'uppercase', lineHeight: 1.45 }}>
+                      One of the defining features of the EmpowaWomen ecosystem is intentional relationship-building. Which stakeholders would you most value connecting with?
+                    </label>
+                    <div style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+                      gap: '14px'
+                    }} className="form-matchmaking-grid">
+                      {MATCHMAKING_STAKEHOLDERS_LIST.map(stakeholder => (
+                        <CustomCheckbox
+                          key={stakeholder}
+                          label={stakeholder}
+                          checked={matchmakingStakeholders.includes(stakeholder)}
+                          onChange={() => toggleStakeholder(stakeholder)}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </SectionCard>
+
+                {/* Section 5: Leadership Impact Statement */}
+                <SectionCard title="Leadership Impact Statement™">
+                  <div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px', flexWrap: 'wrap', gap: '8px' }}>
+                      <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', letterSpacing: '0.05em', textTransform: 'uppercase', margin: 0 }}>
+                        Impact Statement*
+                      </label>
+                      <span style={{
+                        fontFamily: 'Figtree',
+                        fontSize: '11px',
+                        fontWeight: 600,
+                        color: wordCount > 200 ? '#ff8a8a' : 'rgba(255,255,255,0.30)',
+                        letterSpacing: '0.02em'
+                      }}>
+                        {wordCount} / 200 words
+                      </span>
+                    </div>
+                    <p style={{ fontFamily: 'Figtree', fontSize: '12px', color: 'rgba(255,255,255,0.35)', margin: '0 0 16px 0', lineHeight: 1.5 }}>
+                      In no more than 200 words, please share why you believe you should be part of this invitation-only executive experience and how your leadership contributes to economic growth, innovation, transformation, or societal impact.
+                    </p>
+                    <textarea
+                      placeholder="My leadership focuses on driving industrial transformation and supporting women innovators in access to capital..."
+                      value={impactStatement}
+                      onChange={e => setImpactStatement(e.target.value)}
+                      style={{
+                        ...INPUT_STYLE,
+                        height: '140px',
+                        resize: 'none',
+                        lineHeight: 1.6
+                      }}
+                      onFocus={e => e.currentTarget.style.borderColor = wordCount > 200 ? '#ff8a8a' : '#C9A84C'}
+                      onBlur={e => e.currentTarget.style.borderColor = wordCount > 200 ? '#ff8a8a' : 'rgba(255,255,255,0.08)'}
+                    />
+                  </div>
+                </SectionCard>
+
+                {/* Section 6: Awards & Recognition */}
+                <SectionCard title="Awards &amp; Recognition™">
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                    <div>
+                      <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '12px', letterSpacing: '0.05em', textTransform: 'uppercase', lineHeight: 1.4 }}>
+                        Would you like to receive information regarding the EmpowaWomen Leadership Awards™?*
+                      </label>
+                      <div style={{ display: 'flex', gap: '24px' }}>
+                        <CustomRadio
+                          label="Yes"
+                          checked={awardsInfo === 'Yes'}
+                          onChange={() => setAwardsInfo('Yes')}
+                        />
+                        <CustomRadio
+                          label="No"
+                          checked={awardsInfo === 'No'}
+                          onChange={() => setAwardsInfo('No')}
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '12px', letterSpacing: '0.05em', textTransform: 'uppercase', lineHeight: 1.4 }}>
+                        Would you like to nominate an exceptional woman leader for consideration?*
+                      </label>
+                      <div style={{ display: 'flex', gap: '24px' }}>
+                        <CustomRadio
+                          label="Yes"
+                          checked={nominateLeader === 'Yes'}
+                          onChange={() => setNominateLeader('Yes')}
+                        />
+                        <CustomRadio
+                          label="No"
+                          checked={nominateLeader === 'No'}
+                          onChange={() => setNominateLeader('No')}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </SectionCard>
+
+                {/* Section 7: Executive Declaration */}
+                <SectionCard title="Executive Declaration™">
+                  <div>
+                    <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '16px', letterSpacing: '0.05em', textTransform: 'uppercase', lineHeight: 1.4 }}>
+                      By submitting this registration, I acknowledge and understand that:*
+                    </label>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                      <CustomCheckbox
+                        label={DECLARATION_ITEMS_LIST[0]}
+                        checked={declaration1}
+                        onChange={() => setDeclaration1(!declaration1)}
+                      />
+                      <CustomCheckbox
+                        label={DECLARATION_ITEMS_LIST[1]}
+                        checked={declaration2}
+                        onChange={() => setDeclaration2(!declaration2)}
+                      />
+                      <CustomCheckbox
+                        label={DECLARATION_ITEMS_LIST[2]}
+                        checked={declaration3}
+                        onChange={() => setDeclaration3(!declaration3)}
+                      />
+                      <CustomCheckbox
+                        label={DECLARATION_ITEMS_LIST[3]}
+                        checked={declaration4}
+                        onChange={() => setDeclaration4(!declaration4)}
+                      />
+                      <CustomCheckbox
+                        label={DECLARATION_ITEMS_LIST[4]}
+                        checked={declaration5}
+                        onChange={() => setDeclaration5(!declaration5)}
+                      />
+                    </div>
+                  </div>
+                </SectionCard>
+
+                <button type="submit" disabled={loading} style={{
+                  marginTop: '8px',
+                  width: '100%',
+                  height: '54px',
+                  backgroundColor: '#FF2D87',
+                  color: '#FFFFFF',
+                  fontFamily: 'Figtree',
+                  fontSize: '15px',
+                  fontWeight: 500,
+                  border: 'none',
+                  borderRadius: '999px',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  transition: 'filter 200ms',
+                  boxShadow: '0 0 32px rgba(255,45,135,0.25)'
+                }} onMouseEnter={e => e.currentTarget.style.filter = 'brightness(1.1)'} onMouseLeave={e => e.currentTarget.style.filter = 'brightness(1)'}>
+                  {loading ? (
+                    <span>Processing Executive Vetting...</span>
+                  ) : (
+                    <>
+                      <span>Submit Expression of Interest</span>
+                      <ArrowRight size={16} />
+                    </>
+                  )}
+                </button>
+              </form>
+            )}
+          </div>
+
+          {/* Right Column: Expectations and Vetting Criteria sidebar */}
+          <div style={{
+            position: 'sticky',
+            top: '90px',
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
             gap: '24px',
-            boxShadow: '0 8px 32px rgba(0,0,0,0.4)'
-          }}>
+          }} className="form-sidebar-container">
+            
+            {/* Expect Card */}
             <div style={{
-              width: '64px',
-              height: '64px',
-              backgroundColor: 'rgba(201,168,76,0.10)',
-              borderRadius: '50%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              border: '1px solid rgba(201,168,76,0.30)',
-              color: '#C9A84C'
+              backgroundColor: 'rgba(255,255,255,0.01)',
+              border: '1px solid rgba(255,45,135,0.15)',
+              borderRadius: '20px',
+              padding: '32px',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.2)',
+              position: 'relative',
+              overflow: 'hidden'
             }}>
-              <ShieldCheck size={32} />
-            </div>
-            <div>
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '4px',
+                height: '100%',
+                backgroundColor: '#FF2D87'
+              }} />
               <h3 style={{
                 fontFamily: 'Figtree',
-                fontSize: '24px',
-                fontWeight: 300,
-                color: '#FFFFFF',
-                margin: '0 0 12px 0'
-              }}>
-                Invitation Request Received
-              </h3>
-              <p style={{
-                fontFamily: 'Figtree',
                 fontSize: '14px',
-                color: 'rgba(255,255,255,0.50)',
-                lineHeight: 1.7,
-                margin: 0,
-                maxWidth: '440px'
-              }}>
-                Thank you, {firstName}. Your request has been queued in our delegate relations system. Our team will review your application and confirm your invitation credentials within 24 hours.
-              </p>
-            </div>
-            <button onClick={() => setSubmitted(false)} style={{
-              backgroundColor: 'transparent',
-              border: '1px solid rgba(255,255,255,0.15)',
-              color: 'rgba(255,255,255,0.60)',
-              borderRadius: '999px',
-              padding: '10px 28px',
-              fontFamily: 'Figtree',
-              fontSize: '13px',
-              cursor: 'pointer',
-              transition: 'all 200ms'
-            }} onMouseEnter={e => e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.05)'} onMouseLeave={e => e.currentTarget.style.backgroundColor = 'transparent'}>
-              Submit Another Request
-            </button>
-          </motion.div>
-        ) : (
-          <form onSubmit={handleSubmit} style={{
-            backgroundColor: 'rgba(255,255,255,0.02)',
-            border: '1px solid rgba(255,255,255,0.06)',
-            borderRadius: '24px',
-            padding: 'clamp(20px, 5vw, 40px)',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '24px',
-            boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
-            backdropFilter: 'blur(12px)',
-            WebkitBackdropFilter: 'blur(12px)'
-          }}>
-            {error && (
-              <div style={{
-                color: '#ff8a8a',
-                fontSize: '13px',
-                backgroundColor: 'rgba(255,138,138,0.06)',
-                border: '1px solid rgba(255,138,138,0.20)',
-                borderRadius: '8px',
-                padding: '12px 16px',
-                fontFamily: 'Figtree'
-              }}>
-                {error}
-              </div>
-            )}
-
-            <div className="form-row-2col" style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: '20px'
-            }}>
-              <div>
-                <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '8px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>First Name</label>
-                <input type="text" placeholder="Jane" value={firstName} onChange={e => setFirstName(e.target.value)} style={INPUT_STYLE} onFocus={e => e.target.style.borderColor = '#C9A84C'} onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.10)'} />
-              </div>
-              <div>
-                <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '8px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Last Name</label>
-                <input type="text" placeholder="Doe" value={lastName} onChange={e => setLastName(e.target.value)} style={INPUT_STYLE} onFocus={e => e.target.style.borderColor = '#C9A84C'} onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.10)'} />
-              </div>
-            </div>
-
-            <div className="form-row-2col" style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: '20px'
-            }}>
-              <div>
-                <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '8px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Company</label>
-                <input type="text" placeholder="Acme Corporation" value={company} onChange={e => setCompany(e.target.value)} style={INPUT_STYLE} onFocus={e => e.target.style.borderColor = '#C9A84C'} onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.10)'} />
-              </div>
-              <div>
-                <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '8px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Designation</label>
-                <input type="text" placeholder="Managing Director, CEO..." value={designation} onChange={e => setDesignation(e.target.value)} style={INPUT_STYLE} onFocus={e => e.target.style.borderColor = '#C9A84C'} onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.10)'} />
-              </div>
-            </div>
-
-            <div className="form-row-2col" style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: '20px'
-            }}>
-              <div>
-                <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '8px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Email Address</label>
-                <input type="email" placeholder="jane@company.com" value={email} onChange={e => setEmail(e.target.value)} style={INPUT_STYLE} onFocus={e => e.target.style.borderColor = '#C9A84C'} onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.10)'} />
-              </div>
-              <div>
-                <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '8px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Cell Phone</label>
-                <input type="tel" placeholder="082 000 0000" value={phone} onChange={e => setPhone(e.target.value)} style={INPUT_STYLE} onFocus={e => e.target.style.borderColor = '#C9A84C'} onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.10)'} />
-              </div>
-            </div>
-
-            <div>
-              <label style={{
-                display: 'block',
-                fontFamily: 'Figtree',
-                fontSize: '11px',
-                fontWeight: 600,
-                color: 'rgba(255,255,255,0.40)',
-                marginBottom: '12px',
+                fontWeight: 700,
+                color: '#FFFFFF',
                 letterSpacing: '0.05em',
                 textTransform: 'uppercase',
-                lineHeight: 1.4
+                margin: '0 0 8px 0'
               }}>
-                I would like to receive information and updates relating to the EmpowaWomen Annual Summit
-              </label>
-              <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
-                <label style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '10px',
-                  fontFamily: 'Figtree',
-                  fontSize: '14px',
-                  color: '#FFFFFF',
-                  cursor: 'pointer',
-                  userSelect: 'none'
-                }}>
-                  <input
-                    type="radio"
-                    name="optIn"
-                    value="Yes"
-                    checked={optIn === 'Yes'}
-                    onChange={() => setOptIn('Yes')}
-                    style={{
-                      accentColor: '#FF2D87',
-                      width: '18px',
-                      height: '18px',
-                      cursor: 'pointer'
-                    }}
-                  />
-                  <span>Yes</span>
-                </label>
-                <label style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '10px',
-                  fontFamily: 'Figtree',
-                  fontSize: '14px',
-                  color: '#FFFFFF',
-                  cursor: 'pointer',
-                  userSelect: 'none'
-                }}>
-                  <input
-                    type="radio"
-                    name="optIn"
-                    value="No"
-                    checked={optIn === 'No'}
-                    onChange={() => setOptIn('No')}
-                    style={{
-                      accentColor: '#FF2D87',
-                      width: '18px',
-                      height: '18px',
-                      cursor: 'pointer'
-                    }}
-                  />
-                  <span>No</span>
-                </label>
+                WHAT SELECTED LEADERS CAN EXPECT™
+              </h3>
+              <p style={{ fontFamily: 'Figtree', fontSize: '12px', color: '#FF2D87', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase', margin: '0 0 20px 0' }}>
+                Exclusive Access To:
+              </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                {[
+                  "Africa’s Most Influential Women Leaders",
+                  "Executive-Level Networking & Relationship Capital",
+                  "Strategic Partnerships & Collaboration Opportunities",
+                  "Investment, Procurement & Commercial Engagement Opportunities",
+                  "High-Level Leadership & Industry Conversations",
+                  "Premium Brand Association & Positioning",
+                  "Curated Executive Introductions",
+                  "A Powerful Ecosystem of Influence, Capital & Opportunity"
+                ].map((item, idx) => (
+                  <div key={idx} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+                    <span style={{ color: '#FF2D87', fontWeight: 700, fontSize: '13px', paddingTop: '1px' }}>✓</span>
+                    <span style={{ fontFamily: 'Figtree', fontSize: '13px', color: 'rgba(255,255,255,0.7)', lineHeight: 1.4 }}>{item}</span>
+                  </div>
+                ))}
               </div>
             </div>
 
-            <button type="submit" disabled={loading} style={{
-              marginTop: '8px',
-              width: '100%',
-              height: '52px',
-              backgroundColor: '#FF2D87',
-              color: '#FFFFFF',
-              fontFamily: 'Figtree',
-              fontSize: '15px',
-              fontWeight: 500,
-              border: 'none',
-              borderRadius: '999px',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '8px',
-              transition: 'filter 200ms',
-              boxShadow: '0 0 32px rgba(255,45,135,0.25)'
-            }} onMouseEnter={e => e.currentTarget.style.filter = 'brightness(1.1)'} onMouseLeave={e => e.currentTarget.style.filter = 'brightness(1)'}>
-              {loading ? (
-                <span>Processing Vetting...</span>
-              ) : (
-                <>
-                  <span>Submit Request for Vetting</span>
-                  <ArrowRight size={16} />
-                </>
-              )}
-            </button>
-          </form>
-        )}
+            {/* Criteria Card */}
+            <div style={{
+              backgroundColor: 'rgba(255,255,255,0.01)',
+              border: '1px solid rgba(201,168,76,0.15)',
+              borderRadius: '20px',
+              padding: '32px',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.2)',
+              position: 'relative',
+              overflow: 'hidden'
+            }}>
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '4px',
+                height: '100%',
+                backgroundColor: '#C9A84C'
+              }} />
+              <h3 style={{
+                fontFamily: 'Figtree',
+                fontSize: '14px',
+                fontWeight: 700,
+                color: '#FFFFFF',
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase',
+                margin: '0 0 8px 0'
+              }}>
+                FINAL SELECTION CRITERIA™
+              </h3>
+              <p style={{ fontFamily: 'Figtree', fontSize: '12px', color: '#C9A84C', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase', margin: '0 0 20px 0' }}>
+                Assessed based on:
+              </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                {[
+                  "Executive Leadership Influence",
+                  "Industry Impact & Achievements",
+                  "Strategic Decision-Making Authority",
+                  "Ecosystem Contribution",
+                  "Innovation & Transformation Leadership",
+                  "Commercial, Economic or Social Impact",
+                  "Alignment with the EmpowaWomen Vision"
+                ].map((item, idx) => (
+                  <div key={idx} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+                    <span style={{ color: '#C9A84C', fontWeight: 700, fontSize: '14px', paddingTop: '1px' }}>•</span>
+                    <span style={{ fontFamily: 'Figtree', fontSize: '13px', color: 'rgba(255,255,255,0.7)', lineHeight: 1.4 }}>{item}</span>
+                  </div>
+                ))}
+              </div>
+              <p style={{ fontFamily: 'Figtree', fontSize: '11px', fontStyle: 'italic', color: 'rgba(255,255,255,0.35)', marginTop: '24px', marginBottom: 0, lineHeight: 1.5 }}>
+                Participation is intentionally limited to preserve the quality of engagement, relevance of conversations, and calibre of leadership represented in the room.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
 
       <style>{`
+        @media (max-width: 991px) {
+          .form-main-grid {
+            grid-template-columns: 1fr !important;
+            gap: 32px !important;
+          }
+          .form-sidebar-container {
+            position: static !important;
+          }
+        }
         @media (max-width: 599px) {
           .form-row-2col {
             grid-template-columns: 1fr !important;
             gap: 20px !important;
+          }
+          .form-interests-grid,
+          .form-matchmaking-grid {
+            grid-template-columns: 1fr !important;
           }
         }
       `}</style>
