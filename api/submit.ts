@@ -26,18 +26,20 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const targetUrl = `${gfApiUrl}/forms/${form_id}/submissions`;
+    // Append credentials as query parameters to bypass hosting firewalls that block standard HTTP Authorization headers
+    const separator = gfApiUrl.includes('?') ? '&' : '?';
+    const targetUrl = `${gfApiUrl}/forms/${form_id}/submissions${separator}consumer_key=${consumerKey}&consumer_secret=${consumerSecret}`;
     const parsedUrl = url.parse(targetUrl);
     const authHeader = `Basic ${Buffer.from(`${consumerKey}:${consumerSecret}`).toString('base64')}`;
 
     const options = {
       hostname: parsedUrl.hostname,
       port: parsedUrl.port || 443,
-      path: parsedUrl.path,
+      path: parsedUrl.path, // parsedUrl.path contains the query string params
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': authHeader,
+        'Authorization': authHeader, // keep header as double fallback
         'User-Agent': 'Vercel-Serverless-Proxy'
       }
     };
