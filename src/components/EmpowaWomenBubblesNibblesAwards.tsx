@@ -171,8 +171,8 @@ const ExperienceStrategy = () => {
     color: '#0A0A0F',
     overflow: 'hidden'
   }}>
-      {/* Heading block */}
-      <div style={{
+    {/* Heading block */}
+    <div style={{
       maxWidth: '1400px',
       margin: '0 auto',
       paddingLeft: 'clamp(20px, 3.75vw, 36px)',
@@ -182,7 +182,7 @@ const ExperienceStrategy = () => {
       gap: '24px',
       marginBottom: '48px'
     }}>
-        <motion.span initial={{
+      <motion.span initial={{
         opacity: 0,
         y: 10
       }} whileInView={{
@@ -201,10 +201,10 @@ const ExperienceStrategy = () => {
         textTransform: 'uppercase',
         display: 'block'
       }}>
-          THE EXPERIENCE
-        </motion.span>
+        THE EXPERIENCE
+      </motion.span>
 
-        <motion.h2 initial={{
+      <motion.h2 initial={{
         opacity: 0,
         y: 20
       }} whileInView={{
@@ -224,10 +224,10 @@ const ExperienceStrategy = () => {
         color: '#0A0A0F',
         margin: 0
       }}>
-          Six moments. One unforgettable evening.
-        </motion.h2>
+        Six moments. One unforgettable evening.
+      </motion.h2>
 
-        <motion.p initial={{
+      <motion.p initial={{
         opacity: 0
       }} whileInView={{
         opacity: 1
@@ -244,16 +244,16 @@ const ExperienceStrategy = () => {
         maxWidth: '560px',
         margin: 0
       }}>
-          Every element of the Soiree is deliberately curated to inspire, connect, and accelerate.
-        </motion.p>
-      </div>
+        Every element of the Soiree is deliberately curated to inspire, connect, and accelerate.
+      </motion.p>
+    </div>
 
-      {/* Horizontal scroll rail — desktop | Vertical stack — mobile */}
-      <div className="experience-scroll-container" style={{
+    {/* Horizontal scroll rail — desktop | Vertical stack — mobile */}
+    <div className="experience-scroll-container" style={{
       position: 'relative',
       marginTop: '16px'
     }}>
-        <div className="experience-inner hide-scrollbar" style={{
+      <div className="experience-inner hide-scrollbar" style={{
         display: 'flex',
         flexDirection: 'row',
         gap: '1px',
@@ -264,7 +264,7 @@ const ExperienceStrategy = () => {
         paddingRight: 'clamp(20px, 3.75vw, 36px)',
         paddingBottom: '2px'
       }}>
-          {EXPERIENCE_MOMENTS.map(moment => <motion.div key={moment.id} initial={{
+        {EXPERIENCE_MOMENTS.map(moment => <motion.div key={moment.id} initial={{
           opacity: 0,
           y: 32
         }} whileInView={{
@@ -290,8 +290,8 @@ const ExperienceStrategy = () => {
           overflow: 'hidden',
           boxShadow: '0 1px 3px rgba(0,0,0,0.06)'
         }}>
-              {/* Ambient number */}
-              <div style={{
+          {/* Ambient number */}
+          <div style={{
             position: 'absolute',
             top: '24px',
             right: '24px',
@@ -303,39 +303,39 @@ const ExperienceStrategy = () => {
             userSelect: 'none',
             pointerEvents: 'none'
           }}>
-                {String(moment.id).padStart(2, '0')}
-              </div>
+            {String(moment.id).padStart(2, '0')}
+          </div>
 
-              {/* Card top */}
-              <div style={{
+          {/* Card top */}
+          <div style={{
             display: 'flex',
             flexDirection: 'column',
             gap: '24px'
           }}>
-                {/* Time row */}
-                <div style={{
+            {/* Time row */}
+            <div style={{
               display: 'flex',
               alignItems: 'center',
               gap: '12px'
             }}>
-                  <span style={{
+              <span style={{
                 fontFamily: 'Figtree',
                 fontSize: '13px',
                 fontWeight: 500,
                 color: '#FF2D87',
                 letterSpacing: '0.05em'
               }}>
-                    {moment.time}
-                  </span>
-                  <div style={{
+                {moment.time}
+              </span>
+              <div style={{
                 width: '24px',
                 height: '1px',
                 backgroundColor: 'rgba(255,45,135,0.30)'
               }} />
-                </div>
+            </div>
 
-                {/* Title */}
-                <h3 style={{
+            {/* Title */}
+            <h3 style={{
               fontFamily: 'Figtree',
               fontSize: 'clamp(18px, 2vw, 26px)',
               fontWeight: 300,
@@ -344,23 +344,23 @@ const ExperienceStrategy = () => {
               margin: 0,
               lineHeight: 1.2
             }}>
-                  {moment.title}
-                </h3>
+              {moment.title}
+            </h3>
 
-                {/* Body */}
-                <p style={{
+            {/* Body */}
+            <p style={{
               fontFamily: 'Figtree',
               fontSize: '14px',
               color: 'rgba(0,0,0,0.45)',
               lineHeight: 1.75,
               margin: 0
             }}>
-                  {moment.body}
-                </p>
-              </div>
+              {moment.body}
+            </p>
+          </div>
 
-              {/* Card bottom: icon */}
-              <div style={{
+          {/* Card bottom: icon */}
+          <div style={{
             width: '48px',
             height: '48px',
             backgroundColor: 'rgba(255,45,135,0.08)',
@@ -372,14 +372,14 @@ const ExperienceStrategy = () => {
             marginTop: '32px',
             flexShrink: 0
           }}>
-                {iconMap[moment.icon]}
-              </div>
-            </motion.div>)}
-        </div>
+            {iconMap[moment.icon]}
+          </div>
+        </motion.div>)}
       </div>
+    </div>
 
-      {/* Scroll hint — hidden on mobile */}
-      <div className="experience-scroll-hint" style={{
+    {/* Scroll hint — hidden on mobile */}
+    <div className="experience-scroll-hint" style={{
       maxWidth: '1400px',
       margin: '0 auto',
       paddingLeft: 'clamp(20px, 3.75vw, 36px)',
@@ -388,19 +388,19 @@ const ExperienceStrategy = () => {
       alignItems: 'center',
       gap: '8px'
     }}>
-        <ArrowRight size={14} color="rgba(0,0,0,0.25)" />
-        <span style={{
+      <ArrowRight size={14} color="rgba(0,0,0,0.25)" />
+      <span style={{
         fontFamily: 'Figtree',
         fontSize: '11px',
         letterSpacing: '0.1em',
         textTransform: 'uppercase',
         color: 'rgba(0,0,0,0.25)'
       }}>
-          Scroll to explore all moments
-        </span>
-      </div>
+        Scroll to explore all moments
+      </span>
+    </div>
 
-      <style>{`
+    <style>{`
         .hide-scrollbar::-webkit-scrollbar { display: none; }
 
         @media (max-width: 767px) {
@@ -418,7 +418,7 @@ const ExperienceStrategy = () => {
           }
         }
       `}</style>
-    </section>;
+  </section>;
 };
 
 // --- SECTION 2: Gala Timeline ---
@@ -431,19 +431,19 @@ const GalaTimeline = () => {
     color: '#FFFFFF',
     overflow: 'hidden'
   }}>
-      {/* Background */}
-      <div style={{
+    {/* Background */}
+    <div style={{
       position: 'absolute',
       inset: 0,
       pointerEvents: 'none'
     }}>
-        <div style={{
+      <div style={{
         width: '100%',
         height: '100%',
         backgroundImage: 'repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 1px, transparent 1px), repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)',
         backgroundSize: '64px 64px'
       }} />
-        <div style={{
+      <div style={{
         position: 'absolute',
         top: 0,
         left: '50%',
@@ -453,10 +453,10 @@ const GalaTimeline = () => {
         background: 'linear-gradient(to bottom, transparent 0%, #C9A84C 20%, #C9A84C 80%, transparent 100%)',
         opacity: 0.15
       }} />
-      </div>
+    </div>
 
-      {/* Inner */}
-      <div style={{
+    {/* Inner */}
+    <div style={{
       position: 'relative',
       zIndex: 1,
       maxWidth: '1000px',
@@ -464,8 +464,8 @@ const GalaTimeline = () => {
       paddingLeft: 'clamp(20px, 3.75vw, 36px)',
       paddingRight: 'clamp(20px, 3.75vw, 36px)'
     }}>
-        {/* Heading block */}
-        <div style={{
+      {/* Heading block */}
+      <div style={{
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -473,7 +473,7 @@ const GalaTimeline = () => {
         gap: '24px',
         marginBottom: 'clamp(48px, 8vw, 96px)'
       }}>
-          <motion.span initial={{
+        <motion.span initial={{
           opacity: 0,
           y: 10
         }} whileInView={{
@@ -492,10 +492,10 @@ const GalaTimeline = () => {
           textTransform: 'uppercase',
           display: 'block'
         }}>
-            GALA PROGRAMME
-          </motion.span>
+          GALA PROGRAMME
+        </motion.span>
 
-          <motion.h2 initial={{
+        <motion.h2 initial={{
           opacity: 0,
           y: 20
         }} whileInView={{
@@ -514,10 +514,10 @@ const GalaTimeline = () => {
           color: '#FFFFFF',
           margin: 0
         }}>
-            The Evening, Designed.
-          </motion.h2>
+          The Evening, Designed.
+        </motion.h2>
 
-          <motion.p initial={{
+        <motion.p initial={{
           opacity: 0
         }} whileInView={{
           opacity: 1
@@ -534,19 +534,19 @@ const GalaTimeline = () => {
           maxWidth: '480px',
           margin: 0
         }}>
-            28 August 2026. Every moment has a purpose.
-          </motion.p>
-        </div>
+          28 August 2026. Every moment has a purpose.
+        </motion.p>
+      </div>
 
-        {/* Timeline track — desktop: alternating, mobile: single column */}
-        <div className="timeline-track" style={{
+      {/* Timeline track — desktop: alternating, mobile: single column */}
+      <div className="timeline-track" style={{
         position: 'relative',
         display: 'flex',
         flexDirection: 'column',
         gap: 0
       }}>
-          {/* Continuous vertical line — desktop */}
-          <div className="timeline-center-line" style={{
+        {/* Continuous vertical line — desktop */}
+        <div className="timeline-center-line" style={{
           position: 'absolute',
           left: '50%',
           top: 0,
@@ -557,8 +557,8 @@ const GalaTimeline = () => {
           zIndex: 0
         }} />
 
-          {/* Left line — mobile */}
-          <div className="timeline-left-line" style={{
+        {/* Left line — mobile */}
+        <div className="timeline-left-line" style={{
           position: 'absolute',
           left: '20px',
           top: 0,
@@ -569,7 +569,7 @@ const GalaTimeline = () => {
           display: 'none'
         }} />
 
-          {timelineData.map((item, index) => {
+        {timelineData.map((item, index) => {
           const isEven = index % 2 === 0;
           return <div key={item.time} className="timeline-item" style={{
             position: 'relative',
@@ -580,15 +580,15 @@ const GalaTimeline = () => {
             paddingBottom: '48px',
             zIndex: 1
           }}>
-                {/* Content half */}
-                <div className="timeline-content" style={{
+            {/* Content half */}
+            <div className="timeline-content" style={{
               flex: 1,
               display: 'flex',
               justifyContent: isEven ? 'flex-end' : 'flex-start',
               paddingRight: isEven ? '48px' : 0,
               paddingLeft: isEven ? 0 : '48px'
             }}>
-                  <motion.div initial={{
+              <motion.div initial={{
                 opacity: 0,
                 x: isEven ? -30 : 30
               }} whileInView={{
@@ -605,8 +605,8 @@ const GalaTimeline = () => {
                 flexDirection: 'column',
                 gap: '16px'
               }}>
-                    {/* Time badge */}
-                    <div style={{
+                {/* Time badge */}
+                <div style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '8px',
@@ -616,20 +616,20 @@ const GalaTimeline = () => {
                   borderRadius: '999px',
                   alignSelf: 'flex-start'
                 }}>
-                      <Clock size={12} color="#C9A84C" />
-                      <span style={{
+                  <Clock size={12} color="#C9A84C" />
+                  <span style={{
                     fontFamily: 'Figtree',
                     fontSize: '11px',
                     fontWeight: 600,
                     letterSpacing: '0.1em',
                     color: '#C9A84C'
                   }}>
-                        {item.time}
-                      </span>
-                    </div>
+                    {item.time}
+                  </span>
+                </div>
 
-                    {/* Title */}
-                    <h3 style={{
+                {/* Title */}
+                <h3 style={{
                   fontFamily: 'Figtree',
                   fontSize: 'clamp(16px, 2vw, 24px)',
                   fontWeight: 400,
@@ -638,29 +638,29 @@ const GalaTimeline = () => {
                   margin: 0,
                   lineHeight: 1.2
                 }}>
-                      {item.title}
-                    </h3>
+                  {item.title}
+                </h3>
 
-                    {/* Description */}
-                    <p style={{
+                {/* Description */}
+                <p style={{
                   fontFamily: 'Figtree',
                   fontSize: '14px',
                   color: 'rgba(255,255,255,0.45)',
                   lineHeight: 1.75,
                   margin: 0
                 }}>
-                      {item.description}
-                    </p>
-                  </motion.div>
-                </div>
+                  {item.description}
+                </p>
+              </motion.div>
+            </div>
 
-                {/* Empty mirrored side — hidden on mobile */}
-                <div className="timeline-mirror" style={{
+            {/* Empty mirrored side — hidden on mobile */}
+            <div className="timeline-mirror" style={{
               flex: 1
             }} />
 
-                {/* Centre dot */}
-                <div className="timeline-dot" style={{
+            {/* Centre dot */}
+            <div className="timeline-dot" style={{
               position: 'absolute',
               left: '50%',
               top: '50%',
@@ -673,12 +673,12 @@ const GalaTimeline = () => {
               boxShadow: '0 0 12px rgba(201,168,76,0.60)',
               zIndex: 2
             }} />
-              </div>;
+          </div>;
         })}
-        </div>
       </div>
+    </div>
 
-      <style>{`
+    <style>{`
         @media (max-width: 767px) {
           .timeline-center-line { display: none !important; }
           .timeline-left-line { display: block !important; }
@@ -707,7 +707,7 @@ const GalaTimeline = () => {
           }
         }
       `}</style>
-    </section>;
+  </section>;
 };
 
 // --- SECTION 3: Award Categories ---
@@ -733,22 +733,22 @@ const AwardCategories = () => {
     padding: 'clamp(64px, 8vw, 128px) clamp(20px, 3.75vw, 36px)',
     color: '#FFFFFF'
   }}>
-      <div style={{
+    <div style={{
       maxWidth: '1400px',
       margin: '0 auto',
       display: 'flex',
       flexDirection: 'column',
       gap: '64px'
     }}>
-        {/* Heading */}
-        <div style={{
+      {/* Heading */}
+      <div style={{
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         textAlign: 'center',
         gap: '24px'
       }}>
-          <motion.span initial={{
+        <motion.span initial={{
           opacity: 0,
           y: 10
         }} whileInView={{
@@ -767,10 +767,10 @@ const AwardCategories = () => {
           textTransform: 'uppercase',
           display: 'block'
         }}>
-            THE AWARDS
-          </motion.span>
+          THE AWARDS
+        </motion.span>
 
-          <motion.h2 initial={{
+        <motion.h2 initial={{
           opacity: 0,
           y: 20
         }} whileInView={{
@@ -790,10 +790,10 @@ const AwardCategories = () => {
           color: '#FFFFFF',
           margin: 0
         }}>
-            12 Awards. Infinite Impact.
-          </motion.h2>
+          12 Awards. Infinite Impact.
+        </motion.h2>
 
-          <motion.p initial={{
+        <motion.p initial={{
           opacity: 0
         }} whileInView={{
           opacity: 1
@@ -810,14 +810,14 @@ const AwardCategories = () => {
           maxWidth: '560px',
           margin: 0
         }}>
-            Honouring exceptional women who are rewriting the rules of leadership, influence, and
-            economic transformation.
-          </motion.p>
-        </div>
+          Honouring exceptional women who are rewriting the rules of leadership, influence, and
+          economic transformation.
+        </motion.p>
+      </div>
 
-        {/* Grid */}
-        <div className="awards-grid">
-          {awardCategories.map((award, i) => <motion.div key={award.id} initial={{
+      {/* Grid */}
+      <div className="awards-grid">
+        {awardCategories.map((award, i) => <motion.div key={award.id} initial={{
           opacity: 0,
           y: 24
         }} whileInView={{
@@ -839,27 +839,27 @@ const AwardCategories = () => {
           borderRadius: '16px',
           paddingTop: RAISED_INDICES.has(i) ? '48px' : 0
         }}>
-              {/* Top accent bar */}
-              <div style={{
+          {/* Top accent bar */}
+          <div style={{
             height: '2px',
             width: '100%',
             backgroundColor: ACCENT_COLORS[i] ?? 'rgba(255,255,255,0.06)'
           }} />
 
-              {/* Card body */}
-              <div style={{
+          {/* Card body */}
+          <div style={{
             padding: 'clamp(20px, 3vw, 36px)',
             display: 'flex',
             flexDirection: 'column',
             gap: '20px'
           }}>
-                {/* Number + title */}
-                <div style={{
+            {/* Number + title */}
+            <div style={{
               display: 'flex',
               flexDirection: 'column',
               gap: '8px'
             }}>
-                  <span style={{
+              <span style={{
                 fontFamily: 'Figtree',
                 fontSize: '10px',
                 fontWeight: 700,
@@ -867,9 +867,9 @@ const AwardCategories = () => {
                 color: 'rgba(255,255,255,0.20)',
                 textTransform: 'uppercase'
               }}>
-                    {String(award.id).padStart(2, '0')}
-                  </span>
-                  <h3 style={{
+                {String(award.id).padStart(2, '0')}
+              </span>
+              <h3 style={{
                 fontFamily: 'Figtree',
                 fontSize: 'clamp(14px, 1.5vw, 18px)',
                 fontWeight: 600,
@@ -878,12 +878,12 @@ const AwardCategories = () => {
                 margin: 0,
                 lineHeight: 1.3
               }}>
-                    {award.title}
-                  </h3>
-                </div>
+                {award.title}
+              </h3>
+            </div>
 
-                {/* Quote block */}
-                <div style={{
+            {/* Quote block */}
+            <div style={{
               borderTop: '1px solid rgba(255,255,255,0.06)',
               paddingTop: '16px',
               marginTop: '4px',
@@ -891,16 +891,16 @@ const AwardCategories = () => {
               flexDirection: 'column',
               gap: '8px'
             }}>
-                  <span style={{
+              <span style={{
                 fontFamily: 'Figtree',
                 fontSize: '20px',
                 fontWeight: 300,
                 color: 'rgba(255,255,255,0.15)',
                 lineHeight: 1
               }}>
-                    "
-                  </span>
-                  <p style={{
+                "
+              </span>
+              <p style={{
                 fontFamily: 'Figtree',
                 fontSize: '13px',
                 fontWeight: 300,
@@ -909,19 +909,19 @@ const AwardCategories = () => {
                 lineHeight: 1.65,
                 margin: 0
               }}>
-                    {award.quote}
-                  </p>
-                </div>
+                {award.quote}
+              </p>
+            </div>
 
-                {/* Nominate CTA */}
-                <div style={{
+            {/* Nominate CTA */}
+            <div style={{
               paddingTop: '16px',
               display: 'flex',
               alignItems: 'center',
               gap: '8px',
               borderTop: '1px solid rgba(255,255,255,0.06)'
             }}>
-                  <span style={{
+              <span style={{
                 fontFamily: 'Figtree',
                 fontSize: '11px',
                 fontWeight: 600,
@@ -929,16 +929,16 @@ const AwardCategories = () => {
                 textTransform: 'uppercase',
                 color: 'rgba(181,37,90,0.70)'
               }}>
-                    Nominate
-                  </span>
-                  <ArrowRight size={12} color="rgba(181,37,90,0.70)" />
-                </div>
-              </div>
-            </motion.div>)}
-        </div>
+                Nominate
+              </span>
+              <ArrowRight size={12} color="rgba(181,37,90,0.70)" />
+            </div>
+          </div>
+        </motion.div>)}
       </div>
+    </div>
 
-      <style>{`
+    <style>{`
         .awards-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
@@ -952,7 +952,7 @@ const AwardCategories = () => {
           .awards-grid { grid-template-columns: 1fr; gap: 16px; }
         }
       `}</style>
-    </section>;
+  </section>;
 };
 
 // --- CTA Section ---
@@ -969,33 +969,33 @@ const CTASection = ({ scrollToForm }: { scrollToForm: () => void }) => {
     position: 'relative',
     overflow: 'hidden'
   }}>
-      {/* Background layers */}
-      <div style={{
+    {/* Background layers */}
+    <div style={{
       position: 'absolute',
       inset: 0,
       zIndex: 0,
       pointerEvents: 'none',
       overflow: 'hidden'
     }}>
-        <div style={{
+      <div style={{
         width: '100%',
         height: '100%',
         backgroundImage: 'repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 1px, transparent 1px), repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)',
         backgroundSize: '48px 48px'
       }} />
-        <div style={{
+      <div style={{
         position: 'absolute',
         inset: 0,
         background: 'linear-gradient(to right, #0A0A0F 0%, transparent 20%, transparent 80%, #0A0A0F 100%)'
       }} />
-        <div style={{
+      <div style={{
         position: 'absolute',
         inset: 0,
         background: 'radial-gradient(ellipse 50% 50% at 50% 50%, rgba(255,45,135,0.05) 0%, transparent 70%)'
       }} />
-      </div>
+    </div>
 
-      <div style={{
+    <div style={{
       maxWidth: '900px',
       margin: '0 auto',
       position: 'relative',
@@ -1005,7 +1005,7 @@ const CTASection = ({ scrollToForm }: { scrollToForm: () => void }) => {
       alignItems: 'center',
       gap: '40px'
     }}>
-        <motion.h2 initial={{
+      <motion.h2 initial={{
         opacity: 0,
         y: 24,
         filter: 'blur(12px)'
@@ -1027,10 +1027,10 @@ const CTASection = ({ scrollToForm }: { scrollToForm: () => void }) => {
         color: '#FFFFFF',
         margin: 0
       }}>
-          Be part of the room.
-        </motion.h2>
+        Be part of the room.
+      </motion.h2>
 
-        <motion.p initial={{
+      <motion.p initial={{
         opacity: 0,
         y: 16
       }} whileInView={{
@@ -1049,11 +1049,11 @@ const CTASection = ({ scrollToForm }: { scrollToForm: () => void }) => {
         maxWidth: '560px',
         margin: 0
       }}>
-          Limited to 200 invitation-only guests. Corporate partnership packages available for
-          organizations looking to align with excellence.
-        </motion.p>
+        Limited to 200 invitation-only guests. Corporate partnership packages available for
+        organizations looking to align with excellence.
+      </motion.p>
 
-        <motion.div initial={{
+      <motion.div initial={{
         opacity: 0,
         y: 16
       }} whileInView={{
@@ -1071,7 +1071,7 @@ const CTASection = ({ scrollToForm }: { scrollToForm: () => void }) => {
         justifyContent: 'center',
         width: '100%'
       }}>
-          <button className="cta-btn-primary" style={{
+        <button className="cta-btn-primary" style={{
           display: 'inline-flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -1091,10 +1091,10 @@ const CTASection = ({ scrollToForm }: { scrollToForm: () => void }) => {
           letterSpacing: '0.02em',
           filter: ctaH1 ? 'brightness(1.1)' : 'brightness(1)'
         }} onMouseEnter={() => setCtaH1(true)} onMouseLeave={() => setCtaH1(false)} onClick={scrollToForm}>
-            <span>Request Executive Partnership Engagement</span>
-            <ArrowRight size={16} />
-          </button>
-          <button className="cta-btn-secondary" style={{
+          <span>Request Executive Partnership Engagement</span>
+          <ArrowRight size={16} />
+        </button>
+        <button className="cta-btn-secondary" style={{
           display: 'inline-flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -1111,12 +1111,12 @@ const CTASection = ({ scrollToForm }: { scrollToForm: () => void }) => {
           cursor: 'pointer',
           transition: 'all 200ms'
         }} onMouseEnter={() => setCtaH2(true)} onMouseLeave={() => setCtaH2(false)}>
-            Nominate a Candidate
-          </button>
-        </motion.div>
-      </div>
+          Nominate a Candidate
+        </button>
+      </motion.div>
+    </div>
 
-      <style>{`
+    <style>{`
         @media (max-width: 599px) {
           .cta-button-row {
             flex-direction: column !important;
@@ -1128,7 +1128,7 @@ const CTASection = ({ scrollToForm }: { scrollToForm: () => void }) => {
           }
         }
       `}</style>
-    </section>;
+  </section>;
 };
 
 // --- SECTION 4: Request an Invitation Form ---
@@ -1317,7 +1317,7 @@ const InvitationFormSection = React.forwardRef<HTMLDivElement, {}>((props, ref) 
 
   // Strategic Interests
   const [strategicInterests, setStrategicInterests] = useState<string[]>([]);
-  
+
   // Executive Matchmaking
   const [matchmakingStakeholders, setMatchmakingStakeholders] = useState<string[]>([]);
 
@@ -1343,7 +1343,7 @@ const InvitationFormSection = React.forwardRef<HTMLDivElement, {}>((props, ref) 
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!fullName || !organisation || !title || !industry || !mobile || !email) {
       setError('Please fill in all required fields in the Executive Information section.');
       return;
@@ -1537,7 +1537,7 @@ const InvitationFormSection = React.forwardRef<HTMLDivElement, {}>((props, ref) 
           gap: '40px',
           alignItems: 'start'
         }}>
-          
+
           {/* Left Column: Form / Success state */}
           <div>
             {submitted ? (
@@ -1927,7 +1927,7 @@ const InvitationFormSection = React.forwardRef<HTMLDivElement, {}>((props, ref) 
             flexDirection: 'column',
             gap: '24px',
           }} className="form-sidebar-container">
-            
+
             {/* Expect Card */}
             <div style={{
               backgroundColor: 'rgba(255,255,255,0.01)',
@@ -2085,8 +2085,8 @@ const HeroSection = ({ scrollToForm }: { scrollToForm: () => void }) => {
     paddingTop: '68px',
     paddingBottom: '80px'
   }}>
-      {/* Film Grain Overlay */}
-      <div style={{
+    {/* Film Grain Overlay */}
+    <div style={{
       position: 'absolute',
       inset: 0,
       pointerEvents: 'none',
@@ -2097,15 +2097,15 @@ const HeroSection = ({ scrollToForm }: { scrollToForm: () => void }) => {
       animation: 'grainShift 0.8s steps(1) infinite'
     }} />
 
-      {/* Background Image with Parallax */}
-      <div style={{
+    {/* Background Image with Parallax */}
+    <div style={{
       position: 'absolute',
       inset: 0,
       zIndex: 0,
       overflow: 'hidden',
       pointerEvents: 'none'
     }}>
-        <motion.div initial={{
+      <motion.div initial={{
         scale: 1.06,
         opacity: 0
       }} animate={{
@@ -2118,27 +2118,33 @@ const HeroSection = ({ scrollToForm }: { scrollToForm: () => void }) => {
         position: 'absolute',
         inset: 0
       }}>
-          <motion.div style={{
+        <motion.div style={{
           y: imageY,
           position: 'absolute',
           inset: 0
         }}>
-            <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=1920&q=90" alt="" style={{
+          <img src="/features-20.jpg" alt="" style={{
             width: '100%',
             height: '100%',
-            objectFit: 'cover'
+            objectFit: 'cover',
+            opacity: 0.42
           }} />
-          </motion.div>
         </motion.div>
-        <div style={{
+      </motion.div>
+      <div style={{
         position: 'absolute',
         inset: 0,
-        background: 'linear-gradient(to bottom, rgba(10,10,15,0.72) 0%, rgba(10,10,15,0.42) 38%, rgba(10,10,15,0.82) 100%)'
+        background: 'linear-gradient(to bottom, rgba(10,10,15,0.78) 0%, rgba(10,10,15,0.50) 40%, rgba(10,10,15,0.88) 100%)'
       }} />
-      </div>
-
-      {/* Content Wrapper */}
       <div style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'radial-gradient(circle at center, transparent 10%, rgba(10,10,15,0.75) 90%)'
+      }} />
+    </div>
+
+    {/* Content Wrapper */}
+    <div style={{
       position: 'relative',
       zIndex: 10,
       width: '100%',
@@ -2151,8 +2157,8 @@ const HeroSection = ({ scrollToForm }: { scrollToForm: () => void }) => {
       flexDirection: 'column',
       alignItems: 'center'
     }}>
-        {/* Eyebrow */}
-        <motion.div initial={{
+      {/* Eyebrow */}
+      <motion.div initial={{
         opacity: 0,
         y: 10
       }} animate={{
@@ -2169,7 +2175,7 @@ const HeroSection = ({ scrollToForm }: { scrollToForm: () => void }) => {
         marginBottom: '20px',
         textAlign: 'center'
       }}>
-          <span style={{
+        <span style={{
           width: '6px',
           height: '6px',
           borderRadius: '50%',
@@ -2177,7 +2183,7 @@ const HeroSection = ({ scrollToForm }: { scrollToForm: () => void }) => {
           display: 'inline-block',
           flexShrink: 0
         }} />
-          <p style={{
+        <p style={{
           fontFamily: 'Figtree',
           fontSize: '10px',
           fontWeight: 600,
@@ -2186,12 +2192,12 @@ const HeroSection = ({ scrollToForm }: { scrollToForm: () => void }) => {
           color: 'rgba(255,255,255,0.60)',
           margin: 0
         }}>
-            3RD ANNUAL SOIREE AND LEADERSHIP AWARDS · 28 AUGUST 2026
-          </p>
-        </motion.div>
+          3RD ANNUAL SOIREE AND LEADERSHIP AWARDS · 28 AUGUST 2026
+        </p>
+      </motion.div>
 
-        {/* Headline */}
-        <h1 style={{
+      {/* Headline */}
+      <h1 style={{
         fontFamily: 'Figtree',
         fontWeight: 300,
         fontSize: 'clamp(40px, 8vw, 112px)',
@@ -2202,7 +2208,7 @@ const HeroSection = ({ scrollToForm }: { scrollToForm: () => void }) => {
         margin: 0,
         marginBottom: '40px'
       }}>
-          {heroHeadlineWords.map((word, i) => <motion.span key={`hero-word-${i}`} initial={{
+        {heroHeadlineWords.map((word, i) => <motion.span key={`hero-word-${i}`} initial={{
           opacity: 0,
           filter: 'blur(12px)',
           y: 20
@@ -2218,11 +2224,11 @@ const HeroSection = ({ scrollToForm }: { scrollToForm: () => void }) => {
           display: 'inline-block',
           marginRight: '0.2em'
         }}>
-              {word === 'Powerful' ? <span style={{
+          {word === 'Powerful' ? <span style={{
             position: 'relative'
           }}>
-                  {word}
-                  <motion.span initial={{
+            {word}
+            <motion.span initial={{
               scaleX: 0
             }} animate={{
               scaleX: 1
@@ -2239,16 +2245,16 @@ const HeroSection = ({ scrollToForm }: { scrollToForm: () => void }) => {
               transformOrigin: 'left',
               display: 'block'
             }} />
-                </span> : word === 'Country.' ? <span>
-                  Country<span style={{
+          </span> : word === 'Country.' ? <span>
+            Country<span style={{
               color: '#FF2D87'
             }}>.</span>
-                </span> : word}
-            </motion.span>)}
-        </h1>
+          </span> : word}
+        </motion.span>)}
+      </h1>
 
-        {/* Sub-description */}
-        <motion.p initial={{
+      {/* Sub-description */}
+      <motion.p initial={{
         opacity: 0,
         y: 20
       }} animate={{
@@ -2267,11 +2273,11 @@ const HeroSection = ({ scrollToForm }: { scrollToForm: () => void }) => {
         margin: 0,
         marginBottom: '40px'
       }}>
-          3rd Annual EmpowaWomen Bubbles and Nibbles Soiree and Leadership Awards.
-        </motion.p>
+        3rd Annual EmpowaWomen Bubbles and Nibbles Soiree and Leadership Awards.
+      </motion.p>
 
-        {/* Meta Strip */}
-        <motion.div initial={{
+      {/* Meta Strip */}
+      <motion.div initial={{
         opacity: 0,
         y: 20
       }} animate={{
@@ -2287,55 +2293,55 @@ const HeroSection = ({ scrollToForm }: { scrollToForm: () => void }) => {
         gap: '16px',
         marginBottom: '40px'
       }}>
-          <div style={{
+        <div style={{
           display: 'flex',
           alignItems: 'center',
           gap: '8px'
         }}>
-            <Calendar size={14} color="#FF2D87" />
-            <span style={{
+          <Calendar size={14} color="#FF2D87" />
+          <span style={{
             fontFamily: 'Figtree',
             fontSize: '13px',
             color: 'rgba(255,255,255,0.60)',
             letterSpacing: '0.02em'
           }}>
-              28 August 2026
-            </span>
-          </div>
-          <div style={{
+            28 August 2026
+          </span>
+        </div>
+        <div style={{
           display: 'flex',
           alignItems: 'center',
           gap: '8px'
         }}>
-            <Clock size={14} color="#FF2D87" />
-            <span style={{
+          <Clock size={14} color="#FF2D87" />
+          <span style={{
             fontFamily: 'Figtree',
             fontSize: '13px',
             color: 'rgba(255,255,255,0.60)',
             letterSpacing: '0.02em'
           }}>
-              16:00 to 20:00
-            </span>
-          </div>
-          <div style={{
+            16:00 to 20:00
+          </span>
+        </div>
+        <div style={{
           display: 'flex',
           alignItems: 'center',
           gap: '8px'
         }}>
-            <MapPin size={14} color="#FF2D87" />
-            <span style={{
+          <MapPin size={14} color="#FF2D87" />
+          <span style={{
             fontFamily: 'Figtree',
             fontSize: '13px',
             color: 'rgba(255,255,255,0.60)',
             letterSpacing: '0.02em'
           }}>
-              EmpowaWorx House Johannesburg
-            </span>
-          </div>
-        </motion.div>
+            EmpowaWorx House Johannesburg
+          </span>
+        </div>
+      </motion.div>
 
-        {/* Invite Notice */}
-        <motion.div initial={{
+      {/* Invite Notice */}
+      <motion.div initial={{
         opacity: 0
       }} animate={{
         opacity: 0.45
@@ -2352,10 +2358,10 @@ const HeroSection = ({ scrollToForm }: { scrollToForm: () => void }) => {
         paddingLeft: '16px',
         paddingRight: '16px'
       }}>
-          <ShieldCheck size={14} color="#FFFFFF" style={{
+        <ShieldCheck size={14} color="#FFFFFF" style={{
           flexShrink: 0
         }} />
-          <span style={{
+        <span style={{
           fontFamily: 'Figtree',
           fontSize: '10px',
           fontWeight: 600,
@@ -2363,13 +2369,13 @@ const HeroSection = ({ scrollToForm }: { scrollToForm: () => void }) => {
           textTransform: 'uppercase',
           color: '#FFFFFF'
         }}>
-            Strictly Invitation-Only | Limited to 200 Female CXOs, Board Chairs, Founders, Investors
-            and Policymakers
-          </span>
-        </motion.div>
+          Strictly Invitation-Only | Limited to 200 Female CXOs, Board Chairs, Founders, Investors
+          and Policymakers
+        </span>
+      </motion.div>
 
-        {/* CTA Buttons */}
-        <motion.div initial={{
+      {/* CTA Buttons */}
+      <motion.div initial={{
         opacity: 0,
         y: 20
       }} animate={{
@@ -2385,7 +2391,7 @@ const HeroSection = ({ scrollToForm }: { scrollToForm: () => void }) => {
         justifyContent: 'center',
         width: '100%'
       }}>
-          <button className="hero-btn-primary" style={{
+        <button className="hero-btn-primary" style={{
           display: 'inline-flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -2405,9 +2411,9 @@ const HeroSection = ({ scrollToForm }: { scrollToForm: () => void }) => {
           letterSpacing: '0.02em',
           filter: primaryHover ? 'brightness(1.1)' : 'brightness(1)'
         }} onMouseEnter={() => setPrimaryHover(true)} onMouseLeave={() => setPrimaryHover(false)} onClick={scrollToForm}>
-            Request Invitation
-          </button>
-          <button className="hero-btn-secondary" style={{
+          Request Invitation
+        </button>
+        <button className="hero-btn-secondary" style={{
           padding: '0 32px',
           height: '50px',
           backgroundColor: secondaryHover ? 'rgba(255,255,255,0.08)' : 'transparent',
@@ -2420,12 +2426,12 @@ const HeroSection = ({ scrollToForm }: { scrollToForm: () => void }) => {
           cursor: 'pointer',
           transition: 'background-color 200ms, border-color 200ms'
         }} onMouseEnter={() => setSecondaryHover(true)} onMouseLeave={() => setSecondaryHover(false)}>
-            Nominate for Award
-          </button>
-        </motion.div>
+          Nominate for Award
+        </button>
+      </motion.div>
 
-        {/* Hero Stats Strip */}
-        <motion.div initial={{
+      {/* Hero Stats Strip */}
+      <motion.div initial={{
         opacity: 0,
         y: 20
       }} animate={{
@@ -2446,7 +2452,7 @@ const HeroSection = ({ scrollToForm }: { scrollToForm: () => void }) => {
         maxWidth: '800px',
         alignSelf: 'center'
       }}>
-          {heroStats.map((stat, i) => <div key={stat.suffix} className="hero-stat-item" style={{
+        {heroStats.map((stat, i) => <div key={stat.suffix} className="hero-stat-item" style={{
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -2456,12 +2462,12 @@ const HeroSection = ({ scrollToForm }: { scrollToForm: () => void }) => {
           paddingBottom: '16px',
           borderRight: i < heroStats.length - 1 ? '1px solid rgba(255,255,255,0.10)' : 'none'
         }}>
-              <div style={{
+          <div style={{
             display: 'flex',
             alignItems: 'baseline',
             gap: '4px'
           }}>
-                <span style={{
+            <span style={{
               fontFamily: 'Figtree',
               fontSize: 'clamp(36px, 5vw, 52px)',
               fontWeight: 300,
@@ -2469,9 +2475,9 @@ const HeroSection = ({ scrollToForm }: { scrollToForm: () => void }) => {
               letterSpacing: '-0.04em',
               lineHeight: 1.0
             }}>
-                  {stat.value}
-                </span>
-                <span style={{
+              {stat.value}
+            </span>
+            <span style={{
               fontFamily: 'Figtree',
               fontSize: '13px',
               fontWeight: 400,
@@ -2481,10 +2487,10 @@ const HeroSection = ({ scrollToForm }: { scrollToForm: () => void }) => {
               alignSelf: 'flex-end',
               paddingBottom: '6px'
             }}>
-                  {stat.suffix}
-                </span>
-              </div>
-              <p style={{
+              {stat.suffix}
+            </span>
+          </div>
+          <p style={{
             fontFamily: 'Figtree',
             fontSize: '11px',
             fontWeight: 400,
@@ -2494,13 +2500,13 @@ const HeroSection = ({ scrollToForm }: { scrollToForm: () => void }) => {
             margin: 0,
             marginTop: '8px'
           }}>
-                {stat.caption}
-              </p>
-            </div>)}
-        </motion.div>
-      </div>
+            {stat.caption}
+          </p>
+        </div>)}
+      </motion.div>
+    </div>
 
-      <style>{`
+    <style>{`
         @keyframes grainShift {
           0%   { background-position: 0% 0%; }
           10%  { background-position: -5% -10%; }
@@ -2547,7 +2553,7 @@ const HeroSection = ({ scrollToForm }: { scrollToForm: () => void }) => {
           }
         }
       `}</style>
-    </section>;
+  </section>;
 };
 export const LeadershipAwardsGala = () => {
   const formRef = React.useRef<HTMLDivElement>(null);
@@ -2567,11 +2573,11 @@ export const LeadershipAwardsGala = () => {
   });
   void scaleX;
   return <main className="min-h-screen bg-[#0A0A0F] selection:bg-[#FF2D87]/30 selection:text-white">
-      <HeroSection scrollToForm={scrollToForm} />
-      <ExperienceStrategy />
-      <GalaTimeline />
-      <AwardCategories />
-      <CTASection scrollToForm={scrollToForm} />
-      <InvitationFormSection ref={formRef} />
-    </main>;
+    <HeroSection scrollToForm={scrollToForm} />
+    <ExperienceStrategy />
+    <GalaTimeline />
+    <AwardCategories />
+    <CTASection scrollToForm={scrollToForm} />
+    <InvitationFormSection ref={formRef} />
+  </main>;
 };

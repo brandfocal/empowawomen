@@ -885,7 +885,7 @@ const AboutSection = () => {
     return <section id="about" ref={ref} style={{
         width: "100%",
         backgroundColor: "#F7F6F2",
-        paddingTop: "96px",
+        paddingTop: 0,
         paddingBottom: "128px",
         overflow: "hidden",
         position: "relative",
@@ -903,6 +903,70 @@ const AboutSection = () => {
             backgroundImage: "radial-gradient(rgba(0,0,0,0.07) 1px, transparent 1px)",
             backgroundSize: "28px 28px"
         }} />
+
+        {/* Full-width interactive banner linked to the summit page */}
+        <RouterLink 
+            to="/summit"
+            style={{
+                width: "100%",
+                display: "block",
+                overflow: "hidden",
+                cursor: "pointer",
+                position: "relative",
+                zIndex: 2,
+                marginBottom: "64px"
+            }}
+        >
+            <img 
+                src="/empowawomen-banner.jpg" 
+                alt="EmpowaWomen Banner" 
+                style={{ 
+                    width: "100%", 
+                    height: "auto", 
+                    display: "block",
+                    transition: "transform 800ms cubic-bezier(0.16, 1, 0.3, 1)"
+                }}
+                onMouseEnter={e => {
+                    (e.currentTarget as HTMLImageElement).style.transform = "scale(1.025)";
+                }}
+                onMouseLeave={e => {
+                    (e.currentTarget as HTMLImageElement).style.transform = "scale(1)";
+                }}
+            />
+            {/* Subtle hover overlay for interactivity */}
+            <div 
+                style={{
+                    position: "absolute",
+                    inset: 0,
+                    background: "linear-gradient(to bottom, rgba(10,10,15,0.1), rgba(10,10,15,0.3))",
+                    opacity: 0,
+                    transition: "opacity 300ms",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center"
+                }}
+                onMouseEnter={e => {
+                    (e.currentTarget as HTMLDivElement).style.opacity = 1;
+                }}
+                onMouseLeave={e => {
+                    (e.currentTarget as HTMLDivElement).style.opacity = 0;
+                }}
+            >
+                <span style={{
+                    backgroundColor: "#FF2D87",
+                    color: "#FFFFFF",
+                    fontFamily: "Figtree",
+                    fontSize: "15px",
+                    fontWeight: 500,
+                    padding: "12px 28px",
+                    borderRadius: "999px",
+                    boxShadow: "0 8px 32px rgba(255,45,135,0.35)",
+                    letterSpacing: "0.02em"
+                }}>
+                    Register For the Summit
+                </span>
+            </div>
+        </RouterLink>
 
         <div style={{
             maxWidth: "1200px",

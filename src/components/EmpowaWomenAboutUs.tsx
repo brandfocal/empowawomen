@@ -723,7 +723,7 @@ const VisionSection = () => {
       backgroundColor: "#0A0A0F",
       overflow: "hidden"
     }}>
-      <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=1400&q=85" alt="" aria-hidden="true" style={{
+      <img src="/features-16.jpg" alt="" aria-hidden="true" style={{
         position: "absolute",
         inset: 0,
         width: "100%",
@@ -893,7 +893,7 @@ const VisionSection = () => {
       backgroundColor: "#F7F6F2",
       overflow: "hidden"
     }}>
-      <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1400&q=85" alt="" aria-hidden="true" style={{
+      <img src="/features-12.jpg" alt="" aria-hidden="true" style={{
         position: "absolute",
         inset: 0,
         width: "100%",
@@ -1059,7 +1059,7 @@ const VisionSection = () => {
       backgroundColor: "#0A0A0F",
       overflow: "hidden"
     }}>
-      <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1400&q=85" alt="" aria-hidden="true" style={{
+      <img src="/features.jpg" alt="" aria-hidden="true" style={{
         position: "absolute",
         inset: 0,
         width: "100%",

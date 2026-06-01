@@ -258,7 +258,7 @@ export const ExecutiveIndustrySeries: React.FC = () => {
                         inset: 0
                     }}>
                         <img
-                            src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=1920&q=90"
+                            src="/features-7.jpg"
                             alt=""
                             style={{
                                 width: "100%",

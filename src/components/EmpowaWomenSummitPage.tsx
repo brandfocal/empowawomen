@@ -34,6 +34,7 @@ interface AudienceStatItem {
 interface SponsorItem {
   id: string;
   name: string;
+  src: string;
 }
 interface SocialItem {
   id: string;
@@ -107,30 +108,26 @@ const NAV_LINKS: NavLinkItem[] = [{
 const HERO_WORDS = ["Leading", "Fearlessly.", "Accelerating", "Growth.", "Transforming", "Economies"];
 const SPONSORS: SponsorItem[] = [{
   id: "sp-1",
-  name: "ABSA"
+  name: "ABSA",
+  src: "/absa-logo.png"
 }, {
   id: "sp-2",
-  name: "STANDARD BANK"
+  name: "CCBSA",
+  src: "/ccbsa.png"
 }, {
   id: "sp-3",
-  name: "NEDBANK"
+  name: "Old Mutual",
+  src: "/old_mutual_logo - Copy.png"
 }, {
   id: "sp-4",
-  name: "ANGLO AMERICAN"
+  name: "WRSETA",
+  src: "/WRSETA.jpg"
 }, {
   id: "sp-5",
-  name: "OLD MUTUAL"
-}, {
-  id: "sp-6",
-  name: "MTN"
-}, {
-  id: "sp-7",
-  name: "SASOL"
-}, {
-  id: "sp-8",
-  name: "DEPT. OF WOMEN"
+  name: "EmpowaWomen",
+  src: "/logo.png"
 }];
-const SPONSORS_EXTENDED: SponsorItem[] = [...SPONSORS, ...SPONSORS, ...SPONSORS];
+const SPONSORS_EXTENDED: SponsorItem[] = [...SPONSORS, ...SPONSORS, ...SPONSORS, ...SPONSORS, ...SPONSORS];
 const META_CHIPS: MetaChip[] = [{
   id: "mc-1",
   icon: "📍",
@@ -1005,9 +1002,9 @@ const SponsorMarqueeStrip: React.FC = () => {
       overflow: "hidden"
     }}>
       <motion.div animate={{
-        x: ["0%", "-33.333%"]
+        x: ["0%", "-50%"]
       }} transition={{
-        duration: 30,
+        duration: 35,
         ease: "linear",
         repeat: Infinity
       }} style={{
@@ -1017,19 +1014,35 @@ const SponsorMarqueeStrip: React.FC = () => {
         whiteSpace: "nowrap",
         width: "max-content"
       }}>
-        {SPONSORS_EXTENDED.map((sp, i) => <span key={`strip-sp-${sp.id}-${i}`} className="shrink-0 cursor-default transition-colors duration-200 uppercase" style={{
-          fontFamily: "Figtree",
-          fontSize: "clamp(10px, 1.4vw, 12px)",
-          fontWeight: 600,
-          letterSpacing: "0.18em",
-          color: "rgba(255,255,255,0.20)"
-        }} onMouseEnter={e => {
-          (e.currentTarget as HTMLSpanElement).style.color = "rgba(255,255,255,0.60)";
-        }} onMouseLeave={e => {
-          (e.currentTarget as HTMLSpanElement).style.color = "rgba(255,255,255,0.20)";
+        {SPONSORS_EXTENDED.map((sp, i) => <div key={`strip-sp-${sp.id}-${i}`} style={{
+          flexShrink: 0,
+          height: "72px",
+          display: "flex",
+          alignItems: "center"
         }}>
-          {sp.name}
-        </span>)}
+          <img
+            src={sp.src}
+            alt={sp.name}
+            style={{
+              height: "32px",
+              width: "auto",
+              maxWidth: "130px",
+              objectFit: "contain",
+              opacity: 0.3,
+              filter: "grayscale(100%)",
+              transition: "opacity 200ms ease-out, filter 200ms ease-out",
+              cursor: "default"
+            }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
+              (e.currentTarget as HTMLImageElement).style.filter = "grayscale(0%)";
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLImageElement).style.opacity = "0.3";
+              (e.currentTarget as HTMLImageElement).style.filter = "grayscale(100%)";
+            }}
+          />
+        </div>)}
       </motion.div>
     </motion.div>
   </div>;
@@ -3008,6 +3021,66 @@ export const EmpowaWomenSummitPage: React.FC = () => {
       <SponsorMarqueeStrip />
     </div>
     <IntroBridgeSection />
+    <div 
+      onClick={scrollToRegistration}
+      style={{
+        width: "100%",
+        cursor: "pointer",
+        overflow: "hidden",
+        position: "relative",
+        display: "block"
+      }}
+    >
+      <img 
+        src="/empowawomen-banner.jpg" 
+        alt="EmpowaWomen Banner" 
+        style={{ 
+          width: "100%", 
+          height: "auto", 
+          display: "block",
+          transition: "transform 800ms cubic-bezier(0.16, 1, 0.3, 1)"
+        }}
+        onMouseEnter={e => {
+          (e.currentTarget as HTMLImageElement).style.transform = "scale(1.025)";
+        }}
+        onMouseLeave={e => {
+          (e.currentTarget as HTMLImageElement).style.transform = "scale(1)";
+        }}
+      />
+      {/* Subtle hover overlay for interactivity */}
+      <div 
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: "linear-gradient(to bottom, rgba(10,10,15,0.1), rgba(10,10,15,0.3))",
+          opacity: 0,
+          transition: "opacity 300ms",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center"
+        }}
+        onMouseEnter={e => {
+          (e.currentTarget as HTMLDivElement).style.opacity = 1;
+        }}
+        onMouseLeave={e => {
+          (e.currentTarget as HTMLDivElement).style.opacity = 0;
+        }}
+      >
+        <span style={{
+          backgroundColor: "#FF2D87",
+          color: "#FFFFFF",
+          fontFamily: "Figtree",
+          fontSize: "15px",
+          fontWeight: 500,
+          padding: "12px 28px",
+          borderRadius: "999px",
+          boxShadow: "0 8px 32px rgba(255,45,135,0.3)",
+          letterSpacing: "0.02em"
+        }}>
+          Register For the Summit
+        </span>
+      </div>
+    </div>
     <SummitIntelligenceSection />
     <AgendaSection />
     <WhoShouldAttendSection scrollToRegistration={scrollToRegistration} />

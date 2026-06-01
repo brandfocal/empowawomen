@@ -209,6 +209,7 @@ interface AvatarItem {
 interface LogoItem {
   id: string;
   name: string;
+  src: string;
 }
 const AVATAR_DATA: AvatarItem[] = [{
   id: "av-1",
@@ -237,33 +238,26 @@ const AVATAR_DATA: AvatarItem[] = [{
 }];
 const LOGOS: LogoItem[] = [{
   id: "logo-1",
-  name: "ABSA"
+  name: "ABSA",
+  src: "/absa-logo.png"
 }, {
   id: "logo-2",
-  name: "DEPT. OF WOMEN"
+  name: "CCBSA",
+  src: "/ccbsa.png"
 }, {
   id: "logo-3",
-  name: "STANDARD BANK"
+  name: "Old Mutual",
+  src: "/old_mutual_logo - Copy.png"
 }, {
   id: "logo-4",
-  name: "ANGLO AMERICAN"
+  name: "WRSETA",
+  src: "/WRSETA.jpg"
 }, {
   id: "logo-5",
-  name: "NEDBANK"
-}, {
-  id: "logo-6",
-  name: "ESKOM"
-}, {
-  id: "logo-7",
-  name: "MTN"
-}, {
-  id: "logo-8",
-  name: "SASOL"
-}, {
-  id: "logo-9",
-  name: "OLD MUTUAL"
+  name: "EmpowaWomen",
+  src: "/logo.png"
 }];
-const EXTENDED_LOGOS = [...LOGOS, ...LOGOS, ...LOGOS];
+const EXTENDED_LOGOS = [...LOGOS, ...LOGOS, ...LOGOS, ...LOGOS, ...LOGOS];
 const HEADLINE_WORDS = ["Transforming", "Conversations", "into", "Partnerships", "&", "Market", "Access."];
 const UNDERLINED_WORDS = new Set(["Partnerships", "Access."]);
 
@@ -622,22 +616,28 @@ export const SummitHeroHeader: React.FC = () => {
               display: "flex",
               alignItems: "center"
             }}>
-              <span style={{
-                fontFamily: "Figtree",
-                fontSize: "clamp(10px, 1.5vw, 12px)",
-                fontWeight: 600,
-                letterSpacing: "0.18em",
-                color: "rgba(255,255,255,0.20)",
-                cursor: "default",
-                textTransform: "uppercase",
-                transition: "color 200ms ease-out"
-              }} onMouseEnter={e => {
-                (e.currentTarget as HTMLSpanElement).style.color = "rgba(255,255,255,0.60)";
-              }} onMouseLeave={e => {
-                (e.currentTarget as HTMLSpanElement).style.color = "rgba(255,255,255,0.20)";
-              }}>
-                {logo.name}
-              </span>
+              <img
+                src={logo.src}
+                alt={logo.name}
+                style={{
+                  height: "32px",
+                  width: "auto",
+                  maxWidth: "130px",
+                  objectFit: "contain",
+                  opacity: 0.3,
+                  filter: "grayscale(100%)",
+                  transition: "opacity 200ms ease-out, filter 200ms ease-out",
+                  cursor: "default"
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
+                  (e.currentTarget as HTMLImageElement).style.filter = "grayscale(0%)";
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLImageElement).style.opacity = "0.3";
+                  (e.currentTarget as HTMLImageElement).style.filter = "grayscale(100%)";
+                }}
+              />
             </div>)}
           </motion.div>
         </motion.div>
@@ -959,13 +959,13 @@ export const SummitsHub: React.FC = () => {
 
             {/* Column for Card 2 and 3 */}
             <div className="summits-col-span-4" style={{ gridColumn: "span 4", display: "flex", flexDirection: "column", gap: "24px" }}>
-              <SeriesCard title="Provincial Summit Series 2027" bgImage="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=85" accentColor="#00B4A6" badge="9 PROVINCES" formatBadge="Invitation-Only · 100 Per Province" description="Localized economic participation models." />
-              <SeriesCard title="Executive Industry Series 2027" bgImage="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=800&q=85" accentColor="#D97706" badge="10 STREAMS" formatBadge="100 Per Session" description="Sector-specific engineering and market access." />
+              <SeriesCard title="Provincial Summit Series 2027" bgImage="/features-18.jpg" accentColor="#00B4A6" badge="9 PROVINCES" formatBadge="Invitation-Only · 100 Per Province" description="Localized economic participation models." />
+              <SeriesCard title="Executive Industry Series 2027" bgImage="/features-7.jpg" accentColor="#D97706" badge="10 STREAMS" formatBadge="100 Per Session" description="Sector-specific engineering and market access." />
             </div>
 
             {/* Card 4: Bubbles & Nibbles – Full width */}
             <div className="summits-col-span-12" style={{ gridColumn: "span 12" }}>
-              <SeriesCard isFullWidth title="Bubbles & Nibbles Soirée™ & Leadership Awards™" bgImage="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=85" accentColor="#6D28D9" badge="GALA · 28 AUG 2026" formatBadge="Strictly Invitation-Only · 200 CXOs" description="Celebrating excellence and fostering high-impact networking in an elite setting of recognition." />
+              <SeriesCard isFullWidth title="Bubbles & Nibbles Soirée™ & Leadership Awards™" bgImage="/features-20.jpg" accentColor="#6D28D9" badge="GALA · 28 AUG 2026" formatBadge="Strictly Invitation-Only · 200 CXOs" description="Celebrating excellence and fostering high-impact networking in an elite setting of recognition." />
             </div>
           </div>
         </div>
