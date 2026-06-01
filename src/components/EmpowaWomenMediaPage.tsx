@@ -1413,7 +1413,7 @@ const AccreditationSection = () => {
   const [mediaHouse, setMediaHouse] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [mobile, setMobile] = React.useState("");
-  const [designation, setDesignation] = React.useState("Journalist");
+  const [designation, setDesignation] = React.useState("Journalist / Reporter");
   const [message, setMessage] = React.useState("");
   const [loading, setLoading] = React.useState(false);
   const [submitted, setSubmitted] = React.useState(false);
@@ -1768,11 +1768,11 @@ const AccreditationSection = () => {
                     onFocus={e => { e.currentTarget.style.borderColor = "#FF2D87"; e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.06)"; }}
                     onBlur={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)"; e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.03)"; }}
                   >
-                    <option value="Journalist" style={{ backgroundColor: "#0A0A0F" }}>Journalist / Reporter</option>
-                    <option value="Photographer" style={{ backgroundColor: "#0A0A0F" }}>Press Photographer</option>
-                    <option value="Videographer" style={{ backgroundColor: "#0A0A0F" }}>Videographer / Camera Operator</option>
-                    <option value="Editor" style={{ backgroundColor: "#0A0A0F" }}>Editor / Producer</option>
-                    <option value="Broadcaster" style={{ backgroundColor: "#0A0A0F" }}>Broadcaster / Anchor</option>
+                    <option value="Journalist / Reporter" style={{ backgroundColor: "#0A0A0F" }}>Journalist / Reporter</option>
+                    <option value="Press Photographer" style={{ backgroundColor: "#0A0A0F" }}>Press Photographer</option>
+                    <option value="Videographer / Camera Operator" style={{ backgroundColor: "#0A0A0F" }}>Videographer / Camera Operator</option>
+                    <option value="Editor / Producer" style={{ backgroundColor: "#0A0A0F" }}>Editor / Producer</option>
+                    <option value="Broadcaster / Anchor" style={{ backgroundColor: "#0A0A0F" }}>Broadcaster / Anchor</option>
                     <option value="Other" style={{ backgroundColor: "#0A0A0F" }}>Other</option>
                   </select>
                   <div style={{
