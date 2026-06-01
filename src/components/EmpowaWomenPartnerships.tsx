@@ -557,7 +557,7 @@ const HeroSection = () => {
                 duration: 2.4,
                 ease: "easeOut"
             }}>
-                <img src="features-4.jpg" alt="" className="w-full h-full object-cover" style={{
+                <img src="/features-4.jpg" alt="" className="w-full h-full object-cover" style={{
                     objectPosition: "center"
                 }} />
             </motion.div>

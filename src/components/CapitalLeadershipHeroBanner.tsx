@@ -24,7 +24,7 @@ const HERO_LINES = [{
 const UNDERLINED_WORDS = new Set(["Fearlessly.", "Narrative.", "Capital."]);
 
 export const CapitalLeadershipHeroBanner: React.FC<CapitalLeadershipHeroBannerProps> = ({
-  bgImage = "https://images.unsplash.com/photo-1556761175-4b46a572b786?w=1600&q=85"
+  bgImage = "/marketing.jpg"
 }) => {
   const {
     scrollY
@@ -46,8 +46,8 @@ export const CapitalLeadershipHeroBanner: React.FC<CapitalLeadershipHeroBannerPr
     paddingTop: "68px",
     paddingBottom: "80px"
   }}>
-      {/* Grain overlay */}
-      <div style={{
+    {/* Grain overlay */}
+    <div style={{
       position: "absolute",
       inset: 0,
       pointerEvents: "none",
@@ -58,15 +58,15 @@ export const CapitalLeadershipHeroBanner: React.FC<CapitalLeadershipHeroBannerPr
       animation: "grainShift 0.8s steps(1) infinite"
     }} />
 
-      {/* Background image */}
-      <div style={{
+    {/* Background image */}
+    <div style={{
       position: "absolute",
       inset: 0,
       zIndex: 0,
       overflow: "hidden",
       pointerEvents: "none"
     }}>
-        <motion.div style={{
+      <motion.div style={{
         position: "absolute",
         inset: 0
       }} initial={{
@@ -79,28 +79,28 @@ export const CapitalLeadershipHeroBanner: React.FC<CapitalLeadershipHeroBannerPr
         duration: 2.4,
         ease: "easeOut"
       }}>
-          <motion.div style={{
+        <motion.div style={{
           y: imageY,
           position: "absolute",
           inset: 0
         }}>
-            <img src={bgImage} alt="" style={{
+          <img src={bgImage} alt="" style={{
             width: "100%",
             height: "100%",
             objectFit: "cover",
             objectPosition: "center 30%"
           }} />
-          </motion.div>
         </motion.div>
-        <div style={{
+      </motion.div>
+      <div style={{
         position: "absolute",
         inset: 0,
         background: "linear-gradient(to bottom, rgba(10,10,15,0.72) 0%, rgba(10,10,15,0.42) 38%, rgba(10,10,15,0.82) 100%)"
       }} />
-      </div>
+    </div>
 
-      {/* Content */}
-      <div style={{
+    {/* Content */}
+    <div style={{
       position: "relative",
       zIndex: 10,
       width: "100%",
@@ -113,7 +113,7 @@ export const CapitalLeadershipHeroBanner: React.FC<CapitalLeadershipHeroBannerPr
       flexDirection: "column",
       alignItems: "center"
     }}>
-        <motion.div initial={{
+      <motion.div initial={{
         y: 90
       }} animate={{
         y: 0
@@ -126,15 +126,15 @@ export const CapitalLeadershipHeroBanner: React.FC<CapitalLeadershipHeroBannerPr
         flexDirection: "column",
         alignItems: "center"
       }}>
-          <div style={{
+        <div style={{
           width: "100%",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           marginBottom: "48px"
         }}>
-            {/* Eyebrow */}
-            <motion.div initial={{
+          {/* Eyebrow */}
+          <motion.div initial={{
             opacity: 0,
             y: 10
           }} animate={{
@@ -152,7 +152,7 @@ export const CapitalLeadershipHeroBanner: React.FC<CapitalLeadershipHeroBannerPr
             flexWrap: "wrap",
             textAlign: "center"
           }}>
-              <span style={{
+            <span style={{
               width: "6px",
               height: "6px",
               borderRadius: "50%",
@@ -161,7 +161,7 @@ export const CapitalLeadershipHeroBanner: React.FC<CapitalLeadershipHeroBannerPr
               flexShrink: 0,
               animation: "pulseDot 2s ease-in-out infinite"
             }} />
-              <span style={{
+            <span style={{
               fontFamily: "Figtree, sans-serif",
               fontSize: "clamp(9px, 2vw, 11px)",
               fontWeight: 600,
@@ -169,12 +169,12 @@ export const CapitalLeadershipHeroBanner: React.FC<CapitalLeadershipHeroBannerPr
               color: "rgba(255,255,255,0.60)",
               textTransform: "uppercase"
             }}>
-                CAPITAL, MARKETING, CREATIVE &amp; LEADERSHIP SYSTEMS
-              </span>
-            </motion.div>
+              CAPITAL, MARKETING, CREATIVE &amp; LEADERSHIP SYSTEMS
+            </span>
+          </motion.div>
 
-            {/* Headline */}
-            <motion.h1 initial={{
+          {/* Headline */}
+          <motion.h1 initial={{
             opacity: 0
           }} animate={{
             opacity: 1
@@ -191,10 +191,10 @@ export const CapitalLeadershipHeroBanner: React.FC<CapitalLeadershipHeroBannerPr
             maxWidth: 900,
             margin: "0 auto 24px auto"
           }}>
-              {HERO_LINES.map(line => <span key={line.id} style={{
+            {HERO_LINES.map(line => <span key={line.id} style={{
               display: "block"
             }}>
-                  {line.words.map(word => {
+              {line.words.map(word => {
                 const currentIndex = wordIndex++;
                 const isUnderlined = UNDERLINED_WORDS.has(word);
                 const wordWithoutPeriod = isUnderlined ? word.slice(0, -1) : word;
@@ -214,26 +214,26 @@ export const CapitalLeadershipHeroBanner: React.FC<CapitalLeadershipHeroBannerPr
                   delay: 0.4 + currentIndex * 0.1,
                   ease: [0.21, 0.47, 0.32, 0.98]
                 }}>
-                        {isUnderlined ? <span style={{
+                  {isUnderlined ? <span style={{
                     textDecoration: "underline",
                     textDecorationColor: "#FF2D87",
                     textDecorationThickness: "3px",
                     textUnderlineOffset: "6px",
                     color: "#FFFFFF"
                   }}>
-                            {wordWithoutPeriod}
-                          </span> : word}
-                        {isUnderlined && <span style={{
+                    {wordWithoutPeriod}
+                  </span> : word}
+                  {isUnderlined && <span style={{
                     color: "#FF2D87",
                     textDecoration: "none"
                   }}>.</span>}
-                      </motion.span>;
+                </motion.span>;
               })}
-                </span>)}
-            </motion.h1>
+            </span>)}
+          </motion.h1>
 
-            {/* Sub-tagline */}
-            <motion.div initial={{
+          {/* Sub-tagline */}
+          <motion.div initial={{
             opacity: 0,
             y: 12
           }} animate={{
@@ -251,8 +251,8 @@ export const CapitalLeadershipHeroBanner: React.FC<CapitalLeadershipHeroBannerPr
             flexWrap: "wrap",
             gap: "4px"
           }}>
-              {(["Ignite Passion", "Foster Growth", "Drive Change"] as const).map((tag, i) => <React.Fragment key={tag}>
-                  <span style={{
+            {(["Ignite Passion", "Foster Growth", "Drive Change"] as const).map((tag, i) => <React.Fragment key={tag}>
+              <span style={{
                 fontFamily: "Figtree, sans-serif",
                 fontWeight: 400,
                 fontSize: "clamp(10px, 2vw, 13px)",
@@ -260,9 +260,9 @@ export const CapitalLeadershipHeroBanner: React.FC<CapitalLeadershipHeroBannerPr
                 textTransform: "uppercase",
                 color: "rgba(255,255,255,0.40)"
               }}>
-                    {tag}
-                  </span>
-                  {i < 2 && <span style={{
+                {tag}
+              </span>
+              {i < 2 && <span style={{
                 display: "inline-block",
                 width: 1,
                 height: 14,
@@ -270,11 +270,11 @@ export const CapitalLeadershipHeroBanner: React.FC<CapitalLeadershipHeroBannerPr
                 margin: "0 12px",
                 verticalAlign: "middle"
               }} />}
-                </React.Fragment>)}
-            </motion.div>
+            </React.Fragment>)}
+          </motion.div>
 
-            {/* Body */}
-            <motion.p initial={{
+          {/* Body */}
+          <motion.p initial={{
             opacity: 0,
             y: 20
           }} animate={{
@@ -293,13 +293,13 @@ export const CapitalLeadershipHeroBanner: React.FC<CapitalLeadershipHeroBannerPr
             textAlign: "center",
             margin: "0 auto 36px auto"
           }}>
-              The most powerful platform for women accessing capital, controlling brand narratives,
-              driving creative economies, and leading with ethical authority across Africa's corporate
-              landscape.
-            </motion.p>
+            The most powerful platform for women accessing capital, controlling brand narratives,
+            driving creative economies, and leading with ethical authority across Africa's corporate
+            landscape.
+          </motion.p>
 
-            {/* CTAs - Standardized side-by-side pill design */}
-            <motion.div initial={{
+          {/* CTAs - Standardized side-by-side pill design */}
+          <motion.div initial={{
             opacity: 0,
             y: 20
           }} animate={{
@@ -316,7 +316,7 @@ export const CapitalLeadershipHeroBanner: React.FC<CapitalLeadershipHeroBannerPr
             gap: "16px",
             width: "100%"
           }} className="hero-cta-row">
-              <RouterLink to="/summit" style={{
+            <RouterLink to="/summit" style={{
               fontFamily: "Figtree, sans-serif",
               fontSize: "clamp(13px, 2vw, 15px)",
               fontWeight: 500,
@@ -345,14 +345,14 @@ export const CapitalLeadershipHeroBanner: React.FC<CapitalLeadershipHeroBannerPr
               el.style.filter = "brightness(1)";
               el.style.boxShadow = "0 0 32px rgba(255,45,135,0.25)";
             }}>
-                <span style={{
+              <span style={{
                 position: "relative",
                 zIndex: 1
               }} className="inline-flex items-center gap-2">
-                  <span>Secure Your Seat</span>
-                  <ArrowRight size={16} />
-                </span>
-                <span style={{
+                <span>Secure Your Seat</span>
+                <ArrowRight size={16} />
+              </span>
+              <span style={{
                 position: "absolute",
                 top: 0,
                 left: 0,
@@ -363,8 +363,8 @@ export const CapitalLeadershipHeroBanner: React.FC<CapitalLeadershipHeroBannerPr
                 animation: "shimmerSlide 3s linear infinite",
                 pointerEvents: "none"
               }} />
-              </RouterLink>
-              <a href="#matrices" style={{
+            </RouterLink>
+            <a href="#matrices" style={{
               fontFamily: "Figtree, sans-serif",
               fontSize: "clamp(13px, 2vw, 15px)",
               fontWeight: 400,
@@ -386,15 +386,15 @@ export const CapitalLeadershipHeroBanner: React.FC<CapitalLeadershipHeroBannerPr
             }} onMouseLeave={e => {
               (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "rgba(255,255,255,0.05)";
             }}>
-                Explore Pillars
-              </a>
-            </motion.div>
-          </div>
-        </motion.div>
-      </div>
+              Explore Pillars
+            </a>
+          </motion.div>
+        </div>
+      </motion.div>
+    </div>
 
-      {/* Bottom fade */}
-      <div style={{
+    {/* Bottom fade */}
+    <div style={{
       position: "absolute",
       inset: 0,
       pointerEvents: "none",
@@ -402,7 +402,7 @@ export const CapitalLeadershipHeroBanner: React.FC<CapitalLeadershipHeroBannerPr
       background: "linear-gradient(to top, #0A0A0F 0%, transparent 50%)"
     }} />
 
-      <style>{`
+    <style>{`
         @keyframes pulseDot {
           0%, 100% { opacity: 1; transform: scale(1); }
           50% { opacity: 0.3; transform: scale(1.4); }
@@ -437,5 +437,5 @@ export const CapitalLeadershipHeroBanner: React.FC<CapitalLeadershipHeroBannerPr
           }
         }
       `}</style>
-    </section>;
+  </section>;
 };
