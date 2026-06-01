@@ -89,6 +89,12 @@ const ROUTES: RouteItem[] = [{
     icon: GraduationCap,
     description: "Enquire about our specialized leadership training programs.",
     accent: "#6D28D9"
+}, {
+    id: "general",
+    label: "General Enquiries",
+    icon: MessageSquare,
+    description: "For general questions, media enquiries, or feedback.",
+    accent: "#3B82F6"
 }];
 const NAV_LINKS: NavLinkItem[] = [{
     id: "nav-about",
@@ -829,10 +835,71 @@ const HeroSection = () => {
 // Improvement 3: shimmer submit button
 const SmartRoutingForm = () => {
     const [selectedRoute, setSelectedRoute] = React.useState(ROUTES[0].id);
+    const [fullName, setFullName] = React.useState("");
+    const [organisation, setOrganisation] = React.useState("");
+    const [mobile, setMobile] = React.useState("");
+    const [email, setEmail] = React.useState("");
+    const [message, setMessage] = React.useState("");
+    const [loading, setLoading] = React.useState(false);
+    const [submitted, setSubmitted] = React.useState(false);
+    const [error, setError] = React.useState("");
+
     const getRouteAccent = (routeId: string) => {
         const r = ROUTES.find(x => x.id === routeId);
         return r ? r.accent : "#FF2D87";
     };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        
+        if (!fullName || !organisation || !mobile || !email || !message) {
+            setError("Please fill in all required fields.");
+            return;
+        }
+
+        setError("");
+        setLoading(true);
+
+        const routeLabel = ROUTES.find(x => x.id === selectedRoute)?.label || selectedRoute;
+
+        try {
+            const response = await fetch('/api/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    form_id: 2,
+                    input_values: {
+                        'input_10': fullName,
+                        'input_11': organisation,
+                        'input_12': mobile,
+                        'input_4': email,
+                        'input_13': routeLabel,
+                        'input_9': message
+                    }
+                })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || 'Failed to submit enquiry.');
+            }
+
+            setSubmitted(true);
+            setFullName("");
+            setOrganisation("");
+            setMobile("");
+            setEmail("");
+            setMessage("");
+        } catch (err: any) {
+            setError(err.message || "An unexpected error occurred. Please try again.");
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return <section id="contact-form" style={{
         position: "relative",
         zIndex: 10,
@@ -982,169 +1049,385 @@ const SmartRoutingForm = () => {
                     boxShadow: "0 24px 64px rgba(0,0,0,0.06)",
                     border: "1px solid rgba(0,0,0,0.04)"
                 }}>
-                    <form id="contact-form" style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: "24px"
-                    }} onSubmit={e => e.preventDefault()}>
-                        {[{
-                            label: "Full Name",
-                            type: "text",
-                            placeholder: "e.g. Sarah Jenkins"
-                        }, {
-                            label: "Institutional Organization",
-                            type: "text",
-                            placeholder: "e.g. African Development Bank"
-                        }, {
-                            label: "Direct Mobile / WhatsApp",
-                            type: "tel",
-                            placeholder: "082 000 0000"
-                        }].map(field => <div key={field.label} style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            gap: "8px"
-                        }}>
-                            <label style={{
-                                fontFamily: "Figtree",
-                                fontSize: "10px",
-                                fontWeight: 600,
-                                color: "rgba(10,10,15,0.40)",
-                                textTransform: "uppercase",
-                                letterSpacing: "0.2em"
-                            }}>
-                                {field.label}
-                            </label>
-                            <input type={field.type} placeholder={field.placeholder} style={{
-                                width: "100%",
-                                padding: "16px 20px",
-                                backgroundColor: "#F7F6F2",
-                                border: "none",
-                                borderRadius: "12px",
-                                outline: "none",
-                                fontFamily: "Figtree",
-                                fontSize: "15px",
-                                color: "#0A0A0F",
-                                boxSizing: "border-box"
-                            }} />
-                        </div>)}
-
+                    {submitted ? (
                         <div style={{
                             display: "flex",
                             flexDirection: "column",
-                            gap: "8px"
+                            alignItems: "center",
+                            textAlign: "center",
+                            gap: "24px",
+                            padding: "24px 0"
                         }}>
-                            <label style={{
-                                fontFamily: "Figtree",
-                                fontSize: "10px",
-                                fontWeight: 600,
-                                color: "rgba(10,10,15,0.40)",
-                                textTransform: "uppercase",
-                                letterSpacing: "0.2em"
-                            }}>
-                                Selected Route
-                            </label>
                             <div style={{
-                                position: "relative"
+                                width: 64,
+                                height: 64,
+                                borderRadius: "50%",
+                                backgroundColor: `${getRouteAccent(selectedRoute)}1A`,
+                                color: getRouteAccent(selectedRoute),
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center"
                             }}>
-                                <select value={selectedRoute} onChange={e => setSelectedRoute(e.target.value)} style={{
-                                    width: "100%",
-                                    padding: "16px 20px",
-                                    backgroundColor: "#F7F6F2",
-                                    border: "none",
-                                    borderRadius: "12px",
-                                    outline: "none",
+                                <Send size={28} />
+                            </div>
+                            <div style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: "8px"
+                            }}>
+                                <h3 style={{
+                                    fontFamily: "Figtree",
+                                    fontWeight: 500,
+                                    fontSize: "24px",
+                                    color: "#0A0A0F",
+                                    margin: 0
+                                }}>
+                                    Enquiry Received
+                                </h3>
+                                <p style={{
                                     fontFamily: "Figtree",
                                     fontSize: "15px",
-                                    color: "#0A0A0F",
-                                    appearance: "none",
-                                    cursor: "pointer",
-                                    boxSizing: "border-box"
+                                    color: "#64748b",
+                                    lineHeight: 1.6,
+                                    maxWidth: "320px",
+                                    margin: 0
                                 }}>
-                                    {ROUTES.map(r => <option key={r.id} value={r.id}>{r.label}</option>)}
-                                </select>
-                                <div style={{
-                                    position: "absolute",
-                                    right: "20px",
-                                    top: "50%",
-                                    transform: "translateY(-50%)",
-                                    pointerEvents: "none",
-                                    color: "rgba(10,10,15,0.40)"
-                                }}>
-                                    <ChevronRight size={18} style={{
-                                        transform: "rotate(90deg)"
-                                    }} />
-                                </div>
+                                    Thank you for reaching out. Your enquiry has been successfully routed to the correct executive team. We will be in touch shortly.
+                                </p>
                             </div>
+                            <button onClick={() => setSubmitted(false)} style={{
+                                fontFamily: "Figtree",
+                                fontSize: "14px",
+                                fontWeight: 500,
+                                color: "#FFFFFF",
+                                backgroundColor: getRouteAccent(selectedRoute),
+                                padding: "12px 28px",
+                                borderRadius: "999px",
+                                border: "none",
+                                cursor: "pointer",
+                                transition: "all 200ms ease-out"
+                            }} onMouseEnter={e => {
+                                (e.currentTarget as HTMLButtonElement).style.filter = "brightness(1.1)";
+                            }} onMouseLeave={e => {
+                                (e.currentTarget as HTMLButtonElement).style.filter = "brightness(1)";
+                            }}>
+                                Send Another Message
+                            </button>
                         </div>
-
-                        <div style={{
+                    ) : (
+                        <form style={{
                             display: "flex",
                             flexDirection: "column",
-                            gap: "8px"
-                        }}>
-                            <label style={{
-                                fontFamily: "Figtree",
-                                fontSize: "10px",
-                                fontWeight: 600,
-                                color: "rgba(10,10,15,0.40)",
-                                textTransform: "uppercase",
-                                letterSpacing: "0.2em"
-                            }}>
-                                Message
-                            </label>
-                            <textarea rows={4} placeholder="Please summarize your proposal briefly to ensure immediate routing to the correct executive tier." style={{
-                                width: "100%",
-                                padding: "16px 20px",
-                                backgroundColor: "#F7F6F2",
-                                border: "none",
-                                borderRadius: "12px",
-                                outline: "none",
-                                fontFamily: "Figtree",
-                                fontSize: "15px",
-                                color: "#0A0A0F",
-                                resize: "none",
-                                boxSizing: "border-box"
-                            }} />
-                        </div>
+                            gap: "24px"
+                        }} onSubmit={handleSubmit}>
+                            {/* Error Banner */}
+                            {error && (
+                                <div style={{
+                                    padding: "12px 16px",
+                                    backgroundColor: "rgba(239, 68, 68, 0.08)",
+                                    border: "1px solid rgba(239, 68, 68, 0.2)",
+                                    borderRadius: "12px",
+                                    color: "#EF4444",
+                                    fontSize: "13px",
+                                    fontFamily: "Figtree",
+                                    lineHeight: 1.4
+                                }}>
+                                    {error}
+                                </div>
+                            )}
 
-                        {/* Shimmer submit button */}
-                        <button type="submit" style={{
-                            width: "100%",
-                            padding: "20px",
-                            backgroundColor: getRouteAccent(selectedRoute),
-                            color: "#FFFFFF",
-                            border: "none",
-                            borderRadius: "999px",
-                            fontFamily: "Figtree",
-                            fontWeight: 500,
-                            fontSize: "16px",
-                            cursor: "pointer",
-                            transition: "all 200ms",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            gap: "8px",
-                            position: "relative",
-                            overflow: "hidden"
-                        }} onMouseEnter={e => {
-                            (e.currentTarget as HTMLButtonElement).style.boxShadow = `0 8px 32px ${getRouteAccent(selectedRoute)}4D`;
-                        }} onMouseLeave={e => {
-                            (e.currentTarget as HTMLButtonElement).style.boxShadow = "none";
-                        }}>
+                            {/* Full Name Field */}
                             <div style={{
-                                position: "absolute",
-                                top: 0,
-                                left: 0,
-                                height: "100%",
-                                width: "40%",
-                                background: "linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent)",
-                                transform: "skewX(-20deg)",
-                                animation: "shimmerBtn 3s linear infinite"
-                            }} />
-                            <span>Send Your Enquiry</span>
-                            <ArrowRight size={16} />
-                        </button>
-                    </form>
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: "8px"
+                            }}>
+                                <label style={{
+                                    fontFamily: "Figtree",
+                                    fontSize: "10px",
+                                    fontWeight: 600,
+                                    color: "rgba(10,10,15,0.40)",
+                                    textTransform: "uppercase",
+                                    letterSpacing: "0.2em"
+                                }}>
+                                    Full Name
+                                </label>
+                                <input
+                                    type="text"
+                                    required
+                                    value={fullName}
+                                    onChange={e => setFullName(e.target.value)}
+                                    placeholder="e.g. Sarah Jenkins"
+                                    style={{
+                                        width: "100%",
+                                        padding: "16px 20px",
+                                        backgroundColor: "#F7F6F2",
+                                        border: "none",
+                                        borderRadius: "12px",
+                                        outline: "none",
+                                        fontFamily: "Figtree",
+                                        fontSize: "15px",
+                                        color: "#0A0A0F",
+                                        boxSizing: "border-box"
+                                    }}
+                                />
+                            </div>
+
+                            {/* Institutional Organization Field */}
+                            <div style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: "8px"
+                            }}>
+                                <label style={{
+                                    fontFamily: "Figtree",
+                                    fontSize: "10px",
+                                    fontWeight: 600,
+                                    color: "rgba(10,10,15,0.40)",
+                                    textTransform: "uppercase",
+                                    letterSpacing: "0.2em"
+                                }}>
+                                    Institutional Organization
+                                </label>
+                                <input
+                                    type="text"
+                                    required
+                                    value={organisation}
+                                    onChange={e => setOrganisation(e.target.value)}
+                                    placeholder="e.g. African Development Bank"
+                                    style={{
+                                        width: "100%",
+                                        padding: "16px 20px",
+                                        backgroundColor: "#F7F6F2",
+                                        border: "none",
+                                        borderRadius: "12px",
+                                        outline: "none",
+                                        fontFamily: "Figtree",
+                                        fontSize: "15px",
+                                        color: "#0A0A0F",
+                                        boxSizing: "border-box"
+                                    }}
+                                />
+                            </div>
+
+                            {/* Direct Mobile / WhatsApp Field */}
+                            <div style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: "8px"
+                            }}>
+                                <label style={{
+                                    fontFamily: "Figtree",
+                                    fontSize: "10px",
+                                    fontWeight: 600,
+                                    color: "rgba(10,10,15,0.40)",
+                                    textTransform: "uppercase",
+                                    letterSpacing: "0.2em"
+                                }}>
+                                    Direct Mobile / WhatsApp
+                                </label>
+                                <input
+                                    type="tel"
+                                    required
+                                    value={mobile}
+                                    onChange={e => setMobile(e.target.value)}
+                                    placeholder="e.g. 082 000 0000"
+                                    style={{
+                                        width: "100%",
+                                        padding: "16px 20px",
+                                        backgroundColor: "#F7F6F2",
+                                        border: "none",
+                                        borderRadius: "12px",
+                                        outline: "none",
+                                        fontFamily: "Figtree",
+                                        fontSize: "15px",
+                                        color: "#0A0A0F",
+                                        boxSizing: "border-box"
+                                    }}
+                                />
+                            </div>
+
+                            {/* Email Field */}
+                            <div style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: "8px"
+                            }}>
+                                <label style={{
+                                    fontFamily: "Figtree",
+                                    fontSize: "10px",
+                                    fontWeight: 600,
+                                    color: "rgba(10,10,15,0.40)",
+                                    textTransform: "uppercase",
+                                    letterSpacing: "0.2em"
+                                }}>
+                                    Email Address
+                                </label>
+                                <input
+                                    type="email"
+                                    required
+                                    value={email}
+                                    onChange={e => setEmail(e.target.value)}
+                                    placeholder="e.g. sarah@example.com"
+                                    style={{
+                                        width: "100%",
+                                        padding: "16px 20px",
+                                        backgroundColor: "#F7F6F2",
+                                        border: "none",
+                                        borderRadius: "12px",
+                                        outline: "none",
+                                        fontFamily: "Figtree",
+                                        fontSize: "15px",
+                                        color: "#0A0A0F",
+                                        boxSizing: "border-box"
+                                    }}
+                                />
+                            </div>
+
+                            {/* Selected Route Dropdown */}
+                            <div style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: "8px"
+                            }}>
+                                <label style={{
+                                    fontFamily: "Figtree",
+                                    fontSize: "10px",
+                                    fontWeight: 600,
+                                    color: "rgba(10,10,15,0.40)",
+                                    textTransform: "uppercase",
+                                    letterSpacing: "0.2em"
+                                }}>
+                                    Selected Route
+                                </label>
+                                <div style={{
+                                    position: "relative"
+                                }}>
+                                    <select
+                                        value={selectedRoute}
+                                        onChange={e => setSelectedRoute(e.target.value)}
+                                        style={{
+                                            width: "100%",
+                                            padding: "16px 20px",
+                                            backgroundColor: "#F7F6F2",
+                                            border: "none",
+                                            borderRadius: "12px",
+                                            outline: "none",
+                                            fontFamily: "Figtree",
+                                            fontSize: "15px",
+                                            color: "#0A0A0F",
+                                            appearance: "none",
+                                            cursor: "pointer",
+                                            boxSizing: "border-box"
+                                        }}
+                                    >
+                                        {ROUTES.map(r => (
+                                            <option key={r.id} value={r.id}>
+                                                {r.label}
+                                            </option>
+                                        ))}
+                                    </select>
+                                    <div style={{
+                                        position: "absolute",
+                                        right: "20px",
+                                        top: "50%",
+                                        transform: "translateY(-50%)",
+                                        pointerEvents: "none",
+                                        color: "rgba(10,10,15,0.40)"
+                                    }}>
+                                        <ChevronRight size={18} style={{
+                                            transform: "rotate(90deg)"
+                                        }} />
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Message Field */}
+                            <div style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: "8px"
+                            }}>
+                                <label style={{
+                                    fontFamily: "Figtree",
+                                    fontSize: "10px",
+                                    fontWeight: 600,
+                                    color: "rgba(10,10,15,0.40)",
+                                    textTransform: "uppercase",
+                                    letterSpacing: "0.2em"
+                                }}>
+                                    Message
+                                </label>
+                                <textarea
+                                    rows={4}
+                                    required
+                                    value={message}
+                                    onChange={e => setMessage(e.target.value)}
+                                    placeholder="Please summarize your proposal briefly to ensure immediate routing to the correct executive tier."
+                                    style={{
+                                        width: "100%",
+                                        padding: "16px 20px",
+                                        backgroundColor: "#F7F6F2",
+                                        border: "none",
+                                        borderRadius: "12px",
+                                        outline: "none",
+                                        fontFamily: "Figtree",
+                                        fontSize: "15px",
+                                        color: "#0A0A0F",
+                                        resize: "none",
+                                        boxSizing: "border-box"
+                                    }}
+                                />
+                            </div>
+
+                            {/* Shimmer Submit Button */}
+                            <button
+                                type="submit"
+                                disabled={loading}
+                                style={{
+                                    width: "100%",
+                                    padding: "20px",
+                                    backgroundColor: getRouteAccent(selectedRoute),
+                                    color: "#FFFFFF",
+                                    border: "none",
+                                    borderRadius: "999px",
+                                    fontFamily: "Figtree",
+                                    fontWeight: 500,
+                                    fontSize: "16px",
+                                    cursor: loading ? "not-allowed" : "pointer",
+                                    opacity: loading ? 0.7 : 1,
+                                    transition: "all 200ms",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    gap: "8px",
+                                    position: "relative",
+                                    overflow: "hidden"
+                                }}
+                                onMouseEnter={e => {
+                                    if (!loading) {
+                                        (e.currentTarget as HTMLButtonElement).style.boxShadow = `0 8px 32px ${getRouteAccent(selectedRoute)}4D`;
+                                    }
+                                }}
+                                onMouseLeave={e => {
+                                    (e.currentTarget as HTMLButtonElement).style.boxShadow = "none";
+                                }}
+                            >
+                                <div style={{
+                                    position: "absolute",
+                                    top: 0,
+                                    left: 0,
+                                    height: "100%",
+                                    width: "40%",
+                                    background: "linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent)",
+                                    transform: "skewX(-20deg)",
+                                    animation: "shimmerBtn 3s linear infinite"
+                                }} />
+                                <span>{loading ? "Sending..." : "Send Your Enquiry"}</span>
+                                <ArrowRight size={16} />
+                            </button>
+                        </form>
+                    )}
                 </motion.div>
             </div>
         </div>
