@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import { Calendar, Clock, MapPin, ArrowRight, ShieldCheck, Sparkles, Mic2, Star, UtensilsCrossed, Trophy, Wine } from 'lucide-react';
 
@@ -1071,7 +1072,7 @@ const CTASection = ({ scrollToForm }: { scrollToForm: () => void }) => {
         justifyContent: 'center',
         width: '100%'
       }}>
-        <button className="cta-btn-primary" style={{
+        <Link to="/partnerships" className="cta-btn-primary" style={{
           display: 'inline-flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -1089,11 +1090,12 @@ const CTASection = ({ scrollToForm }: { scrollToForm: () => void }) => {
           transition: 'filter 200ms',
           boxShadow: '0 0 32px rgba(255,45,135,0.25)',
           letterSpacing: '0.02em',
+          textDecoration: 'none',
           filter: ctaH1 ? 'brightness(1.1)' : 'brightness(1)'
-        }} onMouseEnter={() => setCtaH1(true)} onMouseLeave={() => setCtaH1(false)} onClick={scrollToForm}>
+        }} onMouseEnter={() => setCtaH1(true)} onMouseLeave={() => setCtaH1(false)}>
           <span>Request Executive Partnership Engagement</span>
           <ArrowRight size={16} />
-        </button>
+        </Link>
         <button className="cta-btn-secondary" style={{
           display: 'inline-flex',
           alignItems: 'center',
@@ -1110,7 +1112,7 @@ const CTASection = ({ scrollToForm }: { scrollToForm: () => void }) => {
           fontWeight: 400,
           cursor: 'pointer',
           transition: 'all 200ms'
-        }} onMouseEnter={() => setCtaH2(true)} onMouseLeave={() => setCtaH2(false)}>
+        }} onMouseEnter={() => setCtaH2(true)} onMouseLeave={() => setCtaH2(false)} onClick={() => scrollToForm('Yes')}>
           Nominate a Candidate
         </button>
       </motion.div>
@@ -1299,7 +1301,12 @@ const DECLARATION_ITEMS_LIST = [
   "Approved guests will receive a formal invitation and confirmation from the EmpowaWomen Executive Office."
 ];
 
-const InvitationFormSection = React.forwardRef<HTMLDivElement, {}>((props, ref) => {
+interface InvitationFormSectionProps {
+  initialNominate?: string;
+}
+
+const InvitationFormSection = React.forwardRef<HTMLDivElement, InvitationFormSectionProps>((props, ref) => {
+  const { initialNominate } = props;
   // Executive Information
   const [fullName, setFullName] = useState('');
   const [organisation, setOrganisation] = useState('');
@@ -1338,6 +1345,17 @@ const InvitationFormSection = React.forwardRef<HTMLDivElement, {}>((props, ref) 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+
+  React.useEffect(() => {
+    if (initialNominate) {
+      setNominateLeader(initialNominate);
+      if (initialNominate === 'Yes') {
+        setAwardsInfo('Yes');
+      } else {
+        setAwardsInfo('No');
+      }
+    }
+  }, [initialNominate]);
 
   const wordCount = impactStatement.trim() === '' ? 0 : impactStatement.trim().split(/\s+/).length;
 
@@ -2064,7 +2082,7 @@ const InvitationFormSection = React.forwardRef<HTMLDivElement, {}>((props, ref) 
 });
 
 // --- Hero Section ---
-const HeroSection = ({ scrollToForm }: { scrollToForm: () => void }) => {
+const HeroSection = ({ scrollToForm }: { scrollToForm: (nominateOption?: 'Yes' | 'No') => void }) => {
   const {
     scrollY
   } = useScroll();
@@ -2410,7 +2428,7 @@ const HeroSection = ({ scrollToForm }: { scrollToForm: () => void }) => {
           boxShadow: '0 0 32px rgba(255,45,135,0.25)',
           letterSpacing: '0.02em',
           filter: primaryHover ? 'brightness(1.1)' : 'brightness(1)'
-        }} onMouseEnter={() => setPrimaryHover(true)} onMouseLeave={() => setPrimaryHover(false)} onClick={scrollToForm}>
+        }} onMouseEnter={() => setPrimaryHover(true)} onMouseLeave={() => setPrimaryHover(false)} onClick={() => scrollToForm('No')}>
           Request Invitation
         </button>
         <button className="hero-btn-secondary" style={{
@@ -2425,7 +2443,7 @@ const HeroSection = ({ scrollToForm }: { scrollToForm: () => void }) => {
           fontWeight: 400,
           cursor: 'pointer',
           transition: 'background-color 200ms, border-color 200ms'
-        }} onMouseEnter={() => setSecondaryHover(true)} onMouseLeave={() => setSecondaryHover(false)}>
+        }} onMouseEnter={() => setSecondaryHover(true)} onMouseLeave={() => setSecondaryHover(false)} onClick={() => scrollToForm('Yes')}>
           Nominate for Award
         </button>
       </motion.div>
@@ -2557,7 +2575,12 @@ const HeroSection = ({ scrollToForm }: { scrollToForm: () => void }) => {
 };
 export const LeadershipAwardsGala = () => {
   const formRef = React.useRef<HTMLDivElement>(null);
-  const scrollToForm = () => {
+  const [initialNominate, setInitialNominate] = React.useState<string>('');
+
+  const scrollToForm = (nominateOption?: 'Yes' | 'No') => {
+    if (nominateOption) {
+      setInitialNominate(nominateOption);
+    }
     formRef.current?.scrollIntoView({
       behavior: "smooth",
       block: "start"
@@ -2578,6 +2601,6 @@ export const LeadershipAwardsGala = () => {
     <GalaTimeline />
     <AwardCategories />
     <CTASection scrollToForm={scrollToForm} />
-    <InvitationFormSection ref={formRef} />
+    <InvitationFormSection ref={formRef} initialNominate={initialNominate} />
   </main>;
 };
