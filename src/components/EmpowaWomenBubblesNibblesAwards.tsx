@@ -957,7 +957,7 @@ const AwardCategories = () => {
 };
 
 // --- CTA Section ---
-const CTASection = ({ scrollToForm }: { scrollToForm: () => void }) => {
+const CTASection = ({ scrollToForm }: { scrollToForm: (nominateOption?: 'Yes' | 'No') => void }) => {
   const [ctaH1, setCtaH1] = useState(false);
   const [ctaH2, setCtaH2] = useState(false);
   return <section style={{
