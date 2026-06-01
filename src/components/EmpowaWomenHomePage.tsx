@@ -1614,42 +1614,42 @@ const PILLAR_CARDS = [{
     id: "pc-1",
     number: "01",
     label: "Creative Economy",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=85"
+    image: "/creative_economy.png"
 }, {
     id: "pc-2",
     number: "02",
     label: "Green Economy & Mining",
-    image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&q=85"
+    image: "/green_economy.png"
 }, {
     id: "pc-3",
     number: "03",
     label: "Beauty & Fashion",
-    image: "https://images.unsplash.com/photo-1558618047-f4e90dea3a7c?w=600&q=85"
+    image: "/beauty_fashion.png"
 }, {
     id: "pc-4",
     number: "04",
     label: "Entrepreneurship & Funding",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=85"
+    image: "/entrepreneurship_funding.png"
 }, {
     id: "pc-5",
     number: "05",
     label: "Leadership & Governance",
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=85"
+    image: "/leadership_governance.png"
 }, {
     id: "pc-6",
     number: "06",
     label: "Communications & Media",
-    image: "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600&q=85"
+    image: "/communications_media.png"
 }, {
     id: "pc-7",
     number: "07",
     label: "Wholesale & Manufacturing",
-    image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=85"
+    image: "/wholesale_manufacturing.png"
 }, {
     id: "pc-8",
     number: "08",
     label: "Agriculture & Food Security",
-    image: "https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?w=600&q=85"
+    image: "/agriculture_food.png"
 }];
 const TRIPLED_PILLAR_CARDS = [...PILLAR_CARDS, ...PILLAR_CARDS, ...PILLAR_CARDS];
 const CorePillarsSection = () => {
