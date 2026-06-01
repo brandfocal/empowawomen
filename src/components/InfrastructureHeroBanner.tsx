@@ -49,7 +49,7 @@ const AVATAR_URLS = [{
 }];
 
 export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
-  bgImage = "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=80"
+  bgImage = "/infrastructure.jpg"
 }) => {
   const {
     scrollY
@@ -70,8 +70,8 @@ export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
     paddingTop: "68px",
     paddingBottom: "80px"
   }}>
-      {/* Grain noise overlay */}
-      <div style={{
+    {/* Grain noise overlay */}
+    <div style={{
       position: "absolute",
       inset: 0,
       pointerEvents: "none",
@@ -82,381 +82,381 @@ export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
       animation: "grainShift 0.8s steps(1) infinite"
     }} />
 
-      {/* Background image with parallax */}
-      <div style={{
+    {/* Background image with parallax */}
+    <div style={{
+      position: "absolute",
+      inset: 0,
+      zIndex: 0,
+      overflow: "hidden",
+      pointerEvents: "none"
+    }}>
+      <motion.div style={{
         position: "absolute",
-        inset: 0,
-        zIndex: 0,
-        overflow: "hidden",
-        pointerEvents: "none"
+        inset: 0
+      }} initial={{
+        scale: 1.06,
+        opacity: 0
+      }} animate={{
+        scale: 1,
+        opacity: 1
+      }} transition={{
+        duration: 2.4,
+        ease: "easeOut"
       }}>
         <motion.div style={{
+          y: imageY,
           position: "absolute",
           inset: 0
-        }} initial={{
-          scale: 1.06,
-          opacity: 0
-        }} animate={{
-          scale: 1,
-          opacity: 1
-        }} transition={{
-          duration: 2.4,
-          ease: "easeOut"
         }}>
-          <motion.div style={{
-            y: imageY,
-            position: "absolute",
-            inset: 0
-          }}>
-            <img src={bgImage} alt="" aria-hidden="true" style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              objectPosition: "center 30%"
-            }} />
-          </motion.div>
+          <img src={bgImage} alt="" aria-hidden="true" style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "center 30%"
+          }} />
         </motion.div>
-        {/* Gradient overlay */}
-        <div style={{
-          position: "absolute",
-          inset: 0,
-          background: "linear-gradient(to bottom, rgba(10,10,15,0.72) 0%, rgba(10,10,15,0.42) 38%, rgba(10,10,15,0.82) 100%)"
-        }} />
-      </div>
-
-      {/* Bottom fade */}
+      </motion.div>
+      {/* Gradient overlay */}
       <div style={{
         position: "absolute",
         inset: 0,
-        background: "linear-gradient(to top, #0A0A0F 0%, transparent 50%)",
-        pointerEvents: "none",
-        zIndex: 2
+        background: "linear-gradient(to bottom, rgba(10,10,15,0.72) 0%, rgba(10,10,15,0.42) 38%, rgba(10,10,15,0.82) 100%)"
       }} />
+    </div>
 
-      {/* Content */}
-      <div style={{
-        position: "relative",
-        zIndex: 10,
+    {/* Bottom fade */}
+    <div style={{
+      position: "absolute",
+      inset: 0,
+      background: "linear-gradient(to top, #0A0A0F 0%, transparent 50%)",
+      pointerEvents: "none",
+      zIndex: 2
+    }} />
+
+    {/* Content */}
+    <div style={{
+      position: "relative",
+      zIndex: 10,
+      width: "100%",
+      maxWidth: "1400px",
+      paddingLeft: "clamp(20px, 5vw, 36px)",
+      paddingRight: "clamp(20px, 5vw, 36px)",
+      paddingTop: "clamp(60px, 10vw, 128px)",
+      paddingBottom: "48px",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center"
+    }}>
+      <motion.div initial={{
+        y: 90
+      }} animate={{
+        y: 0
+      }} transition={{
+        duration: 1.2,
+        ease: [0.16, 1, 0.3, 1]
+      }} style={{
         width: "100%",
-        maxWidth: "1400px",
-        paddingLeft: "clamp(20px, 5vw, 36px)",
-        paddingRight: "clamp(20px, 5vw, 36px)",
-        paddingTop: "clamp(60px, 10vw, 128px)",
-        paddingBottom: "48px",
         display: "flex",
         flexDirection: "column",
         alignItems: "center"
       }}>
-        <motion.div initial={{
-          y: 90
-        }} animate={{
-          y: 0
-        }} transition={{
-          duration: 1.2,
-          ease: [0.16, 1, 0.3, 1]
-        }} style={{
+        <div style={{
           width: "100%",
           display: "flex",
           flexDirection: "column",
-          alignItems: "center"
+          alignItems: "center",
+          marginBottom: "48px"
         }}>
-          <div style={{
-            width: "100%",
+          {/* Pre-heading pill */}
+          <motion.div initial={{
+            opacity: 0,
+            y: 10
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.6,
+            delay: 0.2
+          }} style={{
             display: "flex",
-            flexDirection: "column",
             alignItems: "center",
-            marginBottom: "48px"
+            justifyContent: "center",
+            gap: "10px",
+            marginBottom: "20px",
+            flexWrap: "wrap",
+            textAlign: "center"
           }}>
-            {/* Pre-heading pill */}
-            <motion.div initial={{
-              opacity: 0,
-              y: 10
-            }} animate={{
-              opacity: 1,
-              y: 0
-            }} transition={{
-              duration: 0.6,
-              delay: 0.2
-            }} style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "10px",
-              marginBottom: "20px",
-              flexWrap: "wrap",
-              textAlign: "center"
-            }}>
-              <span style={{
-                width: "6px",
-                height: "6px",
-                borderRadius: "50%",
-                backgroundColor: "#FF2D87",
-                display: "inline-block",
-                flexShrink: 0,
-                animation: "pulseDot 2s ease-in-out infinite"
-              }} />
-              <span style={{
-                fontFamily: "Figtree",
-                fontSize: "clamp(9px, 2vw, 11px)",
-                fontWeight: 600,
-                letterSpacing: "0.2em",
-                color: "rgba(255,255,255,0.60)",
-                textTransform: "uppercase"
-              }}>
-                INFRASTRUCTURE, PROPERTY &amp; TRANSPORT
-              </span>
-            </motion.div>
-
-            {/* Hero headline — word by word */}
-            <motion.h1 initial={{
-              opacity: 0
-            }} animate={{
-              opacity: 1
-            }} transition={{
-              duration: 0.5
-            }} style={{
+            <span style={{
+              width: "6px",
+              height: "6px",
+              borderRadius: "50%",
+              backgroundColor: "#FF2D87",
+              display: "inline-block",
+              flexShrink: 0,
+              animation: "pulseDot 2s ease-in-out infinite"
+            }} />
+            <span style={{
               fontFamily: "Figtree",
-              fontWeight: 300,
-              fontSize: "clamp(44px, 8vw, 96px)",
-              lineHeight: 1.0,
-              letterSpacing: "-0.04em",
-              color: "#FFFFFF",
-              textAlign: "center",
-              maxWidth: "900px",
-              margin: "0 auto 24px auto"
+              fontSize: "clamp(9px, 2vw, 11px)",
+              fontWeight: 600,
+              letterSpacing: "0.2em",
+              color: "rgba(255,255,255,0.60)",
+              textTransform: "uppercase"
             }}>
-              {HERO_LINES.map(line => <span key={line.id} style={{
-                display: "block"
-              }}>
-                {line.words.map(word => {
-                  const currentIndex = wordIndex++;
-                  const isUnderlined = UNDERLINED_LAST_WORDS.has(word);
-                  const wordWithoutPeriod = isUnderlined ? word.slice(0, -1) : word;
-                  return <motion.span key={`hero-word-${currentIndex}`} style={{
-                    display: "inline-block",
-                    marginRight: "0.25em"
-                  }} initial={{
-                    opacity: 0,
-                    filter: "blur(10px)",
-                    y: 20
-                  }} animate={{
-                    opacity: 1,
-                    filter: "blur(0px)",
-                    y: 0
-                  }} transition={{
-                    duration: 0.8,
-                    delay: 0.4 + currentIndex * 0.1,
-                    ease: [0.21, 0.47, 0.32, 0.98]
+              INFRASTRUCTURE, PROPERTY &amp; TRANSPORT
+            </span>
+          </motion.div>
+
+          {/* Hero headline — word by word */}
+          <motion.h1 initial={{
+            opacity: 0
+          }} animate={{
+            opacity: 1
+          }} transition={{
+            duration: 0.5
+          }} style={{
+            fontFamily: "Figtree",
+            fontWeight: 300,
+            fontSize: "clamp(44px, 8vw, 96px)",
+            lineHeight: 1.0,
+            letterSpacing: "-0.04em",
+            color: "#FFFFFF",
+            textAlign: "center",
+            maxWidth: "900px",
+            margin: "0 auto 24px auto"
+          }}>
+            {HERO_LINES.map(line => <span key={line.id} style={{
+              display: "block"
+            }}>
+              {line.words.map(word => {
+                const currentIndex = wordIndex++;
+                const isUnderlined = UNDERLINED_LAST_WORDS.has(word);
+                const wordWithoutPeriod = isUnderlined ? word.slice(0, -1) : word;
+                return <motion.span key={`hero-word-${currentIndex}`} style={{
+                  display: "inline-block",
+                  marginRight: "0.25em"
+                }} initial={{
+                  opacity: 0,
+                  filter: "blur(10px)",
+                  y: 20
+                }} animate={{
+                  opacity: 1,
+                  filter: "blur(0px)",
+                  y: 0
+                }} transition={{
+                  duration: 0.8,
+                  delay: 0.4 + currentIndex * 0.1,
+                  ease: [0.21, 0.47, 0.32, 0.98]
+                }}>
+                  {isUnderlined ? <span style={{
+                    textDecoration: "underline",
+                    textDecorationColor: "#FF2D87",
+                    textDecorationThickness: "3px",
+                    textUnderlineOffset: "6px",
+                    color: "#FFFFFF"
                   }}>
-                    {isUnderlined ? <span style={{
-                      textDecoration: "underline",
-                      textDecorationColor: "#FF2D87",
-                      textDecorationThickness: "3px",
-                      textUnderlineOffset: "6px",
-                      color: "#FFFFFF"
-                    }}>
-                      {wordWithoutPeriod}
-                    </span> : word}
-                    {isUnderlined && <span style={{
-                      color: "#FF2D87",
-                      textDecoration: "none"
-                    }}>.</span>}
-                  </motion.span>;
-                })}
-              </span>)}
-            </motion.h1>
+                    {wordWithoutPeriod}
+                  </span> : word}
+                  {isUnderlined && <span style={{
+                    color: "#FF2D87",
+                    textDecoration: "none"
+                  }}>.</span>}
+                </motion.span>;
+              })}
+            </span>)}
+          </motion.h1>
 
-            {/* Slogan strip */}
-            <motion.div initial={{
-              opacity: 0,
-              y: 12
-            }} animate={{
-              opacity: 1,
-              y: 0
-            }} transition={{
-              duration: 0.7,
-              delay: 1.1,
-              ease: "easeOut"
-            }} style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              marginBottom: "28px",
-              flexWrap: "wrap",
-              gap: "4px"
-            }}>
-              <span style={{
-                fontFamily: "Figtree",
-                fontWeight: 400,
-                fontSize: "clamp(10px, 2vw, 13px)",
-                letterSpacing: "0.18em",
-                textTransform: "uppercase",
-                color: "rgba(255,255,255,0.40)"
-              }}>
-                Ignite Passion
-              </span>
-              <span style={{
-                display: "inline-block",
-                width: "1px",
-                height: "14px",
-                backgroundColor: "rgba(255,255,255,0.20)",
-                margin: "0 12px",
-                verticalAlign: "middle"
-              }} />
-              <span style={{
-                fontFamily: "Figtree",
-                fontWeight: 400,
-                fontSize: "clamp(10px, 2vw, 13px)",
-                letterSpacing: "0.18em",
-                textTransform: "uppercase",
-                color: "rgba(255,255,255,0.40)"
-              }}>
-                Foster Growth
-              </span>
-              <span style={{
-                display: "inline-block",
-                width: "1px",
-                height: "14px",
-                backgroundColor: "rgba(255,255,255,0.20)",
-                margin: "0 12px",
-                verticalAlign: "middle"
-              }} />
-              <span style={{
-                fontFamily: "Figtree",
-                fontWeight: 400,
-                fontSize: "clamp(10px, 2vw, 13px)",
-                letterSpacing: "0.18em",
-                textTransform: "uppercase",
-                color: "rgba(255,255,255,0.40)"
-              }}>
-                Drive Change
-              </span>
-            </motion.div>
-
-            {/* Description */}
-            <motion.p initial={{
-              opacity: 0,
-              y: 20
-            }} animate={{
-              opacity: 1,
-              y: 0
-            }} transition={{
-              duration: 0.8,
-              delay: 1.2
-            }} style={{
+          {/* Slogan strip */}
+          <motion.div initial={{
+            opacity: 0,
+            y: 12
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.7,
+            delay: 1.1,
+            ease: "easeOut"
+          }} style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            marginBottom: "28px",
+            flexWrap: "wrap",
+            gap: "4px"
+          }}>
+            <span style={{
               fontFamily: "Figtree",
-              fontSize: "clamp(14px, 2vw, 16px)",
               fontWeight: 400,
-              color: "rgba(255,255,255,0.50)",
-              maxWidth: "620px",
-              margin: "0 auto 36px auto",
-              textAlign: "center",
-              lineHeight: 1.75
+              fontSize: "clamp(10px, 2vw, 13px)",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              color: "rgba(255,255,255,0.40)"
             }}>
-              EmpowaWomen convenes Africa's leading voices in infrastructure development, real
-              estate innovation, and transport integration to accelerate economic transformation.
-            </motion.p>
+              Ignite Passion
+            </span>
+            <span style={{
+              display: "inline-block",
+              width: "1px",
+              height: "14px",
+              backgroundColor: "rgba(255,255,255,0.20)",
+              margin: "0 12px",
+              verticalAlign: "middle"
+            }} />
+            <span style={{
+              fontFamily: "Figtree",
+              fontWeight: 400,
+              fontSize: "clamp(10px, 2vw, 13px)",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              color: "rgba(255,255,255,0.40)"
+            }}>
+              Foster Growth
+            </span>
+            <span style={{
+              display: "inline-block",
+              width: "1px",
+              height: "14px",
+              backgroundColor: "rgba(255,255,255,0.20)",
+              margin: "0 12px",
+              verticalAlign: "middle"
+            }} />
+            <span style={{
+              fontFamily: "Figtree",
+              fontWeight: 400,
+              fontSize: "clamp(10px, 2vw, 13px)",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              color: "rgba(255,255,255,0.40)"
+            }}>
+              Drive Change
+            </span>
+          </motion.div>
 
-            {/* CTAs */}
-            <motion.div initial={{
-              opacity: 0,
-              y: 20
-            }} animate={{
-              opacity: 1,
-              y: 0
-            }} transition={{
-              duration: 0.8,
-              delay: 1.4
-            }} style={{
-              display: "flex",
-              flexWrap: "wrap",
+          {/* Description */}
+          <motion.p initial={{
+            opacity: 0,
+            y: 20
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.8,
+            delay: 1.2
+          }} style={{
+            fontFamily: "Figtree",
+            fontSize: "clamp(14px, 2vw, 16px)",
+            fontWeight: 400,
+            color: "rgba(255,255,255,0.50)",
+            maxWidth: "620px",
+            margin: "0 auto 36px auto",
+            textAlign: "center",
+            lineHeight: 1.75
+          }}>
+            EmpowaWomen convenes Africa's leading voices in infrastructure development, real
+            estate innovation, and transport integration to accelerate economic transformation.
+          </motion.p>
+
+          {/* CTAs */}
+          <motion.div initial={{
+            opacity: 0,
+            y: 20
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.8,
+            delay: 1.4
+          }} style={{
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "16px"
+          }} className="flex-col sm:flex-row w-full sm:w-auto px-4 sm:px-0">
+            <RouterLink to="/summit" style={{
+              fontFamily: "Figtree",
+              fontSize: "clamp(13px, 2vw, 15px)",
+              fontWeight: 500,
+              color: "#FFFFFF",
+              backgroundColor: "#FF2D87",
+              height: "50px",
+              padding: "0 28px",
+              display: "inline-flex",
               alignItems: "center",
               justifyContent: "center",
-              gap: "16px"
-            }} className="flex-col sm:flex-row w-full sm:w-auto px-4 sm:px-0">
-              <RouterLink to="/summit" style={{
-                fontFamily: "Figtree",
-                fontSize: "clamp(13px, 2vw, 15px)",
-                fontWeight: 500,
-                color: "#FFFFFF",
-                backgroundColor: "#FF2D87",
-                height: "50px",
-                padding: "0 28px",
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "8px",
-                textDecoration: "none",
-                letterSpacing: "0.02em",
-                borderRadius: "999px",
-                transition: "all 200ms ease-out",
-                boxShadow: "0 0 32px rgba(255,45,135,0.25)",
-                whiteSpace: "nowrap",
-                width: "220px",
+              gap: "8px",
+              textDecoration: "none",
+              letterSpacing: "0.02em",
+              borderRadius: "999px",
+              transition: "all 200ms ease-out",
+              boxShadow: "0 0 32px rgba(255,45,135,0.25)",
+              whiteSpace: "nowrap",
+              width: "220px",
+              position: "relative",
+              overflow: "hidden"
+            }} onMouseEnter={e => {
+              const el = e.currentTarget as HTMLAnchorElement;
+              el.style.filter = "brightness(1.1)";
+              el.style.boxShadow = "0 0 48px rgba(255,45,135,0.40)";
+            }} onMouseLeave={e => {
+              const el = e.currentTarget as HTMLAnchorElement;
+              el.style.filter = "brightness(1)";
+              el.style.boxShadow = "0 0 32px rgba(255,45,135,0.25)";
+            }}>
+              <span style={{
                 position: "relative",
-                overflow: "hidden"
-              }} onMouseEnter={e => {
-                const el = e.currentTarget as HTMLAnchorElement;
-                el.style.filter = "brightness(1.1)";
-                el.style.boxShadow = "0 0 48px rgba(255,45,135,0.40)";
-              }} onMouseLeave={e => {
-                const el = e.currentTarget as HTMLAnchorElement;
-                el.style.filter = "brightness(1)";
-                el.style.boxShadow = "0 0 32px rgba(255,45,135,0.25)";
-              }}>
-                <span style={{
-                  position: "relative",
-                  zIndex: 1
-                }}>Secure Your Seat</span>
-                <ArrowRight size={16} style={{
-                  position: "relative",
-                  zIndex: 1
-                }} />
-                <span style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  height: "100%",
-                  width: "40%",
-                  background: "rgba(255,255,255,0.15)",
-                  transform: "skewX(-20deg) translateX(-100%)",
-                  animation: "shimmerSlide 3s linear infinite",
-                  pointerEvents: "none"
-                }} />
-              </RouterLink>
-              <a href="#segments" style={{
-                fontFamily: "Figtree",
-                fontSize: "clamp(13px, 2vw, 15px)",
-                fontWeight: 400,
-                color: "#FFFFFF",
-                backgroundColor: "rgba(255,255,255,0.05)",
-                height: "50px",
-                padding: "0 28px",
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                textDecoration: "none",
-                border: "1px solid rgba(255,255,255,0.10)",
-                letterSpacing: "0.02em",
-                borderRadius: "999px",
-                transition: "all 200ms ease-out",
-                whiteSpace: "nowrap",
-                width: "220px"
-              }} onMouseEnter={e => {
-                const el = e.currentTarget as HTMLAnchorElement;
-                el.style.backgroundColor = "rgba(255,255,255,0.10)";
-              }} onMouseLeave={e => {
-                const el = e.currentTarget as HTMLAnchorElement;
-                el.style.backgroundColor = "rgba(255,255,255,0.05)";
-              }}>
-                Explore Pillars
-              </a>
-            </motion.div>
-          </div>
-        </motion.div>
-      </div>
+                zIndex: 1
+              }}>Secure Your Seat</span>
+              <ArrowRight size={16} style={{
+                position: "relative",
+                zIndex: 1
+              }} />
+              <span style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                height: "100%",
+                width: "40%",
+                background: "rgba(255,255,255,0.15)",
+                transform: "skewX(-20deg) translateX(-100%)",
+                animation: "shimmerSlide 3s linear infinite",
+                pointerEvents: "none"
+              }} />
+            </RouterLink>
+            <a href="#segments" style={{
+              fontFamily: "Figtree",
+              fontSize: "clamp(13px, 2vw, 15px)",
+              fontWeight: 400,
+              color: "#FFFFFF",
+              backgroundColor: "rgba(255,255,255,0.05)",
+              height: "50px",
+              padding: "0 28px",
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              textDecoration: "none",
+              border: "1px solid rgba(255,255,255,0.10)",
+              letterSpacing: "0.02em",
+              borderRadius: "999px",
+              transition: "all 200ms ease-out",
+              whiteSpace: "nowrap",
+              width: "220px"
+            }} onMouseEnter={e => {
+              const el = e.currentTarget as HTMLAnchorElement;
+              el.style.backgroundColor = "rgba(255,255,255,0.10)";
+            }} onMouseLeave={e => {
+              const el = e.currentTarget as HTMLAnchorElement;
+              el.style.backgroundColor = "rgba(255,255,255,0.05)";
+            }}>
+              Explore Pillars
+            </a>
+          </motion.div>
+        </div>
+      </motion.div>
+    </div>
 
-      <style>{`
+    <style>{`
         @keyframes pulseDot {
           0%, 100% { opacity: 1; transform: scale(1); }
           50% { opacity: 0.5; transform: scale(0.75); }
@@ -475,5 +475,5 @@ export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
           100% { transform: translate(0, 0); }
         }
       `}</style>
-    </section>;
+  </section>;
 };

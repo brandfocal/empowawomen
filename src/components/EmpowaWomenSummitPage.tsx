@@ -3060,10 +3060,10 @@ export const EmpowaWomenSummitPage: React.FC = () => {
           justifyContent: "center"
         }}
         onMouseEnter={e => {
-          (e.currentTarget as HTMLDivElement).style.opacity = 1;
+          (e.currentTarget as HTMLDivElement).style.opacity = "1";
         }}
         onMouseLeave={e => {
-          (e.currentTarget as HTMLDivElement).style.opacity = 0;
+          (e.currentTarget as HTMLDivElement).style.opacity = "0";
         }}
       >
         <span style={{

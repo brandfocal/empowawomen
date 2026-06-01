@@ -125,20 +125,20 @@ const CoreSegmentsSection: React.FC = () => {
     paddingLeft: "clamp(24px, 6vw, 96px)",
     paddingRight: "clamp(24px, 6vw, 96px)"
   }}>
-      <div style={{
+    <div style={{
       maxWidth: "1400px",
       margin: "0 auto"
     }}>
-        {/* Section header */}
-        <div style={{ marginBottom: "clamp(32px, 5vw, 56px)" }}>
-          <div style={{
+      {/* Section header */}
+      <div style={{ marginBottom: "clamp(32px, 5vw, 56px)" }}>
+        <div style={{
           width: "48px",
           height: "3px",
           backgroundColor: "#FF2D87",
           marginBottom: "16px"
         }} />
 
-          <motion.div initial={{
+        <motion.div initial={{
           opacity: 0,
           y: 8
         }} whileInView={{
@@ -158,14 +158,14 @@ const CoreSegmentsSection: React.FC = () => {
           padding: "5px 14px",
           marginBottom: "20px"
         }}>
-            <span style={{
+          <span style={{
             width: "5px",
             height: "5px",
             borderRadius: "50%",
             backgroundColor: "#FF2D87",
             display: "inline-block"
           }} />
-            <span style={{
+          <span style={{
             fontFamily: "Figtree",
             fontSize: "11px",
             fontWeight: 600,
@@ -173,18 +173,18 @@ const CoreSegmentsSection: React.FC = () => {
             color: "#64748b",
             textTransform: "uppercase"
           }}>
-              Core Segments
-            </span>
-          </motion.div>
+            Core Segments
+          </span>
+        </motion.div>
 
-          <div style={{
+        <div style={{
           display: "flex",
           alignItems: "flex-end",
           justifyContent: "space-between",
           flexWrap: "wrap",
           gap: "20px"
         }}>
-            <motion.h2 initial={{
+          <motion.h2 initial={{
             opacity: 0,
             y: 12
           }} whileInView={{
@@ -205,22 +205,22 @@ const CoreSegmentsSection: React.FC = () => {
             lineHeight: 1.05,
             margin: 0
           }}>
-              Core Industry Focus Areas
-            </motion.h2>
-            <span style={{
+            Core Industry Focus Areas
+          </motion.h2>
+          <span style={{
             fontFamily: "Figtree",
             fontSize: "12px",
             color: "rgba(10,10,15,0.25)",
             letterSpacing: "0.08em",
             flexShrink: 0
           }}>
-              SECTIONS <span style={{
+            SECTIONS <span style={{
               color: "#FF2D87"
             }}>01-03</span>
-            </span>
-          </div>
+          </span>
+        </div>
 
-          <motion.p initial={{
+        <motion.p initial={{
           opacity: 0,
           y: 10
         }} whileInView={{
@@ -241,18 +241,18 @@ const CoreSegmentsSection: React.FC = () => {
           marginTop: "16px",
           marginBottom: 0
         }}>
-            Navigating the complex intersection of physical assets and digital innovation to drive sustainable economic growth.
-          </motion.p>
-        </div>
+          Navigating the complex intersection of physical assets and digital innovation to drive sustainable economic growth.
+        </motion.p>
+      </div>
 
-        {/* Cards grid */}
-        <div className="infra-grid-3" style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gap: "24px",
-          marginTop: "48px"
-        }}>
-          {SEGMENTS.map((segment, index) => <motion.div key={segment.id} initial={{
+      {/* Cards grid */}
+      <div className="infra-grid-3" style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(3, 1fr)",
+        gap: "24px",
+        marginTop: "48px"
+      }}>
+        {SEGMENTS.map((segment, index) => <motion.div key={segment.id} initial={{
           opacity: 0,
           y: 24
         }} whileInView={{
@@ -276,7 +276,7 @@ const CoreSegmentsSection: React.FC = () => {
           transition: "box-shadow 300ms ease-out, transform 300ms ease-out",
           cursor: "default"
         }}>
-              <div style={{
+          <div style={{
             width: "48px",
             height: "3px",
             backgroundColor: segment.accentColor,
@@ -284,13 +284,13 @@ const CoreSegmentsSection: React.FC = () => {
             flexShrink: 0
           }} />
 
-              <div style={{
+          <div style={{
             display: "flex",
             justifyContent: "space-between",
             alignItems: "flex-start",
             marginBottom: "28px"
           }}>
-                <div style={{
+            <div style={{
               width: "44px",
               height: "44px",
               backgroundColor: segment.badgeBg,
@@ -301,28 +301,28 @@ const CoreSegmentsSection: React.FC = () => {
               borderRadius: "8px",
               flexShrink: 0
             }}>
-                  <span style={{
+              <span style={{
                 fontFamily: "Figtree",
                 fontWeight: 700,
                 fontSize: "18px",
                 color: segment.accentColor,
                 letterSpacing: "-0.01em"
               }}>
-                    {segment.letter}
-                  </span>
-                </div>
-                <span style={{
+                {segment.letter}
+              </span>
+            </div>
+            <span style={{
               fontFamily: "Figtree",
               fontSize: "9px",
               letterSpacing: "0.15em",
               color: "rgba(10,10,15,0.20)",
               textTransform: "uppercase"
             }}>
-                  PILLAR-4.2-{segment.letter}
-                </span>
-              </div>
+              PILLAR-4.2-{segment.letter}
+            </span>
+          </div>
 
-              <h3 style={{
+          <h3 style={{
             fontFamily: "Figtree",
             fontWeight: 600,
             fontSize: "clamp(17px, 2.5vw, 24px)",
@@ -331,10 +331,10 @@ const CoreSegmentsSection: React.FC = () => {
             lineHeight: 1.25,
             margin: "0 0 12px 0"
           }}>
-                {segment.title}
-              </h3>
+            {segment.title}
+          </h3>
 
-              <p style={{
+          <p style={{
             fontFamily: "Figtree",
             fontSize: "clamp(14px, 1.8vw, 16px)",
             fontWeight: 400,
@@ -343,10 +343,10 @@ const CoreSegmentsSection: React.FC = () => {
             margin: "0 0 24px 0",
             flex: 1
           }}>
-                {segment.description}
-              </p>
+            {segment.description}
+          </p>
 
-              <div style={{
+          <div style={{
             height: "clamp(180px, 22vw, 280px)",
             overflow: "hidden",
             borderRadius: "16px",
@@ -354,7 +354,7 @@ const CoreSegmentsSection: React.FC = () => {
             transition: "box-shadow 500ms ease-out",
             position: "relative"
           }}>
-                <img src={segment.image} alt={segment.title} style={{
+            <img src={segment.image} alt={segment.title} style={{
               width: "100%",
               height: "100%",
               objectFit: "cover",
@@ -362,21 +362,21 @@ const CoreSegmentsSection: React.FC = () => {
               transition: "transform 600ms ease-out",
               display: "block"
             }} />
-                <div style={{
+            <div style={{
               position: "absolute",
               inset: 0,
               background: "linear-gradient(to bottom, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.35) 100%)",
               pointerEvents: "none"
             }} />
-              </div>
+          </div>
 
-              <div style={{
+          <div style={{
             display: "flex",
             flexWrap: "wrap",
             gap: "6px",
             marginBottom: "20px"
           }}>
-                {segment.tags.map(tag => <span key={tag} style={{
+            {segment.tags.map(tag => <span key={tag} style={{
               fontFamily: "Figtree",
               fontSize: "10px",
               fontWeight: 500,
@@ -388,11 +388,11 @@ const CoreSegmentsSection: React.FC = () => {
               padding: "3px 8px",
               borderRadius: "4px"
             }}>
-                    {tag}
-                  </span>)}
-              </div>
+              {tag}
+            </span>)}
+          </div>
 
-              <button style={{
+          <button style={{
             display: "inline-flex",
             alignItems: "center",
             gap: "6px",
@@ -407,11 +407,11 @@ const CoreSegmentsSection: React.FC = () => {
             cursor: "pointer",
             padding: 0
           }}>
-                <span>View Full Spectrum</span>
-                <ArrowUpRight size={14} />
-              </button>
+            <span>View Full Spectrum</span>
+            <ArrowUpRight size={14} />
+          </button>
 
-              <div style={{
+          <div style={{
             borderTop: "1px solid rgba(10,10,15,0.08)",
             paddingTop: "16px",
             marginTop: "20px",
@@ -419,17 +419,17 @@ const CoreSegmentsSection: React.FC = () => {
             justifyContent: "space-between",
             alignItems: "center"
           }}>
-                <div>
-                  <div style={{
+            <div>
+              <div style={{
                 fontFamily: "Figtree",
                 fontSize: "16px",
                 fontWeight: 700,
                 color: segment.accentColor,
                 lineHeight: 1.2
               }}>
-                    {segment.metricLabel}
-                  </div>
-                  <div style={{
+                {segment.metricLabel}
+              </div>
+              <div style={{
                 fontFamily: "Figtree",
                 fontSize: "10px",
                 fontWeight: 500,
@@ -438,10 +438,10 @@ const CoreSegmentsSection: React.FC = () => {
                 color: "rgba(10,10,15,0.40)",
                 marginTop: "2px"
               }}>
-                    {segment.metricSub}
-                  </div>
-                </div>
-                <div style={{
+                {segment.metricSub}
+              </div>
+            </div>
+            <div style={{
               fontFamily: "Figtree",
               fontWeight: 900,
               fontSize: "48px",
@@ -449,14 +449,14 @@ const CoreSegmentsSection: React.FC = () => {
               letterSpacing: "-0.05em",
               lineHeight: 1
             }}>
-                  {segment.segmentNumber}
-                </div>
-              </div>
-            </motion.div>)}
-        </div>
+              {segment.segmentNumber}
+            </div>
+          </div>
+        </motion.div>)}
       </div>
+    </div>
 
-      <style>{`
+    <style>{`
         .segments-light-section {
           border-radius: 20px 20px 0 0;
         }
@@ -466,7 +466,7 @@ const CoreSegmentsSection: React.FC = () => {
           }
         }
       `}</style>
-    </section>;
+  </section>;
 };
 
 // ─── Section Separator ────────────────────────────────────────────────────────
@@ -488,13 +488,13 @@ const ROIParametersSection: React.FC = () => {
     paddingLeft: "clamp(24px, 6vw, 96px)",
     paddingRight: "clamp(24px, 6vw, 96px)"
   }}>
-      <div style={{
+    <div style={{
       maxWidth: "1400px",
       margin: "0 auto"
     }}>
-        {/* Header */}
-        <div style={{ marginBottom: "clamp(32px, 5vw, 56px)" }}>
-          <motion.div initial={{
+      {/* Header */}
+      <div style={{ marginBottom: "clamp(32px, 5vw, 56px)" }}>
+        <motion.div initial={{
           opacity: 0,
           y: 8
         }} whileInView={{
@@ -513,14 +513,14 @@ const ROIParametersSection: React.FC = () => {
           padding: "5px 14px",
           marginBottom: "20px"
         }}>
-            <span style={{
+          <span style={{
             width: "5px",
             height: "5px",
             borderRadius: "50%",
             backgroundColor: "#FF2D87",
             display: "inline-block"
           }} />
-            <span style={{
+          <span style={{
             fontFamily: "Figtree",
             fontSize: "10px",
             fontWeight: 600,
@@ -528,11 +528,11 @@ const ROIParametersSection: React.FC = () => {
             color: "#FF2D87",
             textTransform: "uppercase"
           }}>
-              Investment Metrics
-            </span>
-          </motion.div>
+            Investment Metrics
+          </span>
+        </motion.div>
 
-          <motion.h2 initial={{
+        <motion.h2 initial={{
           opacity: 0,
           y: 12
         }} whileInView={{
@@ -552,10 +552,10 @@ const ROIParametersSection: React.FC = () => {
           lineHeight: 1.1,
           margin: "0 0 16px 0"
         }}>
-            Strategic ROI Parameters
-          </motion.h2>
+          Strategic ROI Parameters
+        </motion.h2>
 
-          <motion.p initial={{
+        <motion.p initial={{
           opacity: 0,
           y: 10
         }} whileInView={{
@@ -574,18 +574,18 @@ const ROIParametersSection: React.FC = () => {
           lineHeight: 1.7,
           margin: 0
         }}>
-            Measurable impact indicators across Africa's infrastructure, real estate, and transport ecosystems.
-          </motion.p>
-        </div>
+          Measurable impact indicators across Africa's infrastructure, real estate, and transport ecosystems.
+        </motion.p>
+      </div>
 
-        {/* ROI grid: 1 col mobile → 2 col tablet → 4 col desktop */}
-        <div className="infra-grid-4" style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(4, 1fr)",
-          gap: "20px",
-          marginTop: "48px"
-        }}>
-          {ROI_CARDS.map((card, index) => <motion.div key={card.id} initial={{
+      {/* ROI grid: 1 col mobile → 2 col tablet → 4 col desktop */}
+      <div className="infra-grid-4" style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(4, 1fr)",
+        gap: "20px",
+        marginTop: "48px"
+      }}>
+        {ROI_CARDS.map((card, index) => <motion.div key={card.id} initial={{
           opacity: 0,
           y: 20
         }} whileInView={{
@@ -606,7 +606,7 @@ const ROIParametersSection: React.FC = () => {
           display: "flex",
           flexDirection: "column"
         }}>
-              <div style={{
+          <div style={{
             width: "44px",
             height: "44px",
             backgroundColor: "rgba(217,119,6,0.10)",
@@ -619,10 +619,10 @@ const ROIParametersSection: React.FC = () => {
             marginBottom: "20px",
             flexShrink: 0
           }}>
-                {card.icon}
-              </div>
+            {card.icon}
+          </div>
 
-              <div style={{
+          <div style={{
             width: "32px",
             height: "3px",
             backgroundColor: ACCENT_AMBER,
@@ -630,7 +630,7 @@ const ROIParametersSection: React.FC = () => {
             flexShrink: 0
           }} />
 
-              <span style={{
+          <span style={{
             fontFamily: "Figtree",
             fontSize: "10px",
             fontWeight: 600,
@@ -640,10 +640,10 @@ const ROIParametersSection: React.FC = () => {
             marginBottom: "8px",
             display: "block"
           }}>
-                {card.title.split(" ").slice(0, 2).join(" ")}
-              </span>
+            {card.title.split(" ").slice(0, 2).join(" ")}
+          </span>
 
-              <span style={{
+          <span style={{
             fontFamily: "Figtree",
             fontWeight: 300,
             fontSize: "clamp(36px, 5vw, 64px)",
@@ -653,10 +653,10 @@ const ROIParametersSection: React.FC = () => {
             marginBottom: "12px",
             display: "block"
           }}>
-                {card.value}
-              </span>
+            {card.value}
+          </span>
 
-              <h4 style={{
+          <h4 style={{
             fontFamily: "Figtree",
             fontWeight: 600,
             fontSize: "clamp(13px, 1.5vw, 15px)",
@@ -665,10 +665,10 @@ const ROIParametersSection: React.FC = () => {
             lineHeight: 1.3,
             margin: "0 0 10px 0"
           }}>
-                {card.title}
-              </h4>
+            {card.title}
+          </h4>
 
-              <p style={{
+          <p style={{
             fontFamily: "Figtree",
             fontSize: "clamp(12px, 1.3vw, 14px)",
             color: "rgba(255,255,255,0.45)",
@@ -676,13 +676,13 @@ const ROIParametersSection: React.FC = () => {
             margin: 0,
             flex: 1
           }}>
-                {card.description}
-              </p>
-            </motion.div>)}
-        </div>
+            {card.description}
+          </p>
+        </motion.div>)}
+      </div>
 
-        {/* Supplementary callout row */}
-        <motion.div initial={{
+      {/* Supplementary callout row */}
+      <motion.div initial={{
         opacity: 0,
         y: 20
       }} whileInView={{
@@ -701,13 +701,13 @@ const ROIParametersSection: React.FC = () => {
         gap: "32px",
         marginTop: "48px"
       }}>
-          <div style={{
+        <div style={{
           display: "flex",
           gap: "20px",
           alignItems: "flex-start",
           flex: "1 1 300px"
         }}>
-            <div style={{
+          <div style={{
             width: "44px",
             height: "44px",
             flexShrink: 0,
@@ -719,37 +719,37 @@ const ROIParametersSection: React.FC = () => {
             justifyContent: "center",
             color: "#D4AF37"
           }}>
-              <Zap size={20} />
-            </div>
-            <div>
-              <h4 style={{
+            <Zap size={20} />
+          </div>
+          <div>
+            <h4 style={{
               fontFamily: "Figtree",
               fontWeight: 600,
               fontSize: "15px",
               color: "#FFFFFF",
               margin: "0 0 6px 0"
             }}>
-                Technological Integration
-              </h4>
-              <p style={{
+              Technological Integration
+            </h4>
+            <p style={{
               fontFamily: "Figtree",
               fontSize: "14px",
               color: "rgba(255,255,255,0.50)",
               lineHeight: 1.65,
               margin: 0
             }}>
-                Measuring the deployment of PropTech and IoT infrastructure in large-scale urban connectivity projects.
-              </p>
-            </div>
+              Measuring the deployment of PropTech and IoT infrastructure in large-scale urban connectivity projects.
+            </p>
           </div>
+        </div>
 
-          <div style={{
+        <div style={{
           display: "flex",
           gap: "20px",
           alignItems: "flex-start",
           flex: "1 1 300px"
         }}>
-            <div style={{
+          <div style={{
             width: "44px",
             height: "44px",
             flexShrink: 0,
@@ -761,32 +761,32 @@ const ROIParametersSection: React.FC = () => {
             justifyContent: "center",
             color: "#D4AF37"
           }}>
-              <Globe size={20} />
-            </div>
-            <div>
-              <h4 style={{
+            <Globe size={20} />
+          </div>
+          <div>
+            <h4 style={{
               fontFamily: "Figtree",
               fontWeight: 600,
               fontSize: "15px",
               color: "#FFFFFF",
               margin: "0 0 6px 0"
             }}>
-                Regulatory Alignment
-              </h4>
-              <p style={{
+              Regulatory Alignment
+            </h4>
+            <p style={{
               fontFamily: "Figtree",
               fontSize: "14px",
               color: "rgba(255,255,255,0.50)",
               lineHeight: 1.65,
               margin: 0
             }}>
-                Ensuring all developments meet regional integration standards and AfCFTA trade corridor requirements.
-              </p>
-            </div>
+              Ensuring all developments meet regional integration standards and AfCFTA trade corridor requirements.
+            </p>
           </div>
-        </motion.div>
-      </div>
-    </section>;
+        </div>
+      </motion.div>
+    </div>
+  </section>;
 };
 
 // ─── CTA Section ───────────────────────────────────────────────────────────────
@@ -800,8 +800,8 @@ const CTASection: React.FC = () => {
     paddingLeft: "clamp(24px, 6vw, 96px)",
     paddingRight: "clamp(24px, 6vw, 96px)"
   }}>
-      {/* Thin top border gradient */}
-      <div style={{
+    {/* Thin top border gradient */}
+    <div style={{
       position: "absolute",
       top: 0,
       left: 0,
@@ -811,8 +811,8 @@ const CTASection: React.FC = () => {
       pointerEvents: "none"
     }} />
 
-      {/* Background aerial image overlay */}
-      <div style={{
+    {/* Background aerial image overlay */}
+    <div style={{
       position: "absolute",
       top: 0,
       left: "50%",
@@ -823,19 +823,19 @@ const CTASection: React.FC = () => {
       pointerEvents: "none",
       opacity: 0.20
     }}>
-        <div style={{
+      <div style={{
         width: "100%",
         height: "100%",
-        backgroundImage: "url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1400&q=80')",
+        backgroundImage: "url('/infrastructure.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center top",
         maskImage: "linear-gradient(to top, transparent 0%, black 45%)",
         WebkitMaskImage: "linear-gradient(to top, transparent 0%, black 45%)"
       }} />
-      </div>
+    </div>
 
-      {/* Accent blur orbs */}
-      <div style={{
+    {/* Accent blur orbs */}
+    <div style={{
       position: "absolute",
       top: "-160px",
       left: "-80px",
@@ -845,7 +845,7 @@ const CTASection: React.FC = () => {
       background: "radial-gradient(ellipse, rgba(253,87,50,0.07) 0%, transparent 70%)",
       pointerEvents: "none"
     }} />
-      <div style={{
+    <div style={{
       position: "absolute",
       bottom: "-160px",
       right: "-80px",
@@ -855,7 +855,7 @@ const CTASection: React.FC = () => {
       background: "radial-gradient(ellipse, rgba(22,85,181,0.07) 0%, transparent 70%)",
       pointerEvents: "none"
     }} />
-      <div style={{
+    <div style={{
       position: "absolute",
       top: "50%",
       left: "50%",
@@ -867,8 +867,8 @@ const CTASection: React.FC = () => {
       pointerEvents: "none"
     }} />
 
-      {/* Content */}
-      <div style={{
+    {/* Content */}
+    <div style={{
       position: "relative",
       zIndex: 1,
       maxWidth: "800px",
@@ -879,19 +879,19 @@ const CTASection: React.FC = () => {
       textAlign: "center",
       gap: "32px"
     }}>
-        {/* Pre-label */}
-        <div style={{
+      {/* Pre-label */}
+      <div style={{
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         gap: "8px"
       }}>
-          <div style={{
+        <div style={{
           height: "3px",
           width: "48px",
           backgroundColor: "#FF2D87"
         }} />
-          <span style={{
+        <span style={{
           fontFamily: "Figtree",
           fontSize: "10px",
           fontWeight: 600,
@@ -899,12 +899,12 @@ const CTASection: React.FC = () => {
           textTransform: "uppercase",
           color: "rgba(255,255,255,0.50)"
         }}>
-            SHAPE AFRICA'S FUTURE
-          </span>
-        </div>
+          SHAPE AFRICA'S FUTURE
+        </span>
+      </div>
 
-        {/* Headline */}
-        <h2 style={{
+      {/* Headline */}
+      <h2 style={{
         fontFamily: "Figtree",
         fontWeight: 300,
         fontSize: "clamp(36px, 7vw, 88px)",
@@ -913,7 +913,7 @@ const CTASection: React.FC = () => {
         color: "#FFFFFF",
         margin: 0
       }}>
-          {CTA_WORDS.map((word, i) => <motion.span key={word.text} initial={{
+        {CTA_WORDS.map((word, i) => <motion.span key={word.text} initial={{
           opacity: 0,
           y: 16,
           filter: "blur(8px)"
@@ -935,12 +935,12 @@ const CTASection: React.FC = () => {
           textDecorationThickness: word.underline ? "3px" : undefined,
           textUnderlineOffset: word.underline ? "10px" : undefined
         }}>
-              {word.text}
-            </motion.span>)}
-        </h2>
+          {word.text}
+        </motion.span>)}
+      </h2>
 
-        {/* Subtext */}
-        <p style={{
+      {/* Subtext */}
+      <p style={{
         fontFamily: "Figtree",
         fontSize: "clamp(15px, 2vw, 18px)",
         color: "rgba(255,255,255,0.45)",
@@ -948,20 +948,20 @@ const CTASection: React.FC = () => {
         lineHeight: 1.75,
         margin: 0
       }}>
-          Join the exclusive cohort of leaders and investors transforming Africa's infrastructure landscape through innovation, capital, and strategic connectivity.
-        </p>
+        Join the exclusive cohort of leaders and investors transforming Africa's infrastructure landscape through innovation, capital, and strategic connectivity.
+      </p>
 
-        {/* CTA Buttons — stack on mobile, row on sm+ */}
-        <div className="infra-cta-group" style={{
-          display: "flex",
-          flexDirection: "row",
-          gap: "16px",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "100%",
-          maxWidth: "480px"
-        }}>
-          <button style={{
+      {/* CTA Buttons — stack on mobile, row on sm+ */}
+      <div className="infra-cta-group" style={{
+        display: "flex",
+        flexDirection: "row",
+        gap: "16px",
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100%",
+        maxWidth: "480px"
+      }}>
+        <button style={{
           position: "relative",
           overflow: "hidden",
           display: "inline-flex",
@@ -987,17 +987,17 @@ const CTASection: React.FC = () => {
         }} onMouseLeave={e => {
           (e.currentTarget as HTMLButtonElement).style.filter = "brightness(1)";
         }}>
-            <span style={{
+          <span style={{
             position: "relative",
             zIndex: 1,
             display: "inline-flex",
             alignItems: "center",
             gap: "8px"
           }}>
-              Apply for Cohort
-              <ArrowUpRight size={18} />
-            </span>
-            <span style={{
+            Apply for Cohort
+            <ArrowUpRight size={18} />
+          </span>
+          <span style={{
             position: "absolute",
             inset: 0,
             width: "33%",
@@ -1006,9 +1006,9 @@ const CTASection: React.FC = () => {
             animation: "shimmerSlide 3s linear infinite",
             pointerEvents: "none"
           }} />
-          </button>
+        </button>
 
-          <button style={{
+        <button style={{
           fontFamily: "Figtree",
           fontSize: "clamp(14px, 2vw, 16px)",
           fontWeight: 500,
@@ -1028,11 +1028,11 @@ const CTASection: React.FC = () => {
         }} onMouseLeave={e => {
           (e.currentTarget as HTMLButtonElement).style.backgroundColor = "rgba(255,255,255,0.05)";
         }}>
-            Download Overview
-          </button>
-        </div>
+          Download Overview
+        </button>
       </div>
-    </section>;
+    </div>
+  </section>;
 };
 
 // ─── Main Export ───────────────────────────────────────────────────────────────
@@ -1041,15 +1041,15 @@ export const InfrastructurePropertyPillar: React.FC = () => {
     width: "100%",
     backgroundColor: "#0A0A0F"
   }}>
-      <main style={{ minHeight: "100vh" }}>
-        <InfrastructureHeroBanner />
-        <CoreSegmentsSection />
-        <SegmentToROISeparator />
-        <ROIParametersSection />
-        <CTASection />
-      </main>
+    <main style={{ minHeight: "100vh" }}>
+      <InfrastructureHeroBanner />
+      <CoreSegmentsSection />
+      <SegmentToROISeparator />
+      <ROIParametersSection />
+      <CTASection />
+    </main>
 
-      <style>{`
+    <style>{`
         /* Responsive Grid & Spacing Overrides */
         @media (max-width: 767px) {
           .infra-grid-3 {
@@ -1090,6 +1090,6 @@ export const InfrastructurePropertyPillar: React.FC = () => {
           100% { transform: skewX(-20deg) translateX(250%); }
         }
       `}</style>
-    </div>;
+  </div>;
 };
 export default InfrastructurePropertyPillar;
