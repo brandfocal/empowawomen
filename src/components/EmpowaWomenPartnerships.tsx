@@ -1433,7 +1433,7 @@ const PartnerPackageMatrix: React.FC<PartnerPackageMatrixProps> = ({ onSelectTie
                     zIndex: 2,
                     flexShrink: 0
                 }} className="tier1-cta">
-                    <button onClick={() => onSelectTier("Tier 1")} style={{
+                    <button onClick={() => onSelectTier("Tier 1: Title & Naming Rights Partner™")} style={{
                         backgroundColor: "#FF2D87",
                         color: "#FFFFFF",
                         fontFamily: "Figtree",
@@ -1580,7 +1580,7 @@ const PartnerPackageMatrix: React.FC<PartnerPackageMatrixProps> = ({ onSelectTie
                     <div style={{
                         marginTop: "32px"
                     }}>
-                        <button onClick={() => onSelectTier("Tier 2")} style={{
+                        <button onClick={() => onSelectTier("Tier 2: Platinum Industry Partner™")} style={{
                             border: "1px solid #00B4A6",
                             color: "#00B4A6",
                             backgroundColor: "transparent",
@@ -1719,7 +1719,7 @@ const PartnerPackageMatrix: React.FC<PartnerPackageMatrixProps> = ({ onSelectTie
                     <div style={{
                         marginTop: "32px"
                     }}>
-                        <button onClick={() => onSelectTier("Tier 3")} style={{
+                        <button onClick={() => onSelectTier("Tier 3: Specialized Corporate Activation™")} style={{
                             border: "1px solid #D97706",
                             color: "#D97706",
                             backgroundColor: "transparent",
@@ -2427,9 +2427,9 @@ const LeadGenForm: React.FC<LeadGenFormProps> = ({ selectedTier, setSelectedTier
                                     onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.10)'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'; }}
                                 >
                                     <option value="" disabled style={{ backgroundColor: '#0A0A0F', color: 'rgba(255,255,255,0.4)' }}>Select a Partnership Tier</option>
-                                    <option value="Tier 1" style={{ backgroundColor: '#0A0A0F', color: '#FFFFFF' }}>Tier 1: Title & Naming Rights Partner™</option>
-                                    <option value="Tier 2" style={{ backgroundColor: '#0A0A0F', color: '#FFFFFF' }}>Tier 2: Platinum Industry Partner™</option>
-                                    <option value="Tier 3" style={{ backgroundColor: '#0A0A0F', color: '#FFFFFF' }}>Tier 3: Specialized Corporate Activation™</option>
+                                    <option value="Tier 1: Title & Naming Rights Partner™" style={{ backgroundColor: '#0A0A0F', color: '#FFFFFF' }}>Tier 1: Title & Naming Rights Partner™</option>
+                                    <option value="Tier 2: Platinum Industry Partner™" style={{ backgroundColor: '#0A0A0F', color: '#FFFFFF' }}>Tier 2: Platinum Industry Partner™</option>
+                                    <option value="Tier 3: Specialized Corporate Activation™" style={{ backgroundColor: '#0A0A0F', color: '#FFFFFF' }}>Tier 3: Specialized Corporate Activation™</option>
                                 </select>
                             </div>
 
@@ -2485,15 +2485,15 @@ const LeadGenForm: React.FC<LeadGenFormProps> = ({ selectedTier, setSelectedTier
                                 >
                                     <option value="" disabled style={{ backgroundColor: '#0A0A0F', color: 'rgba(255,255,255,0.4)' }}>Select a Target Focus</option>
                                     <option value="Green Economy" style={{ backgroundColor: '#0A0A0F', color: '#FFFFFF' }}>Green Economy</option>
-                                    <option value="AI" style={{ backgroundColor: '#0A0A0F', color: '#FFFFFF' }}>Future Skills & AI</option>
-                                    <option value="Capital" style={{ backgroundColor: '#0A0A0F', color: '#FFFFFF' }}>Capital & Funding</option>
+                                    <option value="Future Skills & AI" style={{ backgroundColor: '#0A0A0F', color: '#FFFFFF' }}>Future Skills & AI</option>
+                                    <option value="Capital & Funding" style={{ backgroundColor: '#0A0A0F', color: '#FFFFFF' }}>Capital & Funding</option>
                                     <option value="Infrastructure" style={{ backgroundColor: '#0A0A0F', color: '#FFFFFF' }}>Infrastructure</option>
                                     <option value="Agriculture" style={{ backgroundColor: '#0A0A0F', color: '#FFFFFF' }}>Agriculture</option>
                                     <option value="Healthcare" style={{ backgroundColor: '#0A0A0F', color: '#FFFFFF' }}>Healthcare</option>
-                                    <option value="Media" style={{ backgroundColor: '#0A0A0F', color: '#FFFFFF' }}>Media & Creative Economy</option>
+                                    <option value="Media & Creative Economy" style={{ backgroundColor: '#0A0A0F', color: '#FFFFFF' }}>Media & Creative Economy</option>
                                     <option value="Manufacturing" style={{ backgroundColor: '#0A0A0F', color: '#FFFFFF' }}>Manufacturing</option>
-                                    <option value="Retail" style={{ backgroundColor: '#0A0A0F', color: '#FFFFFF' }}>Retail & Wholesale</option>
-                                    <option value="Leadership" style={{ backgroundColor: '#0A0A0F', color: '#FFFFFF' }}>Leadership & Influence</option>
+                                    <option value="Retail & Wholesale" style={{ backgroundColor: '#0A0A0F', color: '#FFFFFF' }}>Retail & Wholesale</option>
+                                    <option value="Leadership & Influence" style={{ backgroundColor: '#0A0A0F', color: '#FFFFFF' }}>Leadership & Influence</option>
                                 </select>
                             </div>
                         </div>
