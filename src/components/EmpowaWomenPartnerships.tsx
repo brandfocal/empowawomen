@@ -2860,7 +2860,7 @@ const PartnershipsHero = () => {
     );
 
     return <UniversalHero
-        bgImage="https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=1920&q=90"
+        bgImage="/features-4.jpg"
         pillText="CORPORATE BUDGET PORTAL · B2B ESG"
         headline={headline}
         description="Our platform delivers measurable commercial value through strategic visibility, thought leadership, procurement integration, and long-term ecosystem positioning."
