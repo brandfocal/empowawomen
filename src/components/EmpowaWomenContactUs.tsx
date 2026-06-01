@@ -2092,7 +2092,7 @@ const ContactHero = () => {
     );
 
     return <UniversalHero
-        bgImage="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1920&q=90"
+        bgImage="/contact.jpg"
         pillText="ROUTING HEADQUARTERS · CONTACT US"
         headline={headline}
         description="Whether you're exploring enterprise partnerships, inquiring about speaking opportunities, or looking to join our executive network, direct your inquiry below."
