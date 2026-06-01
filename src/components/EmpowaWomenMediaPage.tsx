@@ -1,6 +1,6 @@
 import * as React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, Download, ChevronDown, ChevronUp, Printer } from "lucide-react";
 
 interface BroadcastItem {
   id: string;
@@ -743,6 +743,650 @@ const FeaturesSection = () => {
         </div>
       </div>
     </section>;
+};
+
+// ─── Official Press Releases Section ──────────────────────────────────────────
+const PressReleasesSection = () => {
+  const [isExpanded, setIsExpanded] = React.useState(false);
+  const containerRef = React.useRef<HTMLDivElement>(null);
+
+  const handleToggle = () => {
+    setIsExpanded(!isExpanded);
+    if (isExpanded) {
+      // Smooth scroll back to section header when collapsing
+      containerRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handlePrint = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.print();
+  };
+
+  return (
+    <section ref={containerRef} id="press-releases" style={{
+      width: "100%",
+      paddingTop: "clamp(64px, 8vw, 120px)",
+      paddingBottom: "clamp(64px, 8vw, 120px)",
+      paddingLeft: "clamp(24px, 6vw, 96px)",
+      paddingRight: "clamp(24px, 6vw, 96px)",
+      backgroundColor: "#F7F6F2",
+      borderTop: "1px solid rgba(0,0,0,0.05)",
+      position: "relative",
+      zIndex: 10
+    }}>
+      <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
+        {/* Section Header */}
+        <div style={{ marginBottom: "48px", textAlign: "center" }}>
+          <Eyebrow text="OFFICIAL NEWSROOM" />
+          <h2 style={{
+            fontFamily: "Figtree",
+            fontWeight: 300,
+            fontSize: "clamp(24px, 4.5vw, 56px)",
+            color: "#0A0A0F",
+            letterSpacing: "-0.03em",
+            lineHeight: 1.05,
+            margin: "0 0 16px 0",
+            textTransform: "uppercase"
+          }}>
+            OFFICIAL PRESS STATEMENTS
+          </h2>
+          <p style={{
+            fontFamily: "Figtree",
+            fontSize: "clamp(14px, 1.8vw, 17px)",
+            fontWeight: 400,
+            color: "#64748b",
+            maxWidth: "540px",
+            lineHeight: 1.75,
+            margin: "0 auto"
+          }}>
+            Official media updates, corporate announcements, and strategic press releases from the EmpowaWomen™ ecosystem.
+          </p>
+        </div>
+
+        {/* Featured Press Release Card */}
+        <div id="print-press-card" style={{
+          backgroundColor: "#FFFFFF",
+          border: "1px solid rgba(0,0,0,0.06)",
+          borderRadius: "24px",
+          padding: "clamp(24px, 5vw, 48px)",
+          boxShadow: "0 10px 40px rgba(0,0,0,0.03)",
+          position: "relative",
+          overflow: "hidden"
+        }}>
+          {/* Card Accent Bar */}
+          <div style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            height: "4px",
+            backgroundColor: "#FF2D87"
+          }} />
+
+          {/* Release Meta */}
+          <div style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: "12px",
+            marginBottom: "24px"
+          }}>
+            <span style={{
+              fontFamily: "Figtree",
+              fontSize: "11px",
+              fontWeight: 700,
+              color: "#FF2D87",
+              backgroundColor: "rgba(255,45,135,0.08)",
+              padding: "6px 14px",
+              borderRadius: "999px",
+              letterSpacing: "0.1em",
+              textTransform: "uppercase"
+            }}>
+              FOR IMMEDIATE RELEASE
+            </span>
+            <span style={{
+              fontFamily: "Figtree",
+              fontSize: "13px",
+              color: "#64748b"
+            }}>
+              Saturday, 29 August 2026 · Johannesburg
+            </span>
+          </div>
+
+          {/* Title block */}
+          <h3 style={{
+            fontFamily: "Figtree",
+            fontSize: "clamp(20px, 3.5vw, 32px)",
+            fontWeight: 700,
+            color: "#0A0A0F",
+            lineHeight: 1.25,
+            letterSpacing: "-0.02em",
+            margin: "0 0 12px 0"
+          }}>
+            10TH ANNUAL EMPOWAWOMEN LEADERSHIP SUMMIT 2026 SET TO CONVENE AFRICA’S MOST INFLUENTIAL WOMEN LEADERS
+          </h3>
+          
+          <h4 style={{
+            fontFamily: "Figtree",
+            fontSize: "clamp(15px, 2vw, 18px)",
+            fontWeight: 500,
+            fontStyle: "italic",
+            color: "#C9A84C",
+            margin: "0 0 24px 0",
+            lineHeight: 1.4
+          }}>
+            The Command Centre of Power, Capital and Control
+          </h4>
+
+          {/* Summary Preview */}
+          <p style={{
+            fontFamily: "Figtree",
+            fontSize: "15px",
+            color: "#475569",
+            lineHeight: 1.75,
+            margin: "0 0 28px 0"
+          }}>
+            EmpowaWomen™, one of Africa’s leading women-led leadership and economic empowerment ecosystems, has officially announced the 10th Annual EmpowaWomen Leadership Summit 2026, a landmark gathering that will bring together the continent’s most influential women leaders, entrepreneurs, investors, and future-focused decision-makers.
+          </p>
+
+          {/* Expandable Content Container */}
+          <div style={{
+            overflow: "hidden",
+            height: isExpanded ? "auto" : "0px",
+            opacity: isExpanded ? 1 : 0,
+            transition: "all 500ms cubic-bezier(0.16, 1, 0.3, 1)",
+            marginBottom: isExpanded ? "32px" : "0px"
+          }}>
+            <div style={{
+              borderTop: "1px solid rgba(0,0,0,0.08)",
+              paddingTop: "32px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "24px"
+            }}>
+              {/* Introduction with Dropcap */}
+              <p style={{
+                fontFamily: "Figtree",
+                fontSize: "15px",
+                color: "#475569",
+                lineHeight: 1.8,
+                margin: 0
+              }}>
+                <span style={{
+                  float: "left",
+                  fontSize: "48px",
+                  fontWeight: 700,
+                  lineHeight: "36px",
+                  paddingRight: "8px",
+                  paddingTop: "4px",
+                  color: "#FF2D87",
+                  fontFamily: "Figtree"
+                }}>J</span>ohannesburg, South Africa — Scheduled for Saturday, 29 August 2026 at The Forum | The Campus, Bryanston, Johannesburg, the summit marks a significant milestone in a decade-long journey of accelerating women’s leadership, economic participation, enterprise growth, and influence across Africa.
+              </p>
+
+              {/* Defining Question Callout */}
+              <div style={{
+                backgroundColor: "rgba(201,168,76,0.05)",
+                borderLeft: "3px solid #C9A84C",
+                borderRadius: "0 12px 12px 0",
+                padding: "20px 24px",
+                margin: "8px 0"
+              }}>
+                <p style={{
+                  fontFamily: "Figtree",
+                  fontSize: "15px",
+                  fontWeight: 500,
+                  fontStyle: "italic",
+                  color: "#0A0A0F",
+                  lineHeight: 1.7,
+                  margin: 0
+                }}>
+                  Under the bold theme, “The Command Centre of Power, Capital and Control,” the 2026 Summit will explore one defining question:<br />
+                  <strong>How do women move beyond participation to ownership, influence, capital allocation, governance leadership, and control of the economic levers shaping Africa’s future?</strong>
+                </p>
+              </div>
+
+              {/* Decade Context */}
+              <p style={{
+                fontFamily: "Figtree",
+                fontSize: "15px",
+                color: "#475569",
+                lineHeight: 1.8,
+                margin: 0
+              }}>
+                For ten years, EmpowaWomen™ has remained committed to positioning women at the centre of Africa’s future economy. Through its ecosystem of leadership platforms, executive programmes, industry engagements, strategic partnerships, and economic empowerment initiatives, the platform has directly impacted and engaged close to 30,000 female executives, entrepreneurs, professionals, investors, innovators, and emerging leaders across South Africa and the continent.
+              </p>
+
+              <p style={{
+                fontFamily: "Figtree",
+                fontSize: "15px",
+                color: "#475569",
+                lineHeight: 1.8,
+                margin: 0
+              }}>
+                As Africa enters a new era defined by artificial intelligence, climate transition, industrial transformation, demographic shifts, capital redistribution, and digital disruption, the role of women in shaping economic outcomes has never been more critical. The 10th Annual EmpowaWomen Leadership Summit is intentionally designed to serve as a strategic convening point where influence meets execution, leadership meets opportunity, and ambition translates into measurable economic impact.
+              </p>
+
+              {/* Simphiwe Quote Card */}
+              <div style={{
+                borderLeft: "4px solid #FF2D87",
+                padding: "24px 0 24px 32px",
+                backgroundColor: "rgba(255,45,135,0.02)",
+                margin: "16px 0",
+                borderRadius: "0 16px 16px 0",
+                position: "relative"
+              }}>
+                <span style={{
+                  position: "absolute",
+                  left: "12px",
+                  top: "-10px",
+                  fontSize: "80px",
+                  fontWeight: 700,
+                  color: "rgba(255,45,135,0.06)",
+                  fontFamily: "Georgia",
+                  lineHeight: 1,
+                  pointerEvents: "none"
+                }}>“</span>
+                <p style={{
+                  fontFamily: "Figtree",
+                  fontSize: "16px",
+                  fontWeight: 400,
+                  fontStyle: "italic",
+                  color: "#0A0A0F",
+                  lineHeight: 1.75,
+                  margin: "0 0 16px 0",
+                  position: "relative",
+                  zIndex: 1
+                }}>
+                  “The future will belong to those who control capital, influence markets, shape policy, lead innovation, and build institutions. Women are no longer asking for a seat at the table. They are building the tables, funding the opportunities, shaping the industries, and leading the transformation. The 10th Annual EmpowaWomen Leadership Summit is where Africa’s next chapter of women-led growth, power, and economic influence will be written.”
+                </p>
+                <div>
+                  <h5 style={{
+                    fontFamily: "Figtree",
+                    fontSize: "14px",
+                    fontWeight: 700,
+                    color: "#0A0A0F",
+                    margin: "0 0 2px 0"
+                  }}>
+                    Simphiwe Masiza
+                  </h5>
+                  <p style={{
+                    fontFamily: "Figtree",
+                    fontSize: "12px",
+                    fontWeight: 600,
+                    color: "#FF2D87",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.05em",
+                    margin: 0
+                  }}>
+                    Founder & Executive Producer, EmpowaWomen™
+                  </p>
+                </div>
+              </div>
+
+              {/* A Decade of Impact */}
+              <div>
+                <h4 style={{
+                  fontFamily: "Figtree",
+                  fontSize: "18px",
+                  fontWeight: 700,
+                  color: "#0A0A0F",
+                  margin: "0 0 16px 0"
+                }}>
+                  A DECADE OF IMPACT
+                </h4>
+                <p style={{
+                  fontFamily: "Figtree",
+                  fontSize: "15px",
+                  color: "#475569",
+                  lineHeight: 1.8,
+                  margin: "0 0 16px 0"
+                }}>
+                  Over the past decade, EmpowaWomen™ has evolved into a trusted leadership and economic empowerment ecosystem, creating platforms that facilitate:
+                </p>
+                <div style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+                  gap: "12px 24px",
+                  marginBottom: "16px"
+                }}>
+                  {[
+                    "Leadership acceleration and executive visibility",
+                    "Enterprise growth and commercial expansion",
+                    "Strategic partnerships and ecosystem collaboration",
+                    "Investment and funding access",
+                    "Board readiness and governance excellence",
+                    "Innovation and future economy participation",
+                    "Market access and procurement opportunities",
+                    "Women-led economic transformation"
+                  ].map((item, idx) => (
+                    <div key={idx} style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
+                      <span style={{ color: "#FF2D87", fontWeight: 700, fontSize: "14px", paddingTop: "1px" }}>✓</span>
+                      <span style={{ fontFamily: "Figtree", fontSize: "14px", color: "#475569", lineHeight: 1.5 }}>{item}</span>
+                    </div>
+                  ))}
+                </div>
+                <p style={{
+                  fontFamily: "Figtree",
+                  fontSize: "15px",
+                  color: "#475569",
+                  lineHeight: 1.8,
+                  margin: 0
+                }}>
+                  Today, EmpowaWomen™ stands as a platform where conversations evolve into partnerships, ideas become enterprises, networks become opportunities, and leadership becomes legacy.
+                </p>
+              </div>
+
+              {/* The Future Economy Growth Pillars */}
+              <div>
+                <h4 style={{
+                  fontFamily: "Figtree",
+                  fontSize: "18px",
+                  fontWeight: 700,
+                  color: "#0A0A0F",
+                  margin: "0 0 16px 0"
+                }}>
+                  THE FUTURE ECONOMY GROWTH PILLARS™
+                </h4>
+                <p style={{
+                  fontFamily: "Figtree",
+                  fontSize: "15px",
+                  color: "#475569",
+                  lineHeight: 1.8,
+                  margin: "0 0 16px 0"
+                }}>
+                  The Summit will feature dedicated industry platforms focused on sectors expected to drive Africa’s next wave of economic growth and competitiveness:
+                </p>
+                <div style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+                  gap: "12px",
+                  marginBottom: "16px"
+                }}>
+                  {[
+                    "Entrepreneurship & Funding",
+                    "Leadership, Governance & Boards",
+                    "Communications, Advertising, Marketing & Media",
+                    "Agriculture & Food Security",
+                    "The Creative Economy",
+                    "Green Economy, Mining, Energy & Sustainability",
+                    "Beauty, Fashion, Health & Wellness",
+                    "Wholesale, Retail & Manufacturing"
+                  ].map((item, idx) => (
+                    <div key={idx} style={{
+                      backgroundColor: "rgba(0,0,0,0.02)",
+                      border: "1px solid rgba(0,0,0,0.04)",
+                      padding: "10px 16px",
+                      borderRadius: "8px",
+                      fontFamily: "Figtree",
+                      fontSize: "13px",
+                      fontWeight: 600,
+                      color: "#0A0A0F"
+                    }}>
+                      {item}
+                    </div>
+                  ))}
+                </div>
+                <p style={{
+                  fontFamily: "Figtree",
+                  fontSize: "14px",
+                  fontStyle: "italic",
+                  color: "#64748b",
+                  margin: 0
+                }}>
+                  Each platform is intentionally curated to unlock executive intelligence, investment opportunities, commercial partnerships, market access, innovation collaboration, and measurable socio-economic impact.
+                </p>
+              </div>
+
+              {/* What to Expect */}
+              <div>
+                <h4 style={{
+                  fontFamily: "Figtree",
+                  fontSize: "18px",
+                  fontWeight: 700,
+                  color: "#0A0A0F",
+                  margin: "0 0 16px 0"
+                }}>
+                  WHAT TO EXPECT
+                </h4>
+                <p style={{
+                  fontFamily: "Figtree",
+                  fontSize: "15px",
+                  color: "#475569",
+                  lineHeight: 1.8,
+                  margin: "0 0 16px 0"
+                }}>
+                  The 10th Annual EmpowaWomen Leadership Summit 2026 will convene a high-calibre audience of women shaping industries, institutions, capital flows, policy, innovation, and culture. Delegates can expect:
+                </p>
+                <div style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+                  gap: "10px",
+                  marginBottom: "16px"
+                }}>
+                  {[
+                    "High-impact keynote addresses from influential leaders",
+                    "Executive masterclasses and industry intelligence sessions",
+                    "Strategic boardroom-level conversations",
+                    "Curated networking and partnership engagements",
+                    "Investment and funding ecosystem access",
+                    "Industry-specific future economy platforms",
+                    "Executive leadership and governance insights",
+                    "Cross-sector collaboration opportunities"
+                  ].map((item, idx) => (
+                    <div key={idx} style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
+                      <span style={{ color: "#C9A84C", fontWeight: 700 }}>•</span>
+                      <span style={{ fontFamily: "Figtree", fontSize: "14px", color: "#475569" }}>{item}</span>
+                    </div>
+                  ))}
+                </div>
+                <p style={{
+                  fontFamily: "Figtree",
+                  fontSize: "14px",
+                  color: "#64748b",
+                  margin: 0
+                }}>
+                  The Summit is designed to create tangible outcomes, strategic relationships, and long-term opportunities that extend well beyond a single day.
+                </p>
+              </div>
+
+              {/* Event Details Summary Grid */}
+              <div style={{
+                backgroundColor: "rgba(0,0,0,0.02)",
+                border: "1px solid rgba(0,0,0,0.06)",
+                borderRadius: "16px",
+                padding: "24px",
+                margin: "8px 0"
+              }}>
+                <h5 style={{
+                  fontFamily: "Figtree",
+                  fontSize: "14px",
+                  fontWeight: 700,
+                  color: "#0A0A0F",
+                  margin: "0 0 16px 0",
+                  letterSpacing: "0.05em",
+                  textTransform: "uppercase"
+                }}>
+                  Event Quick Summary
+                </h5>
+                <div style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "12px"
+                }}>
+                  {[
+                    { label: "Event", val: "10th Annual EmpowaWomen Leadership Summit 2026" },
+                    { label: "Theme", val: "The Command Centre of Power, Capital and Control" },
+                    { label: "Date", val: "Saturday, 29 August 2026" },
+                    { label: "Venue", val: "The Forum | The Campus, Bryanston, Johannesburg" },
+                    { label: "Audience", val: "Female CXOs, Entrepreneurs, Investors, Board Members, Policymakers, Media Leaders, Executives, Professionals and Emerging Leaders" }
+                  ].map((row, idx) => (
+                    <div key={idx} style={{
+                      display: "flex",
+                      borderBottom: idx === 4 ? "none" : "1px solid rgba(0,0,0,0.04)",
+                      paddingBottom: idx === 4 ? "0" : "12px",
+                      flexWrap: "wrap",
+                      gap: "8px"
+                    }}>
+                      <span style={{
+                        fontFamily: "Figtree",
+                        fontSize: "11px",
+                        fontWeight: 700,
+                        textTransform: "uppercase",
+                        color: "#FF2D87",
+                        width: "100px",
+                        flexShrink: 0
+                      }}>{row.label}</span>
+                      <span style={{
+                        fontFamily: "Figtree",
+                        fontSize: "14px",
+                        color: "#0A0A0F",
+                        fontWeight: 500
+                      }}>{row.val}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* About EmpowaWomen */}
+              <div>
+                <h4 style={{
+                  fontFamily: "Figtree",
+                  fontSize: "18px",
+                  fontWeight: 700,
+                  color: "#0A0A0F",
+                  margin: "0 0 12px 0"
+                }}>
+                  ABOUT EMPOWAWOMEN™
+                </h4>
+                <p style={{
+                  fontFamily: "Figtree",
+                  fontSize: "14px",
+                  fontStyle: "italic",
+                  color: "#C9A84C",
+                  fontWeight: 500,
+                  margin: "0 0 12px 0"
+                }}>
+                  “Leading Fearlessly. Accelerating Growth. Transforming Economies.”
+                </p>
+                <p style={{
+                  fontFamily: "Figtree",
+                  fontSize: "14px",
+                  color: "#475569",
+                  lineHeight: 1.75,
+                  margin: 0
+                }}>
+                  EmpowaWomen™ is a high-impact leadership and economic empowerment ecosystem dedicated to accelerating the rise of women shaping Africa’s future industries, institutions, capital flows, innovation ecosystems, and economic growth. As the platform celebrates its 10th anniversary, it remains committed to building a future where women are not simply participants in the economy, but architects of industries, creators of opportunity, stewards of capital, and leaders of transformation.
+                </p>
+              </div>
+
+              {/* Media Enquiries Details block */}
+              <div style={{
+                borderLeft: "3px solid #FF2D87",
+                paddingLeft: "20px",
+                marginTop: "16px"
+              }}>
+                <h5 style={{
+                  fontFamily: "Figtree",
+                  fontSize: "14px",
+                  fontWeight: 700,
+                  color: "#0A0A0F",
+                  margin: "0 0 10px 0",
+                  textTransform: "uppercase"
+                }}>
+                  MEDIA ENQUIRIES
+                </h5>
+                <p style={{
+                  fontFamily: "Figtree",
+                  fontSize: "13px",
+                  color: "#64748b",
+                  lineHeight: 1.6,
+                  margin: 0
+                }}>
+                  EmpowaWomen Media Office<br />
+                  Website: <a href="https://empowawomen.co.za" target="_blank" rel="noopener noreferrer" style={{ color: "#FF2D87", textDecoration: "none", fontWeight: 600 }}>empowawomen.co.za</a><br />
+                  Simphiwe Masiza (Founder & Executive Producer)<br />
+                  Email: <a href="mailto:media@empowawomen.co.za" style={{ color: "#FF2D87", textDecoration: "none" }}>media@empowawomen.co.za</a>
+                </p>
+              </div>
+
+              <div style={{
+                textAlign: "center",
+                fontFamily: "Figtree",
+                fontSize: "12px",
+                fontWeight: 700,
+                letterSpacing: "0.3em",
+                color: "#64748b",
+                marginTop: "16px"
+              }}>
+                ENDS
+              </div>
+
+            </div>
+          </div>
+
+          {/* Bottom Card Controls */}
+          <div className="print-exclude" style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: "16px",
+            borderTop: isExpanded ? "1px solid rgba(0,0,0,0.08)" : "none",
+            paddingTop: isExpanded ? "24px" : "0"
+          }}>
+            <button onClick={handleToggle} style={{
+              fontFamily: "Figtree",
+              fontSize: "14px",
+              fontWeight: 600,
+              color: "#FFFFFF",
+              backgroundColor: "#0A0A0F",
+              border: "none",
+              borderRadius: "999px",
+              padding: "12px 28px",
+              cursor: "pointer",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+              transition: "background-color 200ms ease-out"
+            }} onMouseEnter={e => e.currentTarget.style.backgroundColor = "#FF2D87"} onMouseLeave={e => e.currentTarget.style.backgroundColor = "#0A0A0F"}>
+              <span>{isExpanded ? "Collapse Statement" : "Read Full Press Release"}</span>
+              {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+            </button>
+
+            {/* {isExpanded && (
+              <button onClick={handlePrint} style={{
+                fontFamily: "Figtree",
+                fontSize: "13px",
+                fontWeight: 600,
+                color: "#64748b",
+                backgroundColor: "transparent",
+                border: "1px solid rgba(0,0,0,0.12)",
+                borderRadius: "999px",
+                padding: "10px 24px",
+                cursor: "pointer",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                transition: "all 200ms"
+              }} onMouseEnter={e => {
+                e.currentTarget.style.backgroundColor = "rgba(0,0,0,0.03)";
+                e.currentTarget.style.borderColor = "rgba(0,0,0,0.25)";
+              }} onMouseLeave={e => {
+                e.currentTarget.style.backgroundColor = "transparent";
+                e.currentTarget.style.borderColor = "rgba(0,0,0,0.12)";
+              }}>
+                <Printer size={14} />
+                <span>Print Press Release</span>
+              </button>
+            )} */}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 // ─── Accreditation Section ────────────────────────────────────────────────────
@@ -1498,6 +2142,7 @@ export const MediaPage = () => {
       <HeroSection />
       <BroadcastSection />
       <FeaturesSection />
+      <PressReleasesSection />
       <AccreditationSection />
       <VideoSection />
       <PreFooterCTA />
@@ -1561,6 +2206,58 @@ export const MediaPage = () => {
           .media-hero-ctas button {
             width: 220px !important;
             justify-content: center !important;
+          }
+        }
+        @media print {
+          /* Hide global outer navigation header and footer CTA */
+          header, footer, nav, .navbar, .footer {
+            display: none !important;
+          }
+          /* Hide all sibling elements of the press releases section to save vertical space */
+          main > *:not(#press-releases) {
+            display: none !important;
+          }
+          /* Hide section title/eyebrow inside press-releases section */
+          #press-releases > div > *:not(#print-press-card) {
+            display: none !important;
+          }
+          /* Reset backgrounds, heights, paddings, and margins for all main print-containers */
+          body, html, #root, main, #press-releases, #press-releases > div {
+            background: #FFFFFF !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            border: none !important;
+            box-shadow: none !important;
+            min-height: 0 !important;
+            height: auto !important;
+            overflow: visible !important;
+          }
+          /* Force the press statement card to start exactly on page 1 of print output */
+          #print-press-card {
+            display: block !important;
+            position: relative !important;
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 20px !important;
+            border: none !important;
+            box-shadow: none !important;
+            background: #FFFFFF !important;
+          }
+          .print-exclude {
+            display: none !important;
+          }
+          #print-press-card p,
+          #print-press-card span,
+          #print-press-card h3,
+          #print-press-card h4,
+          #print-press-card h5,
+          #print-press-card div {
+            color: #0A0A0F !important;
+            background: transparent !important;
+          }
+          #print-press-card strong,
+          #print-press-card a {
+            color: #FF2D87 !important;
           }
         }
       `}</style>
