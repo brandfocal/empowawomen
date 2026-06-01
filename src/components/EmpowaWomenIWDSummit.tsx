@@ -677,7 +677,7 @@ export const IWDSummitDetail = () => {
                             maxWidth: "576px",
                             margin: 0
                         }}>
-                            At the heart of the International Women's Day Summit 2027 is a commitment to shifting from mere
+                            At the heart of the International Women's Day Summit™ is a commitment to shifting from mere
                             celebration to strategic economic participation. We gather global leaders to engineer the future.
                         </motion.p>
                     </div>

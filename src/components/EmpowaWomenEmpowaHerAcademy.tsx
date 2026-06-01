@@ -93,7 +93,7 @@ const NAV_LINKS: NavLink[] = [{
     hasDropdown: true
 }, {
     id: 'nav-academy',
-    label: 'Academy',
+    label: 'EmpowaHER™',
     href: '#',
     active: true
 }, {
@@ -147,7 +147,7 @@ const FOOTER_SECTION_ROWS: SectionLinkRow[] = [{
         href: '#'
     }, {
         id: 'fp-4',
-        label: 'Academy',
+        label: 'EmpowaHER™',
         href: '#'
     }, {
         id: 'fp-5',
@@ -1530,7 +1530,7 @@ const ApplicationForm = () => {
                                 maxWidth: "400px",
                                 margin: 0
                             }}>
-                                Thank you for applying to the EmpowaHER Academy. Your application has been received and our cohort selection committee is reviewing it.
+                                Thank you for applying to EmpowaHER™. Your application has been received and our cohort selection committee is reviewing it.
                             </p>
                         </div>
                         <button onClick={() => setSubmitted(false)} style={{
@@ -2310,7 +2310,7 @@ const AcademyHero = () => {
         bgImage="https://images.unsplash.com/photo-1598257006458-087169a1f08d?w=1920&q=90"
         pillText="YOUTH ACTIVATION ECOSYSTEM · AGES 18–34"
         headline={headline}
-        description="The EmpowaHER Academy is a rigorous, 12-month accelerator designed to fast-track Africa's most promising young women into boardrooms, investment committees, and scaling enterprises."
+        description="EmpowaHER™ is a rigorous, 12-month accelerator designed to fast-track Africa's most promising young women into boardrooms, investment committees, and scaling enterprises."
         primaryCtaText="Apply for 2025 Cohort"
         primaryCtaLink="#academy-apply-form"
         bottomSection={bottomSection}

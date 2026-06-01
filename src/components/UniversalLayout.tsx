@@ -19,9 +19,9 @@ const NAV_LINKS: NavLinkItem[] = [
         href: "/summits-hub",
         hasDropdown: true,
         dropdownItems: [
-            { label: "International Women's Day Summit 2027", href: "/iwd-summit" },
-            { label: "Provincial Summit Series 2027", href: "/provincial-summits" },
-            { label: "Executive Industry Series 2027", href: "/executive-industry-series" },
+            { label: "International Women's Day Summit™", href: "/iwd-summit" },
+            { label: "Provincial Leadership Series™", href: "/provincial-summits" },
+            { label: "Executive Leadership Experiences™", href: "/executive-industry-series" },
             { label: "Bubbles & Nibbles Soirée & Leadership Awards", href: "/leadership-awards-gala" }
         ]
     },
@@ -37,7 +37,7 @@ const NAV_LINKS: NavLinkItem[] = [
             { label: "Capital, Marketing, Creative & Leadership Systems", href: "/capital-leadership" }
         ]
     },
-    { id: "nav-academy", label: "EmpowaHER™ Academy", href: "/academy" },
+    { id: "nav-academy", label: "EmpowaHER™", href: "/academy" },
     { id: "nav-partners", label: "Partnerships", href: "/partnerships" },
     { id: "nav-media", label: "Media", href: "/media" },
     { id: "nav-contact", label: "Contact Us", href: "/contact" }
@@ -50,7 +50,7 @@ const FOOTER_SECTION_ROWS = [{
         { id: "fp-1", label: "Home", href: "/" },
         { id: "fp-2", label: "About Us", href: "/about" },
         { id: "fp-3", label: "Summits Hub", href: "/summits-hub" },
-        { id: "fp-4", label: "Academy", href: "/academy" },
+        { id: "fp-4", label: "EmpowaHER™", href: "/academy" },
         { id: "fp-5", label: "Partnerships", href: "/partnerships" },
         { id: "fp-7", label: "Media", href: "/media" },
         { id: "fp-6", label: "Contact Us", href: "/contact" }
@@ -59,10 +59,10 @@ const FOOTER_SECTION_ROWS = [{
     id: "row-summits",
     label: "Summits",
     links: [
-        { id: "fp-s1", label: "IWD Summit", href: "/iwd-summit" },
-        { id: "fp-s2", label: "Provincial Series", href: "/provincial-summits" },
-        { id: "fp-s3", label: "Industry Series", href: "/executive-industry-series" },
-        { id: "fp-s4", label: "Bubbles & Nibbles", href: "/leadership-awards-gala" }
+        { id: "fp-s1", label: "International Women's Day Summit™", href: "/iwd-summit" },
+        { id: "fp-s2", label: "Provincial Leadership Series™", href: "/provincial-summits" },
+        { id: "fp-s3", label: "Executive Leadership Experiences™", href: "/executive-industry-series" },
+        { id: "fp-s4", label: "Bubbles & Nibbles Soirée & Leadership Awards", href: "/leadership-awards-gala" }
     ]
 }, {
     id: "row-legal",
@@ -110,7 +110,7 @@ export const TopNav = () => {
             {/* Logo */}
             <div style={{ display: "flex", alignItems: "center", gap: "10px", flexShrink: 0 }}>
                 <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-                    <img src="/logo.png" alt="EmpowaWomen logo mark" style={{ height: "32px", width: "auto" }} />
+                    <img src="/logo.png" alt="EmpowaWomen logo mark" style={{ height: "38px", width: "auto" }} />
                 </Link>
             </div>
 
@@ -488,7 +488,7 @@ export const FooterCTA = () => {
                         <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
                             <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                                 <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-                                    <img src="/logo.png" alt="EmpowaWomen logo mark" style={{ height: "28px", width: "auto" }} />
+                                    <img src="/logo.png" alt="EmpowaWomen logo mark" style={{ height: "34px", width: "auto" }} />
                                 </Link>
                             </div>
                             <p style={{ fontFamily: "Figtree", fontSize: "14px", color: "rgba(255,255,255,0.25)", margin: 0 }}>

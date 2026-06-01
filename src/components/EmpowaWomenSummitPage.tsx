@@ -90,7 +90,7 @@ const NAV_LINKS: NavLinkItem[] = [{
   active: true
 }, {
   id: "nl-academy",
-  label: "Academy",
+  label: "EmpowaHER™",
   href: "#"
 }, {
   id: "nl-partnerships",

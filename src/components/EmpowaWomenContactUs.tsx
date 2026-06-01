@@ -85,7 +85,7 @@ const ROUTES: RouteItem[] = [{
     accent: "#D97706"
 }, {
     id: "academy",
-    label: "EmpowaHER™ Academy",
+    label: "EmpowaHER™",
     icon: GraduationCap,
     description: "Enquire about our specialized leadership training programs.",
     accent: "#6D28D9"
@@ -110,7 +110,7 @@ const NAV_LINKS: NavLinkItem[] = [{
     href: "#"
 }, {
     id: "nav-academy",
-    label: "Academy",
+    label: "EmpowaHER™",
     href: "#"
 }, {
     id: "nav-partners",
@@ -197,7 +197,7 @@ const SLA_COLS: SlaCol[] = [{
 }, {
     id: "sla-academy",
     iconBg: "#00B4A6",
-    label: "ACADEMY",
+    label: "EMPOWAHER™",
     labelBg: "rgba(0,180,166,0.10)",
     labelColor: "#00B4A6",
     time: "48hrs",
@@ -218,8 +218,8 @@ const FAQ_ITEMS: FaqItem[] = [{
     answer: "EmpowaWorx House is located at 364 Pine Avenue, Ferndale, Randburg, 2196 · South Africa and serves as our corporate headquarters, while our annual summit events are hosted at The Campus, Bryanston, Johannesburg. Use the map below for directions to our headquarters."
 }, {
     id: "faq-4",
-    question: "How do I apply for the EmpowaHER™ Academy?",
-    answer: "Visit the Academy page to access the cohort application form. Applications are reviewed by the programme team and shortlisted candidates are contacted within 48 hours. Intake is limited per cohort."
+    question: "How do I apply for EmpowaHER™?",
+    answer: "Visit the EmpowaHER™ page to access the cohort application form. Applications are reviewed by the programme team and shortlisted candidates are contacted within 48 hours. Intake is limited per cohort."
 }];
 const FOOTER_SECTION_ROWS: SectionLinkRow[] = [{
     id: "row-pages",
@@ -238,7 +238,7 @@ const FOOTER_SECTION_ROWS: SectionLinkRow[] = [{
         href: "#"
     }, {
         id: "fp-4",
-        label: "Academy",
+        label: "EmpowaHER™",
         href: "#"
     }, {
         id: "fp-5",

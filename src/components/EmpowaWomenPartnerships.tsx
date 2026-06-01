@@ -87,7 +87,7 @@ const NAV_LINKS: NavLinkItem[] = [{
     hasDropdown: true
 }, {
     id: "nav-academy",
-    label: "Academy",
+    label: "EmpowaHER™",
     href: "#"
 }, {
     id: "nav-partners",
@@ -155,7 +155,7 @@ const FOOTER_SECTION_ROWS: SectionLinkRow[] = [{
         href: "#"
     }, {
         id: "fp-4",
-        label: "Academy",
+        label: "EmpowaHER™",
         href: "#"
     }, {
         id: "fp-5",

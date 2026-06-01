@@ -85,43 +85,43 @@ const TEAM_MEMBERS: TeamMember[] = [{
   image: "/leadership-team/simphiwe-masiza.jpg",
   name: "Simphiwe Masiza",
   title: "Founder & Executive Producer",
-  org: "EmpowaWomen",
-  quote: "Founder and visionary behind EmpowaWomen, responsible for the strategic direction, growth, stakeholder engagement, and overall execution of the platform. Simphiwe leads the development of transformative initiatives that position women at the forefront of economic and social progress."
+  org: "EmpowaWomen™",
+  quote: "Simphiwe Masiza is the founder and driving force behind EmpowaWomen™, providing strategic vision, ecosystem leadership, stakeholder engagement, and platform growth. He leads the development of transformative experiences, strategic partnerships, and high-impact platforms that position women at the centre of leadership, investment, innovation, governance, and economic advancement. His mission is clear: to build one of Africa's most influential ecosystems accelerating the rise of women who shape industries, institutions, communities, and economies."
 }, {
   id: "tm-2",
   image: "/leadership-team/Bonnie-Maponya.jpg",
   name: "Bonnie Maponya",
   title: "Acting Managing Executive",
-  org: "EmpowaWomen",
-  quote: "Provides operational leadership and programme oversight across the EmpowaWomen ecosystem, ensuring excellence in delivery, stakeholder engagement, governance, and delegate experience."
+  org: "EmpowaWomen™",
+  quote: "Bonnie Maponya provides executive leadership across the EmpowaWomen™ ecosystem, ensuring world-class delivery, operational excellence, governance, stakeholder value, and programme execution. She plays a critical role in transforming strategy into measurable impact, ensuring every initiative, partnership, and delegate experience reflects the standards of a globally competitive leadership platform."
 }, {
   id: "tm-3",
   image: "/leadership-team/Thulisa-Bianca-Sosibo.jpg",
   name: "Thulisa Bianca Sosibo",
   title: "Commercial & Partnerships Lead",
-  org: "EmpowaWomen",
-  quote: "Leads commercial strategy, sponsorship and funding mobilisation, strategic partnerships, and revenue growth initiatives. Thulisa works closely with corporate partners, government stakeholders, funders, and ecosystem leaders to unlock sustainable value, drive commercial impact, and strengthen the EmpowaWomen platform."
+  org: "EmpowaWomen™",
+  quote: "Thulisa Bianca Sosibo leads commercial growth, sponsorship and funding mobilisation, strategic partnerships, and revenue generation across the EmpowaWomen™ platform. Working at the forefront of corporate, government, development finance, and private-sector engagement, she unlocks partnerships that drive sustainable growth, expand market influence, and create shared value for stakeholders, investors, and women leaders across Africa."
 }, {
   id: "tm-4",
   image: "/leadership-team/Neo-Mathebe.JPG",
   name: "Neo Mathebe",
   title: "Partnerships Lead",
-  org: "EmpowaWomen",
-  quote: "Responsible for stakeholder relations, partnership development, ecosystem engagement, and strategic alliance management, helping to expand the reach and impact of the EmpowaWomen movement."
+  org: "EmpowaWomen™",
+  quote: "Neo Mathebe leads stakeholder relations, strategic alliance development, and ecosystem engagement, cultivating relationships that strengthen the reach, relevance, and impact of EmpowaWomen™. His work connects organisations, leaders, institutions, and communities to opportunities that accelerate collaboration, innovation, inclusion, and long-term economic impact."
 }, {
   id: "tm-5",
   image: "/leadership-team/Carshiefa-Sissing.jpg",
-  name: "Cash Siising",
-  title: "Digital Lead",
-  org: "EmpowaWomen",
-  quote: "Leads digital strategy, social media, audience growth, content marketing, and online community engagement, ensuring the EmpowaWomen brand continues to inspire, influence, and connect women at scale."
+  name: "Carshiefa Sissing",
+  title: "Digital & Audience Growth Lead",
+  org: "EmpowaWomen™",
+  quote: "Carshiefa Sissing drives the digital growth and influence of EmpowaWomen™, leading audience development, digital strategy, social media engagement, content ecosystems, and brand visibility. She is responsible for building powerful digital communities, amplifying thought leadership, and ensuring the EmpowaWomen™ movement continues to inspire, engage, and influence thousands of women across Africa and beyond."
 }, {
   id: "tm-6",
   image: "/leadership-team/Anita-Tirkey.jpg",
-  name: "Anita",
-  title: "Speaker Manager",
-  org: "EmpowaWomen",
-  quote: "Oversees speaker acquisition, speaker relations, programme coordination, and thought leadership curation, ensuring a world-class lineup of leaders, innovators, and changemakers."
+  name: "Anita Tirkey",
+  title: "Speaker & Programme Lead",
+  org: "EmpowaWomen™",
+  quote: "Anita Tirkey leads speaker acquisition, programme curation, and thought leadership development, shaping conversations that matter to today's and tomorrow's women leaders. She works closely with CEOs, entrepreneurs, policymakers, investors, innovators, and global changemakers to deliver a world-class faculty of speakers whose insights challenge thinking, unlock opportunities, and inspire action."
 }];
 const HERO_WORDS = ["Building", "Africa's", "Next", "Generation", "of", "Economic", "Powerhouses"];
 const REACH_BADGES: BadgeItem[] = [{
@@ -1358,7 +1358,7 @@ const LeadershipStrip = () => {
             color: "#64748b",
             textTransform: "uppercase"
           }}>
-            THE TEAM
+            EMPOWAWOMEN™ LEADERSHIP TEAM
           </span>
           <h2 style={{
             marginTop: "16px",
@@ -1370,7 +1370,7 @@ const LeadershipStrip = () => {
             letterSpacing: "-0.03em",
             lineHeight: 1.1
           }}>
-            The Movement Behind the Mission.
+            The Architects of Influence. Growth. Capital. Leadership.
           </h2>
           <p style={{
             marginTop: "20px",
@@ -1382,7 +1382,19 @@ const LeadershipStrip = () => {
             lineHeight: 1.6,
             maxWidth: "800px"
           }}>
-            The EmpowaWomen Leadership Team comprises a diverse group of visionary leaders, strategists, partnership builders, and execution specialists united by a shared commitment to advancing women's leadership, entrepreneurship, economic participation, and influence across Africa.
+            Behind EmpowaWomen™ is a high-performance leadership team of strategists, ecosystem builders, commercial leaders, and execution specialists committed to advancing women's leadership, economic participation, entrepreneurship, wealth creation, and influence across Africa.
+          </p>
+          <p style={{
+            marginTop: "12px",
+            marginBottom: "0",
+            fontFamily: "Figtree",
+            fontSize: "clamp(15px, 1.8vw, 17px)",
+            fontWeight: 400,
+            color: "#64748b",
+            lineHeight: 1.6,
+            maxWidth: "800px"
+          }}>
+            United by a shared vision, the team works at the intersection of leadership, business, policy, capital, innovation, and impact—building a platform that empowers women to lead organisations, shape industries, influence economies, and redefine the future.
           </p>
         </div>
 
@@ -1550,6 +1562,54 @@ const LeadershipStrip = () => {
           </div>
         </motion.div>)}
       </div>
+
+      {/* Bottom Mission Strip Card */}
+      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }} style={{
+        marginTop: "64px",
+        padding: "48px 32px",
+        backgroundColor: "#FFFFFF",
+        border: "1px solid rgba(10,10,15,0.06)",
+        borderRadius: "24px",
+        textAlign: "center",
+        maxWidth: "960px",
+        margin: "64px auto 0 auto",
+        boxShadow: "0 4px 24px rgba(0,0,0,0.02)"
+      }}>
+        <span style={{
+          display: "block",
+          fontFamily: "Figtree",
+          fontSize: "11px",
+          fontWeight: 700,
+          letterSpacing: "0.25em",
+          color: "#FF2D87",
+          textTransform: "uppercase",
+          marginBottom: "16px"
+        }}>
+          ONE TEAM. ONE MISSION. ONE MOVEMENT.
+        </span>
+        <p style={{
+          fontFamily: "Figtree",
+          fontSize: "16px",
+          color: "#0A0A0F",
+          lineHeight: 1.7,
+          maxWidth: "800px",
+          margin: "0 auto 16px auto",
+          fontWeight: 400
+        }}>
+          EmpowaWomen™ is more than a summit. It is a leadership and economic empowerment ecosystem accelerating the rise of women who are building businesses, leading institutions, influencing policy, controlling capital, and transforming economies.
+        </p>
+        <p style={{
+          fontFamily: "Figtree",
+          fontSize: "15px",
+          color: "#64748b",
+          lineHeight: 1.6,
+          maxWidth: "800px",
+          margin: "0 auto",
+          fontWeight: 400
+        }}>
+          Together, the EmpowaWomen™ Leadership Team is building the platform where Africa's most influential women connect, collaborate, lead, and shape the future.
+        </p>
+      </motion.div>
     </div>
   </section>;
 };

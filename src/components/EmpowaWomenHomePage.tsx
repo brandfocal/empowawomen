@@ -69,7 +69,7 @@ const NAV_LINKS: NavLink[] = [{
     hasDropdown: true
 }, {
     id: "nav-academy",
-    label: "Academy",
+    label: "EmpowaHER™",
     href: "#academy"
 }, {
     id: "nav-partners",

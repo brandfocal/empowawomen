@@ -954,13 +954,13 @@ export const SummitsHub: React.FC = () => {
           }}>
             {/* Card 1: IWD Summit */}
             <div className="summits-col-span-8" style={{ gridColumn: "span 8" }}>
-              <SeriesCard isLarge title="International Women's Day Summit 2027" bgImage="https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200&q=85" accentColor="#FF2D87" badge="IWD 2027" formatBadge="Invitation-Only · 200 Delegates" description="The flagship gathering for high-level decision makers and economic architects driving gender-balanced growth strategies." />
+              <SeriesCard isLarge title="International Women's Day Summit™" bgImage="https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200&q=85" accentColor="#FF2D87" badge="IWD 2027" formatBadge="Invitation-Only · 200 Delegates" description="The flagship gathering for high-level decision makers and economic architects driving gender-balanced growth strategies." />
             </div>
 
             {/* Column for Card 2 and 3 */}
             <div className="summits-col-span-4" style={{ gridColumn: "span 4", display: "flex", flexDirection: "column", gap: "24px" }}>
-              <SeriesCard title="Provincial Summit Series 2027" bgImage="/features-18.jpg" accentColor="#00B4A6" badge="9 PROVINCES" formatBadge="Invitation-Only · 100 Per Province" description="Localized economic participation models." />
-              <SeriesCard title="Executive Industry Series 2027" bgImage="/features-7.jpg" accentColor="#D97706" badge="10 STREAMS" formatBadge="100 Per Session" description="Sector-specific engineering and market access." />
+              <SeriesCard title="Provincial Leadership Series™" bgImage="/features-18.jpg" accentColor="#00B4A6" badge="9 PROVINCES" formatBadge="Invitation-Only · 100 Per Province" description="Localized economic participation models." />
+              <SeriesCard title="Executive Leadership Experiences™" bgImage="/features-7.jpg" accentColor="#D97706" badge="10 STREAMS" formatBadge="100 Per Session" description="Sector-specific engineering and market access." />
             </div>
 
             {/* Card 4: Bubbles & Nibbles – Full width */}
