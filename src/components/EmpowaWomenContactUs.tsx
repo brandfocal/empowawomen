@@ -215,7 +215,7 @@ const FAQ_ITEMS: FaqItem[] = [{
 }, {
     id: "faq-3",
     question: "Where is EmpowaWorx House located?",
-    answer: "EmpowaWorx House is located at 364 Pine Avenue, Ferndale, Randburg, 2196 · South Africa and serves as the primary venue for all Johannesburg-based summits and executive series events. Use the map below for directions."
+    answer: "EmpowaWorx House is located at 364 Pine Avenue, Ferndale, Randburg, 2196 · South Africa and serves as our corporate headquarters, while our annual summit events are hosted at The Campus, Bryanston, Johannesburg. Use the map below for directions to our headquarters."
 }, {
     id: "faq-4",
     question: "How do I apply for the EmpowaHER™ Academy?",
@@ -1904,7 +1904,8 @@ const MapSection = () => {
                     margin: "8px 0 0 0",
                     lineHeight: 1.3
                 }}>
-                    364 Pine Avenue, Ferndale<br />
+                    EmpowaWorx House,<br />
+                    364 Pine Avenue, Ferndale,<br />
                     Randburg, 2196 &middot; South Africa
                 </p>
                 <div style={{
