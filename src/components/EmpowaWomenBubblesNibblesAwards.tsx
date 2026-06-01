@@ -1398,10 +1398,6 @@ const InvitationFormSection = React.forwardRef<HTMLDivElement, InvitationFormSec
     setError('');
     setLoading(true);
 
-    const [first, ...last] = fullName.trim().split(' ');
-    const firstName = first || '';
-    const lastName = last.join(' ') || '';
-
     try {
       const response = await fetch('/api/submit', {
         method: 'POST',
@@ -1411,22 +1407,22 @@ const InvitationFormSection = React.forwardRef<HTMLDivElement, InvitationFormSec
         body: JSON.stringify({
           form_id: 12,
           input_values: {
-            'input_1.3': firstName,
-            'input_1.6': lastName,
+            'input_21': fullName,
             'input_2': organisation,
             'input_18': title,
-            'input_4': email,
+            'input_22': industry,
             'input_19': mobile,
-            'input_20': industry,
-            'input_21': linkedin || 'Not Provided',
-            'input_22': website || 'Not Provided',
-            'input_23': leadershipRole === 'Other' ? `Other: ${otherRoleText}` : leadershipRole,
-            'input_24': employeeCount || 'Not Provided',
-            'input_25': strategicInterests.join(', '),
-            'input_26': matchmakingStakeholders.join(', '),
-            'input_27': impactStatement,
-            'input_28': `Awards Info Interest: ${awardsInfo}`,
-            'input_29': `Nominate Leader: ${nominateLeader}`
+            'input_4': email,
+            'input_23': linkedin || 'Not Provided',
+            'input_24': website || 'Not Provided',
+            'input_27': leadershipRole === 'Other' ? `Other: ${otherRoleText}` : leadershipRole,
+            'input_28': employeeCount || 'Not Provided',
+            'input_30': strategicInterests.join(', '),
+            'input_29': matchmakingStakeholders.join(', '),
+            'input_31': impactStatement,
+            'input_32': awardsInfo,
+            'input_33': nominateLeader,
+            'input_34': 'Accepted'
           }
         })
       });
