@@ -436,8 +436,11 @@ const HeroSection = () => {
             const el = e.currentTarget as HTMLAnchorElement;
             el.style.filter = "brightness(1)";
             el.style.boxShadow = "0 0 32px rgba(255,45,135,0.25)";
+          }} onClick={e => {
+            e.preventDefault();
+            document.getElementById("accreditation")?.scrollIntoView({ behavior: "smooth" });
           }}>
-              <span>View Photo Galleries</span>
+              <span>Media Accreditation</span>
             </a>
             <a href="#" style={{
             fontFamily: "Figtree",
@@ -1404,156 +1407,453 @@ const AccreditationSection = () => {
     label: "Contact",
     value: "media@empowawomen.co.za · 011 482 7256/7"
   }];
+
+  // Form State
+  const [fullName, setFullName] = React.useState("");
+  const [mediaHouse, setMediaHouse] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [mobile, setMobile] = React.useState("");
+  const [designation, setDesignation] = React.useState("Journalist");
+  const [message, setMessage] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
+  const [submitted, setSubmitted] = React.useState(false);
+  const [error, setError] = React.useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!fullName || !mediaHouse || !email || !mobile || !message) {
+      setError("Please fill in all required fields.");
+      return;
+    }
+    setError("");
+    setLoading(true);
+
+    try {
+      const response = await fetch('/api/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          form_id: 16,
+          input_values: {
+            'input_10': fullName,
+            'input_17': mediaHouse,
+            'input_4': email,
+            'input_12': mobile,
+            'input_15': designation,
+            'input_18': message
+          }
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to submit accreditation request.');
+      }
+
+      setSubmitted(true);
+      setFullName("");
+      setMediaHouse("");
+      setEmail("");
+      setMobile("");
+      setMessage("");
+    } catch (err: any) {
+      setError(err.message || "An unexpected error occurred. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const INPUT_STYLE: React.CSSProperties = {
+    width: "100%",
+    padding: "16px 20px",
+    backgroundColor: "rgba(255,255,255,0.03)",
+    border: "1px solid rgba(255,255,255,0.08)",
+    borderRadius: "12px",
+    outline: "none",
+    fontFamily: "Figtree",
+    fontSize: "14px",
+    color: "#FFFFFF",
+    transition: "all 200ms ease-out",
+    boxSizing: "border-box"
+  };
+
+  const LABEL_STYLE: React.CSSProperties = {
+    display: "block",
+    fontFamily: "Figtree",
+    fontSize: "10px",
+    fontWeight: 600,
+    color: "rgba(255,255,255,0.40)",
+    marginBottom: "8px",
+    letterSpacing: "0.15em",
+    textTransform: "uppercase"
+  };
+
   return <section id="accreditation" style={{
     width: "100%",
     paddingTop: "clamp(64px, 8vw, 120px)",
     paddingBottom: "clamp(64px, 8vw, 120px)",
     paddingLeft: "clamp(24px, 6vw, 96px)",
     paddingRight: "clamp(24px, 6vw, 96px)",
-    backgroundColor: "#0A0A0F"
+    backgroundColor: "#0A0A0F",
+    position: "relative"
   }}>
       <div style={{ maxWidth: "800px", margin: "0 auto", textAlign: "center" }}>
         <Eyebrow text="MEDIA ACCREDITATION" dark />
         <h2 style={{
-        fontFamily: "Figtree",
-        fontWeight: 300,
-        fontSize: "clamp(24px, 4.5vw, 56px)",
-        color: "#FFFFFF",
-        letterSpacing: "-0.03em",
-        lineHeight: 1.05,
-        textTransform: "uppercase",
-        margin: "0 0 20px 0"
-      }}>
+          fontFamily: "Figtree",
+          fontWeight: 300,
+          fontSize: "clamp(24px, 4.5vw, 56px)",
+          color: "#FFFFFF",
+          letterSpacing: "-0.03em",
+          lineHeight: 1.05,
+          textTransform: "uppercase",
+          margin: "0 0 20px 0"
+        }}>
           IN THIS ROOM, YOUR LENS
           <br />
           CAPTURES HISTORY.
         </h2>
         <p style={{
-        fontFamily: "Figtree",
-        fontSize: "clamp(14px, 1.8vw, 17px)",
-        fontWeight: 400,
-        color: "rgba(255,255,255,0.50)",
-        maxWidth: "540px",
-        lineHeight: 1.75,
-        margin: "0 auto 48px auto"
-      }}>
+          fontFamily: "Figtree",
+          fontSize: "clamp(14px, 1.8vw, 17px)",
+          fontWeight: 400,
+          color: "rgba(255,255,255,0.50)",
+          maxWidth: "540px",
+          lineHeight: 1.75,
+          margin: "0 auto 48px auto"
+        }}>
           Apply for press accreditation to cover the EmpowaWomen Leadership Summit 2026. Limited
           accreditation passes available.
         </p>
 
+        {/* Event details card */}
         <motion.div initial={{
-        opacity: 0,
-        y: 20
-      }} whileInView={{
-        opacity: 1,
-        y: 0
-      }} viewport={{
-        once: true
-      }} transition={{
-        duration: 0.6
-      }} style={{
-        textAlign: "left",
-        marginBottom: "48px",
-        backgroundColor: "rgba(255,255,255,0.04)",
-        borderRadius: "16px",
-        padding: "clamp(20px, 4vw, 36px) clamp(20px, 4vw, 40px)",
-        border: "1px solid rgba(255,255,255,0.08)",
-        borderLeftWidth: "3px",
-        borderLeftColor: "#FF2D87"
-      }}>
+          opacity: 0,
+          y: 20
+        }} whileInView={{
+          opacity: 1,
+          y: 0
+        }} viewport={{
+          once: true
+        }} transition={{
+          duration: 0.6
+        }} style={{
+          textAlign: "left",
+          marginBottom: "48px",
+          backgroundColor: "rgba(255,255,255,0.02)",
+          borderRadius: "16px",
+          padding: "clamp(20px, 4vw, 36px) clamp(20px, 4vw, 40px)",
+          border: "1px solid rgba(255,255,255,0.06)",
+          borderLeftWidth: "3px",
+          borderLeftColor: "#FF2D87"
+        }}>
           <div className="media-accred-grid" style={{ color: "#FFFFFF" }}>
             {accredRows.map(row => <div key={row.label}>
                 <p style={{
-              fontFamily: "Figtree",
-              fontSize: "10px",
-              fontWeight: 600,
-              letterSpacing: "0.18em",
-              color: "rgba(255,255,255,0.40)",
-              margin: "0 0 6px 0",
-              textTransform: "uppercase"
-            }}>
+                  fontFamily: "Figtree",
+                  fontSize: "10px",
+                  fontWeight: 600,
+                  letterSpacing: "0.18em",
+                  color: "rgba(255,255,255,0.40)",
+                  margin: "0 0 6px 0",
+                  textTransform: "uppercase"
+                }}>
                   {row.label}
                 </p>
                 <p style={{
-              fontFamily: "Figtree",
-              fontSize: "16px",
-              fontWeight: 500,
-              color: "#FFFFFF",
-              margin: 0
-            }}>
+                  fontFamily: "Figtree",
+                  fontSize: "16px",
+                  fontWeight: 500,
+                  color: "#FFFFFF",
+                  margin: 0
+                }}>
                   {row.value}
                 </p>
               </div>)}
           </div>
         </motion.div>
 
-        {/* Action buttons with consistent pill sizes */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "16px", justifyContent: "center", marginBottom: "56px" }} className="media-hero-ctas">
-          <a href="mailto:media@empowawomen.co.za" style={{
-          fontFamily: "Figtree",
-          fontSize: "14px",
-          fontWeight: 500,
-          color: "#FFFFFF",
-          backgroundColor: "#FF2D87",
-          height: "48px",
-          minHeight: "54px",
-          width: "220px",
-          display: "inline-flex",
-          alignItems: "center",
-          justifyContent: "center",
-          letterSpacing: "0.02em",
-          textDecoration: "none",
-          borderRadius: "999px",
-          transition: "all 200ms ease-out",
-          boxShadow: "0 0 32px rgba(255,45,135,0.20)"
-        }} onMouseEnter={e => {
-          const el = e.currentTarget as HTMLAnchorElement;
-          el.style.filter = "brightness(1.1)";
-        }} onMouseLeave={e => {
-          const el = e.currentTarget as HTMLAnchorElement;
-          el.style.filter = "brightness(1)";
+        {/* Accreditation Form Section */}
+        <motion.div initial={{
+          opacity: 0,
+          y: 20
+        }} whileInView={{
+          opacity: 1,
+          y: 0
+        }} viewport={{
+          once: true
+        }} style={{
+          backgroundColor: "rgba(255,255,255,0.02)",
+          borderRadius: "24px",
+          padding: "clamp(24px, 5vw, 48px)",
+          border: "1px solid rgba(255,255,255,0.04)",
+          textAlign: "left",
+          boxShadow: "0 24px 64px rgba(0,0,0,0.2)"
         }}>
-            <span>Apply for Accreditation</span>
-          </a>
-          <a href="#" style={{
-          fontFamily: "Figtree",
-          fontSize: "14px",
-          fontWeight: 500,
-          color: "#FD5732",
-          height: "48px",
-          minHeight: "54px",
-          width: "220px",
-          display: "inline-flex",
-          alignItems: "center",
-          justifyContent: "center",
-          border: "1px solid #FD5732",
-          letterSpacing: "0.02em",
-          borderRadius: "999px",
-          textDecoration: "none",
-          transition: "all 200ms ease-out"
-        }} onMouseEnter={e => {
-          const el = e.currentTarget as HTMLAnchorElement;
-          el.style.backgroundColor = "rgba(253,87,50,0.10)";
-        }} onMouseLeave={e => {
-          const el = e.currentTarget as HTMLAnchorElement;
-          el.style.backgroundColor = "transparent";
-        }}>
-            <span>Visit Website</span>
-          </a>
-        </div>
+          {submitted ? (
+            <div style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              textAlign: "center",
+              gap: "24px",
+              padding: "24px 0"
+            }}>
+              <div style={{
+                width: 64,
+                height: 64,
+                borderRadius: "50%",
+                backgroundColor: "rgba(255,45,135,0.12)",
+                color: "#FF2D87",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                border: "1px solid rgba(255,45,135,0.2)"
+              }}>
+                <ArrowRight size={24} style={{ transform: "rotate(-45deg)" }} />
+              </div>
+              <div style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "8px"
+              }}>
+                <h3 style={{
+                  fontFamily: "Figtree",
+                  fontWeight: 500,
+                  fontSize: "24px",
+                  color: "#FFFFFF",
+                  margin: 0
+                }}>
+                  Application Submitted
+                </h3>
+                <p style={{
+                  fontFamily: "Figtree",
+                  fontSize: "15px",
+                  color: "rgba(255,255,255,0.5)",
+                  lineHeight: 1.6,
+                  maxWidth: "400px",
+                  margin: 0
+                }}>
+                  Thank you for applying. Your media accreditation request has been received by our media relations team and is currently under review.
+                </p>
+              </div>
+              <button onClick={() => setSubmitted(false)} style={{
+                fontFamily: "Figtree",
+                fontSize: "14px",
+                fontWeight: 500,
+                color: "#FFFFFF",
+                backgroundColor: "#FF2D87",
+                padding: "12px 28px",
+                borderRadius: "999px",
+                border: "none",
+                cursor: "pointer",
+                transition: "all 200ms ease-out"
+              }} onMouseEnter={e => {
+                (e.currentTarget as HTMLButtonElement).style.filter = "brightness(1.1)";
+              }} onMouseLeave={e => {
+                (e.currentTarget as HTMLButtonElement).style.filter = "brightness(1)";
+              }}>
+                Submit Another Request
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "24px"
+            }}>
+              {error && (
+                <div style={{
+                  padding: "12px 16px",
+                  backgroundColor: "rgba(239, 68, 68, 0.08)",
+                  border: "1px solid rgba(239, 68, 68, 0.2)",
+                  borderRadius: "12px",
+                  color: "#EF4444",
+                  fontSize: "13px",
+                  fontFamily: "Figtree",
+                  lineHeight: 1.4
+                }}>
+                  {error}
+                </div>
+              )}
 
-        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "12px" }}>
+              <div style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+                gap: "20px"
+              }}>
+                {/* Full Name */}
+                <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                  <label style={LABEL_STYLE}>Full Name*</label>
+                  <input
+                    type="text"
+                    required
+                    value={fullName}
+                    onChange={e => setFullName(e.target.value)}
+                    placeholder="e.g. Sarah Jenkins"
+                    style={INPUT_STYLE}
+                    onFocus={e => { e.currentTarget.style.borderColor = "#FF2D87"; e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.06)"; }}
+                    onBlur={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)"; e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.03)"; }}
+                  />
+                </div>
+
+                {/* Media House */}
+                <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                  <label style={LABEL_STYLE}>Media House / Outlet*</label>
+                  <input
+                    type="text"
+                    required
+                    value={mediaHouse}
+                    onChange={e => setMediaHouse(e.target.value)}
+                    placeholder="e.g. eNCA, Forbes Africa..."
+                    style={INPUT_STYLE}
+                    onFocus={e => { e.currentTarget.style.borderColor = "#FF2D87"; e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.06)"; }}
+                    onBlur={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)"; e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.03)"; }}
+                  />
+                </div>
+              </div>
+
+              <div style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+                gap: "20px"
+              }}>
+                {/* Email */}
+                <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                  <label style={LABEL_STYLE}>Press Email Address*</label>
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                    placeholder="sarah@mediahouse.com"
+                    style={INPUT_STYLE}
+                    onFocus={e => { e.currentTarget.style.borderColor = "#FF2D87"; e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.06)"; }}
+                    onBlur={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)"; e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.03)"; }}
+                  />
+                </div>
+
+                {/* Mobile */}
+                <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                  <label style={LABEL_STYLE}>Direct Mobile / WhatsApp*</label>
+                  <input
+                    type="tel"
+                    required
+                    value={mobile}
+                    onChange={e => setMobile(e.target.value)}
+                    placeholder="082 000 0000"
+                    style={INPUT_STYLE}
+                    onFocus={e => { e.currentTarget.style.borderColor = "#FF2D87"; e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.06)"; }}
+                    onBlur={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)"; e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.03)"; }}
+                  />
+                </div>
+              </div>
+
+              {/* Designation Select Dropdown */}
+              <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                <label style={LABEL_STYLE}>Press Designation / Role*</label>
+                <div style={{ position: "relative" }}>
+                  <select
+                    value={designation}
+                    onChange={e => setDesignation(e.target.value)}
+                    style={{
+                      ...INPUT_STYLE,
+                      appearance: "none",
+                      cursor: "pointer",
+                      backgroundColor: "rgba(255,255,255,0.03)"
+                    }}
+                    onFocus={e => { e.currentTarget.style.borderColor = "#FF2D87"; e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.06)"; }}
+                    onBlur={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)"; e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.03)"; }}
+                  >
+                    <option value="Journalist" style={{ backgroundColor: "#0A0A0F" }}>Journalist / Reporter</option>
+                    <option value="Photographer" style={{ backgroundColor: "#0A0A0F" }}>Press Photographer</option>
+                    <option value="Videographer" style={{ backgroundColor: "#0A0A0F" }}>Videographer / Camera Operator</option>
+                    <option value="Editor" style={{ backgroundColor: "#0A0A0F" }}>Editor / Producer</option>
+                    <option value="Broadcaster" style={{ backgroundColor: "#0A0A0F" }}>Broadcaster / Anchor</option>
+                    <option value="Other" style={{ backgroundColor: "#0A0A0F" }}>Other</option>
+                  </select>
+                  <div style={{
+                    position: "absolute",
+                    right: "20px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    pointerEvents: "none",
+                    color: "rgba(255,255,255,0.40)",
+                    display: "flex",
+                    alignItems: "center"
+                  }}>
+                    <ChevronDown size={18} />
+                  </div>
+                </div>
+              </div>
+
+              {/* Coverage Details */}
+              <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                <label style={LABEL_STYLE}>Coverage Plan & Special Requests*</label>
+                <textarea
+                  rows={4}
+                  required
+                  value={message}
+                  onChange={e => setMessage(e.target.value)}
+                  placeholder="Please describe your planned coverage format (e.g., live television broadcast, feature column, photo essay) and any specific technical requirements or interview requests."
+                  style={{
+                    ...INPUT_STYLE,
+                    resize: "none"
+                  }}
+                  onFocus={e => { e.currentTarget.style.borderColor = "#FF2D87"; e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.06)"; }}
+                  onBlur={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)"; e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.03)"; }}
+                />
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                disabled={loading}
+                style={{
+                  width: "100%",
+                  height: "54px",
+                  backgroundColor: "#FF2D87",
+                  color: "#FFFFFF",
+                  border: "none",
+                  borderRadius: "999px",
+                  fontFamily: "Figtree",
+                  fontWeight: 500,
+                  fontSize: "15px",
+                  cursor: loading ? "not-allowed" : "pointer",
+                  opacity: loading ? 0.7 : 1,
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "8px",
+                  boxShadow: "0 0 32px rgba(255,45,135,0.20)",
+                  letterSpacing: "0.02em",
+                  transition: "filter 200ms ease-out"
+                }}
+                onMouseEnter={e => { if (!loading) e.currentTarget.style.filter = "brightness(1.1)"; }}
+                onMouseLeave={e => { e.currentTarget.style.filter = "brightness(1)"; }}
+              >
+                <span>{loading ? "Submitting Request..." : "Submit Accreditation Request"}</span>
+                <ArrowRight size={16} />
+              </button>
+            </form>
+          )}
+        </motion.div>
+
+        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "12px", marginTop: "56px" }}>
           {HASHTAG_ITEMS.map(tag => <span key={tag.id} style={{
-          fontFamily: "Figtree",
-          fontSize: "12px",
-          fontWeight: 600,
-          color: "#FF2D87",
-          backgroundColor: "rgba(255,45,135,0.10)",
-          border: "1px solid rgba(255,45,135,0.20)",
-          padding: "6px 16px",
-          borderRadius: "999px",
-          letterSpacing: "0.04em"
-        }}>
+            fontFamily: "Figtree",
+            fontSize: "12px",
+            fontWeight: 600,
+            color: "#FF2D87",
+            backgroundColor: "rgba(255,45,135,0.10)",
+            border: "1px solid rgba(255,45,135,0.20)",
+            padding: "6px 16px",
+            borderRadius: "999px",
+            letterSpacing: "0.04em"
+          }}>
               {tag.label}
             </span>)}
         </div>
