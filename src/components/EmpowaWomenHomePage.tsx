@@ -2342,6 +2342,9 @@ const Testimonial = () => {
     const STAR_IDS_LARGE = ["sl1", "sl2", "sl3", "sl4", "sl5"];
     const STAR_IDS_A = ["sa1", "sa2", "sa3", "sa4", "sa5"];
     const STAR_IDS_B = ["sb1", "sb2", "sb3", "sb4", "sb5"];
+    const STAR_IDS_C = ["sc1", "sc2", "sc3", "sc4", "sc5"];
+    const STAR_IDS_D = ["sd1", "sd2", "sd3", "sd4", "sd5"];
+    const STAR_IDS_E = ["se1", "se2", "se3", "se4", "se5"];
     return <section style={{
         backgroundColor: "#0A0A0F",
         paddingTop: "clamp(80px,10vw,140px)",
@@ -2441,61 +2444,148 @@ const Testimonial = () => {
             position: "relative",
             zIndex: 1
         }} className="testimonials-grid">
-            <motion.div initial={{
-                opacity: 0,
-                x: -24
-            }} whileInView={{
-                opacity: 1,
-                x: 0
-            }} viewport={{
-                once: true
-            }} transition={{
-                duration: 0.7,
-                ease: "easeOut"
-            }} style={{
-                backgroundColor: "rgba(255,255,255,0.04)",
-                border: "1px solid rgba(255,255,255,0.08)",
-                borderRadius: "28px",
-                padding: "clamp(32px,4vw,56px)",
-                position: "relative",
-                overflow: "hidden",
-                minHeight: "480px",
+            {/* Left Column Stack */}
+            <div style={{
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "space-between"
+                gap: "clamp(16px,2vw,24px)"
             }}>
-                <img src="/Sindisiwe-Chikunga.jpg" alt="" aria-hidden="true" style={{
-                    position: "absolute",
-                    inset: 0,
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    opacity: 0.08,
-                    mixBlendMode: "luminosity",
-                    pointerEvents: "none",
-                    zIndex: 0
-                }} />
-                <div style={{
-                    position: "absolute",
-                    inset: 0,
-                    background: "linear-gradient(to bottom, transparent 30%, rgba(10,10,15,0.95) 100%)",
-                    pointerEvents: "none",
-                    zIndex: 0
-                }} />
-
-                <div style={{
+                {/* Testimonial 1: Ms Sindisiwe Chikunga */}
+                <motion.div initial={{
+                    opacity: 0,
+                    x: -24
+                }} whileInView={{
+                    opacity: 1,
+                    x: 0
+                }} viewport={{
+                    once: true
+                }} transition={{
+                    duration: 0.7,
+                    ease: "easeOut"
+                }} style={{
+                    backgroundColor: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    borderRadius: "28px",
+                    padding: "clamp(32px,4vw,56px)",
                     position: "relative",
-                    zIndex: 1,
+                    overflow: "hidden",
+                    minHeight: "480px",
                     display: "flex",
                     flexDirection: "column",
-                    height: "100%"
+                    justifyContent: "space-between"
+                }}>
+                    <img src="/Sindisiwe-Chikunga.jpg" alt="" aria-hidden="true" style={{
+                        position: "absolute",
+                        inset: 0,
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        opacity: 0.08,
+                        mixBlendMode: "luminosity",
+                        pointerEvents: "none",
+                        zIndex: 0
+                    }} />
+                    <div style={{
+                        position: "absolute",
+                        inset: 0,
+                        background: "linear-gradient(to bottom, transparent 30%, rgba(10,10,15,0.95) 100%)",
+                        pointerEvents: "none",
+                        zIndex: 0
+                    }} />
+
+                    <div style={{
+                        position: "relative",
+                        zIndex: 1,
+                        display: "flex",
+                        flexDirection: "column",
+                        height: "100%"
+                    }}>
+                        <div style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            gap: "2px"
+                        }}>
+                            {STAR_IDS_LARGE.map(sid => <svg key={sid} width="16" height="16" viewBox="0 0 16 16" fill="#FF2D87">
+                                <path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.4l-3.7 1.9.7-4.1-3-2.9 4.2-.7z" />
+                            </svg>)}
+                        </div>
+                        <blockquote style={{
+                            fontFamily: "Figtree",
+                            fontWeight: 300,
+                            fontStyle: "italic",
+                            fontSize: "clamp(18px,2.5vw,26px)",
+                            color: "rgba(255,255,255,0.85)",
+                            lineHeight: 1.5,
+                            marginTop: "24px",
+                            marginBottom: 0
+                        }}>
+                            EmpowaWomen represents the bold leadership platform Africa needs. By uniting exceptional leaders, policymakers, and innovators, it accelerates economic participation, strengthens strategic networks, and empowers women to lead with purpose.
+                        </blockquote>
+                        <div style={{
+                            marginTop: "auto",
+                            paddingTop: "32px",
+                            borderTop: "1px solid rgba(255,255,255,0.08)",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "16px"
+                        }}>
+                            <img src="/Sindisiwe-Chikunga.jpg" alt="Sindisiwe Chikunga" style={{
+                                width: "48px",
+                                height: "48px",
+                                borderRadius: "50%",
+                                objectFit: "cover",
+                                border: "2px solid rgba(255,255,255,0.15)",
+                                flexShrink: 0
+                            }} />
+                            <div>
+                                <span style={{
+                                    fontFamily: "Figtree",
+                                    fontWeight: 500,
+                                    fontSize: "15px",
+                                    color: "#FFFFFF",
+                                    display: "block"
+                                }}>
+                                    Ms Sindisiwe Chikunga
+                                </span>
+                                <span style={{
+                                    fontFamily: "Figtree",
+                                    fontSize: "13px",
+                                    color: "rgba(255,255,255,0.40)",
+                                    display: "block"
+                                }}>
+                                    Minister in the Presidency for Women, Youth and Persons with Disabilities
+                                    Republic of South Africa
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
+
+                {/* Testimonial 2: Sithembile (Sithe) Ntombela */}
+                <motion.div initial={{
+                    opacity: 0,
+                    x: -24
+                }} whileInView={{
+                    opacity: 1,
+                    x: 0
+                }} viewport={{
+                    once: true
+                }} transition={{
+                    duration: 0.7,
+                    delay: 0.2,
+                    ease: "easeOut"
+                }} style={{
+                    backgroundColor: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    borderRadius: "28px",
+                    padding: "clamp(28px,3vw,40px)"
                 }}>
                     <div style={{
                         display: "flex",
                         flexDirection: "row",
                         gap: "2px"
                     }}>
-                        {STAR_IDS_LARGE.map(sid => <svg key={sid} width="16" height="16" viewBox="0 0 16 16" fill="#FF2D87">
+                        {STAR_IDS_C.map(sid => <svg key={sid} width="14" height="14" viewBox="0 0 16 16" fill="#FF2D87">
                             <path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.4l-3.7 1.9.7-4.1-3-2.9 4.2-.7z" />
                         </svg>)}
                     </div>
@@ -2503,25 +2593,23 @@ const Testimonial = () => {
                         fontFamily: "Figtree",
                         fontWeight: 300,
                         fontStyle: "italic",
-                        fontSize: "clamp(18px,2.5vw,26px)",
-                        color: "rgba(255,255,255,0.85)",
-                        lineHeight: 1.5,
-                        marginTop: "24px",
+                        fontSize: "17px",
+                        color: "rgba(255,255,255,0.80)",
+                        lineHeight: 1.55,
+                        marginTop: "16px",
                         marginBottom: 0
                     }}>
-                        EmpowaWomen represents the bold leadership platform Africa needs. By uniting exceptional leaders, policymakers, and innovators, it accelerates economic participation, strengthens strategic networks, and empowers women to lead with purpose.
+                        "EmpowaWomen is a powerful platform that elevates women's leadership, amplifies influence, and creates meaningful opportunities for economic participation. Its ability to convene high-impact leaders and decision-makers makes it a catalyst for growth, collaboration, and national progress."
                     </blockquote>
                     <div style={{
-                        marginTop: "auto",
-                        paddingTop: "32px",
-                        borderTop: "1px solid rgba(255,255,255,0.08)",
+                        marginTop: "24px",
                         display: "flex",
                         alignItems: "center",
-                        gap: "16px"
+                        gap: "12px"
                     }}>
-                        <img src="/Sindisiwe-Chikunga.jpg" alt="Sindisiwe Chikunga" style={{
-                            width: "48px",
-                            height: "48px",
+                        <img src="/Sithembile Ntombela.jpg" alt="Sithembile Ntombela" style={{
+                            width: "40px",
+                            height: "40px",
                             borderRadius: "50%",
                             objectFit: "cover",
                             border: "2px solid rgba(255,255,255,0.15)",
@@ -2531,32 +2619,108 @@ const Testimonial = () => {
                             <span style={{
                                 fontFamily: "Figtree",
                                 fontWeight: 500,
-                                fontSize: "15px",
+                                fontSize: "14px",
                                 color: "#FFFFFF",
                                 display: "block"
                             }}>
-                                Ms Sindisiwe Chikunga
+                                Sithembile (Sithe) Ntombela
                             </span>
                             <span style={{
                                 fontFamily: "Figtree",
-                                fontSize: "13px",
+                                fontSize: "12px",
                                 color: "rgba(255,255,255,0.40)",
                                 display: "block"
                             }}>
-                                Minister in the Presidency for Women, Youth and Persons with Disabilities
-                                Republic of South Africa
-
+                                General Manager: Marketing & Acting CEO, Brand South Africa
                             </span>
                         </div>
                     </div>
-                </div>
-            </motion.div>
+                </motion.div>
 
+                {/* Testimonial 3: Brian Yuyi */}
+                <motion.div initial={{
+                    opacity: 0,
+                    x: -24
+                }} whileInView={{
+                    opacity: 1,
+                    x: 0
+                }} viewport={{
+                    once: true
+                }} transition={{
+                    duration: 0.7,
+                    delay: 0.35,
+                    ease: "easeOut"
+                }} style={{
+                    backgroundColor: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    borderRadius: "28px",
+                    padding: "clamp(28px,3vw,40px)"
+                }}>
+                    <div style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        gap: "2px"
+                    }}>
+                        {STAR_IDS_D.map(sid => <svg key={sid} width="14" height="14" viewBox="0 0 16 16" fill="#FF2D87">
+                            <path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.4l-3.7 1.9.7-4.1-3-2.9 4.2-.7z" />
+                        </svg>)}
+                    </div>
+                    <blockquote style={{
+                        fontFamily: "Figtree",
+                        fontWeight: 300,
+                        fontStyle: "italic",
+                        fontSize: "17px",
+                        color: "rgba(255,255,255,0.80)",
+                        lineHeight: 1.55,
+                        marginTop: "16px",
+                        marginBottom: 0
+                    }}>
+                        "EmpowaWomen has established itself as a premier leadership platform connecting influential leaders, brands, and entrepreneurs. The quality of engagement, strategic conversations, and networking opportunities consistently deliver exceptional value and measurable impact."
+                    </blockquote>
+                    <div style={{
+                        marginTop: "24px",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "12px"
+                    }}>
+                        <img src="/Brian Yuvi.jpg" alt="Brian Yuyi" style={{
+                            width: "40px",
+                            height: "40px",
+                            borderRadius: "50%",
+                            objectFit: "cover",
+                            border: "2px solid rgba(255,255,255,0.15)",
+                            flexShrink: 0
+                        }} />
+                        <div>
+                            <span style={{
+                                fontFamily: "Figtree",
+                                fontWeight: 500,
+                                fontSize: "14px",
+                                color: "#FFFFFF",
+                                display: "block"
+                            }}>
+                                Brian Yuyi
+                            </span>
+                            <span style={{
+                                fontFamily: "Figtree",
+                                fontSize: "12px",
+                                color: "rgba(255,255,255,0.40)",
+                                display: "block"
+                            }}>
+                                Chief Executive Officer, Marketing Association of South Africa (MASA)
+                            </span>
+                        </div>
+                    </div>
+                </motion.div>
+            </div>
+
+            {/* Right Column Stack */}
             <div style={{
                 display: "flex",
                 flexDirection: "column",
                 gap: "clamp(16px,2vw,24px)"
             }}>
+                {/* Testimonial 4: Delia Ndlovu */}
                 <motion.div initial={{
                     opacity: 0,
                     x: 24
@@ -2647,6 +2811,7 @@ const Testimonial = () => {
                     </div>
                 </motion.div>
 
+                {/* Testimonial 5: Tryphosa Ramano */}
                 <motion.div initial={{
                     opacity: 0,
                     x: 24
@@ -2718,6 +2883,117 @@ const Testimonial = () => {
                             }}>
                                 Independent Non-Executive Director, Public Investment Corporation (PIC)
                             </span>
+                        </div>
+                    </div>
+                </motion.div>
+
+                {/* Testimonial 6: Khanyi Mlambo */}
+                <motion.div initial={{
+                    opacity: 0,
+                    x: 24
+                }} whileInView={{
+                    opacity: 1,
+                    x: 0
+                }} viewport={{
+                    once: true
+                }} transition={{
+                    duration: 0.7,
+                    delay: 0.45,
+                    ease: "easeOut"
+                }} style={{
+                    backgroundColor: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    borderRadius: "28px",
+                    padding: "clamp(32px,4vw,56px)",
+                    position: "relative",
+                    overflow: "hidden",
+                    minHeight: "480px",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between"
+                }}>
+                    <img src="/Khanyi-Mlambo.jpg" alt="" aria-hidden="true" style={{
+                        position: "absolute",
+                        inset: 0,
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        opacity: 0.08,
+                        mixBlendMode: "luminosity",
+                        pointerEvents: "none",
+                        zIndex: 0
+                    }} />
+                    <div style={{
+                        position: "absolute",
+                        inset: 0,
+                        background: "linear-gradient(to bottom, transparent 30%, rgba(10,10,15,0.95) 100%)",
+                        pointerEvents: "none",
+                        zIndex: 0
+                    }} />
+
+                    <div style={{
+                        position: "relative",
+                        zIndex: 1,
+                        display: "flex",
+                        flexDirection: "column",
+                        height: "100%"
+                    }}>
+                        <div style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            gap: "2px"
+                        }}>
+                            {STAR_IDS_E.map(sid => <svg key={sid} width="16" height="16" viewBox="0 0 16 16" fill="#FF2D87">
+                                <path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.4l-3.7 1.9.7-4.1-3-2.9 4.2-.7z" />
+                            </svg>)}
+                        </div>
+                        <blockquote style={{
+                            fontFamily: "Figtree",
+                            fontWeight: 300,
+                            fontStyle: "italic",
+                            fontSize: "17px",
+                            color: "rgba(255,255,255,0.85)",
+                            lineHeight: 1.5,
+                            marginTop: "24px",
+                            marginBottom: 0
+                        }}>
+                            "EmpowaWomen is more than an event; it is a platform that accelerates leadership, influence, and opportunity. It brings together ambitious women, bold ideas, and meaningful connections that drive personal growth, business success, and lasting impact."
+                        </blockquote>
+                        <div style={{
+                            marginTop: "auto",
+                            paddingTop: "32px",
+                            borderTop: "1px solid rgba(255,255,255,0.08)",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "16px"
+                        }}>
+                            <img src="/Khanyi-Mlambo.jpg" alt="Khanyi Mlambo" style={{
+                                width: "48px",
+                                height: "48px",
+                                borderRadius: "50%",
+                                objectFit: "cover",
+                                border: "2px solid rgba(255,255,255,0.15)",
+                                flexShrink: 0
+                            }} />
+                            <div>
+                                <span style={{
+                                    fontFamily: "Figtree",
+                                    fontWeight: 500,
+                                    fontSize: "15px",
+                                    color: "#FFFFFF",
+                                    display: "block"
+                                }}>
+                                    Khanyi Mlambo
+                                </span>
+                                <span style={{
+                                    fontFamily: "Figtree",
+                                    fontSize: "13px",
+                                    color: "rgba(255,255,255,0.40)",
+                                    display: "block"
+                                }}>
+                                    Business Leader | Board Member | Strategic Advisor
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </motion.div>
