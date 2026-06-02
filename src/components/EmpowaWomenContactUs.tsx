@@ -175,14 +175,6 @@ const INFRA_CARDS: InfraCard[] = [{
     title: <a href="mailto:info@empowawomen.co.za" style={{ color: "inherit", textDecoration: "none" }}>info@empowawomen.co.za</a>,
     hoverBorder: "rgba(59,130,246,0.30)",
     hoverBg: "rgba(59,130,246,0.06)"
-}, {
-    id: "card-time",
-    icon: Clock,
-    color: "#D97706",
-    eyebrow: "RESPONSE TIME",
-    title: "Executive enquiries routed within 24 hours",
-    hoverBorder: "rgba(217,119,6,0.30)",
-    hoverBg: "rgba(217,119,6,0.06)"
 }];
 const SLA_COLS: SlaCol[] = [{
     id: "sla-priority",
@@ -1751,16 +1743,30 @@ const PhysicalInfrastructure = () => {
             pointerEvents: "none"
         }} />
 
-        <div style={{
+        <div className="contact-infra-grid" style={{
             position: "relative",
             zIndex: 2,
             maxWidth: "1280px",
             margin: "0 auto",
             padding: "0 clamp(24px,4vw,64px)",
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
             gap: "32px"
         }}>
+            <style>{`
+                .contact-infra-grid {
+                    grid-template-columns: 1fr;
+                }
+                @media (min-width: 640px) {
+                    .contact-infra-grid {
+                        grid-template-columns: repeat(2, 1fr);
+                    }
+                }
+                @media (min-width: 1024px) {
+                    .contact-infra-grid {
+                        grid-template-columns: repeat(3, 1fr);
+                    }
+                }
+            `}</style>
             {INFRA_CARDS.map((card, idx) => {
                 const Icon = card.icon;
                 return <motion.div key={card.id} initial={{
@@ -1840,7 +1846,7 @@ const PhysicalInfrastructure = () => {
 // Improvement 6: floating info card
 const MapSection = () => {
     const handleOpenMaps = () => {
-        window.open("https://www.google.com/maps/place/Johannesburg,+South+Africa", "_blank");
+        window.open("https://www.google.com/maps/dir/?api=1&destination=364+Pine+Avenue+Ferndale+Randburg+2196+South+Africa", "_blank");
     };
     return <section style={{
         backgroundColor: "#F7F6F2",
@@ -1852,7 +1858,7 @@ const MapSection = () => {
             position: "relative",
             overflow: "hidden"
         }}>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3581.7!2d28.0473!3d-26.2041!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950c68f0406a51%3A0x238ac9d9b1d34041!2sJohannesburg!5e0!3m2!1sen!2sza!4v1" width="100%" height="100%" style={{
+            <iframe src="https://maps.google.com/maps?q=-26.096695,27.994403%20(EmpowaWorx%20House)&t=&z=17&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style={{
                 border: 0,
                 filter: "invert(90%) hue-rotate(180deg) grayscale(0.2)"
             }} allowFullScreen loading="lazy" title="EmpowaWorx House Location" />
@@ -1942,34 +1948,6 @@ const MapSection = () => {
                     <span>Get Directions →</span>
                 </button>
             </motion.div>
-
-            <button onClick={handleOpenMaps} style={{
-                position: "fixed",
-                bottom: "32px",
-                right: "32px",
-                zIndex: 60,
-                backgroundColor: "#FF2D87",
-                color: "#FFFFFF",
-                fontFamily: "Figtree",
-                fontWeight: 500,
-                fontSize: "13px",
-                borderRadius: "999px",
-                padding: "16px 32px",
-                boxShadow: "0 8px 32px rgba(255,45,135,0.40)",
-                border: "none",
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                gap: "12px",
-                transition: "transform 200ms"
-            }} onMouseEnter={e => {
-                (e.currentTarget as HTMLButtonElement).style.transform = "scale(1.05)";
-            }} onMouseLeave={e => {
-                (e.currentTarget as HTMLButtonElement).style.transform = "scale(1)";
-            }}>
-                <Navigation size={18} />
-                <span>Launch GPS Directions</span>
-            </button>
         </div>
     </section>;
 };
