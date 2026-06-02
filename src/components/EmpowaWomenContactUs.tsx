@@ -2,7 +2,7 @@ import * as React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { motion, AnimatePresence, useScroll } from "framer-motion";
 import { UniversalHero } from "./UniversalHero";
-import { Briefcase, Mic, Ticket, GraduationCap, MapPin, Phone, Clock, Navigation, ChevronRight, ChevronDown, Menu, X, ArrowRight, Camera, Link, MessageSquare, Video, Send, Zap, Calendar, BookOpen } from "lucide-react";
+import { Briefcase, Mic, Ticket, GraduationCap, MapPin, Phone, Clock, Mail, Navigation, ChevronRight, ChevronDown, Menu, X, ArrowRight, Camera, Link, MessageSquare, Video, Send, Zap, Calendar, BookOpen } from "lucide-react";
 import { cn } from "../lib/utils";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -167,6 +167,14 @@ const INFRA_CARDS: InfraCard[] = [{
     </div>,
     hoverBorder: "rgba(0,180,166,0.30)",
     hoverBg: "rgba(0,180,166,0.06)"
+}, {
+    id: "card-email",
+    icon: Mail,
+    color: "#3B82F6",
+    eyebrow: "EMAIL ENQUIRIES",
+    title: <a href="mailto:info@empowawomen.co.za" style={{ color: "inherit", textDecoration: "none" }}>info@empowawomen.co.za</a>,
+    hoverBorder: "rgba(59,130,246,0.30)",
+    hoverBg: "rgba(59,130,246,0.06)"
 }, {
     id: "card-time",
     icon: Clock,
