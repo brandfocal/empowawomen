@@ -17,7 +17,7 @@ const NAV_LINKS: NavLinkItem[] = [
     {
         id: "nav-summits",
         label: "What We Do",
-        href: "/summits-hub",
+        href: "/what-we-do",
         hasDropdown: true,
         dropdownItems: [
             { label: "International Women's Day Summit™", href: "/iwd-summit" },
@@ -50,7 +50,7 @@ const FOOTER_SECTION_ROWS = [{
     links: [
         { id: "fp-1", label: "Home", href: "/" },
         { id: "fp-2", label: "About Us", href: "/about" },
-        { id: "fp-3", label: "Summits Hub", href: "/summits-hub" },
+        { id: "fp-3", label: "What We Do", href: "/what-we-do" },
         { id: "fp-4", label: "EmpowaHER™", href: "/academy" },
         { id: "fp-5", label: "Partnerships", href: "/partnerships" },
         { id: "fp-7", label: "Media", href: "/media" },

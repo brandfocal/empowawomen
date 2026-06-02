@@ -119,7 +119,7 @@ const PATHWAY_CARDS: PathwayCard[] = [{
     ctaLabel: "View 2026–2027 Summit Schedules",
     accentColor: "#00B4A6",
     icon: <Users className="w-6 h-6 text-white" />,
-    path: "/summits-hub"
+    path: "/what-we-do"
 }, {
     id: "pathway-3",
     category: "NEXT-GEN LEADERS · AGES 18–34",
@@ -1502,7 +1502,7 @@ const PathwaysSection = () => {
                             From the C-suite to the starting line - EmpowaWomen meets you exactly where you are, and takes you further than you imagined.
                         </p>
 
-                        <RouterLink to="/summits-hub" style={{
+                        <RouterLink to="/what-we-do" style={{
                             display: "inline-flex",
                             alignItems: "center",
                             gap: "10px",
@@ -1824,7 +1824,7 @@ const CorePillarsSection = () => {
             position: "relative",
             zIndex: 1
         }}>
-            <RouterLink to="/summits-hub" style={{
+            <RouterLink to="/what-we-do" style={{
                 fontFamily: "Figtree",
                 fontWeight: 500,
                 fontSize: "14px",

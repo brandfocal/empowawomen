@@ -598,7 +598,7 @@ const MissionBridgeSection = () => {
           </div>
         </div>
 
-        <RouterLink to="/summits-hub" style={{
+        <RouterLink to="/what-we-do" style={{
           marginTop: "32px",
           display: "inline-flex",
           alignItems: "center",

@@ -54,7 +54,7 @@ function App() {
             <Route path="partnerships" element={<EmpowaWomenPartnerships />} />
             <Route path="executive-industry-series" element={<ExecutiveIndustrySeries />} />
             <Route path="leadership-awards-gala" element={<LeadershipAwardsGala />} />
-            <Route path="summits-hub" element={<SummitsHub />} />
+            <Route path="what-we-do" element={<SummitsHub />} />
             <Route path="iwd-summit" element={<IWDSummitDetail />} />
             <Route path="provincial-summits" element={<ProvincialSummitSeries />} />
             <Route path="green-economy" element={<GreenEconomyPillar />} />

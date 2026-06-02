@@ -734,7 +734,7 @@ const HeroSection = () => {
                     }}>
                         Get in Touch
                     </a>
-                    <RouterLink to="/summits-hub" style={{
+                    <RouterLink to="/what-we-do" style={{
                         fontFamily: "Figtree",
                         fontSize: "15px",
                         fontWeight: 400,
