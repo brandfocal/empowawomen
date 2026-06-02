@@ -12,19 +12,20 @@ interface NavLinkItem {
 }
 
 const NAV_LINKS: NavLinkItem[] = [
-    { id: "nav-about", label: "About Us", href: "/about" },
     {
-        id: "nav-summits",
-        label: "Executive Summits",
-        href: "/summits-hub",
+        id: "nav-about",
+        label: "About Us",
+        href: "/about",
         hasDropdown: true,
         dropdownItems: [
+            { label: "About Us", href: "/about" },
             { label: "International Women's Day Summit™", href: "/iwd-summit" },
             { label: "Provincial Leadership Series™", href: "/provincial-summits" },
             { label: "Executive Leadership Experiences™", href: "/executive-industry-series" },
             { label: "Bubbles & Nibbles Soirée & Leadership Awards", href: "/leadership-awards-gala" }
         ]
     },
+    { id: "nav-summits", label: "Executive Summits", href: "/summits-hub" },
     {
         id: "nav-pillars",
         label: "Growth Pillars",
