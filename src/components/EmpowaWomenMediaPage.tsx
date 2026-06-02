@@ -1,6 +1,6 @@
 import * as React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Download, ChevronDown, ChevronUp, Printer } from "lucide-react";
+import { ArrowRight, Download, ChevronDown, ChevronUp, Printer, X, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
 
 interface BroadcastItem {
   id: string;
@@ -2021,7 +2021,7 @@ const PreFooterCTA = () => {
 
 // ─── Video Section ────────────────────────────────────────────────────────────
 const VideoSection = () => {
-  const playlist = ["s_RGYF3-fO4", "w5p9v_9Htes", "YdrNRk5IDiM"];
+  const playlist = ["ur-TCxziR3U", "AeodFhnuUyQ", "iTeO8OVZUQ0", "w5p9v_9Htes", "rJ3_6lnOPcI"];
   const [currentVideoId, setCurrentVideoId] = React.useState(playlist[0]);
   const [isPlaying, setIsPlaying] = React.useState(false);
   const [isHoveringPlay, setIsHoveringPlay] = React.useState(false);
@@ -2432,6 +2432,424 @@ const VideoSection = () => {
   </section>;
 };
 
+
+// ─── Photo Gallery Section ───────────────────────────────────────────────────
+const PhotoGallerySection = () => {
+  const images = [
+    "/bubbles_nibbles_gallery/DSC_1533.JPG",
+    "/bubbles_nibbles_gallery/DSC_2597.JPG",
+    "/bubbles_nibbles_gallery/DSC_2615.JPG",
+    "/bubbles_nibbles_gallery/DSC_2632.JPG",
+    "/bubbles_nibbles_gallery/DSC_2645.JPG",
+    "/bubbles_nibbles_gallery/DSC_2657.JPG",
+    "/bubbles_nibbles_gallery/DSC_2683.JPG",
+    "/bubbles_nibbles_gallery/DSC_2708.JPG",
+    "/bubbles_nibbles_gallery/DSC_2737.JPG",
+    "/bubbles_nibbles_gallery/DSC_2742.JPG",
+    "/bubbles_nibbles_gallery/DSC_2778.JPG",
+    "/bubbles_nibbles_gallery/DSC_2791.JPG",
+    "/bubbles_nibbles_gallery/DSC_2796.JPG",
+    "/bubbles_nibbles_gallery/DSC_2820.JPG",
+    "/bubbles_nibbles_gallery/DSC_2825.JPG",
+    "/bubbles_nibbles_gallery/DSC_2835.JPG",
+    "/bubbles_nibbles_gallery/DSC_2921.JPG",
+    "/bubbles_nibbles_gallery/DSC_2925.JPG",
+    "/bubbles_nibbles_gallery/DSC_2930.JPG",
+    "/bubbles_nibbles_gallery/DSC_2937.JPG",
+    "/bubbles_nibbles_gallery/DSC_2940.JPG",
+    "/bubbles_nibbles_gallery/DSC_2948.JPG"
+  ];
+
+  const [activeImageIndex, setActiveImageIndex] = React.useState<number | null>(null);
+  const [hoveredIdx, setHoveredIdx] = React.useState<number | null>(null);
+  const [visibleCount, setVisibleCount] = React.useState(8);
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (activeImageIndex !== null) {
+      setActiveImageIndex((activeImageIndex - 1 + images.length) % images.length);
+    }
+  };
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (activeImageIndex !== null) {
+      setActiveImageIndex((activeImageIndex + 1) % images.length);
+    }
+  };
+
+  const loadMore = () => {
+    setVisibleCount(prev => Math.min(prev + 8, images.length));
+  };
+
+  const collapseGallery = () => {
+    setVisibleCount(8);
+    document.getElementById("media-photo-gallery")?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  return (
+    <section id="media-photo-gallery" style={{
+      width: "100%",
+      backgroundColor: "#0A0A0F",
+      paddingTop: "clamp(64px, 8vw, 120px)",
+      paddingBottom: "clamp(64px, 8vw, 120px)",
+      paddingLeft: "clamp(24px, 6vw, 96px)",
+      paddingRight: "clamp(24px, 6vw, 96px)",
+      position: "relative",
+      overflow: "hidden"
+    }}>
+      {/* Background glow layers */}
+      <div style={{
+        position: "absolute",
+        top: 0,
+        left: "25%",
+        width: "50%",
+        height: "50%",
+        background: "radial-gradient(circle, rgba(255,45,135,0.03) 0%, transparent 70%)",
+        zIndex: 0,
+        pointerEvents: "none"
+      }} />
+
+      <div style={{ maxWidth: "1400px", margin: "0 auto", position: "relative", zIndex: 1 }}>
+        <div style={{ marginBottom: "clamp(40px, 8vw, 64px)" }}>
+          <Eyebrow text="PHOTO GALLERY" dark />
+          <h2 style={{
+            fontFamily: "Figtree",
+            fontWeight: 300,
+            fontSize: "clamp(24px, 4.5vw, 56px)",
+            color: "#FFFFFF",
+            letterSpacing: "-0.03em",
+            lineHeight: 1.05,
+            margin: "0 0 16px 0",
+            textTransform: "uppercase"
+          }}>
+            BUBBLES &amp; NIBBLES™
+            <br />
+            EXECUTIVE MOMENTS.
+          </h2>
+          <p style={{
+            fontFamily: "Figtree",
+            fontSize: "clamp(14px, 1.8vw, 17px)",
+            fontWeight: 400,
+            color: "rgba(255,255,255,0.50)",
+            maxWidth: "520px",
+            lineHeight: 1.75,
+            margin: 0
+          }}>
+            A visual chronicle of connections made, leadership toasted, and excellence honored at the Bubbles &amp; Nibbles Soirée.
+          </p>
+        </div>
+
+        {/* Gallery Grid */}
+        <div className="gallery-masonry-grid" style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+          gap: "24px",
+          marginBottom: "48px"
+        }}>
+          {images.slice(0, visibleCount).map((src, idx) => (
+            <motion.div
+              key={src}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: (idx % 4) * 0.08 }}
+              onMouseEnter={() => setHoveredIdx(idx)}
+              onMouseLeave={() => setHoveredIdx(null)}
+              onClick={() => setActiveImageIndex(idx)}
+              className="gallery-item-card"
+              style={{
+                aspectRatio: idx % 3 === 0 ? "4/3" : "1/1",
+                borderRadius: "20px",
+                overflow: "hidden",
+                border: "1px solid rgba(255,255,255,0.08)",
+                position: "relative",
+                cursor: "pointer",
+                backgroundColor: "rgba(255,255,255,0.02)"
+              }}
+            >
+              <img
+                src={src}
+                alt={`Bubbles & Nibbles moment ${idx + 1}`}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  transition: "transform 500ms cubic-bezier(0.16, 1, 0.3, 1)",
+                  transform: hoveredIdx === idx ? "scale(1.06)" : "scale(1)"
+                }}
+              />
+              {/* Glass overlay on hover */}
+              <div style={{
+                position: "absolute",
+                inset: 0,
+                background: "linear-gradient(to top, rgba(10,10,15,0.85) 0%, rgba(10,10,15,0.2) 60%, transparent 100%)",
+                opacity: hoveredIdx === idx ? 1 : 0,
+                transition: "opacity 300ms ease",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-end",
+                padding: "24px"
+              }}>
+                <div style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  transform: hoveredIdx === idx ? "translateY(0)" : "translateY(12px)",
+                  transition: "transform 350ms cubic-bezier(0.16, 1, 0.3, 1)"
+                }}>
+                  <div>
+                    <p style={{
+                      fontFamily: "Figtree",
+                      fontSize: "10px",
+                      fontWeight: 700,
+                      color: "#FF2D87",
+                      letterSpacing: "0.15em",
+                      textTransform: "uppercase",
+                      margin: "0 0 4px 0"
+                    }}>
+                      BUBBLES &amp; NIBBLES™
+                    </p>
+                    <h4 style={{
+                      fontFamily: "Figtree",
+                      fontSize: "15px",
+                      fontWeight: 500,
+                      color: "#FFFFFF",
+                      margin: 0
+                    }}>
+                      Executive Dialogue {idx + 1}
+                    </h4>
+                  </div>
+                  <div style={{
+                    width: "36px",
+                    height: "36px",
+                    borderRadius: "50%",
+                    backgroundColor: "rgba(255,255,255,0.1)",
+                    backdropFilter: "blur(8px)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "#FFFFFF"
+                  }}>
+                    <Maximize2 size={14} />
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Action button */}
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          {visibleCount < images.length ? (
+            <button
+              onClick={loadMore}
+              style={{
+                fontFamily: "Figtree",
+                fontSize: "14px",
+                fontWeight: 500,
+                color: "#FFFFFF",
+                backgroundColor: "rgba(255,255,255,0.05)",
+                border: "1px solid rgba(255,255,255,0.10)",
+                borderRadius: "999px",
+                padding: "14px 36px",
+                cursor: "pointer",
+                transition: "all 200ms ease-out",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px"
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.10)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.25)";
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.05)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)";
+              }}
+            >
+              <span>Load More Moments</span>
+              <ChevronDown size={16} />
+            </button>
+          ) : images.length > 8 && (
+            <button
+              onClick={collapseGallery}
+              style={{
+                fontFamily: "Figtree",
+                fontSize: "14px",
+                fontWeight: 500,
+                color: "#FFFFFF",
+                backgroundColor: "rgba(255,255,255,0.05)",
+                border: "1px solid rgba(255,255,255,0.10)",
+                borderRadius: "999px",
+                padding: "14px 36px",
+                cursor: "pointer",
+                transition: "all 200ms ease-out",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px"
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.10)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.25)";
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.05)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)";
+              }}
+            >
+              <span>Show Less</span>
+              <ChevronUp size={16} />
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* Lightbox / Zoom View Modal */}
+      {activeImageIndex !== null && (
+        <div
+          onClick={() => setActiveImageIndex(null)}
+          style={{
+            position: "fixed",
+            inset: 0,
+            backgroundColor: "rgba(10,10,15,0.95)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+            zIndex: 9999,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "24px"
+          }}
+        >
+          <button
+            onClick={() => setActiveImageIndex(null)}
+            style={{
+              position: "absolute",
+              top: "24px",
+              right: "24px",
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              color: "#FFFFFF",
+              width: "48px",
+              height: "48px",
+              borderRadius: "50%",
+              backgroundColor: "rgba(255,255,255,0.08)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              transition: "background-color 200ms"
+            }}
+            onMouseEnter={e => e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.15)"}
+            onMouseLeave={e => e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.08)"}
+          >
+            <X size={20} />
+          </button>
+
+          <button
+            onClick={handlePrev}
+            style={{
+              position: "absolute",
+              left: "24px",
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              color: "#FFFFFF",
+              width: "56px",
+              height: "56px",
+              borderRadius: "50%",
+              backgroundColor: "rgba(255,255,255,0.08)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              transition: "background-color 200ms"
+            }}
+            onMouseEnter={e => e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.15)"}
+            onMouseLeave={e => e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.08)"}
+          >
+            <ChevronLeft size={24} />
+          </button>
+
+          <button
+            onClick={handleNext}
+            style={{
+              position: "absolute",
+              right: "24px",
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              color: "#FFFFFF",
+              width: "56px",
+              height: "56px",
+              borderRadius: "50%",
+              backgroundColor: "rgba(255,255,255,0.08)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              transition: "background-color 200ms"
+            }}
+            onMouseEnter={e => e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.15)"}
+            onMouseLeave={e => e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.08)"}
+          >
+            <ChevronRight size={24} />
+          </button>
+
+          <div
+            onClick={e => e.stopPropagation()}
+            style={{
+              position: "relative",
+              maxWidth: "100%",
+              maxHeight: "80vh",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center"
+            }}
+          >
+            <img
+              src={images[activeImageIndex]}
+              alt={`Bubbles & Nibbles zoomed moment`}
+              style={{
+                maxWidth: "100%",
+                maxHeight: "75vh",
+                objectFit: "contain",
+                borderRadius: "16px",
+                boxShadow: "0 24px 64px rgba(0,0,0,0.5)"
+              }}
+            />
+            <div style={{
+              marginTop: "20px",
+              textAlign: "center",
+              color: "#FFFFFF"
+            }}>
+              <p style={{
+                fontFamily: "Figtree",
+                fontSize: "11px",
+                fontWeight: 700,
+                color: "#FF2D87",
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+                margin: "0 0 4px 0"
+              }}>
+                BUBBLES &amp; NIBBLES™ SOIRÉE
+              </p>
+              <p style={{
+                fontFamily: "Figtree",
+                fontSize: "14px",
+                color: "rgba(255,255,255,0.70)",
+                margin: 0
+              }}>
+                Moment {activeImageIndex + 1} of {images.length}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+    </section>
+  );
+};
+
 // ─── Main Export ──────────────────────────────────────────────────────────────
 export const MediaPage = () => {
   return <main style={{
@@ -2445,6 +2863,7 @@ export const MediaPage = () => {
       <PressReleasesSection />
       <AccreditationSection />
       <VideoSection />
+      <PhotoGallerySection />
       <PreFooterCTA />
 
       <style>{`
