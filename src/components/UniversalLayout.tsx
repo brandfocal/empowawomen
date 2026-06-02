@@ -81,7 +81,7 @@ export const TopNav = () => {
     const [isOpen, setIsOpen] = React.useState(false);
     const { scrollYProgress } = useScroll();
     const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
-    const navHeight = 68;
+    const navHeight = 84;
     const location = useLocation();
 
     return <div style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100 }}>
@@ -111,7 +111,7 @@ export const TopNav = () => {
             {/* Logo */}
             <div style={{ display: "flex", alignItems: "center", gap: "10px", flexShrink: 0 }}>
                 <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-                    <img src="/logo.png" alt="EmpowaWomen logo mark" style={{ height: "38px", width: "auto" }} />
+                    <img src="/logo.png" alt="EmpowaWomen logo mark" style={{ height: "62px", width: "auto" }} />
                 </Link>
             </div>
 
@@ -398,6 +398,8 @@ export const TopNav = () => {
 };
 
 export const FooterCTA = () => {
+    const location = useLocation();
+    const isSummitPage = location.pathname === "/summit" || location.pathname === "/summit/";
     return <footer id="contact" style={{
         position: "relative",
         backgroundColor: "#0A0A0F",
@@ -449,12 +451,21 @@ export const FooterCTA = () => {
                 <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 1.0 }} style={{
                     display: "flex", flexWrap: "wrap", gap: "20px"
                 }}>
-                    <Link to="/summit" style={{
-                        display: "inline-flex", alignItems: "center", gap: "8px", padding: "16px 32px", backgroundColor: "#FF2D87", color: "#FFFFFF", fontFamily: "Figtree", fontSize: "18px", fontWeight: 500, border: "none", cursor: "pointer", transition: "filter 200ms ease-out", textDecoration: "none"
-                    }} onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.filter = "brightness(1.1)"; }} onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.filter = "brightness(1)"; }}>
-                        <span>Secure Your Seat</span>
-                        <ArrowRight size={18} />
-                    </Link>
+                    {isSummitPage ? (
+                        <a href="https://www.quicket.co.za/events/344315-empowawomen-leadership-summit-2026/" target="_blank" rel="noopener noreferrer" style={{
+                            display: "inline-flex", alignItems: "center", gap: "8px", padding: "16px 32px", backgroundColor: "#FF2D87", color: "#FFFFFF", fontFamily: "Figtree", fontSize: "18px", fontWeight: 500, border: "none", cursor: "pointer", transition: "filter 200ms ease-out", textDecoration: "none"
+                        }} onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.filter = "brightness(1.1)"; }} onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.filter = "brightness(1)"; }}>
+                            <span>Secure Your Seat</span>
+                            <ArrowRight size={18} />
+                        </a>
+                    ) : (
+                        <Link to="/summit" style={{
+                            display: "inline-flex", alignItems: "center", gap: "8px", padding: "16px 32px", backgroundColor: "#FF2D87", color: "#FFFFFF", fontFamily: "Figtree", fontSize: "18px", fontWeight: 500, border: "none", cursor: "pointer", transition: "filter 200ms ease-out", textDecoration: "none"
+                        }} onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.filter = "brightness(1.1)"; }} onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.filter = "brightness(1)"; }}>
+                            <span>Secure Your Seat</span>
+                            <ArrowRight size={18} />
+                        </Link>
+                    )}
                     <Link to="/about" style={{
                         padding: "16px 32px", backgroundColor: "rgba(255,255,255,0.05)", color: "#FFFFFF", fontFamily: "Figtree", fontSize: "18px", fontWeight: 500, border: "1px solid rgba(255,255,255,0.10)", textDecoration: "none", cursor: "pointer", transition: "background-color 200ms ease-out", display: "inline-flex", alignItems: "center"
                     }} onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "rgba(255,255,255,0.10)"; }} onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "rgba(255,255,255,0.05)"; }}>
@@ -489,7 +500,7 @@ export const FooterCTA = () => {
                         <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
                             <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                                 <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-                                    <img src="/logo.png" alt="EmpowaWomen logo mark" style={{ height: "34px", width: "auto" }} />
+                                    <img src="/logo.png" alt="EmpowaWomen logo mark" style={{ height: "54px", width: "auto" }} />
                                 </Link>
                             </div>
                             <p style={{ fontFamily: "Figtree", fontSize: "14px", color: "rgba(255,255,255,0.25)", margin: 0 }}>

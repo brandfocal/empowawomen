@@ -2565,33 +2565,6 @@ const CountdownCtaSection: React.FC<{
 
 // ─── Registration Form Section ────────────────────────────────────────────────
 const RegistrationFormSection: React.FC = () => {
-  const [firstName, setFirstName] = React.useState("");
-  const [lastName, setLastName] = React.useState("");
-  const [jobTitle, setJobTitle] = React.useState("");
-  const [company, setCompany] = React.useState("");
-  const [industry, setIndustry] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [phone, setPhone] = React.useState("");
-  const [referral, setReferral] = React.useState("");
-  const [requirements, setRequirements] = React.useState("");
-  const [agreed, setAgreed] = React.useState(false);
-  const [submitted, setSubmitted] = React.useState(false);
-  const inputStyle: React.CSSProperties = {
-    backgroundColor: "rgba(255,255,255,0.04)",
-    border: "1px solid rgba(255,255,255,0.10)",
-    borderRadius: "8px",
-    padding: "14px 16px",
-    color: "white",
-    fontSize: "14px",
-    fontFamily: "Figtree",
-    width: "100%",
-    outline: "none",
-    boxSizing: "border-box"
-  };
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
   const checkColors = [ACCENT_PINK, ACCENT_TEAL, ACCENT_AMBER, ACCENT_PINK];
   const checkBgColors = ["rgba(255,45,135,0.15)", "rgba(0,180,166,0.15)", "rgba(217,119,6,0.15)", "rgba(255,45,135,0.15)"];
   const checkBorderColors = ["rgba(255,45,135,0.40)", "rgba(0,180,166,0.40)", "rgba(217,119,6,0.40)", "rgba(255,45,135,0.40)"];
@@ -2602,7 +2575,7 @@ const RegistrationFormSection: React.FC = () => {
     position: "relative"
   }}>
     <div className="max-w-5xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16">
-      {/* LEFT — Form or Success */}
+      {/* LEFT — Quicket Ticket Link */}
       <motion.div initial={{
         opacity: 0,
         x: -24
@@ -2615,235 +2588,78 @@ const RegistrationFormSection: React.FC = () => {
       }} transition={{
         duration: 0.7,
         ease: "easeOut"
-      }} className="flex-1" style={{
+      }} className="flex-1 flex flex-col justify-center" style={{
         minWidth: 0
       }}>
-        {submitted ? <div className="flex flex-col items-center py-16 gap-6 text-center">
-          <motion.div initial={{
-            scale: 0
-          }} animate={{
-            scale: 1
-          }} transition={{
-            type: "spring",
-            stiffness: 200,
-            damping: 15
-          }} style={{
-            width: "80px",
-            height: "80px",
-            borderRadius: "50%",
-            backgroundColor: "rgba(255,45,135,0.12)",
-            border: "2px solid #FF2D87",
-            display: "flex",
+        <div style={{
+          width: "48px",
+          height: "3px",
+          backgroundColor: "#FF2D87",
+          marginBottom: "16px"
+        }} />
+        <span className="uppercase block" style={{
+          fontFamily: "Figtree",
+          fontSize: "9px",
+          fontWeight: 600,
+          letterSpacing: "0.28em",
+          color: "rgba(255,255,255,0.35)",
+          marginBottom: "16px"
+        }}>
+          DELEGATE REGISTRATION
+        </span>
+        <h2 style={{
+          fontFamily: "Figtree",
+          fontWeight: 300,
+          fontSize: "clamp(24px, 4vw, 48px)",
+          letterSpacing: "-0.03em",
+          color: "#FFFFFF",
+          margin: "0 0 16px 0",
+          lineHeight: 1.1
+        }}>
+          Secure Your Seat at the Table
+        </h2>
+        <p style={{
+          fontFamily: "Figtree",
+          fontSize: "15px",
+          fontWeight: 400,
+          color: "rgba(255,255,255,0.50)",
+          lineHeight: 1.75,
+          margin: "0 0 28px 0"
+        }}>
+          Johannesburg’s premier platform for empowering women leaders returns. Secure your place now via Quicket to gain access to exclusive masterclass experiences, keynote presentations, networking dinners, and high-impact industry panels.
+        </p>
+
+        <a 
+          href="https://www.quicket.co.za/events/344315-empowawomen-leadership-summit-2026/" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          style={{
+            display: "inline-flex",
             alignItems: "center",
             justifyContent: "center",
-            flexShrink: 0
-          }}>
-            <Check size={36} style={{
-              color: "#FF2D87"
-            }} />
-          </motion.div>
-          <h3 style={{
-            fontFamily: "Figtree",
-            fontWeight: 300,
-            fontSize: "clamp(24px, 4vw, 40px)",
-            color: "#FFFFFF",
-            letterSpacing: "-0.02em",
-            margin: 0
-          }}>
-            You're Registered!
-          </h3>
-          <p style={{
-            fontFamily: "Figtree",
-            fontSize: "15px",
-            fontWeight: 400,
-            color: "rgba(255,255,255,0.50)",
-            lineHeight: 1.75,
-            maxWidth: "480px",
-            margin: 0
-          }}>
-            Thank you! Our team will confirm your registration within 24 hours. Check your inbox for a confirmation email.
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <button style={{
-              padding: "12px 28px",
-              backgroundColor: ACCENT_PINK,
-              color: "#FFFFFF",
-              borderRadius: "999px",
-              fontFamily: "Figtree",
-              fontWeight: 500,
-              fontSize: "15px",
-              border: "none",
-              cursor: "pointer",
-              transition: "filter 200ms ease-out"
-            }} onMouseEnter={e => {
-              (e.currentTarget as HTMLButtonElement).style.filter = "brightness(1.1)";
-            }} onMouseLeave={e => {
-              (e.currentTarget as HTMLButtonElement).style.filter = "brightness(1)";
-            }}>
-              Add to Calendar
-            </button>
-            <button onClick={() => setSubmitted(false)} style={{
-              padding: "12px 28px",
-              backgroundColor: "rgba(255,255,255,0.04)",
-              color: "#FFFFFF",
-              borderRadius: "999px",
-              fontFamily: "Figtree",
-              fontWeight: 400,
-              fontSize: "15px",
-              border: "1px solid rgba(255,255,255,0.15)",
-              cursor: "pointer",
-              transition: "background-color 200ms ease-out"
-            }} onMouseEnter={e => {
-              (e.currentTarget as HTMLButtonElement).style.backgroundColor = "rgba(255,255,255,0.08)";
-            }} onMouseLeave={e => {
-              (e.currentTarget as HTMLButtonElement).style.backgroundColor = "rgba(255,255,255,0.04)";
-            }}>
-              Back to Summit Info
-            </button>
-          </div>
-          <p className="mt-4" style={{
-            fontFamily: "Figtree",
-            fontSize: "12px",
-            letterSpacing: "0.08em",
-            color: "rgba(255,45,135,0.60)",
-            margin: 0
-          }}>
-            #LeadFearlessly · #AccelerateGrowth · #TransformEconomies
-          </p>
-        </div> : <div>
-          <div style={{
-            width: "48px",
-            height: "3px",
+            gap: "10px",
+            height: "56px",
+            padding: "0 40px",
             backgroundColor: "#FF2D87",
-            marginBottom: "16px"
-          }} />
-          <span className="uppercase block" style={{
-            fontFamily: "Figtree",
-            fontSize: "9px",
-            fontWeight: 600,
-            letterSpacing: "0.28em",
-            color: "rgba(255,255,255,0.35)",
-            marginBottom: "16px"
-          }}>
-            DELEGATE REGISTRATION
-          </span>
-          <h2 style={{
-            fontFamily: "Figtree",
-            fontWeight: 300,
-            fontSize: "clamp(24px, 4vw, 48px)",
-            letterSpacing: "-0.03em",
             color: "#FFFFFF",
-            margin: "0 0 16px 0",
-            lineHeight: 1.1
-          }}>
-            Secure Your Seat at the Table
-          </h2>
-          <p style={{
+            borderRadius: "999px",
             fontFamily: "Figtree",
-            fontSize: "14px",
-            fontWeight: 400,
-            color: "rgba(255,255,255,0.50)",
-            lineHeight: 1.75,
-            margin: "0 0 32px 0"
-          }}>
-            Investment: R1,500 per delegate. Fill in your details and our team will confirm your registration within 24 hours.
-          </p>
-
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-            {/* Two-col rows collapse to one-col on mobile */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <input type="text" placeholder="First Name" value={firstName} onChange={e => setFirstName(e.target.value)} style={inputStyle} />
-              <input type="text" placeholder="Last Name" value={lastName} onChange={e => setLastName(e.target.value)} style={inputStyle} />
-            </div>
-            <input type="text" placeholder="Job Title" value={jobTitle} onChange={e => setJobTitle(e.target.value)} style={inputStyle} />
-            <div className="flex flex-col sm:flex-row gap-4">
-              <input type="text" placeholder="Company" value={company} onChange={e => setCompany(e.target.value)} style={inputStyle} />
-              <select value={industry} onChange={e => setIndustry(e.target.value)} style={{
-                ...inputStyle,
-                appearance: "none",
-                WebkitAppearance: "none"
-              }}>
-                <option value="" disabled>Industry</option>
-                <option value="financial-services">Financial Services</option>
-                <option value="mining-energy">Mining &amp; Energy</option>
-                <option value="government-policy">Government &amp; Policy</option>
-                <option value="technology">Technology</option>
-                <option value="entrepreneurship">Entrepreneurship</option>
-                <option value="healthcare">Healthcare</option>
-                <option value="legal">Legal &amp; Professional Services</option>
-                <option value="media">Media &amp; Communications</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <input type="email" placeholder="Email Address" value={email} onChange={e => setEmail(e.target.value)} style={inputStyle} />
-            <input type="tel" placeholder="0 ..." value={phone} onChange={e => setPhone(e.target.value)} style={inputStyle} />
-            <select value={referral} onChange={e => setReferral(e.target.value)} style={{
-              ...inputStyle,
-              appearance: "none",
-              WebkitAppearance: "none"
-            }}>
-              <option value="" disabled>How did you hear about us?</option>
-              <option value="linkedin">LinkedIn</option>
-              <option value="colleague">Colleague Referral</option>
-              <option value="newsletter">Email Newsletter</option>
-              <option value="google">Google Search</option>
-              <option value="partner">Event Partner</option>
-              <option value="other">Other</option>
-            </select>
-            <textarea placeholder="Special requirements (optional)" rows={3} value={requirements} onChange={e => setRequirements(e.target.value)} style={{
-              ...inputStyle,
-              resize: "vertical"
-            }} />
-            <div className="flex items-start gap-3">
-              <input type="checkbox" id="reg-agree" checked={agreed} onChange={e => setAgreed(e.target.checked)} style={{
-                accentColor: "#FF2D87",
-                marginTop: "2px",
-                flexShrink: 0,
-                cursor: "pointer"
-              }} />
-              <label htmlFor="reg-agree" style={{
-                fontFamily: "Figtree",
-                fontSize: "12px",
-                fontWeight: 400,
-                color: "rgba(255,255,255,0.50)",
-                lineHeight: 1.6,
-                cursor: "pointer"
-              }}>
-                I agree to the EmpowaWomen Privacy Policy and Terms &amp; Conditions
-              </label>
-            </div>
-            <button type="submit" style={{
-              width: "100%",
-              height: "52px",
-              backgroundColor: "#FF2D87",
-              color: "#FFFFFF",
-              borderRadius: "999px",
-              fontFamily: "Figtree",
-              fontWeight: 500,
-              fontSize: "16px",
-              border: "none",
-              cursor: "pointer",
-              transition: "background-color 200ms ease-out",
-              marginTop: "4px"
-            }} onMouseEnter={e => {
-              (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#e0006f";
-            }} onMouseLeave={e => {
-              (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#FF2D87";
-            }}>
-              Submit Registration →
-            </button>
-            <p style={{
-              fontFamily: "Figtree",
-              fontSize: "11px",
-              fontWeight: 400,
-              color: "rgba(255,255,255,0.25)",
-              textAlign: "center",
-              margin: "12px 0 0 0"
-            }}>
-              Your information is secure and will never be shared.
-            </p>
-          </form>
-        </div>}
+            fontWeight: 500,
+            fontSize: "16px",
+            textDecoration: "none",
+            transition: "filter 200ms ease-out",
+            alignSelf: "flex-start",
+            boxShadow: "0 8px 32px rgba(255,45,135,0.25)"
+          }} 
+          onMouseEnter={e => {
+            (e.currentTarget as HTMLAnchorElement).style.filter = "brightness(1.1)";
+          }} 
+          onMouseLeave={e => {
+            (e.currentTarget as HTMLAnchorElement).style.filter = "brightness(1)";
+          }}
+        >
+          <span>Register Now on Quicket →</span>
+        </a>
       </motion.div>
 
       {/* RIGHT — Summary card */}
@@ -3001,10 +2817,7 @@ export const EmpowaWomenSummitPage: React.FC = () => {
   const registrationRef = React.useRef<HTMLDivElement>(null);
   const nextSectionRef = React.useRef<HTMLDivElement>(null);
   const scrollToRegistration = () => {
-    registrationRef.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
+    window.open("https://www.quicket.co.za/events/344315-empowawomen-leadership-summit-2026/", "_blank", "noopener,noreferrer");
   };
   const scrollToNextSection = () => {
     nextSectionRef.current?.scrollIntoView({

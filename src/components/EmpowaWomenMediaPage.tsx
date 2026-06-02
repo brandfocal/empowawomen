@@ -52,7 +52,7 @@ const BROADCAST_ITEMS: BroadcastItem[] = [{
   tagColor: "#DD6236"
 }, {
   id: "b-4",
-  image: "https://empowawomen.co.za/wp-content/uploads/2025/10/Transport-Month-TETA-Empowawomen-in-Transport-Summit---Sabelo-Mbuku.jpg",
+  image: "https://img.youtube.com/vi/65MWmkZqlGo/maxresdefault.jpg",
   title: "Transport Month | TETA Empowawomen in Transport Summit: Sabelo Mbuku",
   description: "In light of Transport Month, TETA will be hosting the Women in Transport Summit - a landmark moment for women in the sector.",
   link: "https://www.youtube.com/watch?v=65MWmkZqlGo",
@@ -87,7 +87,7 @@ const FEATURE_ARTICLES: FeatureArticle[] = [{
   tagColor: "#DD6236"
 }, {
   id: "f-4",
-  image: "https://empowawomen.co.za/wp-content/uploads/2025/10/EmpowaWomen,-TETA-to-host-transformative-summit-for-women-in-transport.jpg",
+  image: "https://biz-file.com/c/2410/756111-1200x624.jpg",
   title: "EmpowaWomen, TETA to Host Transformative Summit for Women in Transport",
   description: "EmpowaWomen, in partnership with TETA, will host the next Women in Transport Summit at the Graceland Hotel Casino in Secunda, Mpumalanga.",
   link: "https://www.bizcommunity.com/article/empowawomen-and-teta-to-host-transformative-summit-for-women-in-transport-811193a",
