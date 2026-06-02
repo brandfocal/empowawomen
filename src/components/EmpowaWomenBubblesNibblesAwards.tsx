@@ -2520,7 +2520,7 @@ const HeroSection = ({ scrollToForm }: { scrollToForm: (nominateOption?: 'Yes' |
       </motion.div>
     </div>
 
-    <style>{`
+    <style dangerouslySetInnerHTML={{ __html: `
         @keyframes grainShift {
           0%   { background-position: 0% 0%; }
           10%  { background-position: -5% -10%; }
@@ -2566,9 +2566,399 @@ const HeroSection = ({ scrollToForm }: { scrollToForm: (nominateOption?: 'Yes' |
             align-items: center !important;
           }
         }
-      `}</style>
+    ` }} />
   </section>;
 };
+
+// ─── Bubbles & Nibbles Video Gallery (Copied & Customised) ────────────────────
+const BubblesNibblesVideoSection = () => {
+  const playlist = [
+    "meAMF4aPZl4",
+    "YdrNRk5IDiM",
+    "2P_GtCkhS9Q",
+    "TQXrrRdUcac",
+    "ur-TCxziR3U",
+    "AeodFhnuUyQ",
+    "iTeO8OVZUQ0",
+    "w5p9v_9Htes",
+    "rJ3_6lnOPcI"
+  ];
+  const [currentVideoId, setCurrentVideoId] = React.useState(playlist[0]);
+  const [isPlaying, setIsPlaying] = React.useState(false);
+  const [isHoveringPlay, setIsHoveringPlay] = React.useState(false);
+  const VIDEO_HEADLINE_WORDS = ["Experience", "the", "Magic", "and", "Influence."];
+  const STATS_DATA = [{
+    id: "vs-1",
+    value: "200+",
+    label: "Exclusive Guests"
+  }, {
+    id: "vs-2",
+    value: "12",
+    label: "Awards Conferred"
+  }, {
+    id: "vs-3",
+    value: "R2.4M+",
+    label: "Sponsorship Value"
+  }, {
+    id: "vs-4",
+    value: "100%",
+    label: "Executive Focus"
+  }];
+  return <section id="nibbles-event-reels" style={{
+    backgroundColor: "#F7F6F2",
+    paddingTop: "clamp(80px,10vw,140px)",
+    paddingBottom: "clamp(80px,10vw,140px)",
+    position: "relative",
+    overflow: "hidden"
+  }}>
+      <div style={{
+      position: "absolute",
+      inset: 0,
+      pointerEvents: "none",
+      zIndex: 0,
+      opacity: 0.4,
+      backgroundImage: "radial-gradient(rgba(0,0,0,0.07) 1px, transparent 1px)",
+      backgroundSize: "28px 28px"
+    }} />
+
+      <div style={{
+      maxWidth: "1400px",
+      margin: "0 auto",
+      paddingLeft: "clamp(24px,6vw,96px)",
+      paddingRight: "clamp(24px,6vw,96px)",
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "flex-end",
+      marginBottom: "clamp(40px,5vw,64px)",
+      flexWrap: "wrap",
+      gap: "40px",
+      position: "relative",
+      zIndex: 1
+    }}>
+          <div style={{
+        maxWidth: "52%"
+      }}>
+              <div style={{
+          width: "64px",
+          height: "3px",
+          backgroundColor: "#FF2D87"
+        }} />
+              <div style={{
+          width: "24px",
+          height: "1px",
+          backgroundColor: "rgba(255,45,135,0.3)",
+          marginTop: "4px"
+        }} />
+              <span style={{
+          fontFamily: "Figtree",
+          fontSize: "9px",
+          fontWeight: 600,
+          letterSpacing: "0.28em",
+          color: "#64748b",
+          textTransform: "uppercase",
+          display: "block",
+          marginTop: "32px"
+        }}>
+                  EVENT HIGHLIGHTS &amp; REELS
+              </span>
+              <h2 style={{
+          fontFamily: "Figtree",
+          fontWeight: 300,
+          fontSize: "clamp(40px,6vw,80px)",
+          color: "#0A0A0F",
+          letterSpacing: "-0.04em",
+          lineHeight: 0.95,
+          margin: "16px 0 0 0"
+        }}>
+              {VIDEO_HEADLINE_WORDS.map((word, i) => <motion.span key={"vsw-bn-" + i} initial={{
+            opacity: 0,
+            filter: "blur(10px)",
+            y: 16
+          }} whileInView={{
+            opacity: 1,
+            filter: "blur(0px)",
+            y: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.7,
+            delay: i * 0.05,
+            ease: "easeOut"
+          }} style={{
+            display: "inline-block",
+            marginRight: "0.25em"
+          }}>
+              {word === "Magic" || word === "Influence." ? <span style={{
+              color: "#FF2D87"
+            }}>{word}</span> : word}
+          </motion.span>)}
+              </h2>
+          </div>
+
+          <div style={{
+        maxWidth: "38%",
+        alignSelf: "flex-end",
+        display: "flex",
+        flexDirection: "column",
+        gap: "0"
+      }} className="video-header-right">
+              <p style={{
+          fontFamily: "Figtree",
+          fontSize: "16px",
+          color: "#64748b",
+          lineHeight: 1.75,
+          margin: 0
+        }}>
+                  Step inside Africa's most prestigious room. Exclusive masterclasses, top-tier networking, and powerful business alliances captured live.
+              </p>
+          </div>
+      </div>
+
+      <motion.div initial={{
+      opacity: 0,
+      y: 32
+    }} whileInView={{
+      opacity: 1,
+      y: 0
+    }} viewport={{
+      once: true
+    }} transition={{
+      duration: 0.8,
+      delay: 0.3,
+      ease: "easeOut"
+    }} style={{
+      maxWidth: "1100px",
+      width: "100%",
+      marginLeft: "auto",
+      marginRight: "auto",
+      paddingLeft: "clamp(24px,6vw,96px)",
+      paddingRight: "clamp(24px,6vw,96px)",
+      position: "relative",
+      zIndex: 1
+    }}>
+          <div style={{
+        aspectRatio: "16/9",
+        position: "relative",
+        borderRadius: "24px",
+        overflow: "hidden",
+        boxShadow: "0 24px 64px rgba(0,0,0,0.15)"
+      }}>
+              {isPlaying ? <iframe src={"https://www.youtube.com/embed/" + currentVideoId + "?autoplay=1"} title="Bubbles & Nibbles highlight reel" allow="autoplay; fullscreen" style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          border: "none"
+        }} /> : <div style={{
+          position: "absolute",
+          inset: 0
+        }}>
+                  <img src={"https://img.youtube.com/vi/" + currentVideoId + "/maxresdefault.jpg"} alt="Bubbles & Nibbles highlight reel" style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover"
+          }} />
+                  <div style={{
+            position: "absolute",
+            inset: 0,
+            background: "linear-gradient(to bottom, transparent 30%, rgba(10,10,15,0.80) 100%)"
+          }} />
+                  <div style={{
+            position: "absolute",
+            inset: 0,
+            background: "linear-gradient(to right, rgba(10,10,15,0.25) 0%, transparent 30%)"
+          }} />
+                  <div style={{
+            position: "absolute",
+            top: "24px",
+            left: "24px",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "8px",
+            backgroundColor: "rgba(10,10,15,0.6)",
+            backdropFilter: "blur(8px)",
+            WebkitBackdropFilter: "blur(8px)",
+            border: "1px solid rgba(255,255,255,0.10)",
+            padding: "6px 12px",
+            borderRadius: "999px"
+          }}>
+                      <span style={{
+              width: "6px",
+              height: "6px",
+              borderRadius: "50%",
+              backgroundColor: "#FF2D87",
+              display: "inline-block",
+              flexShrink: 0
+            }} />
+                      <span style={{
+              fontFamily: "Figtree",
+              fontWeight: 600,
+              fontSize: "9px",
+              letterSpacing: "0.2em",
+              textTransform: "uppercase",
+              color: "rgba(255,255,255,0.50)"
+            }}>
+                          BUBBLES &amp; NIBBLES · EVENT GALLERY
+                      </span>
+                  </div>
+                  <div style={{
+            position: "absolute",
+            inset: 0,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
+          }} onClick={() => setIsPlaying(true)} onMouseEnter={() => setIsHoveringPlay(true)} onMouseLeave={() => setIsHoveringPlay(false)}>
+                      <div style={{
+              width: "80px",
+              height: "80px",
+              borderRadius: "50%",
+              border: isHoveringPlay ? "2px solid rgba(255,255,255,0.40)" : "2px solid rgba(255,255,255,0.15)",
+              backgroundColor: "rgba(0,0,0,0.20)",
+              backdropFilter: "blur(8px)",
+              WebkitBackdropFilter: "blur(8px)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              transition: "all 200ms ease-out",
+              transform: isHoveringPlay ? "scale(1.05)" : "scale(1)",
+              cursor: "pointer"
+            }}>
+                          <div style={{
+                width: "48px",
+                height: "48px",
+                borderRadius: "50%",
+                backgroundColor: "#FF2D87",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center"
+              }}>
+                               <svg width="16" height="16" viewBox="0 0 16 16" fill="white">
+                                  <path d="M3 2L13 8L3 14V2Z" />
+                               </svg>
+                          </div>
+                      </div>
+                  </div>
+              </div>}
+          </div>
+      </motion.div>
+
+      {/* Video Playlist */}
+      <div style={{
+      maxWidth: "1100px",
+      width: "100%",
+      marginLeft: "auto",
+      marginRight: "auto",
+      paddingLeft: "clamp(24px,6vw,96px)",
+      paddingRight: "clamp(24px,6vw,96px)",
+      marginTop: "24px",
+      display: "flex",
+      gap: "16px",
+      overflowX: "auto",
+      scrollbarWidth: "none",
+      zIndex: 1,
+      position: "relative"
+    }}>
+          {playlist.map((vid) => <div key={vid} onClick={() => {
+        setCurrentVideoId(vid);
+        setIsPlaying(true);
+      }} style={{
+        minWidth: "160px",
+        width: "25%",
+        aspectRatio: "16/9",
+        borderRadius: "12px",
+        overflow: "hidden",
+        cursor: "pointer",
+        border: currentVideoId === vid ? "2px solid #FF2D87" : "2px solid transparent",
+        transition: "all 0.2s ease",
+        position: "relative"
+      }}>
+                  <img src={"https://img.youtube.com/vi/" + vid + "/mqdefault.jpg"} alt="thumbnail" style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          opacity: currentVideoId === vid ? 1 : 0.6
+        }} />
+                  {currentVideoId !== vid && <div style={{
+          position: "absolute",
+          inset: 0,
+          backgroundColor: "rgba(0,0,0,0.2)"
+        }} />}
+              </div>)}
+      </div>
+
+      <div style={{
+      maxWidth: "1100px",
+      margin: "48px auto 0 auto",
+      paddingLeft: "clamp(24px,6vw,96px)",
+      paddingRight: "clamp(24px,6vw,96px)",
+      position: "relative",
+      zIndex: 1
+    }}>
+          <div style={{
+        borderTop: "1px solid rgba(0,0,0,0.07)",
+        borderBottom: "1px solid rgba(0,0,0,0.07)",
+        paddingTop: "32px",
+        paddingBottom: "32px",
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "flex-start"
+      }} className="video-stats-strip">
+              {STATS_DATA.map((stat, idx) => <motion.div key={stat.id} initial={{
+          opacity: 0,
+          y: 16
+        }} whileInView={{
+          opacity: 1,
+          y: 0
+        }} viewport={{
+          once: true
+        }} transition={{
+          duration: 0.6,
+          delay: idx * 0.08,
+          ease: "easeOut"
+        }} style={{
+          flex: 1,
+          paddingLeft: idx === 0 ? "0" : "32px",
+          paddingRight: "32px",
+          borderLeft: idx === 0 ? "none" : "1px solid rgba(0,0,0,0.07)",
+          display: "flex",
+          flexDirection: "column"
+        }}>
+                  <span style={{
+            fontFamily: "Figtree",
+            fontWeight: 200,
+            fontSize: "clamp(36px,4vw,52px)",
+            color: "#0A0A0F",
+            letterSpacing: "-0.03em",
+            lineHeight: 1
+          }}>
+                      {stat.value}
+                  </span>
+                  <span style={{
+            fontFamily: "Figtree",
+            fontSize: "12px",
+            color: "#64748b",
+            marginTop: "8px",
+            display: "block"
+          }}>
+                      {stat.label}
+                  </span>
+              </motion.div>)}
+          </div>
+      </div>
+
+      <style dangerouslySetInnerHTML={{ __html: `
+        @media (max-width: 767px) {
+          .video-header-right { max-width: 100% !important; }
+          .video-stats-strip { flex-wrap: wrap !important; gap: 24px 0 !important; }
+          .video-stats-strip > div { min-width: 50% !important; border-left: none !important; padding-left: 0 !important; border-top: 1px solid rgba(0,0,0,0.07) !important; padding-top: 20px !important; }
+          .video-stats-strip > div:nth-child(1), .video-stats-strip > div:nth-child(2) { border-top: none !important; padding-top: 0 !important; }
+        }
+      ` }} />
+  </section>;
+};
+
 export const LeadershipAwardsGala = () => {
   const formRef = React.useRef<HTMLDivElement>(null);
   const [initialNominate, setInitialNominate] = React.useState<string>('');
@@ -2596,6 +2986,7 @@ export const LeadershipAwardsGala = () => {
     <ExperienceStrategy />
     <GalaTimeline />
     <AwardCategories />
+    <BubblesNibblesVideoSection />
     <CTASection scrollToForm={scrollToForm} />
     <InvitationFormSection ref={formRef} initialNominate={initialNominate} />
   </main>;
