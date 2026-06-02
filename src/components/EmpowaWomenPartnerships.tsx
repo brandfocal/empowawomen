@@ -2,7 +2,8 @@ import * as React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { UniversalHero } from "./UniversalHero";
-import { ArrowRight, Check, ChevronDown, ChevronUp, Mail, Building2, Instagram, Linkedin, Twitter, Youtube, Users, TrendingUp, Radio, Star } from "lucide-react";
+import { ArrowRight, Check, ChevronDown, ChevronUp, Mail, Building2, Users, TrendingUp, Radio, Star } from "lucide-react";
+import { Instagram, Linkedin, Twitter, Youtube } from "./BrandIcons";
 
 // Assets
 const logoMark = "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80";

@@ -1,7 +1,8 @@
 import * as React from "react";
 import { Link, useLocation, Outlet } from "react-router-dom";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { ChevronDown, ArrowRight, Instagram, Linkedin, Twitter, Youtube, Menu, X } from "lucide-react";
+import { ChevronDown, ArrowRight, Menu, X } from "lucide-react";
+import { Instagram, Linkedin, Twitter, Youtube } from "./BrandIcons";
 
 interface NavLinkItem {
     id: string;

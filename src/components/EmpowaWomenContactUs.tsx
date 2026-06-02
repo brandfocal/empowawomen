@@ -2,7 +2,8 @@ import * as React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { motion, AnimatePresence, useScroll } from "framer-motion";
 import { UniversalHero } from "./UniversalHero";
-import { Briefcase, Mic, Ticket, GraduationCap, MapPin, Phone, Clock, Mail, Navigation, ChevronRight, ChevronDown, Menu, X, ArrowRight, Camera, Link, MessageSquare, Video, Send, Zap, Calendar, BookOpen, Instagram, Linkedin, Twitter, Youtube } from "lucide-react";
+import { Briefcase, Mic, Ticket, GraduationCap, MapPin, Phone, Clock, Mail, Navigation, ChevronRight, ChevronDown, Menu, X, ArrowRight, Camera, Link, MessageSquare, Video, Send, Zap, Calendar, BookOpen } from "lucide-react";
+import { Instagram, Linkedin, Twitter, Youtube } from "./BrandIcons";
 import { cn } from "../lib/utils";
 
 // ─── Types ────────────────────────────────────────────────────────────────────

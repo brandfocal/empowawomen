@@ -2,7 +2,8 @@ import * as React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform, useInView } from 'framer-motion';
 import { UniversalHero } from './UniversalHero';
-import { ChevronRight, Menu, X, Cpu, Lightbulb, Users, Heart, Camera, Briefcase, Rocket, Globe, ArrowRight, ChevronDown, Link, MessageSquare, Video, CheckCircle, Star, Instagram, Linkedin, Twitter, Youtube } from 'lucide-react';
+import { ChevronRight, Menu, X, Cpu, Lightbulb, Users, Heart, Camera, Briefcase, Rocket, Globe, ArrowRight, ChevronDown, Link, MessageSquare, Video, CheckCircle, Star } from 'lucide-react';
+import { Instagram, Linkedin, Twitter, Youtube } from "./BrandIcons";
 import { cn } from '../lib/utils';
 
 // Image Assets

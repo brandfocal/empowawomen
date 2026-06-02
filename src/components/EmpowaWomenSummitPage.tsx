@@ -1,6 +1,7 @@
 import * as React from "react";
 import { motion, useScroll, useTransform, useSpring, AnimatePresence, useMotionValue, useInView, animate } from "framer-motion";
-import { ArrowRight, Check, Menu, X, Linkedin, Instagram, Shield } from "lucide-react";
+import { ArrowRight, Check, Menu, X, Shield } from "lucide-react";
+import { Instagram, Linkedin } from "./BrandIcons";
 import "./EmpowaWomenSummitPage.css";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
