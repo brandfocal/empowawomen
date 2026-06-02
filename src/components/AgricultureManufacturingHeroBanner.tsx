@@ -41,8 +41,9 @@ export const AgricultureManufacturingHeroBanner: React.FC<IndustrialHeroBannerPr
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center",
-    paddingTop: "68px"
+    justifyContent: "flex-start",
+    paddingTop: "68px",
+    paddingBottom: "40px"
   }}>
       {/* Grain noise overlay */}
       <div style={{
@@ -114,11 +115,13 @@ export const AgricultureManufacturingHeroBanner: React.FC<IndustrialHeroBannerPr
       maxWidth: "1400px",
       paddingLeft: "clamp(20px, 5vw, 36px)",
       paddingRight: "clamp(20px, 5vw, 36px)",
-      paddingTop: "clamp(60px, 10vw, 128px)",
-      paddingBottom: "48px",
+      paddingTop: "clamp(24px, 5vw, 64px)",
+      paddingBottom: "24px",
       display: "flex",
       flexDirection: "column",
-      alignItems: "center"
+      alignItems: "center",
+      marginTop: "auto",
+      marginBottom: "auto"
     }}>
         {/* Pre-heading pill */}
         <motion.div initial={{

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Link, useLocation, Outlet } from "react-router-dom";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { ChevronDown, ArrowRight, Camera, MessageSquare, Video, Link as LinkIcon, Menu, X } from "lucide-react";
+import { ChevronDown, ArrowRight, Instagram, Linkedin, Twitter, Youtube, Menu, X } from "lucide-react";
 
 interface NavLinkItem {
     id: string;
@@ -68,8 +68,8 @@ const FOOTER_SECTION_ROWS = [{
     id: "row-legal",
     label: "Legal",
     links: [
-        { id: "fp-11", label: "Privacy Policy", href: "#" },
-        { id: "fp-12", label: "Terms of Service", href: "#" }
+        { id: "fp-11", label: "Privacy Policy", href: "/privacy" },
+        { id: "fp-12", label: "Terms of Service", href: "/terms" }
     ]
 }];
 
@@ -507,7 +507,7 @@ export const FooterCTA = () => {
                             </p>
                         </div>
                         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                            {[{ id: "s-instagram", label: "Instagram", Icon: Camera }, { id: "s-linkedin", label: "LinkedIn", Icon: LinkIcon }, { id: "s-x", label: "X", Icon: MessageSquare }, { id: "s-youtube", label: "YouTube", Icon: Video }].map(({ id, label, Icon }) => <a key={id} href="#" aria-label={label} style={{ width: "40px", height: "40px", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "50%", backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.10)", color: "#FFFFFF", textDecoration: "none", transition: "background-color 300ms, color 300ms" }} onMouseEnter={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.backgroundColor = "#FFFFFF"; el.style.color = "#0A0A0F"; }} onMouseLeave={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.backgroundColor = "rgba(255,255,255,0.05)"; el.style.color = "#FFFFFF"; }}>
+                            {[{ id: "s-instagram", label: "Instagram", Icon: Instagram }, { id: "s-linkedin", label: "LinkedIn", Icon: Linkedin }, { id: "s-x", label: "X", Icon: Twitter }, { id: "s-youtube", label: "YouTube", Icon: Youtube }].map(({ id, label, Icon }) => <a key={id} href="#" aria-label={label} style={{ width: "40px", height: "40px", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "50%", backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.10)", color: "#FFFFFF", textDecoration: "none", transition: "background-color 300ms, color 300ms" }} onMouseEnter={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.backgroundColor = "#FFFFFF"; el.style.color = "#0A0A0F"; }} onMouseLeave={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.backgroundColor = "rgba(255,255,255,0.05)"; el.style.color = "#FFFFFF"; }}>
                                 <Icon size={18} />
                             </a>)}
                         </div>

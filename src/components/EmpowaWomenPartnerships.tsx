@@ -2,7 +2,7 @@ import * as React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { UniversalHero } from "./UniversalHero";
-import { ArrowRight, Check, ChevronDown, ChevronUp, Mail, Building2, Camera, Link, MessageSquare, Video, Users, TrendingUp, Radio, Star } from "lucide-react";
+import { ArrowRight, Check, ChevronDown, ChevronUp, Mail, Building2, Instagram, Linkedin, Twitter, Youtube, Users, TrendingUp, Radio, Star } from "lucide-react";
 
 // Assets
 const logoMark = "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80";
@@ -192,11 +192,11 @@ const FOOTER_SECTION_ROWS: SectionLinkRow[] = [{
     links: [{
         id: "fp-11",
         label: "Privacy Policy",
-        href: "#"
+        href: "/privacy"
     }, {
         id: "fp-12",
         label: "Terms",
-        href: "#"
+        href: "/terms"
     }, {
         id: "fp-13",
         label: "FAQ",
@@ -207,19 +207,19 @@ const FOOTER_HEADLINE_WORDS = ["Never", "miss", "what", "moves", "next."];
 const SOCIAL_LINKS = [{
     id: "s-instagram",
     label: "Instagram",
-    Icon: Camera
+    Icon: Instagram
 }, {
     id: "s-linkedin",
     label: "LinkedIn",
-    Icon: Link
+    Icon: Linkedin
 }, {
     id: "s-x",
     label: "X",
-    Icon: MessageSquare
+    Icon: Twitter
 }, {
-    id: "s-Video",
-    label: "Video",
-    Icon: Video
+    id: "s-youtube",
+    label: "YouTube",
+    Icon: Youtube
 }];
 const SENIORITY_BARS: SeniorityBar[] = [{
     id: "bar-1",

@@ -66,9 +66,9 @@ export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     paddingTop: "68px",
-    paddingBottom: "80px"
+    paddingBottom: "40px"
   }}>
     {/* Grain noise overlay */}
     <div style={{
@@ -141,11 +141,13 @@ export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
       maxWidth: "1400px",
       paddingLeft: "clamp(20px, 5vw, 36px)",
       paddingRight: "clamp(20px, 5vw, 36px)",
-      paddingTop: "clamp(60px, 10vw, 128px)",
-      paddingBottom: "48px",
+      paddingTop: "clamp(24px, 5vw, 64px)",
+      paddingBottom: "24px",
       display: "flex",
       flexDirection: "column",
-      alignItems: "center"
+      alignItems: "center",
+      marginTop: "auto",
+      marginBottom: "auto"
     }}>
       <motion.div initial={{
         y: 90
@@ -165,7 +167,7 @@ export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          marginBottom: "48px"
+          marginBottom: "0px"
         }}>
           {/* Pre-heading pill */}
           <motion.div initial={{

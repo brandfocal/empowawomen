@@ -41,10 +41,10 @@ export const CapitalLeadershipHeroBanner: React.FC<CapitalLeadershipHeroBannerPr
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     backgroundColor: "#0A0A0F",
     paddingTop: "68px",
-    paddingBottom: "80px"
+    paddingBottom: "40px"
   }}>
     {/* Grain overlay */}
     <div style={{
@@ -107,11 +107,13 @@ export const CapitalLeadershipHeroBanner: React.FC<CapitalLeadershipHeroBannerPr
       maxWidth: "1400px",
       paddingLeft: "clamp(16px, 5vw, 36px)",
       paddingRight: "clamp(16px, 5vw, 36px)",
-      paddingTop: "clamp(60px, 10vw, 128px)",
-      paddingBottom: "48px",
+      paddingTop: "clamp(24px, 5vw, 64px)",
+      paddingBottom: "24px",
       display: "flex",
       flexDirection: "column",
-      alignItems: "center"
+      alignItems: "center",
+      marginTop: "auto",
+      marginBottom: "auto"
     }}>
       <motion.div initial={{
         y: 90
@@ -131,7 +133,7 @@ export const CapitalLeadershipHeroBanner: React.FC<CapitalLeadershipHeroBannerPr
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          marginBottom: "48px"
+          marginBottom: "0px"
         }}>
           {/* Eyebrow */}
           <motion.div initial={{

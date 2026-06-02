@@ -41,9 +41,9 @@ export const UniversalHero: React.FC<UniversalHeroProps> = ({
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            justifyContent: "flex-end", // Push content down similar to other pages
+            justifyContent: "flex-start",
             paddingTop: "68px",
-            paddingBottom: "80px" // Keep enough padding for bottom items
+            paddingBottom: "40px"
         }}>
             {/* Optional Grain Overlay (used in home) */}
             <div style={{
@@ -90,7 +90,8 @@ export const UniversalHero: React.FC<UniversalHeroProps> = ({
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                marginTop: "auto"
+                marginTop: "auto",
+                marginBottom: "auto"
             }}>
                 <motion.div initial={{ y: 90 }} animate={{ y: 0 }} transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }} style={{
                     width: "100%", display: "flex", flexDirection: "column", alignItems: "center"

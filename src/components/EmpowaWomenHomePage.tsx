@@ -353,7 +353,7 @@ const HeroSection = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "flex-start",
         paddingTop: "68px",
         paddingBottom: "40px"
     }}>
@@ -420,11 +420,13 @@ const HeroSection = () => {
             maxWidth: "1400px",
             paddingLeft: "clamp(24px, 3.75vw, 36px)",
             paddingRight: "clamp(24px, 3.75vw, 36px)",
-            paddingTop: "80px",
-            paddingBottom: "32px",
+            paddingTop: "clamp(24px, 5vw, 64px)",
+            paddingBottom: "24px",
             display: "flex",
             flexDirection: "column",
-            alignItems: "center"
+            alignItems: "center",
+            marginTop: "auto",
+            marginBottom: "auto"
         }}>
             <motion.div initial={{
                 y: 90
@@ -444,7 +446,7 @@ const HeroSection = () => {
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
-                    marginBottom: "32px"
+                    marginBottom: "0px"
                 }}>
                     {/* Pre-heading pill */}
                     <motion.div initial={{

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform, useInView } from 'framer-motion';
 import { UniversalHero } from './UniversalHero';
-import { ChevronRight, Menu, X, Cpu, Lightbulb, Users, Heart, Camera, Briefcase, Rocket, Globe, ArrowRight, ChevronDown, Link, MessageSquare, Video, CheckCircle, Star } from 'lucide-react';
+import { ChevronRight, Menu, X, Cpu, Lightbulb, Users, Heart, Camera, Briefcase, Rocket, Globe, ArrowRight, ChevronDown, Link, MessageSquare, Video, CheckCircle, Star, Instagram, Linkedin, Twitter, Youtube } from 'lucide-react';
 import { cn } from '../lib/utils';
 
 // Image Assets
@@ -184,11 +184,11 @@ const FOOTER_SECTION_ROWS: SectionLinkRow[] = [{
     links: [{
         id: 'fp-11',
         label: 'Privacy Policy',
-        href: '#'
+        href: '/privacy'
     }, {
         id: 'fp-12',
         label: 'Terms',
-        href: '#'
+        href: '/terms'
     }, {
         id: 'fp-13',
         label: 'FAQ',
@@ -556,8 +556,8 @@ const HeroSection = () => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'flex-end',
-        paddingBottom: '80px',
+        justifyContent: 'flex-start',
+        paddingBottom: '40px',
         paddingTop: '68px'
     }}>
         <div style={{ position: 'absolute', inset: 0, zIndex: 0, overflow: 'hidden', pointerEvents: 'none' }}>
@@ -604,9 +604,13 @@ const HeroSection = () => {
             maxWidth: '1400px',
             paddingLeft: 'clamp(24px, 6vw, 96px)',
             paddingRight: 'clamp(24px, 6vw, 96px)',
+            paddingTop: 'clamp(24px, 5vw, 64px)',
+            paddingBottom: '24px',
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center'
+            alignItems: 'center',
+            marginTop: 'auto',
+            marginBottom: 'auto'
         }}>
             <motion.div initial={{
                 y: 90
@@ -896,6 +900,17 @@ const JurisdictionImpact = () => {
                 textAlign: 'center',
                 marginBottom: '56px'
             }}>
+                <img
+                    src="/empowaher-logo2.jpg"
+                    alt="EmpowaHER Logo"
+                    style={{
+                        height: 'clamp(60px, 8vw, 90px)',
+                        width: 'auto',
+                        objectFit: 'contain',
+                        marginBottom: '24px',
+                        mixBlendMode: 'multiply'
+                    }}
+                />
                 <h2 style={{
                     fontFamily: 'Figtree',
                     fontWeight: 300,
@@ -2184,19 +2199,19 @@ const FooterCTA = () => {
                             {[{
                                 id: 's-instagram',
                                 label: 'Instagram',
-                                Icon: Camera
+                                Icon: Instagram
                             }, {
                                 id: 's-linkedin',
                                 label: 'LinkedIn',
-                                Icon: Link
+                                Icon: Linkedin
                             }, {
                                 id: 's-x',
                                 label: 'X',
-                                Icon: MessageSquare
+                                Icon: Twitter
                             }, {
-                                id: 's-Video',
-                                label: 'Video',
-                                Icon: Video
+                                id: 's-youtube',
+                                label: 'YouTube',
+                                Icon: Youtube
                             }].map(({
                                 id,
                                 label,

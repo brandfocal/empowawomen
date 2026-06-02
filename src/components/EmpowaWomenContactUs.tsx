@@ -2,7 +2,7 @@ import * as React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { motion, AnimatePresence, useScroll } from "framer-motion";
 import { UniversalHero } from "./UniversalHero";
-import { Briefcase, Mic, Ticket, GraduationCap, MapPin, Phone, Clock, Mail, Navigation, ChevronRight, ChevronDown, Menu, X, ArrowRight, Camera, Link, MessageSquare, Video, Send, Zap, Calendar, BookOpen } from "lucide-react";
+import { Briefcase, Mic, Ticket, GraduationCap, MapPin, Phone, Clock, Mail, Navigation, ChevronRight, ChevronDown, Menu, X, ArrowRight, Camera, Link, MessageSquare, Video, Send, Zap, Calendar, BookOpen, Instagram, Linkedin, Twitter, Youtube } from "lucide-react";
 import { cn } from "../lib/utils";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -275,11 +275,11 @@ const FOOTER_SECTION_ROWS: SectionLinkRow[] = [{
     links: [{
         id: "fp-11",
         label: "Privacy Policy",
-        href: "#"
+        href: "/privacy"
     }, {
         id: "fp-12",
         label: "Terms",
-        href: "#"
+        href: "/terms"
     }, {
         id: "fp-13",
         label: "FAQ",
@@ -289,19 +289,19 @@ const FOOTER_SECTION_ROWS: SectionLinkRow[] = [{
 const SOCIAL_ITEMS: SocialItem[] = [{
     id: "s-instagram",
     label: "Instagram",
-    Icon: Camera
+    Icon: Instagram
 }, {
     id: "s-linkedin",
     label: "LinkedIn",
-    Icon: Link
+    Icon: Linkedin
 }, {
     id: "s-x",
     label: "X",
-    Icon: MessageSquare
+    Icon: Twitter
 }, {
-    id: "s-Video",
-    label: "Video",
-    Icon: Video
+    id: "s-youtube",
+    label: "YouTube",
+    Icon: Youtube
 }];
 const FOOTER_HEADLINE_WORDS = ["Never", "miss", "what", "moves", "next."];
 const HERO_WORDS = ["Join", "the", "Room", "Shaping", "Africa\u2019s", "Economic", "Destiny."];

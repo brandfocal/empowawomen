@@ -1,6 +1,6 @@
 import * as React from "react";
 import { motion, useScroll, useTransform, useSpring, AnimatePresence, useMotionValue, useInView, animate } from "framer-motion";
-import { ArrowRight, Check, Menu, X, Link, Camera, Shield } from "lucide-react";
+import { ArrowRight, Check, Menu, X, Linkedin, Instagram, Shield } from "lucide-react";
 import "./EmpowaWomenSummitPage.css";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -267,11 +267,11 @@ const AUDIENCE_STATS: AudienceStatItem[] = [{
 const SOCIAL_ICONS: SocialItem[] = [{
   id: "si-linkedin",
   label: "LinkedIn",
-  Icon: Link
+  Icon: Linkedin
 }, {
   id: "si-instagram",
   label: "Instagram",
-  Icon: Camera
+  Icon: Instagram
 }];
 const REGISTRATION_DETAILS: RegistrationDetail[] = [{
   id: "rd-1",
@@ -689,10 +689,10 @@ const HeroSection: React.FC<{
       scrollY
     } = useScroll();
     const bgY = useTransform(scrollY, [0, 600], [0, 240]);
-    return <section ref={sectionRef as React.RefObject<HTMLElement>} className="relative w-full flex flex-col items-center justify-end overflow-hidden" style={{
+    return <section ref={sectionRef as React.RefObject<HTMLElement>} className="relative w-full flex flex-col items-center justify-start overflow-hidden" style={{
       minHeight: "100vh",
       backgroundColor: "#0A0A0F",
-      paddingBottom: "clamp(48px, 8vh, 80px)",
+      paddingBottom: "40px",
       zIndex: 1
     }}>
       {/* Ken Burns + Parallax background */}
@@ -736,7 +736,10 @@ const HeroSection: React.FC<{
         zIndex: 10,
         maxWidth: "1400px",
         margin: "0 auto",
-        paddingTop: "140px"
+        paddingTop: "clamp(24px, 5vw, 64px)",
+        paddingBottom: "24px",
+        marginTop: "auto",
+        marginBottom: "auto"
       }}>
         <motion.div initial={{
           y: 90

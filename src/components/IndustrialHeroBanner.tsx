@@ -57,9 +57,9 @@ export const IndustrialHeroBanner: React.FC = () => {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     paddingTop: "68px",
-    paddingBottom: "clamp(48px, 8vw, 80px)"
+    paddingBottom: "40px"
   }}>
       {/* Grain noise overlay */}
       <div aria-hidden="true" style={{
@@ -122,11 +122,13 @@ export const IndustrialHeroBanner: React.FC = () => {
         maxWidth: "1400px",
         paddingLeft: "clamp(16px, 5vw, 36px)",
         paddingRight: "clamp(16px, 5vw, 36px)",
-        paddingTop: "clamp(48px, 8vw, 128px)",
-        paddingBottom: "clamp(32px, 5vw, 48px)",
+        paddingTop: "clamp(24px, 5vw, 64px)",
+        paddingBottom: "24px",
         display: "flex",
         flexDirection: "column",
-        alignItems: "center"
+        alignItems: "center",
+        marginTop: "auto",
+        marginBottom: "auto"
       }}>
         <motion.div initial={{
           opacity: 0,
@@ -148,7 +150,7 @@ export const IndustrialHeroBanner: React.FC = () => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            marginBottom: "clamp(32px, 5vw, 48px)"
+            marginBottom: "0px"
           }}>
             {/* Pre-heading pill */}
             <motion.div initial={{

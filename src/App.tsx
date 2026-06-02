@@ -17,6 +17,8 @@ import { AgricultureManufacturingPillar } from './components/EmpowaWomenAgricult
 import { CapitalLeadershipPillar } from './components/EmpowaWomenCapitalLeadershipPillar';
 import { MediaPage } from './components/EmpowaWomenMediaPage';
 import { EmpowaWomenSummitPage } from './components/EmpowaWomenSummitPage';
+import { PrivacyPage } from './components/EmpowaWomenPrivacyPage';
+import { TermsPage } from './components/EmpowaWomenTermsPage';
 import './App.css';
 
 class ErrorBoundary extends Component<{children: ReactNode}, {hasError: boolean, error: Error | null}> {
@@ -61,6 +63,8 @@ function App() {
             <Route path="capital-leadership" element={<CapitalLeadershipPillar />} />
             <Route path="media" element={<MediaPage />} />
             <Route path="summit" element={<EmpowaWomenSummitPage />} />
+            <Route path="privacy" element={<PrivacyPage />} />
+            <Route path="terms" element={<TermsPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
