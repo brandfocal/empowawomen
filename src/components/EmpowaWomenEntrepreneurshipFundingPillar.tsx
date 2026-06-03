@@ -1767,9 +1767,7 @@ export const EntrepreneurshipFundingPillar: React.FC = () => {
       style={{
         width: "100%",
         backgroundColor: BG_DARK,
-        color: "#FFFFFF",
-        minHeight: "100vh",
-        overflowX: "hidden"
+        color: "#FFFFFF"
       }}
     >
       <main style={{ width: "100%" }}>
