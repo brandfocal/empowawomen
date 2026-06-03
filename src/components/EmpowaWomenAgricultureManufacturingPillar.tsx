@@ -1,703 +1,1112 @@
 import * as React from "react";
-import { motion } from "framer-motion";
-import { ShoppingBag, Building2, Zap, ArrowRight } from "lucide-react";
-import { AgricultureManufacturingHeroBanner } from "./AgricultureManufacturingHeroBanner";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { Leaf, Sprout, Globe, Building2, Coins, Cpu, ArrowRight, Tractor, Target } from "lucide-react";
 import { ROIMetricBlock } from "./ROIMetricBlock";
+import { AgriDelegateRegistrationSection } from "./AgriDelegateRegistrationSection";
 
-interface FocusTrack {
+// ─── Types ────────────────────────────────────────────────────────────────────
+interface FocusArea {
   id: string;
-  number: string;
-  numberColor: string;
+  icon: React.ElementType;
+  title: string;
   accentColor: string;
-  title: string;
-  content: string;
-  image: string;
-  icon: React.ReactNode;
-  tagLabel: string;
 }
-
-interface ROIBlock {
+interface ROIMetric {
+  label: string;
+  value: string;
+  description: string;
+}
+interface ProgrammeSession {
   id: string;
+  time: string;
+  format: string;
   title: string;
-  icon: "trend" | "target" | "chart" | "users";
-  metrics: {
-    label: string;
-    value: string;
-    description: string;
-  }[];
+  subtitle: string;
+  accentColor: string;
+  isLunch?: boolean;
+  sessionNumber: string;
 }
 
-const FOCUS_TRACKS: FocusTrack[] = [{
-  id: "track-1",
-  number: "01",
-  numberColor: "#FD5732",
-  accentColor: "#FD5732",
-  tagLabel: "Manufacturing & Logistics",
-  title: "Smart Manufacturing & Wholesale Logistics",
-  content: "Operational efficiency tracking, localisation strategies, supply chain resilience, e-commerce transformation, and export competitiveness parameters. We focus on digitising the factory floor and optimising the path from production to global market delivery.",
-  image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200",
-  icon: <Building2 size={20} />
+// ─── Constants & Data ─────────────────────────────────────────────────────────
+const FOCUS_AREAS: FocusArea[] = [{
+  id: "fa-1",
+  icon: Cpu,
+  title: "Agri-Tech",
+  accentColor: "#00B4A6"
 }, {
-  id: "track-2",
-  number: "02",
-  numberColor: "#DD6236",
-  accentColor: "#DD6236",
-  tagLabel: "Consumer & Lifestyle Markets",
-  title: "Beauty, Fashion, Health & Wellness Economy",
-  content: "Reshaping consumer behavior through personal care innovation, luxury retail partnerships, wellness technology tracking, and mental health corporate wellness systems. Tapping into the multi-billion dollar African lifestyle market through premium branding.",
-  image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=1200",
-  icon: <ShoppingBag size={20} />
+  id: "fa-2",
+  icon: Leaf,
+  title: "Climate-Smart Farming",
+  accentColor: "#00B4A6"
+}, {
+  id: "fa-3",
+  icon: Tractor,
+  title: "Agro-Processing",
+  accentColor: "#D4AF37"
+}, {
+  id: "fa-4",
+  icon: Sprout,
+  title: "Food Innovation",
+  accentColor: "#00B4A6"
+}, {
+  id: "fa-5",
+  icon: Coins,
+  title: "Agricultural Funding",
+  accentColor: "#FF2D87"
+}, {
+  id: "fa-6",
+  icon: Building2,
+  title: "Rural Economies",
+  accentColor: "#D4AF37"
+}, {
+  id: "fa-7",
+  icon: Target,
+  title: "Women in Agribusiness",
+  accentColor: "#FF2D87"
+}, {
+  id: "fa-8",
+  icon: Globe,
+  title: "Agricultural Trade & Export Markets",
+  accentColor: "#D4AF37"
+}];
+const ROI_METRICS: ROIMetric[] = [{
+  label: "Agricultural Investment Access",
+  value: "65%+",
+  description: "Projected growth in capital allocation for women-led agricultural projects."
+}, {
+  label: "Agribusiness Partnerships",
+  value: "90+",
+  description: "New strategic enterprise connections established through the Stage ecosystem."
+}, {
+  label: "Agri-Tech Innovation Exposure",
+  value: "Tier 1",
+  description: "Exclusive access to top-tier digital farming solutions and processing technologies."
+}, {
+  label: "Export & Trade Opportunities",
+  value: "R12B+",
+  description: "Identified market potential within regional and international agricultural channels."
+}];
+const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
+  id: "ps-1",
+  time: "11:00",
+  format: "OPENING KEYNOTE™",
+  title: "Women Must Lead the Future of Food Security, Sustainability & Agricultural Innovation",
+  subtitle: "Who Will Feed, Innovate, Industrialise & Sustain Africa's Future Economy?",
+  accentColor: "#FF2D87",
+  sessionNumber: "01"
+}, {
+  id: "ps-2",
+  time: "11:20",
+  format: "EXECUTIVE MASTERCLASS™",
+  title: "Agri-Tech, Digital Farming & Future Food Systems™",
+  subtitle: "Technology Will Define the Next Era of Agricultural Competitiveness.",
+  accentColor: "#D4AF37",
+  sessionNumber: "02"
+}, {
+  id: "ps-3",
+  time: "12:00",
+  format: "HIGH-IMPACT PANEL™",
+  title: "Women, Agribusiness & the Future of Food Security™",
+  subtitle: "The Future of Agriculture Will Be Defined by Inclusive Economic Participation.",
+  accentColor: "#00B4A6",
+  sessionNumber: "03"
+}, {
+  id: "ps-4",
+  time: "12:50",
+  format: "NETWORKING LUNCH™",
+  title: "Cultivating Partnerships, Investment & Sustainable Growth™",
+  subtitle: "Which Strategic Relationships Will Shape Your Next Growth Opportunity?",
+  accentColor: "#00B4A6",
+  sessionNumber: "04",
+  isLunch: true
+}, {
+  id: "ps-5",
+  time: "13:20",
+  format: "FIRECHAT™",
+  title: "Agricultural Funding, Market Access & Women-Led Enterprises™",
+  subtitle: "Agriculture Must Move Beyond Survival and Into Scalable Commercial Growth.",
+  accentColor: "#FF2D87",
+  sessionNumber: "05"
+}, {
+  id: "ps-6",
+  time: "14:00",
+  format: "STRATEGIC WORKSHOP™",
+  title: "Climate-Smart Agriculture & Sustainable Food Systems™",
+  subtitle: "Sustainability Will Define the Future of Agriculture & Food Security.",
+  accentColor: "#00B4A6",
+  sessionNumber: "06"
+}, {
+  id: "ps-7",
+  time: "14:40",
+  format: "HIGH-IMPACT INDUSTRY PANEL™",
+  title: "Agro-Processing, Retail & Food Innovation™",
+  subtitle: "The Greatest Value in Agriculture Will Belong to Those Who Control Processing, Distribution & Consumer Markets.",
+  accentColor: "#D4AF37",
+  sessionNumber: "07"
+}, {
+  id: "ps-8",
+  time: "15:20",
+  format: "FUTURE ECONOMY CONVERSATION™",
+  title: "The Future of African Agriculture & Women-Led Economic Transformation™",
+  subtitle: "Food Systems, Innovation & Women Leadership Will Shape Africa's Economic Future.",
+  accentColor: "#FF2D87",
+  sessionNumber: "08"
+}, {
+  id: "ps-9",
+  time: "15:50",
+  format: "CLOSING KEYNOTE™",
+  title: "The Future of Food Security Will Be Led by Women Who Build, Innovate & Scale",
+  subtitle: "Will You Be One of the Women Defining Africa's Agricultural Future?",
+  accentColor: "#00B4A6",
+  sessionNumber: "09"
+}];
+const CTA_HEADLINE_WORDS = ["Build,", "Africa's,", "Food,", "Future,", "Now."];
+const PROGRAMME_STATS = [{
+  id: "stat-1",
+  label: "9 Sessions"
+}, {
+  id: "stat-2",
+  label: "11:00 Start"
+}, {
+  id: "stat-3",
+  label: "16:00 Close"
 }];
 
-const ROI_BLOCKS: ROIBlock[] = [{
-  id: "roi-1",
-  title: "Consumer Brand Scaling Intelligence",
-  icon: "trend",
-  metrics: [{
-    label: "Market Penetration",
-    value: "+42%",
-    description: "Expansion across regional trade blocs and pan-African consumer segments."
-  }, {
-    label: "Brand Equity",
-    value: "High",
-    description: "Premium positioning and commercialisation intelligence for local brands."
-  }]
-}, {
-  id: "roi-2",
-  title: "Advanced Distribution Loop Setups",
-  icon: "chart",
-  metrics: [{
-    label: "Supply Velocity",
-    value: "3.5x",
-    description: "Reduced lead times through integrated distribution loop setups."
-  }, {
-    label: "Logistics Efficiency",
-    value: "98%",
-    description: "Optimized last-mile delivery and cold-chain resilience."
-  }]
-}, {
-  id: "roi-3",
-  title: "Cross-Industry Retail Partnerships",
-  icon: "users",
-  metrics: [{
-    label: "Cross-Industry Alliances",
-    value: "12+",
-    description: "Strategic alliances between luxury retail and wellness technology."
-  }, {
-    label: "Partner Value",
-    value: "Premium",
-    description: "Tier-1 commercial visibility and co-investment frameworks."
-  }]
-}];
+// ─── Sub-components ────────────────────────────────────────────────────────────
 
-export const AgricultureManufacturingPillar: React.FC = () => {
-  return <div style={{
+const SectionLabel: React.FC<{
+  children: React.ReactNode;
+  centered?: boolean;
+}> = ({
+  children,
+  centered
+}) => <motion.div initial={{
+  opacity: 0,
+  x: centered ? 0 : -20,
+  y: centered ? 10 : 0
+}} whileInView={{
+  opacity: 1,
+  x: 0,
+  y: 0
+}} viewport={{
+  once: true
+}} style={{
+  fontFamily: "Figtree",
+  fontSize: "10px",
+  fontWeight: 600,
+  letterSpacing: "0.14em",
+  textTransform: "uppercase",
+  color: "#FF2D87",
+  margin: "0 0 16px 0",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: centered ? "center" : "flex-start",
+  gap: "10px"
+}}>
+    <span style={{
+    display: "inline-block",
+    width: "24px",
+    height: "1.5px",
+    backgroundColor: "#FF2D87",
+    flexShrink: 0
+  }} />
+    <span>{children}</span>
+    {centered && <span style={{
+      display: "inline-block",
+      width: "24px",
+      height: "1.5px",
+      backgroundColor: "#FF2D87",
+      flexShrink: 0
+    }} />}
+  </motion.div>;
+
+const HeroBanner: React.FC = () => {
+  const {
+    scrollY
+  } = useScroll();
+  const imageY = useTransform(scrollY, [0, 600], ["0%", "20%"]);
+  const heroLines = [{
+    id: "h1",
+    words: ["Food", "Security", "Is"]
+  }, {
+    id: "h2",
+    words: ["Africa's", "Greatest"]
+  }, {
+    id: "h3",
+    words: ["Opportunity."]
+  }];
+  const underlinedWords = new Set(["Opportunity."]);
+  let wordIndex = 0;
+  return <section id="home" style={{
+    position: "relative",
+    width: "100%",
     minHeight: "100vh",
     backgroundColor: "#0A0A0F",
-    color: "#FFFFFF",
-    fontFamily: "Figtree, sans-serif"
+    overflow: "hidden",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingTop: "68px",
+    paddingBottom: "clamp(48px, 8vw, 80px)"
   }}>
-      {/* Hero */}
-      <AgricultureManufacturingHeroBanner pillarTitle="Pillar 4.3 - Agriculture, Manufacturing & Consumer Markets" quote="Africa Must Shift From Consumption Economies to Industrial Competitiveness" narrative="The evolution of the African economy relies on the strategic integration of sophisticated manufacturing capabilities with the rapidly expanding consumer markets. By fostering industrial resilience and retail excellence, we create a sustainable blueprint for continental wealth." bgImage="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1600&q=85" />
-
-      {/* ─── Focus Tracks — LIGHT SECTION ─────────────────────────────── */}
-      <section id="focus-tracks" className="focus-tracks-section" style={{
-      backgroundColor: "#F7F6F2",
-      position: "relative",
-      zIndex: 10,
-      marginTop: "-40px",
-      overflow: "hidden"
-    }}>
-        {/* Subtle warm accent orb */}
-        <div style={{
+      {/* Background Image with Parallax */}
+      <div style={{
         position: "absolute",
-        top: "-80px",
-        right: "-80px",
-        width: "420px",
-        height: "420px",
-        borderRadius: "50%",
-        background: "radial-gradient(circle, rgba(253,87,50,0.07) 0%, transparent 70%)",
+        inset: 0,
+        zIndex: 0,
+        overflow: "hidden",
         pointerEvents: "none"
-      }} />
-
-        <div className="section-inner" style={{
-        maxWidth: "1200px",
-        margin: "0 auto"
       }}>
-          {/* Section header */}
-          <div className="section-header-mb">
-            <div style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "12px",
-            marginBottom: "16px"
-          }}>
-              <div style={{
-              width: "24px",
-              height: "1.5px",
-              backgroundColor: "#FD5732"
-            }} />
-              <span style={{
-              fontFamily: "Figtree",
-              fontSize: "9px",
-              fontWeight: 600,
-              letterSpacing: "0.28em",
-              textTransform: "uppercase",
-              color: "#64748b"
-            }}>
-                Deep-Dive Focus Tracks
-              </span>
-            </div>
-            <h2 className="section-heading" style={{
-            fontFamily: "Figtree",
-            fontWeight: 300,
-            letterSpacing: "-0.03em",
-            color: "#0A0A0F",
-            margin: 0,
-            lineHeight: 1.05
-          }}>
-              Strategic Industrial{" "}
-              <span style={{
-              textDecoration: "underline",
-              textDecorationColor: "#FD5732",
-              textDecorationThickness: "2px",
-              textUnderlineOffset: "6px"
-            }}>
-                Pathways
-              </span>
-            </h2>
-          </div>
-
-          {/* Track cards */}
-          <div className="tracks-stack">
-            {FOCUS_TRACKS.map((track, index) => <motion.div key={track.id} initial={{
-            opacity: 0,
-            y: 48
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true,
-            margin: "-80px"
-          }} transition={{
-            duration: 0.8,
-            delay: index * 0.15,
-            ease: [0.21, 0.47, 0.32, 0.98]
-          }} className={`focus-track-row ${index % 2 === 1 ? "track-reverse" : ""}`}>
-                {/* Image panel with standardized 16px borderRadius */}
-                <div className="focus-track-image" style={{ borderRadius: "16px" }}>
-                  <img src={track.image} alt={track.title} style={{
-                width: "100%",
-                height: "100%",
-                minHeight: "260px",
-                objectFit: "cover",
-                display: "block",
-                filter: "grayscale(20%) brightness(0.96)",
-                transition: "filter 600ms ease, transform 600ms ease"
-              }} onMouseEnter={e => {
-                (e.currentTarget as HTMLImageElement).style.filter = "grayscale(0%) brightness(1)";
-                (e.currentTarget as HTMLImageElement).style.transform = "scale(1.04)";
-              }} onMouseLeave={e => {
-                (e.currentTarget as HTMLImageElement).style.filter = "grayscale(20%) brightness(0.96)";
-                (e.currentTarget as HTMLImageElement).style.transform = "scale(1)";
-              }} />
-
-                  {/* Large number overlay */}
-                  <div className="track-number-overlay" style={{
-                position: "absolute",
-                bottom: "20px",
-                left: "20px",
-                fontFamily: "Figtree",
-                fontWeight: 900,
-                color: "#FFFFFF",
-                lineHeight: 1,
-                opacity: 0.85,
-                letterSpacing: "-0.04em",
-                textShadow: "0 2px 24px rgba(0,0,0,0.5)"
-              }}>
-                    {track.number}
-                  </div>
-                </div>
-
-                {/* Content panel with standardized 16px borderRadius */}
-                <div className="focus-track-content" style={{
-              backgroundColor: "#FFFFFF",
-              border: "1px solid rgba(0,0,0,0.07)",
-              borderTop: `3px solid ${track.accentColor}`,
-              borderRadius: "16px",
-              gap: "18px"
-            }}>
-                  {/* Tag chip */}
-                  <div style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "8px",
-                alignSelf: "flex-start"
-              }}>
-                    <div style={{
-                  width: "36px",
-                  height: "36px",
-                  borderRadius: "8px",
-                  backgroundColor: track.accentColor === "#FD5732" ? "rgba(253,87,50,0.10)" : "rgba(221,98,54,0.10)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  color: track.accentColor,
-                  flexShrink: 0
-                }}>
-                      {track.icon}
-                    </div>
-                    <span style={{
-                  fontFamily: "Figtree",
-                  fontSize: "10px",
-                  fontWeight: 600,
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                  color: track.accentColor,
-                  padding: "4px 10px",
-                  border: `1px solid ${track.accentColor}`,
-                  borderRadius: "999px"
-                }}>
-                      {track.tagLabel}
-                    </span>
-                  </div>
-
-                  <h3 className="track-title" style={{
-                fontFamily: "Figtree",
-                fontWeight: 700,
-                color: "#0A0A0F",
-                margin: 0,
-                lineHeight: 1.2,
-                letterSpacing: "-0.02em"
-              }}>
-                    {track.title}
-                  </h3>
-
-                  <p style={{
-                fontFamily: "Figtree",
-                fontWeight: 400,
-                fontSize: "clamp(14px, 2vw, 16px)",
-                color: "#64748b",
-                lineHeight: 1.75,
-                margin: 0
-              }}>
-                    {track.content}
-                  </p>
-
-                  <div style={{
-                paddingTop: "4px"
-              }}>
-                    <button style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "8px",
-                  fontFamily: "Figtree",
-                  fontSize: "12px",
-                  fontWeight: 600,
-                  letterSpacing: "0.12em",
-                  textTransform: "uppercase",
-                  color: track.accentColor,
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  padding: 0,
-                  transition: "opacity 200ms"
-                }} onMouseEnter={e => {
-                  (e.currentTarget as HTMLButtonElement).style.opacity = "0.70";
-                }} onMouseLeave={e => {
-                  (e.currentTarget as HTMLButtonElement).style.opacity = "1";
-                }}>
-                      <span>Explore Framework</span>
-                      <Zap size={14} />
-                    </button>
-                  </div>
-                </div>
-              </motion.div>)}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── Strategic ROI blocks — DARK SECTION ─────────────────────────── */}
-      <section className="roi-section" style={{
-      backgroundColor: "#060608",
-      borderTop: "1px solid rgba(255,255,255,0.05)",
-      borderBottom: "1px solid rgba(255,255,255,0.05)"
-    }}>
-        <div className="section-inner" style={{
-        maxWidth: "1200px",
-        margin: "0 auto"
-      }}>
-          {/* Header */}
-          <div className="roi-header-mb" style={{
-          textAlign: "center"
+        <motion.div style={{
+          position: "absolute",
+          inset: 0
+        }} initial={{
+          scale: 1.06,
+          opacity: 0
+        }} animate={{
+          scale: 1,
+          opacity: 1
+        }} transition={{
+          duration: 2.4,
+          ease: "easeOut"
         }}>
-            <span style={{
-            fontFamily: "Figtree",
-            fontSize: "11px",
-            fontWeight: 600,
-            letterSpacing: "0.20em",
-            textTransform: "uppercase",
-            color: "#FD5732",
-            display: "block",
-            marginBottom: "16px"
+          <motion.div style={{
+            y: imageY,
+            position: "absolute",
+            inset: 0
           }}>
-              Value Proposition
-            </span>
-            <h2 className="section-heading" style={{
-            fontFamily: "Figtree",
-            fontWeight: 300,
-            letterSpacing: "-0.03em",
-            color: "#FFFFFF",
-            margin: "0 0 16px 0",
-            lineHeight: 1.1
-          }}>
-              Thematic Strategic ROI
-            </h2>
-            <p style={{
-            fontFamily: "Figtree",
-            fontSize: "clamp(14px, 2vw, 16px)",
-            fontWeight: 300,
-            fontStyle: "italic",
-            color: "rgba(255,255,255,0.40)",
-            maxWidth: "520px",
-            margin: "0 auto",
-            lineHeight: 1.65
-          }}>
-              Measuring the tangible economic impact and industrial transformation
-              of our strategic interventions across the pillar.
-            </p>
-          </div>
-
-          {/* 3-column grid — responsive with standardized 16px border-radius in card parameters */}
-          <div className="roi-grid">
-            {ROI_BLOCKS.map(block => <ROIMetricBlock key={block.id} title={block.title} metrics={block.metrics} icon={block.icon} variant="dark" />)}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── CTA Band ───────────────────────────────────────────────────── */}
-      <section className="cta-section" style={{
-      backgroundColor: "#0A0A0F",
-      position: "relative",
-      overflow: "hidden"
-    }}>
-        {/* Glow orb */}
+            <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1600&q=85" alt="" aria-hidden="true" style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "center 40%"
+            }} />
+          </motion.div>
+        </motion.div>
         <div style={{
-        position: "absolute",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-        width: "600px",
-        height: "300px",
-        background: "radial-gradient(ellipse, rgba(255,45,135,0.08) 0%, transparent 70%)",
-        pointerEvents: "none"
-      }} />
+          position: "absolute",
+          inset: 0,
+          background: "linear-gradient(to bottom, rgba(10,10,15,0.75) 0%, rgba(10,10,15,0.45) 40%, rgba(10,10,15,0.95) 100%)"
+        }} />
+      </div>
 
-        <div className="cta-inner" style={{
-        maxWidth: "800px",
-        margin: "0 auto",
-        textAlign: "center",
+      {/* Content */}
+      <div style={{
         position: "relative",
-        zIndex: 1
+        zIndex: 10,
+        width: "100%",
+        maxWidth: "1400px",
+        padding: "clamp(16px, 5vw, 36px)",
+        textAlign: "center"
       }}>
-          <motion.div initial={{
+        <motion.div initial={{
           opacity: 0,
-          y: 32
-        }} whileInView={{
+          y: 90
+        }} animate={{
           opacity: 1,
           y: 0
-        }} viewport={{
-          once: true
         }} transition={{
-          duration: 0.8,
+          duration: 1.1,
           ease: [0.21, 0.47, 0.32, 0.98]
-        }} className="cta-box" style={{
-          border: "1px solid rgba(255,45,135,0.20)",
-          backgroundColor: "rgba(255,45,135,0.03)",
-          borderRadius: "16px"
         }}>
+          {/* Pre-heading pill */}
+          <motion.div initial={{
+            opacity: 0,
+            y: 10
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.6,
+            delay: 0.2
+          }} style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "10px",
+            marginBottom: "20px",
+            flexWrap: "wrap"
+          }}>
             <span style={{
-            fontFamily: "Figtree",
-            fontSize: "11px",
-            fontWeight: 600,
-            letterSpacing: "0.20em",
-            textTransform: "uppercase",
-            color: "rgba(255,255,255,0.40)",
-            display: "block",
-            marginBottom: "24px"
-          }}>
-              Open Enrollment
+              width: "6px",
+              height: "6px",
+              borderRadius: "50%",
+              backgroundColor: "#00B4A6",
+              display: "inline-block",
+              boxShadow: "0 0 10px #00B4A6",
+              flexShrink: 0
+            }} />
+            <span style={{
+              fontFamily: "Figtree",
+              fontSize: "clamp(9px, 2vw, 11px)",
+              fontWeight: 600,
+              letterSpacing: "0.2em",
+              color: "rgba(255,255,255,0.60)",
+              textTransform: "uppercase"
+            }}>
+              AGRICULTURE & FOOD SECURITY™
             </span>
-            <h2 className="cta-heading" style={{
-            fontFamily: "Figtree",
-            fontWeight: 300,
-            letterSpacing: "-0.03em",
-            color: "#FFFFFF",
-            lineHeight: 1.1,
-            marginBottom: "20px"
-          }}>
-              Ready to Reshape the Future Economy?
-            </h2>
-            <p style={{
-            fontFamily: "Figtree",
-            fontWeight: 300,
-            fontSize: "clamp(14px, 2vw, 16px)",
-            color: "rgba(255,255,255,0.50)",
-            lineHeight: 1.75,
-            maxWidth: "560px",
-            margin: "0 auto 40px auto"
-          }}>
-              Join the cohort of industrial leaders and retail visionaries
-              building the next chapter of African economic excellence. Our next
-              summit on Manufacturing &amp; Consumer Trends is now open for
-              registration.
-            </p>
+          </motion.div>
 
-            <div className="cta-buttons">
-              <button className="cta-btn-primary" style={{
-              display: "inline-flex",
+          {/* Hero headline */}
+          <h1 style={{
+            fontFamily: "Figtree",
+            fontWeight: 300,
+            fontSize: "clamp(36px, 8vw, 84px)",
+            lineHeight: 1.05,
+            letterSpacing: "-0.04em",
+            color: "#FFFFFF",
+            maxWidth: "1100px",
+            margin: "0 auto 24px auto"
+          }}>
+            {heroLines.map(line => {
+              return <span key={line.id} style={{
+                display: "block"
+              }}>
+                  {line.words.map(word => {
+                    const idx = wordIndex++;
+                    const isUnderlined = underlinedWords.has(word);
+                    const wordText = isUnderlined ? word.slice(0, -1) : word;
+                    return <motion.span key={`h-word-${idx}`} initial={{
+                      opacity: 0,
+                      filter: "blur(10px)",
+                      y: 20
+                    }} animate={{
+                      opacity: 1,
+                      filter: "blur(0px)",
+                      y: 0
+                    }} transition={{
+                      duration: 0.8,
+                      delay: 0.4 + idx * 0.1,
+                      ease: [0.21, 0.47, 0.32, 0.98]
+                    }} style={{
+                      display: "inline-block",
+                      marginRight: "0.25em"
+                    }}>
+                        {isUnderlined ? <span style={{
+                          textDecoration: "underline",
+                          textDecorationColor: "#00B4A6",
+                          textDecorationThickness: "3px",
+                          textUnderlineOffset: "6px"
+                        }}>
+                            {wordText}
+                          </span> : word}
+                        {isUnderlined && <span style={{
+                          color: "#00B4A6"
+                        }}>.</span>}
+                      </motion.span>;
+                  })}
+                </span>;
+            })}
+          </h1>
+
+          {/* Description */}
+          <motion.p initial={{
+            opacity: 0,
+            y: 20
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.8,
+            delay: 1.2
+          }} style={{
+            fontFamily: "Figtree",
+            fontSize: "clamp(14px, 2vw, 16px)",
+            fontWeight: 400,
+            color: "rgba(255,255,255,0.55)",
+            maxWidth: "720px",
+            margin: "0 auto 36px auto",
+            lineHeight: 1.75
+          }}>
+            Agriculture remains central to Africa's economic sustainability, food resilience,
+            employment creation, and industrial development. This stage explores how agri-tech,
+            climate-smart farming, agro-processing, food systems innovation, and rural
+            industrialisation are reshaping the future of agriculture across the continent.
+          </motion.p>
+
+          {/* CTA Group — stacked on mobile, row on sm+ */}
+          <motion.div initial={{
+            opacity: 0,
+            y: 20
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.8,
+            delay: 1.4
+          }} className="flex flex-col sm:flex-row items-center justify-center gap-4" style={{
+            width: "100%"
+          }}>
+            <a href="#registration" onClick={e => {
+              e.preventDefault();
+              document.getElementById("registration")?.scrollIntoView({ behavior: "smooth" });
+            }} className="w-full sm:w-auto" style={{
+              fontFamily: "Figtree",
+              fontSize: "15px",
+              fontWeight: 500,
+              color: "#FFFFFF",
+              backgroundColor: "#00B4A6",
+              height: "50px",
+              padding: "0 28px",
+              display: "flex",
               alignItems: "center",
               justifyContent: "center",
               gap: "8px",
-              fontFamily: "Figtree",
-              fontWeight: 500,
-              color: "#FFFFFF",
-              backgroundColor: "#FF2D87",
-              border: "none",
+              textDecoration: "none",
               borderRadius: "999px",
-              minHeight: "54px",
-              width: "220px",
-              cursor: "pointer",
-              transition: "filter 200ms ease-out"
-            }} onMouseEnter={e => {
-              (e.currentTarget as HTMLButtonElement).style.filter = "brightness(1.1)";
-            }} onMouseLeave={e => {
-              (e.currentTarget as HTMLButtonElement).style.filter = "brightness(1)";
+              boxShadow: "0 0 32px rgba(0,180,166,0.25)",
+              position: "relative",
+              overflow: "hidden"
             }}>
-                <span>Join The Cohort</span>
-                <ArrowRight size={18} />
-              </button>
-              <button className="cta-btn-secondary" style={{
-              display: "inline-flex",
+              <span>Secure Your Seat</span>
+              <ArrowRight size={16} />
+            </a>
+            <a href="#focus-areas" onClick={e => {
+              e.preventDefault();
+              document.getElementById("focus-areas")?.scrollIntoView({ behavior: "smooth" });
+            }} className="w-full sm:w-auto" style={{
+              fontFamily: "Figtree",
+              fontSize: "15px",
+              fontWeight: 400,
+              color: "#FFFFFF",
+              backgroundColor: "rgba(255,255,255,0.05)",
+              height: "50px",
+              padding: "0 28px",
+              display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              fontFamily: "Figtree",
-              fontWeight: 500,
-              color: "#FFFFFF",
-              backgroundColor: "rgba(22,85,181,0.15)",
-              border: "1px solid rgba(22,85,181,0.45)",
+              textDecoration: "none",
               borderRadius: "999px",
-              minHeight: "54px",
-              width: "220px",
-              cursor: "pointer",
-              transition: "background-color 200ms ease-out, border-color 200ms ease-out"
-            }} onMouseEnter={e => {
-              (e.currentTarget as HTMLButtonElement).style.backgroundColor = "rgba(22,85,181,0.28)";
-              (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(22,85,181,0.70)";
-            }} onMouseLeave={e => {
-              (e.currentTarget as HTMLButtonElement).style.backgroundColor = "rgba(22,85,181,0.15)";
-              (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(22,85,181,0.45)";
+              border: "1px solid rgba(255,255,255,0.10)"
             }}>
-                Download Whitepaper
+              Explore Programme
+            </a>
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>;
+};
+
+// ─── Main Component ────────────────────────────────────────────────────────────
+
+export const AgricultureManufacturingPillar: React.FC = () => {
+  const bentoRef = React.useRef<HTMLDivElement>(null);
+  const bentoInView = useInView(bentoRef, {
+    once: true,
+    margin: "-80px"
+  });
+  return <div style={{
+    width: "100%",
+    backgroundColor: "#0A0A0F",
+    fontFamily: "Figtree, sans-serif",
+    color: "#FFFFFF"
+  }}>
+      <main>
+        {/* Hero Section */}
+        <HeroBanner />
+
+        {/* Bento Grid: Focus Areas & ROI */}
+        <section id="focus-areas" ref={bentoRef} style={{
+          paddingTop: "clamp(64px, 10vw, 120px)",
+          paddingBottom: "clamp(64px, 10vw, 120px)",
+          paddingLeft: "clamp(16px, 5vw, 96px)",
+          paddingRight: "clamp(16px, 5vw, 96px)",
+          maxWidth: "1400px",
+          margin: "0 auto",
+          width: "100%",
+          boxSizing: "border-box"
+        }}>
+          <SectionLabel>Strategic Impact & Focus</SectionLabel>
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
+            <h2 style={{
+              fontFamily: "Figtree",
+              fontWeight: 300,
+              fontSize: "clamp(28px, 4.5vw, 56px)",
+              lineHeight: 1.1,
+              letterSpacing: "-0.03em",
+              maxWidth: "800px",
+              margin: 0
+            }}>
+              Building Resilient Food Systems Across the Continent
+            </h2>
+          </div>
+
+          <div className="agri-bento-grid" style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(2, 1fr)",
+            gap: "32px"
+          }}>
+            {/* Focus Areas Bento */}
+            <motion.div initial={{
+              opacity: 0,
+              x: -40
+            }} animate={bentoInView ? {
+              opacity: 1,
+              x: 0
+            } : {}} transition={{
+              duration: 0.8,
+              ease: "easeOut"
+            }} style={{
+              backgroundColor: "#0D0D14",
+              border: "1px solid rgba(255,255,255,0.06)",
+              padding: "clamp(24px, 4vw, 40px)",
+              display: "flex",
+              flexDirection: "column",
+              gap: "32px"
+            }}>
+              <div style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "12px"
+              }}>
+                <div style={{
+                  width: "3px",
+                  height: "24px",
+                  backgroundColor: "#00B4A6"
+                }} />
+                <h3 style={{
+                  fontSize: "20px",
+                  fontWeight: 700,
+                  letterSpacing: "-0.01em",
+                  margin: 0
+                }}>
+                  Key Focus Areas
+                </h3>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
+                {FOCUS_AREAS.map(area => <motion.div key={area.id} whileHover={{
+                  x: 6
+                }} style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "14px",
+                  padding: "12px 0",
+                  borderBottom: "1px solid rgba(255,255,255,0.05)",
+                  cursor: "pointer"
+                }}>
+                    <div style={{
+                      width: "8px",
+                      height: "8px",
+                      borderRadius: "50%",
+                      backgroundColor: area.accentColor,
+                      flexShrink: 0
+                    }} />
+                    <area.icon size={18} style={{
+                      color: "rgba(255,255,255,0.3)",
+                      flexShrink: 0
+                    }} />
+                    <span style={{
+                      fontSize: "14px",
+                      color: "rgba(255,255,255,0.7)",
+                      transition: "color 0.2s"
+                    }}>
+                      {area.title}
+                    </span>
+                  </motion.div>)}
+              </div>
+            </motion.div>
+
+            {/* ROI Metrics Bento */}
+            <motion.div initial={{
+              opacity: 0,
+              x: 40
+            }} animate={bentoInView ? {
+              opacity: 1,
+              x: 0
+            } : {}} transition={{
+              duration: 0.8,
+              delay: 0.2,
+              ease: "easeOut"
+            }} style={{
+              borderTop: "3px solid #D4AF37"
+            }}>
+              <ROIMetricBlock title="Commercial ROI & Impact Metrics" metrics={ROI_METRICS} />
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Separator Line */}
+        <div style={{
+          maxWidth: "1400px",
+          margin: "0 auto",
+          padding: "0 clamp(16px, 5vw, 96px)"
+        }}>
+          <div style={{
+            height: "1px",
+            background: "linear-gradient(to right, transparent, rgba(0,180,166,0.3) 50%, transparent)"
+          }} />
+        </div>
+
+        {/* ── Programme Section ── */}
+        <section id="programme" style={{
+          backgroundColor: "#0A0A0F",
+          paddingTop: "clamp(64px, 10vw, 128px)",
+          paddingBottom: "clamp(64px, 10vw, 128px)",
+          paddingLeft: "clamp(16px, 4vw, 32px)",
+          paddingRight: "clamp(16px, 4vw, 32px)",
+          position: "relative",
+          overflow: "hidden"
+        }}>
+          {/* Ambient venue background image */}
+          <div aria-hidden="true" style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: "url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1600&q=85')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            opacity: 0.06,
+            pointerEvents: "none"
+          }} />
+
+          <div style={{
+            position: "relative",
+            zIndex: 1,
+            maxWidth: "1280px",
+            margin: "0 auto",
+            width: "100%",
+            boxSizing: "border-box"
+          }}>
+            {/* Header */}
+            <div style={{
+              marginBottom: "56px"
+            }}>
+              <div style={{
+                width: "48px",
+                height: "3px",
+                backgroundColor: "#FF2D87",
+                marginBottom: "20px"
+              }} />
+              <p style={{
+                fontFamily: "Figtree, sans-serif",
+                fontSize: "9px",
+                fontWeight: 600,
+                letterSpacing: "0.28em",
+                textTransform: "uppercase",
+                color: "rgba(255,255,255,0.35)",
+                margin: "0 0 16px 0"
+              }}>
+                HIGH-IMPACT EXECUTIVE PROGRAMME
+              </p>
+              <h2 style={{
+                fontFamily: "Figtree, sans-serif",
+                fontWeight: 300,
+                fontSize: "clamp(28px, 4vw, 52px)",
+                lineHeight: 1.1,
+                letterSpacing: "-0.03em",
+                color: "#FFFFFF",
+                margin: "0 0 16px 0",
+                maxWidth: "720px"
+              }}>
+                A Day of Innovation, Investment &amp; Agricultural Growth
+              </h2>
+              <p style={{
+                fontFamily: "Figtree, sans-serif",
+                fontSize: "14px",
+                color: "rgba(255,255,255,0.45)",
+                lineHeight: 1.7,
+                margin: 0,
+                maxWidth: "680px"
+              }}>
+                11:00 – 16:00 · Curated for Female CXOs, Entrepreneurs, Agribusiness
+                Leaders, Investors, Academia, Policymakers &amp; Future-Focused Professionals
+              </p>
+            </div>
+
+            {/* Sessions List */}
+            <div style={{
+              maxWidth: "960px",
+              margin: "0 auto",
+              width: "100%"
+            }}>
+              <div style={{
+                display: "flex",
+                flexDirection: "column"
+              }}>
+                {PROGRAMME_SESSIONS.map((session, i) => {
+                  if (session.isLunch) {
+                    return <motion.div key={session.id} initial={{
+                      opacity: 0,
+                      y: 16
+                    }} whileInView={{
+                      opacity: 1,
+                      y: 0
+                    }} viewport={{
+                      once: true
+                    }} transition={{
+                      duration: 0.5,
+                      delay: i * 0.06
+                    }} style={{
+                      borderBottom: "1px solid rgba(255,255,255,0.06)",
+                      padding: "4px 0"
+                    }}>
+                      <div style={{
+                        backgroundColor: "rgba(0,180,166,0.04)",
+                        border: "1px solid rgba(0,180,166,0.12)",
+                        borderRadius: "8px",
+                        padding: "12px 16px",
+                        margin: "4px 0",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "16px",
+                        flexWrap: "wrap"
+                      }}>
+                        {/* Time col */}
+                        <div style={{
+                          width: "60px",
+                          flexShrink: 0,
+                          fontSize: "12px",
+                          fontWeight: 600,
+                          letterSpacing: "0.05em",
+                          color: "#00B4A6",
+                          fontFamily: "Figtree, sans-serif"
+                        }}>
+                          {session.time}
+                        </div>
+                        {/* Center col */}
+                        <div style={{
+                          flex: 1,
+                          minWidth: 0,
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "12px"
+                        }}>
+                          <div style={{
+                            width: "6px",
+                            height: "6px",
+                            borderRadius: "50%",
+                            backgroundColor: "#00B4A6",
+                            flexShrink: 0,
+                            boxShadow: "0 0 8px rgba(0,180,166,0.5)"
+                          }} />
+                          <div style={{
+                            minWidth: 0
+                          }}>
+                            <p style={{
+                              fontFamily: "Figtree, sans-serif",
+                              fontSize: "9px",
+                              fontWeight: 600,
+                              letterSpacing: "0.2em",
+                              textTransform: "uppercase",
+                              color: "#00B4A6",
+                              margin: "0 0 2px 0"
+                            }}>
+                              {session.format}
+                            </p>
+                            <p style={{
+                              fontFamily: "Figtree, sans-serif",
+                              fontSize: "15px",
+                              fontWeight: 500,
+                              color: "#FFFFFF",
+                              margin: "0 0 2px 0",
+                              lineHeight: 1.3
+                            }}>
+                              {session.title}
+                            </p>
+                            <p style={{
+                              fontFamily: "Figtree, sans-serif",
+                              fontSize: "12px",
+                              color: "rgba(255,255,255,0.35)",
+                              margin: 0,
+                              lineHeight: 1.4
+                            }}>
+                              {session.subtitle}
+                            </p>
+                          </div>
+                        </div>
+                        {/* Badge */}
+                        <div style={{
+                          flexShrink: 0,
+                          backgroundColor: "rgba(0,180,166,0.15)",
+                          border: "1px solid rgba(0,180,166,0.30)",
+                          borderRadius: "4px",
+                          padding: "3px 8px",
+                          fontSize: "9px",
+                          fontWeight: 700,
+                          letterSpacing: "0.12em",
+                          color: "#00B4A6",
+                          fontFamily: "Figtree, sans-serif",
+                          textTransform: "uppercase"
+                        }}>
+                          INCLUDED
+                        </div>
+                        {/* Session number */}
+                        <div style={{
+                          width: "36px",
+                          flexShrink: 0,
+                          textAlign: "right",
+                          fontSize: "11px",
+                          fontWeight: 600,
+                          letterSpacing: "0.1em",
+                          color: "rgba(255,255,255,0.12)",
+                          fontFamily: "Figtree, sans-serif"
+                        }}>
+                          {session.sessionNumber}
+                        </div>
+                      </div>
+                    </motion.div>;
+                  }
+                  return <motion.div key={session.id} initial={{
+                    opacity: 0,
+                    y: 16
+                  }} whileInView={{
+                    opacity: 1,
+                    y: 0
+                  }} viewport={{
+                    once: true
+                  }} transition={{
+                    duration: 0.5,
+                    delay: i * 0.06
+                  }} whileHover={{
+                    backgroundColor: "rgba(255,255,255,0.025)"
+                  }} style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "16px",
+                    paddingTop: "20px",
+                    paddingBottom: "20px",
+                    borderBottom: "1px solid rgba(255,255,255,0.06)",
+                    cursor: "default"
+                  }}>
+                      {/* Col 1: time */}
+                      <div style={{
+                        width: "60px",
+                        flexShrink: 0,
+                        fontSize: "12px",
+                        fontWeight: 600,
+                        letterSpacing: "0.05em",
+                        color: session.accentColor,
+                        fontFamily: "Figtree, sans-serif"
+                      }}>
+                        {session.time}
+                      </div>
+
+                      {/* Col 2: content */}
+                      <div style={{
+                        flex: 1,
+                        minWidth: 0
+                      }}>
+                        <p style={{
+                          fontFamily: "Figtree, sans-serif",
+                          fontSize: "9px",
+                          fontWeight: 600,
+                          letterSpacing: "0.2em",
+                          textTransform: "uppercase",
+                          color: session.accentColor,
+                          margin: "0 0 4px 0"
+                        }}>
+                          {session.format}
+                        </p>
+                        <p style={{
+                          fontFamily: "Figtree, sans-serif",
+                          fontSize: "clamp(13px, 2vw, 15px)",
+                          fontWeight: 500,
+                          color: "#FFFFFF",
+                          margin: "0 0 4px 0",
+                          lineHeight: 1.3
+                        }}>
+                          {session.title}
+                        </p>
+                        <p style={{
+                          fontFamily: "Figtree, sans-serif",
+                          fontSize: "12px",
+                          color: "rgba(255,255,255,0.35)",
+                          margin: 0,
+                          lineHeight: 1.4
+                        }}>
+                          {session.subtitle}
+                        </p>
+                      </div>
+
+                      {/* Col 3: session number */}
+                      <div style={{
+                        width: "36px",
+                        flexShrink: 0,
+                        textAlign: "right",
+                        fontSize: "11px",
+                        fontWeight: 600,
+                        letterSpacing: "0.1em",
+                        color: "rgba(255,255,255,0.12)",
+                        fontFamily: "Figtree, sans-serif"
+                      }}>
+                        {session.sessionNumber}
+                      </div>
+                    </motion.div>;
+                })}
+              </div>
+
+              {/* Stats footer */}
+              <div style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginTop: "48px",
+                paddingTop: "32px",
+                borderTop: "1px solid rgba(255,255,255,0.06)",
+                flexWrap: "wrap",
+                gap: "12px"
+              }}>
+                {PROGRAMME_STATS.map(stat => <div key={stat.id} style={{
+                  fontFamily: "Figtree, sans-serif",
+                  fontSize: "clamp(11px, 2vw, 13px)",
+                  fontWeight: 500,
+                  color: "rgba(255,255,255,0.35)",
+                  letterSpacing: "0.05em"
+                }}>
+                  {stat.label}
+                </div>)}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section style={{
+          position: "relative",
+          overflow: "hidden",
+          backgroundColor: "#0A0A0F",
+          padding: "clamp(80px, 12vw, 160px) clamp(16px, 5vw, 96px)",
+          textAlign: "center"
+        }}>
+          {/* Visual Flourish Background */}
+          <div style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "min(800px, 100vw)",
+            height: "min(800px, 100vw)",
+            background: "radial-gradient(circle, rgba(0,180,166,0.1) 0%, transparent 70%)",
+            pointerEvents: "none"
+          }} />
+
+          <div style={{
+            position: "relative",
+            zIndex: 1,
+            maxWidth: "900px",
+            margin: "0 auto",
+            width: "100%"
+          }}>
+            <SectionLabel centered>Take the Lead</SectionLabel>
+            <h2 style={{
+              fontFamily: "Figtree",
+              fontWeight: 300,
+              fontSize: "clamp(32px, 8vw, 84px)",
+              lineHeight: 1.05,
+              letterSpacing: "-0.04em",
+              margin: "24px 0"
+            }}>
+              {CTA_HEADLINE_WORDS.map((word, i) => <motion.span key={`cta-${i}`} initial={{
+                opacity: 0,
+                y: 20
+              }} whileInView={{
+                opacity: 1,
+                y: 0
+              }} viewport={{
+                once: true
+              }} transition={{
+                delay: i * 0.1
+              }} style={{
+                display: "inline-block",
+                marginRight: "0.22em",
+                ...(word === "Now." ? {
+                  color: "#FF2D87",
+                  fontWeight: 500
+                } : {})
+              }}>
+                  {word}
+                </motion.span>)}
+            </h2>
+
+            <p style={{
+              fontFamily: "Figtree",
+              fontSize: "clamp(15px, 2vw, 20px)",
+              color: "rgba(255,255,255,0.5)",
+              lineHeight: 1.6,
+              maxWidth: "600px",
+              margin: "0 auto 40px auto"
+            }}>
+              Join Africa's most focused platform for agricultural intelligence, supply
+              chain excellence, and women-led industrial transformation.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4" style={{
+              width: "100%"
+            }}>
+              <button onClick={e => {
+                e.preventDefault();
+                document.getElementById("registration")?.scrollIntoView({ behavior: "smooth" });
+              }} className="w-full sm:w-auto" style={{
+                backgroundColor: "#FF2D87",
+                color: "#FFFFFF",
+                fontFamily: "Figtree",
+                fontSize: "16px",
+                fontWeight: 600,
+                padding: "16px 40px",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "10px",
+                border: "none",
+                borderRadius: "999px",
+                cursor: "pointer",
+                boxShadow: "0 0 40px rgba(255,45,135,0.3)"
+              }}>
+                <span>Secure Your Seat</span>
+                <ArrowRight size={20} />
+              </button>
+              <button onClick={e => {
+                e.preventDefault();
+                document.getElementById("programme")?.scrollIntoView({ behavior: "smooth" });
+              }} className="w-full sm:w-auto" style={{
+                backgroundColor: "transparent",
+                color: "#FFFFFF",
+                fontFamily: "Figtree",
+                fontSize: "16px",
+                fontWeight: 500,
+                padding: "16px 40px",
+                border: "1px solid rgba(255,255,255,0.1)",
+                borderRadius: "999px",
+                cursor: "pointer"
+              }}>
+                View Full Agenda
               </button>
             </div>
-          </motion.div>
-        </div>
-      </section>
+          </div>
+        </section>
+      </main>
+
+      {/* Registration Form */}
+      <div id="registration">
+        <AgriDelegateRegistrationSection />
+      </div>
 
       <style>{`
-        /* ── Focus Tracks section padding ── */
-        .focus-tracks-section {
-          border-radius: 40px 40px 0 0;
-          padding: 80px clamp(20px, 6vw, 96px);
-        }
-        @media (max-width: 640px) {
-          .focus-tracks-section {
-            border-radius: 20px 20px 0 0;
-            padding: 48px 20px 56px;
-          }
-        }
-        @media (min-width: 641px) and (max-width: 1024px) {
-          .focus-tracks-section {
-            border-radius: 28px 28px 0 0;
-            padding: 64px clamp(24px, 5vw, 56px);
-          }
+        @import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800&display=swap');
+
+        @keyframes shimmerSlide {
+          from { transform: skewX(-20deg) translateX(-100%); }
+          to { transform: skewX(-20deg) translateX(300%); }
         }
 
-        /* ── Section inner padding ── */
-        .section-inner {
-          padding: 0;
+        .cta-shimmer {
+          animation: shimmerSlide 3s linear infinite;
         }
 
-        /* ── Section header margin ── */
-        .section-header-mb {
-          margin-bottom: clamp(40px, 8vw, 80px);
-        }
-
-        /* ── Shared section heading size ── */
-        .section-heading {
-          font-size: clamp(28px, 5vw, 56px);
-        }
-
-        /* ── Track cards stack ── */
-        .tracks-stack {
-          display: flex;
-          flex-direction: column;
-          gap: clamp(40px, 8vw, 72px);
-        }
-
-        /* ── Individual track row ── */
-        .focus-track-row {
-          display: flex;
-          flex-direction: row;
-          gap: clamp(20px, 4vw, 56px);
-          align-items: stretch;
-        }
-        .focus-track-row.track-reverse {
-          flex-direction: row-reverse;
-        }
         @media (max-width: 1024px) {
-          .focus-track-row,
-          .focus-track-row.track-reverse {
-            flex-direction: column !important;
+          .agri-bento-grid {
+            grid-template-columns: 1fr !important;
+            gap: 24px !important;
           }
         }
 
-        /* ── Track image panel ── */
-        .focus-track-image {
-          flex: 0 0 48%;
-          max-width: 48%;
-          position: relative;
-          overflow: hidden;
-          border-radius: 16px;
-          border: 1px solid rgba(0,0,0,0.08);
-        }
-        @media (max-width: 1024px) {
-          .focus-track-image {
-            flex: none !important;
-            max-width: 100% !important;
-            width: 100%;
-          }
-          .focus-track-image img {
-            min-height: 220px !important;
-            max-height: 300px;
-          }
-        }
-
-        /* ── Track number overlay size ── */
-        .track-number-overlay {
-          font-size: clamp(48px, 8vw, 96px);
-        }
-
-        /* ── Track content panel ── */
-        .focus-track-content {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          padding: clamp(24px, 4vw, 48px);
-        }
-
-        /* ── Track title ── */
-        .track-title {
-          font-size: clamp(18px, 3vw, 28px);
-        }
-
-        /* ── ROI section padding ── */
-        .roi-section {
-          padding: clamp(56px, 10vw, 100px) clamp(20px, 6vw, 96px);
-        }
-        @media (max-width: 640px) {
-          .roi-section {
-            padding: 48px 20px;
-          }
-        }
-
-        /* ── ROI header margin ── */
-        .roi-header-mb {
-          margin-bottom: clamp(36px, 8vw, 72px);
-        }
-
-        /* ── ROI grid ── */
-        .roi-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 24px;
-        }
-        @media (max-width: 640px) {
-          .roi-grid {
-            grid-template-columns: 1fr;
-            gap: 16px;
-          }
-        }
-        @media (min-width: 641px) and (max-width: 1024px) {
-          .roi-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-          }
-        }
-
-        /* ── CTA section padding ── */
-        .cta-section {
-          padding: clamp(56px, 10vw, 100px) clamp(20px, 6vw, 96px);
-        }
-        @media (max-width: 640px) {
-          .cta-section {
-            padding: 48px 20px;
-          }
-        }
-
-        /* ── CTA inner ── */
-        .cta-inner {
-          width: 100%;
-        }
-
-        /* ── CTA box padding ── */
-        .cta-box {
-          padding: clamp(32px, 6vw, 72px) clamp(24px, 5vw, 64px);
-        }
-        @media (max-width: 640px) {
-          .cta-box {
-            padding: 36px 24px;
-          }
-        }
-
-        /* ── CTA heading size ── */
-        .cta-heading {
-          font-size: clamp(24px, 5vw, 48px);
-        }
-
-        /* ── CTA buttons ── */
-        .cta-buttons {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 16px;
-          justify-content: center;
-        }
-        @media (max-width: 640px) {
-          .cta-buttons {
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-          }
-        }
-
-        /* ── CTA button sizes ── */
-        .cta-btn-primary,
-        .cta-btn-secondary {
-          font-size: clamp(14px, 2vw, 17px);
-          padding: clamp(12px, 2vw, 16px) clamp(20px, 3vw, 32px);
-          white-space: nowrap;
-        }
-        @media (max-width: 640px) {
-          .cta-btn-primary,
-          .cta-btn-secondary {
-            width: 220px !important;
-            padding: 14px 24px;
-            font-size: 15px;
-            justify-content: center;
-          }
-        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0A0A0F; }
+        ::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #333; }
       `}</style>
     </div>;
 };
