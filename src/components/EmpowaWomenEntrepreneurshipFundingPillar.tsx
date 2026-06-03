@@ -1,6 +1,6 @@
 import * as React from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { ArrowRight, Check, ShieldCheck, Coins, Briefcase, Building2, ClipboardList, Users, Zap, Cpu, Wallet } from "lucide-react";
+import { ArrowRight, Check, ShieldCheck, Coins, Briefcase, Building2, ClipboardList, Users, Zap, Cpu, Wallet, CheckCircle2 } from "lucide-react";
 import { ROIMetricBlock } from "./ROIMetricBlock";
 
 // ─── Constants & Data ─────────────────────────────────────────────────────────
@@ -105,7 +105,7 @@ const PROGRAMME_SESSIONS = [
     time: "11:20",
     format: "EXECUTIVE MASTERCLASS™",
     title: "Funding Readiness, Scaling & the Future of High-Growth Enterprises™",
-    subtitle: "Capital Will Flow Toward Businesses That Are Scalable, Investment-Ready & Future-Focused.",
+    subtitle: "How will capital flow toward scalable, investment-ready, and future-focused businesses, and how do women prepare?",
     accentColor: TERTIARY_ACCENT
   },
   {
@@ -113,7 +113,7 @@ const PROGRAMME_SESSIONS = [
     time: "12:00",
     format: "HIGH-IMPACT PANEL™",
     title: "Women, Capital & the Future of Economic Participation™",
-    subtitle: "The Future Economy Will Belong to Entrepreneurs Who Can Access Capital, Markets & Strategic Networks.",
+    subtitle: "Why will the future economy belong to entrepreneurs with access to capital, markets, and strategic networks?",
     accentColor: SECONDARY_ACCENT
   },
   {
@@ -130,7 +130,7 @@ const PROGRAMME_SESSIONS = [
     time: "13:20",
     format: "FIRECHAT™",
     title: "Investment, Market Access & Women-Led Enterprises™",
-    subtitle: "Entrepreneurship Without Scale Is a Missed Economic Opportunity.",
+    subtitle: "Why is entrepreneurship without scale a missed economic opportunity, and how do we unlock scaling paths?",
     accentColor: PRIMARY_ACCENT
   },
   {
@@ -138,7 +138,7 @@ const PROGRAMME_SESSIONS = [
     time: "14:00",
     format: "STRATEGIC WORKSHOP™",
     title: "The Business of Innovation, Commercialisation & Sustainable Enterprise Growth™",
-    subtitle: "The Future of Entrepreneurship Will Belong to Businesses That Can Innovate, Adapt & Scale.",
+    subtitle: "In what ways will the future of entrepreneurship belong to businesses that can innovate, adapt, and scale?",
     accentColor: SECONDARY_ACCENT
   },
   {
@@ -146,7 +146,7 @@ const PROGRAMME_SESSIONS = [
     time: "14:40",
     format: "HIGH-IMPACT INDUSTRY PANEL™",
     title: "Procurement, Digital Economies & the Future of Business Growth™",
-    subtitle: "The Next Generation of High-Growth Enterprises Will Be Built Through Strategic Ecosystems, Technology & Market Access.",
+    subtitle: "How will the next generation of high-growth enterprises be built through strategic ecosystems, technology, and market access?",
     accentColor: TERTIARY_ACCENT
   },
   {
@@ -154,7 +154,7 @@ const PROGRAMME_SESSIONS = [
     time: "15:20",
     format: "FUTURE ECONOMY CONVERSATION™",
     title: "The Future of Africa's Entrepreneurial Economy & Women-Led Business Transformation™",
-    subtitle: "Innovation, Investment & Women Leadership Will Shape Africa's Economic Future.",
+    subtitle: "How will innovation, investment, and women's leadership shape Africa's economic future?",
     accentColor: PRIMARY_ACCENT
   },
   {
@@ -166,6 +166,125 @@ const PROGRAMME_SESSIONS = [
     accentColor: SECONDARY_ACCENT
   }
 ];
+
+const STRATEGIC_BENEFITS = [{
+  id: "sb-1",
+  label: "Investor Access & Funding Opportunities"
+}, {
+  id: "sb-2",
+  label: "Procurement & Market Access Integration"
+}, {
+  id: "sb-3",
+  label: "Entrepreneurial Growth Strategies"
+}, {
+  id: "sb-4",
+  label: "Innovation Commercialisation"
+}, {
+  id: "sb-5",
+  label: "Ecosystem Collaboration"
+}, {
+  id: "sb-6",
+  label: "Pan-African Trade Opportunities"
+}, {
+  id: "sb-7",
+  label: "Leadership Visibility"
+}, {
+  id: "sb-8",
+  label: "Strategic Business Expansion"
+}];
+
+const StrategicROISection: React.FC = () => {
+  return (
+    <section style={{
+      paddingTop: "clamp(48px, 8vw, 100px)",
+      paddingBottom: "clamp(48px, 8vw, 100px)",
+      paddingLeft: "clamp(16px, 5vw, 96px)",
+      paddingRight: "clamp(16px, 5vw, 96px)",
+      maxWidth: "1400px",
+      margin: "0 auto"
+    }}>
+      <SectionLabel>Strategic ROI</SectionLabel>
+
+      <div className="roi-benefits-grid">
+        {/* Left: Heading */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
+        >
+          <h2 style={{
+            fontFamily: "Figtree",
+            fontWeight: 300,
+            fontSize: "clamp(24px, 4vw, 48px)",
+            color: "#FFFFFF",
+            lineHeight: 1.1,
+            letterSpacing: "-0.025em",
+            margin: "0 0 24px 0",
+            maxWidth: "440px"
+          }}>
+            What You Gain as a Delegate
+          </h2>
+          <p style={{
+            fontFamily: "Figtree",
+            fontSize: "clamp(14px, 1.8vw, 16px)",
+            color: "rgba(255,255,255,0.45)",
+            lineHeight: 1.75,
+            margin: 0,
+            maxWidth: "380px"
+          }}>
+            Access Africa's premier platform for capital access, venture scaling, and strategic ecosystem connectivity designed for women entrepreneurs and investors.
+          </p>
+        </motion.div>
+
+        {/* Right: Benefits list */}
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.12, ease: [0.21, 0.47, 0.32, 0.98] }}
+          style={{
+            backgroundColor: "#0D0D14",
+            border: "1px solid rgba(255,255,255,0.06)",
+            borderTop: `3px solid ${PRIMARY_ACCENT}`,
+            padding: "clamp(24px, 3vw, 40px)",
+            display: "flex",
+            flexDirection: "column",
+            gap: "0"
+          }}
+        >
+          {STRATEGIC_BENEFITS.map((benefit, idx) => (
+            <motion.div
+              key={benefit.id}
+              initial={{ opacity: 0, x: 16 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 + idx * 0.07 }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "14px",
+                padding: "14px 0",
+                borderBottom: idx < STRATEGIC_BENEFITS.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none"
+              }}
+            >
+              <CheckCircle2 size={15} style={{ color: PRIMARY_ACCENT, flexShrink: 0 }} />
+              <span style={{
+                fontFamily: "Figtree",
+                fontSize: "14px",
+                fontWeight: 400,
+                color: "rgba(255,255,255,0.75)",
+                letterSpacing: "0.01em"
+              }}>
+                {benefit.label}
+              </span>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
 
 const PROGRAMME_STATS = [
   { id: "stat-1", label: "9 Sessions" },
@@ -1796,6 +1915,24 @@ export const EntrepreneurshipFundingPillar: React.FC = () => {
 
         <ProgrammeSection />
 
+        {/* Separator Line with Pink Gradient */}
+        <div
+          style={{
+            maxWidth: "1400px",
+            margin: "0 auto",
+            padding: "0 clamp(16px, 5vw, 96px)"
+          }}
+        >
+          <div
+            style={{
+              height: "1px",
+              background: `linear-gradient(to right, transparent, rgba(255,45,135,0.4) 30%, rgba(212,175,55,0.4) 70%, transparent)`
+            }}
+          />
+        </div>
+
+        <StrategicROISection />
+
         {/* Take the Next Step CTA Section */}
         <section
           style={{
@@ -2017,6 +2154,19 @@ export const EntrepreneurshipFundingPillar: React.FC = () => {
           .cta-btn { width: auto !important; max-width: none !important; }
         }
 
+        /* ROI benefits grid */
+        .roi-benefits-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: clamp(32px, 4vw, 56px);
+          margin-top: clamp(24px, 3vw, 40px);
+        }
+        @media (min-width: 1024px) {
+          .roi-benefits-grid {
+            grid-template-columns: 1fr 1.3fr;
+            align-items: start;
+          }
+        }
         input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.25); }
         select option { background-color: #111118; }
         img { max-width: 100%; }

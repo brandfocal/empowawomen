@@ -57,13 +57,13 @@ const FOCUS_AREAS: FocusArea[] = [{
   id: "fa-5",
   icon: Mountain,
   title: "Critical Minerals & Beneficiation",
-  subtitle: "Unlocking the value of Africa's mineral wealth",
+  subtitle: "Unlocking the value of Africa's critical minerals value chain",
   accentColor: "#D4AF37"
 }, {
   id: "fa-6",
-  icon: Pickaxe,
-  title: "Sustainable Mining",
-  subtitle: "Transforming mining through ESG leadership and innovation",
+  icon: Leaf,
+  title: "Circular Resource Systems",
+  subtitle: "Transforming resource usage through circular economics and waste innovation",
   accentColor: "#D4AF37"
 }, {
   id: "fa-7",
@@ -74,7 +74,7 @@ const FOCUS_AREAS: FocusArea[] = [{
 }, {
   id: "fa-8",
   icon: Users,
-  title: "Women in Mining, Energy & Sustainability Leadership",
+  title: "Women in Energy & Sustainability Leadership",
   subtitle: "Positioning women at the forefront of Africa's green industrial economy",
   accentColor: "#FF2D87"
 }];
@@ -93,7 +93,7 @@ const ROI_METRICS: ROIMetric[] = [{
 }, {
   label: "Leadership Visibility in High-Growth Industries",
   value: "2000+",
-  description: "Executives and decision-makers engaged across mining, energy, and sustainability sectors."
+  description: "Executives and decision-makers engaged across clean tech, energy, and sustainability sectors."
 }];
 const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
   id: "ps-1",
@@ -108,15 +108,15 @@ const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
   time: "11:20 – 12:00",
   format: "EXECUTIVE MASTERCLASS™",
   title: "Climate Innovation, Clean Energy & the Future of Sustainable Enterprise™",
-  subtitle: "Sustainability, Innovation & Energy Transition Will Define the Next Era of Industrial Growth. How Can Women Leverage Innovation, ESG & Clean Technologies to Build Scalable Future-Focused Enterprises?",
+  subtitle: "How will sustainability, innovation, and the energy transition define the next era of industrial growth, and how can women leverage clean technologies to build future-focused enterprises?",
   accentColor: "#D4AF37",
   accentRgb: "212,175,55"
 }, {
   id: "ps-3",
   time: "12:00 – 12:50",
   format: "HIGH-IMPACT PANEL™",
-  title: "Women, Mining, Energy & the Future of the Green Economy™",
-  subtitle: "The Future of Sustainable Growth Will Be Defined by Leadership, Inclusion & Resource Innovation.",
+  title: "Women, Energy & the Future of the Green Economy™",
+  subtitle: "How will leadership, inclusion, and resource innovation shape the future of sustainable economic growth across Africa?",
   accentColor: "#00B4A6",
   accentRgb: "0,180,166"
 }, {
@@ -132,7 +132,7 @@ const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
   time: "13:20 – 14:00",
   format: "FIRECHAT™",
   title: "Green Finance, Market Access & Women-Led Enterprises™",
-  subtitle: "Sustainability Without Commercialisation Is a Missed Economic Opportunity.",
+  subtitle: "Why is sustainability without commercialisation a missed economic opportunity, and how can green enterprises scale successfully?",
   accentColor: "#FF2D87",
   accentRgb: "255,45,135"
 }, {
@@ -140,7 +140,7 @@ const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
   time: "14:00 – 14:40",
   format: "STRATEGIC WORKSHOP™",
   title: "ESG, Climate Resilience & Sustainable Industrial Competitiveness™",
-  subtitle: "The Future of Business Will Belong to Organisations That Embed Sustainability Into Growth.",
+  subtitle: "How can organisations embed sustainability into their growth models to secure the future of business?",
   accentColor: "#00B4A6",
   accentRgb: "0,180,166"
 }, {
@@ -148,7 +148,7 @@ const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
   time: "14:40 – 15:20",
   format: "HIGH-IMPACT INDUSTRY PANEL™",
   title: "Clean Energy, Infrastructure & the Future of Industrial Transformation™",
-  subtitle: "The Green Economy Will Create the Next Generation of African Industrial Leaders.",
+  subtitle: "How will the green economy create the next generation of African industrial leaders, and what role will women play?",
   accentColor: "#D4AF37",
   accentRgb: "212,175,55"
 }, {
@@ -156,7 +156,7 @@ const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
   time: "15:20 – 15:50",
   format: "FUTURE ECONOMY CONVERSATION™",
   title: "The Future of Africa's Green Economy & Women-Led Sustainable Transformation™",
-  subtitle: "Innovation, Sustainability & Women Leadership Will Shape Africa's Economic Future.",
+  subtitle: "In what ways will innovation, sustainability, and women's leadership shape the future of Africa's economy?",
   accentColor: "#FF2D87",
   accentRgb: "255,45,135"
 }, {
@@ -289,7 +289,7 @@ export const GreenEconomyPillar: React.FC = () => {
             margin: 0
           }}>
               Green Economy,<br />
-              Mining, Energy &<br />
+              Energy &<br />
               Sustainability
             </motion.h2>
             <motion.div initial={{
@@ -323,7 +323,7 @@ export const GreenEconomyPillar: React.FC = () => {
                 As the world accelerates toward cleaner energy systems, sustainable industrialisation, ESG integration,
                 and climate resilience, Africa is uniquely positioned to become a global leader within the green economy
                 and critical minerals value chain. This platform explores how renewable energy, climate innovation,
-                mining, energy transition, sustainable infrastructure, and ESG-driven leadership are reshaping Africa's
+                clean technology, energy transition, sustainable infrastructure, and ESG-driven leadership are reshaping Africa's
                 future economic landscape while creating transformative opportunities for women leaders and
                 future-focused enterprises.
               </p>
@@ -559,7 +559,7 @@ export const GreenEconomyPillar: React.FC = () => {
                 letterSpacing: "-0.02em",
                 margin: 0
               }}>
-                  Green Economy, Mining, Energy &amp; Sustainability High-Impact Executive Programme
+                  Green Economy, Energy &amp; Sustainability High-Impact Executive Programme
                 </h2>
                 <div style={{
                 display: "flex",

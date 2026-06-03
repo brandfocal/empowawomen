@@ -1,6 +1,6 @@
 import * as React from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import { Sparkles, ShoppingBag, HeartPulse, Brain, Activity, Store, Camera, Dumbbell, ArrowRight, Check, ShieldCheck } from "lucide-react";
+import { Sparkles, ShoppingBag, HeartPulse, Brain, Activity, Store, Camera, Dumbbell, ArrowRight, Check, ShieldCheck, CheckCircle2 } from "lucide-react";
 import { ROIMetricBlock } from "./ROIMetricBlock";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -109,7 +109,7 @@ const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
   time: "11:20",
   format: "EXECUTIVE MASTERCLASS™",
   title: "Beauty Innovation, Digital Commerce & the Future of Consumer Brands™",
-  subtitle: "Technology, Consumer Behaviour & Wellness Trends Will Define the Next Era of Lifestyle Growth.",
+  subtitle: "How will technology, consumer behaviour, and wellness trends define the next era of lifestyle growth?",
   accentColor: "#D4AF37",
   accentRgb: "212,175,55"
 }, {
@@ -117,7 +117,7 @@ const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
   time: "12:00",
   format: "HIGH-IMPACT PANEL™",
   title: "Women, Wellness & the Future of the Consumer Economy™",
-  subtitle: "The Future of Wellness Will Be Defined by Innovation, Influence & Consumer Trust.",
+  subtitle: "How will innovation, influence, and consumer trust define the future of the wellness economy?",
   accentColor: "#00B4A6",
   accentRgb: "0,180,166"
 }, {
@@ -133,7 +133,7 @@ const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
   time: "13:20",
   format: "FIRECHAT™",
   title: "Brand Building, Market Access & Women-Led Lifestyle Enterprises™",
-  subtitle: "Influence Without Commercial Scale Is a Missed Economic Opportunity.",
+  subtitle: "Why is brand influence without commercial scale a missed economic opportunity, and how do we build sustainable lifestyle businesses?",
   accentColor: "#FF2D87",
   accentRgb: "255,45,135"
 }, {
@@ -141,7 +141,7 @@ const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
   time: "14:00",
   format: "STRATEGIC WORKSHOP™",
   title: "The Business of Wellness, Consumer Influence & Brand Monetisation™",
-  subtitle: "The Future of Consumer Growth Will Belong to Brands That Build Trust, Wellness & Community.",
+  subtitle: "How can consumer brands build trust, wellness, and community to drive future growth?",
   accentColor: "#D4AF37",
   accentRgb: "212,175,55"
 }, {
@@ -149,7 +149,7 @@ const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
   time: "14:40",
   format: "HIGH-IMPACT INDUSTRY PANEL™",
   title: "Fashion, Beauty, Health & the Future of the Wellness Economy™",
-  subtitle: "Wellness, Identity & Lifestyle Influence Are Becoming High-Value Economic Assets.",
+  subtitle: "In what ways are wellness, identity, and lifestyle influence becoming high-value economic assets for women founders?",
   accentColor: "#00B4A6",
   accentRgb: "0,180,166"
 }, {
@@ -157,7 +157,7 @@ const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
   time: "15:20",
   format: "FUTURE ECONOMY CONVERSATION™",
   title: "The Future of Africa's Wellness Economy & Women-Led Consumer Transformation™",
-  subtitle: "Innovation, Wellness & Women Leadership Will Shape Africa's Consumer Future.",
+  subtitle: "How will innovation, wellness, and women's leadership shape the future of Africa's consumer economy?",
   accentColor: "#FF2D87",
   accentRgb: "255,45,135"
 }, {
@@ -169,6 +169,125 @@ const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
   accentColor: "#D4AF37",
   accentRgb: "212,175,55"
 }];
+
+const STRATEGIC_BENEFITS = [{
+  id: "sb-1",
+  label: "Consumer Brand Growth & Commercialisation"
+}, {
+  id: "sb-2",
+  label: "Strategic Retail & Media Partnerships"
+}, {
+  id: "sb-3",
+  label: "Wellness Innovation Exposure"
+}, {
+  id: "sb-4",
+  label: "Influencer Economy Opportunities"
+}, {
+  id: "sb-5",
+  label: "Market Intelligence & Consumer Insights"
+}, {
+  id: "sb-6",
+  label: "Women-Led Lifestyle Enterprise Development"
+}, {
+  id: "sb-7",
+  label: "Brand Positioning & Visibility"
+}, {
+  id: "sb-8",
+  label: "Cross-Industry Collaboration"
+}];
+
+const StrategicROISection: React.FC = () => {
+  return (
+    <section style={{
+      paddingTop: "clamp(48px, 8vw, 100px)",
+      paddingBottom: "clamp(48px, 8vw, 100px)",
+      paddingLeft: "clamp(16px, 5vw, 96px)",
+      paddingRight: "clamp(16px, 5vw, 96px)",
+      maxWidth: "1400px",
+      margin: "0 auto"
+    }}>
+      <SectionLabel color="#FF2D87">Strategic ROI</SectionLabel>
+
+      <div className="roi-benefits-grid">
+        {/* Left: Heading */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
+        >
+          <h2 style={{
+            fontFamily: "Figtree",
+            fontWeight: 300,
+            fontSize: "clamp(24px, 4vw, 48px)",
+            color: "#FFFFFF",
+            lineHeight: 1.1,
+            letterSpacing: "-0.025em",
+            margin: "0 0 24px 0",
+            maxWidth: "440px"
+          }}>
+            What You Gain as a Delegate
+          </h2>
+          <p style={{
+            fontFamily: "Figtree",
+            fontSize: "clamp(14px, 1.8vw, 16px)",
+            color: "rgba(255,255,255,0.45)",
+            lineHeight: 1.75,
+            margin: 0,
+            maxWidth: "380px"
+          }}>
+            Access Africa's premier platform for the beauty, fashion, health, and wellness industries — designed to accelerate your commercial growth and influence.
+          </p>
+        </motion.div>
+
+        {/* Right: Benefits list */}
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.12, ease: [0.21, 0.47, 0.32, 0.98] }}
+          style={{
+            backgroundColor: "#0D0D14",
+            border: "1px solid rgba(255,255,255,0.06)",
+            borderTop: "3px solid #FF2D87",
+            padding: "clamp(24px, 3vw, 40px)",
+            display: "flex",
+            flexDirection: "column",
+            gap: "0"
+          }}
+        >
+          {STRATEGIC_BENEFITS.map((benefit, idx) => (
+            <motion.div
+              key={benefit.id}
+              initial={{ opacity: 0, x: 16 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 + idx * 0.07 }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "14px",
+                padding: "14px 0",
+                borderBottom: idx < STRATEGIC_BENEFITS.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none"
+              }}
+            >
+              <CheckCircle2 size={15} style={{ color: "#FF2D87", flexShrink: 0 }} />
+              <span style={{
+                fontFamily: "Figtree",
+                fontSize: "14px",
+                fontWeight: 400,
+                color: "rgba(255,255,255,0.75)",
+                letterSpacing: "0.01em"
+              }}>
+                {benefit.label}
+              </span>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
 const CTA_HEADLINE_WORDS = ["Lead,", "Africa's,", "Wellness,", "Economy,", "Now."];
 const INITIAL_FORM: FormState = {
   firstName: "",
@@ -1740,6 +1859,22 @@ export const BeautyFashionWellnessPillar: React.FC = () => {
         {/* ── Programme Section ── */}
         <ProgrammeSection />
 
+        {/* Separator */}
+        <div style={{
+          maxWidth: "1400px",
+          margin: "0 auto",
+          paddingLeft: "clamp(16px, 5vw, 96px)",
+          paddingRight: "clamp(16px, 5vw, 96px)",
+          marginTop: "48px"
+        }}>
+          <div style={{
+            height: "1px",
+            background: "linear-gradient(to right, transparent, rgba(255,45,135,0.4) 30%, rgba(212,175,55,0.4) 70%, transparent)"
+          }} />
+        </div>
+
+        <StrategicROISection />
+
         {/* ── Final CTA Section ── */}
         <section style={{
           position: "relative",
@@ -1978,6 +2113,19 @@ export const BeautyFashionWellnessPillar: React.FC = () => {
           }
         }
 
+        /* ROI benefits grid */
+        .roi-benefits-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: clamp(32px, 4vw, 56px);
+          margin-top: clamp(24px, 3vw, 40px);
+        }
+        @media (min-width: 1024px) {
+          .roi-benefits-grid {
+            grid-template-columns: 1fr 1.3fr;
+            align-items: start;
+          }
+        }
         .focus-area-row:hover .focus-area-icon {
           color: rgba(255,255,255,0.7) !important;
         }

@@ -276,12 +276,7 @@ const StrategicROISection: React.FC = () => {
     }}>
       <SectionLabel>Strategic ROI</SectionLabel>
 
-      <div style={{
-        display: "grid",
-        gridTemplateColumns: "1fr",
-        gap: "clamp(32px, 4vw, 56px)",
-        marginTop: "clamp(24px, 3vw, 40px)"
-      }} className="roi-benefits-grid">
+      <div className="roi-benefits-grid">
         {/* Left: Heading */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}

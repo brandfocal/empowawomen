@@ -1,6 +1,6 @@
 import * as React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { CapitalLeadershipHeroBanner } from "./CapitalLeadershipHeroBanner";
 
 interface MatrixCard {
@@ -403,6 +403,149 @@ const MatricesSection = () => {
     </section>;
 };
 
+const SectionLabel: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <p style={{
+    fontFamily: "Figtree, sans-serif",
+    fontSize: "10px",
+    fontWeight: 600,
+    letterSpacing: "0.14em",
+    textTransform: "uppercase",
+    color: "#FD5732",
+    margin: "0 0 16px 0",
+    display: "flex",
+    alignItems: "center",
+    gap: "10px"
+  }}>
+    <span style={{
+      display: "inline-block",
+      width: "24px",
+      height: "1.5px",
+      backgroundColor: "#FD5732",
+      flexShrink: 0
+    }} />
+    <span>{children}</span>
+  </p>
+);
+
+const STRATEGIC_BENEFITS = [{
+  id: "sb-1",
+  label: "Board Readiness & Executive Acceleration"
+}, {
+  id: "sb-2",
+  label: "Executive Networking & Mentorship"
+}, {
+  id: "sb-3",
+  label: "Strategic Influence & Visibility"
+}, {
+  id: "sb-4",
+  label: "Brand Visibility & Executive Positioning"
+}, {
+  id: "sb-5",
+  label: "Digital Reputation Management"
+}, {
+  id: "sb-6",
+  label: "Global Content Commercialisation"
+}, {
+  id: "sb-7",
+  label: "Intellectual Property Development"
+}, {
+  id: "sb-8",
+  label: "Women-Led Creative Enterprise Expansion"
+}];
+
+const StrategicROISection: React.FC = () => {
+  return (
+    <section style={{
+      paddingTop: "clamp(48px, 8vw, 100px)",
+      paddingBottom: "clamp(48px, 8vw, 100px)",
+      paddingLeft: "clamp(16px, 5vw, 96px)",
+      paddingRight: "clamp(16px, 5vw, 96px)",
+      maxWidth: "1400px",
+      margin: "0 auto"
+    }}>
+      <SectionLabel>Strategic ROI</SectionLabel>
+
+      <div className="roi-benefits-grid">
+        {/* Left: Heading */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
+        >
+          <h2 style={{
+            fontFamily: "Figtree, sans-serif",
+            fontWeight: 300,
+            fontSize: "clamp(24px, 4vw, 48px)",
+            color: "#FFFFFF",
+            lineHeight: 1.1,
+            letterSpacing: "-0.025em",
+            margin: "0 0 24px 0",
+            maxWidth: "440px"
+          }}>
+            What You Gain as a Delegate
+          </h2>
+          <p style={{
+            fontFamily: "Figtree, sans-serif",
+            fontSize: "clamp(14px, 1.8vw, 16px)",
+            color: "rgba(255,255,255,0.45)",
+            lineHeight: 1.75,
+            margin: 0,
+            maxWidth: "380px"
+          }}>
+            Access Africa's most strategically integrated platforms across creative business, board leadership, governance, and brand system innovation.
+          </p>
+        </motion.div>
+
+        {/* Right: Benefits list */}
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.12, ease: [0.21, 0.47, 0.32, 0.98] }}
+          style={{
+            backgroundColor: "#0D0D14",
+            border: "1px solid rgba(255,255,255,0.06)",
+            borderTop: "3px solid #FD5732",
+            padding: "clamp(24px, 3vw, 40px)",
+            display: "flex",
+            flexDirection: "column",
+            gap: "0"
+          }}
+        >
+          {STRATEGIC_BENEFITS.map((benefit, idx) => (
+            <motion.div
+              key={benefit.id}
+              initial={{ opacity: 0, x: 16 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 + idx * 0.07 }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "14px",
+                padding: "14px 0",
+                borderBottom: idx < STRATEGIC_BENEFITS.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none"
+              }}
+            >
+              <CheckCircle2 size={15} style={{ color: "#FD5732", flexShrink: 0 }} />
+              <span style={{
+                fontFamily: "Figtree, sans-serif",
+                fontSize: "14px",
+                fontWeight: 400,
+                color: "rgba(255,255,255,0.75)",
+                letterSpacing: "0.01em"
+              }}>
+                {benefit.label}
+              </span>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
 // ─── B2B Action Strip ─────────────────────────────────────────────────────────
 const ActionStrip = () => {
   return <section style={{
@@ -590,6 +733,21 @@ export const CapitalLeadershipPillar = () => {
       <CapitalLeadershipHeroBanner />
       <IntroSection />
       <MatricesSection />
+
+      {/* Separator */}
+      <div style={{
+        maxWidth: "1400px",
+        margin: "0 auto",
+        paddingLeft: "clamp(16px, 5vw, 96px)",
+        paddingRight: "clamp(16px, 5vw, 96px)"
+      }}>
+        <div style={{
+          height: "1px",
+          background: "linear-gradient(to right, transparent, rgba(255,45,135,0.4) 30%, rgba(212,175,55,0.4) 70%, transparent)"
+        }} />
+      </div>
+
+      <StrategicROISection />
       <ActionStrip />
 
       <style>{`
@@ -622,6 +780,19 @@ export const CapitalLeadershipPillar = () => {
           }
           .capital-action-buttons button {
             width: 100% !important;
+          }
+        }
+        /* ROI benefits grid */
+        .roi-benefits-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: clamp(32px, 4vw, 56px);
+          margin-top: clamp(24px, 3vw, 40px);
+        }
+        @media (min-width: 1024px) {
+          .roi-benefits-grid {
+            grid-template-columns: 1fr 1.3fr;
+            align-items: start;
           }
         }
       `}</style>

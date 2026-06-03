@@ -1,6 +1,6 @@
 import * as React from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import { Leaf, Sprout, Globe, Building2, Coins, Cpu, ArrowRight, Tractor, Target } from "lucide-react";
+import { Leaf, Sprout, Globe, Building2, Coins, Cpu, ArrowRight, Tractor, Target, CheckCircle2 } from "lucide-react";
 import { ROIMetricBlock } from "./ROIMetricBlock";
 import { AgriDelegateRegistrationSection } from "./AgriDelegateRegistrationSection";
 
@@ -99,7 +99,7 @@ const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
   time: "11:20",
   format: "EXECUTIVE MASTERCLASS™",
   title: "Agri-Tech, Digital Farming & Future Food Systems™",
-  subtitle: "Technology Will Define the Next Era of Agricultural Competitiveness.",
+  subtitle: "How will technology define the next era of agricultural competitiveness, and how can women build scalable digital farming enterprises?",
   accentColor: "#D4AF37",
   sessionNumber: "02"
 }, {
@@ -107,7 +107,7 @@ const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
   time: "12:00",
   format: "HIGH-IMPACT PANEL™",
   title: "Women, Agribusiness & the Future of Food Security™",
-  subtitle: "The Future of Agriculture Will Be Defined by Inclusive Economic Participation.",
+  subtitle: "Why will inclusive economic participation define the future of agriculture, and how do we unlock capital access for women?",
   accentColor: "#00B4A6",
   sessionNumber: "03"
 }, {
@@ -124,7 +124,7 @@ const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
   time: "13:20",
   format: "FIRECHAT™",
   title: "Agricultural Funding, Market Access & Women-Led Enterprises™",
-  subtitle: "Agriculture Must Move Beyond Survival and Into Scalable Commercial Growth.",
+  subtitle: "How can women-led agribusinesses move beyond survival and scale into globally competitive commercial enterprises?",
   accentColor: "#FF2D87",
   sessionNumber: "05"
 }, {
@@ -132,7 +132,7 @@ const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
   time: "14:00",
   format: "STRATEGIC WORKSHOP™",
   title: "Climate-Smart Agriculture & Sustainable Food Systems™",
-  subtitle: "Sustainability Will Define the Future of Agriculture & Food Security.",
+  subtitle: "How will sustainability define the future of agriculture, and how can women build climate-resilient farming models?",
   accentColor: "#00B4A6",
   sessionNumber: "06"
 }, {
@@ -140,7 +140,7 @@ const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
   time: "14:40",
   format: "HIGH-IMPACT INDUSTRY PANEL™",
   title: "Agro-Processing, Retail & Food Innovation™",
-  subtitle: "The Greatest Value in Agriculture Will Belong to Those Who Control Processing, Distribution & Consumer Markets.",
+  subtitle: "How can women capture greater commercial value by controlling processing, distribution, and consumer markets?",
   accentColor: "#D4AF37",
   sessionNumber: "07"
 }, {
@@ -148,7 +148,7 @@ const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
   time: "15:20",
   format: "FUTURE ECONOMY CONVERSATION™",
   title: "The Future of African Agriculture & Women-Led Economic Transformation™",
-  subtitle: "Food Systems, Innovation & Women Leadership Will Shape Africa's Economic Future.",
+  subtitle: "How will food systems, innovation, and women's leadership shape Africa's economic future?",
   accentColor: "#FF2D87",
   sessionNumber: "08"
 }, {
@@ -160,6 +160,125 @@ const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
   accentColor: "#00B4A6",
   sessionNumber: "09"
 }];
+
+const STRATEGIC_BENEFITS = [{
+  id: "sb-1",
+  label: "Agricultural Investment Access"
+}, {
+  id: "sb-2",
+  label: "Agribusiness Partnerships"
+}, {
+  id: "sb-3",
+  label: "Agri-Tech Innovation Exposure"
+}, {
+  id: "sb-4",
+  label: "Food Systems Intelligence"
+}, {
+  id: "sb-5",
+  label: "Rural Enterprise Development"
+}, {
+  id: "sb-6",
+  label: "Export & Trade Opportunities"
+}, {
+  id: "sb-7",
+  label: "Women-Led Agribusiness Growth"
+}, {
+  id: "sb-8",
+  label: "Sustainable Agriculture Leadership"
+}];
+
+const StrategicROISection: React.FC = () => {
+  return (
+    <section style={{
+      paddingTop: "clamp(48px, 8vw, 100px)",
+      paddingBottom: "clamp(48px, 8vw, 100px)",
+      paddingLeft: "clamp(16px, 5vw, 96px)",
+      paddingRight: "clamp(16px, 5vw, 96px)",
+      maxWidth: "1400px",
+      margin: "0 auto"
+    }}>
+      <SectionLabel>Strategic ROI</SectionLabel>
+
+      <div className="roi-benefits-grid">
+        {/* Left: Heading */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
+        >
+          <h2 style={{
+            fontFamily: "Figtree",
+            fontWeight: 300,
+            fontSize: "clamp(24px, 4vw, 48px)",
+            color: "#FFFFFF",
+            lineHeight: 1.1,
+            letterSpacing: "-0.025em",
+            margin: "0 0 24px 0",
+            maxWidth: "440px"
+          }}>
+            What You Gain as a Delegate
+          </h2>
+          <p style={{
+            fontFamily: "Figtree",
+            fontSize: "clamp(14px, 1.8vw, 16px)",
+            color: "rgba(255,255,255,0.45)",
+            lineHeight: 1.75,
+            margin: 0,
+            maxWidth: "380px"
+          }}>
+            Access Africa's most strategically curated agribusiness platform — designed to accelerate your impact, visibility, and growth in sustainable food systems.
+          </p>
+        </motion.div>
+
+        {/* Right: Benefits list */}
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.12, ease: [0.21, 0.47, 0.32, 0.98] }}
+          style={{
+            backgroundColor: "#0D0D14",
+            border: "1px solid rgba(255,255,255,0.06)",
+            borderTop: "3px solid #00B4A6",
+            padding: "clamp(24px, 3vw, 40px)",
+            display: "flex",
+            flexDirection: "column",
+            gap: "0"
+          }}
+        >
+          {STRATEGIC_BENEFITS.map((benefit, idx) => (
+            <motion.div
+              key={benefit.id}
+              initial={{ opacity: 0, x: 16 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 + idx * 0.07 }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "14px",
+                padding: "14px 0",
+                borderBottom: idx < STRATEGIC_BENEFITS.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none"
+              }}
+            >
+              <CheckCircle2 size={15} style={{ color: "#00B4A6", flexShrink: 0 }} />
+              <span style={{
+                fontFamily: "Figtree",
+                fontSize: "14px",
+                fontWeight: 400,
+                color: "rgba(255,255,255,0.75)",
+                letterSpacing: "0.01em"
+              }}>
+                {benefit.label}
+              </span>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
 const CTA_HEADLINE_WORDS = ["Build,", "Africa's,", "Food,", "Future,", "Now."];
 const PROGRAMME_STATS = [{
   id: "stat-1",
@@ -962,6 +1081,21 @@ export const AgricultureManufacturingPillar: React.FC = () => {
           </div>
         </section>
 
+        {/* Separator */}
+      <div style={{
+        maxWidth: "1400px",
+        margin: "0 auto",
+        paddingLeft: "clamp(16px, 5vw, 96px)",
+        paddingRight: "clamp(16px, 5vw, 96px)"
+      }}>
+        <div style={{
+          height: "1px",
+          background: "linear-gradient(to right, transparent, rgba(255,45,135,0.4) 30%, rgba(212,175,55,0.4) 70%, transparent)"
+        }} />
+      </div>
+
+      <StrategicROISection />
+
         {/* CTA Section */}
         <section style={{
           position: "relative",
@@ -1102,6 +1236,19 @@ export const AgricultureManufacturingPillar: React.FC = () => {
           }
         }
 
+        /* ROI benefits grid */
+        .roi-benefits-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: clamp(32px, 4vw, 56px);
+          margin-top: clamp(24px, 3vw, 40px);
+        }
+        @media (min-width: 1024px) {
+          .roi-benefits-grid {
+            grid-template-columns: 1fr 1.3fr;
+            align-items: start;
+          }
+        }
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #0A0A0F; }
