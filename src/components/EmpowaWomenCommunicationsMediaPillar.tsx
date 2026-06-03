@@ -183,6 +183,15 @@ const STRATEGIC_BENEFITS = [
   { id: "sb-8", label: "Commercial Brand Expansion" }
 ];
 
+const AVATAR_URLS: { id: string; url: string }[] = [
+  { id: "av-1", url: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=80&q=80" },
+  { id: "av-2", url: "https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?w=80&q=80" },
+  { id: "av-3", url: "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?w=80&q=80" },
+  { id: "av-4", url: "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=80&q=80" },
+  { id: "av-5", url: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&q=80" },
+  { id: "av-6", url: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&q=80" }
+];
+
 const HERO_LINES = [{
   id: "hl-1",
   words: ["Shape", "Africa's"]
