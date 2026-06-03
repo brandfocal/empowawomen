@@ -1783,7 +1783,7 @@ export const BeautyFashionWellnessPillar: React.FC = () => {
                 }} />
                 <h3 style={{
                   fontSize: "20px",
-                  fontWeight: 700,
+                  fontWeight: 300,
                   letterSpacing: "-0.01em",
                   margin: 0
                 }}>

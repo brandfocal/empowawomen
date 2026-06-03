@@ -1459,9 +1459,9 @@ const DelegateRegistrationSection: React.FC = () => {
             <div
               style={{
                 height: "180px",
-                backgroundImage: "url('https://empowawomen.co.za/wp-content/uploads/2025/10/DSC_2791.jpg')",
+                backgroundImage: "url('https://empowawomen.co.za/wp-content/uploads/2025/10/DSC_2948.jpg')",
                 backgroundSize: "cover",
-                backgroundPosition: "center 20%",
+                backgroundPosition: "center",
                 position: "relative"
               }}
             >
@@ -1771,7 +1771,7 @@ export const LeadershipGovernanceBoardStage: React.FC = () => {
                     backgroundColor: "#FF2D87"
                   }}
                 />
-                <h3 style={{ fontSize: "20px", fontWeight: 700 }}>Key Focus Areas</h3>
+                <h3 style={{ fontSize: "20px", fontWeight: 300 }}>Key Focus Areas</h3>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8">
                 {FOCUS_AREAS.map(area => (

@@ -687,7 +687,7 @@ export const AgricultureManufacturingPillar: React.FC = () => {
                 }} />
                 <h3 style={{
                   fontSize: "20px",
-                  fontWeight: 700,
+                  fontWeight: 300,
                   letterSpacing: "-0.01em",
                   margin: 0
                 }}>
@@ -1146,8 +1146,7 @@ export const AgricultureManufacturingPillar: React.FC = () => {
                 display: "inline-block",
                 marginRight: "0.22em",
                 ...(word === "Now." ? {
-                  color: "#FF2D87",
-                  fontWeight: 500
+                  color: "#FF2D87"
                 } : {})
               }}>
                   {word}

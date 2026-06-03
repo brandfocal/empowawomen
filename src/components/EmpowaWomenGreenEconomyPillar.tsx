@@ -402,7 +402,7 @@ export const GreenEconomyPillar: React.FC = () => {
                 <h3 style={{
                 fontFamily: "Figtree",
                 fontSize: "18px",
-                fontWeight: 700,
+                fontWeight: 300,
                 color: "#FFFFFF",
                 margin: 0,
                 letterSpacing: "-0.01em"

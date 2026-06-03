@@ -22,7 +22,8 @@ interface ProgrammeSession {
   title: string;
   subtitle: string;
   accentColor: string;
-  accentRgb: string;
+  accentRgb?: string;
+  isLunch?: boolean;
 }
 interface FormState {
   firstName: string;
@@ -129,7 +130,8 @@ const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
   title: "Cultivating Influence, Partnerships & Brand Growth™",
   subtitle: "Which Strategic Relationships Will Accelerate Your Media, Marketing & Brand Leadership Journey?",
   accentColor: "#D4AF37",
-  accentRgb: "212,175,55"
+  accentRgb: "212,175,55",
+  isLunch: true
 }, {
   id: "ps-5",
   time: "13:20",
@@ -1285,7 +1287,7 @@ const CommunicationsRegistrationSection: React.FC = () => {
             <div
               style={{
                 height: "180px",
-                backgroundImage: "url('https://empowawomen.co.za/wp-content/uploads/2025/10/DSC_2820.jpg')",
+                backgroundImage: "url('https://empowawomen.co.za/wp-content/uploads/2025/10/DSC_2948.jpg')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 position: "relative"
@@ -1602,14 +1604,107 @@ const ProgrammeSection: React.FC = () => {
           {PROGRAMME_SESSIONS.map((session, i) => {
             const accent = ACCENT_CYCLE[i % ACCENT_CYCLE.length];
             const sessionNumber = String(i + 1).padStart(2, "0");
-            const isLunch = session.id === "ps-4";
 
+            if (session.isLunch) {
+              return (
+                <motion.div
+                  key={session.id}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.06 }}
+                  style={{
+                    backgroundColor: "rgba(0,180,166,0.04)",
+                    border: "1px solid rgba(0,180,166,0.12)",
+                    borderRadius: "8px",
+                    padding: "12px 16px",
+                    margin: "4px 0",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "24px"
+                  }}
+                >
+                  <div
+                    style={{
+                      width: "80px",
+                      flexShrink: 0,
+                      fontFamily: "Figtree, sans-serif",
+                      fontSize: "12px",
+                      fontWeight: 600,
+                      letterSpacing: "0.05em",
+                      color: "#00B4A6"
+                    }}
+                  >
+                    {session.time}
+                  </div>
+                  <div
+                    style={{
+                      flex: 1,
+                      minWidth: 0,
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "12px",
+                      flexWrap: "wrap"
+                    }}
+                  >
+                    <span
+                      style={{
+                        width: "8px",
+                        height: "8px",
+                        borderRadius: "50%",
+                        backgroundColor: "#00B4A6",
+                        flexShrink: 0,
+                        display: "inline-block"
+                      }}
+                    />
+                    <span
+                      style={{
+                        fontFamily: "Figtree, sans-serif",
+                        fontSize: "15px",
+                        fontWeight: 500,
+                        color: "#FFFFFF"
+                      }}
+                    >
+                      {session.title}
+                    </span>
+                    <span
+                      style={{
+                        fontFamily: "Figtree, sans-serif",
+                        fontSize: "9px",
+                        fontWeight: 700,
+                        letterSpacing: "0.15em",
+                        textTransform: "uppercase",
+                        color: "#00B4A6",
+                        backgroundColor: "rgba(0,180,166,0.12)",
+                        border: "1px solid rgba(0,180,166,0.25)",
+                        borderRadius: "4px",
+                        padding: "2px 8px"
+                      }}
+                    >
+                      INCLUDED
+                    </span>
+                  </div>
+                  <span
+                    style={{
+                      width: "36px",
+                      textAlign: "right",
+                      fontFamily: "Figtree, sans-serif",
+                      fontSize: "11px",
+                      color: "rgba(255,255,255,0.12)",
+                      flexShrink: 0
+                    }}
+                  >
+                    {sessionNumber}
+                  </span>
+                </motion.div>
+              );
+            }
             return (
               <motion.div
                 key={session.id}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.06 }}
                 whileHover={{ backgroundColor: "rgba(255,255,255,0.025)" }}
                 style={{
@@ -1619,83 +1714,122 @@ const ProgrammeSection: React.FC = () => {
                   paddingTop: "20px",
                   paddingBottom: "20px",
                   borderBottom: "1px solid rgba(255,255,255,0.06)",
-                  borderRadius: isLunch ? "8px" : undefined,
-                  backgroundColor: isLunch ? "rgba(0,180,166,0.04)" : undefined,
-                  border: isLunch ? "1px solid rgba(0,180,166,0.12)" : undefined,
-                  padding: isLunch ? "12px 16px" : undefined,
-                  margin: isLunch ? "4px 0" : undefined,
-                  transition: "background-color 200ms"
+                  cursor: "pointer",
+                  borderRadius: "4px",
+                  transition: "background-color 200ms ease"
                 }}
               >
-                {/* Col 1: Time */}
-                <div style={{ width: "80px", flexShrink: 0 }}>
-                  {isLunch ? (
-                    <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-                      <div style={{ width: "7px", height: "7px", borderRadius: "50%", backgroundColor: "#00B4A6", flexShrink: 0 }} />
-                      <span style={{ fontFamily: "Figtree, sans-serif", fontSize: "12px", fontWeight: 600, letterSpacing: "0.05em", color: accent }}>
-                        {session.time}
-                      </span>
-                    </div>
-                  ) : (
-                    <span style={{ fontFamily: "Figtree, sans-serif", fontSize: "12px", fontWeight: 600, letterSpacing: "0.05em", color: accent }}>
-                      {session.time}
-                    </span>
-                  )}
+                {/* Time col */}
+                <div
+                  style={{
+                    width: "80px",
+                    flexShrink: 0,
+                    fontFamily: "Figtree, sans-serif",
+                    fontSize: "12px",
+                    fontWeight: 600,
+                    letterSpacing: "0.05em",
+                    color: accent
+                  }}
+                >
+                  {session.time}
                 </div>
 
-                {/* Col 2: Content */}
+                {/* Content col */}
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
-                    <span style={{ fontFamily: "Figtree, sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: accent }}>
-                      {session.format}
-                    </span>
-                    {isLunch && (
-                      <span style={{ fontFamily: "Figtree, sans-serif", fontSize: "9px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#00B4A6", border: "1px solid rgba(0,180,166,0.40)", borderRadius: "4px", padding: "2px 7px" }}>
-                        INCLUDED
-                      </span>
-                    )}
-                  </div>
-                  <p style={{ fontFamily: "Figtree, sans-serif", fontSize: "15px", fontWeight: 500, color: "#FFFFFF", margin: "4px 0 4px 0", lineHeight: 1.35 }}>
+                  <span
+                    style={{
+                      fontFamily: "Figtree, sans-serif",
+                      fontSize: "9px",
+                      fontWeight: 700,
+                      letterSpacing: "0.2em",
+                      textTransform: "uppercase",
+                      color: accent,
+                      display: "block"
+                    }}
+                  >
+                    {session.format}
+                  </span>
+                  <h4
+                    style={{
+                      fontFamily: "Figtree, sans-serif",
+                      fontSize: "15px",
+                      fontWeight: 500,
+                      color: "#FFFFFF",
+                      margin: "4px 0 0 0",
+                      lineHeight: 1.35
+                    }}
+                  >
                     {session.title}
-                  </p>
-                  <p style={{ fontFamily: "Figtree, sans-serif", fontSize: "12px", color: "rgba(255,255,255,0.35)", margin: 0, lineHeight: 1.55 }}>
+                  </h4>
+                  <p
+                    style={{
+                      fontFamily: "Figtree, sans-serif",
+                      fontSize: "12px",
+                      color: "rgba(255,255,255,0.35)",
+                      margin: "4px 0 0 0",
+                      lineHeight: 1.55
+                    }}
+                  >
                     {session.subtitle}
                   </p>
                 </div>
 
-                {/* Col 3: Number */}
-                <div style={{ width: "36px", flexShrink: 0, textAlign: "right" }}>
-                  <span style={{ fontFamily: "Figtree, sans-serif", fontSize: "11px", color: "rgba(255,255,255,0.12)", fontVariantNumeric: "tabular-nums" }}>
-                    {sessionNumber}
-                  </span>
-                </div>
+                {/* Number col */}
+                <span
+                  style={{
+                    width: "36px",
+                    textAlign: "right",
+                    fontFamily: "Figtree, sans-serif",
+                    fontSize: "11px",
+                    color: "rgba(255,255,255,0.12)",
+                    flexShrink: 0
+                  }}
+                >
+                  {sessionNumber}
+                </span>
               </motion.div>
             );
           })}
         </div>
 
         {/* Stats footer */}
-        <div style={{ display: "flex", justifyContent: "center", gap: "clamp(32px, 6vw, 80px)", marginTop: "56px", paddingTop: "40px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-          {[{
-            id: "stat-1",
-            value: "9 Sessions",
-            label: "Full Programme"
-          }, {
-            id: "stat-2",
-            value: "11:00 Start",
-            label: "Morning Kickoff"
-          }, {
-            id: "stat-3",
-            value: "16:00 Close",
-            label: "Afternoon Wrap"
-          }].map(stat => (
-            <div key={stat.id} style={{ textAlign: "center" }}>
-              <p style={{ fontFamily: "Figtree, sans-serif", fontSize: "clamp(18px, 3vw, 28px)", fontWeight: 600, color: "#FF2D87", margin: "0 0 4px 0" }}>
-                {stat.value}
-              </p>
-              <p style={{ fontFamily: "Figtree, sans-serif", fontSize: "11px", fontWeight: 500, color: "rgba(255,255,255,0.30)", letterSpacing: "0.1em", textTransform: "uppercase", margin: 0 }}>
+        <div
+          style={{
+            maxWidth: "48rem",
+            margin: "48px auto 0 auto",
+            display: "flex",
+            gap: "40px",
+            flexWrap: "wrap",
+            borderTop: "1px solid rgba(255,255,255,0.06)",
+            paddingTop: "32px"
+          }}
+        >
+          {[
+            { id: "stat-1", label: "9 Sessions" },
+            { id: "stat-2", label: "11:00 Start" },
+            { id: "stat-3", label: "16:00 Close" }
+          ].map(stat => (
+            <div key={stat.id} style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <span
+                style={{
+                  width: "4px",
+                  height: "4px",
+                  borderRadius: "50%",
+                  backgroundColor: "#FF2D87",
+                  display: "inline-block"
+                }}
+              />
+              <span
+                style={{
+                  fontFamily: "Figtree, sans-serif",
+                  fontSize: "13px",
+                  fontWeight: 500,
+                  color: "rgba(255,255,255,0.50)",
+                  letterSpacing: "0.04em"
+                }}
+              >
                 {stat.label}
-              </p>
+              </span>
             </div>
           ))}
         </div>
@@ -1782,7 +1916,7 @@ export const CommunicationsPillarPage: React.FC = () => {
             >
               <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "32px" }}>
                 <div style={{ width: "3px", height: "28px", backgroundColor: "#FF2D87", flexShrink: 0 }} />
-                <h3 style={{ fontFamily: "Figtree, sans-serif", fontSize: "20px", fontWeight: 700, margin: 0 }}>
+                <h3 style={{ fontFamily: "Figtree, sans-serif", fontSize: "20px", fontWeight: 300, margin: 0 }}>
                   Strategic Focus Pillars
                 </h3>
               </div>
@@ -1899,7 +2033,6 @@ export const CommunicationsPillarPage: React.FC = () => {
                     ...(word === "Now."
                       ? {
                           color: "#FF2D87",
-                          fontWeight: 700,
                           textDecoration: "underline",
                           textDecorationColor: "#FF2D87",
                           textDecorationThickness: "4px",

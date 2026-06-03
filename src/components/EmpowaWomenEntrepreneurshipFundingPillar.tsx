@@ -780,7 +780,7 @@ const BentoSection: React.FC<{ bentoInView: boolean }> = ({ bentoInView }) => {
               style={{
                 fontFamily: "Figtree",
                 fontSize: "20px",
-                fontWeight: 700,
+                fontWeight: 300,
                 letterSpacing: "-0.01em",
                 margin: 0
               }}

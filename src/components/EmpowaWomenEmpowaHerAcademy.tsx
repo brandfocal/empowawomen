@@ -909,7 +909,9 @@ const JurisdictionImpact = () => {
                         width: 'auto',
                         objectFit: 'contain',
                         marginBottom: '24px',
-                        mixBlendMode: 'multiply'
+                        mixBlendMode: 'multiply',
+                        display: 'block',
+                        margin: '0 auto 24px auto'
                     }}
                 />
                 <h2 style={{

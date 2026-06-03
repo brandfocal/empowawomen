@@ -1428,7 +1428,7 @@ export const WholesaleRetailManufacturingPillar: React.FC = () => {
                   style={{
                     display: "inline-block",
                     marginRight: "0.2em",
-                    fontWeight: i === 3 ? 700 : 300
+                    fontWeight: 300
                   }}
                 >
                   {word}
