@@ -170,18 +170,102 @@ export const ExecutiveIndustrySeries: React.FC = () => {
     const imageY = useTransform(scrollY, [0, 600], ["0%", "20%"]);
     const [formData, setFormData] = useState<FormData>(EMPTY_FORM);
     const [submitState, setSubmitState] = useState<SubmitState>("idle");
+    const [error, setError] = useState("");
     const [drawerOpen, setDrawerOpen] = useState(false);
     const [drawerStream, setDrawerStream] = useState<number | null>(null);
     const [drawerFormData, setDrawerFormData] = useState<FormData>(EMPTY_FORM);
     const [drawerSubmitState, setDrawerSubmitState] = useState<SubmitState>("idle");
-    const handleSubmit = () => {
+    const [drawerError, setDrawerError] = useState("");
+
+    const handleSubmit = async () => {
+        if (!formData.name || !formData.title || !formData.organisation || !formData.email || !formData.stream) {
+            setError("Please fill in all required fields.");
+            return;
+        }
+
+        setError("");
         setSubmitState("submitting");
-        setTimeout(() => setSubmitState("success"), 1800);
+
+        const streamLabel = STREAMS_DATA.find(s => String(s.id) === formData.stream)?.title || formData.stream;
+
+        try {
+            const response = await fetch('/api/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    form_id: 18,
+                    input_values: {
+                        'input_10': formData.name,
+                        'input_11': formData.title,
+                        'input_14': formData.organisation,
+                        'input_4': formData.email,
+                        'input_13': streamLabel,
+                        'input_9': formData.message
+                    }
+                })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || 'Failed to submit expression of interest.');
+            }
+
+            setSubmitState("success");
+            setFormData(EMPTY_FORM);
+        } catch (err: any) {
+            setError(err.message || "An unexpected error occurred. Please try again.");
+            setSubmitState("idle");
+        }
     };
-    const handleDrawerSubmit = () => {
+
+    const handleDrawerSubmit = async () => {
+        const streamVal = drawerFormData.stream || (drawerStream !== null ? String(drawerStream) : "");
+        if (!drawerFormData.name || !drawerFormData.title || !drawerFormData.organisation || !drawerFormData.email || !streamVal) {
+            setDrawerError("Please fill in all required fields.");
+            return;
+        }
+
+        setDrawerError("");
         setDrawerSubmitState("submitting");
-        setTimeout(() => setDrawerSubmitState("success"), 1800);
+
+        const streamLabel = STREAMS_DATA.find(s => String(s.id) === streamVal)?.title || streamVal;
+
+        try {
+            const response = await fetch('/api/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    form_id: 18,
+                    input_values: {
+                        'input_10': drawerFormData.name,
+                        'input_11': drawerFormData.title,
+                        'input_14': drawerFormData.organisation,
+                        'input_4': drawerFormData.email,
+                        'input_13': streamLabel,
+                        'input_9': drawerFormData.message
+                    }
+                })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || 'Failed to submit expression of interest.');
+            }
+
+            setDrawerSubmitState("success");
+            setDrawerFormData(EMPTY_FORM);
+        } catch (err: any) {
+            setDrawerError(err.message || "An unexpected error occurred. Please try again.");
+            setDrawerSubmitState("idle");
+        }
     };
+
     const openDrawer = (streamId: number | null) => {
         setDrawerStream(streamId);
         const preStream = streamId !== null ? String(streamId) : "";
@@ -190,6 +274,7 @@ export const ExecutiveIndustrySeries: React.FC = () => {
             stream: preStream
         });
         setDrawerSubmitState("idle");
+        setDrawerError("");
         setDrawerOpen(true);
     };
     const closeDrawer = () => {
@@ -1205,6 +1290,21 @@ export const ExecutiveIndustrySeries: React.FC = () => {
                                 Submit another application
                             </button>
                         </div> : <React.Fragment>
+                            {error && (
+                                <div style={{
+                                    padding: "12px 16px",
+                                    backgroundColor: "rgba(239, 68, 68, 0.08)",
+                                    border: "1px solid rgba(239, 68, 68, 0.2)",
+                                    borderRadius: "12px",
+                                    color: "#EF4444",
+                                    fontSize: "13px",
+                                    fontFamily: "Figtree",
+                                    lineHeight: 1.4,
+                                    marginBottom: "12px"
+                                }}>
+                                    {error}
+                                </div>
+                            )}
                             {/* Name + Title row */}
                             <div className="form-name-row" style={{
                                 display: "grid",
@@ -1658,6 +1758,21 @@ export const ExecutiveIndustrySeries: React.FC = () => {
                                 Close
                             </button>
                         </div> : <React.Fragment>
+                            {drawerError && (
+                                <div style={{
+                                    padding: "12px 16px",
+                                    backgroundColor: "rgba(239, 68, 68, 0.08)",
+                                    border: "1px solid rgba(239, 68, 68, 0.2)",
+                                    borderRadius: "12px",
+                                    color: "#EF4444",
+                                    fontSize: "13px",
+                                    fontFamily: "Figtree",
+                                    lineHeight: 1.4,
+                                    marginBottom: "12px"
+                                }}>
+                                    {drawerError}
+                                </div>
+                            )}
                             {/* Name + Title */}
                             <div className="form-name-row" style={{
                                 display: "grid",
