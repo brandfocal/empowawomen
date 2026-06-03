@@ -535,7 +535,7 @@ const GalaTimeline = () => {
           maxWidth: '480px',
           margin: 0
         }}>
-          28 August 2026. Every moment has a purpose.
+          Saturday, 29 August 2026. Every moment has a purpose.
         </motion.p>
       </div>
 
@@ -2206,7 +2206,7 @@ const HeroSection = ({ scrollToForm }: { scrollToForm: (nominateOption?: 'Yes' |
           color: 'rgba(255,255,255,0.60)',
           margin: 0
         }}>
-          3RD ANNUAL SOIREE AND LEADERSHIP AWARDS · 28 AUGUST 2026
+          3RD ANNUAL SOIREE AND LEADERSHIP AWARDS · SATURDAY, 29 AUGUST 2026
         </p>
       </motion.div>
 
@@ -2319,7 +2319,7 @@ const HeroSection = ({ scrollToForm }: { scrollToForm: (nominateOption?: 'Yes' |
             color: 'rgba(255,255,255,0.60)',
             letterSpacing: '0.02em'
           }}>
-            28 August 2026
+            Saturday, 29 August 2026
           </span>
         </div>
         <div style={{

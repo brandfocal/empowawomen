@@ -696,7 +696,7 @@ const OUTCOME_ROWS = [{
 }];
 const GALA_PILLS = [{
   id: 'pill-1',
-  label: 'Saturday 28 August 2026'
+  label: 'Saturday, 29 August 2026'
 }, {
   id: 'pill-2',
   label: '16:00–20:00'
@@ -965,7 +965,7 @@ export const SummitsHub: React.FC = () => {
 
             {/* Card 4: Bubbles & Nibbles – Full width */}
             <div className="summits-col-span-12" style={{ gridColumn: "span 12" }}>
-              <SeriesCard isFullWidth title="Bubbles & Nibbles Soirée™ & Leadership Awards™" bgImage="/features-20.jpg" accentColor="#6D28D9" badge="GALA · 28 AUG 2026" formatBadge="Strictly Invitation-Only · 200 CXOs" description="Celebrating excellence and fostering high-impact networking in an elite setting of recognition." />
+              <SeriesCard isFullWidth title="Bubbles & Nibbles Soirée™ & Leadership Awards™" bgImage="/features-20.jpg" accentColor="#6D28D9" badge="GALA · Saturday, 29 August 2026" formatBadge="Strictly Invitation-Only · 200 CXOs" description="Celebrating excellence and fostering high-impact networking in an elite setting of recognition." />
             </div>
           </div>
         </div>

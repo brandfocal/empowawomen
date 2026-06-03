@@ -1089,7 +1089,15 @@ export const GreenEconomyPillar: React.FC = () => {
         </section>
       </main>
 
-      <DelegateRegistrationSection />
+      <DelegateRegistrationSection
+        stageName="Green Economy, Mining, Energy & Sustainability Stage™"
+        includes={[
+          "Full-day Green Economy Stage access",
+          "Premium executive programme (9 sessions)",
+          "High-impact industrial matchmaking & ESG networking",
+          "Delegate resource pack & recordings"
+        ]}
+      />
 
       <style>{`
         .focus-area-row:hover span:first-child { color: rgba(255,255,255,0.95) !important; }

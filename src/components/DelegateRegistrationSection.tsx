@@ -1,112 +1,31 @@
 import * as React from "react";
 import { motion } from "framer-motion";
-import { Check, ShieldCheck } from "lucide-react";
+import { Check, ShieldCheck, ArrowRight } from "lucide-react";
 
-interface FormState {
-  firstName: string;
-  lastName: string;
-  jobTitle: string;
-  company: string;
-  industry: string;
-  email: string;
-  phone: string;
-  hearAboutUs: string;
-  specialRequirements: string;
-  agreed: boolean;
+interface DelegateRegistrationSectionProps {
+  stageName: string;
+  includes: string[];
 }
 
-const INITIAL_FORM: FormState = {
-  firstName: "",
-  lastName: "",
-  jobTitle: "",
-  company: "",
-  industry: "",
-  email: "",
-  phone: "",
-  hearAboutUs: "",
-  specialRequirements: "",
-  agreed: false
-};
+export const DelegateRegistrationSection: React.FC<DelegateRegistrationSectionProps> = ({
+  stageName,
+  includes
+}) => {
+  const checkColors = ["#FF2D87", "#00B4A6", "#D4AF37", "#FF2D87", "#00B4A6"];
+  const checkBgColors = ["rgba(255,45,135,0.15)", "rgba(0,180,166,0.15)", "rgba(212,175,55,0.15)", "rgba(255,45,135,0.15)", "rgba(0,180,166,0.15)"];
+  const checkBorderColors = ["rgba(255,45,135,0.40)", "rgba(0,180,166,0.40)", "rgba(212,175,55,0.40)", "rgba(255,45,135,0.40)", "rgba(0,180,166,0.40)"];
 
-const INDUSTRY_OPTIONS = [
-  { id: "ind-1", label: "Mining & Resources" },
-  { id: "ind-2", label: "Renewable Energy" },
-  { id: "ind-3", label: "Green Finance & ESG" },
-  { id: "ind-4", label: "Sustainable Infrastructure" },
-  { id: "ind-5", label: "Climate Innovation" },
-  { id: "ind-6", label: "Manufacturing & Industrial" },
-  { id: "ind-7", label: "Government & Policy" },
-  { id: "ind-8", label: "Technology & Innovation" },
-  { id: "ind-9", label: "Investment & Private Equity" },
-  { id: "ind-10", label: "Academia & Research" },
-  { id: "ind-11", label: "Other" }
-];
-
-const HEAR_OPTIONS = [
-  { id: "h-1", label: "LinkedIn" },
-  { id: "h-2", label: "Colleague Referral" },
-  { id: "h-3", label: "Email Newsletter" },
-  { id: "h-4", label: "EmpowaWomen Website" },
-  { id: "h-5", label: "Google Search" },
-  { id: "h-6", label: "Event Partner" },
-  { id: "h-7", label: "Other" }
-];
-
-const DETAILS_ROWS = [
-  { id: "dr-1", label: "Stage", value: "Green Economy, Mining, Energy & Sustainability™" },
-  { id: "dr-2", label: "Date", value: "Saturday, 29 August 2026" },
-  { id: "dr-3", label: "Time", value: "11:00 – 16:00" },
-  { id: "dr-4", label: "Venue", value: "The Forum, The Campus, Bryanston" },
-  { id: "dr-5", label: "Investment", value: "R1,500 per delegate" }
-];
-
-const INCLUDES = [
-  { id: "inc-1", text: "Full-day Green Economy Stage access" },
-  { id: "inc-2", text: "Premium executive programme (9 sessions)" },
-  { id: "inc-3", text: "High-impact networking & matchmaking" },
-  { id: "inc-4", text: "Delegate resource pack & recordings" }
-];
-
-const inputStyle: React.CSSProperties = {
-  backgroundColor: "rgba(255,255,255,0.04)",
-  border: "1px solid rgba(255,255,255,0.10)",
-  borderRadius: "8px",
-  padding: "13px 16px",
-  color: "white",
-  fontSize: "14px",
-  fontFamily: "Figtree, sans-serif",
-  width: "100%",
-  outline: "none",
-  transition: "border-color 0.2s"
-};
-
-export const DelegateRegistrationSection: React.FC = () => {
-  const [form, setForm] = React.useState<FormState>(INITIAL_FORM);
-  const [submitted, setSubmitted] = React.useState(false);
-  const [focused, setFocused] = React.useState<string | null>(null);
-
-  function handleChange(field: keyof FormState, value: string | boolean) {
-    setForm(prev => ({
-      ...prev,
-      [field]: value
-    }));
-  }
-
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setSubmitted(true);
-  }
-
-  function getInputStyle(fieldName: string): React.CSSProperties {
-    return {
-      ...inputStyle,
-      borderColor: focused === fieldName ? "#FF2D87" : "rgba(255,255,255,0.10)"
-    };
-  }
+  const DETAILS_ROWS = [
+    { id: "dr-1", label: "Stage", value: stageName },
+    { id: "dr-2", label: "Date", value: "Saturday, 29 August 2026" },
+    { id: "dr-3", label: "Time", value: "11:00 – 16:00" },
+    { id: "dr-4", label: "Venue", value: "The Forum, The Campus, Bryanston" },
+    { id: "dr-5", label: "Investment", value: "R1,500 per delegate" }
+  ];
 
   return (
     <motion.section
-      id="register"
+      id="registration"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -118,7 +37,8 @@ export const DelegateRegistrationSection: React.FC = () => {
         paddingTop: "128px",
         paddingBottom: "128px",
         paddingLeft: "clamp(16px, 5vw, 32px)",
-        paddingRight: "clamp(16px, 5vw, 32px)"
+        paddingRight: "clamp(16px, 5vw, 32px)",
+        borderTop: "1px solid rgba(255,255,255,0.05)"
       }}
     >
       {/* Radial glow */}
@@ -146,7 +66,7 @@ export const DelegateRegistrationSection: React.FC = () => {
         }}
         className="reg-layout"
       >
-        {/* ── LEFT COLUMN ── */}
+        {/* ── LEFT COLUMN: Quicket Register CTA ── */}
         <div style={{ flex: 1, minWidth: 0, width: "100%" }}>
           {/* Header */}
           <div style={{ width: "48px", height: "3px", backgroundColor: "#FF2D87", marginBottom: "16px" }} />
@@ -155,7 +75,7 @@ export const DelegateRegistrationSection: React.FC = () => {
               fontFamily: "Figtree, sans-serif",
               textTransform: "uppercase",
               fontSize: "9px",
-              fontWeight: 600,
+              fontWeight: 300,
               letterSpacing: "0.28em",
               color: "rgba(255,255,255,0.35)",
               margin: "0 0 16px 0"
@@ -174,329 +94,51 @@ export const DelegateRegistrationSection: React.FC = () => {
               margin: "0 0 12px 0"
             }}
           >
-            Secure Your Place at Africa's Green Economy Stage™
+            Secure Your Place at Africa&apos;s {stageName}
           </h2>
           <p
             style={{
               fontFamily: "Figtree, sans-serif",
               color: "rgba(255,255,255,0.45)",
-              fontSize: "14px",
+              fontSize: "15px",
               lineHeight: 1.75,
               margin: "0 0 32px 0"
             }}
           >
-            Investment: R1,500 per delegate. Complete the form below and our team will confirm your registration within 24 hours.
+            Johannesburg’s premier platform for empowering women leaders returns. Secure your place now via Quicket to gain access to exclusive masterclass experiences, keynote presentations, networking dinners, and high-impact industry panels.
           </p>
 
-          {/* ── FORM or SUCCESS STATE ── */}
-          {submitted ? (
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                gap: "24px",
-                paddingTop: "64px",
-                paddingBottom: "64px"
-              }}
-            >
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ type: "spring", stiffness: 200, damping: 15 }}
-                style={{
-                  width: "80px",
-                  height: "80px",
-                  borderRadius: "50%",
-                  backgroundColor: "rgba(255,45,135,0.10)",
-                  border: "2px solid #FF2D87",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center"
-                }}
-              >
-                <Check size={36} color="#FF2D87" />
-              </motion.div>
-              <h3
-                style={{
-                  fontFamily: "Figtree, sans-serif",
-                  fontWeight: 300,
-                  fontSize: "clamp(24px, 3.5vw, 36px)",
-                  color: "#FFFFFF",
-                  letterSpacing: "-0.02em",
-                  margin: 0,
-                  textAlign: "center"
-                }}
-              >
-                Registration Submitted!
-              </h3>
-              <p
-                style={{
-                  fontFamily: "Figtree, sans-serif",
-                  color: "rgba(255,255,255,0.50)",
-                  fontSize: "15px",
-                  textAlign: "center",
-                  maxWidth: "480px",
-                  lineHeight: 1.75,
-                  margin: 0
-                }}
-              >
-                Thank you for registering for the Green Economy, Mining, Energy &amp; Sustainability Stage™. Our team will confirm your delegate place within 24 hours. Please check your inbox.
-              </p>
-              <div style={{ display: "flex", gap: "12px", flexWrap: "wrap", justifyContent: "center" }}>
-                <button
-                  style={{
-                    height: "44px",
-                    padding: "0 24px",
-                    backgroundColor: "#FF2D87",
-                    color: "#FFFFFF",
-                    borderRadius: "8px",
-                    border: "none",
-                    cursor: "pointer",
-                    fontFamily: "Figtree, sans-serif",
-                    fontWeight: 500,
-                    fontSize: "14px"
-                  }}
-                >
-                  Add to Calendar
-                </button>
-                <button
-                  onClick={() => setSubmitted(false)}
-                  style={{
-                    height: "44px",
-                    padding: "0 24px",
-                    backgroundColor: "transparent",
-                    color: "#FFFFFF",
-                    borderRadius: "8px",
-                    border: "1px solid rgba(255,255,255,0.20)",
-                    cursor: "pointer",
-                    fontFamily: "Figtree, sans-serif",
-                    fontWeight: 500,
-                    fontSize: "14px"
-                  }}
-                >
-                  Back to Stage Info
-                </button>
-              </div>
-              <p
-                style={{
-                  fontFamily: "Figtree, sans-serif",
-                  fontSize: "11px",
-                  color: "rgba(255,45,135,0.50)",
-                  letterSpacing: "0.08em",
-                  marginTop: "8px",
-                  textAlign: "center"
-                }}
-              >
-                #GreenEconomy · #EmpowaTalks · #WomenInEnergy
-              </p>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-              {/* Row 1: First Name | Last Name */}
-              <div className="reg-name-row" style={{ display: "flex", gap: "16px", flexDirection: "column" }}>
-                <input
-                  type="text"
-                  placeholder="First Name"
-                  value={form.firstName}
-                  onChange={e => handleChange("firstName", e.target.value)}
-                  onFocus={() => setFocused("firstName")}
-                  onBlur={() => setFocused(null)}
-                  style={getInputStyle("firstName")}
-                  required
-                />
-                <input
-                  type="text"
-                  placeholder="Last Name"
-                  value={form.lastName}
-                  onChange={e => handleChange("lastName", e.target.value)}
-                  onFocus={() => setFocused("lastName")}
-                  onBlur={() => setFocused(null)}
-                  style={getInputStyle("lastName")}
-                  required
-                />
-              </div>
-
-              {/* Row 2: Job Title */}
-              <input
-                type="text"
-                placeholder="Job Title / Designation"
-                value={form.jobTitle}
-                onChange={e => handleChange("jobTitle", e.target.value)}
-                onFocus={() => setFocused("jobTitle")}
-                onBlur={() => setFocused(null)}
-                style={getInputStyle("jobTitle")}
-                required
-              />
-
-              {/* Row 3: Company | Industry */}
-              <div className="reg-company-row" style={{ display: "flex", gap: "16px", flexDirection: "column" }}>
-                <input
-                  type="text"
-                  placeholder="Company / Organisation"
-                  value={form.company}
-                  onChange={e => handleChange("company", e.target.value)}
-                  onFocus={() => setFocused("company")}
-                  onBlur={() => setFocused(null)}
-                  style={getInputStyle("company")}
-                  required
-                />
-                <select
-                  value={form.industry}
-                  onChange={e => handleChange("industry", e.target.value)}
-                  onFocus={() => setFocused("industry")}
-                  onBlur={() => setFocused(null)}
-                  style={{
-                    ...getInputStyle("industry"),
-                    appearance: "none",
-                    WebkitAppearance: "none",
-                    color: form.industry ? "#FFFFFF" : "rgba(255,255,255,0.25)"
-                  }}
-                  required
-                >
-                  <option value="" disabled style={{ color: "rgba(255,255,255,0.25)", backgroundColor: "#111118" }}>
-                    Industry
-                  </option>
-                  {INDUSTRY_OPTIONS.map(opt => (
-                    <option key={opt.id} value={opt.label} style={{ color: "#FFFFFF", backgroundColor: "#111118" }}>
-                      {opt.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Row 4: Email */}
-              <input
-                type="email"
-                placeholder="Email Address"
-                value={form.email}
-                onChange={e => handleChange("email", e.target.value)}
-                onFocus={() => setFocused("email")}
-                onBlur={() => setFocused(null)}
-                style={getInputStyle("email")}
-                required
-              />
-
-              {/* Row 5: Phone */}
-              <input
-                type="tel"
-                placeholder="+27 ..."
-                value={form.phone}
-                onChange={e => handleChange("phone", e.target.value)}
-                onFocus={() => setFocused("phone")}
-                onBlur={() => setFocused(null)}
-                style={getInputStyle("phone")}
-              />
-
-              {/* Row 6: How did you hear */}
-              <select
-                value={form.hearAboutUs}
-                onChange={e => handleChange("hearAboutUs", e.target.value)}
-                onFocus={() => setFocused("hearAboutUs")}
-                onBlur={() => setFocused(null)}
-                style={{
-                  ...getInputStyle("hearAboutUs"),
-                  appearance: "none",
-                  WebkitAppearance: "none",
-                  color: form.hearAboutUs ? "#FFFFFF" : "rgba(255,255,255,0.25)"
-                }}
-              >
-                <option value="" disabled style={{ color: "rgba(255,255,255,0.25)", backgroundColor: "#111118" }}>
-                  How did you hear about us?
-                </option>
-                {HEAR_OPTIONS.map(opt => (
-                  <option key={opt.id} value={opt.label} style={{ color: "#FFFFFF", backgroundColor: "#111118" }}>
-                    {opt.label}
-                  </option>
-                ))}
-              </select>
-
-              {/* Row 7: Special requirements */}
-              <textarea
-                rows={3}
-                placeholder="Any special requirements, dietary needs, or questions for our team?"
-                value={form.specialRequirements}
-                onChange={e => handleChange("specialRequirements", e.target.value)}
-                onFocus={() => setFocused("specialRequirements")}
-                onBlur={() => setFocused(null)}
-                style={{
-                  ...getInputStyle("specialRequirements"),
-                  resize: "vertical",
-                  lineHeight: 1.6
-                }}
-              />
-
-              {/* Checkbox */}
-              <div style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
-                <input
-                  type="checkbox"
-                  id="reg-agree"
-                  checked={form.agreed}
-                  onChange={e => handleChange("agreed", e.target.checked)}
-                  required
-                  style={{
-                    accentColor: "#FF2D87",
-                    marginTop: "2px",
-                    flexShrink: 0,
-                    width: "16px",
-                    height: "16px",
-                    cursor: "pointer"
-                  }}
-                />
-                <label
-                  htmlFor="reg-agree"
-                  style={{
-                    fontFamily: "Figtree, sans-serif",
-                    color: "rgba(255,255,255,0.45)",
-                    fontSize: "12px",
-                    lineHeight: 1.6,
-                    cursor: "pointer"
-                  }}
-                >
-                  I agree to the EmpowaWomen™ Privacy Policy and Terms &amp; Conditions. I consent to receiving summit-related communications.
-                </label>
-              </div>
-
-              {/* Submit */}
-              <button
-                type="submit"
-                style={{
-                  width: "100%",
-                  height: "52px",
-                  backgroundColor: "#FF2D87",
-                  color: "#FFFFFF",
-                  border: "none",
-                  borderRadius: "8px",
-                  fontFamily: "Figtree, sans-serif",
-                  fontWeight: 500,
-                  fontSize: "16px",
-                  letterSpacing: "0.02em",
-                  cursor: "pointer",
-                  transition: "background-color 0.2s"
-                }}
-                onMouseEnter={e => {
-                  (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#e0006f";
-                }}
-                onMouseLeave={e => {
-                  (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#FF2D87";
-                }}
-              >
-                Submit Registration →
-              </button>
-
-              <p
-                style={{
-                  fontFamily: "Figtree, sans-serif",
-                  textAlign: "center",
-                  fontSize: "11px",
-                  color: "rgba(255,255,255,0.20)",
-                  marginTop: "4px"
-                }}
-              >
-                Your information is encrypted, secure, and will never be shared with third parties.
-              </p>
-            </form>
-          )}
+          <a 
+            href="https://www.quicket.co.za/events/344315-empowawomen-leadership-summit-2026/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "10px",
+              height: "56px",
+              padding: "0 40px",
+              backgroundColor: "#FF2D87",
+              color: "#FFFFFF",
+              borderRadius: "999px",
+              fontFamily: "Figtree, sans-serif",
+              fontWeight: 300,
+              fontSize: "16px",
+              textDecoration: "none",
+              transition: "filter 200ms ease-out",
+              alignSelf: "flex-start",
+              boxShadow: "0 8px 32px rgba(255,45,135,0.25)"
+            }} 
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLAnchorElement).style.filter = "brightness(1.1)";
+            }} 
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLAnchorElement).style.filter = "brightness(1)";
+            }}
+          >
+            <span>Register Now on Quicket →</span>
+          </a>
         </div>
 
         {/* ── RIGHT COLUMN: Summary Card ── */}
@@ -513,7 +155,7 @@ export const DelegateRegistrationSection: React.FC = () => {
             <div
               style={{
                 height: "180px",
-                backgroundImage: "url('https://empowawomen.co.za/wp-content/uploads/2025/10/DSC_2948.jpg')",
+                backgroundImage: "url('/bubbles_nibbles_gallery/DSC_2948.JPG')",
                 backgroundSize: "cover",
                 backgroundPosition: "center 30%",
                 position: "relative"
@@ -538,7 +180,7 @@ export const DelegateRegistrationSection: React.FC = () => {
                   padding: "4px 12px",
                   fontSize: "10px",
                   color: "#FFFFFF",
-                  fontWeight: 500,
+                  fontWeight: 300,
                   letterSpacing: "0.08em",
                   fontFamily: "Figtree, sans-serif"
                 }}
@@ -553,7 +195,7 @@ export const DelegateRegistrationSection: React.FC = () => {
                 style={{
                   fontFamily: "Figtree, sans-serif",
                   fontSize: "9px",
-                  fontWeight: 600,
+                  fontWeight: 300,
                   letterSpacing: "0.28em",
                   color: "rgba(255,255,255,0.30)",
                   textTransform: "uppercase",
@@ -566,13 +208,13 @@ export const DelegateRegistrationSection: React.FC = () => {
                 style={{
                   fontFamily: "Figtree, sans-serif",
                   color: "#FFFFFF",
-                  fontWeight: 500,
+                  fontWeight: 300,
                   fontSize: "16px",
                   lineHeight: 1.4,
                   margin: "0 0 4px 0"
                 }}
               >
-                Green Economy, Mining, Energy &amp; Sustainability Stage™
+                EmpowaWomen Leadership Summit 2026
               </p>
 
               {/* Divider */}
@@ -610,7 +252,7 @@ export const DelegateRegistrationSection: React.FC = () => {
                         fontFamily: "Figtree, sans-serif",
                         color: "#FFFFFF",
                         fontSize: "13px",
-                        fontWeight: 500,
+                        fontWeight: 300,
                         textAlign: "right"
                       }}
                     >
@@ -627,21 +269,21 @@ export const DelegateRegistrationSection: React.FC = () => {
                 style={{
                   fontFamily: "Figtree, sans-serif",
                   fontSize: "9px",
-                  fontWeight: 600,
+                  fontWeight: 300,
                   letterSpacing: "0.28em",
                   color: "rgba(255,255,255,0.30)",
                   textTransform: "uppercase",
                   margin: "0 0 16px 0"
                 }}
               >
-                WHAT'S INCLUDED
+                WHAT&apos;S INCLUDED
               </p>
 
               {/* Includes */}
               <div style={{ display: "flex", flexDirection: "column" }}>
-                {INCLUDES.map(item => (
+                {includes.map((text, itemIdx) => (
                   <div
-                    key={item.id}
+                    key={`inc-${itemIdx}`}
                     style={{
                       display: "flex",
                       alignItems: "flex-start",
@@ -654,8 +296,8 @@ export const DelegateRegistrationSection: React.FC = () => {
                       style={{
                         width: "20px",
                         height: "20px",
-                        backgroundColor: "rgba(255,45,135,0.10)",
-                        border: "1px solid rgba(255,45,135,0.30)",
+                        backgroundColor: checkBgColors[itemIdx % 5],
+                        border: `1px solid ${checkBorderColors[itemIdx % 5]}`,
                         borderRadius: "50%",
                         display: "flex",
                         alignItems: "center",
@@ -663,7 +305,7 @@ export const DelegateRegistrationSection: React.FC = () => {
                         flexShrink: 0
                       }}
                     >
-                      <Check size={10} color="#FF2D87" />
+                      <Check size={10} color={checkColors[itemIdx % 5]} />
                     </div>
                     <span
                       style={{
@@ -673,7 +315,7 @@ export const DelegateRegistrationSection: React.FC = () => {
                         lineHeight: 1.5
                       }}
                     >
-                      {item.text}
+                      {text}
                     </span>
                   </div>
                 ))}
@@ -711,21 +353,6 @@ export const DelegateRegistrationSection: React.FC = () => {
             top: 32px;
             align-self: flex-start;
           }
-        }
-        @media (min-width: 640px) {
-          .reg-name-row {
-            flex-direction: row !important;
-          }
-          .reg-company-row {
-            flex-direction: row !important;
-          }
-        }
-        input::placeholder,
-        textarea::placeholder {
-          color: rgba(255,255,255,0.25);
-        }
-        select option {
-          background-color: #111118;
         }
       `}</style>
     </motion.section>

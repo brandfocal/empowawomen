@@ -33,7 +33,7 @@ const NAV_LINKS: NavLinkItem[] = [
         hasDropdown: true,
         dropdownItems: [
             { label: "Green Economy, Mining, Energy & Sustainability", href: "/green-economy" },
-            { label: "Infrastructure, Property & Transport", href: "/infrastructure-property" },
+            // { label: "Infrastructure, Property & Transport", href: "/infrastructure-property" },
             { label: "Agriculture & Food Security", href: "/agriculture-manufacturing" },
             { label: "The Creative Economy™", href: "/creative-economy" },
             { label: "Beauty, Fashion, Health & Wellness", href: "/beauty-fashion-wellness" },

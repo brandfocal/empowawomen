@@ -277,7 +277,7 @@ const SOCIAL_ICONS: SocialItem[] = [{
 const REGISTRATION_DETAILS: RegistrationDetail[] = [{
   id: "rd-1",
   label: "Date",
-  value: "Saturday, 28 August 2026"
+  value: "Saturday, 29 August 2026"
 }, {
   id: "rd-2",
   label: "Time",
@@ -492,7 +492,7 @@ function getAccentColor(index: number): string {
 }
 
 // ─── Live Countdown Timer ─────────────────────────────────────────────────────
-const TARGET_DATE = new Date("2026-08-28T00:00:00").getTime();
+const TARGET_DATE = new Date("2026-08-29T08:00:00").getTime();
 function getTimeLeft() {
   const now = Date.now();
   const diff = Math.max(0, TARGET_DATE - now);
@@ -638,7 +638,7 @@ const StickyCtaBar: React.FC<{
             whiteSpace: "nowrap",
             flexShrink: 0
           }}>
-            <span>Sat, 28 Aug 2026</span>
+            <span>Saturday, 29 August 2026</span>
           </span>
           {/* Center meta text — hidden on mobile */}
           <span className="hidden md:block" style={{
@@ -1278,7 +1278,7 @@ const AgendaSection: React.FC = () => {
           lineHeight: 1.75,
           margin: 0
         }}>
-          Saturday, 28 August 2026 · 08h00 – 16h00 · The Forum, Bryanston
+          Saturday, 29 August 2026 · 08h00 – 16h00 · The Forum, Bryanston
         </p>
       </motion.div>
 
