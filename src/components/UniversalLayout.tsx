@@ -38,7 +38,8 @@ const NAV_LINKS: NavLinkItem[] = [
             { label: "Capital, Marketing, Creative & Leadership Systems", href: "/capital-leadership" },
             { label: "Beauty, Fashion, Health & Wellness", href: "/beauty-fashion-wellness" },
             { label: "Entrepreneurship & Funding", href: "/entrepreneurship-funding" },
-            { label: "Wholesale, Retail & Manufacturing", href: "/wholesale-retail-manufacturing" }
+            { label: "Wholesale, Retail & Manufacturing", href: "/wholesale-retail-manufacturing" },
+            { label: "Leadership, Governance & Boards", href: "/leadership-governance-boards" }
         ]
     },
     { id: "nav-academy", label: "EmpowaHER™", href: "/academy" },
