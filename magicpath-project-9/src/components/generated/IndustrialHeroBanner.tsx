@@ -1,33 +1,21 @@
 import * as React from "react";
-import { Link as RouterLink } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-
-interface IndustrialHeroBannerProps {
-  quote?: string;
-  narrative?: string;
-  bgImage?: string;
-  pillarTitle?: string;
-}
-
 interface HeroLine {
   id: string;
   words: string[];
 }
-
 const HERO_LINES: HeroLine[] = [{
   id: "hl-1",
-  words: ["Building", "Africa's."]
+  words: ["Africa's", "Green."]
 }, {
   id: "hl-2",
-  words: ["Future", "Infrastructure."]
+  words: ["Transition", "Starts."]
 }, {
   id: "hl-3",
-  words: ["Today."]
+  words: ["Here."]
 }];
-
-const UNDERLINED_LAST_WORDS = new Set(["Africa's.", "Infrastructure.", "Today."]);
-
+const UNDERLINED_WORDS = new Set(["Green.", "Starts.", "Here."]);
 const AVATAR_URLS = [{
   id: "av-1",
   url: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=80&q=80"
@@ -47,17 +35,13 @@ const AVATAR_URLS = [{
   id: "av-6",
   url: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&q=80"
 }];
-
-export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
-  bgImage = "/infrastructure.jpg"
-}) => {
+export const IndustrialHeroBanner: React.FC = () => {
   const {
     scrollY
   } = useScroll();
   const imageY = useTransform(scrollY, [0, 600], ["0%", "20%"]);
   let wordIndex = 0;
-
-  return <section style={{
+  return <section id="home" style={{
     position: "relative",
     width: "100%",
     minHeight: "100vh",
@@ -66,12 +50,12 @@ export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "flex-start",
+    justifyContent: "center",
     paddingTop: "68px",
-    paddingBottom: "40px"
+    paddingBottom: "clamp(48px, 8vw, 80px)"
   }}>
-    {/* Grain noise overlay */}
-    <div style={{
+      {/* Grain noise overlay */}
+      <div aria-hidden="true" style={{
       position: "absolute",
       inset: 0,
       pointerEvents: "none",
@@ -82,18 +66,9 @@ export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
       animation: "grainShift 0.8s steps(1) infinite"
     }} />
 
-    {/* Background image with parallax */}
-    <div style={{
-      position: "absolute",
-      inset: 0,
-      zIndex: 0,
-      overflow: "hidden",
-      pointerEvents: "none"
-    }}>
-      <motion.div style={{
-        position: "absolute",
-        inset: 0
-      }} initial={{
+      {/* Background image — solar panels landscape with parallax */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <motion.div className="absolute inset-0" initial={{
         scale: 1.06,
         opacity: 0
       }} animate={{
@@ -103,74 +78,62 @@ export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
         duration: 2.4,
         ease: "easeOut"
       }}>
-        <motion.div style={{
+          <motion.div style={{
           y: imageY,
           position: "absolute",
           inset: 0
         }}>
-          <img src={bgImage} alt="" aria-hidden="true" style={{
-            width: "100%",
-            height: "100%",
+            <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1600&q=80" alt="" aria-hidden="true" className="w-full h-full object-cover" style={{
             objectFit: "cover",
-            objectPosition: "center 30%"
+            objectPosition: "center 40%"
           }} />
+          </motion.div>
         </motion.div>
-      </motion.div>
-      {/* Gradient overlay */}
-      <div style={{
+        <div style={{
         position: "absolute",
         inset: 0,
-        background: "linear-gradient(to bottom, rgba(10,10,15,0.72) 0%, rgba(10,10,15,0.42) 38%, rgba(10,10,15,0.82) 100%)"
+        background: "linear-gradient(to bottom, rgba(10,10,15,0.65) 0%, rgba(10,10,15,0.35) 40%, rgba(10,10,15,0.90) 100%)"
       }} />
-    </div>
+      </div>
 
-    {/* Bottom fade */}
-    <div style={{
-      position: "absolute",
-      inset: 0,
-      background: "linear-gradient(to top, #0A0A0F 0%, transparent 50%)",
-      pointerEvents: "none",
-      zIndex: 2
-    }} />
-
-    {/* Content */}
-    <div style={{
+      {/* Content */}
+      <div style={{
       position: "relative",
       zIndex: 10,
       width: "100%",
       maxWidth: "1400px",
-      paddingLeft: "clamp(20px, 5vw, 36px)",
-      paddingRight: "clamp(20px, 5vw, 36px)",
-      paddingTop: "clamp(24px, 5vw, 64px)",
-      paddingBottom: "24px",
+      paddingLeft: "clamp(16px, 5vw, 36px)",
+      paddingRight: "clamp(16px, 5vw, 36px)",
+      paddingTop: "clamp(48px, 8vw, 128px)",
+      paddingBottom: "clamp(32px, 5vw, 48px)",
       display: "flex",
       flexDirection: "column",
-      alignItems: "center",
-      marginTop: "auto",
-      marginBottom: "auto"
+      alignItems: "center"
     }}>
-      <motion.div initial={{
+        <motion.div initial={{
+        opacity: 0,
         y: 90
       }} animate={{
+        opacity: 1,
         y: 0
       }} transition={{
-        duration: 1.2,
-        ease: [0.16, 1, 0.3, 1]
+        duration: 1.1,
+        ease: [0.21, 0.47, 0.32, 0.98]
       }} style={{
         width: "100%",
         display: "flex",
         flexDirection: "column",
         alignItems: "center"
       }}>
-        <div style={{
+          <div style={{
           width: "100%",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          marginBottom: "0px"
+          marginBottom: "clamp(32px, 5vw, 48px)"
         }}>
-          {/* Pre-heading pill */}
-          <motion.div initial={{
+            {/* Pre-heading pill */}
+            <motion.div initial={{
             opacity: 0,
             y: 10
           }} animate={{
@@ -186,18 +149,20 @@ export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
             gap: "10px",
             marginBottom: "20px",
             flexWrap: "wrap",
-            textAlign: "center"
+            textAlign: "center",
+            paddingLeft: "8px",
+            paddingRight: "8px"
           }}>
-            <span style={{
+              <span style={{
               width: "6px",
               height: "6px",
               borderRadius: "50%",
-              backgroundColor: "#FF2D87",
+              backgroundColor: "#00B4A6",
               display: "inline-block",
               flexShrink: 0,
               animation: "pulseDot 2s ease-in-out infinite"
             }} />
-            <span style={{
+              <span style={{
               fontFamily: "Figtree",
               fontSize: "clamp(9px, 2vw, 11px)",
               fontWeight: 600,
@@ -205,12 +170,12 @@ export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
               color: "rgba(255,255,255,0.60)",
               textTransform: "uppercase"
             }}>
-              INFRASTRUCTURE, PROPERTY &amp; TRANSPORT
-            </span>
-          </motion.div>
+                GREEN ECONOMY, MINING, ENERGY &amp; SUSTAINABILITY
+              </span>
+            </motion.div>
 
-          {/* Hero headline — word by word */}
-          <motion.h1 initial={{
+            {/* Hero headline */}
+            <motion.h1 initial={{
             opacity: 0
           }} animate={{
             opacity: 1
@@ -219,7 +184,7 @@ export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
           }} style={{
             fontFamily: "Figtree",
             fontWeight: 300,
-            fontSize: "clamp(44px, 8vw, 96px)",
+            fontSize: "clamp(40px, 9vw, 96px)",
             lineHeight: 1.0,
             letterSpacing: "-0.04em",
             color: "#FFFFFF",
@@ -227,12 +192,12 @@ export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
             maxWidth: "900px",
             margin: "0 auto 24px auto"
           }}>
-            {HERO_LINES.map(line => <span key={line.id} style={{
+              {HERO_LINES.map(line => <span key={line.id} style={{
               display: "block"
             }}>
-              {line.words.map(word => {
+                  {line.words.map(word => {
                 const currentIndex = wordIndex++;
-                const isUnderlined = UNDERLINED_LAST_WORDS.has(word);
+                const isUnderlined = UNDERLINED_WORDS.has(word);
                 const wordWithoutPeriod = isUnderlined ? word.slice(0, -1) : word;
                 return <motion.span key={`hero-word-${currentIndex}`} style={{
                   display: "inline-block",
@@ -250,26 +215,26 @@ export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
                   delay: 0.4 + currentIndex * 0.1,
                   ease: [0.21, 0.47, 0.32, 0.98]
                 }}>
-                  {isUnderlined ? <span style={{
+                        {isUnderlined ? <span style={{
                     textDecoration: "underline",
                     textDecorationColor: "#FF2D87",
                     textDecorationThickness: "3px",
                     textUnderlineOffset: "6px",
                     color: "#FFFFFF"
                   }}>
-                    {wordWithoutPeriod}
-                  </span> : word}
-                  {isUnderlined && <span style={{
+                            {wordWithoutPeriod}
+                          </span> : word}
+                        {isUnderlined && <span style={{
                     color: "#FF2D87",
                     textDecoration: "none"
                   }}>.</span>}
-                </motion.span>;
+                      </motion.span>;
               })}
-            </span>)}
-          </motion.h1>
+                </span>)}
+            </motion.h1>
 
-          {/* Slogan strip */}
-          <motion.div initial={{
+            {/* Slogan strip */}
+            <motion.div initial={{
             opacity: 0,
             y: 12
           }} animate={{
@@ -285,9 +250,11 @@ export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
             justifyContent: "center",
             marginBottom: "28px",
             flexWrap: "wrap",
-            gap: "4px"
+            gap: "4px",
+            paddingLeft: "8px",
+            paddingRight: "8px"
           }}>
-            <span style={{
+              <span style={{
               fontFamily: "Figtree",
               fontWeight: 400,
               fontSize: "clamp(10px, 2vw, 13px)",
@@ -295,9 +262,9 @@ export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
               textTransform: "uppercase",
               color: "rgba(255,255,255,0.40)"
             }}>
-              Ignite Passion
-            </span>
-            <span style={{
+                Ignite Passion
+              </span>
+              <span style={{
               display: "inline-block",
               width: "1px",
               height: "14px",
@@ -305,7 +272,7 @@ export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
               margin: "0 12px",
               verticalAlign: "middle"
             }} />
-            <span style={{
+              <span style={{
               fontFamily: "Figtree",
               fontWeight: 400,
               fontSize: "clamp(10px, 2vw, 13px)",
@@ -313,9 +280,9 @@ export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
               textTransform: "uppercase",
               color: "rgba(255,255,255,0.40)"
             }}>
-              Foster Growth
-            </span>
-            <span style={{
+                Foster Growth
+              </span>
+              <span style={{
               display: "inline-block",
               width: "1px",
               height: "14px",
@@ -323,7 +290,7 @@ export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
               margin: "0 12px",
               verticalAlign: "middle"
             }} />
-            <span style={{
+              <span style={{
               fontFamily: "Figtree",
               fontWeight: 400,
               fontSize: "clamp(10px, 2vw, 13px)",
@@ -331,12 +298,12 @@ export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
               textTransform: "uppercase",
               color: "rgba(255,255,255,0.40)"
             }}>
-              Drive Change
-            </span>
-          </motion.div>
+                Drive Change
+              </span>
+            </motion.div>
 
-          {/* Description */}
-          <motion.p initial={{
+            {/* Description */}
+            <motion.p initial={{
             opacity: 0,
             y: 20
           }} animate={{
@@ -353,14 +320,16 @@ export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
             maxWidth: "620px",
             margin: "0 auto 36px auto",
             textAlign: "center",
-            lineHeight: 1.75
+            lineHeight: 1.75,
+            paddingLeft: "8px",
+            paddingRight: "8px"
           }}>
-            EmpowaWomen convenes Africa's leading voices in infrastructure development, real
-            estate innovation, and transport integration to accelerate economic transformation.
-          </motion.p>
+              EmpowaWomen presents Africa's most critical platform for green economy intelligence,
+              clean energy transition, ESG integration, and sustainable industrial leadership.
+            </motion.p>
 
-          {/* CTAs */}
-          <motion.div initial={{
+            {/* CTAs — stack vertically on mobile */}
+            <motion.div initial={{
             opacity: 0,
             y: 20
           }} animate={{
@@ -369,14 +338,17 @@ export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
           }} transition={{
             duration: 0.8,
             delay: 1.4
-          }} style={{
+          }} className="hero-cta-group" style={{
             display: "flex",
-            flexWrap: "wrap",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "16px"
-          }} className="flex-col sm:flex-row w-full sm:w-auto px-4 sm:px-0">
-            <RouterLink to="/summit" style={{
+            flexDirection: "column",
+            alignItems: "stretch",
+            gap: "12px",
+            width: "100%",
+            maxWidth: "320px",
+            paddingLeft: "16px",
+            paddingRight: "16px"
+          }}>
+              <a href="#" style={{
               fontFamily: "Figtree",
               fontSize: "clamp(13px, 2vw, 15px)",
               fontWeight: 500,
@@ -384,17 +356,16 @@ export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
               backgroundColor: "#FF2D87",
               height: "50px",
               padding: "0 28px",
-              display: "inline-flex",
+              display: "flex",
               alignItems: "center",
               justifyContent: "center",
               gap: "8px",
               textDecoration: "none",
               letterSpacing: "0.02em",
-              borderRadius: "999px",
-              transition: "all 200ms ease-out",
+              borderRadius: "0",
+              transition: "filter 200ms ease-out",
               boxShadow: "0 0 32px rgba(255,45,135,0.25)",
               whiteSpace: "nowrap",
-              width: "220px",
               position: "relative",
               overflow: "hidden"
             }} onMouseEnter={e => {
@@ -406,15 +377,15 @@ export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
               el.style.filter = "brightness(1)";
               el.style.boxShadow = "0 0 32px rgba(255,45,135,0.25)";
             }}>
-              <span style={{
+                <span style={{
                 position: "relative",
                 zIndex: 1
               }}>Secure Your Seat</span>
-              <ArrowRight size={16} style={{
+                <ArrowRight size={16} style={{
                 position: "relative",
                 zIndex: 1
               }} />
-              <span style={{
+                <span style={{
                 position: "absolute",
                 top: 0,
                 left: 0,
@@ -425,11 +396,8 @@ export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
                 animation: "shimmerSlide 3s linear infinite",
                 pointerEvents: "none"
               }} />
-            </RouterLink>
-            <a href="#segments" onClick={e => {
-              e.preventDefault();
-              document.getElementById("segments")?.scrollIntoView({ behavior: "smooth" });
-            }} style={{
+              </a>
+              <a href="#" style={{
               fontFamily: "Figtree",
               fontSize: "clamp(13px, 2vw, 15px)",
               fontWeight: 400,
@@ -437,48 +405,99 @@ export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
               backgroundColor: "rgba(255,255,255,0.05)",
               height: "50px",
               padding: "0 28px",
-              display: "inline-flex",
+              display: "flex",
               alignItems: "center",
               justifyContent: "center",
               textDecoration: "none",
               border: "1px solid rgba(255,255,255,0.10)",
               letterSpacing: "0.02em",
-              borderRadius: "999px",
+              borderRadius: "0",
               transition: "all 200ms ease-out",
-              whiteSpace: "nowrap",
-              width: "220px"
+              whiteSpace: "nowrap"
             }} onMouseEnter={e => {
               const el = e.currentTarget as HTMLAnchorElement;
               el.style.backgroundColor = "rgba(255,255,255,0.10)";
+              el.style.borderColor = "rgba(255,255,255,0.20)";
             }} onMouseLeave={e => {
               const el = e.currentTarget as HTMLAnchorElement;
               el.style.backgroundColor = "rgba(255,255,255,0.05)";
+              el.style.borderColor = "rgba(255,255,255,0.10)";
             }}>
-              Explore Programme
-            </a>
-          </motion.div>
-        </div>
-      </motion.div>
-    </div>
+                Explore Pillars
+              </a>
+            </motion.div>
 
-    <style>{`
-        @keyframes pulseDot {
-          0%, 100% { opacity: 1; transform: scale(1); }
-          50% { opacity: 0.5; transform: scale(0.75); }
-        }
-        @keyframes grainShift {
-          0%   { transform: translate(0, 0); }
-          10%  { transform: translate(-2px, 1px); }
-          20%  { transform: translate(2px, -1px); }
-          30%  { transform: translate(-1px, 2px); }
-          40%  { transform: translate(1px, -2px); }
-          50%  { transform: translate(0, 1px); }
-          60%  { transform: translate(-2px, -1px); }
-          70%  { transform: translate(2px, 2px); }
-          80%  { transform: translate(-1px, -2px); }
-          90%  { transform: translate(1px, 0); }
-          100% { transform: translate(0, 0); }
+            {/* Social proof strip */}
+            <div style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "16px",
+            marginTop: "clamp(24px, 4vw, 40px)"
+          }}>
+              {/* Avatar stack */}
+              <div style={{
+              position: "relative",
+              display: "flex"
+            }}>
+                {AVATAR_URLS.map((avatar, index) => <img key={avatar.id} src={avatar.url} alt="" aria-hidden="true" style={{
+                width: 36,
+                height: 36,
+                borderRadius: "50%",
+                border: "2px solid #0A0A0F",
+                objectFit: "cover",
+                marginLeft: index === 0 ? 0 : -10,
+                display: "block"
+              }} />)}
+              </div>
+
+              {/* Text */}
+              <div style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "2px"
+            }}>
+                <span style={{
+                fontFamily: "Figtree",
+                fontSize: "14px",
+                fontWeight: 600,
+                color: "#FFFFFF"
+              }}>
+                  10,000+ Women
+                </span>
+                <span style={{
+                fontFamily: "Figtree",
+                fontSize: "12px",
+                color: "rgba(255,255,255,0.45)"
+              }}>
+                  across Africa's growth economy
+                </span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Bottom fade */}
+      <div style={{
+      position: "absolute",
+      inset: 0,
+      background: "linear-gradient(to top, #0A0A0F 0%, transparent 50%)",
+      pointerEvents: "none",
+      zIndex: 2
+    }} />
+
+      <style>{`
+        @media (min-width: 480px) {
+          .hero-cta-group {
+            flex-direction: row !important;
+            align-items: center !important;
+            justify-content: center !important;
+            max-width: none !important;
+            width: auto !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+          }
         }
       `}</style>
-  </section>;
+    </section>;
 };

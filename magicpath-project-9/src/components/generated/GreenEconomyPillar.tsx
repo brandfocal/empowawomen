@@ -1,8 +1,10 @@
 import * as React from "react";
 import { motion, useInView } from "framer-motion";
 import { Zap, Wind, Leaf, Mountain, ShieldCheck, Globe, Building2, Cpu, Pickaxe, Coins, Calendar, Clock, ArrowRight, Users, CheckCircle2 } from "lucide-react";
+import { MainNavBar } from "./MainNavBar";
 import { IndustrialHeroBanner } from "./IndustrialHeroBanner";
 import { ROIMetricBlock } from "./ROIMetricBlock";
+import { GlobalFooter } from "./GlobalFooter";
 import { DelegateRegistrationSection } from "./DelegateRegistrationSection";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -255,12 +257,14 @@ export const GreenEconomyPillar: React.FC = () => {
     backgroundColor: "#0A0A0F",
     fontFamily: "Figtree, sans-serif"
   }}>
+      <MainNavBar />
+
       <main>
         {/* ── Hero ── */}
         <IndustrialHeroBanner />
 
         {/* ── Pillar Overview Section ── */}
-        <section id="overview" ref={overviewRef} style={{
+        <section ref={overviewRef} style={{
         paddingTop: "clamp(48px, 8vw, 96px)",
         paddingBottom: "clamp(40px, 6vw, 80px)",
         paddingLeft: "clamp(16px, 5vw, 96px)",
@@ -281,7 +285,7 @@ export const GreenEconomyPillar: React.FC = () => {
             ease: [0.21, 0.47, 0.32, 0.98]
           }} style={{
             fontFamily: "Figtree",
-            fontWeight: 300,
+            fontWeight: 700,
             fontSize: "clamp(24px, 4vw, 52px)",
             color: "#FFFFFF",
             lineHeight: 1.1,
@@ -356,7 +360,7 @@ export const GreenEconomyPillar: React.FC = () => {
           <SectionLabel>Focus Areas & Strategic ROI</SectionLabel>
           <h2 style={{
           fontFamily: "Figtree",
-          fontWeight: 300,
+          fontWeight: 700,
           fontSize: "clamp(24px, 4vw, 52px)",
           color: "#FFFFFF",
           lineHeight: 1.1,
@@ -553,7 +557,7 @@ export const GreenEconomyPillar: React.FC = () => {
                 <h2 style={{
                 fontFamily: "Figtree",
                 fontSize: "clamp(18px, 2.8vw, 30px)",
-                fontWeight: 300,
+                fontWeight: 700,
                 color: "#FFFFFF",
                 lineHeight: 1.2,
                 letterSpacing: "-0.02em",
@@ -624,15 +628,11 @@ export const GreenEconomyPillar: React.FC = () => {
               transition: "filter 200ms ease-out",
               flexShrink: 0,
               alignSelf: "flex-start",
-              width: "100%",
-              borderRadius: "999px"
+              width: "100%"
             }} className="register-btn" onMouseEnter={e => {
               (e.currentTarget as HTMLButtonElement).style.filter = "brightness(1.12)";
             }} onMouseLeave={e => {
               (e.currentTarget as HTMLButtonElement).style.filter = "brightness(1)";
-            }} onClick={e => {
-              e.preventDefault();
-              document.getElementById("register")?.scrollIntoView({ behavior: "smooth" });
             }}>
                 <span>Register for Session</span>
                 <ArrowRight size={14} />
@@ -791,7 +791,7 @@ export const GreenEconomyPillar: React.FC = () => {
           }}>
               <h2 style={{
               fontFamily: "Figtree",
-              fontWeight: 300,
+              fontWeight: 700,
               fontSize: "clamp(24px, 4vw, 48px)",
               color: "#FFFFFF",
               lineHeight: 1.1,
@@ -917,7 +917,7 @@ export const GreenEconomyPillar: React.FC = () => {
             <div style={{
             width: "100%",
             height: "100%",
-            backgroundImage: "url('https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1600&q=80')",
+            backgroundImage: "url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1400&q=80')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             maskImage: "linear-gradient(to top, transparent 0%, black 40%)",
@@ -1021,7 +1021,7 @@ export const GreenEconomyPillar: React.FC = () => {
               fontSize: "clamp(14px, 2vw, 16px)",
               fontWeight: 500,
               padding: "clamp(14px, 2vw, 18px) clamp(28px, 3vw, 40px)",
-              borderRadius: "999px",
+              borderRadius: 0,
               border: "none",
               display: "inline-flex",
               alignItems: "center",
@@ -1036,9 +1036,6 @@ export const GreenEconomyPillar: React.FC = () => {
               (e.currentTarget as HTMLButtonElement).style.filter = "brightness(1.1)";
             }} onMouseLeave={e => {
               (e.currentTarget as HTMLButtonElement).style.filter = "brightness(1)";
-            }} onClick={e => {
-              e.preventDefault();
-              document.getElementById("register")?.scrollIntoView({ behavior: "smooth" });
             }}>
                 <span style={{
                 position: "relative",
@@ -1070,7 +1067,7 @@ export const GreenEconomyPillar: React.FC = () => {
               fontSize: "clamp(14px, 2vw, 16px)",
               fontWeight: 500,
               padding: "clamp(14px, 2vw, 18px) clamp(28px, 3vw, 40px)",
-              borderRadius: "999px",
+              borderRadius: 0,
               display: "inline-flex",
               alignItems: "center",
               justifyContent: "center",
@@ -1090,6 +1087,7 @@ export const GreenEconomyPillar: React.FC = () => {
       </main>
 
       <DelegateRegistrationSection />
+      <GlobalFooter />
 
       <style>{`
         .focus-area-row:hover span:first-child { color: rgba(255,255,255,0.95) !important; }

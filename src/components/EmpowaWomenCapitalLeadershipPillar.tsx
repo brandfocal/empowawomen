@@ -41,7 +41,7 @@ const INTRO_WORDS = ["A", "Unified", "Framework", "for", "Executive", "Dominance
 
 // ─── Introduction Section ─────────────────────────────────────────────────────
 const IntroSection = () => {
-  return <section style={{
+  return <section id="intro" style={{
     backgroundColor: "#0A0A0F",
     paddingTop: "clamp(64px, 8vw, 120px)",
     paddingBottom: "clamp(64px, 8vw, 120px)",

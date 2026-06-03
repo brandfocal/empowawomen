@@ -417,7 +417,10 @@ export const IndustrialHeroBanner: React.FC = () => {
                   pointerEvents: "none"
                 }} />
               </RouterLink>
-              <a href="#focus-areas" style={{
+              <a href="#overview" onClick={e => {
+                e.preventDefault();
+                document.getElementById("overview")?.scrollIntoView({ behavior: "smooth" });
+              }} style={{
                 fontFamily: "Figtree",
                 fontSize: "clamp(13px, 2vw, 15px)",
                 fontWeight: 400,
@@ -443,7 +446,7 @@ export const IndustrialHeroBanner: React.FC = () => {
                 el.style.backgroundColor = "rgba(255,255,255,0.05)";
                 el.style.borderColor = "rgba(255,255,255,0.10)";
               }}>
-                Explore Pillars
+                Explore Programme
               </a>
             </motion.div>
 

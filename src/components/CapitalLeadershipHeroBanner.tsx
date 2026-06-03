@@ -366,7 +366,10 @@ export const CapitalLeadershipHeroBanner: React.FC<CapitalLeadershipHeroBannerPr
                 pointerEvents: "none"
               }} />
             </RouterLink>
-            <a href="#matrices" style={{
+            <a href="#intro" onClick={e => {
+              e.preventDefault();
+              document.getElementById("intro")?.scrollIntoView({ behavior: "smooth" });
+            }} style={{
               fontFamily: "Figtree, sans-serif",
               fontSize: "clamp(13px, 2vw, 15px)",
               fontWeight: 400,
@@ -388,7 +391,7 @@ export const CapitalLeadershipHeroBanner: React.FC<CapitalLeadershipHeroBannerPr
             }} onMouseLeave={e => {
               (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "rgba(255,255,255,0.05)";
             }}>
-              Explore Pillars
+              Explore Programme
             </a>
           </motion.div>
         </div>
