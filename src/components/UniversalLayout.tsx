@@ -28,14 +28,15 @@ const NAV_LINKS: NavLinkItem[] = [
     },
     {
         id: "nav-pillars",
-        label: "Growth Pillars",
+        label: "EmpowaWomen Programmes",
         href: "/#pillars",
         hasDropdown: true,
         dropdownItems: [
             { label: "Green Economy, Mining, Energy & Sustainability", href: "/green-economy" },
             { label: "Infrastructure, Property & Transport", href: "/infrastructure-property" },
             { label: "Agriculture & Food Security", href: "/agriculture-manufacturing" },
-            { label: "Capital, Marketing, Creative & Leadership Systems", href: "/capital-leadership" }
+            { label: "Capital, Marketing, Creative & Leadership Systems", href: "/capital-leadership" },
+            { label: "Beauty, Fashion, Health & Wellness", href: "/beauty-fashion-wellness" }
         ]
     },
     { id: "nav-academy", label: "EmpowaHER™", href: "/academy" },

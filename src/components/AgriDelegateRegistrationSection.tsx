@@ -482,9 +482,9 @@ export const AgriDelegateRegistrationSection: React.FC = () => {
             {/* Top image strip */}
             <div style={{
             height: "180px",
-            backgroundImage: "url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1600&q=85')",
+            backgroundImage: "url('https://empowawomen.co.za/wp-content/uploads/2025/10/DSC_2948.jpg')",
             backgroundSize: "cover",
-            backgroundPosition: "center",
+            backgroundPosition: "center 20%",
             width: "100%",
             position: "relative"
           }}>
