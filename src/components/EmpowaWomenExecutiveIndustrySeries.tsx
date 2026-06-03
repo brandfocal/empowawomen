@@ -197,11 +197,17 @@ export const ExecutiveIndustrySeries: React.FC = () => {
                 body: JSON.stringify({
                     form_id: 18,
                     input_values: {
+                        '10': formData.name,
                         'input_10': formData.name,
+                        '11': formData.title,
                         'input_11': formData.title,
+                        '14': formData.organisation,
                         'input_14': formData.organisation,
+                        '4': formData.email,
                         'input_4': formData.email,
+                        '13': streamLabel,
                         'input_13': streamLabel,
+                        '9': formData.message,
                         'input_9': formData.message
                     }
                 })
@@ -242,11 +248,17 @@ export const ExecutiveIndustrySeries: React.FC = () => {
                 body: JSON.stringify({
                     form_id: 18,
                     input_values: {
+                        '10': drawerFormData.name,
                         'input_10': drawerFormData.name,
+                        '11': drawerFormData.title,
                         'input_11': drawerFormData.title,
+                        '14': drawerFormData.organisation,
                         'input_14': drawerFormData.organisation,
+                        '4': drawerFormData.email,
                         'input_4': drawerFormData.email,
+                        '13': streamLabel,
                         'input_13': streamLabel,
+                        '9': drawerFormData.message,
                         'input_9': drawerFormData.message
                     }
                 })
