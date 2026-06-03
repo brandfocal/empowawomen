@@ -1,6 +1,6 @@
 import * as React from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
-import { Cpu, ShoppingBag, Globe, Link, Truck, MapPin, Zap, Ship, ArrowRight } from "lucide-react";
+import { Cpu, ShoppingBag, Globe, Link, Truck, MapPin, Zap, Ship, ArrowRight, CheckCircle2 } from "lucide-react";
 import { ROIMetricBlock } from "./ROIMetricBlock";
 import { WholesaleRegistrationSection } from "./WholesaleDelegateRegistrationSection";
 
@@ -128,7 +128,7 @@ const PROGRAMME: ProgrammeSession[] = [
     time: "11:20",
     type: "EXECUTIVE MASTERCLASS™",
     title: "Smart Manufacturing, Digital Commerce & the Future of Industrial Growth™",
-    description: "Technology, Innovation & Operational Agility Will Define the Next Era of Industrial Competitiveness.",
+    description: "How will technology, innovation, and operational agility define the next era of industrial competitiveness?",
     accent: "#D4AF37",
     accentRgb: "212,175,55"
   },
@@ -137,7 +137,7 @@ const PROGRAMME: ProgrammeSession[] = [
     time: "12:00",
     type: "HIGH-IMPACT PANEL™",
     title: "Women, Industrialisation & the Future of Consumer Economies™",
-    description: "The Future of Industrial Growth Will Belong to Businesses That Control Production, Distribution & Consumer Access.",
+    description: "Why will the future of industrial growth belong to businesses that control production, distribution, and consumer access?",
     accent: "#00B4A6",
     accentRgb: "0,180,166"
   },
@@ -156,7 +156,7 @@ const PROGRAMME: ProgrammeSession[] = [
     time: "13:20",
     type: "FIRECHAT™",
     title: "Market Access, Procurement & Women-Led Industrial Enterprises™",
-    description: "Industrial Growth Without Market Access Is a Missed Commercial Opportunity.",
+    description: "Why is industrial growth without market access a missed commercial opportunity, and how do we unlock supply chain partnerships?",
     accent: "#FF2D87",
     accentRgb: "255,45,135"
   },
@@ -165,7 +165,7 @@ const PROGRAMME: ProgrammeSession[] = [
     time: "14:00",
     type: "STRATEGIC WORKSHOP™",
     title: "The Business of Industrial Innovation, Consumer Growth & Operational Excellence™",
-    description: "The Future of Industrial Leadership Will Belong to Businesses That Can Innovate, Adapt & Scale Efficiently.",
+    description: "In what ways will the future of industrial leadership belong to businesses that can innovate, adapt, and scale efficiently?",
     accent: "#00B4A6",
     accentRgb: "0,180,166"
   },
@@ -174,7 +174,7 @@ const PROGRAMME: ProgrammeSession[] = [
     time: "14:40",
     type: "HIGH-IMPACT INDUSTRY PANEL™",
     title: "Retail, E-Commerce & the Future of Consumer Engagement™",
-    description: "Consumer Behaviour, Technology & Market Access Are Reshaping Africa's Commercial Economy.",
+    description: "How are consumer behaviour, technology, and market access reshaping Africa's commercial economy?",
     accent: "#FF2D87",
     accentRgb: "255,45,135"
   },
@@ -183,7 +183,7 @@ const PROGRAMME: ProgrammeSession[] = [
     time: "15:20",
     type: "FUTURE ECONOMY CONVERSATION™",
     title: "The Future of Africa's Industrial & Consumer Economy™",
-    description: "Innovation, Industrialisation & Women Leadership Will Shape Africa's Economic Competitiveness.",
+    description: "How will innovation, industrialisation, and women's leadership shape Africa's economic competitiveness?",
     accent: "#D4AF37",
     accentRgb: "212,175,55"
   },
@@ -252,6 +252,115 @@ const SectionLabel: React.FC<{
     )}
   </motion.div>
 );
+
+const STRATEGIC_BENEFITS = [
+  { id: "sb-1", label: "Industrial Growth & Trade Opportunities" },
+  { id: "sb-2", label: "Smart Technology Exposure" },
+  { id: "sb-3", label: "Retail & Manufacturing Partnerships" },
+  { id: "sb-4", label: "Supply Chain Collaboration" },
+  { id: "sb-5", label: "Export Market Intelligence" },
+  { id: "sb-6", label: "Operational Innovation" },
+  { id: "sb-7", label: "Market Expansion Strategies" },
+  { id: "sb-8", label: "Executive Visibility" }
+];
+
+const StrategicROISection: React.FC = () => {
+  return (
+    <section style={{
+      paddingTop: "clamp(48px, 8vw, 100px)",
+      paddingBottom: "clamp(48px, 8vw, 100px)",
+      paddingLeft: "clamp(16px, 5vw, 96px)",
+      paddingRight: "clamp(16px, 5vw, 96px)",
+      maxWidth: "1400px",
+      margin: "0 auto"
+    }}>
+      <SectionLabel>Strategic ROI</SectionLabel>
+
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "1fr",
+        gap: "clamp(32px, 4vw, 56px)",
+        marginTop: "clamp(24px, 3vw, 40px)"
+      }} className="roi-benefits-grid">
+        {/* Left: Heading */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
+        >
+          <h2 style={{
+            fontFamily: "Figtree",
+            fontWeight: 300,
+            fontSize: "clamp(24px, 4vw, 48px)",
+            color: "#FFFFFF",
+            lineHeight: 1.1,
+            letterSpacing: "-0.025em",
+            margin: "0 0 24px 0",
+            maxWidth: "440px"
+          }}>
+            What You Gain as a Delegate
+          </h2>
+          <p style={{
+            fontFamily: "Figtree",
+            fontSize: "clamp(14px, 1.8vw, 16px)",
+            color: "rgba(255,255,255,0.45)",
+            lineHeight: 1.75,
+            margin: 0,
+            maxWidth: "380px"
+          }}>
+            Access Africa's premier platform for retail innovation, smart manufacturing, trade integration, and supply chain excellence.
+          </p>
+        </motion.div>
+
+        {/* Right: Benefits list */}
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.12, ease: [0.21, 0.47, 0.32, 0.98] }}
+          style={{
+            backgroundColor: "#0D0D14",
+            border: "1px solid rgba(255,255,255,0.06)",
+            borderTop: "3px solid #FF2D87",
+            padding: "clamp(24px, 3vw, 40px)",
+            display: "flex",
+            flexDirection: "column",
+            gap: "0"
+          }}
+        >
+          {STRATEGIC_BENEFITS.map((benefit, idx) => (
+            <motion.div
+              key={benefit.id}
+              initial={{ opacity: 0, x: 16 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 + idx * 0.07 }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "14px",
+                padding: "14px 0",
+                borderBottom: idx < STRATEGIC_BENEFITS.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none"
+              }}
+            >
+              <CheckCircle2 size={15} style={{ color: "#FF2D87", flexShrink: 0 }} />
+              <span style={{
+                fontFamily: "Figtree",
+                fontSize: "14px",
+                fontWeight: 400,
+                color: "rgba(255,255,255,0.75)",
+                letterSpacing: "0.01em"
+              }}>
+                {benefit.label}
+              </span>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
 
 const HeroBanner: React.FC = () => {
   const { scrollY } = useScroll();
@@ -1253,6 +1362,24 @@ export const WholesaleRetailManufacturingPillar: React.FC = () => {
         {/* Programme Schedule */}
         <ProgrammeSection />
 
+        {/* Separator Line with Pink Gradient */}
+        <div
+          style={{
+            maxWidth: "1400px",
+            margin: "0 auto",
+            padding: "0 clamp(16px, 5vw, 96px)"
+          }}
+        >
+          <div
+            style={{
+              height: "1px",
+              background: `linear-gradient(to right, transparent, rgba(255,45,135,0.4) 30%, rgba(212,175,55,0.4) 70%, transparent)`
+            }}
+          />
+        </div>
+
+        <StrategicROISection />
+
         {/* Take the Next Step CTA */}
         <section
           style={{
@@ -1461,6 +1588,20 @@ export const WholesaleRetailManufacturingPillar: React.FC = () => {
           }
           .hero-cta-group a {
             width: auto !important;
+          }
+        }
+
+        /* ROI benefits grid */
+        .roi-benefits-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: clamp(32px, 4vw, 56px);
+          margin-top: clamp(24px, 3vw, 40px);
+        }
+        @media (min-width: 1024px) {
+          .roi-benefits-grid {
+            grid-template-columns: 1fr 1.3fr;
+            align-items: start;
           }
         }
       `}</style>
