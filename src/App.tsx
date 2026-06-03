@@ -14,7 +14,7 @@ import ProvincialSummitSeries from './components/EmpowaWomenProvincialSummits';
 import { GreenEconomyPillar } from './components/EmpowaWomenGreenEconomyPillar';
 import { InfrastructurePropertyPillar } from './components/EmpowaWomenInfrastructurePropertyPillar';
 import { AgricultureManufacturingPillar } from './components/EmpowaWomenAgricultureManufacturingPillar';
-import { CapitalLeadershipPillar } from './components/EmpowaWomenCapitalLeadershipPillar';
+import { CreativeEconomyPillar } from './components/EmpowaWomenCreativeEconomyPillar';
 import { BeautyFashionWellnessPillar } from './components/BeautyFashionWellnessPillar';
 import { EntrepreneurshipFundingPillar } from './components/EmpowaWomenEntrepreneurshipFundingPillar';
 import { WholesaleRetailManufacturingPillar } from './components/EmpowaWomenWholesaleRetailManufacturingPillar';
@@ -65,7 +65,7 @@ function App() {
             <Route path="green-economy" element={<GreenEconomyPillar />} />
             <Route path="infrastructure-property" element={<InfrastructurePropertyPillar />} />
             <Route path="agriculture-manufacturing" element={<AgricultureManufacturingPillar />} />
-            <Route path="capital-leadership" element={<CapitalLeadershipPillar />} />
+            <Route path="creative-economy" element={<CreativeEconomyPillar />} />
             <Route path="beauty-fashion-wellness" element={<BeautyFashionWellnessPillar />} />
             <Route path="entrepreneurship-funding" element={<EntrepreneurshipFundingPillar />} />
             <Route path="wholesale-retail-manufacturing" element={<WholesaleRetailManufacturingPillar />} />
