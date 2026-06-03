@@ -17,6 +17,7 @@ import { AgricultureManufacturingPillar } from './components/EmpowaWomenAgricult
 import { CapitalLeadershipPillar } from './components/EmpowaWomenCapitalLeadershipPillar';
 import { BeautyFashionWellnessPillar } from './components/BeautyFashionWellnessPillar';
 import { EntrepreneurshipFundingPillar } from './components/EmpowaWomenEntrepreneurshipFundingPillar';
+import { WholesaleRetailManufacturingPillar } from './components/EmpowaWomenWholesaleRetailManufacturingPillar';
 import { MediaPage } from './components/EmpowaWomenMediaPage';
 import { EmpowaWomenSummitPage } from './components/EmpowaWomenSummitPage';
 import { PrivacyPage } from './components/EmpowaWomenPrivacyPage';
@@ -65,6 +66,7 @@ function App() {
             <Route path="capital-leadership" element={<CapitalLeadershipPillar />} />
             <Route path="beauty-fashion-wellness" element={<BeautyFashionWellnessPillar />} />
             <Route path="entrepreneurship-funding" element={<EntrepreneurshipFundingPillar />} />
+            <Route path="wholesale-retail-manufacturing" element={<WholesaleRetailManufacturingPillar />} />
             <Route path="media" element={<MediaPage />} />
             <Route path="summit" element={<EmpowaWomenSummitPage />} />
             <Route path="privacy" element={<PrivacyPage />} />

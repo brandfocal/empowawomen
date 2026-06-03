@@ -37,7 +37,8 @@ const NAV_LINKS: NavLinkItem[] = [
             { label: "Agriculture & Food Security", href: "/agriculture-manufacturing" },
             { label: "Capital, Marketing, Creative & Leadership Systems", href: "/capital-leadership" },
             { label: "Beauty, Fashion, Health & Wellness", href: "/beauty-fashion-wellness" },
-            { label: "Entrepreneurship & Funding", href: "/entrepreneurship-funding" }
+            { label: "Entrepreneurship & Funding", href: "/entrepreneurship-funding" },
+            { label: "Wholesale, Retail & Manufacturing", href: "/wholesale-retail-manufacturing" }
         ]
     },
     { id: "nav-academy", label: "EmpowaHER™", href: "/academy" },
