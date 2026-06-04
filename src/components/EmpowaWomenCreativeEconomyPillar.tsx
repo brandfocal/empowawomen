@@ -600,9 +600,7 @@ const CreativeHeroBanner: React.FC = () => {
             justifyContent: "center",
             gap: "8px",
             transition: "filter 200ms ease-out",
-            boxShadow: "0 0 32px rgba(255,45,135,0.25)",
-            position: "relative",
-            overflow: "hidden"
+            boxShadow: "0 0 32px rgba(255,45,135,0.25)"
           }} onMouseEnter={e => {
             const el = e.currentTarget as HTMLButtonElement;
             el.style.filter = "brightness(1.1)";
@@ -612,25 +610,8 @@ const CreativeHeroBanner: React.FC = () => {
             el.style.filter = "brightness(1)";
             el.style.boxShadow = "0 0 32px rgba(255,45,135,0.25)";
           }}>
-            <span style={{
-              position: "relative",
-              zIndex: 1
-            }}>Secure Your Seat</span>
-            <ArrowRight size={16} style={{
-              position: "relative",
-              zIndex: 1
-            }} />
-            <span style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              height: "100%",
-              width: "40%",
-              background: "rgba(255,255,255,0.15)",
-              transform: "skewX(-20deg) translateX(-100%)",
-              animation: "shimmerSlide 3s linear infinite",
-              pointerEvents: "none"
-            }} />
+            Secure Your Seat
+            <ArrowRight size={16} />
           </button>
 
           <button onClick={handleProgrammeClick} style={{
@@ -662,51 +643,7 @@ const CreativeHeroBanner: React.FC = () => {
           </button>
         </motion.div>
 
-        <div style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "16px",
-          marginTop: "clamp(24px, 4vw, 40px)"
-        }}>
-          <div style={{
-            position: "relative",
-            display: "flex"
-          }}>
-            {AVATAR_URLS.map((avatar, index) => (
-              <img key={avatar.id} src={avatar.url} alt="" aria-hidden="true" style={{
-                width: 36,
-                height: 36,
-                borderRadius: "50%",
-                border: "2px solid #0A0A0F",
-                objectFit: "cover",
-                marginLeft: index === 0 ? 0 : -10,
-                display: "block"
-              }} />
-            ))}
-          </div>
 
-          <div style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "2px"
-          }}>
-            <span style={{
-              fontFamily: "Figtree",
-              fontSize: "14px",
-              fontWeight: 300,
-              color: "#FFFFFF"
-            }}>
-              2,000+ Leaders
-            </span>
-            <span style={{
-              fontFamily: "Figtree",
-              fontSize: "12px",
-              color: "rgba(255,255,255,0.45)"
-            }}>
-              shaping Africa's creative economy
-            </span>
-          </div>
-        </div>
       </div>
     </section>
   );
@@ -747,18 +684,7 @@ export const CreativeEconomyPillar: React.FC = () => {
         {/* ── 1. Hero Banner ── */}
         <CreativeHeroBanner />
 
-        {/* ── Thin separator ── */}
-        <div style={{
-          maxWidth: "1400px",
-          margin: "0 auto",
-          paddingLeft: "clamp(16px, 5vw, 96px)",
-          paddingRight: "clamp(16px, 5vw, 96px)"
-        }}>
-          <div style={{
-            height: "1px",
-            background: "linear-gradient(to right, rgba(255,45,135,0.5), rgba(0,180,166,0.2) 50%, rgba(212,175,55,0.5))"
-          }} />
-        </div>
+
 
 
 
@@ -1635,8 +1561,6 @@ export const CreativeEconomyPillar: React.FC = () => {
                 justifyContent: "center",
                 gap: "8px",
                 cursor: "pointer",
-                position: "relative",
-                overflow: "hidden",
                 transition: "filter 200ms ease-out",
                 width: "100%"
               }} onMouseEnter={e => {
@@ -1644,25 +1568,8 @@ export const CreativeEconomyPillar: React.FC = () => {
               }} onMouseLeave={e => {
                 (e.currentTarget as HTMLButtonElement).style.filter = "brightness(1)";
               }}>
-                <span style={{
-                  position: "relative",
-                  zIndex: 1
-                }}>Secure Your Seat</span>
-                <ArrowRight size={18} style={{
-                  position: "relative",
-                  zIndex: 1
-                }} />
-                <span style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  height: "100%",
-                  width: "40%",
-                  background: "rgba(255,255,255,0.15)",
-                  transform: "skewX(-20deg) translateX(-100%)",
-                  animation: "shimmerSlide 3s linear infinite",
-                  pointerEvents: "none"
-                }} />
+                Secure Your Seat
+                <ArrowRight size={18} />
               </button>
 
               <button className="creative-cta-btn-secondary" onClick={() => {
