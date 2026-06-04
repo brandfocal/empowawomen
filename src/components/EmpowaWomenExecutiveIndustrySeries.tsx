@@ -186,7 +186,8 @@ export const ExecutiveIndustrySeries: React.FC = () => {
         setError("");
         setSubmitState("submitting");
 
-        const streamLabel = STREAMS_DATA.find(s => String(s.id) === formData.stream)?.title || formData.stream;
+        const streamObj = STREAMS_DATA.find(s => String(s.id) === formData.stream);
+        const streamValue = streamObj ? `${streamObj.number} - ${streamObj.title} (${streamObj.date})`.replace(/ & /g, " &amp; ") : formData.stream;
 
         try {
             const response = await fetch('/api/submit', {
@@ -205,8 +206,8 @@ export const ExecutiveIndustrySeries: React.FC = () => {
                         'input_14': formData.organisation,
                         '4': formData.email,
                         'input_4': formData.email,
-                        '13': streamLabel,
-                        'input_13': streamLabel,
+                        '13': streamValue,
+                        'input_13': streamValue,
                         '9': formData.message,
                         'input_9': formData.message
                     }
@@ -237,7 +238,8 @@ export const ExecutiveIndustrySeries: React.FC = () => {
         setDrawerError("");
         setDrawerSubmitState("submitting");
 
-        const streamLabel = STREAMS_DATA.find(s => String(s.id) === streamVal)?.title || streamVal;
+        const streamObj = STREAMS_DATA.find(s => String(s.id) === streamVal);
+        const streamValue = streamObj ? `${streamObj.number} - ${streamObj.title} (${streamObj.date})`.replace(/ & /g, " &amp; ") : streamVal;
 
         try {
             const response = await fetch('/api/submit', {
@@ -256,8 +258,8 @@ export const ExecutiveIndustrySeries: React.FC = () => {
                         'input_14': drawerFormData.organisation,
                         '4': drawerFormData.email,
                         'input_4': drawerFormData.email,
-                        '13': streamLabel,
-                        'input_13': streamLabel,
+                        '13': streamValue,
+                        'input_13': streamValue,
                         '9': drawerFormData.message,
                         'input_9': drawerFormData.message
                     }
