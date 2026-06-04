@@ -32,7 +32,59 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const parsedUrl = url.parse(targetUrl);
     const authHeader = `Basic ${Buffer.from(`${consumerKey}:${consumerSecret}`).toString('base64')}`;
 
-
+    // --- TEMPORARY VALIDATION MATCH INSPECTOR ---
+    if (String(form_id) === '18') {
+      const getUrl = `${gfApiUrl}/forms/${form_id}${separator}consumer_key=${consumerKey}&consumer_secret=${consumerSecret}`;
+      const parsedGetUrl = url.parse(getUrl);
+      const getOptions = {
+        hostname: parsedGetUrl.hostname,
+        port: parsedGetUrl.port || 443,
+        path: parsedGetUrl.path,
+        method: 'GET',
+        headers: {
+          'Authorization': authHeader,
+          'User-Agent': 'Vercel-Serverless-Proxy'
+        }
+      };
+      const schemaResult = await new Promise<{ statusCode?: number; body: string }>((resolve, reject) => {
+        const request = https.request(getOptions, (response) => {
+          let body = '';
+          response.setEncoding('utf8');
+          response.on('data', (chunk) => { body += chunk; });
+          response.on('end', () => { resolve({ statusCode: response.statusCode, body }); });
+        });
+        request.on('error', (err) => { reject(err); });
+        request.end();
+      });
+      try {
+        const formObj = JSON.parse(schemaResult.body);
+        const field13 = formObj.fields?.find((f: any) => String(f.id) === '13');
+        if (field13 && field13.choices) {
+          const submittedVal = input_values['13'] || input_values['input_13'];
+          const details = field13.choices.map((c: any) => {
+            const valMatch = c.value === submittedVal;
+            const textMatch = c.text === submittedVal;
+            const valCharCodes = Array.from(c.value).map((ch: any) => ch.charCodeAt(0));
+            const textCharCodes = Array.from(c.text).map((ch: any) => ch.charCodeAt(0));
+            return {
+              value: c.value,
+              valCharCodes,
+              text: c.text,
+              textCharCodes,
+              valMatch,
+              textMatch
+            };
+          });
+          const submittedCharCodes = Array.from(submittedVal || '').map((ch: any) => ch.charCodeAt(0));
+          return res.status(400).json({
+            error: `MATCH INSPECTION: Submitted: "${submittedVal}" (codes: ${JSON.stringify(submittedCharCodes)}). Choices: ${JSON.stringify(details)}`
+          });
+        }
+      } catch (e: any) {
+        console.error('Match inspector failed:', e.message);
+      }
+    }
+    // --------------------------------------------
 
     const options = {
       hostname: parsedUrl.hostname,
