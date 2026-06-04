@@ -32,6 +32,44 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const parsedUrl = url.parse(targetUrl);
     const authHeader = `Basic ${Buffer.from(`${consumerKey}:${consumerSecret}`).toString('base64')}`;
 
+    // --- TEMPORARY DEBUG INTERCEPTION FOR FORM 18 FIELD 13 CHOICES ---
+    if (String(form_id) === '18') {
+      const getUrl = `${gfApiUrl}/forms/${form_id}${separator}consumer_key=${consumerKey}&consumer_secret=${consumerSecret}`;
+      const parsedGetUrl = url.parse(getUrl);
+      const getOptions = {
+        hostname: parsedGetUrl.hostname,
+        port: parsedGetUrl.port || 443,
+        path: parsedGetUrl.path,
+        method: 'GET',
+        headers: {
+          'Authorization': authHeader,
+          'User-Agent': 'Vercel-Serverless-Proxy'
+        }
+      };
+      const schemaResult = await new Promise<{ statusCode?: number; body: string }>((resolve, reject) => {
+        const request = https.request(getOptions, (response) => {
+          let body = '';
+          response.setEncoding('utf8');
+          response.on('data', (chunk) => { body += chunk; });
+          response.on('end', () => { resolve({ statusCode: response.statusCode, body }); });
+        });
+        request.on('error', (err) => { reject(err); });
+        request.end();
+      });
+      try {
+        const formObj = JSON.parse(schemaResult.body);
+        const field13 = formObj.fields?.find((f: any) => String(f.id) === '13');
+        if (field13 && field13.choices) {
+          return res.status(400).json({ error: `DEBUG CHOICES: ${JSON.stringify(field13.choices)}` });
+        } else {
+          return res.status(400).json({ error: `DEBUG: Field 13 not found in form schema. Fields: ${JSON.stringify(formObj.fields?.map((f: any) => ({ id: f.id, type: f.type, label: f.label })))}` });
+        }
+      } catch (e: any) {
+        return res.status(400).json({ error: `DEBUG: Failed to parse schema. Status: ${schemaResult.statusCode}, Error: ${e.message}, Body: ${schemaResult.body.substring(0, 500)}` });
+      }
+    }
+    // -----------------------------------------------------------------
+
     const options = {
       hostname: parsedUrl.hostname,
       port: parsedUrl.port || 443,
