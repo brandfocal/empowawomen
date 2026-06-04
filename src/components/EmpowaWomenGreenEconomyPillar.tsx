@@ -193,6 +193,16 @@ const STRATEGIC_BENEFITS = [{
   id: "sb-8",
   label: "Leadership Visibility in High-Growth Industries"
 }];
+
+const ATTENDEE_LIST = [
+  { id: "at-1", label: "ESG & Sustainability Directors" },
+  { id: "at-2", label: "Mining & Resource Executives" },
+  { id: "at-3", label: "Renewable Energy Developers" },
+  { id: "at-4", label: "Climate Finance & ESG Investors" },
+  { id: "at-5", label: "Environmental Scientists & Policy Advisors" },
+  { id: "at-6", label: "Circular Economy Innovators" }
+];
+
 const CTA_HEADLINE_WORDS = ["Power", "Africa's", "Sustainable", "Future."];
 
 // ─── Sub-components ────────────────────────────────────────────────────────────
@@ -778,92 +788,130 @@ export const GreenEconomyPillar: React.FC = () => {
           <SectionLabel>Strategic ROI</SectionLabel>
 
           <div className="roi-benefits-grid">
-            {/* Left: Heading */}
-            <motion.div initial={{
-            opacity: 0,
-            x: -30
-          }} animate={roiInView ? {
-            opacity: 1,
-            x: 0
-          } : {}} transition={{
-            duration: 0.7,
-            ease: [0.21, 0.47, 0.32, 0.98]
-          }}>
+            {/* Left Column: Why Attend & Benefits */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={roiInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
+            >
               <h2 style={{
-              fontFamily: "Figtree",
-              fontWeight: 300,
-              fontSize: "clamp(24px, 4vw, 48px)",
-              color: "#FFFFFF",
-              lineHeight: 1.1,
-              letterSpacing: "-0.025em",
-              margin: "0 0 24px 0",
-              maxWidth: "440px"
-            }}>
-                What You Gain as a Delegate
+                fontFamily: "Figtree",
+                fontWeight: 300,
+                fontSize: "clamp(24px, 4vw, 48px)",
+                color: "#FFFFFF",
+                lineHeight: 1.1,
+                letterSpacing: "-0.025em",
+                margin: "0 0 24px 0",
+                maxWidth: "440px"
+              }}>
+                Why Attend This Stage
               </h2>
               <p style={{
-              fontFamily: "Figtree",
-              fontSize: "clamp(14px, 1.8vw, 16px)",
-              color: "rgba(255,255,255,0.45)",
-              lineHeight: 1.75,
-              margin: 0,
-              maxWidth: "380px"
-            }}>
-                Access Africa's most strategically curated green economy platform — designed to accelerate
-                your impact, visibility, and growth in sustainable industries.
+                fontFamily: "Figtree",
+                fontSize: "clamp(14px, 1.8vw, 16px)",
+                color: "rgba(255,255,255,0.45)",
+                lineHeight: 1.75,
+                margin: 0,
+                maxWidth: "380px"
+              }}>
+                Access Africa's most strategically curated green economy platform — designed to accelerate your impact, visibility, and growth in sustainable industries.
               </p>
+
+              <div style={{ marginTop: "32px", display: "flex", flexDirection: "column" }}>
+                {STRATEGIC_BENEFITS.map((benefit, idx) => {
+                  const accent = idx % 3 === 0 ? "#FF2D87" : idx % 3 === 1 ? "#00B4A6" : "#D4AF37";
+                  return (
+                    <motion.div
+                      key={benefit.id}
+                      initial={{ opacity: 0, x: -16 }}
+                      animate={roiInView ? { opacity: 1, x: 0 } : {}}
+                      transition={{ duration: 0.5, delay: 0.1 + idx * 0.07 }}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "14px",
+                        padding: "14px 0",
+                        borderBottom: "1px solid rgba(255,255,255,0.04)"
+                      }}
+                    >
+                      <CheckCircle2 size={15} style={{ color: accent, flexShrink: 0 }} />
+                      <span style={{
+                        fontFamily: "Figtree",
+                        fontSize: "14px",
+                        fontWeight: 300,
+                        color: "rgba(255,255,255,0.75)",
+                        letterSpacing: "0.01em"
+                      }}>
+                        {benefit.label}
+                      </span>
+                    </motion.div>
+                  );
+                })}
+              </div>
             </motion.div>
 
-            {/* Right: Benefits list */}
-            <motion.div initial={{
-            opacity: 0,
-            x: 20
-          }} animate={roiInView ? {
-            opacity: 1,
-            x: 0
-          } : {}} transition={{
-            duration: 0.7,
-            delay: 0.12,
-            ease: [0.21, 0.47, 0.32, 0.98]
-          }} style={{
-            backgroundColor: "#0D0D14",
-            border: "1px solid rgba(255,255,255,0.06)",
-            borderTop: "3px solid #00B4A6",
-            padding: "clamp(24px, 3vw, 40px)",
-            display: "flex",
-            flexDirection: "column",
-            gap: "0"
-          }}>
-              {STRATEGIC_BENEFITS.map((benefit, idx) => <motion.div key={benefit.id} initial={{
-              opacity: 0,
-              x: 16
-            }} animate={roiInView ? {
-              opacity: 1,
-              x: 0
-            } : {}} transition={{
-              duration: 0.5,
-              delay: 0.2 + idx * 0.07
-            }} style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "14px",
-              padding: "14px 0",
-              borderBottom: idx < STRATEGIC_BENEFITS.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none"
-            }}>
-                  <CheckCircle2 size={15} style={{
-                color: "#00B4A6",
-                flexShrink: 0
-              }} />
-                  <span style={{
+            {/* Right Column: Who Should Attend Card */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={roiInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.12, ease: [0.21, 0.47, 0.32, 0.98] }}
+              style={{
+                backgroundColor: "#0D0D14",
+                border: "1px solid rgba(255,255,255,0.06)",
+                borderTop: "3px solid #FF2D87",
+                padding: "clamp(24px, 3vw, 40px)",
+                display: "flex",
+                flexDirection: "column",
+                gap: "0"
+              }}
+            >
+              <p style={{
                 fontFamily: "Figtree",
-                fontSize: "14px",
-                fontWeight: 400,
-                color: "rgba(255,255,255,0.75)",
-                letterSpacing: "0.01em"
+                fontSize: "9px",
+                fontWeight: 300,
+                letterSpacing: "0.2em",
+                color: "rgba(255,255,255,0.30)",
+                textTransform: "uppercase",
+                margin: "0 0 20px 0"
               }}>
-                    {benefit.label}
-                  </span>
-                </motion.div>)}
+                WHO SHOULD ATTEND
+              </p>
+              {ATTENDEE_LIST.map((attendee, idx) => {
+                const accent = idx % 3 === 0 ? "#FF2D87" : idx % 3 === 1 ? "#00B4A6" : "#D4AF37";
+                return (
+                  <motion.div
+                    key={attendee.id}
+                    initial={{ opacity: 0, x: 16 }}
+                    animate={roiInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 0.2 + idx * 0.07 }}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "14px",
+                      padding: "14px 0",
+                      borderBottom: idx < ATTENDEE_LIST.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none"
+                    }}
+                  >
+                    <span style={{
+                      fontFamily: "Figtree",
+                      fontWeight: 300,
+                      fontSize: "14px",
+                      color: accent,
+                      width: 20,
+                      flexShrink: 0
+                    }}>→</span>
+                    <span style={{
+                      fontFamily: "Figtree",
+                      fontSize: "14px",
+                      fontWeight: 300,
+                      color: "rgba(255,255,255,0.75)",
+                      letterSpacing: "0.01em"
+                    }}>
+                      {attendee.label}
+                    </span>
+                  </motion.div>
+                );
+              })}
             </motion.div>
           </div>
         </section>

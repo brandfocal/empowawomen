@@ -1,5 +1,5 @@
 import * as React from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence, useInView } from "framer-motion";
 import { ArrowRight, Check, ShieldCheck, Clock, Calendar, Shield, Users, Gavel, Award, Target, Briefcase, Sparkles, BrainCircuit, Landmark, BarChart3, CheckCircle2 } from "lucide-react";
 import { ROIMetricBlock } from "./ROIMetricBlock";
 import { DelegateRegistrationSection } from "./DelegateRegistrationSection";
@@ -162,6 +162,16 @@ const STRATEGIC_BENEFITS = [
   { id: "sb-7", label: "Global Boardroom Connections" },
   { id: "sb-8", label: "Executive Authority & Authority Building" }
 ];
+
+const ATTENDEE_LIST = [
+  { id: "at-1", label: "Non-Executive Directors & Board Members" },
+  { id: "at-2", label: "C-Suite Executives & Managing Directors" },
+  { id: "at-3", label: "GRC Professionals & Legal Advisors" },
+  { id: "at-4", label: "Company Secretaries & Governance Officers" },
+  { id: "at-5", label: "HR Directors & Talent Executives" },
+  { id: "at-6", label: "Executive Coaches & Leadership Advisors" }
+];
+
 
 const HERO_LINES = [
   { id: "hl-1", words: ["Leadership,", "Governance"] },
@@ -598,8 +608,15 @@ const HeroBanner: React.FC = () => {
 };
 
 const StrategicROISection: React.FC = () => {
+  const roiRef = React.useRef<HTMLDivElement>(null);
+  const roiInView = useInView(roiRef, {
+    once: true,
+    margin: "-80px"
+  });
+
   return (
     <section
+      ref={roiRef}
       style={{
         paddingTop: "clamp(48px, 8vw, 100px)",
         paddingBottom: "clamp(48px, 8vw, 100px)",
@@ -612,46 +629,72 @@ const StrategicROISection: React.FC = () => {
       <SectionLabel>Strategic ROI</SectionLabel>
 
       <div className="roi-benefits-grid">
-        {/* Left: Heading */}
+        {/* Left Column: Why Attend & Benefits */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+          animate={roiInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
         >
-          <h2
-            style={{
-              fontFamily: "Figtree",
-              fontWeight: 300,
-              fontSize: "clamp(24px, 4vw, 48px)",
-              color: "#FFFFFF",
-              lineHeight: 1.1,
-              letterSpacing: "-0.025em",
-              margin: "0 0 24px 0",
-              maxWidth: "440px"
-            }}
-          >
-            What You Gain as a Delegate
+          <h2 style={{
+            fontFamily: "Figtree",
+            fontWeight: 300,
+            fontSize: "clamp(24px, 4vw, 48px)",
+            color: "#FFFFFF",
+            lineHeight: 1.1,
+            letterSpacing: "-0.025em",
+            margin: "0 0 24px 0",
+            maxWidth: "440px"
+          }}>
+            Why Attend This Stage
           </h2>
-          <p
-            style={{
-              fontFamily: "Figtree",
-              fontSize: "clamp(14px, 1.8vw, 16px)",
-              color: "rgba(255,255,255,0.45)",
-              lineHeight: 1.75,
-              margin: 0,
-              maxWidth: "380px"
-            }}
-          >
+          <p style={{
+            fontFamily: "Figtree",
+            fontSize: "clamp(14px, 1.8vw, 16px)",
+            color: "rgba(255,255,255,0.45)",
+            lineHeight: 1.75,
+            margin: 0,
+            maxWidth: "380px"
+          }}>
             Access Africa's premier platform for executive development, boardroom pathways, and governance intelligence.
           </p>
+
+          <div style={{ marginTop: "32px", display: "flex", flexDirection: "column" }}>
+            {STRATEGIC_BENEFITS.map((benefit, idx) => {
+              const accent = idx % 3 === 0 ? "#FF2D87" : idx % 3 === 1 ? "#00B4A6" : "#D4AF37";
+              return (
+                <motion.div
+                  key={benefit.id}
+                  initial={{ opacity: 0, x: -16 }}
+                  animate={roiInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.1 + idx * 0.07 }}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "14px",
+                    padding: "14px 0",
+                    borderBottom: "1px solid rgba(255,255,255,0.04)"
+                  }}
+                >
+                  <CheckCircle2 size={15} style={{ color: accent, flexShrink: 0 }} />
+                  <span style={{
+                    fontFamily: "Figtree",
+                    fontSize: "14px",
+                    fontWeight: 300,
+                    color: "rgba(255,255,255,0.75)",
+                    letterSpacing: "0.01em"
+                  }}>
+                    {benefit.label}
+                  </span>
+                </motion.div>
+              );
+            })}
+          </div>
         </motion.div>
 
-        {/* Right: Benefits list */}
+        {/* Right Column: Who Should Attend Card */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+          animate={roiInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.12, ease: [0.21, 0.47, 0.32, 0.98] }}
           style={{
             backgroundColor: "#0D0D14",
@@ -663,35 +706,53 @@ const StrategicROISection: React.FC = () => {
             gap: "0"
           }}
         >
-          {STRATEGIC_BENEFITS.map((benefit, idx) => (
-            <motion.div
-              key={benefit.id}
-              initial={{ opacity: 0, x: 16 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 + idx * 0.07 }}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "14px",
-                padding: "14px 0",
-                borderBottom: idx < STRATEGIC_BENEFITS.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none"
-              }}
-            >
-              <CheckCircle2 size={15} style={{ color: "#FF2D87", flexShrink: 0 }} />
-              <span
+          <p style={{
+            fontFamily: "Figtree",
+            fontSize: "9px",
+            fontWeight: 300,
+            letterSpacing: "0.2em",
+            color: "rgba(255,255,255,0.30)",
+            textTransform: "uppercase",
+            margin: "0 0 20px 0"
+          }}>
+            WHO SHOULD ATTEND
+          </p>
+          {ATTENDEE_LIST.map((attendee, idx) => {
+            const accent = idx % 3 === 0 ? "#FF2D87" : idx % 3 === 1 ? "#00B4A6" : "#D4AF37";
+            return (
+              <motion.div
+                key={attendee.id}
+                initial={{ opacity: 0, x: 16 }}
+                animate={roiInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.2 + idx * 0.07 }}
                 style={{
-                  fontFamily: "Figtree",
-                  fontSize: "14px",
-                  fontWeight: 400,
-                  color: "rgba(255,255,255,0.75)",
-                  letterSpacing: "0.01em"
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "14px",
+                  padding: "14px 0",
+                  borderBottom: idx < ATTENDEE_LIST.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none"
                 }}
               >
-                {benefit.label}
-              </span>
-            </motion.div>
-          ))}
+                <span style={{
+                  fontFamily: "Figtree",
+                  fontWeight: 300,
+                  fontSize: "14px",
+                  color: accent,
+                  width: 20,
+                  flexShrink: 0
+                }}>→</span>
+                <span style={{
+                  fontFamily: "Figtree",
+                  fontSize: "14px",
+                  fontWeight: 300,
+                  color: "rgba(255,255,255,0.75)",
+                  letterSpacing: "0.01em"
+                }}>
+                  {attendee.label}
+                </span>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>
