@@ -54,7 +54,7 @@ const BROADCAST_ITEMS: BroadcastItem[] = [{
   id: "b-4",
   image: "https://img.youtube.com/vi/65MWmkZqlGo/maxresdefault.jpg",
   title: "Transport Month | TETA Empowawomen in Transport Summit: Sabelo Mbuku",
-  description: "In light of Transport Month, TETA will be hosting the Women in Transport Summit - a landmark moment for women in the sector.",
+  description: "In light of Transport Month, TETA will be hosting the Women in Transport Summit, a landmark moment for women in the sector.",
   link: "https://www.youtube.com/watch?v=65MWmkZqlGo",
   ctaLabel: "Watch on YouTube",
   tagLabel: "YOUTUBE",
@@ -389,7 +389,7 @@ const HeroSection = () => {
           lineHeight: 1.75,
           textAlign: "center"
         }}>
-            Broadcast coverage, feature articles, press releases, and media accreditation - every
+            Broadcast coverage, feature articles, press releases, and media accreditation, every
             platform, every story, every stage.
           </motion.p>
 
@@ -926,7 +926,7 @@ const PressReleasesSection = () => {
                   paddingTop: "4px",
                   color: "#FF2D87",
                   fontFamily: "Figtree"
-                }}>J</span>ohannesburg, South Africa — Scheduled for Saturday, 29 August 2026 at The Forum | The Campus, Bryanston, Johannesburg, the summit marks a significant milestone in a decade-long journey of accelerating women’s leadership, economic participation, enterprise growth, and influence across Africa.
+                }}>J</span>ohannesburg, South Africa, Scheduled for Saturday, 29 August 2026 at The Forum | The Campus, Bryanston, Johannesburg, the summit marks a significant milestone in a decade-long journey of accelerating women’s leadership, economic participation, enterprise growth, and influence across Africa.
               </p>
 
               {/* Defining Question Callout */}
@@ -1091,7 +1091,7 @@ const PressReleasesSection = () => {
                   color: "#0A0A0F",
                   margin: "0 0 16px 0"
                 }}>
-                  THE FUTURE ECONOMY GROWTH PILLARS™
+                  THE FUTURE ECONOMY GROWTH PILLARS
                 </h4>
                 <p style={{
                   fontFamily: "Figtree",
@@ -1946,7 +1946,7 @@ const PreFooterCTA = () => {
           margin: "16px 0 0 0",
           maxWidth: "448px"
         }}>
-            For media enquiries, accreditation, and press partnerships - get in touch.
+            For media enquiries, accreditation, and press partnerships, get in touch.
           </motion.p>
         </div>
 
@@ -2148,7 +2148,7 @@ const VideoSection = () => {
           lineHeight: 1.75,
           margin: 0
         }}>
-                  Packed stages. Historic deals. Defining conversations. The EmpowaWomen Annual Leadership Summit - captured in two minutes.
+                  Packed stages. Historic deals. Defining conversations. The EmpowaWomen Annual Leadership Summit, captured in two minutes.
               </p>
               <a href="#" style={{
           marginTop: "24px",
@@ -2523,7 +2523,7 @@ const PhotoGallerySection = () => {
             margin: "0 0 16px 0",
             textTransform: "uppercase"
           }}>
-            BUBBLES &amp; NIBBLES™
+            BUBBLES &amp; NIBBLES
             <br />
             EXECUTIVE MOMENTS.
           </h2>
@@ -2608,7 +2608,7 @@ const PhotoGallerySection = () => {
                       textTransform: "uppercase",
                       margin: "0 0 4px 0"
                     }}>
-                      BUBBLES &amp; NIBBLES™
+                      BUBBLES &amp; NIBBLES
                     </p>
                     <h4 style={{
                       fontFamily: "Figtree",
@@ -2832,7 +2832,7 @@ const PhotoGallerySection = () => {
                 textTransform: "uppercase",
                 margin: "0 0 4px 0"
               }}>
-                BUBBLES &amp; NIBBLES™ SOIRÉE
+                BUBBLES &amp; NIBBLES SOIRÉE
               </p>
               <p style={{
                 fontFamily: "Figtree",

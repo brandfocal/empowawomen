@@ -11,7 +11,7 @@ export const PrivacyPage: React.FC = () => {
         {
             icon: <Eye className="w-5 h-5 text-[#FF2D87]" />,
             title: "1. Information We Collect",
-            content: "We collect information you provide directly to us when registering for summits, subscribing to our newsletter, applying for the EmpowaHER™ academy, or communicating with us. This includes your name, email address, phone number, company name, job title, and billing information."
+            content: "We collect information you provide directly to us when registering for summits, subscribing to our newsletter, applying for the EmpowaHER academy, or communicating with us. This includes your name, email address, phone number, company name, job title, and billing information."
         },
         {
             icon: <Lock className="w-5 h-5 text-[#FF2D87]" />,

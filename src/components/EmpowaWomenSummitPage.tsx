@@ -91,7 +91,7 @@ const NAV_LINKS: NavLinkItem[] = [{
   active: true
 }, {
   id: "nl-academy",
-  label: "EmpowaHER™",
+  label: "EmpowaHER",
   href: "#"
 }, {
   id: "nl-partnerships",
@@ -929,7 +929,7 @@ const IntroBridgeSection: React.FC = () => {
           letterSpacing: "-0.02em",
           margin: 0
         }}>
-          A sophisticated celebration of leadership, influence, growth, and excellence - where Africa's most influential women gather to connect, collaborate, and shape the future of business, governance, and society.
+          A sophisticated celebration of leadership, influence, growth, and excellence, where Africa's most influential women gather to connect, collaborate, and shape the future of business, governance, and society.
         </p>
       </motion.div>
 
@@ -1032,18 +1032,16 @@ const SponsorMarqueeStrip: React.FC = () => {
               width: "auto",
               maxWidth: "130px",
               objectFit: "contain",
-              opacity: 0.3,
-              filter: "grayscale(100%)",
-              transition: "opacity 200ms ease-out, filter 200ms ease-out",
+              opacity: 0.85,
+              filter: "none",
+              transition: "opacity 200ms ease-out",
               cursor: "default"
             }}
             onMouseEnter={e => {
-              (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
-              (e.currentTarget as HTMLImageElement).style.filter = "grayscale(0%)";
+              (e.currentTarget as HTMLImageElement).style.opacity = "1";
             }}
             onMouseLeave={e => {
-              (e.currentTarget as HTMLImageElement).style.opacity = "0.3";
-              (e.currentTarget as HTMLImageElement).style.filter = "grayscale(100%)";
+              (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
             }}
           />
         </div>)}
@@ -1659,7 +1657,7 @@ const WhoShouldAttendSection: React.FC<{
                     lineHeight: 1.75,
                     margin: "24px 0 0 0"
                   }}>
-                    From C-suites to boardrooms, government halls to startup ecosystems - this is the room where decisions are made and futures are shaped.
+                    From C-suites to boardrooms, government halls to startup ecosystems, this is the room where decisions are made and futures are shaped.
                   </p>
                 </div>
                 <button style={{
@@ -2165,7 +2163,7 @@ const PastSpeakersShowcase: React.FC = () => {
         lineHeight: 1.6,
         maxWidth: "800px"
       }}>
-        EmpowaWomen has hosted exceptional change-makers, industry pioneers, and senior executives from leading institutions across Africa—raising the benchmark for women-led economic transformation.
+        EmpowaWomen has hosted exceptional change-makers, industry pioneers, and senior executives from leading institutions across Africa, raising the benchmark for women-led economic transformation.
       </p>
     </div>
 

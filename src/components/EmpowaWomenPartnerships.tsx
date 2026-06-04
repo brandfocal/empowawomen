@@ -88,7 +88,7 @@ const NAV_LINKS: NavLinkItem[] = [{
     hasDropdown: true
 }, {
     id: "nav-academy",
-    label: "EmpowaHER™",
+    label: "EmpowaHER",
     href: "#"
 }, {
     id: "nav-partners",
@@ -156,7 +156,7 @@ const FOOTER_SECTION_ROWS: SectionLinkRow[] = [{
         href: "#"
     }, {
         id: "fp-4",
-        label: "EmpowaHER™",
+        label: "EmpowaHER",
         href: "#"
     }, {
         id: "fp-5",
@@ -823,18 +823,16 @@ const HeroSection = () => {
                                     width: "auto",
                                     maxWidth: "130px",
                                     objectFit: "contain",
-                                    opacity: 0.3,
-                                    filter: "grayscale(100%)",
-                                    transition: "opacity 200ms ease-out, filter 200ms ease-out",
+                                    opacity: 0.85,
+                                    filter: "none",
+                                    transition: "opacity 200ms ease-out",
                                     cursor: "default"
                                 }}
                                 onMouseEnter={e => {
-                                    (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
-                                    (e.currentTarget as HTMLImageElement).style.filter = "grayscale(0%)";
+                                    (e.currentTarget as HTMLImageElement).style.opacity = "1";
                                 }}
                                 onMouseLeave={e => {
-                                    (e.currentTarget as HTMLImageElement).style.opacity = "0.3";
-                                    (e.currentTarget as HTMLImageElement).style.filter = "grayscale(100%)";
+                                    (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
                                 }}
                             />
                         </div>)}
@@ -1377,7 +1375,7 @@ const PartnerPackageMatrix: React.FC<PartnerPackageMatrixProps> = ({ onSelectTie
                             letterSpacing: "-0.02em",
                             margin: 0
                         }}>
-                            Title &amp; Naming Rights Partner™
+                            Title &amp; Naming Rights Partner
                         </h3>
                     </div>
 
@@ -1434,7 +1432,7 @@ const PartnerPackageMatrix: React.FC<PartnerPackageMatrixProps> = ({ onSelectTie
                     zIndex: 2,
                     flexShrink: 0
                 }} className="tier1-cta">
-                    <button onClick={() => onSelectTier("Tier 1: Title & Naming Rights Partner™")} style={{
+                    <button onClick={() => onSelectTier("Tier 1: Title & Naming Rights Partner")} style={{
                         backgroundColor: "#FF2D87",
                         color: "#FFFFFF",
                         fontFamily: "Figtree",
@@ -1510,7 +1508,7 @@ const PartnerPackageMatrix: React.FC<PartnerPackageMatrixProps> = ({ onSelectTie
                         marginTop: "12px",
                         marginBottom: 0
                     }}>
-                        Platinum Industry Partner™
+                        Platinum Industry Partner
                     </h3>
                     <p style={{
                         fontFamily: "Figtree",
@@ -1581,7 +1579,7 @@ const PartnerPackageMatrix: React.FC<PartnerPackageMatrixProps> = ({ onSelectTie
                     <div style={{
                         marginTop: "32px"
                     }}>
-                        <button onClick={() => onSelectTier("Tier 2: Platinum Industry Partner™")} style={{
+                        <button onClick={() => onSelectTier("Tier 2: Platinum Industry Partner")} style={{
                             border: "1px solid #00B4A6",
                             color: "#00B4A6",
                             backgroundColor: "transparent",
@@ -1646,7 +1644,7 @@ const PartnerPackageMatrix: React.FC<PartnerPackageMatrixProps> = ({ onSelectTie
                         marginTop: "12px",
                         marginBottom: 0
                     }}>
-                        Specialized Corporate Activation™
+                        Specialized Corporate Activation
                     </h3>
 
                     <div style={{
@@ -1720,7 +1718,7 @@ const PartnerPackageMatrix: React.FC<PartnerPackageMatrixProps> = ({ onSelectTie
                     <div style={{
                         marginTop: "32px"
                     }}>
-                        <button onClick={() => onSelectTier("Tier 3: Specialized Corporate Activation™")} style={{
+                        <button onClick={() => onSelectTier("Tier 3: Specialized Corporate Activation")} style={{
                             border: "1px solid #D97706",
                             color: "#D97706",
                             backgroundColor: "transparent",
@@ -2428,9 +2426,9 @@ const LeadGenForm: React.FC<LeadGenFormProps> = ({ selectedTier, setSelectedTier
                                     onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.10)'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'; }}
                                 >
                                     <option value="" disabled style={{ backgroundColor: '#0A0A0F', color: 'rgba(255,255,255,0.4)' }}>Select a Partnership Tier</option>
-                                    <option value="Tier 1: Title & Naming Rights Partner™" style={{ backgroundColor: '#0A0A0F', color: '#FFFFFF' }}>Tier 1: Title & Naming Rights Partner™</option>
-                                    <option value="Tier 2: Platinum Industry Partner™" style={{ backgroundColor: '#0A0A0F', color: '#FFFFFF' }}>Tier 2: Platinum Industry Partner™</option>
-                                    <option value="Tier 3: Specialized Corporate Activation™" style={{ backgroundColor: '#0A0A0F', color: '#FFFFFF' }}>Tier 3: Specialized Corporate Activation™</option>
+                                    <option value="Tier 1: Title & Naming Rights Partner" style={{ backgroundColor: '#0A0A0F', color: '#FFFFFF' }}>Tier 1: Title & Naming Rights Partner</option>
+                                    <option value="Tier 2: Platinum Industry Partner" style={{ backgroundColor: '#0A0A0F', color: '#FFFFFF' }}>Tier 2: Platinum Industry Partner</option>
+                                    <option value="Tier 3: Specialized Corporate Activation" style={{ backgroundColor: '#0A0A0F', color: '#FFFFFF' }}>Tier 3: Specialized Corporate Activation</option>
                                 </select>
                             </div>
 
@@ -2687,7 +2685,7 @@ const FooterCTA = () => {
                         lineHeight: 1.75,
                         margin: 0
                     }}>
-                        Partnership opportunities, summit sponsorships, and ESG engagement frameworks - delivered to the
+                        Partnership opportunities, summit sponsorships, and ESG engagement frameworks, delivered to the
                         right corporate decision-maker.
                     </motion.p>
                 </div>
@@ -2962,18 +2960,16 @@ const PartnershipsHero = () => {
                             width: "auto",
                             maxWidth: "130px",
                             objectFit: "contain",
-                            opacity: 0.3,
-                            filter: "grayscale(100%)",
-                            transition: "opacity 200ms ease-out, filter 200ms ease-out",
+                            opacity: 0.85,
+                            filter: "none",
+                            transition: "opacity 200ms ease-out",
                             cursor: "default"
                         }}
                         onMouseEnter={e => {
-                            (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
-                            (e.currentTarget as HTMLImageElement).style.filter = "grayscale(0%)";
+                            (e.currentTarget as HTMLImageElement).style.opacity = "1";
                         }}
                         onMouseLeave={e => {
-                            (e.currentTarget as HTMLImageElement).style.opacity = "0.3";
-                            (e.currentTarget as HTMLImageElement).style.filter = "grayscale(100%)";
+                            (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
                         }}
                     />
                 </div>)}

@@ -59,63 +59,63 @@ const EXTENDED_LOGOS = [...LOGOS, ...LOGOS, ...LOGOS];
 const AGENDA_ITEMS: AgendaItem[] = [{
     id: "ag-1",
     time: "10h00 – 10h30",
-    title: "Executive Arrival Networking & Cultural Welcome Experience™",
+    title: "Executive Arrival Networking & Cultural Welcome Experience",
     description: "Executive media interviews, curated introductions, and red carpet photography.",
     type: "NETWORKING",
     accentColor: "#00B4A6"
 }, {
     id: "ag-2",
     time: "10h30 – 10h45",
-    title: "Official Opening & International Women's Day Address™",
+    title: "Official Opening & International Women's Day Address",
     description: "A formal commencement setting the strategic tone for the day's high-level deliberations.",
     type: "CEREMONY",
     accentColor: "#D97706"
 }, {
     id: "ag-3",
     time: "10h45 – 11h15",
-    title: "Global Future Economy Keynote™",
+    title: "Global Future Economy Keynote",
     description: "Insightful analysis of emerging economic shifts and the pivotal role of women in steering global growth.",
     type: "KEYNOTE",
     accentColor: "#FF2D87"
 }, {
     id: "ag-4",
     time: "11h15 – 11h55",
-    title: "Executive Leadership Conversation™",
+    title: "Executive Leadership Conversation",
     description: "Interactive dialogue featuring industry titans on navigating leadership challenges in complex markets.",
     type: "CONVERSATION",
     accentColor: "#00B4A6"
 }, {
     id: "ag-5",
     time: "11h55 – 12h15",
-    title: "Cultural Performance & Creative Showcase™",
+    title: "Cultural Performance & Creative Showcase",
     description: "A multisensory celebration of African creative excellence and heritage.",
     type: "CULTURAL",
     accentColor: "#6D28D9"
 }, {
     id: "ag-6",
     time: "12h15 – 12h45",
-    title: "Women, Capital & Economic Transformation Fireside Chat™",
+    title: "Women, Capital & Economic Transformation Fireside Chat",
     description: "Exploring strategies for bridging the capital gap and driving systemic economic change.",
     type: "FIRESIDE",
     accentColor: "#FF2D87"
 }, {
     id: "ag-7",
     time: "12h45 – 13h15",
-    title: "Executive Networking Lunch & Luxury Brand Experience™",
+    title: "Executive Networking Lunch & Luxury Brand Experience",
     description: "Curated gastronomic journey paired with exclusive high-end brand showcases.",
     type: "NETWORKING",
     accentColor: "#00B4A6"
 }, {
     id: "ag-8",
     time: "13h15 – 13h45",
-    title: "Future Industries & Innovation Keynote™",
+    title: "Future Industries & Innovation Keynote",
     description: "Preparing for the fourth industrial revolution and beyond.",
     type: "KEYNOTE",
     accentColor: "#FF2D87"
 }, {
     id: "ag-9",
     time: "13h45 – 14h00",
-    title: "Closing Reflections & Strategic Networking Session™",
+    title: "Closing Reflections & Strategic Networking Session",
     description: "Synthesis of key outcomes and final high-value connections.",
     type: "CLOSING",
     accentColor: "#D97706"
@@ -137,7 +137,7 @@ const DELEGATE_BENEFITS = [{
     text: "Private Cultural Showcase"
 }, {
     id: "db-6",
-    text: "Luxury Gift Experience™"
+    text: "Luxury Gift Experience"
 }];
 const WHO_ATTENDS_CARDS: WhoAttendsCard[] = [{
     id: "wa-1",
@@ -677,7 +677,7 @@ export const IWDSummitDetail = () => {
                             maxWidth: "576px",
                             margin: 0
                         }}>
-                            At the heart of the International Women's Day Summit™ is a commitment to shifting from mere
+                            At the heart of the International Women's Day Summit is a commitment to shifting from mere
                             celebration to strategic economic participation. We gather global leaders to engineer the future.
                         </motion.p>
                     </div>

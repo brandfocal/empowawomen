@@ -96,7 +96,7 @@ const PROGRAMME_SESSIONS = [
   {
     id: "ps-1",
     time: "11:00",
-    format: "OPENING KEYNOTE™",
+    format: "OPENING KEYNOTE",
     title: "Women Must Lead the Future of Entrepreneurship, Innovation & Economic Growth",
     subtitle: "Who Will Build, Fund & Scale Africa's Next Generation of Global Enterprises?",
     accentColor: PRIMARY_ACCENT
@@ -104,24 +104,24 @@ const PROGRAMME_SESSIONS = [
   {
     id: "ps-2",
     time: "11:20",
-    format: "EXECUTIVE MASTERCLASS™",
-    title: "Funding Readiness, Scaling & the Future of High-Growth Enterprises™",
+    format: "EXECUTIVE MASTERCLASS",
+    title: "Funding Readiness, Scaling & the Future of High-Growth Enterprises",
     subtitle: "How will capital flow toward scalable, investment-ready, and future-focused businesses, and how do women prepare?",
     accentColor: TERTIARY_ACCENT
   },
   {
     id: "ps-3",
     time: "12:00",
-    format: "HIGH-IMPACT PANEL™",
-    title: "Women, Capital & the Future of Economic Participation™",
+    format: "HIGH-IMPACT PANEL",
+    title: "Women, Capital & the Future of Economic Participation",
     subtitle: "Why will the future economy belong to entrepreneurs with access to capital, markets, and strategic networks?",
     accentColor: SECONDARY_ACCENT
   },
   {
     id: "ps-4",
     time: "12:50",
-    format: "NETWORKING LUNCH™",
-    title: "Cultivating Capital, Partnerships & Enterprise Growth™",
+    format: "NETWORKING LUNCH",
+    title: "Cultivating Capital, Partnerships & Enterprise Growth",
     subtitle: "Which Relationships, Investors & Ecosystem Partners Will Accelerate Your Business Growth Journey?",
     accentColor: TERTIARY_ACCENT,
     isLunch: true
@@ -129,39 +129,39 @@ const PROGRAMME_SESSIONS = [
   {
     id: "ps-5",
     time: "13:20",
-    format: "FIRECHAT™",
-    title: "Investment, Market Access & Women-Led Enterprises™",
+    format: "FIRECHAT",
+    title: "Investment, Market Access & Women-Led Enterprises",
     subtitle: "Why is entrepreneurship without scale a missed economic opportunity, and how do we unlock scaling paths?",
     accentColor: PRIMARY_ACCENT
   },
   {
     id: "ps-6",
     time: "14:00",
-    format: "STRATEGIC WORKSHOP™",
-    title: "The Business of Innovation, Commercialisation & Sustainable Enterprise Growth™",
+    format: "STRATEGIC WORKSHOP",
+    title: "The Business of Innovation, Commercialisation & Sustainable Enterprise Growth",
     subtitle: "In what ways will the future of entrepreneurship belong to businesses that can innovate, adapt, and scale?",
     accentColor: SECONDARY_ACCENT
   },
   {
     id: "ps-7",
     time: "14:40",
-    format: "HIGH-IMPACT INDUSTRY PANEL™",
-    title: "Procurement, Digital Economies & the Future of Business Growth™",
+    format: "HIGH-IMPACT INDUSTRY PANEL",
+    title: "Procurement, Digital Economies & the Future of Business Growth",
     subtitle: "How will the next generation of high-growth enterprises be built through strategic ecosystems, technology, and market access?",
     accentColor: TERTIARY_ACCENT
   },
   {
     id: "ps-8",
     time: "15:20",
-    format: "FUTURE ECONOMY CONVERSATION™",
-    title: "The Future of Africa's Entrepreneurial Economy & Women-Led Business Transformation™",
+    format: "FUTURE ECONOMY CONVERSATION",
+    title: "The Future of Africa's Entrepreneurial Economy & Women-Led Business Transformation",
     subtitle: "How will innovation, investment, and women's leadership shape Africa's economic future?",
     accentColor: PRIMARY_ACCENT
   },
   {
     id: "ps-9",
     time: "15:50",
-    format: "CLOSING KEYNOTE™",
+    format: "CLOSING KEYNOTE",
     title: "Africa's Entrepreneurial Future Will Be Led by Women Who Build, Scale & Transform",
     subtitle: "Will You Be One of the Women Defining Africa's Future Enterprise Economy?",
     accentColor: SECONDARY_ACCENT
@@ -538,7 +538,7 @@ const HeroBanner: React.FC = () => {
                   flexShrink: 0
                 }}
               />
-              <span>ENTREPRENEURSHIP & FUNDING STAGE™</span>
+              <span>ENTREPRENEURSHIP & FUNDING STAGE</span>
             </div>
           </div>
 
@@ -1163,7 +1163,7 @@ const ProgrammeSection: React.FC = () => {
 const DelegateRegistrationSection: React.FC = () => {
   return (
     <SharedDelegateRegistrationSection
-      stageName="Entrepreneurship & Funding Stage™"
+      stageName="Entrepreneurship & Funding Stage"
       includes={INCLUDES.map(inc => inc.text)}
     />
   );

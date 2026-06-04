@@ -21,7 +21,7 @@ export const TermsPage: React.FC = () => {
         {
             icon: <Award className="w-5 h-5 text-[#D97706]" />,
             title: "3. Intellectual Property Rights",
-            content: "The content, layout, designs, trademarks, and logos (including EmpowaWomen and EmpowaHER™) on this platform are owned by or licensed to EmpowaWorx. Unauthorized duplication, distribution, or commercial exploitation of any materials is strictly prohibited."
+            content: "The content, layout, designs, trademarks, and logos (including EmpowaWomen and EmpowaHER) on this platform are owned by or licensed to EmpowaWorx. Unauthorized duplication, distribution, or commercial exploitation of any materials is strictly prohibited."
         },
         {
             icon: <AlertCircle className="w-5 h-5 text-[#6D28D9]" />,

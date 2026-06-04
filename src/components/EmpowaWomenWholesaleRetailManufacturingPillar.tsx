@@ -117,7 +117,7 @@ const PROGRAMME: ProgrammeSession[] = [
   {
     id: "ps-1",
     time: "11:00",
-    type: "OPENING KEYNOTE™",
+    type: "OPENING KEYNOTE",
     title: "Women Must Lead the Future of Africa's Industrial, Retail & Consumer Economy",
     description: "Who Will Build, Manufacture, Supply & Scale Africa's Next Generation of Competitive Industries?",
     accent: "#FF2D87",
@@ -126,8 +126,8 @@ const PROGRAMME: ProgrammeSession[] = [
   {
     id: "ps-2",
     time: "11:20",
-    type: "EXECUTIVE MASTERCLASS™",
-    title: "Smart Manufacturing, Digital Commerce & the Future of Industrial Growth™",
+    type: "EXECUTIVE MASTERCLASS",
+    title: "Smart Manufacturing, Digital Commerce & the Future of Industrial Growth",
     description: "How will technology, innovation, and operational agility define the next era of industrial competitiveness?",
     accent: "#D4AF37",
     accentRgb: "212,175,55"
@@ -135,8 +135,8 @@ const PROGRAMME: ProgrammeSession[] = [
   {
     id: "ps-3",
     time: "12:00",
-    type: "HIGH-IMPACT PANEL™",
-    title: "Women, Industrialisation & the Future of Consumer Economies™",
+    type: "HIGH-IMPACT PANEL",
+    title: "Women, Industrialisation & the Future of Consumer Economies",
     description: "Why will the future of industrial growth belong to businesses that control production, distribution, and consumer access?",
     accent: "#00B4A6",
     accentRgb: "0,180,166"
@@ -144,8 +144,8 @@ const PROGRAMME: ProgrammeSession[] = [
   {
     id: "ps-4",
     time: "12:50",
-    type: "NETWORKING LUNCH™",
-    title: "Cultivating Partnerships, Industrial Growth & Market Expansion™",
+    type: "NETWORKING LUNCH",
+    title: "Cultivating Partnerships, Industrial Growth & Market Expansion",
     description: "Which Strategic Relationships Will Accelerate Your Industrial, Retail & Commercial Growth Journey?",
     accent: "#00B4A6",
     accentRgb: "0,180,166",
@@ -154,8 +154,8 @@ const PROGRAMME: ProgrammeSession[] = [
   {
     id: "ps-5",
     time: "13:20",
-    type: "FIRECHAT™",
-    title: "Market Access, Procurement & Women-Led Industrial Enterprises™",
+    type: "FIRECHAT",
+    title: "Market Access, Procurement & Women-Led Industrial Enterprises",
     description: "Why is industrial growth without market access a missed commercial opportunity, and how do we unlock supply chain partnerships?",
     accent: "#FF2D87",
     accentRgb: "255,45,135"
@@ -163,8 +163,8 @@ const PROGRAMME: ProgrammeSession[] = [
   {
     id: "ps-6",
     time: "14:00",
-    type: "STRATEGIC WORKSHOP™",
-    title: "The Business of Industrial Innovation, Consumer Growth & Operational Excellence™",
+    type: "STRATEGIC WORKSHOP",
+    title: "The Business of Industrial Innovation, Consumer Growth & Operational Excellence",
     description: "In what ways will the future of industrial leadership belong to businesses that can innovate, adapt, and scale efficiently?",
     accent: "#00B4A6",
     accentRgb: "0,180,166"
@@ -172,8 +172,8 @@ const PROGRAMME: ProgrammeSession[] = [
   {
     id: "ps-7",
     time: "14:40",
-    type: "HIGH-IMPACT INDUSTRY PANEL™",
-    title: "Retail, E-Commerce & the Future of Consumer Engagement™",
+    type: "HIGH-IMPACT INDUSTRY PANEL",
+    title: "Retail, E-Commerce & the Future of Consumer Engagement",
     description: "How are consumer behaviour, technology, and market access reshaping Africa's commercial economy?",
     accent: "#FF2D87",
     accentRgb: "255,45,135"
@@ -181,8 +181,8 @@ const PROGRAMME: ProgrammeSession[] = [
   {
     id: "ps-8",
     time: "15:20",
-    type: "FUTURE ECONOMY CONVERSATION™",
-    title: "The Future of Africa's Industrial & Consumer Economy™",
+    type: "FUTURE ECONOMY CONVERSATION",
+    title: "The Future of Africa's Industrial & Consumer Economy",
     description: "How will innovation, industrialisation, and women's leadership shape Africa's economic competitiveness?",
     accent: "#D4AF37",
     accentRgb: "212,175,55"
@@ -190,7 +190,7 @@ const PROGRAMME: ProgrammeSession[] = [
   {
     id: "ps-9",
     time: "15:50",
-    type: "CLOSING KEYNOTE™",
+    type: "CLOSING KEYNOTE",
     title: "Africa's Industrial & Consumer Economy Will Be Led by Women Who Build, Manufacture & Scale",
     description: "Will You Be One of the Women Defining Africa's Future Industrial & Commercial Economy?",
     accent: "#FF2D87",
@@ -593,7 +593,7 @@ const HeroBanner: React.FC = () => {
                   textTransform: "uppercase"
                 }}
               >
-                Wholesale, Retail &amp; Manufacturing Stage™
+                Wholesale, Retail &amp; Manufacturing Stage
               </span>
             </div>
 

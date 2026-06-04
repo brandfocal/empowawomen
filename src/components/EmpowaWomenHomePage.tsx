@@ -69,7 +69,7 @@ const NAV_LINKS: NavLink[] = [{
     hasDropdown: true
 }, {
     id: "nav-academy",
-    label: "EmpowaHER™",
+    label: "EmpowaHER",
     href: "#academy"
 }, {
     id: "nav-partners",
@@ -124,8 +124,8 @@ const PATHWAY_CARDS: PathwayCard[] = [{
     id: "pathway-3",
     category: "NEXT-GEN LEADERS · AGES 18–34",
     title: "Access youth activation ecosystems bridging the opportunity divide via skills, networks, funding, and mentorship.",
-    description: "EmpowaHER™ is Africa's definitive development track for young women ready to own their economic future.",
-    ctaLabel: "Apply for EmpowaHER™",
+    description: "EmpowaHER is Africa's definitive development track for young women ready to own their economic future.",
+    ctaLabel: "Apply for EmpowaHER",
     accentColor: "#D97706",
     icon: <Rocket className="w-6 h-6 text-white" />,
     path: "/academy"
@@ -304,16 +304,13 @@ const CountdownTimer = () => {
 const HeroSection = () => {
     const HERO_LINES = [{
         id: "hl-1",
-        words: ["Leading", "Fearlessly."]
+        words: ["Africa's", "Most", "Influential", "Women", "Leaders", "Convene."]
     }, {
         id: "hl-2",
-        words: ["Accelerating", "Growth."]
-    }, {
-        id: "hl-3",
-        words: ["Transforming", "Economies."]
+        words: ["The", "Command", "Centre", "Of", "Power,", "Capital", "And", "Control."]
     }];
     // Words that get pink underline + pink period treatment
-    const UNDERLINED_WORDS = new Set(["Fearlessly.", "Growth.", "Economies."]);
+    const UNDERLINED_WORDS = new Set(["Convene.", "Control."]);
     const {
         scrollY
     } = useScroll();
@@ -482,7 +479,7 @@ const HeroSection = () => {
                             color: "rgba(255,255,255,0.60)",
                             textTransform: "uppercase"
                         }}>
-                            AFRICA'S WOMEN-LED ECONOMIC ECOSYSTEM
+                            10th Annual Empowawomen Leadership Summit 2026
                         </span>
                     </motion.div>
 
@@ -510,7 +507,7 @@ const HeroSection = () => {
                             {line.words.map(word => {
                                 const currentIndex = wordIndex++;
                                 const isUnderlined = UNDERLINED_WORDS.has(word);
-                                const wordWithoutPeriod = isUnderlined ? word.slice(0, -1) : word;
+                                const wordWithoutPeriod = isUnderlined && word.endsWith(".") ? word.slice(0, -1) : word;
                                 return <motion.span key={`hero-word-${currentIndex}`} style={{
                                     display: "inline-block",
                                     marginRight: "0.25em"
@@ -811,18 +808,16 @@ const HeroSection = () => {
                                     width: "auto",
                                     maxWidth: "130px",
                                     objectFit: "contain",
-                                    opacity: 0.3,
-                                    filter: "grayscale(100%)",
-                                    transition: "opacity 200ms ease-out, filter 200ms ease-out",
+                                    opacity: 0.85,
+                                    filter: "none",
+                                    transition: "opacity 200ms ease-out",
                                     cursor: "default"
                                 }}
                                 onMouseEnter={e => {
-                                    (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
-                                    (e.currentTarget as HTMLImageElement).style.filter = "grayscale(0%)";
+                                    (e.currentTarget as HTMLImageElement).style.opacity = "1";
                                 }}
                                 onMouseLeave={e => {
-                                    (e.currentTarget as HTMLImageElement).style.opacity = "0.3";
-                                    (e.currentTarget as HTMLImageElement).style.filter = "grayscale(100%)";
+                                    (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
                                 }}
                             />
                         </div>)}
@@ -1359,18 +1354,16 @@ const PartnerStrip = () => {
                                 width: "auto",
                                 maxWidth: "120px",
                                 objectFit: "contain",
-                                opacity: 0.3,
-                                filter: "grayscale(100%)",
-                                transition: "opacity 200ms ease-out, filter 200ms ease-out",
+                                opacity: 0.85,
+                                filter: "none",
+                                transition: "opacity 200ms ease-out",
                                 cursor: "default"
                             }}
                             onMouseEnter={e => {
-                                (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
-                                (e.currentTarget as HTMLImageElement).style.filter = "grayscale(0%)";
+                                (e.currentTarget as HTMLImageElement).style.opacity = "1";
                             }}
                             onMouseLeave={e => {
-                                (e.currentTarget as HTMLImageElement).style.opacity = "0.3";
-                                (e.currentTarget as HTMLImageElement).style.filter = "grayscale(100%)";
+                                (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
                             }}
                         />
                     </div>)}
@@ -1499,7 +1492,7 @@ const PathwaysSection = () => {
                             lineHeight: 1.75,
                             margin: 0
                         }}>
-                            From the C-suite to the starting line - EmpowaWomen meets you exactly where you are, and takes you further than you imagined.
+                            From the C-suite to the starting line, EmpowaWomen meets you exactly where you are, and takes you further than you imagined.
                         </p>
 
                         <RouterLink to="/what-we-do" style={{
@@ -1777,7 +1770,7 @@ const CorePillarsSection = () => {
                         lineHeight: 1.1,
                         margin: 0
                     }}>
-                        The Future Economy Growth Pillars™.
+                        The Future Economy Growth Pillars.
                     </h2>
                 </div>
 
@@ -2056,7 +2049,7 @@ const VideoSection = () => {
                     lineHeight: 1.75,
                     margin: 0
                 }}>
-                    Packed stages. Historic deals. Defining conversations. The EmpowaWomen Annual Leadership Summit - captured in two minutes.
+                    Packed stages. Historic deals. Defining conversations. The EmpowaWomen Annual Leadership Summit, captured in two minutes.
                 </p>
                 <a href="#" style={{
                     marginTop: "24px",

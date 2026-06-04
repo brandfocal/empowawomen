@@ -20,9 +20,9 @@ const NAV_LINKS: NavLinkItem[] = [
         href: "/what-we-do",
         hasDropdown: true,
         dropdownItems: [
-            { label: "International Women's Day Summit™", href: "/iwd-summit" },
-            { label: "Provincial Leadership Series™", href: "/provincial-summits" },
-            { label: "Executive Leadership Experiences™", href: "/executive-industry-series" },
+            { label: "International Women's Day Summit", href: "/iwd-summit" },
+            { label: "Provincial Leadership Series", href: "/provincial-summits" },
+            { label: "Executive Leadership Experiences", href: "/executive-industry-series" },
             { label: "Bubbles & Nibbles Soirée & Leadership Awards", href: "/leadership-awards-gala" }
         ]
     },
@@ -35,7 +35,7 @@ const NAV_LINKS: NavLinkItem[] = [
             { label: "Green Economy, Mining, Energy & Sustainability", href: "/green-economy" },
             // { label: "Infrastructure, Property & Transport", href: "/infrastructure-property" },
             { label: "Agriculture & Food Security", href: "/agriculture-manufacturing" },
-            { label: "The Creative Economy™", href: "/creative-economy" },
+            { label: "The Creative Economy", href: "/creative-economy" },
             { label: "Beauty, Fashion, Health & Wellness", href: "/beauty-fashion-wellness" },
             { label: "Entrepreneurship & Funding", href: "/entrepreneurship-funding" },
             { label: "Wholesale, Retail & Manufacturing", href: "/wholesale-retail-manufacturing" },
@@ -43,7 +43,7 @@ const NAV_LINKS: NavLinkItem[] = [
             { label: "Communications, Advertising, Marketing & Media", href: "/communications-media" }
         ]
     },
-    { id: "nav-academy", label: "EmpowaHER™", href: "/academy" },
+    { id: "nav-academy", label: "EmpowaHER", href: "/academy" },
     { id: "nav-partners", label: "Partnerships", href: "/partnerships" },
     { id: "nav-media", label: "Media", href: "/media" },
     { id: "nav-contact", label: "Contact Us", href: "/contact" }
@@ -56,7 +56,7 @@ const FOOTER_SECTION_ROWS = [{
         { id: "fp-1", label: "Home", href: "/" },
         { id: "fp-2", label: "About Us", href: "/about" },
         { id: "fp-3", label: "What We Do", href: "/what-we-do" },
-        { id: "fp-4", label: "EmpowaHER™", href: "/academy" },
+        { id: "fp-4", label: "EmpowaHER", href: "/academy" },
         { id: "fp-5", label: "Partnerships", href: "/partnerships" },
         { id: "fp-7", label: "Media", href: "/media" },
         { id: "fp-6", label: "Contact Us", href: "/contact" }
@@ -65,9 +65,9 @@ const FOOTER_SECTION_ROWS = [{
     id: "row-summits",
     label: "Summits",
     links: [
-        { id: "fp-s1", label: "International Women's Day Summit™", href: "/iwd-summit" },
-        { id: "fp-s2", label: "Provincial Leadership Series™", href: "/provincial-summits" },
-        { id: "fp-s3", label: "Executive Leadership Experiences™", href: "/executive-industry-series" },
+        { id: "fp-s1", label: "International Women's Day Summit", href: "/iwd-summit" },
+        { id: "fp-s2", label: "Provincial Leadership Series", href: "/provincial-summits" },
+        { id: "fp-s3", label: "Executive Leadership Experiences", href: "/executive-industry-series" },
         { id: "fp-s4", label: "Bubbles & Nibbles Soirée & Leadership Awards", href: "/leadership-awards-gala" }
     ]
 }, {
@@ -450,7 +450,7 @@ export const FooterCTA = () => {
                     <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1, delay: 0.8 }} style={{
                         fontFamily: "Figtree", fontSize: "18px", color: "rgba(255,255,255,0.45)", maxWidth: "448px", lineHeight: 1.75, margin: 0
                     }}>
-                        Summit invitations, leadership insights, and curated opportunities for Africa's most ambitious women - delivered directly to you.
+                        Summit invitations, leadership insights, and curated opportunities for Africa's most ambitious women, delivered directly to you.
                     </motion.p>
                 </div>
                 <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 1.0 }} style={{

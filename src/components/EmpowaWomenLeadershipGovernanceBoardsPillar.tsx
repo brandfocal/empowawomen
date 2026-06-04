@@ -80,7 +80,7 @@ const PROGRAMME_SESSIONS: ProgrammeSession[] = [
   {
     id: "pn-1",
     time: "11:00",
-    format: "OPENING KEYNOTE™",
+    format: "OPENING KEYNOTE",
     title: "Women Must Lead the Future of Leadership, Governance & Institutional Transformation",
     subtitle: "Who Will Shape Africa's Future Leadership, Governance Standards & Strategic Decision-Making Power?",
     accentColor: "#FF2D87"
@@ -88,24 +88,24 @@ const PROGRAMME_SESSIONS: ProgrammeSession[] = [
   {
     id: "pn-2",
     time: "11:20",
-    format: "EXECUTIVE MASTERCLASS™",
-    title: "Executive Leadership, Board Readiness & the Future of Strategic Influence™",
+    format: "EXECUTIVE MASTERCLASS",
+    title: "Executive Leadership, Board Readiness & the Future of Strategic Influence",
     subtitle: "How will the future belong to leaders who can influence, adapt, and govern through complexity?",
     accentColor: "#D4AF37"
   },
   {
     id: "pn-3",
     time: "12:00",
-    format: "HIGH-IMPACT PANEL™",
-    title: "Women, Power & the Future of Governance™",
+    format: "HIGH-IMPACT PANEL",
+    title: "Women, Power & the Future of Governance",
     subtitle: "Why will the future of governance be defined by ethical leadership, strategic influence, and institutional trust?",
     accentColor: "#00B4A6"
   },
   {
     id: "pn-4",
     time: "12:50",
-    format: "NETWORKING LUNCH™",
-    title: "Cultivating Influence, Leadership & Strategic Partnerships™",
+    format: "NETWORKING LUNCH",
+    title: "Cultivating Influence, Leadership & Strategic Partnerships",
     subtitle: "Which Relationships, Mentors & Strategic Alliances Will Accelerate Your Leadership Journey?",
     accentColor: "#00B4A6",
     isLunch: true
@@ -113,39 +113,39 @@ const PROGRAMME_SESSIONS: ProgrammeSession[] = [
   {
     id: "pn-5",
     time: "13:20",
-    format: "FIRECHAT™",
-    title: "Executive Influence, Reputation & Women-Led Leadership™",
+    format: "FIRECHAT",
+    title: "Executive Influence, Reputation & Women-Led Leadership",
     subtitle: "Why does leadership without influence limit long-term institutional impact, and how do we build authority?",
     accentColor: "#FF2D87"
   },
   {
     id: "pn-6",
     time: "14:00",
-    format: "STRATEGIC WORKSHOP™",
-    title: "The Business of Governance, Ethical Leadership & Institutional Transformation™",
+    format: "STRATEGIC WORKSHOP",
+    title: "The Business of Governance, Ethical Leadership & Institutional Transformation",
     subtitle: "In what ways will the future of leadership belong to institutions that build trust, accountability, and strategic agility?",
     accentColor: "#00B4A6"
   },
   {
     id: "pn-7",
     time: "14:40",
-    format: "HIGH-IMPACT INDUSTRY PANEL™",
-    title: "Leadership, Digital Transformation & the Future of Executive Decision-Making™",
+    format: "HIGH-IMPACT INDUSTRY PANEL",
+    title: "Leadership, Digital Transformation & the Future of Executive Decision-Making",
     subtitle: "How are technology, innovation, and strategic agility reshaping modern executive leadership?",
     accentColor: "#D4AF37"
   },
   {
     id: "pn-8",
     time: "15:20",
-    format: "FUTURE ECONOMY CONVERSATION™",
-    title: "The Future of Africa's Leadership, Governance & Board Economy™",
+    format: "FUTURE ECONOMY CONVERSATION",
+    title: "The Future of Africa's Leadership, Governance & Board Economy",
     subtitle: "How will women's leadership, governance excellence, and institutional influence shape Africa's economic future?",
     accentColor: "#FF2D87"
   },
   {
     id: "pn-9",
     time: "15:50",
-    format: "CLOSING KEYNOTE™",
+    format: "CLOSING KEYNOTE",
     title: "Africa's Leadership & Governance Future Will Be Led by Women Who Influence, Transform & Build",
     subtitle: "Will You Be One of the Women Defining Africa's Future Leadership & Governance Economy?",
     accentColor: "#D4AF37"
@@ -205,7 +205,7 @@ const HEAR_OPTIONS = [
 ];
 
 const DETAILS_ROWS = [
-  { id: "dr-1", label: "Stage", value: "Leadership, Governance & Boards™" },
+  { id: "dr-1", label: "Stage", value: "Leadership, Governance & Boards" },
   { id: "dr-2", label: "Date", value: "Saturday, 29 August 2026" },
   { id: "dr-3", label: "Time", value: "11:00–16:00" },
   { id: "dr-4", label: "Venue", value: "The Forum, The Campus, Bryanston" },
@@ -423,7 +423,7 @@ const HeroBanner: React.FC = () => {
                   textTransform: "uppercase"
                 }}
               >
-                Leadership, Governance &amp; Boards Stage™
+                Leadership, Governance &amp; Boards Stage
               </span>
             </motion.div>
 
@@ -1353,7 +1353,7 @@ export const LeadershipGovernanceBoardStage: React.FC = () => {
 
         {/* ── Registration Section ── */}
         <DelegateRegistrationSection
-          stageName="Leadership, Governance & Boards Stage™"
+          stageName="Leadership, Governance & Boards Stage"
           includes={[
             "Full-day Leadership, Governance & Boards Stage access",
             "Premium executive programme (9 sessions)",

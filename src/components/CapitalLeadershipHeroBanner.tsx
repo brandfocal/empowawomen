@@ -1,2 +1,2 @@
-// Removed in favour of The Creative Economy™
+// Removed in favour of The Creative Economy
 export {};

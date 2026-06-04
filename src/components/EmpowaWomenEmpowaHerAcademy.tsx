@@ -94,7 +94,7 @@ const NAV_LINKS: NavLink[] = [{
     hasDropdown: true
 }, {
     id: 'nav-academy',
-    label: 'EmpowaHER™',
+    label: 'EmpowaHER',
     href: '#',
     active: true
 }, {
@@ -148,7 +148,7 @@ const FOOTER_SECTION_ROWS: SectionLinkRow[] = [{
         href: '#'
     }, {
         id: 'fp-4',
-        label: 'EmpowaHER™',
+        label: 'EmpowaHER',
         href: '#'
     }, {
         id: 'fp-5',
@@ -199,21 +199,21 @@ const FOOTER_SECTION_ROWS: SectionLinkRow[] = [{
 const JURISDICTION_TABS: TabData[] = [{
     id: 'township',
     label: 'Township Economy',
-    title: 'Township Economy Activation™',
+    title: 'Township Economy Activation',
     description: 'Turning grassroots potential into commercially competitive local business models through incubation setups, beauty/fashion labs, and procurement readiness bootcamps.',
     imageUrl: 'https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=1200&q=85',
     pills: ['Incubation Labs', 'Beauty & Fashion', 'Procurement Bootcamps']
 }, {
     id: 'rural',
     label: 'Rural Inclusion',
-    title: 'Rural Economic Inclusion™',
+    title: 'Rural Economic Inclusion',
     description: 'Combating systemic economic isolation using climate-smart agribusiness labs, digital financial literacy training, and cooperative infrastructure setups.',
     imageUrl: 'https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?w=1200&q=85',
     pills: ['Agribusiness Labs', 'Financial Literacy', 'Cooperative Setups']
 }, {
     id: 'campus',
     label: 'Campus & Tertiary',
-    title: 'Campus & Tertiary Edition™',
+    title: 'Campus & Tertiary Edition',
     description: 'Preparing graduates at universities and TVET colleges for the modern workplace through corporate readiness tracks, internships, and STEM integration networks.',
     imageUrl: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1200&q=85',
     pills: ['Corporate Readiness', 'Internship Links', 'STEM Networks']
@@ -779,7 +779,7 @@ const HeroSection = () => {
                         el.style.filter = 'brightness(1)';
                         el.style.boxShadow = '0 0 32px rgba(255,45,135,0.25)';
                     }}>
-                        Apply for EmpowaHER™
+                        Apply for EmpowaHER
                     </RouterLink>
                     <RouterLink to="/about" style={{
                         fontFamily: 'Figtree',
@@ -849,18 +849,16 @@ const HeroSection = () => {
                                     width: "auto",
                                     maxWidth: "130px",
                                     objectFit: "contain",
-                                    opacity: 0.3,
-                                    filter: "grayscale(100%)",
-                                    transition: "opacity 200ms ease-out, filter 200ms ease-out",
+                                    opacity: 0.85,
+                                    filter: "none",
+                                    transition: "opacity 200ms ease-out",
                                     cursor: "default"
                                 }}
                                 onMouseEnter={e => {
-                                    (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
-                                    (e.currentTarget as HTMLImageElement).style.filter = "grayscale(0%)";
+                                    (e.currentTarget as HTMLImageElement).style.opacity = "1";
                                 }}
                                 onMouseLeave={e => {
-                                    (e.currentTarget as HTMLImageElement).style.opacity = "0.3";
-                                    (e.currentTarget as HTMLImageElement).style.filter = "grayscale(100%)";
+                                    (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
                                 }}
                             />
                         </div>)}
@@ -1548,7 +1546,7 @@ const ApplicationForm = () => {
                                 maxWidth: "400px",
                                 margin: 0
                             }}>
-                                Thank you for applying to EmpowaHER™. Your application has been received and our cohort selection committee is reviewing it.
+                                Thank you for applying to EmpowaHER. Your application has been received and our cohort selection committee is reviewing it.
                             </p>
                         </div>
                         <button onClick={() => setSubmitted(false)} style={{
@@ -2016,7 +2014,7 @@ const FooterCTA = () => {
                         maxWidth: '448px',
                         margin: '24px 0 0 0'
                     }}>
-                        Cohort invitations, summit access, leadership resources - all delivered to ambitious young women ready to rise.
+                        Cohort invitations, summit access, leadership resources, all delivered to ambitious young women ready to rise.
                     </motion.p>
                 </div>
 
@@ -2181,7 +2179,7 @@ const FooterCTA = () => {
                                 color: 'rgba(255,255,255,0.25)',
                                 margin: 0
                             }}>
-                                © {new Date().getFullYear()} EmpowaWomen. All rights reserved. EmpowaHER™ is a registered trademark.
+                                © {new Date().getFullYear()} EmpowaWomen. All rights reserved. EmpowaHER is a registered trademark.
                             </p>
                             <p style={{
                                 fontFamily: 'Figtree',
@@ -2305,18 +2303,16 @@ const AcademyHero = () => {
                             width: "auto",
                             maxWidth: "130px",
                             objectFit: "contain",
-                            opacity: 0.3,
-                            filter: "grayscale(100%)",
-                            transition: "opacity 200ms ease-out, filter 200ms ease-out",
+                            opacity: 0.85,
+                            filter: "none",
+                            transition: "opacity 200ms ease-out",
                             cursor: "default"
                         }}
                         onMouseEnter={e => {
-                            (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
-                            (e.currentTarget as HTMLImageElement).style.filter = "grayscale(0%)";
+                            (e.currentTarget as HTMLImageElement).style.opacity = "1";
                         }}
                         onMouseLeave={e => {
-                            (e.currentTarget as HTMLImageElement).style.opacity = "0.3";
-                            (e.currentTarget as HTMLImageElement).style.filter = "grayscale(100%)";
+                            (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
                         }}
                     />
                 </div>)}
@@ -2328,7 +2324,7 @@ const AcademyHero = () => {
         bgImage="https://images.unsplash.com/photo-1598257006458-087169a1f08d?w=1920&q=90"
         pillText="YOUTH ACTIVATION ECOSYSTEM · AGES 18–34"
         headline={headline}
-        description="EmpowaHER™ is a rigorous, 12-month accelerator designed to fast-track Africa's most promising young women into boardrooms, investment committees, and scaling enterprises."
+        description="EmpowaHER is a rigorous, 12-month accelerator designed to fast-track Africa's most promising young women into boardrooms, investment committees, and scaling enterprises."
         primaryCtaText="Apply for 2025 Cohort"
         primaryCtaLink="#academy-apply-form"
         bottomSection={bottomSection}

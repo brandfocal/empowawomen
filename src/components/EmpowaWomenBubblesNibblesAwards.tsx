@@ -30,76 +30,76 @@ interface ExperienceMoment {
 // --- Data ---
 const timelineData: TimelineItem[] = [{
   time: '16:00–16:20',
-  title: 'Red Carpet Arrivals & Bubbles Reception™',
+  title: 'Red Carpet Arrivals & Bubbles Reception',
   description: 'Luxury hospitality, executive media interviews, curated introductions, and red carpet photography.'
 }, {
   time: '16:20–16:40',
-  title: 'World-Class Entertainment Showcase™',
+  title: 'World-Class Entertainment Showcase',
   description: 'Immersive cultural and entertainment experiences engineered to inspire connection.'
 }, {
   time: '16:40–17:10',
-  title: "CXO Fireside™ 'Power, Position & Purpose'",
+  title: "CXO Fireside 'Power, Position & Purpose'",
   description: 'Candid high-level conversations unpacking boardroom power, governance, and strategic positioning.'
 }, {
   time: '17:10–17:50',
-  title: 'EmpowaWomen Leadership Awards™ Ceremony',
+  title: 'EmpowaWomen Leadership Awards Ceremony',
   description: 'Prestigious platform honors recognizing exceptional systemic impact.'
 }, {
   time: '17:50–18:00',
-  title: 'The Leadership Toast™',
+  title: 'The Leadership Toast',
   description: 'Raising a Glass to the Women Reshaping Africa.'
 }, {
   time: '18:00–20:00',
-  title: 'Bubbles & Nibbles™ Executive Networking Experience',
+  title: 'Bubbles & Nibbles Executive Networking Experience',
   description: 'Curated integration where procurement choices are initiated and capital allocation is unlocked.'
 }];
 const awardCategories: AwardCategory[] = [{
   id: 1,
-  title: 'ICON OF POWER™',
+  title: 'ICON OF POWER',
   quote: 'She Does Not Follow History. She Shapes It.'
 }, {
   id: 2,
-  title: 'TRAILBLAZER AWARD™',
+  title: 'TRAILBLAZER AWARD',
   quote: 'She Creates the Path Others Never Thought Possible.'
 }, {
   id: 3,
-  title: 'WOMAN OF THE YEAR™',
+  title: 'WOMAN OF THE YEAR',
   quote: 'The Defining Leader of Her Generation.'
 }, {
   id: 4,
-  title: 'IMPACT LAUREATE™',
+  title: 'IMPACT LAUREATE',
   quote: 'Her Influence Extends Beyond Industries. It Shapes Economies.'
 }, {
   id: 5,
-  title: 'POWER & INFLUENCE AWARD™',
+  title: 'POWER & INFLUENCE AWARD',
   quote: 'She Shapes Markets, Influences Decisions & Commands Change.'
 }, {
   id: 6,
-  title: 'HUMANITARIAN VANGUARD™',
+  title: 'HUMANITARIAN VANGUARD',
   quote: 'Leadership Rooted in Humanity, Dignity & Transformation.'
 }, {
   id: 7,
-  title: 'MEDIA EXCELLENCE AWARD™',
+  title: 'MEDIA EXCELLENCE AWARD',
   quote: 'She Owns the Narrative. She Shapes Culture.'
 }, {
   id: 8,
-  title: 'SUSTAINABILITY CHAMPION™',
+  title: 'SUSTAINABILITY CHAMPION',
   quote: 'She Builds Sustainable Futures That Outlive Generations.'
 }, {
   id: 9,
-  title: 'LEADERSHIP LAUREATE™',
+  title: 'LEADERSHIP LAUREATE',
   quote: 'The Benchmark of Leadership Excellence.'
 }, {
   id: 10,
-  title: 'MOST PROMISING FEMALE LEADER™',
+  title: 'MOST PROMISING FEMALE LEADER',
   quote: 'The Future of Leadership Is Already Rising.'
 }, {
   id: 11,
-  title: 'CMO EXCELLENCE AWARD™',
+  title: 'CMO EXCELLENCE AWARD',
   quote: 'Influence Is the Most Powerful Commercial Currency.'
 }, {
   id: 12,
-  title: 'ALLY AWARD™',
+  title: 'ALLY AWARD',
   quote: 'Leadership That Accelerates Equity, Inclusion & Opportunity.'
 }];
 const heroHeadlineWords = ['Welcome', 'to', 'the', 'Most', 'Powerful', 'Room', 'in', 'the', 'Country.'];
@@ -1294,7 +1294,7 @@ const MATCHMAKING_STAKEHOLDERS_LIST = [
 ];
 
 const DECLARATION_ITEMS_LIST = [
-  "The EmpowaWomen Bubbles & Nibbles Soirée™ & Leadership Awards™ is an invitation-only executive platform.",
+  "The EmpowaWomen Bubbles & Nibbles Soirée & Leadership Awards is an invitation-only executive platform.",
   "Submission of this form constitutes an expression of interest and does not guarantee attendance.",
   "All applications are reviewed by the EmpowaWomen Executive Selection Committee.",
   "Participation is based on leadership influence, strategic relevance, executive standing, and ecosystem value.",
@@ -1391,7 +1391,7 @@ const InvitationFormSection = React.forwardRef<HTMLDivElement, InvitationFormSec
       return;
     }
     if (!declaration1 || !declaration2 || !declaration3 || !declaration4 || !declaration5) {
-      setError('Please read and check all items in the Executive Declaration™ to submit your expression of interest.');
+      setError('Please read and check all items in the Executive Declaration to submit your expression of interest.');
       return;
     }
 
@@ -1530,7 +1530,7 @@ const InvitationFormSection = React.forwardRef<HTMLDivElement, InvitationFormSec
             color: '#FFFFFF',
             margin: 0
           }}>
-            Expression of Interest Soirée™ &amp; Awards™
+            Expression of Interest Soirée &amp; Awards
           </h2>
           <p style={{
             fontFamily: 'Figtree',
@@ -1742,8 +1742,8 @@ const InvitationFormSection = React.forwardRef<HTMLDivElement, InvitationFormSec
                   </div>
                 </SectionCard>
 
-                {/* Section 3: Strategic Interests */}
-                <SectionCard title="Strategic Interests™">
+                  {/* Section 3: Strategic Interests */}
+                <SectionCard title="Strategic Interests">
                   <div>
                     <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '16px', letterSpacing: '0.05em', textTransform: 'uppercase', lineHeight: 1.4 }}>
                       What outcomes would you most like to achieve through your participation?* (Select all applicable)
@@ -1766,7 +1766,7 @@ const InvitationFormSection = React.forwardRef<HTMLDivElement, InvitationFormSec
                 </SectionCard>
 
                 {/* Section 4: Executive Matchmaking */}
-                <SectionCard title="Executive Matchmaking™">
+                <SectionCard title="Executive Matchmaking">
                   <div>
                     <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '16px', letterSpacing: '0.05em', textTransform: 'uppercase', lineHeight: 1.45 }}>
                       One of the defining features of the EmpowaWomen ecosystem is intentional relationship-building. Which stakeholders would you most value connecting with?
@@ -1789,7 +1789,7 @@ const InvitationFormSection = React.forwardRef<HTMLDivElement, InvitationFormSec
                 </SectionCard>
 
                 {/* Section 5: Leadership Impact Statement */}
-                <SectionCard title="Leadership Impact Statement™">
+                <SectionCard title="Leadership Impact Statement">
                   <div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px', flexWrap: 'wrap', gap: '8px' }}>
                       <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', letterSpacing: '0.05em', textTransform: 'uppercase', margin: 0 }}>
@@ -1825,11 +1825,11 @@ const InvitationFormSection = React.forwardRef<HTMLDivElement, InvitationFormSec
                 </SectionCard>
 
                 {/* Section 6: Awards & Recognition */}
-                <SectionCard title="Awards &amp; Recognition™">
+                <SectionCard title="Awards &amp; Recognition">
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                     <div>
                       <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '12px', letterSpacing: '0.05em', textTransform: 'uppercase', lineHeight: 1.4 }}>
-                        Would you like to receive information regarding the EmpowaWomen Leadership Awards™?*
+                        Would you like to receive information regarding the EmpowaWomen Leadership Awards?*
                       </label>
                       <div style={{ display: 'flex', gap: '24px' }}>
                         <CustomRadio
@@ -1866,7 +1866,7 @@ const InvitationFormSection = React.forwardRef<HTMLDivElement, InvitationFormSec
                 </SectionCard>
 
                 {/* Section 7: Executive Declaration */}
-                <SectionCard title="Executive Declaration™">
+                <SectionCard title="Executive Declaration">
                   <div>
                     <label style={{ display: 'block', fontFamily: 'Figtree', fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.40)', marginBottom: '16px', letterSpacing: '0.05em', textTransform: 'uppercase', lineHeight: 1.4 }}>
                       By submitting this registration, I acknowledge and understand that:*
@@ -1969,7 +1969,7 @@ const InvitationFormSection = React.forwardRef<HTMLDivElement, InvitationFormSec
                 textTransform: 'uppercase',
                 margin: '0 0 8px 0'
               }}>
-                WHAT SELECTED LEADERS CAN EXPECT™
+                WHAT SELECTED LEADERS CAN EXPECT
               </h3>
               <p style={{ fontFamily: 'Figtree', fontSize: '12px', color: '#FF2D87', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase', margin: '0 0 20px 0' }}>
                 Exclusive Access To:
@@ -2020,7 +2020,7 @@ const InvitationFormSection = React.forwardRef<HTMLDivElement, InvitationFormSec
                 textTransform: 'uppercase',
                 margin: '0 0 8px 0'
               }}>
-                FINAL SELECTION CRITERIA™
+                FINAL SELECTION CRITERIA
               </h3>
               <p style={{ fontFamily: 'Figtree', fontSize: '12px', color: '#C9A84C', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase', margin: '0 0 20px 0' }}>
                 Assessed based on:

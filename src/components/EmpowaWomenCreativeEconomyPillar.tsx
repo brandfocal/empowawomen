@@ -85,32 +85,32 @@ const FOCUS_AREAS: FocusArea[] = [{
 const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
   id: "ps-1",
   time: "11:00",
-  format: "OPENING KEYNOTE™",
-  title: "Women Must Lead Africa's Creative & Cultural Economy™",
+  format: "OPENING KEYNOTE",
+  title: "Women Must Lead Africa's Creative & Cultural Economy",
   subtitle: "Who Will Own the Story, The Audience, The Platform and The Intellectual Property?",
   accentColor: "#FF2D87",
   accentRgb: "255,45,135"
 }, {
   id: "ps-2",
   time: "11:20",
-  format: "EXECUTIVE MASTERCLASS™",
-  title: "AI, Streaming & the Future of Content Creation™",
+  format: "EXECUTIVE MASTERCLASS",
+  title: "AI, Streaming & the Future of Content Creation",
   subtitle: "How will AI, streaming platforms, and digital innovation transform film, television, content creation, and audience monetisation?",
   accentColor: "#D4AF37",
   accentRgb: "212,175,55"
 }, {
   id: "ps-3",
   time: "12:00",
-  format: "HIGH-IMPACT PANEL™",
-  title: "Women, Storytelling & the Business of Cultural Influence™",
+  format: "HIGH-IMPACT PANEL",
+  title: "Women, Storytelling & the Business of Cultural Influence",
   subtitle: "How can women commercialise creativity, scale creative enterprises, and build sustainable media brands?",
   accentColor: "#00B4A6",
   accentRgb: "0,180,166"
 }, {
   id: "ps-4",
   time: "12:50",
-  format: "NETWORKING LUNCH™",
-  title: "Cultivating Influence, Partnerships & Creative Collaboration™",
+  format: "NETWORKING LUNCH",
+  title: "Cultivating Influence, Partnerships & Creative Collaboration",
   subtitle: "Which strategic partnerships, content collaborations, and investment conversations will drive your next scale phase?",
   accentColor: "#00B4A6",
   accentRgb: "0,180,166",
@@ -118,40 +118,40 @@ const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
 }, {
   id: "ps-5",
   time: "13:20",
-  format: "FIRECHAT™",
-  title: "Content Commercialisation, Streaming & Global Market Access™",
+  format: "FIRECHAT",
+  title: "Content Commercialisation, Streaming & Global Market Access",
   subtitle: "How can women-led creative businesses unlock new revenue streams and access international markets?",
   accentColor: "#FF2D87",
   accentRgb: "255,45,135"
 }, {
   id: "ps-6",
   time: "14:00",
-  format: "STRATEGIC WORKSHOP™",
-  title: "The Business of Intellectual Property, Content Ownership & Creative Wealth™",
+  format: "STRATEGIC WORKSHOP",
+  title: "The Business of Intellectual Property, Content Ownership & Creative Wealth",
   subtitle: "How will women build, protect, and monetise creative assets in a decentralized economy?",
   accentColor: "#00B4A6",
   accentRgb: "0,180,166"
 }, {
   id: "ps-7",
   time: "14:40",
-  format: "HIGH-IMPACT INDUSTRY PANEL™",
-  title: "Film, Media, Entertainment & the Future of Africa's Creative Economy™",
+  format: "HIGH-IMPACT INDUSTRY PANEL",
+  title: "Film, Media, Entertainment & the Future of Africa's Creative Economy",
   subtitle: "Why is Africa's greatest export its storytelling, and how do we capture its commercial value?",
   accentColor: "#D4AF37",
   accentRgb: "212,175,55"
 }, {
   id: "ps-8",
   time: "15:20",
-  format: "FUTURE ECONOMY CONVERSATION™",
-  title: "The Future of Africa's Creative, Media & Influence Economy™",
+  format: "FUTURE ECONOMY CONVERSATION",
+  title: "The Future of Africa's Creative, Media & Influence Economy",
   subtitle: "How will the next generation of economic power be built through creativity, technology and influence?",
   accentColor: "#FF2D87",
   accentRgb: "255,45,135"
 }, {
   id: "ps-9",
   time: "15:50",
-  format: "CLOSING KEYNOTE™",
-  title: "Africa's Creative Economy Will Be Led by Women Who Create, Own, Scale & Influence™",
+  format: "CLOSING KEYNOTE",
+  title: "Africa's Creative Economy Will Be Led by Women Who Create, Own, Scale & Influence",
   subtitle: "Will you be among the women who transform creativity into absolute economic power?",
   accentColor: "#00B4A6",
   accentRgb: "0,180,166"
@@ -550,7 +550,7 @@ const CreativeHeroBanner: React.FC = () => {
           maxWidth: "560px",
           margin: "0 auto 0"
         }}>
-          The Creative Economy, Film, Media &amp; Entertainment Stage™ — where Africa&apos;s most
+          The Creative Economy, Film, Media &amp; Entertainment Stage, where Africa&apos;s most
           influential women build studios, launch platforms, and own the narrative.
         </motion.p>
 
@@ -830,7 +830,7 @@ export const CreativeEconomyPillar: React.FC = () => {
                 margin: "0 0 32px 0",
                 maxWidth: "540px"
               }}>
-                The Creative Economy, Film, Media &amp; Entertainment Stage™ explores one of the fastest-growing and most influential sectors of the global economy — where storytelling, intellectual property, technology, culture, and creativity are shaping economic growth, investment flows, and societal influence. This platform positions women as owners, investors, executives, producers, broadcasters, and industry architects driving the future of Africa&apos;s creative and cultural economy.
+                The Creative Economy, Film, Media &amp; Entertainment Stage explores one of the fastest-growing and most influential sectors of the global economy, where storytelling, intellectual property, technology, culture, and creativity are shaping economic growth, investment flows, and societal influence. This platform positions women as owners, investors, executives, producers, broadcasters, and industry architects driving the future of Africa&apos;s creative and cultural economy.
               </p>
               <button style={{
                 display: "flex",
@@ -1977,7 +1977,7 @@ export const CreativeEconomyPillar: React.FC = () => {
 
       {/* ── 8. Delegate Registration ── */}
       <DelegateRegistrationSection
-        stageName="The Creative Economy™"
+        stageName="The Creative Economy"
         includes={[
           "Full-day Creative Economy Stage access",
           "Premium executive programme (9 sessions)",

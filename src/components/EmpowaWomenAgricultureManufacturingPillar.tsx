@@ -89,7 +89,7 @@ const ROI_METRICS: ROIMetric[] = [{
 const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
   id: "ps-1",
   time: "11:00",
-  format: "OPENING KEYNOTE™",
+  format: "OPENING KEYNOTE",
   title: "Women Must Lead the Future of Food Security, Sustainability & Agricultural Innovation",
   subtitle: "Who Will Feed, Innovate, Industrialise & Sustain Africa's Future Economy?",
   accentColor: "#FF2D87",
@@ -97,24 +97,24 @@ const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
 }, {
   id: "ps-2",
   time: "11:20",
-  format: "EXECUTIVE MASTERCLASS™",
-  title: "Agri-Tech, Digital Farming & Future Food Systems™",
+  format: "EXECUTIVE MASTERCLASS",
+  title: "Agri-Tech, Digital Farming & Future Food Systems",
   subtitle: "How will technology define the next era of agricultural competitiveness, and how can women build scalable digital farming enterprises?",
   accentColor: "#D4AF37",
   sessionNumber: "02"
 }, {
   id: "ps-3",
   time: "12:00",
-  format: "HIGH-IMPACT PANEL™",
-  title: "Women, Agribusiness & the Future of Food Security™",
+  format: "HIGH-IMPACT PANEL",
+  title: "Women, Agribusiness & the Future of Food Security",
   subtitle: "Why will inclusive economic participation define the future of agriculture, and how do we unlock capital access for women?",
   accentColor: "#00B4A6",
   sessionNumber: "03"
 }, {
   id: "ps-4",
   time: "12:50",
-  format: "NETWORKING LUNCH™",
-  title: "Cultivating Partnerships, Investment & Sustainable Growth™",
+  format: "NETWORKING LUNCH",
+  title: "Cultivating Partnerships, Investment & Sustainable Growth",
   subtitle: "Which Strategic Relationships Will Shape Your Next Growth Opportunity?",
   accentColor: "#00B4A6",
   sessionNumber: "04",
@@ -122,39 +122,39 @@ const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
 }, {
   id: "ps-5",
   time: "13:20",
-  format: "FIRECHAT™",
-  title: "Agricultural Funding, Market Access & Women-Led Enterprises™",
+  format: "FIRECHAT",
+  title: "Agricultural Funding, Market Access & Women-Led Enterprises",
   subtitle: "How can women-led agribusinesses move beyond survival and scale into globally competitive commercial enterprises?",
   accentColor: "#FF2D87",
   sessionNumber: "05"
 }, {
   id: "ps-6",
   time: "14:00",
-  format: "STRATEGIC WORKSHOP™",
-  title: "Climate-Smart Agriculture & Sustainable Food Systems™",
+  format: "STRATEGIC WORKSHOP",
+  title: "Climate-Smart Agriculture & Sustainable Food Systems",
   subtitle: "How will sustainability define the future of agriculture, and how can women build climate-resilient farming models?",
   accentColor: "#00B4A6",
   sessionNumber: "06"
 }, {
   id: "ps-7",
   time: "14:40",
-  format: "HIGH-IMPACT INDUSTRY PANEL™",
-  title: "Agro-Processing, Retail & Food Innovation™",
+  format: "HIGH-IMPACT INDUSTRY PANEL",
+  title: "Agro-Processing, Retail & Food Innovation",
   subtitle: "How can women capture greater commercial value by controlling processing, distribution, and consumer markets?",
   accentColor: "#D4AF37",
   sessionNumber: "07"
 }, {
   id: "ps-8",
   time: "15:20",
-  format: "FUTURE ECONOMY CONVERSATION™",
-  title: "The Future of African Agriculture & Women-Led Economic Transformation™",
+  format: "FUTURE ECONOMY CONVERSATION",
+  title: "The Future of African Agriculture & Women-Led Economic Transformation",
   subtitle: "How will food systems, innovation, and women's leadership shape Africa's economic future?",
   accentColor: "#FF2D87",
   sessionNumber: "08"
 }, {
   id: "ps-9",
   time: "15:50",
-  format: "CLOSING KEYNOTE™",
+  format: "CLOSING KEYNOTE",
   title: "The Future of Food Security Will Be Led by Women Who Build, Innovate & Scale",
   subtitle: "Will You Be One of the Women Defining Africa's Agricultural Future?",
   accentColor: "#00B4A6",
@@ -187,24 +187,52 @@ const STRATEGIC_BENEFITS = [{
   label: "Sustainable Agriculture Leadership"
 }];
 
+const ATTENDEE_LIST = [{
+  id: "at-1",
+  label: "Agribusiness Founders & Agropreneurs"
+}, {
+  id: "at-2",
+  label: "Agri-Tech Innovators & Digital Farming Pioneers"
+}, {
+  id: "at-3",
+  label: "Food Processors, Retailers & Value-Chain Partners"
+}, {
+  id: "at-4",
+  label: "Climate-Smart Farming & Sustainability Directors"
+}, {
+  id: "at-5",
+  label: "Investors, Funders & Development Finance Institutions (DFIs)"
+}, {
+  id: "at-6",
+  label: "Agricultural Policy Makers & Development Specialists"
+}];
+
 const StrategicROISection: React.FC = () => {
+  const roiRef = React.useRef<HTMLDivElement>(null);
+  const roiInView = useInView(roiRef, {
+    once: true,
+    margin: "-80px"
+  });
+
   return (
-    <section style={{
-      paddingTop: "clamp(48px, 8vw, 100px)",
-      paddingBottom: "clamp(48px, 8vw, 100px)",
-      paddingLeft: "clamp(16px, 5vw, 96px)",
-      paddingRight: "clamp(16px, 5vw, 96px)",
-      maxWidth: "1400px",
-      margin: "0 auto"
-    }}>
-      <SectionLabel>Strategic ROI</SectionLabel>
+    <section
+      ref={roiRef}
+      style={{
+        paddingTop: "clamp(48px, 8vw, 100px)",
+        paddingBottom: "clamp(48px, 8vw, 100px)",
+        paddingLeft: "clamp(16px, 5vw, 96px)",
+        paddingRight: "clamp(16px, 5vw, 96px)",
+        maxWidth: "1400px",
+        margin: "0 auto"
+      }}
+    >
+      <SectionLabel>Strategic ROI &amp; Opportunities</SectionLabel>
 
       <div className="roi-benefits-grid">
-        {/* Left: Heading */}
+        {/* Left Column: Why Attend & Benefits */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+          animate={roiInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
         >
           <h2 style={{
@@ -217,7 +245,7 @@ const StrategicROISection: React.FC = () => {
             margin: "0 0 24px 0",
             maxWidth: "440px"
           }}>
-            What You Gain as a Delegate
+            Why Attend This Stage
           </h2>
           <p style={{
             fontFamily: "Figtree",
@@ -227,53 +255,104 @@ const StrategicROISection: React.FC = () => {
             margin: 0,
             maxWidth: "380px"
           }}>
-            Access Africa's most strategically curated agribusiness platform — designed to accelerate your impact, visibility, and growth in sustainable food systems.
+            Access Africa's most strategically curated agribusiness platform, designed to accelerate your impact, visibility, and growth in sustainable food systems.
           </p>
+
+          <div style={{ marginTop: "32px", display: "flex", flexDirection: "column" }}>
+            {STRATEGIC_BENEFITS.map((benefit, idx) => {
+              const accent = idx % 3 === 0 ? "#FF2D87" : idx % 3 === 1 ? "#00B4A6" : "#D4AF37";
+              return (
+                <motion.div
+                  key={benefit.id}
+                  initial={{ opacity: 0, x: -16 }}
+                  animate={roiInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.1 + idx * 0.07 }}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "14px",
+                    padding: "14px 0",
+                    borderBottom: "1px solid rgba(255,255,255,0.04)"
+                  }}
+                >
+                  <CheckCircle2 size={15} style={{ color: accent, flexShrink: 0 }} />
+                  <span style={{
+                    fontFamily: "Figtree",
+                    fontSize: "14px",
+                    fontWeight: 300,
+                    color: "rgba(255,255,255,0.75)",
+                    letterSpacing: "0.01em"
+                  }}>
+                    {benefit.label}
+                  </span>
+                </motion.div>
+              );
+            })}
+          </div>
         </motion.div>
 
-        {/* Right: Benefits list */}
+        {/* Right Column: Who Should Attend Card */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+          animate={roiInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.12, ease: [0.21, 0.47, 0.32, 0.98] }}
           style={{
             backgroundColor: "#0D0D14",
             border: "1px solid rgba(255,255,255,0.06)",
-            borderTop: "3px solid #00B4A6",
+            borderTop: "3px solid #FF2D87",
             padding: "clamp(24px, 3vw, 40px)",
             display: "flex",
             flexDirection: "column",
             gap: "0"
           }}
         >
-          {STRATEGIC_BENEFITS.map((benefit, idx) => (
-            <motion.div
-              key={benefit.id}
-              initial={{ opacity: 0, x: 16 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 + idx * 0.07 }}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "14px",
-                padding: "14px 0",
-                borderBottom: idx < STRATEGIC_BENEFITS.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none"
-              }}
-            >
-              <CheckCircle2 size={15} style={{ color: "#00B4A6", flexShrink: 0 }} />
-              <span style={{
-                fontFamily: "Figtree",
-                fontSize: "14px",
-                fontWeight: 400,
-                color: "rgba(255,255,255,0.75)",
-                letterSpacing: "0.01em"
-              }}>
-                {benefit.label}
-              </span>
-            </motion.div>
-          ))}
+          <p style={{
+            fontFamily: "Figtree",
+            fontSize: "9px",
+            fontWeight: 300,
+            letterSpacing: "0.2em",
+            color: "rgba(255,255,255,0.30)",
+            textTransform: "uppercase",
+            margin: "0 0 20px 0"
+          }}>
+            WHO SHOULD ATTEND
+          </p>
+          {ATTENDEE_LIST.map((attendee, idx) => {
+            const accent = idx % 3 === 0 ? "#FF2D87" : idx % 3 === 1 ? "#00B4A6" : "#D4AF37";
+            return (
+              <motion.div
+                key={attendee.id}
+                initial={{ opacity: 0, x: 16 }}
+                animate={roiInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.2 + idx * 0.07 }}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "14px",
+                  padding: "14px 0",
+                  borderBottom: idx < ATTENDEE_LIST.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none"
+                }}
+              >
+                <span style={{
+                  fontFamily: "Figtree",
+                  fontWeight: 300,
+                  fontSize: "14px",
+                  color: accent,
+                  width: 20,
+                  flexShrink: 0
+                }}>→</span>
+                <span style={{
+                  fontFamily: "Figtree",
+                  fontSize: "14px",
+                  fontWeight: 300,
+                  color: "rgba(255,255,255,0.75)",
+                  letterSpacing: "0.01em"
+                }}>
+                  {attendee.label}
+                </span>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>
@@ -464,7 +543,7 @@ const HeroBanner: React.FC = () => {
               color: "rgba(255,255,255,0.60)",
               textTransform: "uppercase"
             }}>
-              AGRICULTURE & FOOD SECURITY™
+              AGRICULTURE & FOOD SECURITY
             </span>
           </motion.div>
 

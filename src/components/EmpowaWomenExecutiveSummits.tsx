@@ -624,18 +624,16 @@ export const SummitHeroHeader: React.FC = () => {
                   width: "auto",
                   maxWidth: "130px",
                   objectFit: "contain",
-                  opacity: 0.3,
-                  filter: "grayscale(100%)",
-                  transition: "opacity 200ms ease-out, filter 200ms ease-out",
+                  opacity: 0.85,
+                  filter: "none",
+                  transition: "opacity 200ms ease-out",
                   cursor: "default"
                 }}
                 onMouseEnter={e => {
-                  (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
-                  (e.currentTarget as HTMLImageElement).style.filter = "grayscale(0%)";
+                  (e.currentTarget as HTMLImageElement).style.opacity = "1";
                 }}
                 onMouseLeave={e => {
-                  (e.currentTarget as HTMLImageElement).style.opacity = "0.3";
-                  (e.currentTarget as HTMLImageElement).style.filter = "grayscale(100%)";
+                  (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
                 }}
               />
             </div>)}
@@ -837,7 +835,7 @@ export const SummitsHub: React.FC = () => {
                 maxWidth: '28rem'
               }}>
                 Each EmpowaWomen summit is engineered as a high-value economic participation
-                platform - not a conference. Every session, interaction, and experience is
+                platform, not a conference. Every session, interaction, and experience is
                 designed to generate measurable strategic outcomes for every delegate in the room.
               </p>
             </motion.div>
@@ -954,18 +952,18 @@ export const SummitsHub: React.FC = () => {
           }}>
             {/* Card 1: IWD Summit */}
             <div className="summits-col-span-8" style={{ gridColumn: "span 8" }}>
-              <SeriesCard isLarge title="International Women's Day Summit™" bgImage="https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200&q=85" accentColor="#FF2D87" badge="IWD 2027" formatBadge="Invitation-Only · 200 Delegates" description="The flagship gathering for high-level decision makers and economic architects driving gender-balanced growth strategies." />
+              <SeriesCard isLarge title="International Women's Day Summit" bgImage="https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200&q=85" accentColor="#FF2D87" badge="IWD 2027" formatBadge="Invitation-Only · 200 Delegates" description="The flagship gathering for high-level decision makers and economic architects driving gender-balanced growth strategies." />
             </div>
 
             {/* Column for Card 2 and 3 */}
             <div className="summits-col-span-4" style={{ gridColumn: "span 4", display: "flex", flexDirection: "column", gap: "24px" }}>
-              <SeriesCard title="Provincial Leadership Series™" bgImage="/features-18.jpg" accentColor="#00B4A6" badge="9 PROVINCES" formatBadge="Invitation-Only · 100 Per Province" description="Localized economic participation models." />
-              <SeriesCard title="Executive Leadership Experiences™" bgImage="/features-7.jpg" accentColor="#D97706" badge="10 STREAMS" formatBadge="100 Per Session" description="Sector-specific engineering and market access." />
+              <SeriesCard title="Provincial Leadership Series" bgImage="/features-18.jpg" accentColor="#00B4A6" badge="9 PROVINCES" formatBadge="Invitation-Only · 100 Per Province" description="Localized economic participation models." />
+              <SeriesCard title="Executive Leadership Experiences" bgImage="/features-7.jpg" accentColor="#D97706" badge="10 STREAMS" formatBadge="100 Per Session" description="Sector-specific engineering and market access." />
             </div>
 
             {/* Card 4: Bubbles & Nibbles – Full width */}
             <div className="summits-col-span-12" style={{ gridColumn: "span 12" }}>
-              <SeriesCard isFullWidth title="Bubbles & Nibbles Soirée™ & Leadership Awards™" bgImage="/features-20.jpg" accentColor="#6D28D9" badge="GALA · Saturday, 29 August 2026" formatBadge="Strictly Invitation-Only · 200 CXOs" description="Celebrating excellence and fostering high-impact networking in an elite setting of recognition." />
+              <SeriesCard isFullWidth title="Bubbles & Nibbles Soirée & Leadership Awards" bgImage="/features-20.jpg" accentColor="#6D28D9" badge="GALA · Saturday, 29 August 2026" formatBadge="Strictly Invitation-Only · 200 CXOs" description="Celebrating excellence and fostering high-impact networking in an elite setting of recognition." />
             </div>
           </div>
         </div>
@@ -1015,7 +1013,7 @@ export const SummitsHub: React.FC = () => {
             margin: 0
           }}>
             EmpowaWomen is not a conference. It is a room where Africa's most powerful women
-            decide what comes next - and forge the relationships that make it happen.
+            decide what comes next, and forge the relationships that make it happen.
           </blockquote>
           <div style={{
             width: '48px',
@@ -1102,7 +1100,7 @@ export const SummitsHub: React.FC = () => {
               marginTop: "12px",
               marginBottom: 0
             }}>
-              Bubbles &amp; Nibbles Soirée™
+              Bubbles &amp; Nibbles Soirée
             </p>
             <h2 style={{
               fontFamily: "Figtree",

@@ -60,8 +60,8 @@ const IMPACT_STATS: ImpactStat[] = [{
   value: "6+"
 }, {
   id: "stat-3",
-  label: "Funding Secured",
-  value: "R Millions"
+  label: "Enterprise Funding Facilitated",
+  value: "R500 Million+"
 }, {
   id: "stat-4",
   label: "Provinces Reached",
@@ -433,18 +433,16 @@ const HeroSection = () => {
                   width: "auto",
                   maxWidth: "130px",
                   objectFit: "contain",
-                  opacity: 0.3,
-                  filter: "grayscale(100%)",
-                  transition: "opacity 200ms ease-out, filter 200ms ease-out",
+                  opacity: 0.85,
+                  filter: "none",
+                  transition: "opacity 200ms ease-out",
                   cursor: "default"
                 }}
                 onMouseEnter={e => {
-                  (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
-                  (e.currentTarget as HTMLImageElement).style.filter = "grayscale(0%)";
+                  (e.currentTarget as HTMLImageElement).style.opacity = "1";
                 }}
                 onMouseLeave={e => {
-                  (e.currentTarget as HTMLImageElement).style.opacity = "0.3";
-                  (e.currentTarget as HTMLImageElement).style.filter = "grayscale(100%)";
+                  (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
                 }}
               />
             </div>)}
@@ -801,7 +799,7 @@ const VisionSection = () => {
             maxWidth: "480px"
           }}>
             Across boardrooms, industries, governments, media platforms, entrepreneurial
-            ecosystems, and innovation economies - with confidence, influence, resilience, and
+            ecosystems, and innovation economies, with confidence, influence, resilience, and
             strategic authority.
           </p>
         </motion.div>
@@ -976,7 +974,7 @@ const VisionSection = () => {
               color: "#0A0A0F",
               lineHeight: 1
             }}>
-              R Millions
+              R500 Million+
             </div>
             <div style={{
               marginTop: "4px",
@@ -985,7 +983,7 @@ const VisionSection = () => {
               fontWeight: 400,
               color: "#64748b"
             }}>
-              In Enterprise Funding
+              In Enterprise Funding Facilitated
             </div>
           </motion.div>
         </motion.div>
@@ -1394,7 +1392,7 @@ const LeadershipStrip = () => {
             lineHeight: 1.6,
             maxWidth: "800px"
           }}>
-            United by a shared vision, the team works at the intersection of leadership, business, policy, capital, innovation, and impact—building a platform that empowers women to lead organisations, shape industries, influence economies, and redefine the future.
+            United by a shared vision, the team works at the intersection of leadership, business, policy, capital, innovation, and impact, building a platform that empowers women to lead organisations, shape industries, influence economies, and redefine the future.
           </p>
         </div>
 
@@ -1959,18 +1957,16 @@ const LogoWall = () => {
                 width: "auto",
                 maxWidth: "120px",
                 objectFit: "contain",
-                opacity: 0.3,
-                filter: "grayscale(100%)",
-                transition: "opacity 200ms ease-out, filter 200ms ease-out",
+                opacity: 0.85,
+                filter: "none",
+                transition: "opacity 200ms ease-out",
                 cursor: "default"
               }}
               onMouseEnter={e => {
-                (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
-                (e.currentTarget as HTMLImageElement).style.filter = "grayscale(0%)";
+                (e.currentTarget as HTMLImageElement).style.opacity = "1";
               }}
               onMouseLeave={e => {
-                (e.currentTarget as HTMLImageElement).style.opacity = "0.3";
-                (e.currentTarget as HTMLImageElement).style.filter = "grayscale(100%)";
+                (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
               }}
             />
           </div>)}

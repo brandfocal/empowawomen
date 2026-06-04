@@ -219,7 +219,7 @@ const StrategicROISection: React.FC = () => {
             margin: 0,
             maxWidth: "380px"
           }}>
-            Access Africa's most strategically curated infrastructure, property, and transport platforms — designed to accelerate your impact, visibility, and growth.
+            Access Africa's most strategically curated infrastructure, property, and transport platforms, designed to accelerate your impact, visibility, and growth.
           </p>
 
           <div style={{ marginTop: "32px", display: "flex", flexDirection: "column" }}>

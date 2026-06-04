@@ -100,7 +100,7 @@ const ROI_METRICS: ROIMetric[] = [{
 const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
   id: "ps-1",
   time: "11:00",
-  format: "OPENING KEYNOTE™",
+  format: "OPENING KEYNOTE",
   title: "Women Must Lead the Future of Africa's Wellness, Beauty & Lifestyle Economy",
   subtitle: "Who Will Define Africa's Next Consumer, Wellness & Cultural Growth Markets?",
   accentColor: "#FF2D87",
@@ -108,63 +108,63 @@ const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
 }, {
   id: "ps-2",
   time: "11:20",
-  format: "EXECUTIVE MASTERCLASS™",
-  title: "Beauty Innovation, Digital Commerce & the Future of Consumer Brands™",
+  format: "EXECUTIVE MASTERCLASS",
+  title: "Beauty Innovation, Digital Commerce & the Future of Consumer Brands",
   subtitle: "How will technology, consumer behaviour, and wellness trends define the next era of lifestyle growth?",
   accentColor: "#D4AF37",
   accentRgb: "212,175,55"
 }, {
   id: "ps-3",
   time: "12:00",
-  format: "HIGH-IMPACT PANEL™",
-  title: "Women, Wellness & the Future of the Consumer Economy™",
+  format: "HIGH-IMPACT PANEL",
+  title: "Women, Wellness & the Future of the Consumer Economy",
   subtitle: "How will innovation, influence, and consumer trust define the future of the wellness economy?",
   accentColor: "#00B4A6",
   accentRgb: "0,180,166"
 }, {
   id: "ps-4",
   time: "12:50",
-  format: "NETWORKING LUNCH™",
-  title: "Cultivating Influence, Partnerships & Lifestyle Market Growth™",
+  format: "NETWORKING LUNCH",
+  title: "Cultivating Influence, Partnerships & Lifestyle Market Growth",
   subtitle: "Which Strategic Relationships Will Accelerate Your Brand, Wellness & Consumer Growth Journey?",
   accentColor: "#00B4A6",
   accentRgb: "0,180,166"
 }, {
   id: "ps-5",
   time: "13:20",
-  format: "FIRECHAT™",
-  title: "Brand Building, Market Access & Women-Led Lifestyle Enterprises™",
+  format: "FIRECHAT",
+  title: "Brand Building, Market Access & Women-Led Lifestyle Enterprises",
   subtitle: "Why is brand influence without commercial scale a missed economic opportunity, and how do we build sustainable lifestyle businesses?",
   accentColor: "#FF2D87",
   accentRgb: "255,45,135"
 }, {
   id: "ps-6",
   time: "14:00",
-  format: "STRATEGIC WORKSHOP™",
-  title: "The Business of Wellness, Consumer Influence & Brand Monetisation™",
+  format: "STRATEGIC WORKSHOP",
+  title: "The Business of Wellness, Consumer Influence & Brand Monetisation",
   subtitle: "How can consumer brands build trust, wellness, and community to drive future growth?",
   accentColor: "#D4AF37",
   accentRgb: "212,175,55"
 }, {
   id: "ps-7",
   time: "14:40",
-  format: "HIGH-IMPACT INDUSTRY PANEL™",
-  title: "Fashion, Beauty, Health & the Future of the Wellness Economy™",
+  format: "HIGH-IMPACT INDUSTRY PANEL",
+  title: "Fashion, Beauty, Health & the Future of the Wellness Economy",
   subtitle: "In what ways are wellness, identity, and lifestyle influence becoming high-value economic assets for women founders?",
   accentColor: "#00B4A6",
   accentRgb: "0,180,166"
 }, {
   id: "ps-8",
   time: "15:20",
-  format: "FUTURE ECONOMY CONVERSATION™",
-  title: "The Future of Africa's Wellness Economy & Women-Led Consumer Transformation™",
+  format: "FUTURE ECONOMY CONVERSATION",
+  title: "The Future of Africa's Wellness Economy & Women-Led Consumer Transformation",
   subtitle: "How will innovation, wellness, and women's leadership shape the future of Africa's consumer economy?",
   accentColor: "#FF2D87",
   accentRgb: "255,45,135"
 }, {
   id: "ps-9",
   time: "15:50",
-  format: "CLOSING KEYNOTE™",
+  format: "CLOSING KEYNOTE",
   title: "Africa's Wellness & Consumer Economy Will Be Led by Women Who Build, Influence & Transform",
   subtitle: "Will You Be One of the Women Defining Africa's Future Lifestyle & Consumer Economy?",
   accentColor: "#D4AF37",
@@ -255,7 +255,7 @@ const StrategicROISection: React.FC = () => {
             margin: 0,
             maxWidth: "380px"
           }}>
-            Access Africa's premier platform for the beauty, fashion, health, and wellness industries — designed to accelerate your commercial growth and influence.
+            Access Africa's premier platform for the beauty, fashion, health, and wellness industries, designed to accelerate your commercial growth and influence.
           </p>
 
           <div style={{ marginTop: "32px", display: "flex", flexDirection: "column" }}>
@@ -430,7 +430,7 @@ const HEAR_OPTIONS = [{
 const DETAILS_ROWS = [{
   id: "dr-1",
   label: "Stage",
-  value: "Beauty, Fashion, Health & Wellness™"
+  value: "Beauty, Fashion, Health & Wellness"
 }, {
   id: "dr-2",
   label: "Date",
@@ -646,7 +646,7 @@ const HeroBanner: React.FC = () => {
             display: "inline-block",
             animation: "pulseDot 2s ease-in-out infinite"
           }} />
-          BEAUTY, FASHION, HEALTH & WELLNESS STAGE™
+          BEAUTY, FASHION, HEALTH & WELLNESS STAGE
         </motion.div>
 
         <h1 style={{
@@ -1227,7 +1227,7 @@ const ProgrammeSection: React.FC = () => {
 const RegistrationSection: React.FC = () => {
   return (
     <DelegateRegistrationSection
-      stageName="Beauty, Fashion, Health & Wellness Stage™"
+      stageName="Beauty, Fashion, Health & Wellness Stage"
       includes={[
         "Full-day Beauty, Fashion, Health & Wellness Stage access",
         "Premium executive programme (9 sessions)",

@@ -4,7 +4,7 @@ import { DelegateRegistrationSection } from "./DelegateRegistrationSection";
 export const WholesaleRegistrationSection: React.FC = () => {
   return (
     <DelegateRegistrationSection
-      stageName="Wholesale, Retail & Manufacturing Stage™"
+      stageName="Wholesale, Retail & Manufacturing Stage"
       includes={[
         "Full-day Wholesale, Retail & Manufacturing Stage access",
         "Premium executive programme (9 sessions)",

@@ -1685,7 +1685,7 @@ export const ExecutiveIndustrySeries: React.FC = () => {
                                 textOverflow: "ellipsis",
                                 whiteSpace: "nowrap"
                             }}>
-                                {drawerStreamObj ? `${drawerStreamObj.number} - ${drawerStreamObj.title}` : "All streams - select your preference below"}
+                                {drawerStreamObj ? `${drawerStreamObj.number} - ${drawerStreamObj.title}` : "All streams, select your preference below"}
                             </p>
                         </div>
                         <button onClick={closeDrawer} style={{
