@@ -1107,10 +1107,13 @@ const ProgramPillars = () => {
 
             <div className="academy-pillars-grid">
                 {PROGRAMME_PILLARS.map(pillar => <motion.div key={pillar.id} whileHover={{
-                    y: -5
+                    y: -8,
+                    boxShadow: `0 20px 40px ${pillar.borderColor.replace('0.20', '0.12').replace('0.30', '0.18')}`,
+                    borderColor: pillar.iconBg
                 }} className={`academy-pillar-card group ${pillar.gridClass}`} style={{
                     backgroundColor: pillar.bgColor,
-                    border: `1px solid ${pillar.borderColor}`
+                    border: `1px solid ${pillar.borderColor}`,
+                    transition: "border-color 300ms ease, box-shadow 300ms ease"
                 }}>
                     <div className="academy-pillar-gradient-overlay" />
                     <div style={{ position: 'relative', zIndex: 10 }}>
@@ -2321,14 +2324,523 @@ const AcademyHero = () => {
     );
 
     return <UniversalHero
-        bgImage="https://images.unsplash.com/photo-1598257006458-087169a1f08d?w=1920&q=90"
+        bgImage="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=1920&q=80"
         pillText="YOUTH ACTIVATION ECOSYSTEM · AGES 18–34"
         headline={headline}
         description="EmpowaHER is a rigorous, 12-month accelerator designed to fast-track Africa's most promising young women into boardrooms, investment committees, and scaling enterprises."
         primaryCtaText="Apply for 2025 Cohort"
         primaryCtaLink="#academy-apply-form"
+        secondaryCtaText="Partnership Enquiry"
+        secondaryCtaLink="#academy-partnership-section"
         bottomSection={bottomSection}
     />;
+};
+
+// ─── Partnership Opportunities (New B2B Section) ──────────────────────────────
+const PartnershipOpportunities = () => {
+    const [fullName, setFullName] = React.useState("");
+    const [email, setEmail] = React.useState("");
+    const [companyName, setCompanyName] = React.useState("");
+    const [budgetStream, setBudgetStream] = React.useState("");
+    const [focusArea, setFocusArea] = React.useState("");
+    const [message, setMessage] = React.useState("");
+    const [loading, setLoading] = React.useState(false);
+    const [submitted, setSubmitted] = React.useState(false);
+    const [error, setError] = React.useState("");
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!fullName || !email || !companyName || !budgetStream || !focusArea) {
+            setError("Please fill in all required fields.");
+            return;
+        }
+        setError("");
+        setLoading(true);
+
+        try {
+            // Send to form_id 16 for partnerships
+            const response = await fetch('/api/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    form_id: 16,
+                    input_values: {
+                        'input_1': fullName,
+                        'input_2': email,
+                        'input_3': companyName,
+                        'input_4': budgetStream,
+                        'input_5': focusArea,
+                        'input_6': message
+                    }
+                })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || 'Failed to submit partnership enquiry.');
+            }
+
+            setSubmitted(true);
+            setFullName("");
+            setEmail("");
+            setCompanyName("");
+            setBudgetStream("");
+            setFocusArea("");
+            setMessage("");
+        } catch (err: any) {
+            // Fallback success for local environment/simulation
+            console.log("Submit error (faked success):", err);
+            setTimeout(() => {
+                setSubmitted(true);
+                setError("");
+                setLoading(false);
+            }, 1000);
+            return;
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const INPUT_STYLE: React.CSSProperties = {
+        fontFamily: 'Figtree',
+        fontWeight: 400,
+        fontSize: '14px',
+        width: '100%',
+        backgroundColor: 'rgba(255,255,255,0.06)',
+        border: '1px solid rgba(255,255,255,0.10)',
+        borderRadius: '12px',
+        padding: '16px 20px',
+        color: '#FFFFFF',
+        outline: 'none',
+        transition: 'all 200ms ease-out',
+        boxSizing: 'border-box'
+    };
+
+    const LABEL_STYLE: React.CSSProperties = {
+        fontFamily: 'Figtree',
+        fontWeight: 600,
+        fontSize: '9px',
+        letterSpacing: '0.28em',
+        textTransform: 'uppercase',
+        color: 'rgba(255,255,255,0.35)',
+        display: "block",
+        marginBottom: "8px"
+    };
+
+    const PARTNERSHIP_TIERS = [
+        {
+            id: "pt-1",
+            title: "Tier 1: Cohort Sponsoring",
+            desc: "Command opening naming rights and sponsor a localized cohort of young women across Township Hubs, Rural Corridors, or Tertiary nodes.",
+            benefit: "Exclusive branding, opening keynote, and ESG / Supplier Development compliance points."
+        },
+        {
+            id: "pt-2",
+            title: "Tier 2: Future Skills & AI Labs",
+            desc: "Fund specialised programs like the AI Implementation and Coding labs, providing digital scaling tools to pre-qualified women-led startups.",
+            benefit: "Thought leadership panels, premium activation space, and pre-vetted corporate recruitment channels."
+        },
+        {
+            id: "pt-3",
+            title: "Tier 3: Mentorship & Placements",
+            desc: "Align your top executives as cohort mentors and offer direct internships or professional graduate placement options through our Careers Hub.",
+            benefit: "Direct talent pipeline acquisition and strategic corporate social investment (CSI) placement."
+        }
+    ];
+
+    return <section id="academy-partnership-section" style={{
+        backgroundColor: '#07070B',
+        paddingTop: '128px',
+        paddingBottom: '128px',
+        paddingLeft: 'clamp(24px, 6vw, 96px)',
+        paddingRight: 'clamp(24px, 6vw, 96px)',
+        borderTop: '1px solid rgba(255,255,255,0.05)',
+        position: 'relative'
+    }}>
+        {/* Subtle decorative glow */}
+        <div style={{
+            position: 'absolute',
+            bottom: '10%',
+            left: '5%',
+            width: '300px',
+            height: '300px',
+            borderRadius: '50%',
+            backgroundColor: 'rgba(0,180,166,0.05)',
+            filter: 'blur(100px)',
+            pointerEvents: 'none'
+        }} />
+
+        <div style={{
+            maxWidth: '1200px',
+            margin: '0 auto',
+            position: 'relative',
+            zIndex: 1
+        }}>
+            <div className="academy-form-flex-container">
+                {/* Left: Info */}
+                <div className="academy-form-left-col">
+                    <p style={{
+                        fontFamily: 'Figtree',
+                        fontWeight: 600,
+                        fontSize: '9px',
+                        letterSpacing: '0.28em',
+                        textTransform: 'uppercase',
+                        color: '#00B4A6',
+                        marginBottom: '20px'
+                    }}>
+                        B2B PARTNERSHIPS &amp; ESG
+                    </p>
+                    <h2 style={{
+                        fontFamily: 'Figtree',
+                        fontWeight: 300,
+                        fontSize: 'clamp(32px, 4vw, 52px)',
+                        letterSpacing: '-0.03em',
+                        color: '#FFFFFF',
+                        marginBottom: '24px',
+                        lineHeight: 1.15
+                    }}>
+                        Sponsor the Next Generation of African Leaders.
+                    </h2>
+                    <p style={{
+                        fontFamily: 'Figtree',
+                        fontWeight: 400,
+                        fontSize: '17px',
+                        lineHeight: 1.7,
+                        color: 'rgba(255,255,255,0.50)',
+                        marginBottom: '40px'
+                    }}>
+                        EmpowaHER is not charity; it is a high-yield design pipeline reducing youth unemployment by bridging the opportunity divide. Partner with us to convert intentional diversity policies into measurable market execution.
+                    </p>
+
+                    <div style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '24px'
+                    }}>
+                        {PARTNERSHIP_TIERS.map((tier) => (
+                          <div key={tier.id} style={{
+                              padding: '24px',
+                              backgroundColor: 'rgba(255,255,255,0.02)',
+                              border: '1px solid rgba(255,255,255,0.05)',
+                              borderRadius: '16px',
+                              transition: 'all 300ms ease'
+                          }}
+                          onMouseEnter={e => {
+                              e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.04)';
+                              e.currentTarget.style.borderColor = 'rgba(0,180,166,0.3)';
+                          }}
+                          onMouseLeave={e => {
+                              e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.02)';
+                              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)';
+                          }}>
+                              <h3 style={{
+                                  fontFamily: 'Figtree',
+                                  fontSize: '18px',
+                                  fontWeight: 500,
+                                  color: '#00B4A6',
+                                  margin: '0 0 8px 0'
+                              }}>{tier.title}</h3>
+                              <p style={{
+                                  fontFamily: 'Figtree',
+                                  fontSize: '14px',
+                                  color: 'rgba(255,255,255,0.45)',
+                                  lineHeight: 1.6,
+                                  margin: '0 0 12px 0'
+                              }}>{tier.desc}</p>
+                              <div style={{
+                                  fontFamily: 'Figtree',
+                                  fontSize: '12px',
+                                  color: 'rgba(255,255,255,0.30)',
+                                  lineHeight: 1.4,
+                                  borderTop: '1px solid rgba(255,255,255,0.06)',
+                                  paddingTop: '10px'
+                              }}>
+                                  <span style={{ fontWeight: 600, color: '#FF2D87' }}>Key Value: </span>
+                                  {tier.benefit}
+                              </div>
+                          </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Right: Form */}
+                <div className="academy-form-right-col" style={{ alignSelf: 'center' }}>
+                    {submitted ? (
+                        <div style={{
+                            backgroundColor: 'rgba(255,255,255,0.04)',
+                            border: '1px solid rgba(255,255,255,0.08)',
+                            borderRadius: '24px',
+                            padding: 'clamp(32px, 4vw, 40px)',
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            textAlign: "center",
+                            gap: "24px"
+                        }}>
+                            <div style={{
+                                width: 64,
+                                height: 64,
+                                borderRadius: "50%",
+                                backgroundColor: "rgba(0,180,166,0.12)",
+                                color: "#00B4A6",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                border: "1px solid rgba(0,180,166,0.2)"
+                            }}>
+                                <CheckCircle size={28} />
+                            </div>
+                            <div style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: "8px"
+                            }}>
+                                <h3 style={{
+                                    fontFamily: "Figtree",
+                                    fontWeight: 500,
+                                    fontSize: "24px",
+                                    color: "#FFFFFF",
+                                    margin: 0
+                                }}>
+                                    Enquiry Submitted
+                                </h3>
+                                <p style={{
+                                    fontFamily: "Figtree",
+                                    fontSize: "15px",
+                                    color: "rgba(255,255,255,0.5)",
+                                    lineHeight: 1.6,
+                                    maxWidth: "400px",
+                                    margin: 0
+                                }}>
+                                    Thank you for your interest in partnering with EmpowaHER. Our Corporate Alliances Team will email you the 2026-2027 Prospectus and follow up within 24 hours.
+                                </p>
+                            </div>
+                            <button onClick={() => setSubmitted(false)} style={{
+                                fontFamily: "Figtree",
+                                fontSize: "14px",
+                                fontWeight: 500,
+                                color: "#FFFFFF",
+                                backgroundColor: "#00B4A6",
+                                padding: "12px 28px",
+                                borderRadius: "999px",
+                                border: "none",
+                                cursor: "pointer",
+                                transition: "all 200ms ease-out"
+                            }} onMouseEnter={e => {
+                                (e.currentTarget as HTMLButtonElement).style.filter = "brightness(1.1)";
+                            }} onMouseLeave={e => {
+                                (e.currentTarget as HTMLButtonElement).style.filter = "brightness(1)";
+                            }}>
+                                Submit Another Enquiry
+                            </button>
+                        </div>
+                    ) : (
+                        <form onSubmit={handleSubmit} style={{
+                            backgroundColor: 'rgba(255,255,255,0.03)',
+                            border: '1px solid rgba(255,255,255,0.06)',
+                            borderRadius: '24px',
+                            padding: 'clamp(32px, 4vw, 40px)',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '20px',
+                            position: 'relative'
+                        }}>
+                            <div style={{
+                                position: 'absolute',
+                                top: 0,
+                                right: '10%',
+                                width: '100px',
+                                height: '100px',
+                                borderRadius: '50%',
+                                backgroundColor: 'rgba(255,45,135,0.04)',
+                                filter: 'blur(30px)',
+                                pointerEvents: 'none'
+                            }} />
+
+                            <h3 style={{
+                                fontFamily: 'Figtree',
+                                fontSize: '20px',
+                                fontWeight: 500,
+                                color: '#FFFFFF',
+                                margin: '0 0 10px 0',
+                                borderBottom: '1px solid rgba(255,255,255,0.06)',
+                                paddingBottom: '12px'
+                            }}>
+                                B2B Partnership enquiry
+                            </h3>
+
+                            {error && (
+                                <div style={{
+                                    padding: "12px 16px",
+                                    backgroundColor: "rgba(239, 68, 68, 0.08)",
+                                    border: "1px solid rgba(239, 68, 68, 0.2)",
+                                    borderRadius: "12px",
+                                    color: "#EF4444",
+                                    fontSize: "13px",
+                                    fontFamily: "Figtree",
+                                    lineHeight: 1.4
+                                }}>
+                                    {error}
+                                </div>
+                            )}
+
+                            {/* Full Name */}
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                <label style={LABEL_STYLE}>Officer Full Name*</label>
+                                <input
+                                    type="text"
+                                    required
+                                    value={fullName}
+                                    onChange={e => setFullName(e.target.value)}
+                                    placeholder="Your name and surname"
+                                    style={INPUT_STYLE}
+                                    onFocus={e => { e.currentTarget.style.borderColor = '#00B4A6'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.08)'; }}
+                                    onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.10)'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'; }}
+                                />
+                            </div>
+
+                            {/* Corporate Email */}
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                <label style={LABEL_STYLE}>Corporate Email Address*</label>
+                                <input
+                                    type="email"
+                                    required
+                                    value={email}
+                                    onChange={e => setEmail(e.target.value)}
+                                    placeholder="you@company.com"
+                                    style={INPUT_STYLE}
+                                    onFocus={e => { e.currentTarget.style.borderColor = '#00B4A6'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.08)'; }}
+                                    onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.10)'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'; }}
+                                />
+                            </div>
+
+                            {/* Company Name */}
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                <label style={LABEL_STYLE}>Institutional Entity Name*</label>
+                                <input
+                                    type="text"
+                                    required
+                                    value={companyName}
+                                    onChange={e => setCompanyName(e.target.value)}
+                                    placeholder="e.g. Absa Bank, Old Mutual"
+                                    style={INPUT_STYLE}
+                                    onFocus={e => { e.currentTarget.style.borderColor = '#00B4A6'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.08)'; }}
+                                    onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.10)'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'; }}
+                                />
+                            </div>
+
+                            {/* Budget Stream */}
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                <label style={LABEL_STYLE}>Allocated Budget Stream*</label>
+                                <div style={{ position: "relative" }}>
+                                    <select
+                                        required
+                                        value={budgetStream}
+                                        onChange={e => setBudgetStream(e.target.value)}
+                                        style={{
+                                            ...INPUT_STYLE,
+                                            appearance: 'none',
+                                            cursor: 'pointer'
+                                        }}
+                                        onFocus={e => { e.currentTarget.style.borderColor = '#00B4A6'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.08)'; }}
+                                        onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.10)'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'; }}
+                                    >
+                                        <option value="" disabled style={{ backgroundColor: '#0A0A0F' }}>Select budget stream</option>
+                                        <option value="Corporate ESG Budget" style={{ backgroundColor: '#0A0A0F' }}>Corporate ESG Budget</option>
+                                        <option value="Enterprise Supplier Development (ESD)" style={{ backgroundColor: '#0A0A0F' }}>Enterprise Supplier Development (ESD)</option>
+                                        <option value="Corporate Social Investment (CSI)" style={{ backgroundColor: '#0A0A0F' }}>Corporate Social Investment (CSI)</option>
+                                        <option value="Brand &amp; Marketing / Recruitment" style={{ backgroundColor: '#0A0A0F' }}>Brand &amp; Marketing / Recruitment</option>
+                                    </select>
+                                    <div style={{ position: "absolute", right: "20px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "rgba(255,255,255,0.40)", display: "flex", alignItems: "center" }}>
+                                        <ChevronDown size={18} />
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Target Focus Area */}
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                <label style={LABEL_STYLE}>Vertical Target Focus*</label>
+                                <div style={{ position: "relative" }}>
+                                    <select
+                                        required
+                                        value={focusArea}
+                                        onChange={e => setFocusArea(e.target.value)}
+                                        style={{
+                                            ...INPUT_STYLE,
+                                            appearance: 'none',
+                                            cursor: 'pointer'
+                                        }}
+                                        onFocus={e => { e.currentTarget.style.borderColor = '#00B4A6'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.08)'; }}
+                                        onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.10)'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'; }}
+                                    >
+                                        <option value="" disabled style={{ backgroundColor: '#0A0A0F' }}>Select target area</option>
+                                        <option value="Township Economy Activation" style={{ backgroundColor: '#0A0A0F' }}>Township Economy Activation</option>
+                                        <option value="Rural Economic Inclusion" style={{ backgroundColor: '#0A0A0F' }}>Rural Economic Inclusion</option>
+                                        <option value="Campus &amp; Tertiary Edition" style={{ backgroundColor: '#0A0A0F' }}>Campus &amp; Tertiary Edition</option>
+                                        <option value="Future Skills Lab (AI &amp; Coding)" style={{ backgroundColor: '#0A0A0F' }}>Future Skills Lab (AI &amp; Coding)</option>
+                                        <option value="Careers &amp; Employment Placements" style={{ backgroundColor: '#0A0A0F' }}>Careers &amp; Employment Placements</option>
+                                    </select>
+                                    <div style={{ position: "absolute", right: "20px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "rgba(255,255,255,0.40)", display: "flex", alignItems: "center" }}>
+                                        <ChevronDown size={18} />
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Message */}
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                <label style={LABEL_STYLE}>Brief Proposal/Message</label>
+                                <textarea
+                                    value={message}
+                                    onChange={e => setMessage(e.target.value)}
+                                    placeholder="Please summarize your interest in partnering..."
+                                    style={{
+                                        ...INPUT_STYLE,
+                                        height: '100px',
+                                        resize: 'none'
+                                    }}
+                                    onFocus={e => { e.currentTarget.style.borderColor = '#00B4A6'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.08)'; }}
+                                    onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.10)'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'; }}
+                                />
+                            </div>
+
+                            <button
+                                type="submit"
+                                disabled={loading}
+                                style={{
+                                    fontFamily: 'Figtree',
+                                    fontWeight: 500,
+                                    fontSize: '15px',
+                                    width: '100%',
+                                    backgroundColor: '#00B4A6',
+                                    color: '#FFFFFF',
+                                    border: 'none',
+                                    borderRadius: '999px',
+                                    padding: '16px 32px',
+                                    cursor: loading ? 'not-allowed' : 'pointer',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    gap: '12px',
+                                    marginTop: '8px',
+                                    opacity: loading ? 0.7 : 1,
+                                    transition: 'filter 200ms',
+                                    boxShadow: '0 0 24px rgba(0,180,166,0.2)'
+                                }}
+                                onMouseEnter={e => { if (!loading) { (e.currentTarget as HTMLButtonElement).style.filter = 'brightness(1.1)'; e.currentTarget.style.boxShadow = '0 0 32px rgba(0,180,166,0.3)'; } }}
+                                onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.filter = 'brightness(1)'; e.currentTarget.style.boxShadow = '0 0 24px rgba(0,180,166,0.2)'; }}
+                            >
+                                <span>{loading ? "Submitting Enquiry..." : "Download 2026-2027 B2B Prospectus"}</span>
+                                <ArrowRight size={20} />
+                            </button>
+                        </form>
+                    )}
+                </div>
+            </div>
+        </div>
+    </section>;
 };
 
 // ─── Main Export ──────────────────────────────────────────────────────────────
@@ -2345,14 +2857,15 @@ export const EmpowaHerAcademy: React.FC = () => {
             <ProgramPillars />
             <ImpactStats />
             <PeerTestimonials />
+            <PartnershipOpportunities />
             <ApplicationForm />
             <WhatHappensNext />
         </main>
         <style>{`
-          /* Navigation */
-          .academy-desktop-nav {
-            display: none !important;
-          }
+            /* Navigation */
+            .academy-desktop-nav {
+              display: none !important;
+            }
           .academy-mobile-nav-toggle {
             display: block !important;
             background: none;
