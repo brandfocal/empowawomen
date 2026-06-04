@@ -1376,44 +1376,48 @@ export const SummitsHub: React.FC = () => {
             flex: "1 1 30%",
             minWidth: "240px"
           }}>
-            <button style={{
-              width: '100%',
-              fontFamily: 'Figtree',
-              fontSize: 'clamp(14px, 1.5vw, 15px)',
-              fontWeight: 500,
-              color: '#FFFFFF',
-              backgroundColor: '#FF2D87',
-              borderRadius: '999px',
-              padding: '16px 32px',
-              border: 'none',
-              cursor: 'pointer',
-              transition: 'filter 200ms ease-out'
-            }} onMouseEnter={e => {
-              (e.currentTarget as HTMLButtonElement).style.filter = 'brightness(1.1)';
-            }} onMouseLeave={e => {
-              (e.currentTarget as HTMLButtonElement).style.filter = 'brightness(1)';
-            }}>
-              Explore Partnership Packages →
-            </button>
-            <button style={{
-              width: '100%',
-              fontFamily: 'Figtree',
-              fontSize: 'clamp(13px, 1.5vw, 14px)',
-              fontWeight: 400,
-              color: 'rgba(255,255,255,0.60)',
-              backgroundColor: 'transparent',
-              borderRadius: '999px',
-              padding: '12px 32px',
-              border: '1px solid rgba(255,255,255,0.20)',
-              cursor: 'pointer',
-              transition: 'background-color 200ms ease-out'
-            }} onMouseEnter={e => {
-              (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'rgba(255,255,255,0.06)';
-            }} onMouseLeave={e => {
-              (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'transparent';
-            }}>
-              Download Sponsorship Deck
-            </button>
+            <RouterLink to="/partnerships" style={{ textDecoration: 'none', width: '100%' }}>
+              <button style={{
+                width: '100%',
+                fontFamily: 'Figtree',
+                fontSize: 'clamp(14px, 1.5vw, 15px)',
+                fontWeight: 500,
+                color: '#FFFFFF',
+                backgroundColor: '#FF2D87',
+                borderRadius: '999px',
+                padding: '16px 32px',
+                border: 'none',
+                cursor: 'pointer',
+                transition: 'filter 200ms ease-out'
+              }} onMouseEnter={e => {
+                (e.currentTarget as HTMLButtonElement).style.filter = 'brightness(1.1)';
+              }} onMouseLeave={e => {
+                (e.currentTarget as HTMLButtonElement).style.filter = 'brightness(1)';
+              }}>
+                Explore Partnership Packages →
+              </button>
+            </RouterLink>
+            <RouterLink to="/contact" style={{ textDecoration: 'none', width: '100%' }}>
+              <button style={{
+                width: '100%',
+                fontFamily: 'Figtree',
+                fontSize: 'clamp(13px, 1.5vw, 14px)',
+                fontWeight: 400,
+                color: 'rgba(255,255,255,0.60)',
+                backgroundColor: 'transparent',
+                borderRadius: '999px',
+                padding: '12px 32px',
+                border: '1px solid rgba(255,255,255,0.20)',
+                cursor: 'pointer',
+                transition: 'background-color 200ms ease-out'
+              }} onMouseEnter={e => {
+                (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'rgba(255,255,255,0.06)';
+              }} onMouseLeave={e => {
+                (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'transparent';
+              }}>
+                Contact Our Partnerships Team
+              </button>
+            </RouterLink>
           </motion.div>
         </div>
       </section>

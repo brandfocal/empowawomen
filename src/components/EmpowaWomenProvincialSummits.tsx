@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Download } from 'lucide-react';
 
@@ -803,6 +804,52 @@ export const ProvincialSummitSeries = () => {
                         <Download size={16} />
                         Download Calendar
                     </button>
+                </motion.div>
+            </div>
+        </section>
+
+        {/* ── Corporate Partnerships Section ── */}
+        <section style={{
+            position: 'relative',
+            backgroundColor: '#0A0A0F',
+            paddingTop: 'clamp(64px, 10vw, 120px)',
+            paddingBottom: 'clamp(64px, 10vw, 120px)',
+            paddingLeft: 'clamp(16px, 5vw, 96px)',
+            paddingRight: 'clamp(16px, 5vw, 96px)',
+            borderTop: '1px solid rgba(255,255,255,0.06)'
+        }}>
+            <div style={{
+                maxWidth: '1280px',
+                margin: '0 auto',
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: '48px',
+                flexWrap: 'wrap'
+            }} className="summits-flex-container">
+                <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} style={{ maxWidth: '600px', flex: '1 1 50%', minWidth: '300px' }}>
+                    <span style={{ display: 'block', fontSize: '9px', fontWeight: 600, letterSpacing: '0.28em', color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase' }}>
+                        CORPORATE PARTNERSHIPS
+                    </span>
+                    <h2 style={{ fontFamily: 'Figtree', fontWeight: 300, color: '#FFFFFF', fontSize: 'clamp(24px, 3.5vw, 48px)', letterSpacing: '-0.03em', lineHeight: 1.1, marginTop: '16px', marginBottom: 0 }}>
+                        Partner with Africa's most influential women's executive platform.
+                    </h2>
+                    <p style={{ fontFamily: 'Figtree', fontSize: 'clamp(13px, 1.5vw, 15px)', color: 'rgba(255,255,255,0.45)', lineHeight: 1.7, maxWidth: '32rem', marginTop: '16px', marginBottom: 0 }}>
+                        Unlock strategic visibility, thought leadership positioning, and direct access to senior decision-makers across our 2026–2027 summit calendar.
+                    </p>
+                </motion.div>
+                <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} style={{ display: 'flex', flexDirection: 'column', gap: '16px', flex: '1 1 30%', minWidth: '240px' }} className="summits-cta-container">
+                    <RouterLink to="/partnerships" style={{ textDecoration: 'none', width: '100%' }}>
+                        <button style={{ width: '100%', fontFamily: 'Figtree', fontSize: 'clamp(14px, 1.5vw, 15px)', fontWeight: 500, color: '#FFFFFF', backgroundColor: '#FF2D87', borderRadius: '999px', padding: '16px 32px', border: 'none', cursor: 'pointer', transition: 'filter 200ms ease-out' }} onMouseEnter={e => e.currentTarget.style.filter = 'brightness(1.1)'} onMouseLeave={e => e.currentTarget.style.filter = 'brightness(1)'}>
+                            Explore Partnership Packages →
+                        </button>
+                    </RouterLink>
+                    <RouterLink to="/contact" style={{ textDecoration: 'none', width: '100%' }}>
+                        <button style={{ width: '100%', fontFamily: 'Figtree', fontSize: 'clamp(13px, 1.5vw, 14px)', fontWeight: 400, color: 'rgba(255,255,255,0.60)', backgroundColor: 'transparent', borderRadius: '999px', padding: '12px 32px', border: '1px solid rgba(255,255,255,0.20)', cursor: 'pointer', transition: 'background-color 200ms ease-out' }} onMouseEnter={e => e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'} onMouseLeave={e => e.currentTarget.style.backgroundColor = 'transparent'}>
+                            Contact Our Partnerships Team
+                        </button>
+                    </RouterLink>
                 </motion.div>
             </div>
         </section>

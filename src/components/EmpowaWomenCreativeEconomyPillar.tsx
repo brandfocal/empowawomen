@@ -225,8 +225,8 @@ const CREATIVE_METRICS = [{
   description: "Active media collaboration agreements established within the EmpowaWomen ecosystem."
 }, {
   label: "Global Distribution & Market Access",
-  value: "9 Sessions",
-  description: "High-impact executive sessions curated from 11:00 to 16:00."
+  value: "15+ Countries",
+  description: "Targeted distribution partnerships linking African content creators to international broadcast networks."
 }];
 
 // ─── Shared Sub-components ────────────────────────────────────────────────────
@@ -327,8 +327,17 @@ const CreativeHeroBanner: React.FC = () => {
       alignItems: "center",
       justifyContent: "center"
     }}>
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <motion.div className="absolute inset-0" initial={{
+      <div style={{
+        position: "absolute",
+        inset: 0,
+        zIndex: 0,
+        overflow: "hidden",
+        pointerEvents: "none"
+      }}>
+        <motion.div style={{
+          position: "absolute",
+          inset: 0
+        }} initial={{
           scale: 1.06
         }} animate={{
           scale: 1.0
@@ -336,7 +345,7 @@ const CreativeHeroBanner: React.FC = () => {
           duration: 12,
           ease: "easeOut"
         }}>
-          <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=1600&q=80" alt="" aria-hidden="true" className="w-full h-full" style={{
+          <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=1600&q=80" alt="" aria-hidden="true" className="w-full h-full" style={{
             objectFit: "cover",
             objectPosition: "center 40%",
             width: "100%",
@@ -577,7 +586,7 @@ const CreativeHeroBanner: React.FC = () => {
           <button onClick={handleRegisterClick} style={{
             backgroundColor: "#FF2D87",
             color: "#FFFFFF",
-            borderRadius: 0,
+            borderRadius: "999px",
             height: "50px",
             padding: "0 28px",
             fontFamily: "Figtree, sans-serif",
@@ -628,7 +637,7 @@ const CreativeHeroBanner: React.FC = () => {
             backgroundColor: "rgba(255,255,255,0.05)",
             color: "#FFFFFF",
             border: "1px solid rgba(255,255,255,0.10)",
-            borderRadius: 0,
+            borderRadius: "999px",
             height: "50px",
             padding: "0 28px",
             fontFamily: "Figtree, sans-serif",
@@ -706,11 +715,6 @@ const CreativeHeroBanner: React.FC = () => {
 
 // ─── Main Component ────────────────────────────────────────────────────────────
 export const CreativeEconomyPillar: React.FC = () => {
-  const overviewRef = React.useRef<HTMLDivElement>(null);
-  const overviewInView = useInView(overviewRef, {
-    once: true,
-    margin: "-80px"
-  });
   const bentoRef = React.useRef<HTMLDivElement>(null);
   const bentoInView = useInView(bentoRef, {
     once: true,
@@ -732,19 +736,6 @@ export const CreativeEconomyPillar: React.FC = () => {
     margin: "-80px",
     amount: 0.15
   });
-  const MINI_STATS = [{
-    value: "Film & TV",
-    label: "Sector",
-    accent: "#FF2D87"
-  }, {
-    value: "9 Sessions",
-    label: "Programme",
-    accent: "#00B4A6"
-  }, {
-    value: "11:00–16:00",
-    label: "Duration",
-    accent: "#D4AF37"
-  }];
 
   return (
     <div style={{
@@ -769,191 +760,7 @@ export const CreativeEconomyPillar: React.FC = () => {
           }} />
         </div>
 
-        {/* ── 2. Stage Overview Section ── */}
-        <section ref={overviewRef} style={{
-          paddingTop: "clamp(48px, 8vw, 96px)",
-          paddingBottom: "clamp(40px, 6vw, 80px)",
-          paddingLeft: "clamp(16px, 5vw, 96px)",
-          paddingRight: "clamp(16px, 5vw, 96px)",
-          maxWidth: "1400px",
-          margin: "0 auto"
-        }}>
-          <SectionLabel>Stage Overview</SectionLabel>
-          <div className="creative-overview-grid">
-            <motion.div initial={{
-              opacity: 0,
-              x: -30
-            }} animate={overviewInView ? {
-              opacity: 1,
-              x: 0
-            } : {}} transition={{
-              duration: 0.7,
-              ease: [0.21, 0.47, 0.32, 0.98]
-            }} style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center"
-            }}>
-              <div style={{
-                width: "48px",
-                height: "3px",
-                backgroundColor: "#FF2D87",
-                marginBottom: "16px"
-              }} />
-              <p style={{
-                fontFamily: "Figtree",
-                textTransform: "uppercase",
-                fontSize: "9px",
-                fontWeight: 300,
-                letterSpacing: "0.28em",
-                color: "rgba(255,255,255,0.35)",
-                marginBottom: "16px"
-              }}>
-                CREATIVE ECONOMY STAGE OVERVIEW
-              </p>
-              <h2 style={{
-                fontFamily: "Figtree",
-                fontWeight: 300,
-                fontSize: "clamp(28px, 4.5vw, 56px)",
-                letterSpacing: "-0.03em",
-                color: "#FFFFFF",
-                lineHeight: 1.1,
-                margin: "0 0 20px 0"
-              }}>
-                Storytelling, Ownership &amp; Cultural Influence
-              </h2>
-              <p style={{
-                fontFamily: "Figtree",
-                fontSize: "15px",
-                lineHeight: 1.8,
-                color: "rgba(255,255,255,0.50)",
-                margin: "0 0 32px 0",
-                maxWidth: "540px"
-              }}>
-                The Creative Economy, Film, Media &amp; Entertainment Stage explores one of the fastest-growing and most influential sectors of the global economy, where storytelling, intellectual property, technology, culture, and creativity are shaping economic growth, investment flows, and societal influence. This platform positions women as owners, investors, executives, producers, broadcasters, and industry architects driving the future of Africa&apos;s creative and cultural economy.
-              </p>
-              <button style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                padding: 0,
-                fontFamily: "Figtree",
-                color: "#FF2D87",
-                fontSize: "14px",
-                fontWeight: 300
-              }}>
-                <span>View Full Programme</span>
-                <ArrowRight size={15} />
-              </button>
-            </motion.div>
 
-            <motion.div initial={{
-              opacity: 0,
-              x: 30
-            }} animate={overviewInView ? {
-              opacity: 1,
-              x: 0
-            } : {}} transition={{
-              duration: 0.7,
-              delay: 0.12,
-              ease: [0.21, 0.47, 0.32, 0.98]
-            }} style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "0"
-            }}>
-              <div style={{
-                position: "relative",
-                width: "100%",
-                minHeight: "320px",
-                overflow: "hidden"
-              }}>
-                <img src="https://empowawomen.co.za/wp-content/uploads/2025/10/DSC_2683.jpg" alt="EmpowaWomen Leadership Summit 2025" style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  minHeight: "320px",
-                  display: "block"
-                }} />
-                <div style={{
-                  position: "absolute",
-                  inset: 0,
-                  background: "linear-gradient(to bottom, transparent 60%, rgba(10,10,15,0.70) 100%)"
-                }} />
-                <div style={{
-                  position: "absolute",
-                  bottom: "16px",
-                  left: "16px",
-                  backgroundColor: "rgba(10,10,15,0.85)",
-                  backdropFilter: "blur(8px)",
-                  WebkitBackdropFilter: "blur(8px)",
-                  borderRadius: "20px",
-                  padding: "6px 16px",
-                  fontSize: "11px",
-                  color: "#FFFFFF",
-                  fontWeight: 300,
-                  fontFamily: "Figtree"
-                }}>
-                  <span>📸 EmpowaWomen Leadership Summit 2025</span>
-                </div>
-              </div>
-              <div style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "24px",
-                paddingTop: "24px",
-                borderTop: "1px solid rgba(255,255,255,0.08)",
-                marginTop: "8px"
-              }}>
-                {MINI_STATS.map(s => (
-                  <div key={s.label} style={{
-                    paddingLeft: "16px",
-                    borderLeft: `3px solid ${s.accent}`
-                  }}>
-                    <p style={{
-                      fontFamily: "Figtree",
-                      fontWeight: 200,
-                      fontSize: "clamp(20px, 3vw, 28px)",
-                      letterSpacing: "-0.03em",
-                      color: "#FFFFFF",
-                      lineHeight: 1,
-                      margin: 0
-                    }}>
-                      {s.value}
-                    </p>
-                    <p style={{
-                      marginTop: "4px",
-                      fontFamily: "Figtree",
-                      fontSize: "11px",
-                      letterSpacing: "0.15em",
-                      textTransform: "uppercase",
-                      color: "rgba(255,255,255,0.35)",
-                      margin: "4px 0 0 0"
-                    }}>
-                      {s.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* ── Thin separator ── */}
-        <div style={{
-          maxWidth: "1400px",
-          margin: "0 auto",
-          paddingLeft: "clamp(16px, 5vw, 96px)",
-          paddingRight: "clamp(16px, 5vw, 96px)"
-        }}>
-          <div style={{
-            height: "1px",
-            background: "linear-gradient(to right, rgba(255,45,135,0.5), rgba(0,180,166,0.2) 50%, rgba(212,175,55,0.5))"
-          }} />
-        </div>
 
         {/* ── 3. Key Focus Areas — Bento Grid ── */}
         <section ref={bentoRef} style={{
@@ -1078,7 +885,7 @@ export const CreativeEconomyPillar: React.FC = () => {
               </div>
             </motion.div>
 
-            {/* Column B: image card with quote */}
+            {/* Column B: ROI Metrics */}
             <motion.div initial={{
               opacity: 0,
               x: 24
@@ -1090,101 +897,14 @@ export const CreativeEconomyPillar: React.FC = () => {
               delay: 0.15,
               ease: [0.21, 0.47, 0.32, 0.98]
             }} style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "24px"
+              borderTop: "3px solid #FF2D87"
             }}>
-              <div style={{
-                position: "relative",
-                overflow: "hidden",
-                flex: 1,
-                minHeight: "280px"
-              }}>
-                <img src="https://empowawomen.co.za/wp-content/uploads/2025/10/DSC_2683.jpg" alt="EmpowaWomen Creative Economy Stage" style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  minHeight: "280px",
-                  display: "block"
-                }} />
-                <div style={{
-                  position: "absolute",
-                  inset: 0,
-                  background: "linear-gradient(to top, rgba(10,10,15,0.80) 0%, transparent 60%)"
-                }} />
-                <div style={{
-                  position: "absolute",
-                  bottom: "24px",
-                  left: "24px",
-                  right: "24px"
-                }}>
-                  <p style={{
-                    fontFamily: "Figtree",
-                    fontStyle: "italic",
-                    fontWeight: 300,
-                    fontSize: "clamp(14px, 2vw, 18px)",
-                    color: "rgba(255,255,255,0.75)",
-                    lineHeight: 1.6,
-                    margin: 0
-                  }}>
-                    &ldquo;Who Owns the Story, Owns the Influence. Who Owns the Influence, Owns the Future.&rdquo;
-                  </p>
-                </div>
-              </div>
-
-              <div style={{
-                backgroundColor: "#0D0D14",
-                border: "1px solid rgba(255,255,255,0.06)",
-                borderTop: "3px solid #FF2D87",
-                padding: "clamp(20px, 3vw, 32px)"
-              }}>
-                <p style={{
-                  fontFamily: "Figtree",
-                  fontWeight: 200,
-                  fontSize: "clamp(40px, 6vw, 72px)",
-                  color: "#FF2D87",
-                  lineHeight: 1,
-                  letterSpacing: "-0.04em",
-                  margin: "0 0 8px 0"
-                }}>
-                  8
-                </p>
-                <p style={{
-                  fontFamily: "Figtree",
-                  fontSize: "14px",
-                  fontWeight: 300,
-                  color: "rgba(255,255,255,0.70)",
-                  margin: "0 0 4px 0"
-                }}>Key Focus Areas</p>
-                <p style={{
-                  fontFamily: "Figtree",
-                  fontSize: "12px",
-                  fontWeight: 300,
-                  color: "rgba(255,255,255,0.35)",
-                  margin: 0,
-                  lineHeight: 1.5
-                }}>
-                  Eight strategic industry verticals shaping the future of Africa&apos;s creative economy.
-                </p>
-              </div>
+              <ROIMetricBlock title="Creative ROI & Metrics" metrics={CREATIVE_METRICS} />
             </motion.div>
           </div>
         </section>
 
-        {/* ── 4. Shared ROI Metric Block ── */}
-        <section style={{
-          backgroundColor: "#0A0A0F",
-          paddingTop: "clamp(48px, 8vw, 96px)",
-          paddingBottom: "clamp(48px, 8vw, 96px)",
-          paddingLeft: "clamp(16px, 5vw, 96px)",
-          paddingRight: "clamp(16px, 5vw, 96px)",
-          borderTop: "1px solid rgba(255,255,255,0.05)",
-          borderBottom: "1px solid rgba(255,255,255,0.05)"
-        }}>
-          <div style={{ maxWidth: "1400px", margin: "0 auto" }}>
-            <ROIMetricBlock title="Creative ROI & Metrics" metrics={CREATIVE_METRICS} />
-          </div>
-        </section>
+
 
         {/* ── Thin separator ── */}
         <div style={{
@@ -1803,7 +1523,7 @@ export const CreativeEconomyPillar: React.FC = () => {
             <div style={{
               width: "100%",
               height: "100%",
-              backgroundImage: "url('https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=1400&q=80')",
+              backgroundImage: "url('https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=1400&q=80')",
               backgroundSize: "cover",
               backgroundPosition: "center",
               maskImage: "linear-gradient(to top, transparent 0%, black 40%)",
@@ -1908,7 +1628,7 @@ export const CreativeEconomyPillar: React.FC = () => {
                 fontSize: "clamp(14px, 2vw, 16px)",
                 fontWeight: 300,
                 padding: "clamp(14px, 2vw, 18px) clamp(28px, 3vw, 40px)",
-                borderRadius: 0,
+                borderRadius: "999px",
                 border: "none",
                 display: "inline-flex",
                 alignItems: "center",
@@ -1956,7 +1676,7 @@ export const CreativeEconomyPillar: React.FC = () => {
                 fontSize: "clamp(14px, 2vw, 16px)",
                 fontWeight: 300,
                 padding: "clamp(14px, 2vw, 18px) clamp(28px, 3vw, 40px)",
-                borderRadius: 0,
+                borderRadius: "999px",
                 display: "inline-flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -1990,6 +1710,18 @@ export const CreativeEconomyPillar: React.FC = () => {
         .creative-focus-area-row:hover span:first-child { color: rgba(255,255,255,0.95) !important; }
         .creative-programme-session-row:hover { background-color: rgba(255,255,255,0.015); }
         .creative-programme-session-row { transition: background-color 200ms ease-out; }
+
+        @media (min-width: 480px) {
+          .hero-cta-row {
+            flex-direction: row !important;
+            align-items: center !important;
+            justify-content: center !important;
+            max-width: none !important;
+            width: auto !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+          }
+        }
 
         @keyframes shimmerSlide {
           0% { transform: skewX(-20deg) translateX(-100%); }
