@@ -531,6 +531,58 @@ const HeroSection = () => {
 
 // ─── Main Export ──────────────────────────────────────────────────────────────
 export const IWDSummitDetail = () => {
+    const [fullName, setFullName] = React.useState("");
+    const [email, setEmail] = React.useState("");
+    const [organisation, setOrganisation] = React.useState("");
+    const [role, setRole] = React.useState("");
+    const [loading, setLoading] = React.useState(false);
+    const [submitted, setSubmitted] = React.useState(false);
+    const [error, setError] = React.useState("");
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!fullName || !email || !organisation || !role) {
+            setError("Please fill in all fields.");
+            return;
+        }
+        setError("");
+        setLoading(true);
+
+        try {
+            const response = await fetch('/api/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    form_id: 19,
+                    input_values: {
+                        'input_10': fullName,
+                        'input_4': email,
+                        'input_11': organisation,
+                        'input_14': role
+                    }
+                })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || 'Failed to submit request.');
+            }
+
+            setSubmitted(true);
+            setFullName("");
+            setEmail("");
+            setOrganisation("");
+            setRole("");
+        } catch (err: any) {
+            setError(err.message || "An unexpected error occurred. Please try again.");
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return <div className="bg-[#0A0A0F] min-h-screen text-foreground selection:bg-[#FF2D87]/30">
         <HeroSection />
 
@@ -1661,75 +1713,185 @@ export const IWDSummitDetail = () => {
                         borderRadius: "24px",
                         padding: "clamp(24px, 4vw, 40px)"
                     }}>
-                        <h3 style={{
-                            fontFamily: "Figtree",
-                            fontWeight: 300,
-                            fontSize: "clamp(20px, 2.5vw, 24px)",
-                            color: "#FFFFFF",
-                            margin: "0 0 8px 0"
-                        }}>
-                            Request Your Delegate Seat
-                        </h3>
-                        <p style={{
-                            fontFamily: "Figtree",
-                            fontSize: "14px",
-                            color: "rgba(255,255,255,0.40)",
-                            margin: "0 0 28px 0"
-                        }}>
-                            Our team will review your application within 48 hours.
-                        </p>
+                        {submitted ? (
+                            <div style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "center",
+                                textAlign: "center",
+                                gap: "20px",
+                                padding: "20px 0"
+                            }}>
+                                <div style={{
+                                    width: 64,
+                                    height: 64,
+                                    borderRadius: "50%",
+                                    backgroundColor: "rgba(255, 45, 135, 0.1)",
+                                    color: "#FF2D87",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center"
+                                }}>
+                                    <CheckCircle size={28} />
+                                </div>
+                                <div style={{
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    gap: "8px"
+                                }}>
+                                    <h3 style={{
+                                        fontFamily: "Figtree",
+                                        fontWeight: 500,
+                                        fontSize: "24px",
+                                        color: "#FFFFFF",
+                                        margin: 0
+                                    }}>
+                                        Request Submitted
+                                    </h3>
+                                    <p style={{
+                                        fontFamily: "Figtree",
+                                        fontSize: "15px",
+                                        color: "rgba(255,255,255,0.60)",
+                                        lineHeight: 1.6,
+                                        margin: 0
+                                    }}>
+                                        Thank you for requesting a delegate seat. Our team will review your application within 48 hours.
+                                    </p>
+                                </div>
+                                <button onClick={() => setSubmitted(false)} style={{
+                                    fontFamily: "Figtree",
+                                    fontSize: "14px",
+                                    fontWeight: 500,
+                                    color: "#FFFFFF",
+                                    backgroundColor: "#FF2D87",
+                                    padding: "12px 28px",
+                                    borderRadius: "999px",
+                                    border: "none",
+                                    cursor: "pointer",
+                                    transition: "filter 200ms ease-out"
+                                }} onMouseEnter={e => {
+                                    (e.currentTarget as HTMLButtonElement).style.filter = "brightness(1.1)";
+                                }} onMouseLeave={e => {
+                                    (e.currentTarget as HTMLButtonElement).style.filter = "brightness(1)";
+                                }}>
+                                    Submit Another Request
+                                </button>
+                            </div>
+                        ) : (
+                            <form onSubmit={handleSubmit}>
+                                <h3 style={{
+                                    fontFamily: "Figtree",
+                                    fontWeight: 300,
+                                    fontSize: "clamp(20px, 2.5vw, 24px)",
+                                    color: "#FFFFFF",
+                                    margin: "0 0 8px 0"
+                                }}>
+                                    Request Your Delegate Seat
+                                </h3>
+                                <p style={{
+                                    fontFamily: "Figtree",
+                                    fontSize: "14px",
+                                    color: "rgba(255,255,255,0.40)",
+                                    margin: "0 0 28px 0"
+                                }}>
+                                    Our team will review your application within 48 hours.
+                                </p>
 
-                        <div style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            gap: "12px"
-                        }}>
-                            {(["Full Name", "Email Address", "Organisation", "Role / Title"] as const).map((placeholder, idx) => <input key={`field-${idx}`} type={placeholder === "Email Address" ? "email" : "text"} placeholder={placeholder} style={{
-                                width: "100%",
-                                backgroundColor: "rgba(255,255,255,0.06)",
-                                border: "1px solid rgba(255,255,255,0.10)",
-                                borderRadius: "12px",
-                                padding: "14px 18px",
-                                fontFamily: "Figtree",
-                                fontSize: "14px",
-                                color: "#FFFFFF",
-                                outline: "none",
-                                boxSizing: "border-box",
-                                transition: "border-color 200ms, background-color 200ms"
-                            }} onFocus={e => {
-                                (e.currentTarget as HTMLInputElement).style.borderColor = "#FF2D87";
-                                (e.currentTarget as HTMLInputElement).style.backgroundColor = "rgba(255,255,255,0.08)";
-                            }} onBlur={e => {
-                                (e.currentTarget as HTMLInputElement).style.borderColor = "rgba(255,255,255,0.10)";
-                                (e.currentTarget as HTMLInputElement).style.backgroundColor = "rgba(255,255,255,0.06)";
-                            }} />)}
-                        </div>
+                                {error && (
+                                    <div style={{
+                                        padding: "12px 16px",
+                                        backgroundColor: "rgba(239, 68, 68, 0.08)",
+                                        border: "1px solid rgba(239, 68, 68, 0.2)",
+                                        borderRadius: "12px",
+                                        color: "#EF4444",
+                                        fontSize: "13px",
+                                        fontFamily: "Figtree",
+                                        lineHeight: 1.4,
+                                        marginBottom: "16px"
+                                    }}>
+                                        {error}
+                                    </div>
+                                )}
 
-                        <button style={{
-                            width: "100%",
-                            marginTop: "16px",
-                            backgroundColor: "#FF2D87",
-                            color: "#FFFFFF",
-                            borderRadius: "999px",
-                            padding: "16px 32px",
-                            fontFamily: "Figtree",
-                            fontWeight: 500,
-                            fontSize: "15px",
-                            border: "none",
-                            cursor: "pointer",
-                            transition: "filter 200ms, transform 100ms",
-                            boxSizing: "border-box"
-                        }} onMouseEnter={e => {
-                            (e.currentTarget as HTMLButtonElement).style.filter = "brightness(1.10)";
-                        }} onMouseLeave={e => {
-                            (e.currentTarget as HTMLButtonElement).style.filter = "brightness(1)";
-                        }} onMouseDown={e => {
-                            (e.currentTarget as HTMLButtonElement).style.transform = "scale(0.97)";
-                        }} onMouseUp={e => {
-                            (e.currentTarget as HTMLButtonElement).style.transform = "scale(1)";
-                        }}>
-                            Submit Delegate Request
-                        </button>
+                                <div style={{
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    gap: "12px"
+                                }}>
+                                    {[
+                                        { placeholder: "Full Name", type: "text", value: fullName, onChange: setFullName },
+                                        { placeholder: "Email Address", type: "email", value: email, onChange: setEmail },
+                                        { placeholder: "Organisation", type: "text", value: organisation, onChange: setOrganisation },
+                                        { placeholder: "Role / Title", type: "text", value: role, onChange: setRole }
+                                    ].map((field, idx) => (
+                                        <input
+                                            key={`field-${idx}`}
+                                            type={field.type}
+                                            placeholder={field.placeholder}
+                                            value={field.value}
+                                            onChange={e => field.onChange(e.target.value)}
+                                            required
+                                            style={{
+                                                width: "100%",
+                                                backgroundColor: "rgba(255,255,255,0.06)",
+                                                border: "1px solid rgba(255,255,255,0.10)",
+                                                borderRadius: "12px",
+                                                padding: "14px 18px",
+                                                fontFamily: "Figtree",
+                                                fontSize: "14px",
+                                                color: "#FFFFFF",
+                                                outline: "none",
+                                                boxSizing: "border-box",
+                                                transition: "border-color 200ms, background-color 200ms"
+                                            }}
+                                            onFocus={e => {
+                                                (e.currentTarget as HTMLInputElement).style.borderColor = "#FF2D87";
+                                                (e.currentTarget as HTMLInputElement).style.backgroundColor = "rgba(255,255,255,0.08)";
+                                            }}
+                                            onBlur={e => {
+                                                (e.currentTarget as HTMLInputElement).style.borderColor = "rgba(255,255,255,0.10)";
+                                                (e.currentTarget as HTMLInputElement).style.backgroundColor = "rgba(255,255,255,0.06)";
+                                            }}
+                                        />
+                                    ))}
+                                </div>
+
+                                <button
+                                    type="submit"
+                                    disabled={loading}
+                                    style={{
+                                        width: "100%",
+                                        marginTop: "16px",
+                                        backgroundColor: "#FF2D87",
+                                        color: "#FFFFFF",
+                                        borderRadius: "999px",
+                                        padding: "16px 32px",
+                                        fontFamily: "Figtree",
+                                        fontWeight: 500,
+                                        fontSize: "15px",
+                                        border: "none",
+                                        cursor: loading ? "not-allowed" : "pointer",
+                                        opacity: loading ? 0.7 : 1,
+                                        transition: "filter 200ms, transform 100ms",
+                                        boxSizing: "border-box"
+                                    }}
+                                    onMouseEnter={e => {
+                                        if (!loading) (e.currentTarget as HTMLButtonElement).style.filter = "brightness(1.10)";
+                                    }}
+                                    onMouseLeave={e => {
+                                        if (!loading) (e.currentTarget as HTMLButtonElement).style.filter = "brightness(1)";
+                                    }}
+                                    onMouseDown={e => {
+                                        if (!loading) (e.currentTarget as HTMLButtonElement).style.transform = "scale(0.97)";
+                                    }}
+                                    onMouseUp={e => {
+                                        if (!loading) (e.currentTarget as HTMLButtonElement).style.transform = "scale(1)";
+                                    }}
+                                >
+                                    {loading ? "Submitting..." : "Submit Delegate Request"}
+                                </button>
+                            </form>
+                        )}
 
                         {/* Trust row */}
                         <div style={{
