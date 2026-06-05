@@ -761,62 +761,6 @@ const HeroSection = () => {
                     </RouterLink>
                 </motion.div>
 
-                <motion.div initial={{
-                    opacity: 0
-                }} animate={{
-                    opacity: 1
-                }} transition={{
-                    duration: 1,
-                    delay: 1.8
-                }} style={{
-                    width: "100%",
-                    overflow: "hidden",
-                    position: "relative",
-                    maskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
-                    WebkitMaskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)"
-                }}>
-                    <motion.div animate={{
-                        x: ["0%", "-33.33%"]
-                    }} transition={{
-                        duration: 35,
-                        ease: "linear",
-                        repeat: Infinity
-                    }} style={{
-                        display: "flex",
-                        gap: "80px",
-                        alignItems: "center",
-                        whiteSpace: "nowrap",
-                        width: "max-content"
-                    }}>
-                        {EXTENDED_LOGOS.map((logo, i) => <div key={`logo-${logo.id}-${i}`} style={{
-                            flexShrink: 0,
-                            height: "72px",
-                            display: "flex",
-                            alignItems: "center"
-                        }}>
-                            <img
-                                src={logo.src}
-                                alt={logo.name}
-                                style={{
-                                    height: "32px",
-                                    width: "auto",
-                                    maxWidth: "130px",
-                                    objectFit: "contain",
-                                    opacity: 0.85,
-                                    filter: "none",
-                                    transition: "opacity 200ms ease-out",
-                                    cursor: "default"
-                                }}
-                                onMouseEnter={e => {
-                                    (e.currentTarget as HTMLImageElement).style.opacity = "1";
-                                }}
-                                onMouseLeave={e => {
-                                    (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
-                                }}
-                            />
-                        </div>)}
-                    </motion.div>
-                </motion.div>
             </motion.div>
         </div>
 
@@ -907,9 +851,78 @@ const SmartRoutingForm = () => {
         borderRadius: "40px 40px 0 0",
         overflow: "hidden",
         boxShadow: "0 -24px 64px rgba(0,0,0,0.5)",
-        paddingTop: "96px",
+        paddingTop: "0",
         paddingBottom: "128px"
     }}>
+        {/* Partner marquee */}
+        <div style={{
+            width: "100vw",
+            backgroundColor: "#FFFFFF",
+            padding: "24px 0",
+            borderBottom: "1px solid rgba(0,0,0,0.05)",
+            marginLeft: "calc(-50vw + 50%)",
+            marginRight: "calc(-50vw + 50%)",
+            overflow: "hidden",
+            marginBottom: "80px",
+            display: "flex",
+            alignItems: "center"
+        }}>
+            <motion.div initial={{
+              opacity: 0
+            }} animate={{
+              opacity: 1
+            }} transition={{
+              duration: 1,
+              delay: 0.5
+            }} style={{
+              width: "100%",
+              overflow: "hidden",
+              maskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
+              WebkitMaskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)"
+            }}>
+              <motion.div animate={{
+                x: ["0%", "-33.33%"]
+              }} transition={{
+                duration: 35,
+                ease: "linear",
+                repeat: Infinity
+              }} style={{
+                display: "flex",
+                gap: "80px",
+                alignItems: "center",
+                whiteSpace: "nowrap",
+                width: "max-content"
+              }}>
+                {EXTENDED_LOGOS.map((logo, i) => <div key={`logo-${logo.id}-${i}`} style={{
+                  flexShrink: 0,
+                  height: "72px",
+                  display: "flex",
+                  alignItems: "center"
+                }}>
+                  <img
+                    src={logo.src}
+                    alt={logo.name}
+                    style={{
+                      height: "32px",
+                      width: "auto",
+                      maxWidth: "130px",
+                      objectFit: "contain",
+                      opacity: 0.85,
+                      filter: "none",
+                      transition: "opacity 200ms ease-out",
+                      cursor: "default"
+                    }}
+                    onMouseEnter={e => {
+                      (e.currentTarget as HTMLImageElement).style.opacity = "1";
+                    }}
+                    onMouseLeave={e => {
+                      (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
+                    }}
+                  />
+                </div>)}
+              </motion.div>
+            </motion.div>
+        </div>
         <div style={{
             position: "relative",
             zIndex: 20,
@@ -2310,14 +2323,6 @@ const FooterSection = () => {
 const ContactHero = () => {
     const HERO_WORDS = ["Join", "the", "Room", "Shaping", "Africa’s", "Economic", "Destiny."];
 
-    const EXTENDED_LOGOS = [
-        { id: "lg-1", name: "ABSA", src: "/absa-logo.png" },
-        { id: "lg-2", name: "CCBSA", src: "/ccbsa.png" },
-        { id: "lg-3", name: "Old Mutual", src: "/old_mutual_logo - Copy.png" },
-        { id: "lg-4", name: "WRSETA", src: "/WRSETA.jpg" },
-        { id: "lg-5", name: "EmpowaWomen", src: "/logo.png" }
-    ];
-
     const headline = (
         <>
             {HERO_WORDS.map((word, index) => {
@@ -2329,42 +2334,12 @@ const ContactHero = () => {
         </>
     );
 
-    const bottomSection = (
-        <div style={{ width: "100%", overflow: "hidden", position: "relative", maskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)", WebkitMaskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)" }}>
-            <motion.div animate={{ x: ["0%", "-50%"] }} transition={{ duration: 35, ease: "linear", repeat: Infinity }} style={{ display: "flex", gap: "80px", alignItems: "center", whiteSpace: "nowrap", width: "max-content" }}>
-                {EXTENDED_LOGOS.map((logo, i) => <div key={`logo-${logo.id}-${i}`} style={{ flexShrink: 0, height: "72px", display: "flex", alignItems: "center" }}>
-                    <img
-                        src={logo.src}
-                        alt={logo.name}
-                        style={{
-                            height: "32px",
-                            width: "auto",
-                            maxWidth: "130px",
-                            objectFit: "contain",
-                            opacity: 0.85,
-                            filter: "none",
-                            transition: "opacity 200ms ease-out",
-                            cursor: "default"
-                        }}
-                        onMouseEnter={e => {
-                            (e.currentTarget as HTMLImageElement).style.opacity = "1";
-                        }}
-                        onMouseLeave={e => {
-                            (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
-                        }}
-                    />
-                </div>)}
-            </motion.div>
-        </div>
-    );
-
     return <UniversalHero
         bgImage="/contact.jpg"
         pillText="ROUTING HEADQUARTERS · CONTACT US"
         headline={headline}
         description="Whether you're exploring enterprise partnerships, inquiring about speaking opportunities, or looking to join our executive network, direct your inquiry below."
         primaryCtaText="Explore Programs"
-        bottomSection={bottomSection}
     />;
 };
 

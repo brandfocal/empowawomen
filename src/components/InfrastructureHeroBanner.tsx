@@ -62,13 +62,12 @@ export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
     width: "100%",
     minHeight: "100vh",
     backgroundColor: "#0A0A0F",
-    overflow: "hidden",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "flex-start",
-    paddingTop: "68px",
-    paddingBottom: "40px"
+    justifyContent: "center",
+    paddingTop: "clamp(100px, 12vh, 140px)",
+    paddingBottom: "clamp(60px, 8vh, 100px)"
   }}>
     {/* Grain noise overlay */}
     <div style={{
@@ -145,9 +144,7 @@ export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
       paddingBottom: "24px",
       display: "flex",
       flexDirection: "column",
-      alignItems: "center",
-      marginTop: "auto",
-      marginBottom: "auto"
+      alignItems: "center"
     }}>
       <motion.div initial={{
         y: 90

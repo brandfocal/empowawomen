@@ -5,7 +5,7 @@ import { ArrowRight, Download, Calendar, MapPin, Users, CheckCircle, Loader2, X 
 const STREAMS_DATA = [{
     id: 1,
     number: "STREAM 01",
-    title: "Artificial Intelligence & The Digital Economy",
+    title: "Artificial Intelligence and The Digital Economy",
     date: "Thu 15 Apr 2027",
     accent: "#FF2D87",
     strategicInsight: "AI reshaping leadership, business models, customer ecosystems, and workforce globally.",
@@ -13,7 +13,7 @@ const STREAMS_DATA = [{
 }, {
     id: 2,
     number: "STREAM 02",
-    title: "Capital Investment & Financial Ecosystems",
+    title: "Capital Investment and Financial Ecosystems",
     date: "Sat 15 May 2027",
     accent: "#00B4A6",
     strategicInsight: "Capital remains the greatest accelerator of scalable women-led economic participation.",
@@ -21,7 +21,7 @@ const STREAMS_DATA = [{
 }, {
     id: 3,
     number: "STREAM 03",
-    title: "Energy Transition Mining & Climate Innovation",
+    title: "Energy Transition Mining and Climate Innovation",
     date: "Thu 17 Jun 2027",
     accent: "#D97706",
     strategicInsight: "Africa energy transition and climate economy present trillion-rand opportunities.",
@@ -29,7 +29,7 @@ const STREAMS_DATA = [{
 }, {
     id: 4,
     number: "STREAM 04",
-    title: "Property Infrastructure & Future Cities",
+    title: "Property Infrastructure and Future Cities",
     date: "Sat 17 Jul 2027",
     accent: "#FF2D87",
     strategicInsight: "Urbanisation and infrastructure development remain key drivers of economic growth.",
@@ -37,7 +37,7 @@ const STREAMS_DATA = [{
 }, {
     id: 5,
     number: "STREAM 05",
-    title: "Agriculture Food Systems & Agri-Innovation",
+    title: "Agriculture Food Systems and Agri-Innovation",
     date: "Thu 19 Aug 2027",
     accent: "#00B4A6",
     strategicInsight: "Food security, agri-tech and sustainable agriculture becoming strategic priorities globally.",
@@ -45,7 +45,7 @@ const STREAMS_DATA = [{
 }, {
     id: 6,
     number: "STREAM 06",
-    title: "Healthcare Wellness & The Care Economy",
+    title: "Healthcare Wellness and The Care Economy",
     date: "Sat 18 Sep 2027",
     accent: "#D97706",
     strategicInsight: "Care economy and healthcare innovation among fastest-growing industries globally.",
@@ -53,7 +53,7 @@ const STREAMS_DATA = [{
 }, {
     id: 7,
     number: "STREAM 07",
-    title: "Media Creative Economies & Cultural Influence",
+    title: "Media Creative Economies and Cultural Influence",
     date: "Thu 14 Oct 2027",
     accent: "#FF2D87",
     strategicInsight: "Influence, storytelling and creator economies redefining brand power and commercial growth.",
@@ -61,7 +61,7 @@ const STREAMS_DATA = [{
 }, {
     id: 8,
     number: "STREAM 08",
-    title: "Manufacturing Trade & Industrial Transformation",
+    title: "Manufacturing Trade and Industrial Transformation",
     date: "Sat 23 Oct 2027",
     accent: "#00B4A6",
     strategicInsight: "Industrialisation and intra-African trade critical pillars for economic competitiveness.",
@@ -69,7 +69,7 @@ const STREAMS_DATA = [{
 }, {
     id: 9,
     number: "STREAM 09",
-    title: "Retail Luxury Tourism & Consumer Economies",
+    title: "Retail Luxury Tourism and Consumer Economies",
     date: "Thu 11 Nov 2027",
     accent: "#D97706",
     strategicInsight: "Consumer markets evolving through digital commerce, experiential retail, and premium lifestyle.",
@@ -77,7 +77,7 @@ const STREAMS_DATA = [{
 }, {
     id: 10,
     number: "STREAM 10",
-    title: "Executive Leadership Governance & Enterprise Growth",
+    title: "Executive Leadership Governance and Enterprise Growth",
     date: "Sat 27 Nov 2027",
     accent: "#FF2D87",
     strategicInsight: "Future belongs to leaders who scale influence, build resilient organisations, and drive transformation.",

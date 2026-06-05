@@ -270,13 +270,12 @@ export const SummitHeroHeader: React.FC = () => {
     width: "100%",
     minHeight: "100vh",
     backgroundColor: "#0A0A0F",
-    overflow: "hidden",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    paddingTop: "68px",
-    paddingBottom: "80px"
+    paddingTop: "clamp(100px, 12vh, 140px)",
+    paddingBottom: "clamp(60px, 8vh, 100px)"
   }}>
     {/* Grain noise layer */}
     <div style={{
@@ -583,62 +582,7 @@ export const SummitHeroHeader: React.FC = () => {
           </span>
         </motion.div>
 
-        {/* Logo marquee */}
-        <motion.div initial={{
-          opacity: 0
-        }} animate={{
-          opacity: 1
-        }} transition={{
-          duration: 1,
-          delay: 1.8
-        }} style={{
-          width: "100%",
-          overflow: "hidden",
-          maskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
-          WebkitMaskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)"
-        }}>
-          <motion.div animate={{
-            x: ["0%", "-50%"]
-          }} transition={{
-            duration: 35,
-            ease: "linear",
-            repeat: Infinity
-          }} style={{
-            display: "flex",
-            gap: "clamp(40px, 6vw, 80px)",
-            alignItems: "center",
-            whiteSpace: "nowrap",
-            width: "max-content"
-          }}>
-            {EXTENDED_LOGOS.map((logo, i) => <div key={`logo-${logo.id}-${i}`} style={{
-              flexShrink: 0,
-              height: "72px",
-              display: "flex",
-              alignItems: "center"
-            }}>
-              <img
-                src={logo.src}
-                alt={logo.name}
-                style={{
-                  height: "32px",
-                  width: "auto",
-                  maxWidth: "130px",
-                  objectFit: "contain",
-                  opacity: 0.85,
-                  filter: "none",
-                  transition: "opacity 200ms ease-out",
-                  cursor: "default"
-                }}
-                onMouseEnter={e => {
-                  (e.currentTarget as HTMLImageElement).style.opacity = "1";
-                }}
-                onMouseLeave={e => {
-                  (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
-                }}
-              />
-            </div>)}
-          </motion.div>
-        </motion.div>
+
       </motion.div>
     </div>
 
@@ -776,6 +720,70 @@ export const SummitsHub: React.FC = () => {
         borderRadius: '32px 32px 0 0',
         boxShadow: '0 -24px 64px rgba(0,0,0,0.15)'
       }}>
+        {/* Partner marquee */}
+        <div style={{
+            width: "100%",
+            backgroundColor: "#FFFFFF",
+            padding: "24px 0",
+            borderBottom: "1px solid rgba(0,0,0,0.05)",
+            overflow: "hidden"
+        }}>
+            <motion.div initial={{
+              opacity: 0
+            }} animate={{
+              opacity: 1
+            }} transition={{
+              duration: 1,
+              delay: 0.5
+            }} style={{
+              width: "100%",
+              overflow: "hidden",
+              maskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
+              WebkitMaskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)"
+            }}>
+              <motion.div animate={{
+                x: ["0%", "-50%"]
+              }} transition={{
+                duration: 35,
+                ease: "linear",
+                repeat: Infinity
+              }} style={{
+                display: "flex",
+                gap: "clamp(40px, 6vw, 80px)",
+                alignItems: "center",
+                whiteSpace: "nowrap",
+                width: "max-content"
+              }}>
+                {EXTENDED_LOGOS.map((logo, i) => <div key={`logo-${logo.id}-${i}`} style={{
+                  flexShrink: 0,
+                  height: "72px",
+                  display: "flex",
+                  alignItems: "center"
+                }}>
+                  <img
+                    src={logo.src}
+                    alt={logo.name}
+                    style={{
+                      height: "32px",
+                      width: "auto",
+                      maxWidth: "130px",
+                      objectFit: "contain",
+                      opacity: 0.85,
+                      filter: "none",
+                      transition: "opacity 200ms ease-out",
+                      cursor: "default"
+                    }}
+                    onMouseEnter={e => {
+                      (e.currentTarget as HTMLImageElement).style.opacity = "1";
+                    }}
+                    onMouseLeave={e => {
+                      (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
+                    }}
+                  />
+                </div>)}
+              </motion.div>
+            </motion.div>
+        </div>
         {/* ─── 1. VALUE PROPOSITION BRIDGE ─── */}
         <div style={{
           maxWidth: "1400px",

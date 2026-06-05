@@ -4,6 +4,7 @@ import { EmpowaWomenHome } from './components/EmpowaWomenHomePage';
 import { EmpowaWomenAboutPage } from './components/EmpowaWomenAboutUs';
 import { EmpowaWomenContact } from './components/EmpowaWomenContactUs';
 import { EmpowaHerAcademy } from './components/EmpowaWomenEmpowaHerAcademy';
+import { EnhancedEmpowaHerAcademy } from './components/EnhancedEmpowaHerAcademy';
 import { EmpowaWomenPartnerships } from './components/EmpowaWomenPartnerships';
 import { Layout } from './components/UniversalLayout';
 import { ExecutiveIndustrySeries } from './components/EmpowaWomenExecutiveIndustrySeries';
@@ -56,6 +57,7 @@ function App() {
             <Route path="about" element={<EmpowaWomenAboutPage />} />
             <Route path="contact" element={<EmpowaWomenContact />} />
             <Route path="academy" element={<EmpowaHerAcademy />} />
+            <Route path="academy-enhanced" element={<EnhancedEmpowaHerAcademy />} />
             <Route path="partnerships" element={<EmpowaWomenPartnerships />} />
             <Route path="executive-industry-series" element={<ExecutiveIndustrySeries />} />
             <Route path="leadership-awards-gala" element={<LeadershipAwardsGala />} />

@@ -28,7 +28,7 @@ const NAV_LINKS: NavLinkItem[] = [
     },
     {
         id: "nav-pillars",
-        label: "EmpowaWomen Programmes",
+        label: "EmpowaWomen Summit Programmes",
         href: "/#pillars",
         hasDropdown: true,
         dropdownItems: [

@@ -91,6 +91,33 @@ const PROVINCIAL_SUMMITS: ProvincialSummit[] = [{
     targetDelegate: 'Mining Executives, Green Hydrogen Stakeholders, Investors',
     sector: 'Energy'
 }];
+interface LogoItem {
+    id: string;
+    name: string;
+    src: string;
+}
+const LOGOS: LogoItem[] = [{
+    id: "logo-1",
+    name: "ABSA",
+    src: "/absa-logo.png"
+}, {
+    id: "logo-2",
+    name: "CCBSA",
+    src: "/ccbsa.png"
+}, {
+    id: "logo-3",
+    name: "Old Mutual",
+    src: "/old_mutual_logo - Copy.png"
+}, {
+    id: "logo-4",
+    name: "WRSETA",
+    src: "/WRSETA.jpg"
+}, {
+    id: "logo-5",
+    name: "EmpowaWomen",
+    src: "/logo.png"
+}];
+const EXTENDED_LOGOS = [...LOGOS, ...LOGOS, ...LOGOS, ...LOGOS, ...LOGOS];
 
 // --- Hero Headline Words ---
 
@@ -185,12 +212,12 @@ export const ProvincialSummitSeries = () => {
             width: '100%',
             minHeight: '100vh',
             backgroundColor: '#0A0A0F',
-            overflow: 'hidden',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            paddingTop: '68px'
+            paddingTop: 'clamp(100px, 12vh, 140px)',
+            paddingBottom: 'clamp(60px, 8vh, 100px)'
         }}>
             {/* Film grain texture */}
             <div style={{
@@ -470,10 +497,75 @@ export const ProvincialSummitSeries = () => {
         {/* ── Provincial Matrix Section ─────────────────────────────────────── */}
         <section style={{
             backgroundColor: '#F7F6F2',
-            paddingTop: '80px',
+            paddingTop: '0',
             paddingBottom: '80px',
             color: '#0A0A0F'
         }} className="provincial-section-pad">
+            {/* Partner marquee */}
+            <div style={{
+                width: "100%",
+                backgroundColor: "#FFFFFF",
+                padding: "24px 0",
+                borderBottom: "1px solid rgba(0,0,0,0.05)",
+                overflow: "hidden",
+                marginBottom: "80px"
+            }}>
+                <motion.div initial={{
+                  opacity: 0
+                }} animate={{
+                  opacity: 1
+                }} transition={{
+                  duration: 1,
+                  delay: 0.5
+                }} style={{
+                  width: "100%",
+                  overflow: "hidden",
+                  maskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
+                  WebkitMaskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)"
+                }}>
+                  <motion.div animate={{
+                    x: ["0%", "-50%"]
+                  }} transition={{
+                    duration: 35,
+                    ease: "linear",
+                    repeat: Infinity
+                  }} style={{
+                    display: "flex",
+                    gap: "clamp(40px, 6vw, 80px)",
+                    alignItems: "center",
+                    whiteSpace: "nowrap",
+                    width: "max-content"
+                  }}>
+                    {EXTENDED_LOGOS.map((logo, i) => <div key={`logo-${logo.id}-${i}`} style={{
+                      flexShrink: 0,
+                      height: "72px",
+                      display: "flex",
+                      alignItems: "center"
+                    }}>
+                      <img
+                        src={logo.src}
+                        alt={logo.name}
+                        style={{
+                          height: "32px",
+                          width: "auto",
+                          maxWidth: "130px",
+                          objectFit: "contain",
+                          opacity: 0.85,
+                          filter: "none",
+                          transition: "opacity 200ms ease-out",
+                          cursor: "default"
+                        }}
+                        onMouseEnter={e => {
+                          (e.currentTarget as HTMLImageElement).style.opacity = "1";
+                        }}
+                        onMouseLeave={e => {
+                          (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
+                        }}
+                      />
+                    </div>)}
+                  </motion.div>
+                </motion.div>
+            </div>
             <div style={{ maxWidth: "1280px", margin: "0 auto", paddingLeft: "clamp(24px, 6vw, 48px)", paddingRight: "clamp(24px, 6vw, 48px)" }}>
                 {/* Heading block */}
                 <div style={{ marginBottom: "48px" }}>

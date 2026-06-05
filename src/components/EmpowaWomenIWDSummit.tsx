@@ -28,35 +28,33 @@ interface WhyAttendCard {
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 const HERO_WORDS = ["More", "Than", "A", "Celebration."];
-const LOGOS = [{
-    id: "lg-1",
-    name: "ABSA"
+interface LogoItem {
+    id: string;
+    name: string;
+    src: string;
+}
+const LOGOS: LogoItem[] = [{
+    id: "logo-1",
+    name: "ABSA",
+    src: "/absa-logo.png"
 }, {
-    id: "lg-2",
-    name: "DEPT. OF WOMEN"
+    id: "logo-2",
+    name: "CCBSA",
+    src: "/ccbsa.png"
 }, {
-    id: "lg-3",
-    name: "STANDARD BANK"
+    id: "logo-3",
+    name: "Old Mutual",
+    src: "/old_mutual_logo - Copy.png"
 }, {
-    id: "lg-4",
-    name: "ANGLO AMERICAN"
+    id: "logo-4",
+    name: "WRSETA",
+    src: "/WRSETA.jpg"
 }, {
-    id: "lg-5",
-    name: "NEDBANK"
-}, {
-    id: "lg-6",
-    name: "ESKOM"
-}, {
-    id: "lg-7",
-    name: "MTN"
-}, {
-    id: "lg-8",
-    name: "SASOL"
-}, {
-    id: "lg-9",
-    name: "OLD MUTUAL"
+    id: "logo-5",
+    name: "EmpowaWomen",
+    src: "/logo.png"
 }];
-const EXTENDED_LOGOS = [...LOGOS, ...LOGOS, ...LOGOS];
+const EXTENDED_LOGOS = [...LOGOS, ...LOGOS, ...LOGOS, ...LOGOS, ...LOGOS];
 const AGENDA_ITEMS: AgendaItem[] = [{
     id: "ag-1",
     time: "10h00 – 10h30",
@@ -214,12 +212,12 @@ const HeroSection = () => {
         width: "100%",
         minHeight: "100vh",
         backgroundColor: "#0A0A0F",
-        overflow: "hidden",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        paddingTop: "68px",
-        paddingBottom: "80px"
+        justifyContent: "center",
+        paddingTop: "clamp(100px, 12vh, 140px)",
+        paddingBottom: "clamp(60px, 8vh, 100px)"
     }}>
         {/* Grain noise layer */}
         <div style={{
@@ -491,60 +489,7 @@ const HeroSection = () => {
                     </a>
                 </motion.div>
 
-                {/* Logo scroller */}
-                <motion.div initial={{
-                    opacity: 0
-                }} animate={{
-                    opacity: 1
-                }} transition={{
-                    duration: 1,
-                    delay: 1.8
-                }} style={{
-                    width: "100%",
-                    marginTop: "40px",
-                    overflow: "hidden",
-                    position: "relative",
-                    maskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
-                    WebkitMaskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)"
-                }}>
-                    <motion.div animate={{
-                        x: ["0%", "-50%"]
-                    }} transition={{
-                        duration: 35,
-                        ease: "linear",
-                        repeat: Infinity
-                    }} style={{
-                        display: "flex",
-                        gap: "60px",
-                        alignItems: "center",
-                        whiteSpace: "nowrap",
-                        width: "max-content"
-                    }}>
-                        {EXTENDED_LOGOS.map((logo, i) => <div key={`logo-${logo.id}-${i}`} style={{
-                            flexShrink: 0,
-                            height: "60px",
-                            display: "flex",
-                            alignItems: "center"
-                        }}>
-                            <span style={{
-                                fontFamily: "Figtree",
-                                fontSize: "11px",
-                                fontWeight: 600,
-                                letterSpacing: "0.18em",
-                                color: "rgba(255,255,255,0.20)",
-                                cursor: "default",
-                                textTransform: "uppercase",
-                                transition: "color 200ms ease-out"
-                            }} onMouseEnter={e => {
-                                (e.currentTarget as HTMLSpanElement).style.color = "rgba(255,255,255,0.60)";
-                            }} onMouseLeave={e => {
-                                (e.currentTarget as HTMLSpanElement).style.color = "rgba(255,255,255,0.20)";
-                            }}>
-                                {logo.name}
-                            </span>
-                        </div>)}
-                    </motion.div>
-                </motion.div>
+
             </motion.div>
         </div>
 
@@ -600,6 +545,70 @@ export const IWDSummitDetail = () => {
             paddingTop: "0",
             paddingBottom: "clamp(64px, 10vw, 128px)"
         }}>
+            {/* Partner marquee */}
+            <div style={{
+                width: "100%",
+                backgroundColor: "#FFFFFF",
+                padding: "24px 0",
+                borderBottom: "1px solid rgba(0,0,0,0.05)",
+                overflow: "hidden"
+            }}>
+                <motion.div initial={{
+                  opacity: 0
+                }} animate={{
+                  opacity: 1
+                }} transition={{
+                  duration: 1,
+                  delay: 0.5
+                }} style={{
+                  width: "100%",
+                  overflow: "hidden",
+                  maskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
+                  WebkitMaskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)"
+                }}>
+                  <motion.div animate={{
+                    x: ["0%", "-50%"]
+                  }} transition={{
+                    duration: 35,
+                    ease: "linear",
+                    repeat: Infinity
+                  }} style={{
+                    display: "flex",
+                    gap: "clamp(40px, 6vw, 80px)",
+                    alignItems: "center",
+                    whiteSpace: "nowrap",
+                    width: "max-content"
+                  }}>
+                    {EXTENDED_LOGOS.map((logo, i) => <div key={`logo-${logo.id}-${i}`} style={{
+                      flexShrink: 0,
+                      height: "72px",
+                      display: "flex",
+                      alignItems: "center"
+                    }}>
+                      <img
+                        src={logo.src}
+                        alt={logo.name}
+                        style={{
+                          height: "32px",
+                          width: "auto",
+                          maxWidth: "130px",
+                          objectFit: "contain",
+                          opacity: 0.85,
+                          filter: "none",
+                          transition: "opacity 200ms ease-out",
+                          cursor: "default"
+                        }}
+                        onMouseEnter={e => {
+                          (e.currentTarget as HTMLImageElement).style.opacity = "1";
+                        }}
+                        onMouseLeave={e => {
+                          (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
+                        }}
+                      />
+                    </div>)}
+                  </motion.div>
+                </motion.div>
+            </div>
             <div style={{
                 position: "relative",
                 zIndex: 1

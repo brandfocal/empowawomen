@@ -692,10 +692,11 @@ const HeroSection: React.FC<{
       scrollY
     } = useScroll();
     const bgY = useTransform(scrollY, [0, 600], [0, 240]);
-    return <section ref={sectionRef as React.RefObject<HTMLElement>} className="relative w-full flex flex-col items-center justify-start overflow-hidden" style={{
+    return <section ref={sectionRef as React.RefObject<HTMLElement>} className="relative w-full flex flex-col items-center justify-center" style={{
       minHeight: "100vh",
       backgroundColor: "#0A0A0F",
-      paddingBottom: "40px",
+      paddingTop: "clamp(100px, 12vh, 140px)",
+      paddingBottom: "clamp(60px, 8vh, 100px)",
       zIndex: 1
     }}>
       {/* Ken Burns + Parallax background */}
@@ -740,9 +741,7 @@ const HeroSection: React.FC<{
         maxWidth: "1400px",
         margin: "0 auto",
         paddingTop: "clamp(24px, 5vw, 64px)",
-        paddingBottom: "24px",
-        marginTop: "auto",
-        marginBottom: "auto"
+        paddingBottom: "24px"
       }}>
         <motion.div initial={{
           y: 90
@@ -995,8 +994,9 @@ const IntroBridgeSection: React.FC = () => {
 // ─── Sponsor Marquee Strip ────────────────────────────────────────────────────
 const SponsorMarqueeStrip: React.FC = () => {
   return <div style={{
-    backgroundColor: "#0A0A0F",
-    borderTop: "1px solid rgba(255,255,255,0.06)",
+    backgroundColor: "#FFFFFF",
+    borderTop: "1px solid rgba(0,0,0,0.05)",
+    borderBottom: "1px solid rgba(0,0,0,0.05)",
     paddingTop: "24px",
     paddingBottom: "24px",
     width: "100%",

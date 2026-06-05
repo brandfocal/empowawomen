@@ -304,13 +304,16 @@ const CountdownTimer = () => {
 const HeroSection = () => {
     const HERO_LINES = [{
         id: "hl-1",
-        words: ["Africa's", "Most", "Influential", "Women", "Leaders", "Convene."]
+        words: ["Leading", "Fearlessly."]
     }, {
         id: "hl-2",
-        words: ["The", "Command", "Centre", "Of", "Power,", "Capital", "And", "Control."]
+        words: ["Accelerating", "Growth."]
+    }, {
+        id: "hl-3",
+        words: ["Transforming", "Economies."]
     }];
     // Words that get pink underline + pink period treatment
-    const UNDERLINED_WORDS = new Set(["Convene.", "Control."]);
+    const UNDERLINED_WORDS = new Set(["Fearlessly.", "Growth.", "Economies."]);
     const {
         scrollY
     } = useScroll();
@@ -766,63 +769,7 @@ const HeroSection = () => {
                     </motion.div>
                 </div>
 
-                {/* Logo marquee */}
-                <motion.div initial={{
-                    opacity: 0
-                }} animate={{
-                    opacity: 1
-                }} transition={{
-                    duration: 1,
-                    delay: 1.8
-                }} style={{
-                    width: "100%",
-                    overflow: "hidden",
-                    position: "relative",
-                    maskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
-                    WebkitMaskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)"
-                }}>
-                    <motion.div animate={{
-                        x: ["0%", "-50%"]
-                    }} transition={{
-                        duration: 35,
-                        ease: "linear",
-                        repeat: Infinity
-                    }} style={{
-                        display: "flex",
-                        gap: "80px",
-                        alignItems: "center",
-                        whiteSpace: "nowrap",
-                        width: "max-content"
-                    }}>
-                        {EXTENDED_LOGOS.map((logo, i) => <div key={`logo-${logo.id}-${i}`} style={{
-                            flexShrink: 0,
-                            height: "72px",
-                            display: "flex",
-                            alignItems: "center"
-                        }}>
-                            <img
-                                src={logo.src}
-                                alt={logo.name}
-                                style={{
-                                    height: "32px",
-                                    width: "auto",
-                                    maxWidth: "130px",
-                                    objectFit: "contain",
-                                    opacity: 0.85,
-                                    filter: "none",
-                                    transition: "opacity 200ms ease-out",
-                                    cursor: "default"
-                                }}
-                                onMouseEnter={e => {
-                                    (e.currentTarget as HTMLImageElement).style.opacity = "1";
-                                }}
-                                onMouseLeave={e => {
-                                    (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
-                                }}
-                            />
-                        </div>)}
-                    </motion.div>
-                </motion.div>
+
             </motion.div>
         </div>
 
@@ -1922,14 +1869,14 @@ const PillarCard = ({
 
 // ─── Video Section ────────────────────────────────────────────────────────────
 const VideoSection = () => {
-    const playlist = ["s_RGYF3-fO4", "w5p9v_9Htes", "YdrNRk5IDiM"];
+    const playlist = ["ur-TCxziR3U", "AeodFhnuUyQ", "iTeO8OVZUQ0", "w5p9v_9Htes", "rJ3_6lnOPcI"];
     const [currentVideoId, setCurrentVideoId] = React.useState(playlist[0]);
     const [isPlaying, setIsPlaying] = React.useState(false);
     const [isHoveringPlay, setIsHoveringPlay] = React.useState(false);
     const VIDEO_HEADLINE_WORDS = ["See", "what", "happened", "last", "year."];
     const STATS_DATA = [{
         id: "vs-1",
-        value: "10,000+",
+        value: "50,000+",
         label: "Delegates Connected"
     }, {
         id: "vs-2",
@@ -1944,7 +1891,7 @@ const VideoSection = () => {
         value: "92%",
         label: "Delegate Return Rate"
     }];
-    return <section style={{
+    return <section id="media-event-reels" style={{
         backgroundColor: "#F7F6F2",
         paddingTop: "clamp(80px,10vw,140px)",
         paddingBottom: "clamp(80px,10vw,140px)",
@@ -2069,7 +2016,7 @@ const VideoSection = () => {
                     (e.currentTarget as HTMLAnchorElement).style.color = "rgba(10,10,15,0.55)";
                 }} onClick={e => {
                     e.preventDefault();
-                    document.getElementById("home-video-player")?.scrollIntoView({ behavior: "smooth" });
+                    document.getElementById("media-event-reels")?.scrollIntoView({ behavior: "smooth" });
                 }}>
                     <span>Watch the full reel</span>
                     <ArrowRight size={14} />
@@ -2099,7 +2046,7 @@ const VideoSection = () => {
             position: "relative",
             zIndex: 1
         }}>
-            <div id="home-video-player" style={{
+            <div style={{
                 aspectRatio: "16/9",
                 position: "relative",
                 borderRadius: "24px",
@@ -2234,31 +2181,32 @@ const VideoSection = () => {
             zIndex: 1,
             position: "relative"
         }}>
-            {playlist.map((vid) => (
-                <div key={vid} onClick={() => { setCurrentVideoId(vid); setIsPlaying(true); }} style={{
-                    minWidth: "160px",
-                    width: "25%",
-                    aspectRatio: "16/9",
-                    borderRadius: "12px",
-                    overflow: "hidden",
-                    cursor: "pointer",
-                    border: currentVideoId === vid ? "2px solid #FF2D87" : "2px solid transparent",
-                    transition: "all 0.2s ease",
-                    position: "relative"
-                }}>
-                    <img src={`https://img.youtube.com/vi/${vid}/mqdefault.jpg`} alt="thumbnail" style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                        opacity: currentVideoId === vid ? 1 : 0.6
-                    }} />
-                    {currentVideoId !== vid && <div style={{
-                        position: "absolute",
-                        inset: 0,
-                        backgroundColor: "rgba(0,0,0,0.2)"
-                    }} />}
-                </div>
-            ))}
+            {playlist.map((vid) => <div key={vid} onClick={() => {
+                setCurrentVideoId(vid);
+                setIsPlaying(true);
+            }} style={{
+                minWidth: "160px",
+                width: "25%",
+                aspectRatio: "16/9",
+                borderRadius: "12px",
+                overflow: "hidden",
+                cursor: "pointer",
+                border: currentVideoId === vid ? "2px solid #FF2D87" : "2px solid transparent",
+                transition: "all 0.2s ease",
+                position: "relative"
+            }}>
+                <img src={`https://img.youtube.com/vi/${vid}/mqdefault.jpg`} alt="thumbnail" style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    opacity: currentVideoId === vid ? 1 : 0.6
+                }} />
+                {currentVideoId !== vid && <div style={{
+                    position: "absolute",
+                    inset: 0,
+                    backgroundColor: "rgba(0,0,0,0.2)"
+                }} />}
+            </div>)}
         </div>
 
         <div style={{

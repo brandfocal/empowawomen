@@ -782,62 +782,6 @@ const HeroSection = () => {
                     </a>
                 </motion.div>
 
-                <motion.div initial={{
-                    opacity: 0
-                }} animate={{
-                    opacity: 1
-                }} transition={{
-                    duration: 1,
-                    delay: 1.8
-                }} style={{
-                    width: "100%",
-                    overflow: "hidden",
-                    position: "relative",
-                    maskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
-                    WebkitMaskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)"
-                }}>
-                    <motion.div animate={{
-                        x: ["0%", "-33.333%"]
-                    }} transition={{
-                        duration: 35,
-                        ease: "linear",
-                        repeat: Infinity
-                    }} style={{
-                        display: "flex",
-                        gap: "80px",
-                        alignItems: "center",
-                        whiteSpace: "nowrap",
-                        width: "max-content"
-                    }}>
-                        {EXTENDED_LOGOS.map((logo, i) => <div key={`logo-${logo.id}-${i}`} style={{
-                            flexShrink: 0,
-                            height: "72px",
-                            display: "flex",
-                            alignItems: "center"
-                        }}>
-                            <img
-                                src={logo.src}
-                                alt={logo.name}
-                                style={{
-                                    height: "32px",
-                                    width: "auto",
-                                    maxWidth: "130px",
-                                    objectFit: "contain",
-                                    opacity: 0.85,
-                                    filter: "none",
-                                    transition: "opacity 200ms ease-out",
-                                    cursor: "default"
-                                }}
-                                onMouseEnter={e => {
-                                    (e.currentTarget as HTMLImageElement).style.opacity = "1";
-                                }}
-                                onMouseLeave={e => {
-                                    (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
-                                }}
-                            />
-                        </div>)}
-                    </motion.div>
-                </motion.div>
             </motion.div>
         </div>
 
@@ -855,7 +799,7 @@ const HeroSection = () => {
 const DelegateAudienceProfile = () => {
     return <section style={{
         backgroundColor: "#F7F6F2",
-        paddingTop: "128px",
+        paddingTop: "0",
         paddingBottom: "128px",
         paddingLeft: "clamp(24px, 6vw, 96px)",
         paddingRight: "clamp(24px, 6vw, 96px)",
@@ -866,6 +810,75 @@ const DelegateAudienceProfile = () => {
         boxShadow: "0 -24px 64px rgba(0,0,0,0.5)",
         overflow: "hidden"
     }}>
+        {/* Partner marquee */}
+        <div style={{
+            width: "100vw",
+            backgroundColor: "#FFFFFF",
+            padding: "24px 0",
+            borderBottom: "1px solid rgba(0,0,0,0.05)",
+            marginLeft: "calc(-50vw + 50%)",
+            marginRight: "calc(-50vw + 50%)",
+            overflow: "hidden",
+            marginBottom: "80px",
+            display: "flex",
+            alignItems: "center"
+        }}>
+            <motion.div initial={{
+              opacity: 0
+            }} animate={{
+              opacity: 1
+            }} transition={{
+              duration: 1,
+              delay: 0.5
+            }} style={{
+              width: "100%",
+              overflow: "hidden",
+              maskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
+              WebkitMaskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)"
+            }}>
+              <motion.div animate={{
+                x: ["0%", "-33.333%"]
+              }} transition={{
+                duration: 35,
+                ease: "linear",
+                repeat: Infinity
+              }} style={{
+                display: "flex",
+                gap: "80px",
+                alignItems: "center",
+                whiteSpace: "nowrap",
+                width: "max-content"
+              }}>
+                {EXTENDED_LOGOS.map((logo, i) => <div key={`logo-${logo.id}-${i}`} style={{
+                  flexShrink: 0,
+                  height: "72px",
+                  display: "flex",
+                  alignItems: "center"
+                }}>
+                  <img
+                    src={logo.src}
+                    alt={logo.name}
+                    style={{
+                      height: "32px",
+                      width: "auto",
+                      maxWidth: "130px",
+                      objectFit: "contain",
+                      opacity: 0.85,
+                      filter: "none",
+                      transition: "opacity 200ms ease-out",
+                      cursor: "default"
+                    }}
+                    onMouseEnter={e => {
+                      (e.currentTarget as HTMLImageElement).style.opacity = "1";
+                    }}
+                    onMouseLeave={e => {
+                      (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
+                    }}
+                  />
+                </div>)}
+              </motion.div>
+            </motion.div>
+        </div>
         <div style={{
             maxWidth: "1400px",
             margin: "0 auto"

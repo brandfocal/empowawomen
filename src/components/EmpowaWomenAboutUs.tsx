@@ -142,13 +142,13 @@ const HeroSection = () => {
     width: "100%",
     minHeight: "100vh",
     backgroundColor: "#0A0A0F",
-    paddingBottom: "clamp(48px, 8vh, 80px)",
+    paddingTop: "clamp(100px, 12vh, 140px)",
+    paddingBottom: "clamp(60px, 8vh, 100px)",
     zIndex: 1,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "flex-end",
-    overflow: "hidden"
+    justifyContent: "center"
   }}>
     {/* Background image */}
     <div style={{
@@ -392,62 +392,7 @@ const HeroSection = () => {
           </RouterLink>
         </motion.div>
 
-        {/* Partner marquee */}
-        <motion.div initial={{
-          opacity: 0
-        }} animate={{
-          opacity: 1
-        }} transition={{
-          duration: 1,
-          delay: 1.8
-        }} style={{
-          width: "100%",
-          overflow: "hidden",
-          maskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
-          WebkitMaskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)"
-        }}>
-          <motion.div animate={{
-            x: ["0%", "-50%"]
-          }} transition={{
-            duration: 35,
-            ease: "linear",
-            repeat: Infinity
-          }} style={{
-            display: "flex",
-            gap: "clamp(40px, 6vw, 80px)",
-            alignItems: "center",
-            whiteSpace: "nowrap",
-            width: "max-content"
-          }}>
-            {EXTENDED_LOGOS.map((logo, i) => <div key={`logo-${logo.id}-${i}`} style={{
-              flexShrink: 0,
-              display: "flex",
-              alignItems: "center",
-              height: "72px"
-            }}>
-              <img
-                src={logo.src}
-                alt={logo.name}
-                style={{
-                  height: "32px",
-                  width: "auto",
-                  maxWidth: "130px",
-                  objectFit: "contain",
-                  opacity: 0.85,
-                  filter: "none",
-                  transition: "opacity 200ms ease-out",
-                  cursor: "default"
-                }}
-                onMouseEnter={e => {
-                  (e.currentTarget as HTMLImageElement).style.opacity = "1";
-                }}
-                onMouseLeave={e => {
-                  (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
-                }}
-              />
-            </div>)}
-          </motion.div>
-        </motion.div>
+
       </motion.div>
     </div>
 
@@ -1686,7 +1631,7 @@ const ReachSection = () => {
             marginBottom: "8px",
             color: "#FFFFFF"
           }}>
-            10,000+
+            50,000+
           </h2>
           <p style={{
             fontFamily: "Figtree",

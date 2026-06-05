@@ -37,13 +37,12 @@ export const UniversalHero: React.FC<UniversalHeroProps> = ({
             zIndex: 1,
             minHeight: "100vh",
             backgroundColor: "#0A0A0F",
-            overflow: "hidden",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            justifyContent: "flex-start",
-            paddingTop: "68px",
-            paddingBottom: "40px"
+            justifyContent: "center",
+            paddingTop: "clamp(100px, 12vh, 140px)",
+            paddingBottom: "clamp(60px, 8vh, 100px)"
         }}>
             {/* Optional Grain Overlay (used in home) */}
             <div style={{
@@ -89,9 +88,7 @@ export const UniversalHero: React.FC<UniversalHeroProps> = ({
                 paddingRight: "clamp(24px, 6vw, 96px)",
                 display: "flex",
                 flexDirection: "column",
-                alignItems: "center",
-                marginTop: "auto",
-                marginBottom: "auto"
+                alignItems: "center"
             }}>
                 <motion.div initial={{ y: 90 }} animate={{ y: 0 }} transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }} style={{
                     width: "100%", display: "flex", flexDirection: "column", alignItems: "center"

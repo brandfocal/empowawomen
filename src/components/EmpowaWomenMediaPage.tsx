@@ -183,10 +183,10 @@ const HeroSection = () => {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "flex-end",
-    overflow: "hidden",
+    justifyContent: "center",
     backgroundColor: "#0A0A0F",
-    paddingBottom: "clamp(56px, 9vh, 96px)",
+    paddingTop: "clamp(100px, 12vh, 140px)",
+    paddingBottom: "clamp(60px, 8vh, 100px)",
     zIndex: 1
   }}>
       {/* Background */}
@@ -2028,7 +2028,7 @@ const VideoSection = () => {
   const VIDEO_HEADLINE_WORDS = ["See", "what", "happened", "last", "year."];
   const STATS_DATA = [{
     id: "vs-1",
-    value: "10,000+",
+    value: "50,000+",
     label: "Delegates Connected"
   }, {
     id: "vs-2",
