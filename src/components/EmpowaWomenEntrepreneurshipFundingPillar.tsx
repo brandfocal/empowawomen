@@ -474,7 +474,7 @@ const HeroBanner: React.FC = () => {
         >
           <motion.div style={{ y: imageY, position: "absolute", inset: 0 }}>
             <img
-              src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1600&q=80"
+              src="/partnerships.jpg"
               alt=""
               style={{
                 width: "100%",

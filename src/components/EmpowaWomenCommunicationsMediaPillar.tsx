@@ -444,7 +444,7 @@ const CommunicationsHero: React.FC = () => {
         >
           <motion.div style={{ y: imageY, position: "absolute", inset: 0 }}>
             <img
-              src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1600&q=80"
+              src="/marketing.jpg"
               alt=""
               aria-hidden="true"
               style={{

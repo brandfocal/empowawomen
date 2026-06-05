@@ -822,11 +822,10 @@ const HeroSection = () => {
 
 // ─── Jurisdiction Impact ────────────────────────────────────────────────────
 const JurisdictionImpact = () => {
-    const [activeTab, setActiveTab] = React.useState('township');
     return <section style={{
         backgroundColor: '#F7F6F2',
-        paddingTop: '0',
-        paddingBottom: '128px',
+        paddingTop: '64px',
+        paddingBottom: '64px',
         paddingLeft: 'clamp(24px, 6vw, 96px)',
         paddingRight: 'clamp(24px, 6vw, 96px)',
         position: 'relative',
@@ -836,16 +835,35 @@ const JurisdictionImpact = () => {
         boxShadow: '0 -24px 64px rgba(0,0,0,0.5)',
         overflow: 'hidden'
     }}>
+        <div style={{
+            maxWidth: '1200px',
+            margin: '0 auto',
+            textAlign: 'center',
+            marginBottom: '40px'
+        }}>
+            <img
+                src="/empowaher-logo2.jpg"
+                alt="EmpowaHER Logo"
+                style={{
+                    height: 'clamp(60px, 8vw, 90px)',
+                    width: 'auto',
+                    objectFit: 'contain',
+                    mixBlendMode: 'multiply',
+                    display: 'block',
+                    margin: '0 auto'
+                }}
+            />
+        </div>
         {/* Partner marquee */}
         <div style={{
             width: "100vw",
             backgroundColor: "#FFFFFF",
             padding: "24px 0",
             borderBottom: "1px solid rgba(0,0,0,0.05)",
+            borderTop: "1px solid rgba(0,0,0,0.05)",
             marginLeft: "calc(-50vw + 50%)",
             marginRight: "calc(-50vw + 50%)",
             overflow: "hidden",
-            marginBottom: "80px",
             display: "flex",
             alignItems: "center"
         }}>
@@ -904,168 +922,6 @@ const JurisdictionImpact = () => {
                 </div>)}
               </motion.div>
             </motion.div>
-        </div>
-        <div style={{
-            maxWidth: '1200px',
-            margin: '0 auto'
-        }}>
-            <div style={{
-                textAlign: 'center',
-                marginBottom: '56px'
-            }}>
-                <img
-                    src="/empowaher-logo2.jpg"
-                    alt="EmpowaHER Logo"
-                    style={{
-                        height: 'clamp(60px, 8vw, 90px)',
-                        width: 'auto',
-                        objectFit: 'contain',
-                        marginBottom: '24px',
-                        mixBlendMode: 'multiply',
-                        display: 'block',
-                        margin: '0 auto 24px auto'
-                    }}
-                />
-                <h2 style={{
-                    fontFamily: 'Figtree',
-                    fontWeight: 300,
-                    fontSize: 'clamp(32px, 5vw, 48px)',
-                    letterSpacing: '-0.03em',
-                    color: '#0A0A0F',
-                    marginBottom: '36px'
-                }}>
-                    Where We Activate.
-                </h2>
-                <div style={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    justifyContent: 'center',
-                    gap: '12px'
-                }}>
-                    {JURISDICTION_TABS.map(tab => <button key={tab.id} onClick={() => setActiveTab(tab.id)} style={{
-                        fontFamily: 'Figtree',
-                        fontWeight: 500,
-                        fontSize: '13px',
-                        padding: '10px 24px',
-                        borderRadius: '999px',
-                        border: activeTab === tab.id ? 'none' : '1px solid rgba(10,10,15,0.15)',
-                        backgroundColor: activeTab === tab.id ? '#FF2D87' : 'transparent',
-                        color: activeTab === tab.id ? '#FFFFFF' : '#64748b',
-                        cursor: 'pointer',
-                        transition: 'all 300ms'
-                    }}>
-                        {tab.label}
-                    </button>)}
-                </div>
-            </div>
-
-            <AnimatePresence mode="wait">
-                {JURISDICTION_TABS.map(tab => activeTab === tab.id && <motion.div key={tab.id} initial={{
-                    opacity: 0,
-                    y: 20
-                }} animate={{
-                    opacity: 1,
-                    y: 0
-                }} exit={{
-                    opacity: 0,
-                    y: -20
-                }} transition={{
-                    duration: 0.5,
-                    ease: 'easeOut'
-                }} style={{
-                    position: 'relative',
-                    overflow: 'hidden',
-                    minHeight: '400px',
-                    borderRadius: '20px'
-                }}>
-                    <img src={tab.imageUrl} alt={tab.title} style={{
-                        position: 'absolute',
-                        inset: 0,
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover'
-                    }} />
-                    <div style={{
-                        position: 'absolute',
-                        inset: 0,
-                        background: 'linear-gradient(to bottom, rgba(10,10,15,0.3) 0%, rgba(10,10,15,0.85) 100%)'
-                    }} />
-                    <div style={{
-                        position: 'relative',
-                        zIndex: 10,
-                        padding: 'clamp(32px, 4vw, 64px)',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        textAlign: 'center',
-                        minHeight: '400px',
-                        justifyContent: 'flex-end'
-                    }}>
-                        <h3 style={{
-                            fontFamily: 'Figtree',
-                            fontWeight: 300,
-                            fontSize: 'clamp(28px, 4vw, 40px)',
-                            letterSpacing: '-0.03em',
-                            color: '#FFFFFF',
-                            marginBottom: '20px'
-                        }}>
-                            {tab.title}
-                        </h3>
-                        <p style={{
-                            fontFamily: 'Figtree',
-                            fontWeight: 400,
-                            fontSize: '18px',
-                            lineHeight: 1.75,
-                            color: 'rgba(255,255,255,0.80)',
-                            maxWidth: '600px'
-                        }}>
-                            {tab.description}
-                        </p>
-                        <div style={{
-                            marginTop: '32px',
-                            display: 'flex',
-                            flexWrap: 'wrap',
-                            justifyContent: 'center',
-                            gap: '12px'
-                        }}>
-                            {tab.pills.map(pill => <span key={pill} style={{
-                                backgroundColor: 'rgba(255,255,255,0.10)',
-                                border: '1px solid rgba(255,255,255,0.15)',
-                                fontFamily: 'Figtree',
-                                fontWeight: 500,
-                                fontSize: '11px',
-                                color: '#FFFFFF',
-                                padding: '8px 16px',
-                                borderRadius: '999px',
-                                display: 'inline-flex',
-                                alignItems: 'center',
-                                gap: '12px'
-                            }}>
-                                {pill}
-                            </span>)}
-                        </div>
-                        <div style={{
-                            marginTop: '32px'
-                        }}>
-                            <button style={{
-                                fontFamily: 'Figtree',
-                                fontWeight: 500,
-                                fontSize: '14px',
-                                color: '#FF2D87',
-                                background: 'none',
-                                border: 'none',
-                                cursor: 'pointer',
-                                display: 'inline-flex',
-                                alignItems: 'center',
-                                gap: '8px'
-                            }}>
-                                <span>Explore Impact Report</span>
-                                <ArrowRight size={18} />
-                            </button>
-                        </div>
-                    </div>
-                </motion.div>)}
-            </AnimatePresence>
         </div>
     </section>;
 };
@@ -2514,7 +2370,7 @@ const AcademyHero = () => {
     );
 
     return <UniversalHero
-        bgImage="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=1920&q=80"
+        bgImage="/features-5.jpg"
         pillText="YOUTH ACTIVATION ECOSYSTEM · AGES 18–34"
         headline={headline}
         description="EmpowaHER is a rigorous, 12-month accelerator designed to fast-track Africa's most promising young women into boardrooms, investment committees, and scaling enterprises."
