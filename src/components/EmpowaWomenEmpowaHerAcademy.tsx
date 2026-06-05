@@ -2355,21 +2355,21 @@ const PartnershipOpportunities = () => {
         setLoading(true);
 
         try {
-            // Send to form_id 16 for partnerships
+            // Send to form_id 21 for partnerships
             const response = await fetch('/api/submit', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    form_id: 16,
+                    form_id: 21,
                     input_values: {
-                        'input_1': fullName,
-                        'input_2': email,
-                        'input_3': companyName,
-                        'input_4': budgetStream,
-                        'input_5': focusArea,
-                        'input_6': message
+                        'input_10': fullName,
+                        'input_4': email,
+                        'input_11': companyName,
+                        'input_16': budgetStream,
+                        'input_15': focusArea,
+                        'input_18': message
                     }
                 })
             });
@@ -2388,14 +2388,7 @@ const PartnershipOpportunities = () => {
             setFocusArea("");
             setMessage("");
         } catch (err: any) {
-            // Fallback success for local environment/simulation
-            console.log("Submit error (faked success):", err);
-            setTimeout(() => {
-                setSubmitted(true);
-                setError("");
-                setLoading(false);
-            }, 1000);
-            return;
+            setError(err.message || "An unexpected error occurred. Please try again.");
         } finally {
             setLoading(false);
         }
