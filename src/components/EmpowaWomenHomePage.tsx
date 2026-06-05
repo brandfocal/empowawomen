@@ -355,7 +355,7 @@ const HeroSection = () => {
         alignItems: "center",
         justifyContent: "flex-start",
         paddingTop: "68px",
-        paddingBottom: "40px"
+        paddingBottom: "clamp(80px, 10vh, 120px)"
     }}>
         <div style={{
             position: "absolute",
@@ -371,7 +371,7 @@ const HeroSection = () => {
         <div style={{
             position: "absolute",
             inset: 0,
-            zIndex: 0,
+            zIndex: 1,
             overflow: "hidden",
             pointerEvents: "none"
         }}>
