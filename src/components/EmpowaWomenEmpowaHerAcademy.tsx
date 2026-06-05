@@ -2388,6 +2388,7 @@ const PartnershipOpportunities = () => {
     const [companyName, setCompanyName] = React.useState("");
     const [budgetStream, setBudgetStream] = React.useState("");
     const [focusArea, setFocusArea] = React.useState("");
+    const [partnershipTier, setPartnershipTier] = React.useState("");
     const [message, setMessage] = React.useState("");
     const [loading, setLoading] = React.useState(false);
     const [submitted, setSubmitted] = React.useState(false);
@@ -2395,7 +2396,7 @@ const PartnershipOpportunities = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!fullName || !email || !companyName || !budgetStream || !focusArea) {
+        if (!fullName || !email || !companyName || !budgetStream || !focusArea || !partnershipTier) {
             setError("Please fill in all required fields.");
             return;
         }
@@ -2417,7 +2418,7 @@ const PartnershipOpportunities = () => {
                         'input_11': companyName,
                         'input_16': budgetStream,
                         'input_15': focusArea,
-                        'input_18': message
+                        'input_18': `Selected Tier: ${partnershipTier}\n\n${message}`
                     }
                 })
             });
@@ -2434,6 +2435,7 @@ const PartnershipOpportunities = () => {
             setCompanyName("");
             setBudgetStream("");
             setFocusArea("");
+            setPartnershipTier("");
             setMessage("");
         } catch (err: any) {
             setError(err.message || "An unexpected error occurred. Please try again.");
@@ -2559,20 +2561,33 @@ const PartnershipOpportunities = () => {
                         gap: '24px'
                     }}>
                         {PARTNERSHIP_TIERS.map((tier) => (
-                          <div key={tier.id} style={{
+                          <div key={tier.id}
+                          onClick={() => {
+                              setPartnershipTier(tier.title);
+                              document.getElementById("academy-partnership-form")?.scrollIntoView({ behavior: 'smooth' });
+                          }}
+                          style={{
                               padding: '24px',
-                              backgroundColor: 'rgba(255,255,255,0.02)',
-                              border: '1px solid rgba(255,255,255,0.05)',
+                              backgroundColor: partnershipTier === tier.title ? 'rgba(0,180,166,0.08)' : 'rgba(255,255,255,0.02)',
+                              border: partnershipTier === tier.title ? '1px solid rgba(0,180,166,0.5)' : '1px solid rgba(255,255,255,0.05)',
                               borderRadius: '16px',
-                              transition: 'all 300ms ease'
+                              transition: 'all 300ms ease',
+                              cursor: 'pointer'
                           }}
                           onMouseEnter={e => {
-                              e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.04)';
-                              e.currentTarget.style.borderColor = 'rgba(0,180,166,0.3)';
+                              if (partnershipTier !== tier.title) {
+                                  e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.04)';
+                                  e.currentTarget.style.borderColor = 'rgba(0,180,166,0.3)';
+                              }
                           }}
                           onMouseLeave={e => {
-                              e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.02)';
-                              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)';
+                              if (partnershipTier !== tier.title) {
+                                  e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.02)';
+                                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)';
+                              } else {
+                                  e.currentTarget.style.backgroundColor = 'rgba(0,180,166,0.08)';
+                                  e.currentTarget.style.borderColor = 'rgba(0,180,166,0.5)';
+                              }
                           }}>
                               <h3 style={{
                                   fontFamily: 'Figtree',
@@ -2676,7 +2691,7 @@ const PartnershipOpportunities = () => {
                             </button>
                         </div>
                     ) : (
-                        <form onSubmit={handleSubmit} style={{
+                        <form onSubmit={handleSubmit} id="academy-partnership-form" style={{
                             backgroundColor: 'rgba(255,255,255,0.03)',
                             border: '1px solid rgba(255,255,255,0.06)',
                             borderRadius: '24px',
@@ -2844,6 +2859,35 @@ const PartnershipOpportunities = () => {
                                             <option value="Campus &amp; Tertiary Edition" style={{ backgroundColor: '#0A0A0F' }}>Campus &amp; Tertiary Edition</option>
                                             <option value="Future Skills Lab (AI &amp; Coding)" style={{ backgroundColor: '#0A0A0F' }}>Future Skills Lab (AI &amp; Coding)</option>
                                             <option value="Careers &amp; Employment Placements" style={{ backgroundColor: '#0A0A0F' }}>Careers &amp; Employment Placements</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                {/* Partnership Tier */}
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                    <label style={LABEL_STYLE}>Partnership Tier*</label>
+                                    <div style={{ position: "relative" }}>
+                                        <select
+                                            required
+                                            value={partnershipTier}
+                                            onChange={e => setPartnershipTier(e.target.value)}
+                                            style={{
+                                                ...INPUT_STYLE,
+                                                appearance: 'none',
+                                                cursor: 'pointer',
+                                                backgroundImage: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='rgba(255,255,255,0.4)' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E")`,
+                                                backgroundPosition: 'right 16px center',
+                                                backgroundRepeat: 'no-repeat',
+                                                backgroundSize: '20px 20px',
+                                                paddingRight: '40px'
+                                            }}
+                                            onFocus={e => { e.currentTarget.style.borderColor = '#00B4A6'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.08)'; }}
+                                            onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.10)'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'; }}
+                                        >
+                                            <option value="" disabled style={{ backgroundColor: '#0A0A0F' }}>Select partnership tier</option>
+                                            {PARTNERSHIP_TIERS.map(tier => (
+                                                <option key={tier.id} value={tier.title} style={{ backgroundColor: '#0A0A0F' }}>{tier.title}</option>
+                                            ))}
                                         </select>
                                     </div>
                                 </div>
