@@ -1242,9 +1242,9 @@ const AboutSection = () => {
 const PartnerStrip = () => {
     const doubled = [...LOGOS, ...LOGOS];
     return <section id="partners" style={{
-        backgroundColor: "#0A0A0F",
-        borderTop: "1px solid rgba(255,255,255,0.06)",
-        borderBottom: "1px solid rgba(255,255,255,0.06)",
+        backgroundColor: "#FFFFFF",
+        borderTop: "1px solid rgba(0,0,0,0.05)",
+        borderBottom: "1px solid rgba(0,0,0,0.05)",
         paddingTop: "40px",
         paddingBottom: "40px",
         overflow: "hidden"
@@ -1256,14 +1256,14 @@ const PartnerStrip = () => {
             <div style={{
                 paddingLeft: "clamp(24px, 6vw, 96px)",
                 paddingRight: "48px",
-                borderRight: "1px solid rgba(255,255,255,0.06)",
+                borderRight: "1px solid rgba(0,0,0,0.06)",
                 flexShrink: 0
             }}>
                 <p style={{
                     fontFamily: "Figtree",
                     fontSize: "11px",
                     fontWeight: 400,
-                    color: "rgba(255,255,255,0.20)",
+                    color: "rgba(0,0,0,0.40)",
                     fontStyle: "italic",
                     whiteSpace: "nowrap",
                     margin: 0
@@ -1319,7 +1319,7 @@ const PartnerStrip = () => {
             <div style={{
                 paddingLeft: "48px",
                 paddingRight: "clamp(24px, 6vw, 96px)",
-                borderLeft: "1px solid rgba(255,255,255,0.06)",
+                borderLeft: "1px solid rgba(0,0,0,0.06)",
                 flexShrink: 0
             }}>
                 <p style={{
@@ -1327,7 +1327,7 @@ const PartnerStrip = () => {
                     fontSize: "9px",
                     fontWeight: 400,
                     letterSpacing: "0.3em",
-                    color: "rgba(255,255,255,0.15)",
+                    color: "rgba(0,0,0,0.30)",
                     whiteSpace: "nowrap",
                     margin: 0,
                     textTransform: "uppercase"
