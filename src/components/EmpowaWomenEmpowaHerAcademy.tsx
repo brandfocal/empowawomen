@@ -2308,35 +2308,6 @@ const AcademyHero = () => {
         </>
     );
 
-    const bottomSection = (
-        <div style={{ width: "100%", overflow: "hidden", position: "relative", maskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)", WebkitMaskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)" }}>
-            <motion.div animate={{ x: ["0%", "-50%"] }} transition={{ duration: 35, ease: "linear", repeat: Infinity }} style={{ display: "flex", gap: "80px", alignItems: "center", whiteSpace: "nowrap", width: "max-content" }}>
-                {EXTENDED_LOGOS.map((logo, i) => <div key={`logo-${logo.id}-${i}`} style={{ flexShrink: 0, height: "72px", display: "flex", alignItems: "center" }}>
-                    <img
-                        src={logo.src}
-                        alt={logo.name}
-                        style={{
-                            height: "32px",
-                            width: "auto",
-                            maxWidth: "130px",
-                            objectFit: "contain",
-                            opacity: 0.85,
-                            filter: "none",
-                            transition: "opacity 200ms ease-out",
-                            cursor: "default"
-                        }}
-                        onMouseEnter={e => {
-                            (e.currentTarget as HTMLImageElement).style.opacity = "1";
-                        }}
-                        onMouseLeave={e => {
-                            (e.currentTarget as HTMLImageElement).style.opacity = "0.85";
-                        }}
-                    />
-                </div>)}
-            </motion.div>
-        </div>
-    );
-
     return <UniversalHero
         bgImage="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=1920&q=80"
         pillText="YOUTH ACTIVATION ECOSYSTEM · AGES 18–34"
@@ -2346,7 +2317,6 @@ const AcademyHero = () => {
         primaryCtaLink="#academy-apply-form"
         secondaryCtaText="Partnership Enquiry"
         secondaryCtaLink="#academy-partnership-section"
-        bottomSection={bottomSection}
     />;
 };
 
