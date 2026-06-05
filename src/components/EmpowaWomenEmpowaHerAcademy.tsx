@@ -2418,7 +2418,8 @@ const PartnershipOpportunities = () => {
                         'input_11': companyName,
                         'input_16': budgetStream,
                         'input_15': focusArea,
-                        'input_18': `Selected Tier: ${partnershipTier}\n\n${message}`
+                        'input_19': partnershipTier,
+                        'input_18': message
                     }
                 })
             });
