@@ -2370,7 +2370,7 @@ const AcademyHero = () => {
     );
 
     return <UniversalHero
-        bgImage="/features-5.jpg"
+        bgImage="/features-2.jpg"
         pillText="YOUTH ACTIVATION ECOSYSTEM · AGES 18–34"
         headline={headline}
         description="EmpowaHER is a rigorous, 12-month accelerator designed to fast-track Africa's most promising young women into boardrooms, investment committees, and scaling enterprises."
