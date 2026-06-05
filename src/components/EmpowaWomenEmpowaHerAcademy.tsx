@@ -1058,7 +1058,7 @@ const ProgramPillars = () => {
                             color: '#FF2D87',
                             marginBottom: 12
                         }}>
-                            THE 7 PROGRAMME PILLARS™
+                            THE 7 PROGRAMME PILLARS
                         </div>
                         <h2 style={{
                             fontWeight: 200,
@@ -2473,19 +2473,19 @@ const PartnershipOpportunities = () => {
     const PARTNERSHIP_TIERS = [
         {
             id: "pt-1",
-            title: "Tier 1: Cohort Sponsoring",
+            title: "Title & Naming Rights Partner",
             desc: "Command opening naming rights and sponsor a localized cohort of young women across Township Hubs, Rural Corridors, or Tertiary nodes.",
             benefit: "Exclusive branding, opening keynote, and ESG / Supplier Development compliance points."
         },
         {
             id: "pt-2",
-            title: "Tier 2: Future Skills & AI Labs",
+            title: "Platinum Industry Partner",
             desc: "Fund specialised programs like the AI Implementation and Coding labs, providing digital scaling tools to pre-qualified women-led startups.",
             benefit: "Thought leadership panels, premium activation space, and pre-vetted corporate recruitment channels."
         },
         {
             id: "pt-3",
-            title: "Tier 3: Mentorship & Placements",
+            title: "Specialized Corporate Activation",
             desc: "Align your top executives as cohort mentors and offer direct internships or professional graduate placement options through our Careers Hub.",
             benefit: "Direct talent pipeline acquisition and strategic corporate social investment (CSI) placement."
         }
@@ -2978,7 +2978,7 @@ const TIER_CARDS: TierCard[] = [{
     numColor: 'rgba(255,45,135,0.20)',
     cardBg: 'rgba(255,45,135,0.06)',
     topBorder: '#FF2D87',
-    title: 'Title & Naming Rights Partner™',
+    title: 'Title & Naming Rights Partner',
     desc: 'Exclusive naming rights across all EmpowaHER™ touchpoints with full PR amplification and CXO access.',
     benefits: ['Exclusive naming rights', 'Opening keynote slot', 'Curated CXO introductions', 'PR & digital amplification', 'Full ESG reporting'],
     roiTag: 'R1M+ Brand Exposure',
@@ -2992,7 +2992,7 @@ const TIER_CARDS: TierCard[] = [{
     numColor: 'rgba(0,180,166,0.20)',
     cardBg: 'rgba(0,180,166,0.05)',
     topBorder: '#00B4A6',
-    title: 'Platinum Industry Partner™',
+    title: 'Platinum Industry Partner',
     desc: 'High-impact panel participation, premium exhibition space, and direct lead generation to an engaged audience.',
     benefits: ['High-impact panel position', 'Premium exhibition space', 'Lead generation pipeline', 'Category exclusivity', 'ESG impact certificate'],
     roiTag: '5,000+ Direct Impressions',
@@ -3006,7 +3006,7 @@ const TIER_CARDS: TierCard[] = [{
     numColor: 'rgba(217,119,6,0.20)',
     cardBg: 'rgba(217,119,6,0.05)',
     topBorder: '#D97706',
-    title: 'Specialized Corporate Activation™',
+    title: 'Specialized Corporate Activation',
     desc: 'Masterclass partner, category exclusivity, executive lounge rights, or CXO gifting partner. Customised packages available.',
     benefits: ['Masterclass partnership', 'Executive lounge rights', 'CXO gifting activation', 'Category exclusivity', 'Bespoke package options'],
     roiTag: 'Fully Customisable',
