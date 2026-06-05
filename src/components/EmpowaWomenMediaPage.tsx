@@ -187,7 +187,8 @@ const HeroSection = () => {
     backgroundColor: "#0A0A0F",
     paddingTop: "clamp(100px, 12vh, 140px)",
     paddingBottom: "clamp(60px, 8vh, 100px)",
-    zIndex: 1
+    zIndex: 1,
+    overflow: "hidden"
   }}>
       {/* Background */}
       <div style={{

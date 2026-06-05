@@ -148,7 +148,8 @@ const HeroSection = () => {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    overflow: "hidden"
   }}>
     {/* Background image */}
     <div style={{

@@ -692,7 +692,7 @@ const HeroSection: React.FC<{
       scrollY
     } = useScroll();
     const bgY = useTransform(scrollY, [0, 600], [0, 240]);
-    return <section ref={sectionRef as React.RefObject<HTMLElement>} className="relative w-full flex flex-col items-center justify-center" style={{
+    return <section ref={sectionRef as React.RefObject<HTMLElement>} className="relative w-full flex flex-col items-center justify-center overflow-hidden" style={{
       minHeight: "100vh",
       backgroundColor: "#0A0A0F",
       paddingTop: "clamp(100px, 12vh, 140px)",

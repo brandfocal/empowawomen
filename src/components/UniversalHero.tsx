@@ -37,6 +37,7 @@ export const UniversalHero: React.FC<UniversalHeroProps> = ({
             zIndex: 1,
             minHeight: "100vh",
             backgroundColor: "#0A0A0F",
+            overflow: "hidden",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",

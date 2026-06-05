@@ -275,7 +275,8 @@ export const SummitHeroHeader: React.FC = () => {
     alignItems: "center",
     justifyContent: "center",
     paddingTop: "clamp(100px, 12vh, 140px)",
-    paddingBottom: "clamp(60px, 8vh, 100px)"
+    paddingBottom: "clamp(60px, 8vh, 100px)",
+    overflow: "hidden"
   }}>
     {/* Grain noise layer */}
     <div style={{

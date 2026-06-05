@@ -217,7 +217,8 @@ export const ProvincialSummitSeries = () => {
             alignItems: 'center',
             justifyContent: 'center',
             paddingTop: 'clamp(100px, 12vh, 140px)',
-            paddingBottom: 'clamp(60px, 8vh, 100px)'
+            paddingBottom: 'clamp(60px, 8vh, 100px)',
+            overflow: 'hidden'
         }}>
             {/* Film grain texture */}
             <div style={{
