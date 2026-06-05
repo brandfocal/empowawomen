@@ -787,6 +787,30 @@ const SmartRoutingForm = () => {
     const [submitted, setSubmitted] = React.useState(false);
     const [error, setError] = React.useState("");
 
+    const INPUT_STYLE: React.CSSProperties = {
+        width: "100%",
+        padding: "16px 20px",
+        backgroundColor: "#F7F6F2",
+        border: "1px solid rgba(0,0,0,0.08)",
+        borderRadius: "8px",
+        outline: "none",
+        fontFamily: "Figtree",
+        fontSize: "15px",
+        color: "#0A0A0F",
+        boxSizing: "border-box",
+        transition: "all 200ms ease-out"
+    };
+
+    const LABEL_STYLE: React.CSSProperties = {
+        fontFamily: "Figtree",
+        fontSize: "10px",
+        fontWeight: 600,
+        color: "rgba(10,10,15,0.40)",
+        textTransform: "uppercase",
+        letterSpacing: "0.2em",
+        display: "block"
+    };
+
     const getRouteAccent = (routeId: string) => {
         const r = ROUTES.find(x => x.id === routeId);
         return r ? r.accent : "#FF2D87";
@@ -1132,7 +1156,6 @@ const SmartRoutingForm = () => {
                             flexDirection: "column",
                             gap: "24px"
                         }} onSubmit={handleSubmit}>
-                            {/* Error Banner */}
                             {error && (
                                 <div style={{
                                     padding: "12px 16px",
@@ -1148,248 +1171,125 @@ const SmartRoutingForm = () => {
                                 </div>
                             )}
 
-                            {/* Full Name Field */}
                             <div style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                gap: "8px"
-                            }}>
-                                <label style={{
-                                    fontFamily: "Figtree",
-                                    fontSize: "10px",
-                                    fontWeight: 600,
-                                    color: "rgba(10,10,15,0.40)",
-                                    textTransform: "uppercase",
-                                    letterSpacing: "0.2em"
-                                }}>
-                                    Full Name
-                                </label>
-                                <input
-                                    type="text"
-                                    required
-                                    value={fullName}
-                                    onChange={e => setFullName(e.target.value)}
-                                    placeholder="e.g. Sarah Jenkins"
-                                    style={{
-                                        width: "100%",
-                                        padding: "16px 20px",
-                                        backgroundColor: "#F7F6F2",
-                                        border: "none",
-                                        borderRadius: "12px",
-                                        outline: "none",
-                                        fontFamily: "Figtree",
-                                        fontSize: "15px",
-                                        color: "#0A0A0F",
-                                        boxSizing: "border-box"
-                                    }}
-                                />
-                            </div>
+                                display: 'grid',
+                                gridTemplateColumns: '1fr',
+                                gap: '20px',
+                                width: '100%'
+                            }} className="form-fields-grid-container">
+                                <style>{`
+                                    @media (min-width: 641px) {
+                                        .form-fields-grid-container {
+                                            grid-template-columns: 1fr 1fr !important;
+                                        }
+                                        .form-field-full-width {
+                                            grid-column: 1 / -1 !important;
+                                        }
+                                    }
+                                `}</style>
 
-                            {/* Institutional Organization Field */}
-                            <div style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                gap: "8px"
-                            }}>
-                                <label style={{
-                                    fontFamily: "Figtree",
-                                    fontSize: "10px",
-                                    fontWeight: 600,
-                                    color: "rgba(10,10,15,0.40)",
-                                    textTransform: "uppercase",
-                                    letterSpacing: "0.2em"
-                                }}>
-                                    Institutional Organization
-                                </label>
-                                <input
-                                    type="text"
-                                    required
-                                    value={organisation}
-                                    onChange={e => setOrganisation(e.target.value)}
-                                    placeholder="e.g. African Development Bank"
-                                    style={{
-                                        width: "100%",
-                                        padding: "16px 20px",
-                                        backgroundColor: "#F7F6F2",
-                                        border: "none",
-                                        borderRadius: "12px",
-                                        outline: "none",
-                                        fontFamily: "Figtree",
-                                        fontSize: "15px",
-                                        color: "#0A0A0F",
-                                        boxSizing: "border-box"
-                                    }}
-                                />
-                            </div>
+                                {/* Full Name Field */}
+                                <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                                    <label style={LABEL_STYLE}>Full Name</label>
+                                    <input
+                                        type="text"
+                                        required
+                                        value={fullName}
+                                        onChange={e => setFullName(e.target.value)}
+                                        placeholder="e.g. Sarah Jenkins"
+                                        style={INPUT_STYLE}
+                                    />
+                                </div>
 
-                            {/* Direct Mobile / WhatsApp Field */}
-                            <div style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                gap: "8px"
-                            }}>
-                                <label style={{
-                                    fontFamily: "Figtree",
-                                    fontSize: "10px",
-                                    fontWeight: 600,
-                                    color: "rgba(10,10,15,0.40)",
-                                    textTransform: "uppercase",
-                                    letterSpacing: "0.2em"
-                                }}>
-                                    Direct Mobile / WhatsApp
-                                </label>
-                                <input
-                                    type="tel"
-                                    required
-                                    value={mobile}
-                                    onChange={e => setMobile(e.target.value)}
-                                    placeholder="e.g. 082 000 0000"
-                                    style={{
-                                        width: "100%",
-                                        padding: "16px 20px",
-                                        backgroundColor: "#F7F6F2",
-                                        border: "none",
-                                        borderRadius: "12px",
-                                        outline: "none",
-                                        fontFamily: "Figtree",
-                                        fontSize: "15px",
-                                        color: "#0A0A0F",
-                                        boxSizing: "border-box"
-                                    }}
-                                />
-                            </div>
+                                {/* Institutional Organization Field */}
+                                <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                                    <label style={LABEL_STYLE}>Institutional Organization</label>
+                                    <input
+                                        type="text"
+                                        required
+                                        value={organisation}
+                                        onChange={e => setOrganisation(e.target.value)}
+                                        placeholder="e.g. African Development Bank"
+                                        style={INPUT_STYLE}
+                                    />
+                                </div>
 
-                            {/* Email Field */}
-                            <div style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                gap: "8px"
-                            }}>
-                                <label style={{
-                                    fontFamily: "Figtree",
-                                    fontSize: "10px",
-                                    fontWeight: 600,
-                                    color: "rgba(10,10,15,0.40)",
-                                    textTransform: "uppercase",
-                                    letterSpacing: "0.2em"
-                                }}>
-                                    Email Address
-                                </label>
-                                <input
-                                    type="email"
-                                    required
-                                    value={email}
-                                    onChange={e => setEmail(e.target.value)}
-                                    placeholder="e.g. sarah@example.com"
-                                    style={{
-                                        width: "100%",
-                                        padding: "16px 20px",
-                                        backgroundColor: "#F7F6F2",
-                                        border: "none",
-                                        borderRadius: "12px",
-                                        outline: "none",
-                                        fontFamily: "Figtree",
-                                        fontSize: "15px",
-                                        color: "#0A0A0F",
-                                        boxSizing: "border-box"
-                                    }}
-                                />
-                            </div>
+                                {/* Direct Mobile / WhatsApp Field */}
+                                <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                                    <label style={LABEL_STYLE}>Direct Mobile / WhatsApp</label>
+                                    <input
+                                        type="tel"
+                                        required
+                                        value={mobile}
+                                        onChange={e => setMobile(e.target.value)}
+                                        placeholder="e.g. 082 000 0000"
+                                        style={INPUT_STYLE}
+                                    />
+                                </div>
 
-                            {/* Selected Route Dropdown */}
-                            <div style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                gap: "8px"
-                            }}>
-                                <label style={{
-                                    fontFamily: "Figtree",
-                                    fontSize: "10px",
-                                    fontWeight: 600,
-                                    color: "rgba(10,10,15,0.40)",
-                                    textTransform: "uppercase",
-                                    letterSpacing: "0.2em"
-                                }}>
-                                    Selected Route
-                                </label>
-                                <div style={{
-                                    position: "relative"
-                                }}>
-                                    <select
-                                        value={selectedRoute}
-                                        onChange={e => setSelectedRoute(e.target.value)}
-                                        style={{
-                                            width: "100%",
-                                            padding: "16px 20px",
-                                            backgroundColor: "#F7F6F2",
-                                            border: "none",
-                                            borderRadius: "12px",
-                                            outline: "none",
-                                            fontFamily: "Figtree",
-                                            fontSize: "15px",
-                                            color: "#0A0A0F",
-                                            appearance: "none",
-                                            cursor: "pointer",
-                                            boxSizing: "border-box"
-                                        }}
-                                    >
-                                        {ROUTES.map(r => (
-                                            <option key={r.id} value={r.id}>
-                                                {r.label}
-                                            </option>
-                                        ))}
-                                    </select>
-                                    <div style={{
-                                        position: "absolute",
-                                        right: "20px",
-                                        top: "50%",
-                                        transform: "translateY(-50%)",
-                                        pointerEvents: "none",
-                                        color: "rgba(10,10,15,0.40)"
-                                    }}>
-                                        <ChevronRight size={18} style={{
-                                            transform: "rotate(90deg)"
-                                        }} />
+                                {/* Email Field */}
+                                <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                                    <label style={LABEL_STYLE}>Email Address</label>
+                                    <input
+                                        type="email"
+                                        required
+                                        value={email}
+                                        onChange={e => setEmail(e.target.value)}
+                                        placeholder="e.g. sarah@example.com"
+                                        style={INPUT_STYLE}
+                                    />
+                                </div>
+
+                                {/* Selected Route Dropdown - Spans full width as the 5th field */}
+                                <div className="form-field-full-width" style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                                    <label style={LABEL_STYLE}>Selected Route</label>
+                                    <div style={{ position: "relative" }}>
+                                        <select
+                                            value={selectedRoute}
+                                            onChange={e => setSelectedRoute(e.target.value)}
+                                            style={{
+                                                ...INPUT_STYLE,
+                                                appearance: "none",
+                                                cursor: "pointer"
+                                            }}
+                                        >
+                                            {ROUTES.map(r => (
+                                                <option key={r.id} value={r.id}>
+                                                    {r.label}
+                                                </option>
+                                            ))}
+                                        </select>
+                                        <div style={{
+                                            position: "absolute",
+                                            right: "20px",
+                                            top: "50%",
+                                            transform: "translateY(-50%)",
+                                            pointerEvents: "none",
+                                            color: "rgba(10,10,15,0.40)",
+                                            display: "flex",
+                                            alignItems: "center"
+                                        }}>
+                                            <ChevronDown size={18} />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            {/* Message Field */}
-                            <div style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                gap: "8px"
-                            }}>
-                                <label style={{
-                                    fontFamily: "Figtree",
-                                    fontSize: "10px",
-                                    fontWeight: 600,
-                                    color: "rgba(10,10,15,0.40)",
-                                    textTransform: "uppercase",
-                                    letterSpacing: "0.2em"
-                                }}>
-                                    Message
-                                </label>
-                                <textarea
-                                    rows={4}
-                                    required
-                                    value={message}
-                                    onChange={e => setMessage(e.target.value)}
-                                    placeholder="Please summarize your proposal briefly to ensure immediate routing to the correct executive tier."
-                                    style={{
-                                        width: "100%",
-                                        padding: "16px 20px",
-                                        backgroundColor: "#F7F6F2",
-                                        border: "none",
-                                        borderRadius: "12px",
-                                        outline: "none",
-                                        fontFamily: "Figtree",
-                                        fontSize: "15px",
-                                        color: "#0A0A0F",
-                                        resize: "none",
-                                        boxSizing: "border-box"
-                                    }}
-                                />
+                                {/* Message Field - Spans full width */}
+                                <div className="form-field-full-width" style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                                    <label style={LABEL_STYLE}>Message</label>
+                                    <textarea
+                                        rows={4}
+                                        required
+                                        value={message}
+                                        onChange={e => setMessage(e.target.value)}
+                                        placeholder="Please summarize your proposal briefly to ensure immediate routing to the correct executive tier."
+                                        style={{
+                                            ...INPUT_STYLE,
+                                            resize: "vertical",
+                                            minHeight: "100px"
+                                        }}
+                                    />
+                                </div>
                             </div>
 
                             {/* Shimmer Submit Button */}
@@ -2339,7 +2239,8 @@ const ContactHero = () => {
         pillText="ROUTING HEADQUARTERS · CONTACT US"
         headline={headline}
         description="Whether you're exploring enterprise partnerships, inquiring about speaking opportunities, or looking to join our executive network, direct your inquiry below."
-        primaryCtaText="Explore Programs"
+        primaryCtaText="Get in Touch"
+        primaryCtaLink="#contact-form"
     />;
 };
 

@@ -15,6 +15,7 @@ interface SeriesCardProps {
   isLarge?: boolean;
   isFullWidth?: boolean;
   className?: string;
+  to?: string;
 }
 export const SeriesCard: React.FC<SeriesCardProps> = ({
   title,
@@ -25,178 +26,190 @@ export const SeriesCard: React.FC<SeriesCardProps> = ({
   description,
   isLarge = false,
   isFullWidth = false,
-  className
+  className,
+  to
 }) => {
-  return <motion.div whileHover="hover" initial="rest" animate="rest" style={{
-    position: "relative",
-    borderRadius: "32px",
-    overflow: "hidden",
-    cursor: "pointer",
-    width: "100%",
-    height: isLarge ? "clamp(360px, 45vw, 540px)" : isFullWidth ? "clamp(240px, 25vw, 320px)" : "clamp(220px, 22vw, 260px)"
-  }} className={`group ${className || ""}`} variants={{
-    rest: {
-      scale: 1,
-      boxShadow: '0 8px 24px rgba(0,0,0,0.15)'
-    },
-    hover: {
-      scale: 1.01,
-      boxShadow: '0 24px 48px rgba(0,0,0,0.30)'
-    }
-  }} transition={{
-    duration: 0.5,
-    ease: [0.16, 1, 0.3, 1]
-  }}>
-    {/* Background Image */}
-    <motion.div variants={{
+  const cardContent = (
+    <motion.div whileHover="hover" initial="rest" animate="rest" style={{
+      position: "relative",
+      borderRadius: "32px",
+      overflow: "hidden",
+      cursor: "pointer",
+      width: "100%",
+      height: isLarge ? "clamp(360px, 45vw, 540px)" : isFullWidth ? "clamp(240px, 25vw, 320px)" : "clamp(220px, 22vw, 260px)"
+    }} className={`group ${className || ""}`} variants={{
       rest: {
-        scale: 1
+        scale: 1,
+        boxShadow: '0 8px 24px rgba(0,0,0,0.15)'
       },
       hover: {
-        scale: 1.06
+        scale: 1.01,
+        boxShadow: '0 24px 48px rgba(0,0,0,0.30)'
       }
     }} transition={{
-      duration: 1.2,
+      duration: 0.5,
       ease: [0.16, 1, 0.3, 1]
-    }} style={{ position: "absolute", inset: 0, zIndex: 0 }}>
-      <img src={bgImage} alt={title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+    }}>
+      {/* Background Image */}
+      <motion.div variants={{
+        rest: {
+          scale: 1
+        },
+        hover: {
+          scale: 1.06
+        }
+      }} transition={{
+        duration: 1.2,
+        ease: [0.16, 1, 0.3, 1]
+      }} style={{ position: "absolute", inset: 0, zIndex: 0 }}>
+        <img src={bgImage} alt={title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        <div style={{
+          position: "absolute",
+          inset: 0,
+          background: 'linear-gradient(to top, rgba(10,10,15,0.97) 0%, rgba(10,10,15,0.50) 50%, transparent 100%)'
+        }} />
+      </motion.div>
+
+      {/* Accent glow on hover */}
+      <div style={{
+        position: "absolute",
+        top: 0,
+        right: 0,
+        width: "300px",
+        height: "300px",
+        borderRadius: "50%",
+        filter: "blur(100px)",
+        opacity: 0,
+        pointerEvents: "none",
+        transition: "opacity 700ms",
+        backgroundColor: accentColor
+      }} className="about-glow-effect" />
+
+      {/* Top badge */}
+      <div style={{ position: "absolute", top: "24px", left: "24px", zIndex: 20 }}>
+        <span style={{
+          backgroundColor: accentColor,
+          display: "inline-flex",
+          alignItems: "center",
+          padding: "8px 16px",
+          borderRadius: "999px",
+          fontSize: "10px",
+          fontWeight: 600,
+          letterSpacing: "0.2em",
+          color: "#FFFFFF",
+          textTransform: "uppercase"
+        }}>
+          {badge}
+        </span>
+      </div>
+
+      {/* Content */}
       <div style={{
         position: "absolute",
         inset: 0,
-        background: 'linear-gradient(to top, rgba(10,10,15,0.97) 0%, rgba(10,10,15,0.50) 50%, transparent 100%)'
-      }} />
-    </motion.div>
-
-    {/* Accent glow on hover */}
-    <div style={{
-      position: "absolute",
-      top: 0,
-      right: 0,
-      width: "300px",
-      height: "300px",
-      borderRadius: "50%",
-      filter: "blur(100px)",
-      opacity: 0,
-      pointerEvents: "none",
-      transition: "opacity 700ms",
-      backgroundColor: accentColor
-    }} className="about-glow-effect" />
-
-    {/* Top badge */}
-    <div style={{ position: "absolute", top: "24px", left: "24px", zIndex: 20 }}>
-      <span style={{
-        backgroundColor: accentColor,
-        display: "inline-flex",
-        alignItems: "center",
-        padding: "8px 16px",
-        borderRadius: "999px",
-        fontSize: "10px",
-        fontWeight: 600,
-        letterSpacing: "0.2em",
-        color: "#FFFFFF",
-        textTransform: "uppercase"
+        zIndex: 10,
+        padding: "32px",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-end"
       }}>
-        {badge}
-      </span>
-    </div>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+          <h3 style={{
+            fontFamily: "Figtree",
+            fontWeight: 300,
+            color: "#FFFFFF",
+            lineHeight: 1.2,
+            marginBottom: "12px",
+            fontSize: isLarge ? "clamp(22px, 3vw, 32px)" : isFullWidth ? "clamp(20px, 2.5vw, 28px)" : "clamp(17px, 2vw, 22px)",
+            transition: "transform 150ms ease-out"
+          }} className="about-translate-y">
+            {title}
+          </h3>
 
-    {/* Content */}
-    <div style={{
-      position: "absolute",
-      inset: 0,
-      zIndex: 10,
-      padding: "32px",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "flex-end"
-    }}>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-        <h3 style={{
-          fontFamily: "Figtree",
-          fontWeight: 300,
-          color: "#FFFFFF",
-          lineHeight: 1.2,
-          marginBottom: "12px",
-          fontSize: isLarge ? "clamp(22px, 3vw, 32px)" : isFullWidth ? "clamp(20px, 2.5vw, 28px)" : "clamp(17px, 2vw, 22px)",
-          transition: "transform 150ms ease-out"
-        }} className="about-translate-y">
-          {title}
-        </h3>
+          {description && <p style={{
+            color: "rgba(255,255,255,0.50)",
+            fontSize: "14px",
+            fontWeight: 300,
+            maxWidth: "90%",
+            lineHeight: 1.6,
+            marginBottom: "20px",
+            transition: "transform 150ms ease-out"
+          }} className="about-translate-y">
+            {description}
+          </p>}
 
-        {description && <p style={{
-          color: "rgba(255,255,255,0.50)",
-          fontSize: "14px",
-          fontWeight: 300,
-          maxWidth: "90%",
-          lineHeight: 1.6,
-          marginBottom: "20px",
-          transition: "transform 150ms ease-out"
-        }} className="about-translate-y">
-          {description}
-        </p>}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", gap: "16px" }}>
+            <div style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              color: "rgba(255,255,255,0.60)",
+              fontSize: "13px",
+              fontWeight: 500,
+              transition: "color 150ms ease-out, transform 150ms ease-out"
+            }} className="about-view-details">
+              {isFullWidth ? <span style={{ color: "#FFFFFF", fontWeight: 500, fontSize: "14px" }}>
+                <span>View Gala Details </span>
+                <ArrowRight size={14} style={{ display: "inline-block", marginLeft: "4px" }} />
+              </span> : <>
+                <span>View Details</span>
+                <ArrowRight size={15} />
+              </>}
+            </div>
 
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", gap: "16px" }}>
-          <div style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-            color: "rgba(255,255,255,0.60)",
-            fontSize: "13px",
-            fontWeight: 500,
-            transition: "color 150ms ease-out, transform 150ms ease-out"
-          }} className="about-view-details">
-            {isFullWidth ? <span style={{ color: "#FFFFFF", fontWeight: 500, fontSize: "14px" }}>
-              <span>View Gala Details </span>
-              <ArrowRight size={14} style={{ display: "inline-block", marginLeft: "4px" }} />
-            </span> : <>
-              <span>View Details</span>
-              <ArrowRight size={15} />
-            </>}
+            {formatBadge && <span style={{
+              backgroundColor: "rgba(0,0,0,0.30)",
+              backdropFilter: "blur(8px)",
+              WebkitBackdropFilter: "blur(8px)",
+              borderColor: "rgba(255,255,255,0.15)",
+              border: "1px solid rgba(255,255,255,0.15)",
+              fontFamily: 'Figtree',
+              display: "inline-flex",
+              alignItems: "center",
+              padding: "6px 12px",
+              borderRadius: "999px",
+              fontSize: "10px",
+              color: "rgba(255,255,255,0.60)",
+              flexShrink: 0
+            }}>
+              {formatBadge}
+            </span>}
           </div>
-
-          {formatBadge && <span style={{
-            backgroundColor: "rgba(0,0,0,0.30)",
-            backdropFilter: "blur(8px)",
-            WebkitBackdropFilter: "blur(8px)",
-            borderColor: "rgba(255,255,255,0.15)",
-            border: "1px solid rgba(255,255,255,0.15)",
-            fontFamily: 'Figtree',
-            display: "inline-flex",
-            alignItems: "center",
-            padding: "6px 12px",
-            borderRadius: "999px",
-            fontSize: "10px",
-            color: "rgba(255,255,255,0.60)",
-            flexShrink: 0
-          }}>
-            {formatBadge}
-          </span>}
         </div>
       </div>
-    </div>
 
-    {/* Hover Line */}
-    <motion.div variants={{
-      rest: {
-        scaleX: 0
-      },
-      hover: {
-        scaleX: 1
-      }
-    }} transition={{
-      duration: 0.4,
-      ease: 'easeOut'
-    }} style={{
-      position: "absolute",
-      bottom: 0,
-      left: 0,
-      width: "100%",
-      height: "4px",
-      originX: 0,
-      zIndex: 20,
-      backgroundColor: accentColor
-    }} />
-  </motion.div>;
+      {/* Hover Line */}
+      <motion.div variants={{
+        rest: {
+          scaleX: 0
+        },
+        hover: {
+          scaleX: 1
+        }
+      }} transition={{
+        duration: 0.4,
+        ease: 'easeOut'
+      }} style={{
+        position: "absolute",
+        bottom: 0,
+        left: 0,
+        width: "100%",
+        height: "4px",
+        originX: 0,
+        zIndex: 20,
+        backgroundColor: accentColor
+      }} />
+    </motion.div>
+  );
+
+  if (to) {
+    return (
+      <RouterLink to={to} style={{ display: 'block', width: '100%', textDecoration: 'none' }}>
+        {cardContent}
+      </RouterLink>
+    );
+  }
+  return cardContent;
 };
 
 /* ─── SUMMIT HERO HEADER ──────────────────────────────────────────────────────── */
@@ -961,18 +974,18 @@ export const SummitsHub: React.FC = () => {
           }}>
             {/* Card 1: IWD Summit */}
             <div className="summits-col-span-8" style={{ gridColumn: "span 8" }}>
-              <SeriesCard isLarge title="International Women's Day Summit" bgImage="https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200&q=85" accentColor="#FF2D87" badge="IWD 2027" formatBadge="Invitation-Only · 200 Delegates" description="The flagship gathering for high-level decision makers and economic architects driving gender-balanced growth strategies." />
+              <SeriesCard to="/iwd-summit" isLarge title="International Women's Day Summit" bgImage="https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200&q=85" accentColor="#FF2D87" badge="IWD 2027" formatBadge="Invitation-Only · 200 Delegates" description="The flagship gathering for high-level decision makers and economic architects driving gender-balanced growth strategies." />
             </div>
 
             {/* Column for Card 2 and 3 */}
             <div className="summits-col-span-4" style={{ gridColumn: "span 4", display: "flex", flexDirection: "column", gap: "24px" }}>
-              <SeriesCard title="Provincial Leadership Series" bgImage="/features-18.jpg" accentColor="#00B4A6" badge="9 PROVINCES" formatBadge="Invitation-Only · 100 Per Province" description="Localized economic participation models." />
-              <SeriesCard title="Executive Leadership Experiences" bgImage="/features-7.jpg" accentColor="#D97706" badge="10 STREAMS" formatBadge="100 Per Session" description="Sector-specific engineering and market access." />
+              <SeriesCard to="/provincial-summits" title="Provincial Leadership Series" bgImage="/features-18.jpg" accentColor="#00B4A6" badge="9 PROVINCES" formatBadge="Invitation-Only · 100 Per Province" description="Localized economic participation models." />
+              <SeriesCard to="/executive-industry-series" title="Executive Leadership Experiences" bgImage="/features-7.jpg" accentColor="#D97706" badge="10 STREAMS" formatBadge="100 Per Session" description="Sector-specific engineering and market access." />
             </div>
 
             {/* Card 4: Bubbles & Nibbles – Full width */}
             <div className="summits-col-span-12" style={{ gridColumn: "span 12" }}>
-              <SeriesCard isFullWidth title="Bubbles & Nibbles Soirée & Leadership Awards" bgImage="/features-20.jpg" accentColor="#6D28D9" badge="GALA · Saturday, 29 August 2026" formatBadge="Strictly Invitation-Only · 200 CXOs" description="Celebrating excellence and fostering high-impact networking in an elite setting of recognition." />
+              <SeriesCard to="/leadership-awards-gala" isFullWidth title="Bubbles & Nibbles Soirée & Leadership Awards" bgImage="/features-20.jpg" accentColor="#6D28D9" badge="GALA · Saturday, 29 August 2026" formatBadge="Strictly Invitation-Only · 200 CXOs" description="Celebrating excellence and fostering high-impact networking in an elite setting of recognition." />
             </div>
           </div>
         </div>
@@ -1169,42 +1182,46 @@ export const SummitsHub: React.FC = () => {
               gap: "12px",
               marginTop: "40px"
             }} className="summits-cta-container">
-              <button style={{
-                fontFamily: 'Figtree',
-                fontSize: '13px',
-                fontWeight: 500,
-                color: '#FFFFFF',
-                backgroundColor: '#6D28D9',
-                borderRadius: '999px',
-                padding: '12px 28px',
-                border: 'none',
-                cursor: 'pointer',
-                transition: 'filter 200ms ease-out'
-              }} className="summits-cta-btn" onMouseEnter={e => {
-                (e.currentTarget as HTMLButtonElement).style.filter = 'brightness(1.15)';
-              }} onMouseLeave={e => {
-                (e.currentTarget as HTMLButtonElement).style.filter = 'brightness(1)';
-              }}>
-                Request Invitation
-              </button>
-              <button style={{
-                fontFamily: 'Figtree',
-                fontSize: '13px',
-                fontWeight: 400,
-                color: '#FFFFFF',
-                backgroundColor: 'transparent',
-                borderRadius: '999px',
-                padding: '12px 28px',
-                border: '1px solid rgba(255,255,255,0.20)',
-                cursor: 'pointer',
-                transition: 'background-color 200ms ease-out'
-              }} className="summits-cta-btn" onMouseEnter={e => {
-                (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'rgba(255,255,255,0.08)';
-              }} onMouseLeave={e => {
-                (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'transparent';
-              }}>
-                Nominate for Award
-              </button>
+              <RouterLink to="/leadership-awards-gala#invitation-form-section" style={{ textDecoration: 'none' }}>
+                <button style={{
+                  fontFamily: 'Figtree',
+                  fontSize: '13px',
+                  fontWeight: 500,
+                  color: '#FFFFFF',
+                  backgroundColor: '#6D28D9',
+                  borderRadius: '999px',
+                  padding: '12px 28px',
+                  border: 'none',
+                  cursor: 'pointer',
+                  transition: 'filter 200ms ease-out'
+                }} className="summits-cta-btn" onMouseEnter={e => {
+                  (e.currentTarget as HTMLButtonElement).style.filter = 'brightness(1.15)';
+                }} onMouseLeave={e => {
+                  (e.currentTarget as HTMLButtonElement).style.filter = 'brightness(1)';
+                }}>
+                  Request Invitation
+                </button>
+              </RouterLink>
+              <RouterLink to="/leadership-awards-gala#awards" style={{ textDecoration: 'none' }}>
+                <button style={{
+                  fontFamily: 'Figtree',
+                  fontSize: '13px',
+                  fontWeight: 400,
+                  color: '#FFFFFF',
+                  backgroundColor: 'transparent',
+                  borderRadius: '999px',
+                  padding: '12px 28px',
+                  border: '1px solid rgba(255,255,255,0.20)',
+                  cursor: 'pointer',
+                  transition: 'background-color 200ms ease-out'
+                }} className="summits-cta-btn" onMouseEnter={e => {
+                  (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'rgba(255,255,255,0.08)';
+                }} onMouseLeave={e => {
+                  (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'transparent';
+                }}>
+                  Nominate for Award
+                </button>
+              </RouterLink>
             </div>
           </motion.div>
         </div>

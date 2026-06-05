@@ -69,7 +69,7 @@ const IMPACT_STATS: ImpactStat[] = [{
 }];
 const MINI_STATS: MiniStat[] = [{
   id: "ms-1",
-  value: "10,000+",
+  value: "50,000+",
   label: "Delegates"
 }, {
   id: "ms-2",
@@ -366,7 +366,10 @@ const HeroSection = () => {
           }}>
             Join the Ecosystem
           </RouterLink>
-          <RouterLink to="/about" style={{
+          <RouterLink to="#our-story-section" onClick={e => {
+            e.preventDefault();
+            document.getElementById("our-story-section")?.scrollIntoView({ behavior: "smooth" });
+          }} style={{
             fontFamily: "Figtree",
             fontSize: "clamp(13px, 2vw, 15px)",
             fontWeight: 400,
@@ -408,7 +411,7 @@ const HeroSection = () => {
 
 // ─── Mission Bridge Section ────────────────────────────────────────────────────
 const MissionBridgeSection = () => {
-  return <section style={{
+  return <section id="our-story-section" style={{
     position: "relative",
     backgroundColor: "#F7F6F2",
     zIndex: 10

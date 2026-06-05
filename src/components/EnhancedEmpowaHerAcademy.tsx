@@ -917,10 +917,8 @@ const PartnershipSection = () => {
     </section>;
 };
 
-// ─── SponsorshipEnquirySection ─────────────────────────────────────────────────
-
+// ─── SponsorshipEnquirySection ─────────────────────────────────────────
 const SponsorshipEnquirySection = () => {
-  const [submitted, setSubmitted] = React.useState(false);
   const [firstName, setFirstName] = React.useState('');
   const [lastName, setLastName] = React.useState('');
   const [jobTitle, setJobTitle] = React.useState('');
@@ -932,10 +930,13 @@ const SponsorshipEnquirySection = () => {
   const [goals, setGoals] = React.useState('');
   const [agreed, setAgreed] = React.useState(false);
   const [focusedField, setFocusedField] = React.useState('');
+  const [submitted, setSubmitted] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+
   const inputStyle = (field: string): React.CSSProperties => ({
     backgroundColor: 'rgba(255,255,255,0.04)',
     border: focusedField === field ? '1px solid #FF2D87' : '1px solid rgba(255,255,255,0.10)',
-    borderRadius: 0,
+    borderRadius: 8,
     padding: '13px 16px',
     color: 'white',
     fontSize: 14,
@@ -948,7 +949,11 @@ const SponsorshipEnquirySection = () => {
   });
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setSubmitted(true);
+    }, 1000);
   };
   const resetForm = () => {
     setSubmitted(false);
@@ -1084,60 +1089,91 @@ const SponsorshipEnquirySection = () => {
             fontFamily: 'Figtree, sans-serif',
             fontSize: 14,
             cursor: 'pointer',
-            borderRadius: 0
+            borderRadius: '999px'
           }}>
                 Back to Form
               </button>
             </div> : <form onSubmit={handleSubmit} style={{
           display: 'flex',
           flexDirection: 'column',
-          gap: 16
+          gap: 24
         }}>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <input type="text" placeholder="First Name" value={firstName} onChange={e => setFirstName(e.target.value)} onFocus={() => setFocusedField('firstName')} onBlur={() => setFocusedField('')} style={{
-              ...inputStyle('firstName'),
-              flex: 1
-            }} />
-                <input type="text" placeholder="Last Name" value={lastName} onChange={e => setLastName(e.target.value)} onFocus={() => setFocusedField('lastName')} onBlur={() => setFocusedField('')} style={{
-              ...inputStyle('lastName'),
-              flex: 1
-            }} />
+              <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: '1fr',
+                  gap: '24px',
+                  width: '100%'
+              }} className="form-fields-grid-container">
+                  <style>{`
+                      @media (min-width: 641px) {
+                          .form-fields-grid-container {
+                              grid-template-columns: 1fr 1fr !important;
+                          }
+                          .form-field-full-width {
+                              grid-column: 1 / -1 !important;
+                          }
+                      }
+                  `}</style>
+                  <div>
+                    <input type="text" placeholder="First Name" value={firstName} onChange={e => setFirstName(e.target.value)} onFocus={() => setFocusedField('firstName')} onBlur={() => setFocusedField('')} style={inputStyle('firstName')} />
+                  </div>
+                  <div>
+                    <input type="text" placeholder="Last Name" value={lastName} onChange={e => setLastName(e.target.value)} onFocus={() => setFocusedField('lastName')} onBlur={() => setFocusedField('')} style={inputStyle('lastName')} />
+                  </div>
+                  <div>
+                    <input type="text" placeholder="Job Title / Designation" value={jobTitle} onChange={e => setJobTitle(e.target.value)} onFocus={() => setFocusedField('jobTitle')} onBlur={() => setFocusedField('')} style={inputStyle('jobTitle')} />
+                  </div>
+                  <div>
+                    <input type="text" placeholder="Organisation / Company" value={organisation} onChange={e => setOrganisation(e.target.value)} onFocus={() => setFocusedField('organisation')} onBlur={() => setFocusedField('')} style={inputStyle('organisation')} />
+                  </div>
+                  <div style={{ position: "relative" }}>
+                    <select value={partnershipTier} onChange={e => setPartnershipTier(e.target.value)} onFocus={() => setFocusedField('partnershipTier')} onBlur={() => setFocusedField('')} style={{
+                      ...inputStyle('partnershipTier'),
+                      appearance: 'none' as const,
+                      backgroundImage: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='rgba(255,255,255,0.4)' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E")`,
+                      backgroundPosition: 'right 16px center',
+                      backgroundRepeat: 'no-repeat',
+                      backgroundSize: '20px 20px',
+                      paddingRight: '40px'
+                    }}>
+                      <option value="" disabled style={{ backgroundColor: '#0A0A0F' }}>Partnership Tier</option>
+                      <option value="tier1" style={{ backgroundColor: '#0A0A0F' }}>Tier 1 — Title &amp; Naming Rights Partner™</option>
+                      <option value="tier2" style={{ backgroundColor: '#0A0A0F' }}>Tier 2 — Platinum Industry Partner™</option>
+                      <option value="tier3" style={{ backgroundColor: '#0A0A0F' }}>Tier 3 — Specialized Corporate Activation™</option>
+                      <option value="general" style={{ backgroundColor: '#0A0A0F' }}>General Enquiry</option>
+                    </select>
+                  </div>
+                  <div>
+                    <input type="email" placeholder="Email Address" value={email} onChange={e => setEmail(e.target.value)} onFocus={() => setFocusedField('email')} onBlur={() => setFocusedField('')} style={inputStyle('email')} />
+                  </div>
+                  <div>
+                    <input type="tel" placeholder="+27 ..." value={phone} onChange={e => setPhone(e.target.value)} onFocus={() => setFocusedField('phone')} onBlur={() => setFocusedField('')} style={inputStyle('phone')} />
+                  </div>
+                  <div style={{ position: "relative" }}>
+                    <select value={budgetStream} onChange={e => setBudgetStream(e.target.value)} onFocus={() => setFocusedField('budgetStream')} onBlur={() => setFocusedField('')} style={{
+                      ...inputStyle('budgetStream'),
+                      appearance: 'none' as const,
+                      backgroundImage: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='rgba(255,255,255,0.4)' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E")`,
+                      backgroundPosition: 'right 16px center',
+                      backgroundRepeat: 'no-repeat',
+                      backgroundSize: '20px 20px',
+                      paddingRight: '40px'
+                    }}>
+                      <option value="" disabled style={{ backgroundColor: '#0A0A0F' }}>Budget Stream</option>
+                      <option value="esg" style={{ backgroundColor: '#0A0A0F' }}>Corporate ESG Budget</option>
+                      <option value="esd" style={{ backgroundColor: '#0A0A0F' }}>Enterprise Supplier Development</option>
+                      <option value="marketing" style={{ backgroundColor: '#0A0A0F' }}>Brand Marketing Budget</option>
+                      <option value="sdl" style={{ backgroundColor: '#0A0A0F' }}>Skills Development Levy</option>
+                      <option value="unsure" style={{ backgroundColor: '#0A0A0F' }}>Unsure — Need Guidance</option>
+                    </select>
+                  </div>
+                  <div className="form-field-full-width">
+                    <textarea rows={4} placeholder="Briefly describe your partnership goals and how you'd like to support EmpowaHER™..." value={goals} onChange={e => setGoals(e.target.value)} onFocus={() => setFocusedField('goals')} onBlur={() => setFocusedField('')} style={{
+                      ...inputStyle('goals'),
+                      resize: 'vertical'
+                    }} />
+                  </div>
               </div>
-              <input type="text" placeholder="Job Title / Designation" value={jobTitle} onChange={e => setJobTitle(e.target.value)} onFocus={() => setFocusedField('jobTitle')} onBlur={() => setFocusedField('')} style={inputStyle('jobTitle')} />
-              <div className="flex flex-col sm:flex-row gap-4">
-                <input type="text" placeholder="Organisation / Company" value={organisation} onChange={e => setOrganisation(e.target.value)} onFocus={() => setFocusedField('organisation')} onBlur={() => setFocusedField('')} style={{
-              ...inputStyle('organisation'),
-              flex: 1
-            }} />
-                <select value={partnershipTier} onChange={e => setPartnershipTier(e.target.value)} onFocus={() => setFocusedField('partnershipTier')} onBlur={() => setFocusedField('')} style={{
-              ...inputStyle('partnershipTier'),
-              flex: 1,
-              appearance: 'none' as const
-            }}>
-                  <option value="" disabled>Partnership Tier</option>
-                  <option value="tier1">Tier 1 — Title &amp; Naming Rights Partner™</option>
-                  <option value="tier2">Tier 2 — Platinum Industry Partner™</option>
-                  <option value="tier3">Tier 3 — Specialized Corporate Activation™</option>
-                  <option value="general">General Enquiry</option>
-                </select>
-              </div>
-              <input type="email" placeholder="Email Address" value={email} onChange={e => setEmail(e.target.value)} onFocus={() => setFocusedField('email')} onBlur={() => setFocusedField('')} style={inputStyle('email')} />
-              <input type="tel" placeholder="+27 ..." value={phone} onChange={e => setPhone(e.target.value)} onFocus={() => setFocusedField('phone')} onBlur={() => setFocusedField('')} style={inputStyle('phone')} />
-              <select value={budgetStream} onChange={e => setBudgetStream(e.target.value)} onFocus={() => setFocusedField('budgetStream')} onBlur={() => setFocusedField('')} style={{
-            ...inputStyle('budgetStream'),
-            appearance: 'none' as const
-          }}>
-                <option value="" disabled>Budget Stream</option>
-                <option value="esg">Corporate ESG Budget</option>
-                <option value="esd">Enterprise Supplier Development</option>
-                <option value="marketing">Brand Marketing Budget</option>
-                <option value="sdl">Skills Development Levy</option>
-                <option value="unsure">Unsure — Need Guidance</option>
-              </select>
-              <textarea rows={4} placeholder="Briefly describe your partnership goals and how you'd like to support EmpowaHER™..." value={goals} onChange={e => setGoals(e.target.value)} onFocus={() => setFocusedField('goals')} onBlur={() => setFocusedField('')} style={{
-            ...inputStyle('goals'),
-            resize: 'vertical'
-          }} />
               <label style={{
             display: 'flex',
             alignItems: 'flex-start',
@@ -1158,26 +1194,32 @@ const SponsorshipEnquirySection = () => {
                   partnership opportunities.
                 </span>
               </label>
-              <button type="submit" style={{
+              <button type="submit" disabled={loading} style={{
             width: '100%',
             height: 52,
             backgroundColor: '#FF2D87',
             color: 'white',
             border: 'none',
             fontFamily: 'Figtree, sans-serif',
-            fontWeight: 500,
-            fontSize: 16,
+            fontWeight: 600,
+            fontSize: 15,
             letterSpacing: '0.02em',
-            cursor: 'pointer',
-            transition: 'background-color 0.2s',
-            borderRadius: 0,
-            minHeight: 52
+            cursor: loading ? 'not-allowed' : 'pointer',
+            transition: 'all 200ms ease-out',
+            borderRadius: '999px',
+            minHeight: 52,
+            opacity: loading ? 0.7 : 1,
+            boxShadow: '0 0 32px rgba(255,45,135,0.25)'
           }} onMouseEnter={e => {
-            (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#e0006f';
+            if (!loading) {
+              e.currentTarget.style.filter = 'brightness(1.1)';
+              e.currentTarget.style.boxShadow = '0 0 48px rgba(255,45,135,0.40)';
+            }
           }} onMouseLeave={e => {
-            (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#FF2D87';
+            e.currentTarget.style.filter = 'brightness(1)';
+            e.currentTarget.style.boxShadow = '0 0 32px rgba(255,45,135,0.25)';
           }}>
-                Submit Partnership Enquiry →
+                {loading ? "Submitting..." : "Submit Partnership Enquiry →"}
               </button>
             </form>}
         </div>
@@ -1484,7 +1526,7 @@ export const EnhancedEmpowaHerAcademy = () => {
         <PartnershipSection />
         <SponsorshipEnquirySection />
         <ImpactStats />
-        <TestimonialsCarousel />
+        {/* <TestimonialsCarousel /> - Hiding Cohort Voices section as per request */}
         <ProcessSteps />
       </main>
     </div>;

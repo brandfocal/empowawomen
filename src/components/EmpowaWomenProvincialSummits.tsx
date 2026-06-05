@@ -184,11 +184,50 @@ function parseStatValue(value: string): {
 // --- Main Page Component ---
 
 // ─── Provincial Enquiry Form ──────────────────────────────────────────────────
-const ProvincialEnquiryForm: React.FC = () => {
+interface ProvincialEnquiryFormProps {
+    province: string;
+    setProvince: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const INPUT_STYLE: React.CSSProperties = {
+    width: "100%",
+    backgroundColor: "rgba(255,255,255,0.03)",
+    border: "1px solid rgba(255,255,255,0.10)",
+    borderRadius: "8px",
+    padding: "14px 16px",
+    fontFamily: "Figtree, sans-serif",
+    fontSize: "14px",
+    color: "#FFFFFF",
+    outline: "none",
+    transition: "all 200ms ease",
+    boxSizing: "border-box"
+};
+
+const LABEL_STYLE: React.CSSProperties = {
+    fontSize: "12px",
+    fontWeight: 500,
+    color: "rgba(255,255,255,0.6)",
+    fontFamily: "Figtree, sans-serif"
+};
+
+const BUTTON_STYLE: React.CSSProperties = {
+    height: "52px",
+    backgroundColor: "#FF2D87",
+    color: "#FFFFFF",
+    fontFamily: "Figtree, sans-serif",
+    fontSize: "15px",
+    fontWeight: 600,
+    border: "none",
+    borderRadius: "999px",
+    cursor: "pointer",
+    transition: "all 200ms ease-out",
+    boxShadow: "0 0 32px rgba(255,45,135,0.25)"
+};
+
+const ProvincialEnquiryForm: React.FC<ProvincialEnquiryFormProps> = ({ province, setProvince }) => {
     const [name, setName] = React.useState("");
     const [email, setEmail] = React.useState("");
     const [company, setCompany] = React.useState("");
-    const [province, setProvince] = React.useState("");
     const [message, setMessage] = React.useState("");
     const [status, setStatus] = React.useState<"idle" | "submitting" | "success">("idle");
 
@@ -230,25 +269,38 @@ const ProvincialEnquiryForm: React.FC = () => {
                     </div>
                 ) : (
                     <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-                        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px" }} className="form-grid-2">
+                        <div style={{
+                            display: "grid",
+                            gridTemplateColumns: "1fr",
+                            gap: "24px",
+                            width: "100%"
+                        }} className="form-fields-grid-container">
+                            <style>{`
+                                @media (min-width: 641px) {
+                                    .form-fields-grid-container {
+                                        grid-template-columns: 1fr 1fr !important;
+                                    }
+                                    .form-field-full-width {
+                                        grid-column: 1 / -1 !important;
+                                    }
+                                }
+                            `}</style>
                             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-                                <label style={{ fontSize: "12px", fontWeight: 500, color: "rgba(255,255,255,0.6)" }}>Full Name</label>
-                                <input type="text" required value={name} onChange={e => setName(e.target.value)} style={{ height: "48px", backgroundColor: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.1)", padding: "0 16px", color: "#FFFFFF", fontFamily: "Figtree" }} />
+                                <label style={LABEL_STYLE}>Full Name</label>
+                                <input type="text" required value={name} onChange={e => setName(e.target.value)} style={INPUT_STYLE} onFocus={e => { e.currentTarget.style.borderColor = '#00B4A6'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.08)'; }} onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.10)'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'; }} />
                             </div>
                             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-                                <label style={{ fontSize: "12px", fontWeight: 500, color: "rgba(255,255,255,0.6)" }}>Email Address</label>
-                                <input type="email" required value={email} onChange={e => setEmail(e.target.value)} style={{ height: "48px", backgroundColor: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.1)", padding: "0 16px", color: "#FFFFFF", fontFamily: "Figtree" }} />
-                            </div>
-                        </div>
-                        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px" }} className="form-grid-2">
-                            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-                                <label style={{ fontSize: "12px", fontWeight: 500, color: "rgba(255,255,255,0.6)" }}>Company Name</label>
-                                <input type="text" required value={company} onChange={e => setCompany(e.target.value)} style={{ height: "48px", backgroundColor: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.1)", padding: "0 16px", color: "#FFFFFF", fontFamily: "Figtree" }} />
+                                <label style={LABEL_STYLE}>Email Address</label>
+                                <input type="email" required value={email} onChange={e => setEmail(e.target.value)} style={INPUT_STYLE} onFocus={e => { e.currentTarget.style.borderColor = '#00B4A6'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.08)'; }} onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.10)'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'; }} />
                             </div>
                             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-                                <label style={{ fontSize: "12px", fontWeight: 500, color: "rgba(255,255,255,0.6)" }}>Preferred Province</label>
-                                <select required value={province} onChange={e => setProvince(e.target.value)} style={{ height: "48px", backgroundColor: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.1)", padding: "0 16px", color: "#FFFFFF", fontFamily: "Figtree" }}>
-                                    <option value="" style={{ backgroundColor: "#0F0F15" }}>Select a province</option>
+                                <label style={LABEL_STYLE}>Company Name</label>
+                                <input type="text" required value={company} onChange={e => setCompany(e.target.value)} style={INPUT_STYLE} onFocus={e => { e.currentTarget.style.borderColor = '#00B4A6'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.08)'; }} onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.10)'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'; }} />
+                            </div>
+                            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                                <label style={LABEL_STYLE}>Preferred Province</label>
+                                <select required value={province} onChange={e => setProvince(e.target.value)} style={{ ...INPUT_STYLE, appearance: 'none', cursor: 'pointer', backgroundImage: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='rgba(255,255,255,0.4)' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E")`, backgroundPosition: 'right 16px center', backgroundRepeat: 'no-repeat', backgroundSize: '20px 20px', paddingRight: '40px' }} onFocus={e => { e.currentTarget.style.borderColor = '#00B4A6'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.08)'; }} onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.10)'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'; }}>
+                                    <option value="" disabled style={{ backgroundColor: "#0F0F15" }}>Select a province</option>
                                     <option value="Gauteng" style={{ backgroundColor: "#0F0F15" }}>Gauteng</option>
                                     <option value="KwaZulu-Natal" style={{ backgroundColor: "#0F0F15" }}>KwaZulu-Natal</option>
                                     <option value="Western Cape" style={{ backgroundColor: "#0F0F15" }}>Western Cape</option>
@@ -260,12 +312,18 @@ const ProvincialEnquiryForm: React.FC = () => {
                                     <option value="Northern Cape" style={{ backgroundColor: "#0F0F15" }}>Northern Cape</option>
                                 </select>
                             </div>
+                            <div className="form-field-full-width" style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                                <label style={LABEL_STYLE}>Your Message / Enquiry Details</label>
+                                <textarea value={message} onChange={e => setMessage(e.target.value)} rows={4} style={{ ...INPUT_STYLE, resize: "vertical" }} onFocus={e => { e.currentTarget.style.borderColor = '#00B4A6'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.08)'; }} onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.10)'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)'; }} />
+                            </div>
                         </div>
-                        <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-                            <label style={{ fontSize: "12px", fontWeight: 500, color: "rgba(255,255,255,0.6)" }}>Your Message / Enquiry Details</label>
-                            <textarea value={message} onChange={e => setMessage(e.target.value)} rows={4} style={{ backgroundColor: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.1)", padding: "16px", color: "#FFFFFF", fontFamily: "Figtree", resize: "vertical" }} />
-                        </div>
-                        <button type="submit" style={{ height: "54px", backgroundColor: "#FF2D87", color: "#FFFFFF", fontFamily: "Figtree", fontSize: "16px", fontWeight: 600, border: "none", cursor: "pointer", transition: "filter 200ms ease-out" }} onMouseEnter={e => e.currentTarget.style.filter = "brightness(1.1)"} onMouseLeave={e => e.currentTarget.style.filter = "brightness(1)"}>
+                        <button type="submit" disabled={status === "submitting"} style={{
+                            ...BUTTON_STYLE,
+                            backgroundColor: "#00B4A6",
+                            boxShadow: "0 0 32px rgba(0,180,166,0.25)",
+                            opacity: status === "submitting" ? 0.7 : 1,
+                            cursor: status === "submitting" ? "not-allowed" : "pointer"
+                        }} onMouseEnter={e => { if (status !== "submitting") { e.currentTarget.style.filter = "brightness(1.1)"; e.currentTarget.style.boxShadow = "0 0 48px rgba(0,180,166,0.40)"; } }} onMouseLeave={e => { e.currentTarget.style.filter = "brightness(1)"; e.currentTarget.style.boxShadow = "0 0 32px rgba(0,180,166,0.25)"; }}>
                             {status === "submitting" ? "Submitting..." : "Submit Registration Request"}
                         </button>
                     </form>
@@ -277,6 +335,7 @@ const ProvincialEnquiryForm: React.FC = () => {
 
 export const ProvincialSummitSeries = () => {
     const [activeFilter, setActiveFilter] = useState<FilterOption>('All');
+    const [province, setProvince] = useState<string>('');
     const {
         scrollY
     } = useScroll();
@@ -839,7 +898,11 @@ export const ProvincialSummitSeries = () => {
                                         </span>
                                         {summit.targetDelegate}
                                     </div>
-                                    <button className="summit-action-btn" style={{ width: "100%", boxSizing: "border-box", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 24px", backgroundColor: "#FF2D87", border: "none", color: "#FFFFFF", borderRadius: "999px", fontWeight: 700, fontSize: "13px", letterSpacing: "0.05em", cursor: "pointer", transition: "all 200ms ease-out" }}>
+                                    <button onClick={e => {
+                                        e.preventDefault();
+                                        setProvince(summit.province);
+                                        document.getElementById("provincial-enquiry-form")?.scrollIntoView({ behavior: "smooth" });
+                                    }} className="summit-action-btn" style={{ width: "100%", boxSizing: "border-box", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 24px", backgroundColor: "#FF2D87", border: "none", color: "#FFFFFF", borderRadius: "999px", fontWeight: 700, fontSize: "13px", letterSpacing: "0.05em", cursor: "pointer", transition: "all 200ms ease-out" }}>
                                         Apply for Seat
                                         <ArrowRight size={15} style={{ transition: "transform 200ms" }} className="summit-arrow-icon" />
                                     </button>
@@ -976,7 +1039,7 @@ export const ProvincialSummitSeries = () => {
             </div>
         </section>
 
-        <ProvincialEnquiryForm />
+        <ProvincialEnquiryForm province={province} setProvince={setProvince} />
 
         {/* ── Corporate Partnerships Section ── */}
         <section style={{

@@ -245,7 +245,7 @@ const SENIORITY_BARS: SeniorityBar[] = [{
 }];
 const AUDIENCE_STATS: AudienceStat[] = [{
     id: "stat-1",
-    metric: "10,000+",
+    metric: "50,000+",
     label: "Senior Delegates",
     accent: "#FF2D87"
 }, {
@@ -266,7 +266,7 @@ const AUDIENCE_STATS: AudienceStat[] = [{
 }];
 const OUTCOME_CARDS: OutcomeCard[] = [{
     id: "oc-1",
-    metric: "10,000+",
+    metric: "50,000+",
     accentColor: "#FF2D87",
     iconBg: "#FF2D87",
     label: "Delegate Impressions",
@@ -321,7 +321,7 @@ const TIER2_BENEFIT_ROWS = [{
     id: "t2b-1",
     num: "01",
     title: "High-Impact Panel Participation",
-    subtitle: "Keynote and panel positioning in front of 10,000+ senior delegates across the summit calendar."
+    subtitle: "Keynote and panel positioning in front of 50,000+ senior delegates across the summit calendar."
 }, {
     id: "t2b-2",
     num: "02",
@@ -2008,7 +2008,7 @@ const LeadGenForm: React.FC<LeadGenFormProps> = ({ selectedTier, setSelectedTier
         width: '100%',
         backgroundColor: 'rgba(255,255,255,0.06)',
         border: '1px solid rgba(255,255,255,0.10)',
-        borderRadius: '12px',
+        borderRadius: '8px',
         padding: '16px 20px',
         color: '#FFFFFF',
         outline: 'none',
@@ -3005,7 +3005,6 @@ const PartnershipsHero = () => {
         primaryCtaLink="#partnership-form"
         secondaryCtaText="Book Discovery Call"
         secondaryCtaLink="#partnership-form"
-        bottomSection={bottomSection}
     />;
 };
 
@@ -3041,8 +3040,8 @@ export const EmpowaWomenPartnerships = () => {
                 <PartnerPackageMatrix onSelectTier={handleSelectTier} />
             </div>
 
-            {/* 4. Testimonials */}
-            <PartnerTestimonials />
+            {/* 4. Testimonials - Hiding Partner Voices section as per request */}
+            {/* <PartnerTestimonials /> */}
 
             {/* 5. Lead Gen Form */}
             <LeadGenForm selectedTier={selectedTier} setSelectedTier={setSelectedTier} />

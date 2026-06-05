@@ -2972,6 +2972,20 @@ export const LeadershipAwardsGala = () => {
       block: "start"
     });
   };
+
+  React.useEffect(() => {
+    const hash = window.location.hash;
+    if (hash === '#invitation-form-section') {
+      setTimeout(() => {
+        formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 300);
+    } else if (hash === '#awards') {
+      setTimeout(() => {
+        document.getElementById('awards')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 300);
+    }
+  }, []);
+
   const {
     scrollYProgress
   } = useScroll();
