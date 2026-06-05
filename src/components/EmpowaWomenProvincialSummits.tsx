@@ -230,18 +230,47 @@ const ProvincialEnquiryForm: React.FC<ProvincialEnquiryFormProps> = ({ province,
     const [company, setCompany] = React.useState("");
     const [message, setMessage] = React.useState("");
     const [status, setStatus] = React.useState<"idle" | "submitting" | "success">("idle");
+    const [error, setError] = React.useState("");
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setError("");
         setStatus("submitting");
-        setTimeout(() => {
+
+        try {
+            const response = await fetch('/api/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    form_id: 20,
+                    input_values: {
+                        'input_10': name,
+                        'input_4': email,
+                        'input_11': company,
+                        'input_13': province,
+                        'input_9': message
+                    }
+                })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || 'Failed to submit registration request.');
+            }
+
             setStatus("success");
             setName("");
             setEmail("");
             setCompany("");
             setProvince("");
             setMessage("");
-        }, 1500);
+        } catch (err: any) {
+            setError(err.message || "An unexpected error occurred. Please try again.");
+            setStatus("idle");
+        }
     };
 
     return (
@@ -266,9 +295,38 @@ const ProvincialEnquiryForm: React.FC<ProvincialEnquiryFormProps> = ({ province,
                     <div style={{ textAlign: "center", padding: "40px", backgroundColor: "rgba(0,180,166,0.1)", border: "1px solid #00B4A6", borderRadius: "8px" }}>
                         <h3 style={{ color: "#00B4A6", marginBottom: "12px", fontSize: "20px" }}>Thank You!</h3>
                         <p style={{ color: "rgba(255,255,255,0.7)", margin: 0 }}>Your registration enquiry has been successfully submitted. Our team will contact you shortly.</p>
+                        <button onClick={() => setStatus("idle")} style={{
+                            marginTop: "20px",
+                            fontFamily: "Figtree",
+                            fontSize: "14px",
+                            fontWeight: 500,
+                            color: "#FFFFFF",
+                            backgroundColor: "#00B4A6",
+                            padding: "10px 24px",
+                            borderRadius: "999px",
+                            border: "none",
+                            cursor: "pointer",
+                            transition: "all 200ms ease-out"
+                        }} onMouseEnter={e => e.currentTarget.style.filter = "brightness(1.1)"} onMouseLeave={e => e.currentTarget.style.filter = "brightness(1)"}>
+                            Submit Another Request
+                        </button>
                     </div>
                 ) : (
                     <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+                        {error && (
+                            <div style={{
+                                padding: "12px 16px",
+                                backgroundColor: "rgba(239, 68, 68, 0.08)",
+                                border: "1px solid rgba(239, 68, 68, 0.2)",
+                                borderRadius: "12px",
+                                color: "#EF4444",
+                                fontSize: "13px",
+                                fontFamily: "Figtree",
+                                lineHeight: 1.4
+                            }}>
+                                {error}
+                            </div>
+                        )}
                         <div style={{
                             display: "grid",
                             gridTemplateColumns: "1fr",
