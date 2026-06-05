@@ -190,7 +190,7 @@ const TIER_CARDS: TierCard[] = [{
   numColor: 'rgba(255,45,135,0.20)',
   cardBg: 'rgba(255,45,135,0.06)',
   topBorder: '#FF2D87',
-  title: 'Title & Naming Rights Partner™',
+  title: 'Title & Naming Rights Partner',
   desc: 'Exclusive naming rights across all EmpowaHER™ touchpoints with full PR amplification and CXO access.',
   benefits: ['Exclusive naming rights', 'Opening keynote slot', 'Curated CXO introductions', 'PR & digital amplification', 'Full ESG reporting'],
   roiTag: 'R1M+ Brand Exposure',
@@ -204,7 +204,7 @@ const TIER_CARDS: TierCard[] = [{
   numColor: 'rgba(0,180,166,0.20)',
   cardBg: 'rgba(0,180,166,0.05)',
   topBorder: '#00B4A6',
-  title: 'Platinum Industry Partner™',
+  title: 'Platinum Industry Partner',
   desc: 'High-impact panel participation, premium exhibition space, and direct lead generation to an engaged audience.',
   benefits: ['High-impact panel position', 'Premium exhibition space', 'Lead generation pipeline', 'Category exclusivity', 'ESG impact certificate'],
   roiTag: '5,000+ Direct Impressions',
@@ -218,7 +218,7 @@ const TIER_CARDS: TierCard[] = [{
   numColor: 'rgba(217,119,6,0.20)',
   cardBg: 'rgba(217,119,6,0.05)',
   topBorder: '#D97706',
-  title: 'Specialized Corporate Activation™',
+  title: 'Specialized Corporate Activation',
   desc: 'Masterclass partner, category exclusivity, executive lounge rights, or CXO gifting partner. Customised packages available.',
   benefits: ['Masterclass partnership', 'Executive lounge rights', 'CXO gifting activation', 'Category exclusivity', 'Bespoke package options'],
   roiTag: 'Fully Customisable',
@@ -348,7 +348,7 @@ const ProgrammeArchitectureSection = () => {
               color: '#FF2D87',
               marginBottom: 12
             }}>
-                THE 7 PROGRAMME PILLARS™
+                THE 7 PROGRAMME PILLARS
               </div>
               <h2 style={{
               fontWeight: 200,
@@ -1137,9 +1137,9 @@ const SponsorshipEnquirySection = () => {
                       paddingRight: '40px'
                     }}>
                       <option value="" disabled style={{ backgroundColor: '#0A0A0F' }}>Partnership Tier</option>
-                      <option value="tier1" style={{ backgroundColor: '#0A0A0F' }}>Tier 1 — Title &amp; Naming Rights Partner™</option>
-                      <option value="tier2" style={{ backgroundColor: '#0A0A0F' }}>Tier 2 — Platinum Industry Partner™</option>
-                      <option value="tier3" style={{ backgroundColor: '#0A0A0F' }}>Tier 3 — Specialized Corporate Activation™</option>
+                      <option value="tier1" style={{ backgroundColor: '#0A0A0F' }}>Tier 1 — Title &amp; Naming Rights Partner</option>
+                      <option value="tier2" style={{ backgroundColor: '#0A0A0F' }}>Tier 2 — Platinum Industry Partner</option>
+                      <option value="tier3" style={{ backgroundColor: '#0A0A0F' }}>Tier 3 — Specialized Corporate Activation</option>
                       <option value="general" style={{ backgroundColor: '#0A0A0F' }}>General Enquiry</option>
                     </select>
                   </div>

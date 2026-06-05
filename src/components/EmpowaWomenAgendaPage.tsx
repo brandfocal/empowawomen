@@ -40,13 +40,13 @@ const SESSIONS: AgendaSession[] = [{
 }, {
   num: '02',
   time: '09h00',
-  type: 'OPENING KEYNOTE™',
+  type: 'OPENING KEYNOTE',
   title: 'Leading Fearlessly. Accelerating Growth. Transforming Economies.',
   description: 'Setting the tone for a decade of fearless leadership and economic transformation.'
 }, {
   num: '03',
   time: '09h45',
-  type: 'EXECUTIVE CONVERSATIONS™',
+  type: 'EXECUTIVE CONVERSATIONS',
   title: 'C-Suite Women on Scaling Power & Navigating Boards',
   description: 'C-Suite women on scaling power, navigating boards, and driving sector transformation.',
   pillarLink: "/executive-industry-series",
@@ -54,7 +54,7 @@ const SESSIONS: AgendaSession[] = [{
 }, {
   num: '04',
   time: '10h30',
-  type: 'WOMEN ON BOARDS & GOVERNANCE™',
+  type: 'WOMEN ON BOARDS & GOVERNANCE',
   title: 'Boardroom Strategies, NED Pathways & Governance Excellence',
   description: 'NED pathways, boardroom strategy, and governance excellence for the next generation of directors.',
   pillarLink: "/leadership-governance-boards",
@@ -62,7 +62,7 @@ const SESSIONS: AgendaSession[] = [{
 }, {
   num: '05',
   time: '11h15',
-  type: 'ENTREPRENEURSHIP & FUNDING INSIGHTS™',
+  type: 'ENTREPRENEURSHIP & FUNDING INSIGHTS',
   title: 'Capital Pathways, Investor Roundtables & Scaling Frameworks',
   description: 'Capital pathways, investor roundtables, and frameworks for scaling women-led enterprises.',
   pillarLink: "/entrepreneurship-funding",
@@ -70,7 +70,7 @@ const SESSIONS: AgendaSession[] = [{
 }, {
   num: '06',
   time: '13h20',
-  type: 'LEADERSHIP MASTERCLASS BREAKOUTS™',
+  type: 'LEADERSHIP MASTERCLASS BREAKOUTS',
   title: 'Choose Your Stage: Tech & AI / Green Economy / Finance / Media',
   description: 'Deep-dive tactical playbooks across four sector stages.',
   breakouts: [
@@ -82,7 +82,7 @@ const SESSIONS: AgendaSession[] = [{
 }, {
   num: '07',
   time: '14h30',
-  type: 'HIGH-IMPACT BUSINESS MATCHMAKING™',
+  type: 'HIGH-IMPACT BUSINESS MATCHMAKING',
   title: 'Structured 1-on-1 Meetings with Investors & Corporates',
   description: 'Structured meetings with investors, corporates, and ecosystem partners. Deals are made here.',
   pillarLink: "/partnerships",
@@ -90,7 +90,7 @@ const SESSIONS: AgendaSession[] = [{
 }, {
   num: '08',
   time: '15h15',
-  type: 'CLOSING KEYNOTE & AWARDS™',
+  type: 'CLOSING KEYNOTE & AWARDS',
   title: 'Celebrating Women Transforming Economies',
   description: 'Celebrating women who are transforming industries, economies, and societies. Legacy in the making.',
   pillarLink: "/leadership-awards-gala",
@@ -98,7 +98,7 @@ const SESSIONS: AgendaSession[] = [{
 }, {
   num: '09',
   time: '15h50',
-  type: 'SUMMIT CLOSE™',
+  type: 'SUMMIT CLOSE',
   title: 'Evening Connections',
   description: 'The conversations continue. Informal networking close and delegate farewell.'
 }];
@@ -906,7 +906,7 @@ export const EmpowaWomenAgendaPage: React.FC = () => {
                 fontSize: '14px',
                 flexShrink: 0
               }}>
-                Executive Networking Lunch™
+                Executive Networking Lunch
               </span>
               <span style={{
                 color: 'rgba(255,255,255,0.35)',
