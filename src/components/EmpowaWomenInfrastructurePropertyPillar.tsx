@@ -2,6 +2,7 @@ import * as React from "react";
 import { motion, useInView } from "framer-motion";
 import { Building2, Home, Truck, Zap, Globe, TrendingUp, DollarSign, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { InfrastructureHeroBanner } from "./InfrastructureHeroBanner";
+import { DelegateRegistrationSection } from "./DelegateRegistrationSection";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 interface SegmentCard {
@@ -1169,7 +1170,7 @@ const CTASection: React.FC = () => {
         width: "100%",
         maxWidth: "480px"
       }}>
-        <button style={{
+        <button onClick={e => { e.preventDefault(); document.getElementById("registration")?.scrollIntoView({ behavior: "smooth" }); }} style={{
           position: "relative",
           overflow: "hidden",
           display: "inline-flex",
@@ -1216,7 +1217,7 @@ const CTASection: React.FC = () => {
           }} />
         </button>
 
-        <button style={{
+        <button onClick={e => { e.preventDefault(); document.getElementById("segments")?.scrollIntoView({ behavior: "smooth" }); }} style={{
           fontFamily: "Figtree",
           fontSize: "clamp(14px, 2vw, 16px)",
           fontWeight: 500,
@@ -1236,7 +1237,7 @@ const CTASection: React.FC = () => {
         }} onMouseLeave={e => {
           (e.currentTarget as HTMLButtonElement).style.backgroundColor = "rgba(255,255,255,0.05)";
         }}>
-          Download Overview
+          Explore Programme
         </button>
       </div>
     </div>
@@ -1269,6 +1270,15 @@ export const InfrastructurePropertyPillar: React.FC = () => {
       </div>
 
       <StrategicROISection />
+      <DelegateRegistrationSection
+        stageName="Infrastructure, Property & Transport Stage"
+        includes={[
+          "Full-day Infrastructure, Property & Transport Stage access",
+          "Premium executive programme (9 sessions)",
+          "Infrastructure & real estate matchmaking",
+          "Delegate resource pack & recordings"
+        ]}
+      />
       <CTASection />
     </main>
 

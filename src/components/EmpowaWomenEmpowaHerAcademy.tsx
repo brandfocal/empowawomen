@@ -2816,7 +2816,7 @@ const PartnershipOpportunities = () => {
                                 onMouseEnter={e => { if (!loading) { (e.currentTarget as HTMLButtonElement).style.filter = 'brightness(1.1)'; e.currentTarget.style.boxShadow = '0 0 32px rgba(0,180,166,0.3)'; } }}
                                 onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.filter = 'brightness(1)'; e.currentTarget.style.boxShadow = '0 0 24px rgba(0,180,166,0.2)'; }}
                             >
-                                <span>{loading ? "Submitting Enquiry..." : "Download 2026-2027 B2B Prospectus"}</span>
+                                <span>{loading ? "Submitting Enquiry..." : "Submit Partnership Enquiry"}</span>
                                 <ArrowRight size={20} />
                             </button>
                         </form>

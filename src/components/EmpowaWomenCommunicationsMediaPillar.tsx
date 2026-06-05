@@ -648,10 +648,10 @@ const CommunicationsHero: React.FC = () => {
               className="hero-cta-group"
             >
               <a
-                href="#register"
+                href="#registration"
                 onClick={e => {
                   e.preventDefault();
-                  document.getElementById("register")?.scrollIntoView({ behavior: "smooth" });
+                  document.getElementById("registration")?.scrollIntoView({ behavior: "smooth" });
                 }}
                 style={{
                   fontFamily: "Figtree, sans-serif",
@@ -1500,7 +1500,7 @@ export const CommunicationsPillarPage: React.FC = () => {
               <button
                 onClick={e => {
                   e.preventDefault();
-                  document.getElementById("register")?.scrollIntoView({ behavior: "smooth" });
+                  document.getElementById("registration")?.scrollIntoView({ behavior: "smooth" });
                 }}
                 style={{
                   backgroundColor: "#FF2D87",
@@ -1520,7 +1520,7 @@ export const CommunicationsPillarPage: React.FC = () => {
               <button
                 onClick={e => {
                   e.preventDefault();
-                  document.getElementById("register")?.scrollIntoView({ behavior: "smooth" });
+                  document.getElementById("registration")?.scrollIntoView({ behavior: "smooth" });
                 }}
                 style={{
                   backgroundColor: "transparent",

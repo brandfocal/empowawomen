@@ -1105,25 +1105,6 @@ export const ExecutiveIndustrySeries: React.FC = () => {
                         <span>Reserve Your Stream Seat</span>
                         <ArrowRight size={16} />
                     </button>
-                    <button className="streams-bottom-btn" style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: "8px",
-                        padding: "16px 32px",
-                        backgroundColor: "transparent",
-                        color: "rgba(255,255,255,0.70)",
-                        fontFamily: "Figtree",
-                        fontSize: "15px",
-                        fontWeight: 400,
-                        border: "1px solid rgba(255,255,255,0.20)",
-                        borderRadius: "999px",
-                        cursor: "not-allowed",
-                        transition: "background-color 200ms ease-out",
-                        opacity: 0.35
-                    }} aria-disabled="true" disabled>
-                        <Download size={16} />
-                        <span>Download Stream Calendar</span>
-                    </button>
                 </motion.div>
             </div>
         </section>
@@ -1579,26 +1560,6 @@ export const ExecutiveIndustrySeries: React.FC = () => {
                         (e.currentTarget as HTMLButtonElement).style.filter = "brightness(1)";
                     }} onClick={() => openDrawer(null)}>
                         Reserve Now
-                    </button>
-                    <button className="cta-section-btn" style={{
-                        padding: "18px 40px",
-                        backgroundColor: "transparent",
-                        color: "#FFFFFF",
-                        fontFamily: "Figtree",
-                        fontSize: "13px",
-                        fontWeight: 700,
-                        letterSpacing: "0.2em",
-                        textTransform: "uppercase",
-                        border: "1px solid rgba(255,255,255,0.10)",
-                        borderRadius: "999px",
-                        cursor: "not-allowed",
-                        transition: "background-color 200ms ease-out",
-                        opacity: 0.35,
-                        display: "inline-flex",
-                        alignItems: "center",
-                        justifyContent: "center"
-                    }} aria-disabled="true" disabled>
-                        Download Stream Brochure
                     </button>
                 </motion.div>
             </div>

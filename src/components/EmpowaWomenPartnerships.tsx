@@ -725,7 +725,10 @@ const HeroSection = () => {
                     gap: "20px",
                     marginBottom: "48px"
                 }}>
-                    <a href="#" style={{
+                    <a href="#partnership-form" onClick={e => {
+                        e.preventDefault();
+                        document.getElementById("partnership-form")?.scrollIntoView({ behavior: "smooth" });
+                    }} style={{
                         fontFamily: "Figtree",
                         fontSize: "15px",
                         fontWeight: 500,
@@ -749,7 +752,7 @@ const HeroSection = () => {
                         el.style.filter = "brightness(1)";
                         el.style.boxShadow = "0 0 32px rgba(255,45,135,0.25)";
                     }}>
-                        Download Partnership Prospectus
+                        Become a Partner
                     </a>
                     <a href="#" style={{
                         fontFamily: "Figtree",
@@ -2719,7 +2722,10 @@ const FooterCTA = () => {
                     flexWrap: "wrap",
                     gap: "20px"
                 }}>
-                    <button style={{
+                    <button onClick={e => {
+                        e.preventDefault();
+                        document.getElementById("partnership-form")?.scrollIntoView({ behavior: "smooth" });
+                    }} style={{
                         display: "inline-flex",
                         alignItems: "center",
                         gap: "8px",
@@ -2738,7 +2744,7 @@ const FooterCTA = () => {
                     }} onMouseLeave={e => {
                         (e.currentTarget as HTMLButtonElement).style.filter = "brightness(1)";
                     }}>
-                        <span>Download Prospectus</span>
+                        <span>Become a Partner</span>
                         <ArrowRight size={18} />
                     </button>
                     <button onClick={e => {
@@ -2995,7 +3001,8 @@ const PartnershipsHero = () => {
         pillText="CORPORATE BUDGET PORTAL · B2B ESG"
         headline={headline}
         description="Our platform delivers measurable commercial value through strategic visibility, thought leadership, procurement integration, and long-term ecosystem positioning."
-        primaryCtaText="Download Partnership Prospectus"
+        primaryCtaText="Become a Partner"
+        primaryCtaLink="#partnership-form"
         secondaryCtaText="Book Discovery Call"
         secondaryCtaLink="#partnership-form"
         bottomSection={bottomSection}

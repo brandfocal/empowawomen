@@ -1991,30 +1991,6 @@ const PreFooterCTA = () => {
         }}>
             <span>Media Accreditation</span>
           </a>
-          <a href="#" style={{
-          display: "inline-flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "8px",
-          padding: "12px 36px",
-          backgroundColor: "rgba(255,255,255,0.06)",
-          color: "#FFFFFF",
-          fontFamily: "Figtree",
-          fontSize: "clamp(14px, 2vw, 16px)",
-          fontWeight: 500,
-          border: "1px solid rgba(255,255,255,0.15)",
-          borderRadius: "999px",
-          minHeight: "54px",
-          width: "220px",
-          textDecoration: "none",
-          transition: "background-color 200ms ease-out"
-        }} onMouseEnter={e => {
-          (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "rgba(255,255,255,0.10)";
-        }} onMouseLeave={e => {
-          (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "rgba(255,255,255,0.06)";
-        }}>
-            <span>Download Press Kit</span>
-          </a>
         </motion.div>
       </div>
     </section>;

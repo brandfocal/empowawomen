@@ -510,7 +510,7 @@ export const GreenEconomyPillar: React.FC = () => {
         </div>
 
         {/* ── Programme Section ── */}
-        <section ref={programmeRef} style={{
+        <section id="programme" ref={programmeRef} style={{
         paddingTop: "clamp(48px, 8vw, 120px)",
         paddingBottom: "clamp(48px, 8vw, 120px)",
         paddingLeft: "clamp(16px, 5vw, 96px)",
@@ -642,7 +642,7 @@ export const GreenEconomyPillar: React.FC = () => {
               (e.currentTarget as HTMLButtonElement).style.filter = "brightness(1)";
             }} onClick={e => {
               e.preventDefault();
-              document.getElementById("register")?.scrollIntoView({ behavior: "smooth" });
+              document.getElementById("registration")?.scrollIntoView({ behavior: "smooth" });
             }}>
                 <span>Register for Session</span>
                 <ArrowRight size={14} />
@@ -1086,7 +1086,7 @@ export const GreenEconomyPillar: React.FC = () => {
               (e.currentTarget as HTMLButtonElement).style.filter = "brightness(1)";
             }} onClick={e => {
               e.preventDefault();
-              document.getElementById("register")?.scrollIntoView({ behavior: "smooth" });
+              document.getElementById("registration")?.scrollIntoView({ behavior: "smooth" });
             }}>
                 <span style={{
                 position: "relative",
@@ -1110,7 +1110,7 @@ export const GreenEconomyPillar: React.FC = () => {
               </button>
 
               {/* Secondary CTA */}
-              <button className="cta-btn-secondary" style={{
+              <button className="cta-btn-secondary" onClick={e => { e.preventDefault(); document.getElementById("programme")?.scrollIntoView({ behavior: "smooth" }); }} style={{
               backgroundColor: "rgba(255,255,255,0.05)",
               border: "1px solid rgba(255,255,255,0.10)",
               color: "#FFFFFF",
@@ -1130,7 +1130,7 @@ export const GreenEconomyPillar: React.FC = () => {
             }} onMouseLeave={e => {
               (e.currentTarget as HTMLButtonElement).style.backgroundColor = "rgba(255,255,255,0.05)";
             }}>
-                Download Programme Overview
+                Explore Programme
               </button>
             </div>
           </div>

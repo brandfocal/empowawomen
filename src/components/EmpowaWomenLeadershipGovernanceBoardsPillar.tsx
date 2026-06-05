@@ -540,10 +540,10 @@ const HeroBanner: React.FC = () => {
               className="hero-cta-group"
             >
               <a
-                href="#register"
+                href="#registration"
                 onClick={e => {
                   e.preventDefault();
-                  document.getElementById("register")?.scrollIntoView({ behavior: "smooth" });
+                  document.getElementById("registration")?.scrollIntoView({ behavior: "smooth" });
                 }}
                 style={{
                   fontFamily: "Figtree",
@@ -1311,7 +1311,7 @@ export const LeadershipGovernanceBoardStage: React.FC = () => {
               <button
                 onClick={e => {
                   e.preventDefault();
-                  document.getElementById("register")?.scrollIntoView({ behavior: "smooth" });
+                  document.getElementById("registration")?.scrollIntoView({ behavior: "smooth" });
                 }}
                 style={{
                   backgroundColor: "#FF2D87",

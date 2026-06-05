@@ -1579,7 +1579,7 @@ export const BeautyFashionWellnessPillar: React.FC = () => {
                 borderRadius: "999px",
                 cursor: "pointer"
               }} className="hover:bg-white/10 transition-all">
-                Download Programme Overview
+                Explore Programme
               </button>
             </div>
           </div>

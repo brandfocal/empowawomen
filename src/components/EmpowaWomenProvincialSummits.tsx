@@ -183,6 +183,98 @@ function parseStatValue(value: string): {
 
 // --- Main Page Component ---
 
+// ─── Provincial Enquiry Form ──────────────────────────────────────────────────
+const ProvincialEnquiryForm: React.FC = () => {
+    const [name, setName] = React.useState("");
+    const [email, setEmail] = React.useState("");
+    const [company, setCompany] = React.useState("");
+    const [province, setProvince] = React.useState("");
+    const [message, setMessage] = React.useState("");
+    const [status, setStatus] = React.useState<"idle" | "submitting" | "success">("idle");
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        setStatus("submitting");
+        setTimeout(() => {
+            setStatus("success");
+            setName("");
+            setEmail("");
+            setCompany("");
+            setProvince("");
+            setMessage("");
+        }, 1500);
+    };
+
+    return (
+        <section id="provincial-enquiry-form" style={{
+            backgroundColor: "#0F0F15",
+            paddingTop: "clamp(64px, 10vw, 120px)",
+            paddingBottom: "clamp(64px, 10vw, 120px)",
+            paddingLeft: "clamp(16px, 5vw, 96px)",
+            paddingRight: "clamp(16px, 5vw, 96px)",
+            borderTop: "1px solid rgba(255,255,255,0.06)",
+            color: "#FFFFFF"
+        }}>
+            <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+                <span style={{ display: 'block', fontSize: '9px', fontWeight: 600, letterSpacing: '0.28em', color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', textAlign: "center", marginBottom: "16px" }}>
+                    PROVINCIAL SUMMIT REGISTRATION
+                </span>
+                <h2 style={{ fontFamily: 'Figtree', fontWeight: 300, color: '#FFFFFF', fontSize: 'clamp(24px, 3.5vw, 48px)', letterSpacing: '-0.03em', lineHeight: 1.1, textAlign: "center", marginBottom: "48px" }}>
+                    Register Your Interest for 2027 Summits
+                </h2>
+
+                {status === "success" ? (
+                    <div style={{ textAlign: "center", padding: "40px", backgroundColor: "rgba(0,180,166,0.1)", border: "1px solid #00B4A6", borderRadius: "8px" }}>
+                        <h3 style={{ color: "#00B4A6", marginBottom: "12px", fontSize: "20px" }}>Thank You!</h3>
+                        <p style={{ color: "rgba(255,255,255,0.7)", margin: 0 }}>Your registration enquiry has been successfully submitted. Our team will contact you shortly.</p>
+                    </div>
+                ) : (
+                    <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+                        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px" }} className="form-grid-2">
+                            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                                <label style={{ fontSize: "12px", fontWeight: 500, color: "rgba(255,255,255,0.6)" }}>Full Name</label>
+                                <input type="text" required value={name} onChange={e => setName(e.target.value)} style={{ height: "48px", backgroundColor: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.1)", padding: "0 16px", color: "#FFFFFF", fontFamily: "Figtree" }} />
+                            </div>
+                            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                                <label style={{ fontSize: "12px", fontWeight: 500, color: "rgba(255,255,255,0.6)" }}>Email Address</label>
+                                <input type="email" required value={email} onChange={e => setEmail(e.target.value)} style={{ height: "48px", backgroundColor: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.1)", padding: "0 16px", color: "#FFFFFF", fontFamily: "Figtree" }} />
+                            </div>
+                        </div>
+                        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px" }} className="form-grid-2">
+                            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                                <label style={{ fontSize: "12px", fontWeight: 500, color: "rgba(255,255,255,0.6)" }}>Company Name</label>
+                                <input type="text" required value={company} onChange={e => setCompany(e.target.value)} style={{ height: "48px", backgroundColor: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.1)", padding: "0 16px", color: "#FFFFFF", fontFamily: "Figtree" }} />
+                            </div>
+                            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                                <label style={{ fontSize: "12px", fontWeight: 500, color: "rgba(255,255,255,0.6)" }}>Preferred Province</label>
+                                <select required value={province} onChange={e => setProvince(e.target.value)} style={{ height: "48px", backgroundColor: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.1)", padding: "0 16px", color: "#FFFFFF", fontFamily: "Figtree" }}>
+                                    <option value="" style={{ backgroundColor: "#0F0F15" }}>Select a province</option>
+                                    <option value="Gauteng" style={{ backgroundColor: "#0F0F15" }}>Gauteng</option>
+                                    <option value="KwaZulu-Natal" style={{ backgroundColor: "#0F0F15" }}>KwaZulu-Natal</option>
+                                    <option value="Western Cape" style={{ backgroundColor: "#0F0F15" }}>Western Cape</option>
+                                    <option value="Eastern Cape" style={{ backgroundColor: "#0F0F15" }}>Eastern Cape</option>
+                                    <option value="Free State" style={{ backgroundColor: "#0F0F15" }}>Free State</option>
+                                    <option value="Limpopo" style={{ backgroundColor: "#0F0F15" }}>Limpopo</option>
+                                    <option value="Mpumalanga" style={{ backgroundColor: "#0F0F15" }}>Mpumalanga</option>
+                                    <option value="North West" style={{ backgroundColor: "#0F0F15" }}>North West</option>
+                                    <option value="Northern Cape" style={{ backgroundColor: "#0F0F15" }}>Northern Cape</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                            <label style={{ fontSize: "12px", fontWeight: 500, color: "rgba(255,255,255,0.6)" }}>Your Message / Enquiry Details</label>
+                            <textarea value={message} onChange={e => setMessage(e.target.value)} rows={4} style={{ backgroundColor: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.1)", padding: "16px", color: "#FFFFFF", fontFamily: "Figtree", resize: "vertical" }} />
+                        </div>
+                        <button type="submit" style={{ height: "54px", backgroundColor: "#FF2D87", color: "#FFFFFF", fontFamily: "Figtree", fontSize: "16px", fontWeight: 600, border: "none", cursor: "pointer", transition: "filter 200ms ease-out" }} onMouseEnter={e => e.currentTarget.style.filter = "brightness(1.1)"} onMouseLeave={e => e.currentTarget.style.filter = "brightness(1)"}>
+                            {status === "submitting" ? "Submitting..." : "Submit Registration Request"}
+                        </button>
+                    </form>
+                )}
+            </div>
+        </section>
+    );
+};
+
 export const ProvincialSummitSeries = () => {
     const [activeFilter, setActiveFilter] = useState<FilterOption>('All');
     const {
@@ -358,7 +450,10 @@ export const ProvincialSummitSeries = () => {
                     duration: 0.8,
                     delay: 1.2
                 }} className="cta-container" style={{ display: "flex", gap: "16px", justifyContent: "center", alignItems: "center", marginBottom: "48px" }}>
-                    <button className="cta-button" style={{
+                    <button onClick={e => {
+                        e.preventDefault();
+                        document.getElementById("provincial-enquiry-form")?.scrollIntoView({ behavior: "smooth" });
+                    }} className="cta-button" style={{
                         fontFamily: 'Figtree',
                         fontSize: '15px',
                         fontWeight: 500,
@@ -387,7 +482,10 @@ export const ProvincialSummitSeries = () => {
                     }}>
                         Register Now
                     </button>
-                    <button className="cta-button" style={{
+                    <button onClick={e => {
+                        e.preventDefault();
+                        document.getElementById("provincial-matrix")?.scrollIntoView({ behavior: "smooth" });
+                    }} className="cta-button" style={{
                         fontFamily: 'Figtree',
                         fontSize: '15px',
                         fontWeight: 400,
@@ -496,7 +594,7 @@ export const ProvincialSummitSeries = () => {
         </section>
 
         {/* ── Provincial Matrix Section ─────────────────────────────────────── */}
-        <section style={{
+        <section id="provincial-matrix" style={{
             backgroundColor: '#F7F6F2',
             paddingTop: '0',
             paddingBottom: '80px',
@@ -847,7 +945,10 @@ export const ProvincialSummitSeries = () => {
                     duration: 0.6,
                     delay: 0.3
                 }} className="cta-container" style={{ display: "flex", gap: "16px", justifyContent: "center", alignItems: "center" }}>
-                    <button className="cta-button" style={{
+                    <button onClick={e => {
+                        e.preventDefault();
+                        document.getElementById("provincial-enquiry-form")?.scrollIntoView({ behavior: "smooth" });
+                    }} className="cta-button" style={{
                         fontFamily: 'Figtree',
                         fontSize: '14px',
                         fontWeight: 500,
@@ -871,35 +972,11 @@ export const ProvincialSummitSeries = () => {
                     }}>
                         Apply Now
                     </button>
-                    <button className="cta-button" style={{
-                        fontFamily: 'Figtree',
-                        fontSize: '14px',
-                        fontWeight: 500,
-                        color: 'rgba(255,255,255,0.70)',
-                        backgroundColor: 'transparent',
-                        border: '1px solid rgba(255,255,255,0.20)',
-                        borderRadius: '999px',
-                        padding: '0 40px',
-                        height: '50px',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        gap: '8px',
-                        cursor: 'pointer',
-                        transition: 'background-color 200ms ease-out',
-                        letterSpacing: '0.02em',
-                        width: '200px'
-                    }} onMouseEnter={e => {
-                        (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'rgba(255,255,255,0.06)';
-                    }} onMouseLeave={e => {
-                        (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'transparent';
-                    }}>
-                        <Download size={16} />
-                        Download Calendar
-                    </button>
                 </motion.div>
             </div>
         </section>
+
+        <ProvincialEnquiryForm />
 
         {/* ── Corporate Partnerships Section ── */}
         <section style={{

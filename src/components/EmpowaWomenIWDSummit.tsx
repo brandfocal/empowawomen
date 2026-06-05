@@ -432,7 +432,7 @@ const HeroSection = () => {
                     paddingLeft: "clamp(16px, 5vw, 0px)",
                     paddingRight: "clamp(16px, 5vw, 0px)"
                 }}>
-                    <a href="#" className="cta-button" style={{
+                    <a href="#iwd-registration-form" className="cta-button" onClick={(e) => { e.preventDefault(); document.getElementById('iwd-registration-form')?.scrollIntoView({ behavior: 'smooth' }); }} style={{
                         fontFamily: "Figtree",
                         fontSize: "15px",
                         fontWeight: 500,
@@ -460,7 +460,7 @@ const HeroSection = () => {
                     }}>
                         Request Delegate Seat
                     </a>
-                    <a href="#" className="cta-button" style={{
+                    <a href="#agenda" className="cta-button" onClick={(e) => { e.preventDefault(); document.getElementById('agenda')?.scrollIntoView({ behavior: 'smooth' }); }} style={{
                         fontFamily: "Figtree",
                         fontSize: "15px",
                         fontWeight: 400,
@@ -1191,7 +1191,7 @@ export const IWDSummitDetail = () => {
         </section>
 
         {/* ── 5. AGENDA TIMELINE ── */}
-        <section style={{ backgroundColor: "#0A0A0F", paddingTop: "clamp(64px, 10vw, 128px)", paddingBottom: "clamp(64px, 10vw, 128px)", overflow: "hidden", position: "relative" }}>
+        <section id="agenda" style={{ backgroundColor: "#0A0A0F", paddingTop: "clamp(64px, 10vw, 128px)", paddingBottom: "clamp(64px, 10vw, 128px)", overflow: "hidden", position: "relative" }}>
             <div style={{ position: "absolute", top: 0, right: 0, width: "33.333333%", height: "100%", background: "linear-gradient(to left, rgba(255, 45, 135, 0.05) 0%, transparent 100%)", pointerEvents: "none", zIndex: 0 }} />
 
             <div style={{ maxWidth: "1280px", margin: "0 auto", paddingLeft: "clamp(24px, 6vw, 48px)", paddingRight: "clamp(24px, 6vw, 48px)", position: "relative", zIndex: 10 }}>
@@ -1435,7 +1435,7 @@ export const IWDSummitDetail = () => {
                                     <span>{benefit.text}</span>
                                 </li>)}
                             </ul>
-                            <button style={{
+                            <button onClick={(e) => { e.preventDefault(); document.getElementById('iwd-registration-form')?.scrollIntoView({ behavior: 'smooth' }); }} style={{
                                 width: "100%",
                                 marginTop: "32px",
                                 padding: "16px",
@@ -1455,7 +1455,7 @@ export const IWDSummitDetail = () => {
                             }} onMouseLeave={e => {
                                 (e.currentTarget as HTMLButtonElement).style.backgroundColor = "rgba(255, 255, 255, 0.05)";
                             }}>
-                                Download Full Brief
+                                Request Delegate Seat
                             </button>
                         </motion.div>
                     </div>
@@ -1464,7 +1464,7 @@ export const IWDSummitDetail = () => {
         </section>
 
         {/* ── 6. CTA SECTION ── */}
-        <section style={{
+        <section id="iwd-registration-form" style={{
             backgroundColor: "#0A0A0F",
             paddingTop: "clamp(64px, 10vw, 128px)",
             paddingBottom: "clamp(64px, 10vw, 128px)",

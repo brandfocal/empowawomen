@@ -851,11 +851,11 @@ const PartnershipSection = () => {
             margin: 0,
             lineHeight: 1.4
           }}>
-              Download our prospectus or speak directly to our partnerships team.
+              Enquire today to receive our prospectus or speak directly to our partnerships team.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 shrink-0">
-            <a href="#" style={{
+            <button onClick={scrollToEnquiry} style={{
             height: 48,
             padding: '0 24px',
             backgroundColor: 'rgba(255,255,255,0.06)',
@@ -875,15 +875,15 @@ const PartnershipSection = () => {
             whiteSpace: 'nowrap',
             minHeight: 44
           }} onMouseEnter={e => {
-            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(255,255,255,0.35)';
-            (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'rgba(255,255,255,0.10)';
+            (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(255,255,255,0.35)';
+            (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'rgba(255,255,255,0.10)';
           }} onMouseLeave={e => {
-            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(255,255,255,0.15)';
-            (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'rgba(255,255,255,0.06)';
+            (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(255,255,255,0.15)';
+            (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'rgba(255,255,255,0.06)';
           }}>
-              <Download size={15} />
-              <span>Download Partnership Prospectus</span>
-            </a>
+              <ArrowRight size={15} />
+              <span>Request Partnership Package</span>
+            </button>
             <button onClick={scrollToEnquiry} style={{
             height: 48,
             padding: '0 24px',

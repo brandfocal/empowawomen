@@ -1595,7 +1595,7 @@ export const CreativeEconomyPillar: React.FC = () => {
               }} onMouseLeave={e => {
                 (e.currentTarget as HTMLButtonElement).style.backgroundColor = "rgba(255,255,255,0.05)";
               }}>
-                Download Programme Overview
+                Explore Programme
               </button>
             </div>
           </div>
