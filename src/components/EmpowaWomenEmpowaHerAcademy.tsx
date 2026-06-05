@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform, useInView } from 'framer-motion';
 import { UniversalHero } from './UniversalHero';
-import { ChevronRight, Menu, X, Cpu, Lightbulb, Users, Heart, Camera, Briefcase, Rocket, Globe, ArrowRight, ChevronDown, Link, MessageSquare, Video, CheckCircle, Star } from 'lucide-react';
+import { ChevronRight, Menu, X, Cpu, Lightbulb, Users, Heart, Camera, Briefcase, Rocket, Globe, ArrowRight, ChevronDown, Link, MessageSquare, Video, CheckCircle, Star, MessageCircle } from 'lucide-react';
 import { Instagram, Linkedin, Twitter, Youtube } from "./BrandIcons";
 import { cn } from '../lib/utils';
 
@@ -1070,102 +1070,294 @@ const JurisdictionImpact = () => {
     </section>;
 };
 
-// ─── Programme Pillars ─────────────────────────────────────────────────────
+// ─── Types and Constants for Enhanced Pillars ──────────────────────────────
+interface PillarItem {
+    id: string;
+    num: string;
+    title: string;
+    description: string;
+    accent: string;
+    bgImage: string;
+}
+
+const PROGRAMME_PILLARS_ENHANCED: PillarItem[] = [{
+    id: 'pillar-1',
+    num: '01',
+    title: 'Future Skills Lab',
+    description: 'AI implementation, digital coding bootcamps, creator monetisation pathways, and professional CV/LinkedIn profiling.',
+    accent: '#1655B5',
+    bgImage: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1920&q=85'
+}, {
+    id: 'pillar-2',
+    num: '02',
+    title: 'Entrepreneurship & Enterprise Lab',
+    description: 'Moving from baseline side-hustles to legally scalable, bankable corporate models with procurement matching.',
+    accent: '#FF2D87',
+    bgImage: 'https://images.unsplash.com/photo-1556761175-4b46a572b786?w=1920&q=85'
+}, {
+    id: 'pillar-3',
+    num: '03',
+    title: 'Leadership & Influence Academy',
+    description: 'Personal branding, executive presence cultivation, civic governance, and strategic peer mentorship structures.',
+    accent: '#D97706',
+    bgImage: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&q=85'
+}, {
+    id: 'pillar-4',
+    num: '04',
+    title: 'Wellness, Life & Resilience',
+    description: 'Emotional intelligence coaching, corporate mental health protocols, gender-based violence support systems, and personal growth spaces.',
+    accent: '#00B4A6',
+    bgImage: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1920&q=85'
+}, {
+    id: 'pillar-5',
+    num: '05',
+    title: 'Creative & Digital Economy Lab',
+    description: 'Content creator optimisation, audio podcasting, digital video production skills, and brand sponsorship monetisation systems.',
+    accent: '#6D28D9',
+    bgImage: 'https://images.unsplash.com/photo-1535303311164-664fc9ec6532?w=1920&q=85'
+}, {
+    id: 'pillar-6',
+    num: '06',
+    title: 'Careers & Employability Hub',
+    description: 'Bridging the practical gap between academic transcripts, industry career showcases, learnership linkages, and corporate pathways.',
+    accent: '#FF2D87',
+    bgImage: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1920&q=85'
+}, {
+    id: 'pillar-7',
+    num: '07',
+    title: 'Summits & Activations',
+    description: 'Access to high-energy, opportunity-driven environments, enterprise funding festivals, and national roadshow connectivity.',
+    accent: '#1655B5',
+    bgImage: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1920&q=85'
+}];
+
 const ProgramPillars = () => {
+    const [activeTab, setActiveTab] = React.useState(0);
+    const [hoveredPillar, setHoveredPillar] = React.useState<number | null>(null);
+    const tabDescriptions = [
+        'Grassroots incubation setups, beauty/fashion labs, and procurement readiness bootcamps.',
+        'Climate-smart agribusiness labs, digital financial literacy, and cooperative infrastructure setups.',
+        'Corporate readiness tracks, internships, and STEM integration networks for graduates.'
+    ];
+
+    const localJurisdictionTabs = [
+        { id: 'township', label: 'Township Economy' },
+        { id: 'rural', label: 'Rural Inclusion' },
+        { id: 'campus', label: 'Campus & Tertiary' }
+    ];
+
     return <section style={{
         backgroundColor: '#0A0A0F',
-        paddingTop: '128px',
-        paddingBottom: '128px',
-        paddingLeft: 'clamp(24px, 6vw, 96px)',
-        paddingRight: 'clamp(24px, 6vw, 96px)'
-    }}>
+        paddingTop: 'clamp(64px, 10vw, 128px)',
+        paddingBottom: 'clamp(64px, 10vw, 128px)',
+        position: 'relative',
+        overflow: 'hidden'
+    }} className="px-4 sm:px-6 lg:px-8">
         <div style={{
-            maxWidth: '1200px',
-            margin: '0 auto'
+            position: 'relative',
+            zIndex: 2
         }}>
-            <div style={{
-                marginBottom: '80px'
+            <motion.div initial={{
+                opacity: 0,
+                y: 20
+            }} whileInView={{
+                opacity: 1,
+                y: 0
+            }} transition={{
+                duration: 0.7
+            }} viewport={{
+                once: true
+            }} className="max-w-6xl mx-auto mb-12 sm:mb-20" style={{
+                position: 'relative',
+                overflow: 'hidden',
+                backgroundColor: 'rgba(255,45,135,0.05)',
+                border: '1px solid rgba(255,45,135,0.15)',
+                borderRadius: 0,
+                padding: 'clamp(24px, 4vw, 48px) clamp(20px, 4vw, 40px)',
+                display: 'flex',
+                flexDirection: 'column'
             }}>
-                <p style={{
-                    fontFamily: 'Figtree',
-                    fontWeight: 600,
-                    fontSize: '9px',
-                    letterSpacing: '0.28em',
-                    textTransform: 'uppercase',
-                    color: 'rgba(255,255,255,0.40)',
-                    marginBottom: '16px'
+                <div style={{
+                    position: 'absolute',
+                    right: -20,
+                    bottom: -30,
+                    fontSize: 'clamp(80px, 15vw, 180px)',
+                    fontWeight: 200,
+                    color: 'rgba(255,255,255,0.03)',
+                    pointerEvents: 'none',
+                    userSelect: 'none',
+                    lineHeight: 1,
+                    fontFamily: 'Figtree, sans-serif'
                 }}>
-                    PROGRAMME ARCHITECTURE
-                </p>
-                <h2 style={{
-                    fontFamily: 'Figtree',
-                    fontWeight: 300,
-                    fontSize: 'clamp(32px, 5vw, 48px)',
-                    letterSpacing: '-0.03em',
-                    color: '#FFFFFF',
-                    marginBottom: '16px'
-                }}>
-                    The 7 Programme Pillars.
-                </h2>
-                <p style={{
-                    fontFamily: 'Figtree',
-                    fontWeight: 400,
-                    fontSize: '18px',
-                    lineHeight: 1.75,
-                    color: 'rgba(255,255,255,0.45)',
-                    maxWidth: '560px'
-                }}>
-                    A holistic architecture designed to transform potential into sustainable economic participation.
-                </p>
-            </div>
+                    7
+                </div>
 
-            <div className="academy-pillars-grid">
-                {PROGRAMME_PILLARS.map(pillar => <motion.div key={pillar.id} whileHover={{
-                    y: -8,
-                    boxShadow: `0 20px 40px ${pillar.borderColor.replace('0.20', '0.12').replace('0.30', '0.18')}`,
-                    borderColor: pillar.iconBg
-                }} className={`academy-pillar-card group ${pillar.gridClass}`} style={{
-                    backgroundColor: pillar.bgColor,
-                    border: `1px solid ${pillar.borderColor}`,
-                    transition: "border-color 300ms ease, box-shadow 300ms ease"
-                }}>
-                    <div className="academy-pillar-gradient-overlay" />
-                    <div style={{ position: 'relative', zIndex: 10 }}>
-                        <div className="academy-pillar-icon-wrapper" style={{
-                            backgroundColor: pillar.iconBg
+                <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 relative z-10">
+                    <div>
+                        <div style={{
+                            fontSize: 9,
+                            fontWeight: 600,
+                            letterSpacing: '0.32em',
+                            textTransform: 'uppercase',
+                            color: '#FF2D87',
+                            marginBottom: 12
                         }}>
-                            {pillar.icon}
+                            THE 7 PROGRAMME PILLARS™
                         </div>
-                        <h3 style={{
-                            fontFamily: 'Figtree',
-                            fontWeight: 300,
-                            fontSize: '22px',
-                            letterSpacing: '-0.03em',
-                            color: '#FFFFFF',
-                            marginBottom: '16px'
-                        }}>
-                            {pillar.title}
-                        </h3>
-                        <p style={{
-                            fontFamily: 'Figtree',
-                            fontWeight: 400,
-                            fontSize: '16px',
-                            lineHeight: 1.75,
-                            color: 'rgba(255,255,255,0.50)'
-                        }}>
-                            {pillar.description}
-                        </p>
-                    </div>
-                    <div className="academy-pillar-number" style={{
-                        color: 'rgba(255,255,255,0.05)'
-                    }}>
-                        <span style={{
-                            fontFamily: 'Figtree',
+                        <h2 style={{
                             fontWeight: 200,
-                            fontSize: '60px'
-                        }}>0{pillar.id}</span>
+                            fontSize: 'clamp(28px, 5vw, 64px)',
+                            letterSpacing: '-0.04em',
+                            color: 'white',
+                            lineHeight: 1.05,
+                            margin: 0
+                        }}>
+                            Built to Activate<br />Every Young Woman.
+                        </h2>
                     </div>
-                </motion.div>)}
+
+                    <div style={{
+                        minWidth: 0,
+                        width: '100%',
+                        maxWidth: 340
+                    }} className="lg:min-w-[280px]">
+                        <div style={{
+                            display: 'flex',
+                            gap: 8,
+                            flexWrap: 'wrap',
+                            marginBottom: 16
+                        }}>
+                            {localJurisdictionTabs.map((tab, i) => <button key={tab.id} onClick={() => setActiveTab(i)} style={{
+                                height: 44,
+                                padding: '0 16px',
+                                fontSize: 11,
+                                fontWeight: 600,
+                                letterSpacing: '0.1em',
+                                textTransform: 'uppercase',
+                                fontFamily: 'Figtree, sans-serif',
+                                cursor: 'pointer',
+                                transition: 'all 0.15s',
+                                flexShrink: 0,
+                                borderRadius: 0,
+                                backgroundColor: activeTab === i ? '#FF2D87' : 'transparent',
+                                border: activeTab === i ? 'none' : '1px solid rgba(255,255,255,0.15)',
+                                color: activeTab === i ? 'white' : 'rgba(255,255,255,0.50)'
+                            }}>
+                                {tab.label}
+                            </button>)}
+                        </div>
+                        <AnimatePresence mode="wait">
+                            <motion.p key={activeTab} initial={{
+                                opacity: 0,
+                                y: 6
+                            }} animate={{
+                                opacity: 1,
+                                y: 0
+                            }} exit={{
+                                opacity: 0,
+                                y: -6
+                            }} transition={{
+                                duration: 0.22
+                            }} style={{
+                                color: 'rgba(255,255,255,0.45)',
+                                fontSize: 13,
+                                lineHeight: 1.75,
+                                margin: 0,
+                                maxWidth: 340
+                            }}>
+                                {tabDescriptions[activeTab]}
+                            </motion.p>
+                        </AnimatePresence>
+                    </div>
+                </div>
+            </motion.div>
+
+            <div className="max-w-6xl mx-auto">
+                {PROGRAMME_PILLARS_ENHANCED.map((pillar, i) => {
+                    const isHovered = hoveredPillar === i;
+                    return <motion.div key={pillar.id} initial={{
+                        opacity: 0,
+                        x: -12
+                    }} whileInView={{
+                        opacity: 1,
+                        x: 0
+                    }} transition={{
+                        duration: 0.5,
+                        delay: i * 0.08
+                    }} viewport={{
+                        once: true
+                    }} onMouseEnter={() => setHoveredPillar(i)} onMouseLeave={() => setHoveredPillar(null)} style={{
+                        display: 'flex',
+                        alignItems: 'flex-start',
+                        gap: 'clamp(16px, 4vw, 40px)',
+                        paddingTop: 24,
+                        paddingBottom: 24,
+                        paddingLeft: 12,
+                        paddingRight: 12,
+                        marginLeft: -12,
+                        marginRight: -12,
+                        borderBottom: `1px solid ${isHovered ? pillar.accent + '40' : 'rgba(255,255,255,0.07)'}`,
+                        cursor: 'default',
+                        transition: 'background-color 0.3s, border-color 0.3s, box-shadow 0.3s',
+                        backgroundColor: isHovered ? 'rgba(255,255,255,0.07)' : 'transparent',
+                        borderRadius: 4,
+                        boxShadow: isHovered ? `0 0 0 2px ${pillar.accent}, 0 0 24px ${pillar.accent}66` : 'none',
+                        opacity: 1
+                    }}>
+                        <div style={{
+                            fontWeight: 200,
+                            fontSize: 'clamp(36px, 7vw, 80px)',
+                            letterSpacing: '-0.05em',
+                            width: 'clamp(44px, 8vw, 96px)',
+                            flexShrink: 0,
+                            lineHeight: 1,
+                            userSelect: 'none',
+                            color: pillar.accent,
+                            fontFamily: 'Figtree, sans-serif',
+                            transition: 'opacity 0.3s',
+                            opacity: isHovered ? 1 : 0.7
+                        }}>
+                            {pillar.num}
+                        </div>
+
+                        <div style={{
+                            flex: 1,
+                            minWidth: 0
+                        }}>
+                            <h3 style={{
+                                color: isHovered ? 'white' : 'rgba(255,255,255,0.85)',
+                                fontWeight: isHovered ? 600 : 500,
+                                fontSize: 'clamp(15px, 2.5vw, 20px)',
+                                lineHeight: 1.2,
+                                margin: '0 0 6px 0',
+                                transition: 'color 0.3s, font-weight 0.3s'
+                            }}>
+                                {pillar.title}
+                            </h3>
+                            <p style={{
+                                color: isHovered ? 'rgba(255,255,255,0.65)' : 'rgba(255,255,255,0.40)',
+                                fontSize: 'clamp(12px, 1.5vw, 13px)',
+                                lineHeight: 1.7,
+                                maxWidth: 520,
+                                margin: 0,
+                                transition: 'color 0.3s'
+                            }}>
+                                {pillar.description}
+                            </p>
+                        </div>
+
+                        <div style={{
+                            alignSelf: 'flex-start',
+                            marginTop: 8,
+                            flexShrink: 0,
+                            width: isHovered ? 32 : 24,
+                            height: 3,
+                            backgroundColor: pillar.accent,
+                            transition: 'width 0.3s, box-shadow 0.3s',
+                            boxShadow: isHovered ? `0 0 8px ${pillar.accent}` : 'none'
+                        }} />
+                    </motion.div>;
+                })}
             </div>
         </div>
     </section>;
@@ -2855,6 +3047,498 @@ const PartnershipOpportunities = () => {
     </section>;
 };
 
+// ─── Partnerships & B2B ESG (Tiers and Cards) ─────────────────────────────────
+interface TierCard {
+    id: string;
+    num: string;
+    tier: string;
+    tierColor: string;
+    cardBg: string;
+    topBorder: string;
+    numColor: string;
+    title: string;
+    desc: string;
+    benefits: string[];
+    roiTag: string;
+    ctaLabel: string;
+    badge: string;
+}
+
+interface RoiMetric {
+    id: string;
+    value: string;
+    label: string;
+}
+
+const TIER_CARDS: TierCard[] = [{
+    id: 'tier-1',
+    num: '01',
+    tier: 'TIER 1',
+    tierColor: '#FF2D87',
+    numColor: 'rgba(255,45,135,0.20)',
+    cardBg: 'rgba(255,45,135,0.06)',
+    topBorder: '#FF2D87',
+    title: 'Title & Naming Rights Partner™',
+    desc: 'Exclusive naming rights across all EmpowaHER™ touchpoints with full PR amplification and CXO access.',
+    benefits: ['Exclusive naming rights', 'Opening keynote slot', 'Curated CXO introductions', 'PR & digital amplification', 'Full ESG reporting'],
+    roiTag: 'R1M+ Brand Exposure',
+    ctaLabel: 'Enquire About Title Partnership',
+    badge: 'PREMIUM'
+}, {
+    id: 'tier-2',
+    num: '02',
+    tier: 'TIER 2',
+    tierColor: '#00B4A6',
+    numColor: 'rgba(0,180,166,0.20)',
+    cardBg: 'rgba(0,180,166,0.05)',
+    topBorder: '#00B4A6',
+    title: 'Platinum Industry Partner™',
+    desc: 'High-impact panel participation, premium exhibition space, and direct lead generation to an engaged audience.',
+    benefits: ['High-impact panel position', 'Premium exhibition space', 'Lead generation pipeline', 'Category exclusivity', 'ESG impact certificate'],
+    roiTag: '5,000+ Direct Impressions',
+    ctaLabel: 'Enquire About Platinum Partnership',
+    badge: 'FEATURED'
+}, {
+    id: 'tier-3',
+    num: '03',
+    tier: 'TIER 3',
+    tierColor: '#D97706',
+    numColor: 'rgba(217,119,6,0.20)',
+    cardBg: 'rgba(217,119,6,0.05)',
+    topBorder: '#D97706',
+    title: 'Specialized Corporate Activation™',
+    desc: 'Masterclass partner, category exclusivity, executive lounge rights, or CXO gifting partner. Customised packages available.',
+    benefits: ['Masterclass partnership', 'Executive lounge rights', 'CXO gifting activation', 'Category exclusivity', 'Bespoke package options'],
+    roiTag: 'Fully Customisable',
+    ctaLabel: 'Explore Activation Modules',
+    badge: 'FLEXIBLE'
+}];
+
+const ROI_METRICS: RoiMetric[] = [{
+    id: 'roi-1',
+    value: '5,000+',
+    label: 'Activated Young Women'
+}, {
+    id: 'roi-2',
+    value: '7',
+    label: 'Programme Pillars'
+}, {
+    id: 'roi-3',
+    value: '3',
+    label: 'Activation Tracks'
+}, {
+    id: 'roi-4',
+    value: 'R1.2B+',
+    label: 'Economic Impact Goal'
+}];
+
+const PartnershipSection = () => {
+    const scrollToEnquiry = () => {
+        const el = document.getElementById('academy-partnership-section');
+        if (el) el.scrollIntoView({
+            behavior: 'smooth'
+        });
+    };
+
+    return <section style={{
+        backgroundColor: '#0D0D14',
+        paddingTop: 'clamp(64px, 10vw, 128px)',
+        paddingBottom: 'clamp(64px, 10vw, 128px)',
+        position: 'relative',
+        overflow: 'hidden'
+    }} className="px-4 sm:px-6 lg:px-8">
+        <div style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: 700,
+            height: 700,
+            background: 'radial-gradient(circle, rgba(255,45,135,0.07) 0%, transparent 70%)',
+            pointerEvents: 'none',
+            zIndex: 0
+        }} />
+
+        <div className="max-w-6xl mx-auto" style={{
+            position: 'relative',
+            zIndex: 1
+        }}>
+            <motion.div initial={{
+                opacity: 0,
+                y: 20
+            }} whileInView={{
+                opacity: 1,
+                y: 0
+            }} transition={{
+                duration: 0.7
+            }} viewport={{
+                once: true
+            }} style={{
+                marginBottom: 48,
+                maxWidth: 640
+            }}>
+                <div style={{
+                    width: 48,
+                    height: 3,
+                    backgroundColor: '#FF2D87',
+                    marginBottom: 16
+                }} />
+                <div style={{
+                    fontSize: 9,
+                    fontWeight: 600,
+                    letterSpacing: '0.32em',
+                    textTransform: 'uppercase',
+                    color: 'rgba(255,255,255,0.35)',
+                    marginBottom: 16
+                }}>
+                    PARTNERSHIPS &amp; B2B ESG
+                </div>
+                <h2 style={{
+                    fontWeight: 200,
+                    fontSize: 'clamp(28px, 5vw, 64px)',
+                    letterSpacing: '-0.04em',
+                    lineHeight: 1.05,
+                    margin: '0 0 20px 0'
+                }}>
+                    <span style={{
+                        color: 'white'
+                    }}>Partner With </span>
+                    <span style={{
+                        color: '#FF2D87'
+                    }}>EmpowaHER™.</span>
+                </h2>
+                <p style={{
+                    color: 'rgba(255,255,255,0.50)',
+                    fontSize: 15,
+                    lineHeight: 1.8,
+                    margin: 0
+                }}>
+                    Beyond event branding. Align your organisation with Africa's most ambitious youth leadership
+                    ecosystem and unlock measurable ESG impact, brand authority, and commercial access to the
+                    next generation of decision-makers.
+                </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+                {TIER_CARDS.map((card, i) => <motion.div key={card.id} initial={{
+                    opacity: 0,
+                    y: 24
+                }} whileInView={{
+                    opacity: 1,
+                    y: 0
+                }} transition={{
+                    duration: 0.55,
+                    delay: i * 0.14
+                }} viewport={{
+                    once: true
+                }} style={{
+                    backgroundColor: card.cardBg,
+                    border: `1px solid ${card.tierColor}25`,
+                    borderTop: `3px solid ${card.topBorder}`,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    overflow: 'hidden',
+                    backdropFilter: 'blur(12px)'
+                }}>
+                    <div style={{
+                        padding: '24px 24px 20px'
+                    }}>
+                        <div style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            marginBottom: 16
+                        }}>
+                            <span style={{
+                                fontSize: 9,
+                                fontWeight: 700,
+                                letterSpacing: '0.22em',
+                                textTransform: 'uppercase',
+                                color: card.tierColor,
+                                backgroundColor: `${card.tierColor}18`,
+                                border: `1px solid ${card.tierColor}35`,
+                                padding: '4px 10px'
+                            }}>
+                                {card.tier}
+                            </span>
+                            <span style={{
+                                fontSize: 9,
+                                fontWeight: 700,
+                                letterSpacing: '0.18em',
+                                textTransform: 'uppercase',
+                                color: 'rgba(255,255,255,0.35)',
+                                border: '1px solid rgba(255,255,255,0.12)',
+                                padding: '4px 10px'
+                            }}>
+                                {card.badge}
+                            </span>
+                        </div>
+
+                        <div style={{
+                            fontWeight: 200,
+                            fontSize: 72,
+                            lineHeight: 0.9,
+                            color: card.numColor,
+                            fontFamily: 'Figtree, sans-serif',
+                            marginBottom: 8,
+                            userSelect: 'none',
+                            letterSpacing: '-0.05em'
+                        }}>
+                            {card.num}
+                        </div>
+
+                        <h3 style={{
+                            color: 'white',
+                            fontWeight: 600,
+                            fontSize: 17,
+                            lineHeight: 1.3,
+                            margin: '0 0 8px 0'
+                        }}>
+                            {card.title}
+                        </h3>
+                        <p style={{
+                            color: 'rgba(255,255,255,0.45)',
+                            fontSize: 13,
+                            lineHeight: 1.65,
+                            margin: 0
+                        }}>
+                            {card.desc}
+                        </p>
+                    </div>
+
+                    <div style={{
+                        height: 1,
+                        backgroundColor: `${card.tierColor}20`,
+                        margin: '0 24px'
+                    }} />
+
+                    <div style={{
+                        padding: '16px 24px 20px'
+                    }}>
+                        <div style={{
+                            fontSize: 9,
+                            fontWeight: 700,
+                            letterSpacing: '0.2em',
+                            textTransform: 'uppercase',
+                            color: 'rgba(255,255,255,0.25)',
+                            marginBottom: 12
+                        }}>
+                            WHAT'S INCLUDED
+                        </div>
+                        <div style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: 8
+                        }}>
+                            {card.benefits.map(benefit => <div key={benefit} style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: 8
+                            }}>
+                                <div style={{
+                                    width: 5,
+                                    height: 5,
+                                    borderRadius: '50%',
+                                    backgroundColor: card.tierColor,
+                                    flexShrink: 0
+                                }} />
+                                <span style={{
+                                    color: 'rgba(255,255,255,0.60)',
+                                    fontSize: 13
+                                }}>{benefit}</span>
+                            </div>)}
+                        </div>
+                    </div>
+
+                    <div style={{
+                        padding: '0 24px 20px'
+                    }}>
+                        <span style={{
+                            display: 'inline-block',
+                            fontSize: 11,
+                            fontWeight: 600,
+                            letterSpacing: '0.1em',
+                            textTransform: 'uppercase',
+                            color: card.tierColor,
+                            backgroundColor: `${card.tierColor}12`,
+                            border: `1px solid ${card.tierColor}30`,
+                            padding: '6px 14px'
+                        }}>
+                            ROI: {card.roiTag}
+                        </span>
+                    </div>
+
+                    <div style={{
+                        padding: '0 24px 24px',
+                        marginTop: 'auto'
+                    }}>
+                        <button onClick={scrollToEnquiry} style={{
+                            width: '100%',
+                            height: 46,
+                            backgroundColor: 'transparent',
+                            border: `1px solid ${card.tierColor}`,
+                            color: card.tierColor,
+                            fontFamily: 'Figtree, sans-serif',
+                            fontWeight: 600,
+                            fontSize: 13,
+                            letterSpacing: '0.08em',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            gap: 8,
+                            transition: 'background-color 0.2s, color 0.2s',
+                            borderRadius: 0,
+                            minHeight: 44
+                        }} onMouseEnter={e => {
+                            (e.currentTarget as HTMLButtonElement).style.backgroundColor = card.tierColor;
+                            (e.currentTarget as HTMLButtonElement).style.color = '#0A0A0F';
+                        }} onMouseLeave={e => {
+                            (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'transparent';
+                            (e.currentTarget as HTMLButtonElement).style.color = card.tierColor;
+                        }}>
+                            <span>{card.ctaLabel}</span>
+                            <ArrowRight size={14} />
+                        </button>
+                    </div>
+                </motion.div>)}
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 pt-10 border-t border-white/[0.06]">
+                {ROI_METRICS.map((metric, i) => <motion.div key={metric.id} initial={{
+                    opacity: 0,
+                    y: 16
+                }} whileInView={{
+                    opacity: 1,
+                    y: 0
+                }} transition={{
+                    duration: 0.5,
+                    delay: i * 0.1
+                }} viewport={{
+                    once: true
+                }}>
+                    <div style={{
+                        fontWeight: 200,
+                        fontSize: 'clamp(30px, 5vw, 56px)',
+                        color: 'white',
+                        letterSpacing: '-0.04em',
+                        lineHeight: 1,
+                        fontFamily: 'Figtree, sans-serif'
+                    }}>
+                        {metric.value}
+                    </div>
+                    <div style={{
+                        fontSize: 10,
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.2em',
+                        color: 'rgba(255,255,255,0.30)',
+                        marginTop: 8
+                    }}>
+                        {metric.label}
+                    </div>
+                </motion.div>)}
+            </div>
+
+            <motion.div initial={{
+                opacity: 0,
+                y: 20
+            }} whileInView={{
+                opacity: 1,
+                y: 0
+            }} transition={{
+                duration: 0.6
+            }} viewport={{
+                once: true
+            }} className="flex flex-col md:flex-row md:items-center md:justify-between gap-6" style={{
+                marginTop: 56,
+                padding: 'clamp(24px, 4vw, 40px) clamp(20px, 4vw, 48px)',
+                backgroundColor: 'rgba(255,45,135,0.06)',
+                border: '1px solid rgba(255,45,135,0.18)'
+            }}>
+                <div>
+                    <div style={{
+                        fontSize: 9,
+                        fontWeight: 600,
+                        letterSpacing: '0.28em',
+                        textTransform: 'uppercase',
+                        color: 'rgba(255,255,255,0.30)',
+                        marginBottom: 8
+                    }}>
+                        READY TO PARTNER?
+                    </div>
+                    <p style={{
+                        color: 'white',
+                        fontWeight: 500,
+                        fontSize: 18,
+                        margin: 0,
+                        lineHeight: 1.4
+                    }}>
+                        Enquire today to receive our prospectus or speak directly to our partnerships team.
+                    </p>
+                </div>
+                <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+                    <button onClick={scrollToEnquiry} style={{
+                        height: 48,
+                        padding: '0 24px',
+                        backgroundColor: 'rgba(255,255,255,0.06)',
+                        border: '1px solid rgba(255,255,255,0.15)',
+                        color: 'white',
+                        fontFamily: 'Figtree, sans-serif',
+                        fontWeight: 500,
+                        fontSize: 14,
+                        cursor: 'pointer',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: 8,
+                        textDecoration: 'none',
+                        borderRadius: 0,
+                        transition: 'border-color 0.2s, background-color 0.2s',
+                        whiteSpace: 'nowrap',
+                        minHeight: 44
+                    }} onMouseEnter={e => {
+                        (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(255,255,255,0.35)';
+                        (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'rgba(255,255,255,0.10)';
+                    }} onMouseLeave={e => {
+                        (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(255,255,255,0.15)';
+                        (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'rgba(255,255,255,0.06)';
+                    }}>
+                        <ArrowRight size={15} />
+                        <span>Request Partnership Package</span>
+                    </button>
+                    <button onClick={scrollToEnquiry} style={{
+                        height: 48,
+                        padding: '0 24px',
+                        backgroundColor: '#FF2D87',
+                        border: 'none',
+                        color: 'white',
+                        fontFamily: 'Figtree, sans-serif',
+                        fontWeight: 600,
+                        fontSize: 14,
+                        cursor: 'pointer',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: 8,
+                        borderRadius: 0,
+                        transition: 'background-color 0.2s',
+                        boxShadow: '0 0 24px rgba(255,45,135,0.25)',
+                        whiteSpace: 'nowrap',
+                        minHeight: 44
+                    }} onMouseEnter={e => {
+                        (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#e0006f';
+                    }} onMouseLeave={e => {
+                        (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#FF2D87';
+                    }}>
+                        <MessageCircle size={15} />
+                        <span>Speak to Our Partnerships Team</span>
+                    </button>
+                </div>
+            </motion.div>
+        </div>
+    </section>;
+};
+
 // ─── Main Export ──────────────────────────────────────────────────────────────
 export const EmpowaHerAcademy: React.FC = () => {
     return <div style={{
@@ -2869,6 +3553,7 @@ export const EmpowaHerAcademy: React.FC = () => {
             <ProgramPillars />
             <ImpactStats />
             {/* <PeerTestimonials /> - Hiding Cohort Voices section as per request */}
+            <PartnershipSection />
             <PartnershipOpportunities />
             <ApplicationForm />
             <WhatHappensNext />
