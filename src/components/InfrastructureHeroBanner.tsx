@@ -85,7 +85,7 @@ export const InfrastructureHeroBanner: React.FC<IndustrialHeroBannerProps> = ({
     <div style={{
       position: "absolute",
       inset: 0,
-      zIndex: 0,
+      zIndex: 1,
       overflow: "hidden",
       pointerEvents: "none"
     }}>

@@ -76,7 +76,7 @@ export const IndustrialHeroBanner: React.FC = () => {
       <div style={{
         position: "absolute",
         inset: 0,
-        zIndex: 0,
+        zIndex: 1,
         overflow: "hidden",
         pointerEvents: "none"
       }}>

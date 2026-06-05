@@ -60,7 +60,7 @@ export const AgricultureManufacturingHeroBanner: React.FC<IndustrialHeroBannerPr
       <div style={{
       position: "absolute",
       inset: 0,
-      zIndex: 0,
+      zIndex: 1,
       overflow: "hidden",
       pointerEvents: "none"
     }}>

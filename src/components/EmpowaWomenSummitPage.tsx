@@ -699,7 +699,6 @@ const HeroSection: React.FC<{
       paddingBottom: "clamp(60px, 8vh, 100px)",
       zIndex: 1
     }}>
-      {/* Ken Burns + Parallax background */}
       <motion.div className="pointer-events-none" style={{
         position: "absolute",
         top: 0,
@@ -707,7 +706,7 @@ const HeroSection: React.FC<{
         right: 0,
         bottom: 0,
         y: bgY,
-        zIndex: 0
+        zIndex: 1
       }}>
         <motion.div initial={{
           scale: 1.06

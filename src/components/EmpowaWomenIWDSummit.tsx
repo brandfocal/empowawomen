@@ -233,7 +233,7 @@ const HeroSection = () => {
         }} />
 
         {/* Background image */}
-        <div style={{ position: "absolute", inset: 0, zIndex: 0, overflow: "hidden", pointerEvents: "none" }}>
+        <div style={{ position: "absolute", inset: 0, zIndex: 1, overflow: "hidden", pointerEvents: "none" }}>
             <motion.div style={{ position: "absolute", inset: 0 }} initial={{
                 scale: 1.06,
                 opacity: 0

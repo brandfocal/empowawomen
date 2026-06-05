@@ -291,7 +291,7 @@ export const SummitHeroHeader: React.FC = () => {
     }} />
 
     {/* Background image layer */}
-    <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none", zIndex: 0 }}>
+    <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none", zIndex: 1 }}>
       <motion.div style={{ position: "absolute", inset: 0 }} initial={{
         scale: 1.06,
         opacity: 0
