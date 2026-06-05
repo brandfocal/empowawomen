@@ -851,7 +851,7 @@ const DelegateAudienceProfile = () => {
               }}>
                 {EXTENDED_LOGOS.map((logo, i) => <div key={`logo-${logo.id}-${i}`} style={{
                   flexShrink: 0,
-                  height: "72px",
+                  height: "100px",
                   display: "flex",
                   alignItems: "center"
                 }}>
@@ -859,9 +859,9 @@ const DelegateAudienceProfile = () => {
                     src={logo.src}
                     alt={logo.name}
                     style={{
-                      height: "32px",
+                      height: "54px",
                       width: "auto",
-                      maxWidth: "130px",
+                      maxWidth: "180px",
                       objectFit: "contain",
                       opacity: 0.85,
                       filter: "none",
@@ -2964,14 +2964,14 @@ const PartnershipsHero = () => {
     const bottomSection = (
         <div style={{ width: "100%", overflow: "hidden", position: "relative", maskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)", WebkitMaskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)" }}>
             <motion.div animate={{ x: ["0%", "-50%"] }} transition={{ duration: 35, ease: "linear", repeat: Infinity }} style={{ display: "flex", gap: "80px", alignItems: "center", whiteSpace: "nowrap", width: "max-content" }}>
-                {EXTENDED_LOGOS.map((logo, i) => <div key={`logo-${logo.id}-${i}`} style={{ flexShrink: 0, height: "72px", display: "flex", alignItems: "center" }}>
+                {EXTENDED_LOGOS.map((logo, i) => <div key={`logo-${logo.id}-${i}`} style={{ flexShrink: 0, height: "100px", display: "flex", alignItems: "center" }}>
                     <img
                         src={logo.src}
                         alt={logo.name}
                         style={{
-                            height: "32px",
+                            height: "54px",
                             width: "auto",
-                            maxWidth: "130px",
+                            maxWidth: "180px",
                             objectFit: "contain",
                             opacity: 0.85,
                             filter: "none",

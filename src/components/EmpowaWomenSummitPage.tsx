@@ -1022,7 +1022,7 @@ const SponsorMarqueeStrip: React.FC = () => {
       }}>
         {SPONSORS_EXTENDED.map((sp, i) => <div key={`strip-sp-${sp.id}-${i}`} style={{
           flexShrink: 0,
-          height: "72px",
+          height: "100px",
           display: "flex",
           alignItems: "center"
         }}>
@@ -1030,9 +1030,9 @@ const SponsorMarqueeStrip: React.FC = () => {
             src={sp.src}
             alt={sp.name}
             style={{
-              height: "32px",
+              height: "54px",
               width: "auto",
-              maxWidth: "130px",
+              maxWidth: "180px",
               objectFit: "contain",
               opacity: 0.85,
               filter: "none",

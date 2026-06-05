@@ -1297,9 +1297,9 @@ const PartnerStrip = () => {
                             src={logo.src}
                             alt={logo.name}
                             style={{
-                                height: "30px",
+                                height: "48px",
                                 width: "auto",
-                                maxWidth: "120px",
+                                maxWidth: "180px",
                                 objectFit: "contain",
                                 opacity: 0.85,
                                 filter: "none",

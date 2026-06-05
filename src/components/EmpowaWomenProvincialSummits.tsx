@@ -538,7 +538,7 @@ export const ProvincialSummitSeries = () => {
                   }}>
                     {EXTENDED_LOGOS.map((logo, i) => <div key={`logo-${logo.id}-${i}`} style={{
                       flexShrink: 0,
-                      height: "72px",
+                      height: "100px",
                       display: "flex",
                       alignItems: "center"
                     }}>
@@ -546,9 +546,9 @@ export const ProvincialSummitSeries = () => {
                         src={logo.src}
                         alt={logo.name}
                         style={{
-                          height: "32px",
+                          height: "54px",
                           width: "auto",
-                          maxWidth: "130px",
+                          maxWidth: "180px",
                           objectFit: "contain",
                           opacity: 0.85,
                           filter: "none",
