@@ -1,30 +1,32 @@
 import React, { Component, ErrorInfo, ReactNode } from 'react';
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
-import { EmpowaWomenHome } from './components/EmpowaWomenHomePage';
-import { EmpowaWomenAboutPage } from './components/EmpowaWomenAboutUs';
-import { EmpowaWomenContact } from './components/EmpowaWomenContactUs';
-import { EmpowaHerAcademy } from './components/EmpowaWomenEmpowaHerAcademy';
-import { EnhancedEmpowaHerAcademy } from './components/EnhancedEmpowaHerAcademy';
-import { EmpowaWomenPartnerships } from './components/EmpowaWomenPartnerships';
 import { Layout } from './components/UniversalLayout';
-import { ExecutiveIndustrySeries } from './components/EmpowaWomenExecutiveIndustrySeries';
-import { LeadershipAwardsGala } from './components/EmpowaWomenBubblesNibblesAwards';
-import { SummitsHub } from './components/EmpowaWomenExecutiveSummits';
-import { IWDSummitDetail } from './components/EmpowaWomenIWDSummit';
-import ProvincialSummitSeries from './components/EmpowaWomenProvincialSummits';
-import { GreenEconomyPillar } from './components/EmpowaWomenGreenEconomyPillar';
-import { InfrastructurePropertyPillar } from './components/EmpowaWomenInfrastructurePropertyPillar';
-import { AgricultureManufacturingPillar } from './components/EmpowaWomenAgricultureManufacturingPillar';
-import { CreativeEconomyPillar } from './components/EmpowaWomenCreativeEconomyPillar';
-import { BeautyFashionWellnessPillar } from './components/BeautyFashionWellnessPillar';
-import { EntrepreneurshipFundingPillar } from './components/EmpowaWomenEntrepreneurshipFundingPillar';
-import { WholesaleRetailManufacturingPillar } from './components/EmpowaWomenWholesaleRetailManufacturingPillar';
-import { LeadershipGovernanceBoardStage } from './components/EmpowaWomenLeadershipGovernanceBoardsPillar';
-import { CommunicationsPillarPage } from './components/EmpowaWomenCommunicationsMediaPillar';
-import { MediaPage } from './components/EmpowaWomenMediaPage';
-import { EmpowaWomenSummitPage } from './components/EmpowaWomenSummitPage';
-import { PrivacyPage } from './components/EmpowaWomenPrivacyPage';
-import { TermsPage } from './components/EmpowaWomenTermsPage';
+
+// Lazily load route components to enable code splitting
+const EmpowaWomenHome = React.lazy(() => import('./components/EmpowaWomenHomePage').then(m => ({ default: m.EmpowaWomenHome })));
+const EmpowaWomenAboutPage = React.lazy(() => import('./components/EmpowaWomenAboutUs').then(m => ({ default: m.EmpowaWomenAboutPage })));
+const EmpowaWomenContact = React.lazy(() => import('./components/EmpowaWomenContactUs').then(m => ({ default: m.EmpowaWomenContact })));
+const EmpowaHerAcademy = React.lazy(() => import('./components/EmpowaWomenEmpowaHerAcademy').then(m => ({ default: m.EmpowaHerAcademy })));
+const EnhancedEmpowaHerAcademy = React.lazy(() => import('./components/EnhancedEmpowaHerAcademy').then(m => ({ default: m.EnhancedEmpowaHerAcademy })));
+const EmpowaWomenPartnerships = React.lazy(() => import('./components/EmpowaWomenPartnerships').then(m => ({ default: m.EmpowaWomenPartnerships })));
+const ExecutiveIndustrySeries = React.lazy(() => import('./components/EmpowaWomenExecutiveIndustrySeries').then(m => ({ default: m.ExecutiveIndustrySeries })));
+const LeadershipAwardsGala = React.lazy(() => import('./components/EmpowaWomenBubblesNibblesAwards').then(m => ({ default: m.LeadershipAwardsGala })));
+const SummitsHub = React.lazy(() => import('./components/EmpowaWomenExecutiveSummits').then(m => ({ default: m.SummitsHub })));
+const IWDSummitDetail = React.lazy(() => import('./components/EmpowaWomenIWDSummit').then(m => ({ default: m.IWDSummitDetail })));
+const ProvincialSummitSeries = React.lazy(() => import('./components/EmpowaWomenProvincialSummits'));
+const GreenEconomyPillar = React.lazy(() => import('./components/EmpowaWomenGreenEconomyPillar').then(m => ({ default: m.GreenEconomyPillar })));
+const InfrastructurePropertyPillar = React.lazy(() => import('./components/EmpowaWomenInfrastructurePropertyPillar').then(m => ({ default: m.InfrastructurePropertyPillar })));
+const AgricultureManufacturingPillar = React.lazy(() => import('./components/EmpowaWomenAgricultureManufacturingPillar').then(m => ({ default: m.AgricultureManufacturingPillar })));
+const CreativeEconomyPillar = React.lazy(() => import('./components/EmpowaWomenCreativeEconomyPillar').then(m => ({ default: m.CreativeEconomyPillar })));
+const BeautyFashionWellnessPillar = React.lazy(() => import('./components/BeautyFashionWellnessPillar').then(m => ({ default: m.BeautyFashionWellnessPillar })));
+const EntrepreneurshipFundingPillar = React.lazy(() => import('./components/EmpowaWomenEntrepreneurshipFundingPillar').then(m => ({ default: m.EntrepreneurshipFundingPillar })));
+const WholesaleRetailManufacturingPillar = React.lazy(() => import('./components/EmpowaWomenWholesaleRetailManufacturingPillar').then(m => ({ default: m.WholesaleRetailManufacturingPillar })));
+const LeadershipGovernanceBoardStage = React.lazy(() => import('./components/EmpowaWomenLeadershipGovernanceBoardsPillar').then(m => ({ default: m.LeadershipGovernanceBoardStage })));
+const CommunicationsPillarPage = React.lazy(() => import('./components/EmpowaWomenCommunicationsMediaPillar').then(m => ({ default: m.CommunicationsPillarPage })));
+const MediaPage = React.lazy(() => import('./components/EmpowaWomenMediaPage').then(m => ({ default: m.MediaPage })));
+const EmpowaWomenSummitPage = React.lazy(() => import('./components/EmpowaWomenSummitPage').then(m => ({ default: m.EmpowaWomenSummitPage })));
+const PrivacyPage = React.lazy(() => import('./components/EmpowaWomenPrivacyPage').then(m => ({ default: m.PrivacyPage })));
+const TermsPage = React.lazy(() => import('./components/EmpowaWomenTermsPage').then(m => ({ default: m.TermsPage })));
 import './App.css';
 
 class ErrorBoundary extends Component<{children: ReactNode}, {hasError: boolean, error: Error | null}> {
@@ -47,36 +49,67 @@ class ErrorBoundary extends Component<{children: ReactNode}, {hasError: boolean,
   }
 }
 
+const PageLoader = () => (
+  <div style={{
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    minHeight: '60vh',
+    backgroundColor: '#0A0A0F',
+    color: '#FFFFFF'
+  }}>
+    <div style={{
+      width: '40px',
+      height: '40px',
+      borderRadius: '50%',
+      border: '3px solid rgba(255, 45, 135, 0.1)',
+      borderTopColor: '#FF2D87',
+      animation: 'spin 1s linear infinite'
+    }} />
+    <style>{`
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+    `}</style>
+  </div>
+);
+
 function App() {
   return (
     <ErrorBoundary>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<EmpowaWomenHome />} />
-            <Route path="about" element={<EmpowaWomenAboutPage />} />
-            <Route path="contact" element={<EmpowaWomenContact />} />
-            <Route path="academy" element={<EmpowaHerAcademy />} />
-            <Route path="academy-enhanced" element={<EnhancedEmpowaHerAcademy />} />
-            <Route path="partnerships" element={<EmpowaWomenPartnerships />} />
-            <Route path="executive-industry-series" element={<ExecutiveIndustrySeries />} />
-            <Route path="leadership-awards-gala" element={<LeadershipAwardsGala />} />
-            <Route path="what-we-do" element={<SummitsHub />} />
-            <Route path="iwd-summit" element={<IWDSummitDetail />} />
-            <Route path="provincial-summits" element={<ProvincialSummitSeries />} />
-            <Route path="green-economy" element={<GreenEconomyPillar />} />
-            <Route path="infrastructure-property" element={<InfrastructurePropertyPillar />} />
-            <Route path="agriculture-manufacturing" element={<AgricultureManufacturingPillar />} />
-            <Route path="creative-economy" element={<CreativeEconomyPillar />} />
-            <Route path="beauty-fashion-wellness" element={<BeautyFashionWellnessPillar />} />
-            <Route path="entrepreneurship-funding" element={<EntrepreneurshipFundingPillar />} />
-            <Route path="wholesale-retail-manufacturing" element={<WholesaleRetailManufacturingPillar />} />
-            <Route path="leadership-governance-boards" element={<LeadershipGovernanceBoardStage />} />
-            <Route path="communications-media" element={<CommunicationsPillarPage />} />
-            <Route path="media" element={<MediaPage />} />
-            <Route path="summit" element={<EmpowaWomenSummitPage />} />
-            <Route path="privacy" element={<PrivacyPage />} />
-            <Route path="terms" element={<TermsPage />} />
+            <Route path="" element={
+              <React.Suspense fallback={<PageLoader />}>
+                <Outlet />
+              </React.Suspense>
+            }>
+              <Route index element={<EmpowaWomenHome />} />
+              <Route path="about" element={<EmpowaWomenAboutPage />} />
+              <Route path="contact" element={<EmpowaWomenContact />} />
+              <Route path="academy" element={<EmpowaHerAcademy />} />
+              <Route path="academy-enhanced" element={<EnhancedEmpowaHerAcademy />} />
+              <Route path="partnerships" element={<EmpowaWomenPartnerships />} />
+              <Route path="executive-industry-series" element={<ExecutiveIndustrySeries />} />
+              <Route path="leadership-awards-gala" element={<LeadershipAwardsGala />} />
+              <Route path="what-we-do" element={<SummitsHub />} />
+              <Route path="iwd-summit" element={<IWDSummitDetail />} />
+              <Route path="provincial-summits" element={<ProvincialSummitSeries />} />
+              <Route path="green-economy" element={<GreenEconomyPillar />} />
+              <Route path="infrastructure-property" element={<InfrastructurePropertyPillar />} />
+              <Route path="agriculture-manufacturing" element={<AgricultureManufacturingPillar />} />
+              <Route path="creative-economy" element={<CreativeEconomyPillar />} />
+              <Route path="beauty-fashion-wellness" element={<BeautyFashionWellnessPillar />} />
+              <Route path="entrepreneurship-funding" element={<EntrepreneurshipFundingPillar />} />
+              <Route path="wholesale-retail-manufacturing" element={<WholesaleRetailManufacturingPillar />} />
+              <Route path="leadership-governance-boards" element={<LeadershipGovernanceBoardStage />} />
+              <Route path="communications-media" element={<CommunicationsPillarPage />} />
+              <Route path="media" element={<MediaPage />} />
+              <Route path="summit" element={<EmpowaWomenSummitPage />} />
+              <Route path="privacy" element={<PrivacyPage />} />
+              <Route path="terms" element={<TermsPage />} />
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>
