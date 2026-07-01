@@ -296,7 +296,7 @@ export const TopNav = () => {
 
             {/* Right actions */}
             <div style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
-                <a href="https://www.quicket.co.za/events/344315-empowawomen-leadership-summit-2026/" target="_blank" rel="noopener noreferrer" style={{
+                <a href="https://www.quicket.co.za/events/344315-empowawomen-leadership-summit-2026/#/" style={{
                     fontFamily: "Figtree", fontSize: "12px", fontWeight: 500, color: "#FFFFFF", backgroundColor: "#FF2D87",
                     borderRadius: "999px", padding: "8px 20px", textDecoration: "none", whiteSpace: "nowrap",
                     letterSpacing: "0.02em", transition: "filter 200ms ease-out", position: "relative", overflow: "hidden", display: "inline-flex", alignItems: "center"
@@ -378,7 +378,7 @@ export const TopNav = () => {
                         )}
                     </div>
                 ))}
-                <a href="https://www.quicket.co.za/events/344315-empowawomen-leadership-summit-2026/" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)} style={{
+                <a href="https://www.quicket.co.za/events/344315-empowawomen-leadership-summit-2026/#/" onClick={() => setIsOpen(false)} style={{
                     marginTop: "8px", fontFamily: "Figtree", fontSize: "14px", fontWeight: 500, color: "#FFFFFF",
                     backgroundColor: "#FF2D87", borderRadius: "999px", padding: "10px 24px", textDecoration: "none",
                     display: "inline-block", textAlign: "center"
@@ -456,21 +456,12 @@ export const FooterCTA = () => {
                 <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 1.0 }} style={{
                     display: "flex", flexWrap: "wrap", gap: "20px"
                 }}>
-                    {isSummitPage ? (
-                        <a href="https://www.quicket.co.za/events/344315-empowawomen-leadership-summit-2026/" target="_blank" rel="noopener noreferrer" style={{
-                            display: "inline-flex", alignItems: "center", gap: "8px", padding: "16px 32px", backgroundColor: "#FF2D87", color: "#FFFFFF", fontFamily: "Figtree", fontSize: "18px", fontWeight: 500, border: "none", cursor: "pointer", transition: "filter 200ms ease-out", textDecoration: "none"
-                        }} onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.filter = "brightness(1.1)"; }} onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.filter = "brightness(1)"; }}>
-                            <span>Secure Your Seat</span>
-                            <ArrowRight size={18} />
-                        </a>
-                    ) : (
-                        <Link to="/summit" style={{
-                            display: "inline-flex", alignItems: "center", gap: "8px", padding: "16px 32px", backgroundColor: "#FF2D87", color: "#FFFFFF", fontFamily: "Figtree", fontSize: "18px", fontWeight: 500, border: "none", cursor: "pointer", transition: "filter 200ms ease-out", textDecoration: "none"
-                        }} onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.filter = "brightness(1.1)"; }} onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.filter = "brightness(1)"; }}>
-                            <span>Secure Your Seat</span>
-                            <ArrowRight size={18} />
-                        </Link>
-                    )}
+                    <a href="https://www.quicket.co.za/events/344315-empowawomen-leadership-summit-2026/#/" style={{
+                        display: "inline-flex", alignItems: "center", gap: "8px", padding: "16px 32px", backgroundColor: "#FF2D87", color: "#FFFFFF", fontFamily: "Figtree", fontSize: "18px", fontWeight: 500, border: "none", cursor: "pointer", transition: "filter 200ms ease-out", textDecoration: "none"
+                    }} onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.filter = "brightness(1.1)"; }} onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.filter = "brightness(1)"; }}>
+                        <span>Secure Your Seat</span>
+                        <ArrowRight size={18} />
+                    </a>
                     <Link to="/about" style={{
                         padding: "16px 32px", backgroundColor: "rgba(255,255,255,0.05)", color: "#FFFFFF", fontFamily: "Figtree", fontSize: "18px", fontWeight: 500, border: "1px solid rgba(255,255,255,0.10)", textDecoration: "none", cursor: "pointer", transition: "background-color 200ms ease-out", display: "inline-flex", alignItems: "center"
                     }} onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "rgba(255,255,255,0.10)"; }} onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "rgba(255,255,255,0.05)"; }}>

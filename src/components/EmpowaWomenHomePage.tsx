@@ -849,8 +849,8 @@ const AboutSection = () => {
         }} />
 
         {/* Full-width interactive banner linked to the summit page */}
-        <RouterLink 
-            to="/summit"
+        <a 
+            href="https://www.quicket.co.za/events/344315-empowawomen-leadership-summit-2026/#/"
             style={{
                 width: "100%",
                 display: "block",
@@ -910,7 +910,7 @@ const AboutSection = () => {
                     Register For the Summit
                 </span>
             </div>
-        </RouterLink>
+        </a>
 
         <div style={{
             maxWidth: "1200px",
