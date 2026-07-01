@@ -296,7 +296,7 @@ export const TopNav = () => {
 
             {/* Right actions */}
             <div style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
-                <Link to="/summit" style={{
+                <a href="https://www.quicket.co.za/events/344315-empowawomen-leadership-summit-2026/" target="_blank" rel="noopener noreferrer" style={{
                     fontFamily: "Figtree", fontSize: "12px", fontWeight: 500, color: "#FFFFFF", backgroundColor: "#FF2D87",
                     borderRadius: "999px", padding: "8px 20px", textDecoration: "none", whiteSpace: "nowrap",
                     letterSpacing: "0.02em", transition: "filter 200ms ease-out", position: "relative", overflow: "hidden", display: "inline-flex", alignItems: "center"
@@ -310,7 +310,7 @@ export const TopNav = () => {
                         position: "absolute", top: 0, left: 0, height: "100%", width: "40%", background: "rgba(255,255,255,0.15)",
                         transform: "skewX(-20deg) translateX(-100%)", animation: "shimmerSlide 3s linear infinite", pointerEvents: "none"
                     }} />
-                </Link>
+                </a>
 
                 <button className="md:hidden text-white p-2 ml-2" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu" style={{ background: "transparent", border: "none" }}>
                     {isOpen ? <X size={22} /> : <Menu size={22} />}
@@ -378,13 +378,13 @@ export const TopNav = () => {
                         )}
                     </div>
                 ))}
-                <Link to="/summit" onClick={() => setIsOpen(false)} style={{
+                <a href="https://www.quicket.co.za/events/344315-empowawomen-leadership-summit-2026/" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)} style={{
                     marginTop: "8px", fontFamily: "Figtree", fontSize: "14px", fontWeight: 500, color: "#FFFFFF",
                     backgroundColor: "#FF2D87", borderRadius: "999px", padding: "10px 24px", textDecoration: "none",
                     display: "inline-block", textAlign: "center"
                 }}>
                     Secure Your Seat
-                </Link>
+                </a>
             </motion.div>}
         </AnimatePresence>
 
