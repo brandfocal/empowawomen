@@ -3,6 +3,7 @@ import { Link, useLocation, Outlet } from "react-router-dom";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { ChevronDown, ArrowRight, Menu, X } from "lucide-react";
 import { Instagram, Linkedin, Twitter, Youtube } from "./BrandIcons";
+import { SEOHelper } from "./SEOHelper";
 
 interface NavLinkItem {
     id: string;
@@ -536,6 +537,7 @@ export const Layout = () => {
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', backgroundColor: '#0A0A0F' }}>
             <ScrollToTop />
+            <SEOHelper />
             <TopNav />
             <main style={{ flexGrow: 1 }}>
                 <Outlet />
