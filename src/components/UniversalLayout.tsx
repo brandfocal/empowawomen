@@ -85,10 +85,20 @@ const FOOTER_HEADLINE_WORDS = ["Never", "miss", "what", "moves", "next."];
 export const TopNav = () => {
     const [hoveredLink, setHoveredLink] = React.useState<string | null>(null);
     const [isOpen, setIsOpen] = React.useState(false);
+    const [isMobile, setIsMobile] = React.useState(false);
     const { scrollYProgress } = useScroll();
     const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
     const navHeight = 84;
     const location = useLocation();
+
+    React.useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 1024);
+        };
+        handleResize();
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     return <div style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100 }}>
         <header style={{
@@ -122,13 +132,14 @@ export const TopNav = () => {
             </div>
 
             {/* Nav links */}
-            <nav aria-label="Main navigation" style={{
-                flex: 1,
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                gap: "0px"
-            }} className="hidden md:flex">
+            {!isMobile && (
+                <nav aria-label="Main navigation" style={{
+                    flex: 1,
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: "0px"
+                }}>
                 {NAV_LINKS.map((link, idx) => {
                     const isActive = link.href === '/' ? location.pathname === '/' : (link.href.startsWith('/#') ? false : location.pathname.startsWith(link.href));
                     const isHoveredOrActive = isActive || hoveredLink === link.id;
@@ -293,40 +304,47 @@ export const TopNav = () => {
                         </React.Fragment>
                     );
                 })}
-            </nav>
+                </nav>
+            )}
 
             {/* Right actions */}
             <div style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
-                <a href="https://www.quicket.co.za/events/344315-empowawomen-leadership-summit-2026/#/" style={{
-                    fontFamily: "Figtree", fontSize: "12px", fontWeight: 500, color: "#FFFFFF", backgroundColor: "#FF2D87",
-                    borderRadius: "999px", padding: "8px 20px", textDecoration: "none", whiteSpace: "nowrap",
-                    letterSpacing: "0.02em", transition: "filter 200ms ease-out", position: "relative", overflow: "hidden", display: "inline-flex", alignItems: "center"
-                }} onMouseEnter={e => {
-                    (e.currentTarget as HTMLAnchorElement).style.filter = "brightness(1.1)";
-                }} onMouseLeave={e => {
-                    (e.currentTarget as HTMLAnchorElement).style.filter = "brightness(1)";
-                }} className="hidden md:inline-flex">
-                    <span style={{ position: "relative", zIndex: 1 }}>Secure Your Seat</span>
-                    <span style={{
-                        position: "absolute", top: 0, left: 0, height: "100%", width: "40%", background: "rgba(255,255,255,0.15)",
-                        transform: "skewX(-20deg) translateX(-100%)", animation: "shimmerSlide 3s linear infinite", pointerEvents: "none"
-                    }} />
-                </a>
+                {!isMobile && (
+                    <a href="https://www.quicket.co.za/events/344315-empowawomen-leadership-summit-2026/#/" style={{
+                        fontFamily: "Figtree", fontSize: "12px", fontWeight: 500, color: "#FFFFFF", backgroundColor: "#FF2D87",
+                        borderRadius: "999px", padding: "8px 20px", textDecoration: "none", whiteSpace: "nowrap",
+                        letterSpacing: "0.02em", transition: "filter 200ms ease-out", position: "relative", overflow: "hidden", display: "inline-flex", alignItems: "center"
+                    }} onMouseEnter={e => {
+                        (e.currentTarget as HTMLAnchorElement).style.filter = "brightness(1.1)";
+                    }} onMouseLeave={e => {
+                        (e.currentTarget as HTMLAnchorElement).style.filter = "brightness(1)";
+                    }}>
+                        <span style={{ position: "relative", zIndex: 1 }}>Secure Your Seat</span>
+                        <span style={{
+                            position: "absolute", top: 0, left: 0, height: "100%", width: "40%", background: "rgba(255,255,255,0.15)",
+                            transform: "skewX(-20deg) translateX(-100%)", animation: "shimmerSlide 3s linear infinite", pointerEvents: "none"
+                        }} />
+                    </a>
+                )}
 
-                <button className="md:hidden text-white p-2 ml-2" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu" style={{ background: "transparent", border: "none" }}>
-                    {isOpen ? <X size={22} /> : <Menu size={22} />}
-                </button>
+                {isMobile && (
+                    <button className="text-white p-2 ml-2" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu" style={{ background: "transparent", border: "none", cursor: "pointer" }}>
+                        {isOpen ? <X size={22} /> : <Menu size={22} />}
+                    </button>
+                )}
             </div>
         </header>
 
         <AnimatePresence>
-            {isOpen && <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} style={{
+            {isMobile && isOpen && <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} style={{
                 backgroundColor: "rgba(10,10,15,0.97)",
                 borderBottom: "1px solid rgba(255,255,255,0.06)",
                 padding: "24px clamp(16px, 6vw, 80px)",
                 display: "flex",
                 flexDirection: "column",
-                gap: "16px"
+                gap: "16px",
+                maxHeight: "calc(100vh - 84px)",
+                overflowY: "auto"
             }}>
                 {NAV_LINKS.map(link => (
                     <div key={link.id} style={{ display: "flex", flexDirection: "column", gap: "8px" }}>

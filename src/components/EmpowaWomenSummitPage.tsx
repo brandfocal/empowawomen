@@ -1126,7 +1126,7 @@ const SummitIntelligenceSection: React.FC = () => {
           overflow: "hidden",
           marginBottom: "32px"
         }}>
-          <img src="https://empowawomen.co.za/wp-content/uploads/2025/10/DSC_2615.jpg" alt="EmpowaWomen Summit" style={{
+          <img src="/empowawomen2025.jpg" alt="EmpowaWomen Summit" style={{
             width: "100%",
             height: "280px",
             objectFit: "cover",
@@ -2391,7 +2391,7 @@ const RegistrationFormSection: React.FC = () => {
           padding: "0",
           overflow: "hidden"
         }}>
-          <img src="https://empowawomen.co.za/wp-content/uploads/2025/10/DSC_2948.jpg" alt="EmpowaWomen delegates" style={{
+          <img src="/DSC_2597.jpg" alt="EmpowaWomen delegates" style={{
             width: "100%",
             height: "160px",
             objectFit: "cover",
