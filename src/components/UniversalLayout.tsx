@@ -109,6 +109,7 @@ export const TopNav = () => {
             borderBottom: "1px solid rgba(255,255,255,0.06)",
             display: "flex",
             alignItems: "center",
+            justifyContent: "space-between",
             paddingLeft: "clamp(16px, 6vw, 80px)",
             paddingRight: "clamp(16px, 6vw, 80px)",
             position: "relative"
