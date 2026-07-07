@@ -2473,7 +2473,7 @@ const LeadGenForm: React.FC<LeadGenFormProps> = ({ selectedTier, setSelectedTier
                                     <option value="Corporate ESG" style={{ backgroundColor: '#0A0A0F', color: '#FFFFFF' }}>Corporate ESG</option>
                                     <option value="Enterprise Supplier Development" style={{ backgroundColor: '#0A0A0F', color: '#FFFFFF' }}>Enterprise Supplier Development</option>
                                     <option value="Brand Marketing" style={{ backgroundColor: '#0A0A0F', color: '#FFFFFF' }}>Brand Marketing</option>
-                                    <option value="CSI" style={{ backgroundColor: '#0A0A0F', color: '#FFFFFF' }}>CSI (Corporate Social Investment)</option>
+                                    <option value="CSI (Corporate Social Investment)" style={{ backgroundColor: '#0A0A0F', color: '#FFFFFF' }}>CSI (Corporate Social Investment)</option>
                                 </select>
                             </div>
 
