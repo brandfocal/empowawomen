@@ -117,14 +117,6 @@ const STAGES: StageData[] = [
       },
       {
         num: "10",
-        time: "14h30",
-        type: "CLOSING KEYNOTE ADDRESS",
-        title: "Building Lasting Legacies: Dr. Precious Moloi-Motsepe",
-        description: "Closing inspirational address on sustainable development, philanthropy, and economic power by Precious Moloi-Motsepe, Chancellor of the University of Cape Town.",
-        chips: ["Keynote", "Precious Moloi-Motsepe", "UCT Chancellor"]
-      },
-      {
-        num: "11",
         time: "14h50",
         type: "VOTE OF THANKS",
         title: "Acknowledgements & Closing Comments",
@@ -132,7 +124,7 @@ const STAGES: StageData[] = [
         chips: ["Simphiwe Masiza", "Wrap-up", "Thank You"]
       },
       {
-        num: "12",
+        num: "11",
         time: "15h00",
         type: "EXHIBITION & CLOSING NETWORKING",
         title: "Afternoon Reception & Connections",
