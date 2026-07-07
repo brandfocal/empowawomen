@@ -927,7 +927,7 @@ const PressReleasesSection = () => {
                   paddingTop: "4px",
                   color: "#FF2D87",
                   fontFamily: "Figtree"
-                }}>J</span>ohannesburg, South Africa, Scheduled for Saturday, 29 August 2026 at The Forum | The Campus, Bryanston, Johannesburg, the summit marks a significant milestone in a decade-long journey of accelerating women’s leadership, economic participation, enterprise growth, and influence across Africa.
+                }}>J</span>ohannesburg, South Africa, Scheduled for Saturday, 29 August 2026 at Empowaworx House, Ferndale, Randburg, the summit marks a significant milestone in a decade-long journey of accelerating women’s leadership, economic participation, enterprise growth, and influence across Africa.
               </p>
 
               {/* Defining Question Callout */}
@@ -1224,7 +1224,7 @@ const PressReleasesSection = () => {
                     { label: "Event", val: "10th Annual EmpowaWomen Leadership Summit 2026" },
                     { label: "Theme", val: "The Command Centre of Power, Capital and Control" },
                     { label: "Date", val: "Saturday, 29 August 2026" },
-                    { label: "Venue", val: "The Forum | The Campus, Bryanston, Johannesburg" },
+                    { label: "Venue", val: "Empowaworx House, 364 Pine Avenue, Ferndale, Randburg" },
                     { label: "Audience", val: "Female CXOs, Entrepreneurs, Investors, Board Members, Policymakers, Media Leaders, Executives, Professionals and Emerging Leaders" }
                   ].map((row, idx) => (
                     <div key={idx} style={{
@@ -1403,7 +1403,7 @@ const AccreditationSection = () => {
     value: "Saturday, 29 August 2026"
   }, {
     label: "Venue",
-    value: "The Forum, The Campus Bryanston"
+    value: "Empowaworx House, 364 Pine Avenue, Ferndale, Randburg"
   }, {
     label: "Contact",
     value: "media@empowawomen.co.za · 011 482 7256/7"

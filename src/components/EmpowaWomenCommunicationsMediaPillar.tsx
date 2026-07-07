@@ -291,7 +291,7 @@ const DETAILS_ROWS = [{
 }, {
   id: "dr-4",
   label: "Venue",
-  value: "The Forum, The Campus, Bryanston"
+  value: "Empowaworx House, 364 Pine Avenue, Ferndale, Randburg"
 }, {
   id: "dr-5",
   label: "Investment",

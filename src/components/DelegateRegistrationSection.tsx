@@ -19,7 +19,7 @@ export const DelegateRegistrationSection: React.FC<DelegateRegistrationSectionPr
     { id: "dr-1", label: "Stage", value: stageName },
     { id: "dr-2", label: "Date", value: "Saturday, 29 August 2026" },
     { id: "dr-3", label: "Time", value: "11:00 – 16:00" },
-    { id: "dr-4", label: "Venue", value: "The Forum, The Campus, Bryanston" },
+    { id: "dr-4", label: "Venue", value: "Empowaworx House, 364 Pine Avenue, Ferndale, Randburg" },
     { id: "dr-5", label: "Investment", value: "R1,500 per delegate" }
   ];
 

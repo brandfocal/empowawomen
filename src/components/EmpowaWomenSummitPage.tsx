@@ -134,7 +134,7 @@ const SPONSORS_EXTENDED: SponsorItem[] = [...SPONSORS, ...SPONSORS, ...SPONSORS,
 const META_CHIPS: MetaChip[] = [{
   id: "mc-1",
   icon: "📍",
-  text: "The Forum, The Campus, Bryanston, Johannesburg"
+  text: "Empowaworx House, 364 Pine Avenue, Ferndale, Randburg"
 }, {
   id: "mc-2",
   icon: "🕐",
@@ -287,7 +287,7 @@ const REGISTRATION_DETAILS: RegistrationDetail[] = [{
 }, {
   id: "rd-3",
   label: "Venue",
-  value: "The Forum, The Campus, Bryanston"
+  value: "Empowaworx House, 364 Pine Avenue, Ferndale, Randburg"
 }, {
   id: "rd-4",
   label: "Dress Code",
@@ -650,7 +650,7 @@ const StickyCtaBar: React.FC<{
             textAlign: "center",
             flexShrink: 0
           }}>
-            📍 The Forum, Bryanston · 🕐 08h00–16h00 · R1,500 per delegate
+            📍 Empowaworx House, Randburg · 🕐 08h00–16h00 · R1,500 per delegate
           </span>
           <button style={{
             backgroundColor: ACCENT_PINK,
@@ -884,7 +884,7 @@ const INTRO_DETAIL_ROWS = [{
   dotColor: "#FF2D87",
   labelEmoji: "📍",
   label: "Venue",
-  value: "The Forum, Bryanston"
+  value: "Empowaworx House, Randburg"
 }, {
   id: "idr-2",
   dotColor: "#00B4A6",
@@ -2235,7 +2235,7 @@ const CountdownCtaSection: React.FC<{
             }} onMouseLeave={e => {
               (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "rgba(255,255,255,0.04)";
             }}>
-              The Forum · Bryanston
+              Empowaworx House · Randburg
             </a>
           </div>
 
