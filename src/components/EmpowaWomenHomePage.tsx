@@ -862,7 +862,7 @@ const AboutSection = () => {
             }}
         >
             <img 
-                src="/empowawomen-banner.jpg" 
+                src="/empowawomen-banner2026.jpg" 
                 alt="EmpowaWomen Banner" 
                 style={{ 
                     width: "100%", 
