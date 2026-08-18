@@ -827,7 +827,10 @@ const SmartRoutingForm = () => {
         setError("");
         setLoading(true);
 
-        const routeLabel = ROUTES.find(x => x.id === selectedRoute)?.label || selectedRoute;
+        let routeLabel = ROUTES.find(x => x.id === selectedRoute)?.label || selectedRoute;
+        if (selectedRoute === "sponsorship") {
+            routeLabel = "Sponsorship & Corporate";
+        }
 
         try {
             const response = await fetch('/api/submit', {
