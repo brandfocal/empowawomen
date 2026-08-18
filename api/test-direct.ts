@@ -67,6 +67,17 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     };
     const wrappedResult: any = await sendToGF(23, wrappedPayload);
 
+    // Test 3: Submit Form 23 with FLAT RAW NUMERIC payload
+    const numericPayload = {
+      '1': 'Test Numeric Name',
+      '3': 'numeric@example.com',
+      '4': 'Test Numeric Org',
+      '5': 'Tier 2: Platinum Industry Partner',
+      '6': 'Corporate ESG',
+      '7': 'Green Economy'
+    };
+    const numericResult: any = await sendToGF(23, numericPayload);
+
     return res.status(200).json({
       flatTest: {
         statusCode: flatResult.statusCode,
@@ -75,6 +86,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       wrappedTest: {
         statusCode: wrappedResult.statusCode,
         body: JSON.parse(wrappedResult.body)
+      },
+      numericTest: {
+        statusCode: numericResult.statusCode,
+        body: JSON.parse(numericResult.body)
       }
     });
 
