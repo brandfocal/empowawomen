@@ -1,4 +1,5 @@
 User-agent: *
+Disallow: /empowawomen-leadership-summit-2026-absa
 Allow: /
 
 Sitemap: https://empowawomen.co.za/sitemap.xml

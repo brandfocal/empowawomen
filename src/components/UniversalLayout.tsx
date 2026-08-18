@@ -553,15 +553,18 @@ const ScrollToTop = () => {
 };
 
 export const Layout = () => {
+    const location = useLocation();
+    const isPrivatePage = location.pathname === "/empowawomen-leadership-summit-2026-absa";
+
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', backgroundColor: '#0A0A0F' }}>
             <ScrollToTop />
             <SEOHelper />
-            <TopNav />
+            {!isPrivatePage && <TopNav />}
             <main style={{ flexGrow: 1 }}>
                 <Outlet />
             </main>
-            <FooterCTA />
+            {!isPrivatePage && <FooterCTA />}
         </div>
     );
 };

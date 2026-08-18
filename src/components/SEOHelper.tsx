@@ -7,6 +7,7 @@ interface Metadata {
     keywords: string;
     canonical: string;
     schema?: Record<string, any>;
+    robots?: string;
 }
 
 const SITE_URL = "https://empowawomen.co.za";
@@ -221,6 +222,13 @@ const METADATA_MAP: Record<string, Metadata> = {
         description: "Read the Terms and Conditions of service for the EmpowaWomen platform, summits, events, and training.",
         keywords: "Terms and Conditions, Terms of Service, User Agreement",
         canonical: `${SITE_URL}/terms`
+    },
+    "/empowawomen-leadership-summit-2026-absa": {
+        title: "EmpowaWomen Leadership Summit 2026 - ABSA",
+        description: "Register for the private EmpowaWomen Leadership Summit 2026 - ABSA event.",
+        keywords: "EmpowaWomen, ABSA, Leadership Summit 2026",
+        canonical: `${SITE_URL}/empowawomen-leadership-summit-2026-absa`,
+        robots: "noindex, nofollow"
     }
 };
 
@@ -249,6 +257,16 @@ export const SEOHelper = () => {
         // Update Meta Tags
         setMetaTag("name", "description", meta.description);
         setMetaTag("name", "keywords", meta.keywords);
+        
+        // Update Robots Meta Tag (e.g. noindex, nofollow for private pages)
+        if (meta.robots) {
+            setMetaTag("name", "robots", meta.robots);
+        } else {
+            const existingRobots = document.querySelector('meta[name="robots"]');
+            if (existingRobots) {
+                existingRobots.setAttribute("content", "index, follow");
+            }
+        }
         
         // Open Graph Meta Tags
         setMetaTag("property", "og:title", meta.title);

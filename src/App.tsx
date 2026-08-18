@@ -27,6 +27,7 @@ const MediaPage = React.lazy(() => import('./components/EmpowaWomenMediaPage').t
 const EmpowaWomenSummitPage = React.lazy(() => import('./components/EmpowaWomenSummitPage').then(m => ({ default: m.EmpowaWomenSummitPage })));
 const PrivacyPage = React.lazy(() => import('./components/EmpowaWomenPrivacyPage').then(m => ({ default: m.PrivacyPage })));
 const TermsPage = React.lazy(() => import('./components/EmpowaWomenTermsPage').then(m => ({ default: m.TermsPage })));
+const LeadershipSummit2026Absa = React.lazy(() => import('./components/EmpowaWomenLeadershipSummit2026Absa').then(m => ({ default: m.EmpowaWomenLeadershipSummit2026Absa })));
 import './App.css';
 
 class ErrorBoundary extends Component<{children: ReactNode}, {hasError: boolean, error: Error | null}> {
@@ -109,6 +110,7 @@ function App() {
               <Route path="summit" element={<EmpowaWomenSummitPage />} />
               <Route path="privacy" element={<PrivacyPage />} />
               <Route path="terms" element={<TermsPage />} />
+              <Route path="empowawomen-leadership-summit-2026-absa" element={<LeadershipSummit2026Absa />} />
             </Route>
           </Route>
         </Routes>
