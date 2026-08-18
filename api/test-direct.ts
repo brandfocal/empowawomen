@@ -11,11 +11,25 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(500).json({ error: 'Missing environment variables' });
   }
 
-  const sendToGF = (formId: number, payload: any) => {
+  const sendToGF = (formId: number, payload: any, isUrlEncoded = false) => {
     const separator = gfApiUrl.includes('?') ? '&' : '?';
     const targetUrl = `${gfApiUrl}/forms/${formId}/submissions${separator}consumer_key=${consumerKey}&consumer_secret=${consumerSecret}`;
     const parsedUrl = url.parse(targetUrl);
     const authHeader = `Basic ${Buffer.from(`${consumerKey}:${consumerSecret}`).toString('base64')}`;
+
+    let postData = '';
+    let contentType = 'application/json';
+
+    if (isUrlEncoded) {
+      contentType = 'application/x-www-form-urlencoded';
+      const params = new URLSearchParams();
+      Object.keys(payload).forEach(key => {
+        params.append(key, payload[key]);
+      });
+      postData = params.toString();
+    } else {
+      postData = JSON.stringify(payload);
+    }
 
     const options = {
       hostname: parsedUrl.hostname,
@@ -23,8 +37,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       path: parsedUrl.path,
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': authHeader
+        'Content-Type': contentType,
+        'Authorization': authHeader,
+        'Content-Length': Buffer.byteLength(postData)
       }
     };
 
@@ -37,13 +52,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         });
       });
       request.on('error', reject);
-      request.write(JSON.stringify(payload));
+      request.write(postData);
       request.end();
     });
   };
 
   try {
-    // Test 1: Submit Form 23 with FLAT payload
     const flatPayload = {
       'input_1': 'Test Flat Name',
       'input_3': 'flat@example.com',
@@ -52,44 +66,21 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       'input_6': 'Corporate ESG',
       'input_7': 'Green Economy'
     };
-    const flatResult: any = await sendToGF(23, flatPayload);
 
-    // Test 2: Submit Form 23 with WRAPPED payload
-    const wrappedPayload = {
-      'input_values': {
-        'input_1': 'Test Wrapped Name',
-        'input_3': 'wrapped@example.com',
-        'input_4': 'Test Wrapped Org',
-        'input_5': 'Tier 2: Platinum Industry Partner',
-        'input_6': 'Corporate ESG',
-        'input_7': 'Green Economy'
-      }
-    };
-    const wrappedResult: any = await sendToGF(23, wrappedPayload);
+    // Test 1: Submit Form 23 with FLAT payload (JSON)
+    const jsonResult: any = await sendToGF(23, flatPayload, false);
 
-    // Test 3: Submit Form 23 with FLAT RAW NUMERIC payload
-    const numericPayload = {
-      '1': 'Test Numeric Name',
-      '3': 'numeric@example.com',
-      '4': 'Test Numeric Org',
-      '5': 'Tier 2: Platinum Industry Partner',
-      '6': 'Corporate ESG',
-      '7': 'Green Economy'
-    };
-    const numericResult: any = await sendToGF(23, numericPayload);
+    // Test 2: Submit Form 23 with FLAT payload (URL-encoded)
+    const urlencodedResult: any = await sendToGF(23, flatPayload, true);
 
     return res.status(200).json({
-      flatTest: {
-        statusCode: flatResult.statusCode,
-        body: JSON.parse(flatResult.body)
+      jsonTest: {
+        statusCode: jsonResult.statusCode,
+        body: JSON.parse(jsonResult.body)
       },
-      wrappedTest: {
-        statusCode: wrappedResult.statusCode,
-        body: JSON.parse(wrappedResult.body)
-      },
-      numericTest: {
-        statusCode: numericResult.statusCode,
-        body: JSON.parse(numericResult.body)
+      urlencodedTest: {
+        statusCode: urlencodedResult.statusCode,
+        body: JSON.parse(urlencodedResult.body)
       }
     });
 
