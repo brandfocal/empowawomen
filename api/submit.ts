@@ -43,7 +43,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': authHeader, // keep header as double fallback
-        'User-Agent': 'Vercel-Serverless-Proxy'
+        'User-Agent': 'Vercel-Serverless-Proxy',
+        'Content-Length': Buffer.byteLength(postData)
       }
     };
 
