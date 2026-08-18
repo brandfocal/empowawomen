@@ -1969,14 +1969,14 @@ const LeadGenForm: React.FC<LeadGenFormProps> = ({ selectedTier, setSelectedTier
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    form_id: 14,
+                    form_id: 23,
                     input_values: {
-                        'input_21': fullName,
-                        'input_4': email,
-                        'input_2': organization,
-                        'input_12': selectedTier,
-                        'input_22': budget,
-                        'input_23': vertical
+                        'input_1': fullName,
+                        'input_3': email,
+                        'input_4': organization,
+                        'input_5': selectedTier,
+                        'input_6': budget,
+                        'input_7': vertical
                     }
                 })
             });
