@@ -2828,7 +2828,7 @@ const PartnershipOpportunities = () => {
                                             <option value="Corporate ESG Budget" style={{ backgroundColor: '#0A0A0F' }}>Corporate ESG Budget</option>
                                             <option value="Enterprise Supplier Development (ESD)" style={{ backgroundColor: '#0A0A0F' }}>Enterprise Supplier Development (ESD)</option>
                                             <option value="Corporate Social Investment (CSI)" style={{ backgroundColor: '#0A0A0F' }}>Corporate Social Investment (CSI)</option>
-                                            <option value="Brand &amp; Marketing / Recruitment" style={{ backgroundColor: '#0A0A0F' }}>Brand &amp; Marketing / Recruitment</option>
+                                            <option value="Brand and Marketing / Recruitment" style={{ backgroundColor: '#0A0A0F' }}>Brand and Marketing / Recruitment</option>
                                         </select>
                                     </div>
                                 </div>
@@ -2857,9 +2857,9 @@ const PartnershipOpportunities = () => {
                                             <option value="" disabled style={{ backgroundColor: '#0A0A0F' }}>Select target area</option>
                                             <option value="Township Economy Activation" style={{ backgroundColor: '#0A0A0F' }}>Township Economy Activation</option>
                                             <option value="Rural Economic Inclusion" style={{ backgroundColor: '#0A0A0F' }}>Rural Economic Inclusion</option>
-                                            <option value="Campus &amp; Tertiary Edition" style={{ backgroundColor: '#0A0A0F' }}>Campus &amp; Tertiary Edition</option>
-                                            <option value="Future Skills Lab (AI &amp; Coding)" style={{ backgroundColor: '#0A0A0F' }}>Future Skills Lab (AI &amp; Coding)</option>
-                                            <option value="Careers &amp; Employment Placements" style={{ backgroundColor: '#0A0A0F' }}>Careers &amp; Employment Placements</option>
+                                            <option value="Campus and Tertiary Edition" style={{ backgroundColor: '#0A0A0F' }}>Campus and Tertiary Edition</option>
+                                            <option value="Future Skills Lab (AI and Coding)" style={{ backgroundColor: '#0A0A0F' }}>Future Skills Lab (AI and Coding)</option>
+                                            <option value="Careers and Employment Placements" style={{ backgroundColor: '#0A0A0F' }}>Careers and Employment Placements</option>
                                         </select>
                                     </div>
                                 </div>
