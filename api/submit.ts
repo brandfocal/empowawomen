@@ -35,6 +35,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
 
 
+    const postData = JSON.stringify(input_values);
+
     const options = {
       hostname: parsedUrl.hostname,
       port: parsedUrl.port || 443,
@@ -47,8 +49,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         'Content-Length': Buffer.byteLength(postData)
       }
     };
-
-    const postData = JSON.stringify(input_values);
 
     // Promise wrapper around native https request for ultimate runtime safety
     const makeRequest = () => {
