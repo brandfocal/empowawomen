@@ -221,7 +221,7 @@ const FLAGSHIP_MINI_STATS: FlagshipMiniStat[] = [{
 }];
 
 // ─── Countdown Timer Helpers ──────────────────────────────────────────────────
-const TARGET_DATE = new Date("2026-08-28T00:00:00").getTime();
+const TARGET_DATE = new Date("2026-08-29T08:00:00").getTime();
 function getTimeLeft() {
     const now = Date.now();
     const diff = Math.max(0, TARGET_DATE - now);
