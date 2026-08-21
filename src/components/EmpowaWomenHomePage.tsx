@@ -1619,22 +1619,22 @@ const PathwaysSection = () => {
 const PILLAR_CARDS = [{
     id: "pc-2",
     number: "01",
-    label: "Green Economy & Mining",
+    label: "GREEN ECONOMY, ENERGY & SUSTAINABILITY",
     image: "/green_economy.png"
 }, {
     id: "pc-4",
     number: "02",
-    label: "Entrepreneurship & Funding",
+    label: "ENTREPRENEURSHIP, INNOVATION & FUNDING",
     image: "/entrepreneurship_funding.png"
 }, {
     id: "pc-5",
     number: "03",
-    label: "Leadership & Governance",
+    label: "LEADERSHIP, GOVERNANCE & BOARDS",
     image: "/leadership_governance.png"
 }, {
     id: "pc-6",
     number: "04",
-    label: "Communications & Media",
+    label: "COMMUNICATIONS, ADVERTISING, MARKETING & MEDIA",
     image: "/communications_media.png"
 }];
 const TRIPLED_PILLAR_CARDS = [...PILLAR_CARDS, ...PILLAR_CARDS, ...PILLAR_CARDS];

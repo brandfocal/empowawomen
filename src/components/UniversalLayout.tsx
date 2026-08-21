@@ -33,11 +33,11 @@ const NAV_LINKS: NavLinkItem[] = [
         href: "/#pillars",
         hasDropdown: true,
         dropdownItems: [
-            { label: "Green Economy, Mining, Energy & Sustainability", href: "/green-economy" },
+            { label: "GREEN ECONOMY, ENERGY & SUSTAINABILITY", href: "/green-economy" },
             // { label: "Infrastructure, Property & Transport", href: "/infrastructure-property" },
-            { label: "Entrepreneurship & Funding", href: "/entrepreneurship-funding" },
-            { label: "Leadership, Governance & Boards", href: "/leadership-governance-boards" },
-            { label: "Communications, Advertising, Marketing & Media", href: "/communications-media" }
+            { label: "ENTREPRENEURSHIP, INNOVATION & FUNDING", href: "/entrepreneurship-funding" },
+            { label: "LEADERSHIP, GOVERNANCE & BOARDS", href: "/leadership-governance-boards" },
+            { label: "COMMUNICATIONS, ADVERTISING, MARKETING & MEDIA", href: "/communications-media" }
         ]
     },
     { id: "nav-academy", label: "EmpowaHER", href: "/academy" },
