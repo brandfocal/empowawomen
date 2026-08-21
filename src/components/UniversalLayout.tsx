@@ -35,11 +35,7 @@ const NAV_LINKS: NavLinkItem[] = [
         dropdownItems: [
             { label: "Green Economy, Mining, Energy & Sustainability", href: "/green-economy" },
             // { label: "Infrastructure, Property & Transport", href: "/infrastructure-property" },
-            { label: "Agriculture & Food Security", href: "/agriculture-manufacturing" },
-            { label: "The Creative Economy", href: "/creative-economy" },
-            { label: "Beauty, Fashion, Health & Wellness", href: "/beauty-fashion-wellness" },
             { label: "Entrepreneurship & Funding", href: "/entrepreneurship-funding" },
-            { label: "Wholesale, Retail & Manufacturing", href: "/wholesale-retail-manufacturing" },
             { label: "Leadership, Governance & Boards", href: "/leadership-governance-boards" },
             { label: "Communications, Advertising, Marketing & Media", href: "/communications-media" }
         ]

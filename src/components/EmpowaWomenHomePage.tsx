@@ -1617,45 +1617,25 @@ const PathwaysSection = () => {
 
 // ─── Core Pillars Carousel Section ────────────────────────────────────────────
 const PILLAR_CARDS = [{
-    id: "pc-1",
-    number: "01",
-    label: "Creative Economy",
-    image: "/creative_economy.png"
-}, {
     id: "pc-2",
-    number: "02",
+    number: "01",
     label: "Green Economy & Mining",
     image: "/green_economy.png"
 }, {
-    id: "pc-3",
-    number: "03",
-    label: "Beauty & Fashion",
-    image: "/beauty_fashion.png"
-}, {
     id: "pc-4",
-    number: "04",
+    number: "02",
     label: "Entrepreneurship & Funding",
     image: "/entrepreneurship_funding.png"
 }, {
     id: "pc-5",
-    number: "05",
+    number: "03",
     label: "Leadership & Governance",
     image: "/leadership_governance.png"
 }, {
     id: "pc-6",
-    number: "06",
+    number: "04",
     label: "Communications & Media",
     image: "/communications_media.png"
-}, {
-    id: "pc-7",
-    number: "07",
-    label: "Wholesale & Manufacturing",
-    image: "/wholesale_manufacturing.png"
-}, {
-    id: "pc-8",
-    number: "08",
-    label: "Agriculture & Food Security",
-    image: "/agriculture_food.png"
 }];
 const TRIPLED_PILLAR_CARDS = [...PILLAR_CARDS, ...PILLAR_CARDS, ...PILLAR_CARDS];
 const CorePillarsSection = () => {
