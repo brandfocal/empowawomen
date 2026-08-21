@@ -34,167 +34,110 @@ const STAGES: StageData[] = [
   {
     id: "main",
     name: "Main Stage",
-    director: "Programme Director",
+    director: "Cathy Mohlahlana (Broadcaster, Producer and Entrepreneur - Metro FM)",
     color: "#FF2D87",
     bgGlow: "radial-gradient(ellipse 60% 40% at 50% 50%, rgba(255,45,135,0.08) 0%, transparent 70%)",
     sessions: [
       {
         num: "01",
-        time: "07h30",
-        type: "ARRIVAL & IMMERSIVE OPENING",
-        title: "All Delegates Arrival",
-        description: "Arrive, connect, and settle in. Registration desks open and morning coffee networking begins at the exhibition area.",
-        chips: ["Registration", "Networking", "Coffee"]
+        time: "07:30",
+        type: "Arrival & Immersive Opening",
+        title: "Arrival & Immersive Opening",
+        description: "All Delegates",
+        chips: ["All Delegates"]
       },
       {
         num: "02",
-        time: "08h00",
-        type: "PROGRAMME DIRECTOR OPENING",
-        title: "Official Welcome & Opening",
-        description: "Official welcome and opening of the EmpowaWomen Leadership Summit 2026.",
-        chips: ["Opening Ceremony"]
+        time: "08:00",
+        type: "Programme Director",
+        title: "Programme Director",
+        description: "Cathy Mohlahlana (Broadcaster, Producer and Entrepreneur - Metro FM)",
+        chips: ["Cathy Mohlahlana"]
       },
       {
         num: "03",
-        time: "09h00",
-        type: "WELCOME ADDRESS",
+        time: "09:00 - 09:05",
+        type: "Official Welcome Address",
         title: "Official Welcome Address",
-        description: "Introductory remarks outlining the summit objectives and welcoming delegates.",
-        chips: ["Welcome"]
+        description: "Simphiwe Masiza (CEO & Founder - EmpowaWorx)",
+        chips: ["Simphiwe Masiza"]
       },
       {
         num: "04",
-        time: "09h05",
-        type: "INTRODUCTORY ADDRESS",
-        title: "Empowawomen Context and Direction",
-        description: "Strategic insights into women economic empowerment and leadership pathways.",
-        chips: ["Strategy", "Leadership"]
+        time: "09:05 - 09:10",
+        type: "Introductory Address",
+        title: "Introductory Address",
+        description: "Bonnie Maponya (Acting Managing Executive of Empowawomen - EmpowaWorx)",
+        chips: ["Bonnie Maponya"]
       },
       {
         num: "05",
-        time: "09h10",
-        type: "OFFICIAL KEYNOTE ADDRESS",
-        title: "Ministerial Address",
-        description: "Keynote presentation on driving systemic change, governance, and economic inclusion.",
-        chips: ["Minister Keynote", "Governance", "Inclusion"]
+        time: "09:10 - 09:40",
+        type: "Official Keynote Address",
+        title: "Official Keynote Address",
+        description: "Ms Mmamoloko 'Nkhensani' Kubayi (Minister of Justice and Constitutional Development)",
+        chips: ["Ms Mmamoloko Kubayi"]
       },
       {
         num: "06",
-        time: "09h40",
-        type: "PARTNER ADDRESS",
-        title: "ABSA Representative Address",
-        description: "A special message on building financial resilience, enterprise funding opportunities, and corporate ecosystems to accelerate women-led businesses.",
-        chips: ["ABSA Group", "Keynote Partner", "Funding Ecosystems"]
+        time: "09:40 - 10:00",
+        type: "Partner Address",
+        title: "Partner Address",
+        description: "ABSA Representative",
+        chips: ["ABSA Representative"]
       },
       {
         num: "07",
-        time: "10h00",
-        type: "EXECUTIVE PANEL / DIALOGUE",
-        title: "The City of Her: Reimagining Women’s Power",
-        description: "How connection, premium leadership circles, and economic channels can transform the boardroom and enterprise landscape.",
-        chips: ["C-Suite Leaders", "Economic Power", "Strategic Dialogue"]
+        time: "10:00 - 10:50",
+        type: "Executive Panel/Dialogue",
+        title: "Executive Panel/Dialogue: The City of Her: Reimagining Women’s Power Through Connection, Leadership and Economic Access",
+        description: "Facilitator: Cathy Mohlahlana (Broadcaster, Producer and Entrepreneur). Panelists: Ipeleng Nonkululeko Mkhari (CEO & Co-Founder - Motseng Investment Holdings), Phuti Mahanyele-Dabengwa (CEO - Naspers), Mpumi Madisa (CEO - Bidvest Group), Lerato Sithole (Founder - Think & Grow Rich Africa), Magda Wierzycka (Businesswoman and former CEO - Sygnia Limited).",
+        chips: ["Panel Discussion"]
       },
       {
         num: "08",
-        time: "11h00",
-        type: "BREAKAWAY SESSION ANNOUNCEMENT",
-        title: "Transition to Specialized Industry Stages",
-        description: "Delegates transition from the plenary room to their chosen vertical sector stages for deep-dive playbooks and networking.",
-        chips: ["Industry Tracks", "Specialized Breakouts"],
+        time: "11:00",
+        type: "Industry Breakaway session",
+        title: "Industry Breakaway session",
+        description: "Transition to breakaway tracks.",
+        chips: ["Breakout Tracks"],
         breakouts: [
-          { label: "Media & Creative Economy", href: "/creative-economy", color: "#00B4A6" },
           { label: "Entrepreneurship & Boards", href: "/entrepreneurship-funding", color: "#D97706" },
-          { label: "Green Economy & Property", href: "/green-economy", color: "#FF2D87" }
+          { label: "Green Economy & Property", href: "/green-economy", color: "#FF2D87" },
+          { label: "Communications & Creative", href: "/creative-economy", color: "#00B4A6" }
         ]
       },
       {
         num: "09",
-        time: "14h00",
-        type: "PLENARY PANEL DISCUSSION",
-        title: "Collaborating for Collective Sector Transformation",
-        description: "High-impact insights on scaling up across industries.",
-        chips: ["Collective Action", "Sector Scaling"]
+        time: "14:00 - 14:30",
+        type: "Panel Discussion",
+        title: "Panel Discussion",
+        description: "Speakers: Khanyi Mlambo, Kululwa Muthwa (Chief Executive Officer - South African Institute of Black Property Practitioners), Tryphosa Ramano, Delia Ndlovu, Brian Yuyi.",
+        chips: ["Panel Discussion"]
       },
       {
         num: "10",
-        time: "14h50",
-        type: "VOTE OF THANKS",
-        title: "Acknowledgements & Closing Comments",
-        description: "Official wrap-up and vote of thanks to partners, speakers, and delegates.",
-        chips: ["Wrap-up", "Thank You"]
+        time: "14:30 - 14:50",
+        type: "Closing Keynote Address",
+        title: "Closing Keynote Address",
+        description: "Precious Moloi-Motsepe (Businesswoman, Chancellor of the University of Cape Town)",
+        chips: ["Precious Moloi-Motsepe"]
       },
       {
         num: "11",
-        time: "15h00",
-        type: "EXHIBITION & CLOSING NETWORKING",
-        title: "Afternoon Reception & Connections",
-        description: "Delegates enjoy desserts and networking in the main exhibition hall to seal partnerships and make connections.",
-        chips: ["Networking", "Exhibition", "Afternoon Tea"]
-      }
-    ]
-  },
-  {
-    id: "media",
-    name: "Media & Creative",
-    director: "Stage Host",
-    color: "#00B4A6",
-    bgGlow: "radial-gradient(ellipse 60% 40% at 50% 50%, rgba(0,180,166,0.08) 0%, transparent 70%)",
-    sessions: [
-      {
-        num: "01",
-        time: "11h00",
-        type: "OPENING KEYNOTE",
-        title: "Leading the Future of Africa's Influence & Media",
-        description: "How will women shape consumer influence, media power, digital innovation, and brand narratives?",
-        chips: ["Consumer Influence", "Media Power", "Digital Innovation"]
+        time: "14:50 - 15:00",
+        type: "Vote of Thanks",
+        title: "Vote of Thanks",
+        description: "Simphiwe Masiza (CEO & Founder - EmpowaWorx)",
+        chips: ["Simphiwe Masiza"]
       },
       {
-        num: "02",
-        time: "11h15",
-        type: "HIGH-IMPACT PANEL",
-        title: "Women, Media & the Future of Brand Power",
-        description: "Why the future belongs to brands that leverage technology, consumer intelligence, storytelling, cultural relevance, and trust to build influence and drive sustainable growth.",
-        chips: ["Storytelling", "Brand Power", "Consumer Trust"]
-      },
-      {
-        num: "03",
-        time: "11h45",
-        type: "FIRECHAT",
-        title: "Brand Commercialisation & Digital Influence",
-        description: "How organisations and women-led brands transform visibility into commercial value through digital channels and market expansion.",
-        chips: ["Monetisation", "Visibility", "Strategic Partnerships"]
-      },
-      {
-        num: "04",
-        time: "12h15",
-        type: "TEA BREAK",
-        title: "Ecosystem Connections & Refreshments",
-        description: "Midday breakaway networking and tea break in the sector zone.",
-        chips: ["Break", "Refreshments"]
-      },
-      {
-        num: "05",
-        time: "12h30",
-        type: "OPENING KEYNOTE ADDRESS",
-        title: "Leading Africa's Creative & Cultural Economy",
-        description: "Leveraging creativity, technology, and intellectual property to shape cultural influence and build globally competitive enterprises.",
-        chips: ["Creative Assets", "Cultural Economy"]
-      },
-      {
-        num: "06",
-        time: "12h45",
-        type: "EXECUTIVE PANEL DISCUSSION",
-        title: "Women, Storytelling & Business of Cultural Influence",
-        description: "How AI, streaming platforms, content creation, and digital innovation are transforming the economy and commercialising creativity.",
-        chips: ["Streaming", "Content Creation", "AI & Innovation"]
-      },
-      {
-        num: "07",
-        time: "13h30",
-        type: "FIRESIDE CHAT",
-        title: "Content Commercialisation & Global Market Access",
-        description: "How women-led creative businesses can protect intellectual property, access global markets, and forge strategic partnerships.",
-        chips: ["Global Markets", "IP Protection"]
+        num: "12",
+        time: "15:00 - 16:00",
+        type: "Lunch, Exhibition & Networking",
+        title: "Lunch, Exhibition & Networking",
+        description: "Exhibition hall closing reception.",
+        chips: ["Networking"]
       }
     ]
   },
@@ -206,124 +149,189 @@ const STAGES: StageData[] = [
     sessions: [
       {
         num: "01",
-        time: "11h00",
-        type: "OPENING KEYNOTE ADDRESS",
-        title: "Leading the Future of Entrepreneurship & Growth",
-        description: "How women entrepreneurs build, fund, innovate, and scale the next generation of high-growth enterprises that drive Africa's economic transformation.",
-        chips: ["Innovation", "Scaling Enterprises"]
+        time: "11:00 - 11:15",
+        type: "Opening Keynote Address",
+        title: "Women Must Lead the Future of Entrepreneurship, Innovation & Economic Growth: How will women entrepreneurs build, fund, innovate, and scale the next generation of high-growth enterprises that drive Africa's economic transformation and global competitiveness?",
+        description: "Stella Ndabeni-Abrahams (Minister of Small Business Development - Government of South Africa)",
+        chips: ["Keynote"]
       },
       {
         num: "02",
-        time: "11h15",
-        type: "EXECUTIVE PANEL DISCUSSION",
-        title: "Women, Capital & Future of Economic Participation",
-        description: "Positioning women to lead through access to capital, procurement opportunities, digital ecosystems, and market networks.",
-        chips: ["Access to Capital", "Procurement Networks"]
+        time: "11:15 - 11:45",
+        type: "Executive Panel Discussion",
+        title: "Women, Capital & the Future of Economic Participation: Why will the future economy belong to entrepreneurs with access to capital, strategic partnerships, procurement opportunities, digital ecosystems, and market networks—and how can women position themselves to lead?",
+        description: "Speakers: Mr. Mziwabantu Dayimani (Chief Executive Officer - National Empowerment Fund (NEF)), Boitumelo Mosako (Chief Executive Officer - DBSA), Nkosikhona Mbatha (Acting Chief Executive Officer - SEDFA), Ndumiso Kubheka (Chief Executive Officer - NYDA).",
+        chips: ["Executive Panel"]
       },
       {
         num: "03",
-        time: "11h45",
-        type: "FIRECHAT",
-        title: "Investment, Market Access & Scaling",
-        description: "Practical steps to get businesses investment-ready, commercialise innovation, and unlock global markets.",
-        chips: ["Investment Readiness"]
+        time: "11:45 - 12:15",
+        type: "Firechat",
+        title: "Investment, Market Access & Scaling Women-Led Enterprises: How can women-led businesses become investment-ready, commercialise innovation, unlock market access, and scale sustainably in Africa's evolving entrepreneurial economy?",
+        description: "Speakers: Kenny Fihla (Group Chief Executive Officer - Absa), Leila Fourie (Chief Executive Officer - JSE), Nolitha Fakude (Chairperson - Anglo American South Africa), Nonkululeko Nyembezi (Chairperson), Phuti Mahanyele-Dabengwa (Chief Executive Officer).",
+        chips: ["Firechat"]
       },
       {
         num: "04",
-        time: "12h15",
-        type: "TEA BREAK",
-        title: "Ecosystem Connections & Refreshments",
-        description: "Midday breakaway networking and tea break in the sector zone.",
-        chips: ["Break", "Refreshments"]
+        time: "12:15 - 12:30",
+        type: "Tea Break & Networking",
+        title: "Tea Break & Networking",
+        description: "Networking breakaway.",
+        chips: ["Break"]
       },
       {
         num: "05",
-        time: "12h30",
-        type: "OPENING KEYNOTE",
-        title: "Leading from Within: Mastering the Mind & Aligning the Soul",
-        description: "Cultivating mental strength, physical wellbeing, and inner alignment to lead organizations with authenticity and purpose.",
-        chips: ["Mental Strength", "Inner Alignment"]
+        time: "12:30 - 12:45",
+        type: "Opening Keynote Address",
+        title: "Leading from Within: Mastering the Mind, Strengthening the Body & Aligning the Soul for Purposeful Living: How can leaders cultivate mental strength, physical wellbeing, and inner alignment to lead with authenticity and purpose?",
+        description: "Lerato Sithole",
+        chips: ["Keynote"]
       },
       {
         num: "06",
-        time: "12h45",
-        type: "EXECUTIVE PANEL DISCUSSION",
-        title: "Crucial Conversations: Turning Dialogue into Trust",
-        description: "Navigating high-stakes conversations, building institutional trust, exercising strategic influence, and achieving positive outcomes.",
-        chips: ["Crucial Conversations", "Trust Building"]
+        time: "12:45 - 13:30",
+        type: "Executive Panel Discussion",
+        title: "Crucial Conversations: Turning High Stakes Dialogue into Trust, Influence & Positive Outcomes: How can leaders navigate difficult conversations, build trust, exercise influence, and achieve positive outcomes in complex environments?",
+        description: "Speakers: Dr Khosi Jiyane (Co-Facilitator - The Human Edge), Helene Vermaak (Co-Facilitator - The Human Edge), Mr Terry Moore.",
+        chips: ["Executive Panel"]
       },
       {
         num: "07",
-        time: "13h30",
-        type: "FIRESIDE CHAT",
-        title: "Resilient Leadership as a Strategic Driver of Sustainability",
-        description: "Harnessing personal and organizational resilience to drive long-term business sustainability.",
-        chips: ["Resilience", "Sustainability"]
+        time: "13:30 - 14:00",
+        type: "Fireside Chat",
+        title: "Resilient Leadership as a Strategic Driver of Sustainability: How can leaders harness resilience to drive sustainable business?",
+        description: "Speakers: Cecile Feront. Moderator: Judith Chinkumbi.",
+        chips: ["Fireside Chat"]
       }
     ]
   },
   {
     id: "green",
     name: "Green Economy & Property",
-    director: "Stage Host",
+    director: "Programme Director: Sis Khanyi Mlambo",
     color: "#10B981",
     bgGlow: "radial-gradient(ellipse 60% 40% at 50% 50%, rgba(16,185,129,0.08) 0%, transparent 70%)",
     sessions: [
       {
         num: "01",
-        time: "11h00",
-        type: "OPENING KEYNOTE ADDRESS",
-        title: "Leading Africa's Green Transition & Energy Future",
-        description: "How climate innovation, green energy transitions, and female leadership shape Africa's industrial competitiveness.",
-        chips: ["Green Transition", "Energy Future", "Climate Innovation"]
+        time: "11:00 - 11:15",
+        type: "Opening Keynote Address",
+        title: "Women Must Lead Africa's Green Transition, Energy Future & Sustainable Industrial Growth: How will women's leadership, climate innovation, and the energy transition shape Africa's future economy, industrial competitiveness, and sustainable growth?",
+        description: "Portia (Presidential - Absa Group)",
+        chips: ["Keynote"]
       },
       {
         num: "02",
-        time: "11h15",
-        type: "MASTERCLASS",
-        title: "Women, Energy & the Future of the Green Economy",
-        description: "Accelerating sustainable growth and positioning women to lead Africa's green industrial transformation.",
-        chips: ["Clean Energy", "ESG & Compliance"]
+        time: "11:15 - 11:45",
+        type: "Masterclass",
+        title: "Women, Energy & the Future of the Green Economy: How can leadership, clean energy, ESG, climate resilience, and resource innovation accelerate sustainable growth while positioning women to lead Africa's green industrial transformation?",
+        description: "Speakers: Christina Herden (Director, Corporate Global Sustainability - HCLTech), Ronell Govender (Global Sustainability Manager - NASPERS), Jayne Mammatt (Partner - EY (Ernst & Young)), Loshni Naidoo (Chief Sustainability Officer - JSE Limited), Monelisa Baleni (Environmental Social Governance Analyst - Prescient Investment Management), Kuhle Sojola (ESG Engagement Specialist - Ninety One).",
+        chips: ["Masterclass"]
       },
       {
         num: "03",
-        time: "11h45",
-        type: "MASTERCLASS",
-        title: "Green Finance, Market Access & Scaling",
-        description: "Unlocking green finance, forging strategic partnerships, and scaling impact across Africa's environmental sector.",
-        chips: ["Green Finance"]
+        time: "11:45 - 12:15",
+        type: "Masterclass",
+        title: "Green Finance, Market Access & Scaling Women-Led Sustainable Enterprises: Why is sustainability without commercialisation a missed economic opportunity, and how can women-led enterprises unlock finance, partnerships, and market access to scale impact across Africa?",
+        description: "Speakers: Sibu Majozi (Group Executive: Corporate Affairs & Sustainability - African Rainbow Minerals (ARM)), Dr. Andrea Campher (Business and Commercial Banking / Senior Manager, Sustainability, Agribusiness - Standard Bank Group), Annelise Louw (Head of Environmental Project Portfolio Management Office - Sasol).",
+        chips: ["Masterclass"]
       },
       {
         num: "04",
-        time: "12h15",
-        type: "TEA BREAK",
-        title: "Ecosystem Connections & Refreshments",
-        description: "Midday breakaway networking and tea break in the sector zone.",
-        chips: ["Break", "Refreshments"]
+        time: "12:15 - 12:30",
+        type: "Tea Break",
+        title: "Tea Break",
+        description: "Ecosystem breakaway.",
+        chips: ["Break"]
       },
       {
         num: "05",
-        time: "12h30",
-        type: "OPENING KEYNOTE",
-        title: "The Modern Portfolio: Property as Your Engine for Wealth",
-        description: "Building resilient, multi-generational wealth through strategic property investment and real estate.",
-        chips: ["Real Estate", "Wealth Creation"]
+        time: "12:30 - 12:45",
+        type: "Opening Keynote Address",
+        title: "The Modern Portfolio: Property as Your Engine for Wealth: How can women build resilient, multi-generational wealth through strategic property investment while leveraging real estate as a catalyst for economic empowerment and community transformation?",
+        description: "Azola Mayekiso (CEO - NHFC)",
+        chips: ["Keynote"]
       },
       {
         num: "06",
-        time: "12h45",
-        type: "EXECUTIVE PANEL DISCUSSION",
-        title: "The Developer's Blueprint: Profitable Projects with Purpose",
-        description: "Shaping sustainable, inclusive cities through urban innovation, ESG principles, and affordable housing.",
-        chips: ["Affordable Housing", "Urban Development"]
+        time: "12:45 - 13:30",
+        type: "Executive Panel Discussion",
+        title: "The Developer's Blueprint: Profitable Projects with Purpose: How can women shape sustainable and inclusive cities through property development, urban innovation, ESG principles, public-private partnerships, and affordable housing while delivering strong investment returns?",
+        description: "Speakers: Bongi Ntuli (Chief Engineer - Department of Public Works and Infrastructure), Thandeka Mlaza (Strategic Spatial Planning - City of Joburg), Justine Pieterse (Director & Co-Founder - Indigen Architects).",
+        chips: ["Executive Panel"]
       },
       {
         num: "07",
-        time: "13h30",
-        type: "FIRESIDE CHAT",
-        title: "Future of Property: Wealth Through Collaboration",
-        description: "Collaboration between investors, developers, and policymakers to unlock property opportunities.",
-        chips: ["Collaboration"]
+        time: "13:30 - 14:00",
+        type: "Fire-Chat",
+        title: "The Future of Property: Building Wealth Through Collaboration & Urban Transformation: How can women investors, developers, and policymakers collaborate to unlock property opportunities, regenerate urban spaces, and build vibrant communities that generate lasting economic and social value?",
+        description: "Speakers: Jabulani Fakazi (Grant Facilitation Executive - NHFC), Kululwa Muthwa (Chief Executive Officer - South African Institute of Black Property Practitioners), Olebogeng Mokoena (Investment Analyst – Direct Property - PIC), Kehilwe Sibanda (Property Development Manager - Galencia Properties).",
+        chips: ["Fire-Chat"]
+      }
+    ]
+  },
+  {
+    id: "communications",
+    name: "Communications & Creative",
+    director: "Programme Director: Mr David G Nhlapo",
+    color: "#00B4A6",
+    bgGlow: "radial-gradient(ellipse 60% 40% at 50% 50%, rgba(0,180,166,0.08) 0%, transparent 70%)",
+    sessions: [
+      {
+        num: "01",
+        time: "11:00 - 11:15",
+        type: "Opening Keynote",
+        title: "Women Must Lead the Future of Africa's Influence, Media & Communications Economy: How will women shape Africa's consumer influence, media power, digital innovation, and brand narratives to build globally competitive brands and drive the future of the communications economy?",
+        description: "Nomsa Philiso (Director, Content General Entertainment (English and Portuguese speaking Africa) - Multichoice, Canal+ Africa)",
+        chips: ["Keynote"]
+      },
+      {
+        num: "02",
+        time: "11:15 - 11:45",
+        type: "High-Impact Panel",
+        title: "Women, Media & the Future of Brand Power: Why will the future belong to brands that leverage technology, consumer intelligence, storytelling, cultural relevance, and trust to build influence and drive sustainable growth?",
+        description: "Speakers: Thanduxolo Nonqoba Jiyane (Communications Consultant - Mastercard Foundation Africa Growth Fund), Melanie Ramjee (Managing Director - Tutone Communications), Nunu Ntshingila (Chairperson - Women for Women International), Viwe Ndongeni-Ntlebi (Editor in Chief - BONA Print - Habari Media), Ursula Mariani (Host and Founder - The Conversation Capitalist), Naledi Jarratt (CEO - Cherry Republik Group), Veli Ngubane (Chairperson - The Department of Communications and Digital Technologies MAC Charter Council).",
+        chips: ["High-Impact Panel"]
+      },
+      {
+        num: "03",
+        time: "11:45 - 12:15",
+        type: "Firechat",
+        title: "Brand Commercialisation, Digital Influence & Market Expansion: How can organisations and women-led brands transform visibility into commercial value through digital influence, strategic partnerships, market expansion, and brand monetisation?",
+        description: "Speakers: Zibusiso Mkhwanazi (Group Chief Executive Officer - M&N Brands), Samantha (Dominy) Rech (Communications Leader - Africa - EY), Shweshwe Tlhapane (Chief Marketing Officer - Momentum Insure), Lauretta Ngakane (Group Head: Corporate Communications - Primedia Group).",
+        chips: ["Firechat"]
+      },
+      {
+        num: "04",
+        time: "12:15 - 12:30",
+        type: "Tea Break & Networking",
+        title: "Tea Break & Networking",
+        description: "Ecosystem breakaway.",
+        chips: ["Break"]
+      },
+      {
+        num: "05",
+        time: "12:30 - 12:45",
+        type: "Opening Keynote Address",
+        title: "Women Must Lead Africa's Creative & Cultural Economy: How will women leverage creativity, technology, storytelling, and intellectual property to shape Africa's cultural influence, own creative assets, and build globally competitive creative enterprises?",
+        description: "Kaye Ann Williams (Director: Series & Film, Netflix Africa - Netflix)",
+        chips: ["Keynote"]
+      },
+      {
+        num: "06",
+        time: "12:45 - 13:30",
+        type: "Executive Panel Discussion",
+        title: "Women, Storytelling & the Business of Cultural Influence: How are AI, streaming platforms, content creation, and digital innovation transforming the creative economy, and how can women commercialise creativity, build sustainable media brands, and unlock new opportunities for growth?",
+        description: "Speakers: Lulu Hela (Executive Producer & Creator: Lavish Season 1, 1802 - Love Defies Time - Hela Media), Mbali Thabethe (Joburg Film Festival Project Lead - Joburg Film Festival), Didintle Khunou (Lead Actor - Joburg Theatre), Calvin Sefala CA(SA) (CEO - Urban Brew Studios), Ingrid Engelbrecht (Showrunner, Director and Producer).",
+        chips: ["Executive Panel"]
+      },
+      {
+        num: "07",
+        time: "13:30 - 14:00",
+        type: "Fireside Chat",
+        title: "Content Commercialisation, Streaming & Global Market Access: How can women-led creative businesses protect and monetise intellectual property, access global markets, forge strategic partnerships, and transform creativity into long-term economic power?",
+        description: "Speakers: Claire Morris (Series Director - Black Swan Media), Viva Liles-Wilkin (Television and Media Producer - Quizzical Pictures), Connie Ferguson (Director - Ferguson Films), Amy Montalvo (Founder | Chief Storyteller - ONEPASS Productions), Zikona Anam Debese (Line Producer & Series Producer - Black Brain Pictures).",
+        chips: ["Fireside Chat"]
       }
     ]
   }
