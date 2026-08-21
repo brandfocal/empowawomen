@@ -554,7 +554,7 @@ const ScrollToTop = () => {
 
 export const Layout = () => {
     const location = useLocation();
-    const isPrivatePage = location.pathname === "/empowawomen-leadership-summit-2026-absa";
+    const isPrivatePage = location.pathname === "/empowawomen-leadership-summit-2026-absa" || location.pathname === "/empowawomen-leadership-summit-2026-jpc";
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', backgroundColor: '#0A0A0F' }}>
