@@ -1115,7 +1115,7 @@ const PressReleasesSection = () => {
                     "Communications, Advertising, Marketing & Media",
                     "Agriculture & Food Security",
                     "The Creative Economy",
-                    "Green Economy, Mining, Energy & Sustainability",
+                    "GREEN ECONOMY, ENERGY & SUSTAINABILITY",
                     "Beauty, Fashion, Health & Wellness",
                     "Wholesale, Retail & Manufacturing"
                   ].map((item, idx) => (

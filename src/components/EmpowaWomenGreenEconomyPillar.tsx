@@ -298,9 +298,9 @@ export const GreenEconomyPillar: React.FC = () => {
             letterSpacing: "-0.025em",
             margin: 0
           }}>
-              Green Economy,<br />
-              Energy &<br />
-              Sustainability
+              GREEN ECONOMY,<br />
+              ENERGY &<br />
+              SUSTAINABILITY
             </motion.h2>
             <motion.div initial={{
             opacity: 0,
@@ -569,7 +569,7 @@ export const GreenEconomyPillar: React.FC = () => {
                 letterSpacing: "-0.02em",
                 margin: 0
               }}>
-                  Green Economy, Energy &amp; Sustainability High-Impact Executive Programme
+                  GREEN ECONOMY, ENERGY &amp; SUSTAINABILITY High-Impact Executive Programme
                 </h2>
                 <div style={{
                 display: "flex",
@@ -1138,9 +1138,9 @@ export const GreenEconomyPillar: React.FC = () => {
       </main>
 
       <DelegateRegistrationSection
-        stageName="Green Economy, Mining, Energy & Sustainability Stage"
+        stageName="GREEN ECONOMY, ENERGY & SUSTAINABILITY Stage"
         includes={[
-          "Full-day Green Economy Stage access",
+          "Full-day GREEN ECONOMY, ENERGY & SUSTAINABILITY Stage access",
           "Premium executive programme (9 sessions)",
           "High-impact industrial matchmaking & ESG networking",
           "Delegate resource pack & recordings"

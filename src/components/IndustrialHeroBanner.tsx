@@ -187,7 +187,7 @@ export const IndustrialHeroBanner: React.FC = () => {
                 color: "rgba(255,255,255,0.60)",
                 textTransform: "uppercase"
               }}>
-                GREEN ECONOMY, MINING, ENERGY &amp; SUSTAINABILITY
+                GREEN ECONOMY, ENERGY &amp; SUSTAINABILITY
               </span>
             </motion.div>
 
