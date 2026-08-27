@@ -23,6 +23,7 @@ interface AgendaSession {
 interface StageData {
   id: string;
   name: string;
+  shortName?: string;
   director?: string;
   color: string;
   bgGlow: string;
@@ -34,6 +35,7 @@ const STAGES: StageData[] = [
   {
     id: "main",
     name: "Main Stage",
+    shortName: "Main Stage",
     director: "Cathy Mohlahlana (Broadcaster, Producer and Entrepreneur - Metro FM)",
     color: "#FF2D87",
     bgGlow: "radial-gradient(ellipse 60% 40% at 50% 50%, rgba(255,45,135,0.08) 0%, transparent 70%)",
@@ -161,6 +163,7 @@ const STAGES: StageData[] = [
   {
     id: "entrepreneurship",
     name: "Entrepreneurship, Innovation & Funding",
+    shortName: "Entrepreneurship",
     color: "#D97706",
     bgGlow: "radial-gradient(ellipse 60% 40% at 50% 50%, rgba(217,119,6,0.08) 0%, transparent 70%)",
     sessions: [
@@ -265,6 +268,7 @@ const STAGES: StageData[] = [
   {
     id: "green",
     name: "Green Economy, Energy & Sustainability",
+    shortName: "Green Economy",
     color: "#10B981",
     bgGlow: "radial-gradient(ellipse 60% 40% at 50% 50%, rgba(16,185,129,0.08) 0%, transparent 70%)",
     sessions: [
@@ -321,6 +325,7 @@ const STAGES: StageData[] = [
   {
     id: "communications",
     name: "Communications, Advertising, Marketing & Media",
+    shortName: "Media & Comms",
     color: "#00B4A6",
     bgGlow: "radial-gradient(ellipse 60% 40% at 50% 50%, rgba(0,180,166,0.08) 0%, transparent 70%)",
     sessions: [
@@ -361,6 +366,7 @@ const STAGES: StageData[] = [
   {
     id: "leadership",
     name: "Leadership, Governance & Boards",
+    shortName: "Leadership & Boards",
     color: "#FF2D87",
     bgGlow: "radial-gradient(ellipse 60% 40% at 50% 50%, rgba(255,45,135,0.08) 0%, transparent 70%)",
     sessions: [
@@ -953,7 +959,7 @@ export const EmpowaWomenAgendaPage: React.FC = () => {
                       }}
                     />
                   )}
-                  {stage.name}
+                  {stage.shortName || stage.name}
                 </button>
               );
             })}
@@ -1001,6 +1007,18 @@ export const EmpowaWomenAgendaPage: React.FC = () => {
               exit={{ opacity: 0, y: -15 }}
               transition={{ duration: 0.3 }}
             >
+              {/* Full Stage Name Header */}
+              <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+                <h3 style={{
+                  fontFamily: "Figtree",
+                  fontWeight: 300,
+                  fontSize: "clamp(20px, 3vw, 32px)",
+                  color: "#FFFFFF",
+                  margin: "0"
+                }}>
+                  {activeStage.name}
+                </h3>
+              </div>
               {/* Special Plenary Sessions vs breakaway split indicator */}
               {activeStage.id !== "main" && (
                 <div style={{
