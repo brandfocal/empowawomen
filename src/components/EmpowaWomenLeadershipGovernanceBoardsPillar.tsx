@@ -2,6 +2,7 @@ import * as React from "react";
 import { motion, useScroll, useTransform, AnimatePresence, useInView } from "framer-motion";
 import { ArrowRight, Check, ShieldCheck, Clock, Calendar, Shield, Users, Gavel, Award, Target, Briefcase, Sparkles, BrainCircuit, Landmark, BarChart3, CheckCircle2 } from "lucide-react";
 import { ROIMetricBlock } from "./ROIMetricBlock";
+import { STAGES } from "../data/agendaData";
 import { DelegateRegistrationSection } from "./DelegateRegistrationSection";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -76,65 +77,22 @@ const ROI_METRICS: ROIMetric[] = [
   }
 ];
 
-const PROGRAMME_SESSIONS: ProgrammeSession[] = [
-  {
-    id: "pn-1",
-    time: "11:00",
-    format: "PROGRAMME DIRECTOR",
-    title: "Programme Director",
-    subtitle: "Welcome, Opening Remarks",
-    accentColor: "#FF2D87"
-  },
-  {
-    id: "pn-2",
-    time: "11:00 - 11:45",
-    format: "OPENING KEYNOTE",
-    title: "Opening Keynote",
-    subtitle: "Pillars of Financial Resilience",
-    accentColor: "#D4AF37"
-  },
-  {
-    id: "pn-3",
-    time: "11:45 - 12:00",
-    format: "Q&A SESSION",
-    title: "Q&A Session",
-    subtitle: "Q&A with Mr Johan Gouws",
-    accentColor: "#00B4A6"
-  },
-  {
-    id: "pn-4",
-    time: "12:00 - 12:40",
-    format: "HIGH-IMPACT PANEL",
-    title: "High-Impact Panel",
-    subtitle: "Building personal resilience through financial planning",
-    accentColor: "#D4AF37"
-  },
-  {
-    id: "pn-5",
-    time: "12:40 - 12:50",
-    format: "SHORT BREAK",
-    title: "Short Break",
-    subtitle: "Short Break",
-    accentColor: "#00B4A6",
-    isLunch: true
-  },
-  {
-    id: "pn-6",
-    time: "12:50 - 13:30",
-    format: "MASTERCLASS",
-    title: "Masterclass",
-    subtitle: "Crucial Conversations: Turning High-Stakes Dialogue into Trust, Influence and Positive Outcomes",
-    accentColor: "#FF2D87"
-  },
-  {
-    id: "pn-7",
-    time: "13:30 - 14:00",
-    format: "LEADERSHIP CONVERSATION",
-    title: "Leadership Conversation",
-    subtitle: "Leading from Within: Mastering the Mind, Strengthening the Body, and Aligning the Soul for Purposeful Living",
-    accentColor: "#D4AF37"
-  }
-];
+const leadershipStage = STAGES.find(s => s.id === "leadership")!;
+
+const PROGRAMME_SESSIONS: ProgrammeSession[] = leadershipStage.sessions.map((session, index) => {
+  const accentColors = ["#FF2D87", "#D4AF37", "#00B4A6"];
+  const colorIndex = index % 3;
+  const isLunch = session.chips.includes("Break");
+  return {
+    id: `pn-${session.num}`,
+    time: session.time === "---" ? "11:00" : session.time,
+    format: session.type.toUpperCase(),
+    title: session.title,
+    subtitle: session.description,
+    accentColor: accentColors[colorIndex],
+    isLunch
+  };
+});
 
 const STRATEGIC_BENEFITS = [
   { id: "sb-1", label: "Board Readiness & Executive Pathways" },

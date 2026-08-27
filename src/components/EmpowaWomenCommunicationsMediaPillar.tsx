@@ -2,6 +2,7 @@ import * as React from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Clock, Calendar, Globe, Zap, MessageSquare, Award, Users, ShieldCheck, Smartphone, TrendingUp, Tv, Cpu, Target, Check, CheckCircle2 } from "lucide-react";
 import { ROIMetricBlock } from "./ROIMetricBlock";
+import { STAGES } from "../data/agendaData";
 import { DelegateRegistrationSection } from "./DelegateRegistrationSection";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -100,39 +101,24 @@ const ROI_METRICS: ROIMetric[] = [{
   description: "Projected economic impact and revenue growth within the media ecosystem."
 }];
 
-const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
-  id: "ps-1",
-  time: "12:50",
-  format: "PROGRAMME DIRECTOR",
-  title: "Programme Director",
-  subtitle: "Stage Introduction & Proceedings",
-  accentColor: "#FF2D87",
-  accentRgb: "255,45,135"
-}, {
-  id: "ps-2",
-  time: "12:50 - 13:00",
-  format: "OPENING KEYNOTE",
-  title: "Opening Keynote",
-  subtitle: "Women Must Lead the Future of Africa's Influence, Media & Communications Economy",
-  accentColor: "#D4AF37",
-  accentRgb: "212,175,55"
-}, {
-  id: "ps-3",
-  time: "13:00 - 13:30",
-  format: "HIGH-IMPACT PANEL",
-  title: "High-Impact Panel",
-  subtitle: "Women, Media & the Future of Brand Power",
-  accentColor: "#00B4A6",
-  accentRgb: "0,180,166"
-}, {
-  id: "ps-4",
-  time: "13:30 - 14:00",
-  format: "FIRECHAT",
-  title: "Firechat",
-  subtitle: "Brand Commercialisation, Digital Influence & Market Expansion",
-  accentColor: "#D4AF37",
-  accentRgb: "212,175,55"
-}];
+const commsStage = STAGES.find(s => s.id === "communications")!;
+
+const PROGRAMME_SESSIONS: ProgrammeSession[] = commsStage.sessions.map((session, index) => {
+  const accentColors = ["#FF2D87", "#D4AF37", "#00B4A6"];
+  const accentRgbs = ["255,45,135", "212,175,55", "0,180,166"];
+  const colorIndex = index % 3;
+  const isLunch = session.chips.includes("Break");
+  return {
+    id: `ps-${session.num}`,
+    time: session.time === "---" ? "12:50" : session.time,
+    format: session.type.toUpperCase(),
+    title: session.title,
+    subtitle: session.description,
+    accentColor: accentColors[colorIndex],
+    accentRgb: accentRgbs[colorIndex],
+    isLunch
+  };
+});
 
 const STRATEGIC_BENEFITS = [
   { id: "sb-1", label: "Brand Visibility & Executive Positioning" },

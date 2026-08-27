@@ -2,6 +2,7 @@ import * as React from "react";
 import { motion, useScroll, useTransform, AnimatePresence, useInView } from "framer-motion";
 import { ArrowRight, Check, ShieldCheck, Coins, Briefcase, Building2, ClipboardList, Users, Zap, Cpu, Wallet, CheckCircle2 } from "lucide-react";
 import { ROIMetricBlock } from "./ROIMetricBlock";
+import { STAGES } from "../data/agendaData";
 import { DelegateRegistrationSection as SharedDelegateRegistrationSection } from "./DelegateRegistrationSection";
 
 // ─── Constants & Data ─────────────────────────────────────────────────────────
@@ -92,105 +93,23 @@ const ROI_METRICS = [
   }
 ];
 
-const PROGRAMME_SESSIONS = [
-  {
-    id: "ps-1",
-    time: "11:00",
-    format: "PROGRAMME DIRECTOR",
-    title: "Programme Director",
-    subtitle: "Stage Introduction & Proceedings",
-    accentColor: PRIMARY_ACCENT
-  },
-  {
-    id: "ps-2",
-    time: "11:00 - 11:15",
-    format: "OPENING KEYNOTE ADDRESS",
-    title: "Opening Keynote Address",
-    subtitle: "The Architect of Enterprise: Designing Businesses That Transform Economies",
-    accentColor: TERTIARY_ACCENT
-  },
-  {
-    id: "ps-3",
-    time: "11:15 - 11:30",
-    format: "TED-STYLE TALK I",
-    title: "TED-Style Talk I",
-    subtitle: "What It Actually Takes to Fund a Woman-Led Business in SA",
-    accentColor: SECONDARY_ACCENT
-  },
-  {
-    id: "ps-4",
-    time: "11:30 - 12:00",
-    format: "HIGH IMPACT LEADERSHIP DIALOGUE",
-    title: "High Impact Leadership Dialogue",
-    subtitle: "Building a Capital System That Works for Women",
-    accentColor: TERTIARY_ACCENT
-  },
-  {
-    id: "ps-5",
-    time: "12:00 - 12:30",
-    format: "FIRESIDE CHAT I",
-    title: "Fireside Chat I",
-    subtitle: "From Funding Applications to Investable Enterprises",
-    accentColor: PRIMARY_ACCENT
-  },
-  {
-    id: "ps-6",
-    time: "12:30 - 12:40",
-    format: "TED-STYLE TALK II",
-    title: "TED-Style Talk II",
-    subtitle: "What VCs Actually Look For",
-    accentColor: SECONDARY_ACCENT
-  },
-  {
-    id: "ps-7",
-    time: "12:40 - 12:50",
-    format: "TEA BREAK",
-    title: "Tea Break",
-    subtitle: "Short Break",
-    accentColor: TERTIARY_ACCENT,
-    isLunch: true
-  },
-  {
-    id: "ps-8",
-    time: "12:50 - 13:20",
-    format: "FIRESIDE CHAT II",
-    title: "Fireside Chat II",
-    subtitle: "Capital Is Not Enough: Markets, Procurement and Scale",
-    accentColor: PRIMARY_ACCENT
-  },
-  {
-    id: "ps-9",
-    time: "13:20 - 13:40",
-    format: "MASTERCLASS",
-    title: "Masterclass",
-    subtitle: "From Business to Bankable: Preparing Women-Led Businesses for Investment",
-    accentColor: SECONDARY_ACCENT
-  },
-  {
-    id: "ps-10",
-    time: "13:40 - 13:50",
-    format: "CALL TO ACTION",
-    title: "Call to Action",
-    subtitle: "Women’s Enterprise Investment Commitment",
-    accentColor: TERTIARY_ACCENT
-  },
-  {
-    id: "ps-11",
-    time: "13:50 - 13:55",
-    format: "CLOSING CAPITAL COMMITMENT",
-    title: "Closing Capital Commitment",
-    subtitle: "Women’s Enterprise Investment Compact",
-    accentColor: PRIMARY_ACCENT
-  },
-  {
-    id: "ps-12",
-    time: "13:55 - 14:00",
-    format: "CLOSE & HANDOVER",
-    title: "Close & Handover",
-    subtitle: "Transition to Leadership & Governance Stage",
-    accentColor: SECONDARY_ACCENT
-  }
-];
+const entrepreneurStage = STAGES.find(s => s.id === "entrepreneurship")!;
+
+const PROGRAMME_SESSIONS = entrepreneurStage.sessions.map((session, index) => {
+  const accentColors = [PRIMARY_ACCENT, TERTIARY_ACCENT, SECONDARY_ACCENT];
+  const colorIndex = index % 3;
+  // If the session is tea break, we set isLunch to true so that it renders with the break styling
+  const isLunch = session.chips.includes("Break");
+  return {
+    id: `ps-${session.num}`,
+    time: session.time === "---" ? "11:00" : session.time,
+    format: session.type.toUpperCase(),
+    title: session.title,
+    subtitle: session.description,
+    accentColor: accentColors[colorIndex],
+    isLunch
+  };
+});
 
 const STRATEGIC_BENEFITS = [{
   id: "sb-1",

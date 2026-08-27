@@ -4,6 +4,7 @@ import { Zap, Wind, Leaf, Mountain, ShieldCheck, Globe, Building2, Cpu, Pickaxe,
 import { IndustrialHeroBanner } from "./IndustrialHeroBanner";
 import { ROIMetricBlock } from "./ROIMetricBlock";
 import { DelegateRegistrationSection } from "./DelegateRegistrationSection";
+import { STAGES } from "../data/agendaData";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 interface FocusArea {
@@ -95,55 +96,22 @@ const ROI_METRICS: ROIMetric[] = [{
   value: "2000+",
   description: "Executives and decision-makers engaged across clean tech, energy, and sustainability sectors."
 }];
-const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
-  id: "ps-1",
-  time: "11:00",
-  format: "PROGRAMME DIRECTOR",
-  title: "Programme Director",
-  subtitle: "Stage Introduction & Proceedings",
-  accentColor: "#00B4A6",
-  accentRgb: "0,180,166"
-}, {
-  id: "ps-2",
-  time: "11:00 - 11:20",
-  format: "OPENING KEYNOTE ADDRESS",
-  title: "Opening Keynote Address",
-  subtitle: "Green Finance, Market Access & Scaling Women-Led Sustainable Enterprises",
-  accentColor: "#FF2D87",
-  accentRgb: "255,45,135"
-}, {
-  id: "ps-3",
-  time: "11:20 - 11:40",
-  format: "MASTERCLASS",
-  title: "Masterclass",
-  subtitle: "Powering Africa’s Green Future: Why Women’s Leadership Matters Now",
-  accentColor: "#D4AF37",
-  accentRgb: "212,175,55"
-}, {
-  id: "ps-4",
-  time: "11:40 - 12:20",
-  format: "PANEL DISCUSSION",
-  title: "Panel Discussion",
-  subtitle: "Women, Energy & the Future of the Green Economy",
-  accentColor: "#00B4A6",
-  accentRgb: "0,180,166"
-}, {
-  id: "ps-5",
-  time: "12:20 - 12:40",
-  format: "MASTERCLASS",
-  title: "Masterclass",
-  subtitle: "Green Finance, Market Access & Scaling Women-Led Sustainable Enterprises",
-  accentColor: "#D4AF37",
-  accentRgb: "212,175,55"
-}, {
-  id: "ps-6",
-  time: "12:40 - 12:50",
-  format: "SHORT BREAK",
-  title: "Short Break",
-  subtitle: "Short Break",
-  accentColor: "#00B4A6",
-  accentRgb: "0,180,166"
-}];
+const greenStage = STAGES.find(s => s.id === "green")!;
+
+const PROGRAMME_SESSIONS: ProgrammeSession[] = greenStage.sessions.map((session, index) => {
+  const accentColors = ["#00B4A6", "#FF2D87", "#D4AF37"];
+  const accentRgbs = ["0,180,166", "255,45,135", "212,175,55"];
+  const colorIndex = index % 3;
+  return {
+    id: `ps-${session.num}`,
+    time: session.time === "---" ? "11:00" : session.time,
+    format: session.type.toUpperCase(),
+    title: session.title,
+    subtitle: session.description,
+    accentColor: accentColors[colorIndex],
+    accentRgb: accentRgbs[colorIndex]
+  };
+});
 const STRATEGIC_BENEFITS = [{
   id: "sb-1",
   label: "Green Economy Investment Access"
