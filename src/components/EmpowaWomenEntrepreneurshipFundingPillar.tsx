@@ -96,74 +96,98 @@ const PROGRAMME_SESSIONS = [
   {
     id: "ps-1",
     time: "11:00",
-    format: "OPENING KEYNOTE",
-    title: "Women Must Lead the Future of Entrepreneurship, Innovation & Economic Growth",
-    subtitle: "Who Will Build, Fund & Scale Africa's Next Generation of Global Enterprises?",
+    format: "PROGRAMME DIRECTOR",
+    title: "Programme Director",
+    subtitle: "Stage Introduction & Proceedings",
     accentColor: PRIMARY_ACCENT
   },
   {
     id: "ps-2",
-    time: "11:20",
-    format: "EXECUTIVE MASTERCLASS",
-    title: "Funding Readiness, Scaling & the Future of High-Growth Enterprises",
-    subtitle: "How will capital flow toward scalable, investment-ready, and future-focused businesses, and how do women prepare?",
+    time: "11:00 - 11:15",
+    format: "OPENING KEYNOTE ADDRESS",
+    title: "Opening Keynote Address",
+    subtitle: "The Architect of Enterprise: Designing Businesses That Transform Economies",
     accentColor: TERTIARY_ACCENT
   },
   {
     id: "ps-3",
-    time: "12:00",
-    format: "HIGH-IMPACT PANEL",
-    title: "Women, Capital & the Future of Economic Participation",
-    subtitle: "Why will the future economy belong to entrepreneurs with access to capital, markets, and strategic networks?",
+    time: "11:15 - 11:30",
+    format: "TED-STYLE TALK I",
+    title: "TED-Style Talk I",
+    subtitle: "What It Actually Takes to Fund a Woman-Led Business in SA",
     accentColor: SECONDARY_ACCENT
   },
   {
     id: "ps-4",
-    time: "12:50",
-    format: "NETWORKING LUNCH",
-    title: "Cultivating Capital, Partnerships & Enterprise Growth",
-    subtitle: "Which Relationships, Investors & Ecosystem Partners Will Accelerate Your Business Growth Journey?",
-    accentColor: TERTIARY_ACCENT,
-    isLunch: true
+    time: "11:30 - 12:00",
+    format: "HIGH IMPACT LEADERSHIP DIALOGUE",
+    title: "High Impact Leadership Dialogue",
+    subtitle: "Building a Capital System That Works for Women",
+    accentColor: TERTIARY_ACCENT
   },
   {
     id: "ps-5",
-    time: "13:20",
-    format: "FIRECHAT",
-    title: "Investment, Market Access & Women-Led Enterprises",
-    subtitle: "Why is entrepreneurship without scale a missed economic opportunity, and how do we unlock scaling paths?",
+    time: "12:00 - 12:30",
+    format: "FIRESIDE CHAT I",
+    title: "Fireside Chat I",
+    subtitle: "From Funding Applications to Investable Enterprises",
     accentColor: PRIMARY_ACCENT
   },
   {
     id: "ps-6",
-    time: "14:00",
-    format: "STRATEGIC WORKSHOP",
-    title: "The Business of Innovation, Commercialisation & Sustainable Enterprise Growth",
-    subtitle: "In what ways will the future of entrepreneurship belong to businesses that can innovate, adapt, and scale?",
+    time: "12:30 - 12:40",
+    format: "TED-STYLE TALK II",
+    title: "TED-Style Talk II",
+    subtitle: "What VCs Actually Look For",
     accentColor: SECONDARY_ACCENT
   },
   {
     id: "ps-7",
-    time: "14:40",
-    format: "HIGH-IMPACT INDUSTRY PANEL",
-    title: "Procurement, Digital Economies & the Future of Business Growth",
-    subtitle: "How will the next generation of high-growth enterprises be built through strategic ecosystems, technology, and market access?",
-    accentColor: TERTIARY_ACCENT
+    time: "12:40 - 12:50",
+    format: "TEA BREAK",
+    title: "Tea Break",
+    subtitle: "Short Break",
+    accentColor: TERTIARY_ACCENT,
+    isLunch: true
   },
   {
     id: "ps-8",
-    time: "15:20",
-    format: "FUTURE ECONOMY CONVERSATION",
-    title: "The Future of Africa's Entrepreneurial Economy & Women-Led Business Transformation",
-    subtitle: "How will innovation, investment, and women's leadership shape Africa's economic future?",
+    time: "12:50 - 13:20",
+    format: "FIRESIDE CHAT II",
+    title: "Fireside Chat II",
+    subtitle: "Capital Is Not Enough: Markets, Procurement and Scale",
     accentColor: PRIMARY_ACCENT
   },
   {
     id: "ps-9",
-    time: "15:50",
-    format: "CLOSING KEYNOTE",
-    title: "Africa's Entrepreneurial Future Will Be Led by Women Who Build, Scale & Transform",
-    subtitle: "Will You Be One of the Women Defining Africa's Future Enterprise Economy?",
+    time: "13:20 - 13:40",
+    format: "MASTERCLASS",
+    title: "Masterclass",
+    subtitle: "From Business to Bankable: Preparing Women-Led Businesses for Investment",
+    accentColor: SECONDARY_ACCENT
+  },
+  {
+    id: "ps-10",
+    time: "13:40 - 13:50",
+    format: "CALL TO ACTION",
+    title: "Call to Action",
+    subtitle: "Women’s Enterprise Investment Commitment",
+    accentColor: TERTIARY_ACCENT
+  },
+  {
+    id: "ps-11",
+    time: "13:50 - 13:55",
+    format: "CLOSING CAPITAL COMMITMENT",
+    title: "Closing Capital Commitment",
+    subtitle: "Women’s Enterprise Investment Compact",
+    accentColor: PRIMARY_ACCENT
+  },
+  {
+    id: "ps-12",
+    time: "13:55 - 14:00",
+    format: "CLOSE & HANDOVER",
+    title: "Close & Handover",
+    subtitle: "Transition to Leadership & Governance Stage",
     accentColor: SECONDARY_ACCENT
   }
 ];

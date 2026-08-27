@@ -102,77 +102,36 @@ const ROI_METRICS: ROIMetric[] = [{
 
 const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
   id: "ps-1",
-  time: "11:00",
-  format: "OPENING KEYNOTE",
-  title: "Women Must Lead the Future of Africa's Influence, Media & Communications Economy",
-  subtitle: "Who Will Shape Africa's Consumer Influence, Brand Narratives & Media Power in the Digital Era?",
+  time: "12:50",
+  format: "PROGRAMME DIRECTOR",
+  title: "Programme Director",
+  subtitle: "Stage Introduction & Proceedings",
   accentColor: "#FF2D87",
   accentRgb: "255,45,135"
 }, {
   id: "ps-2",
-  time: "11:20",
-  format: "EXECUTIVE MASTERCLASS",
-  title: "AI, Digital Media & the Future of Brand Influence",
-  subtitle: "How will technology, consumer intelligence, and digital platforms define the next era of brand growth?",
+  time: "12:50 - 13:00",
+  format: "OPENING KEYNOTE",
+  title: "Opening Keynote",
+  subtitle: "Women Must Lead the Future of Africa's Influence, Media & Communications Economy",
   accentColor: "#D4AF37",
   accentRgb: "212,175,55"
 }, {
   id: "ps-3",
-  time: "12:00",
+  time: "13:00 - 13:30",
   format: "HIGH-IMPACT PANEL",
-  title: "Women, Media & the Future of Brand Power",
-  subtitle: "Why will the future of marketing belong to brands that build trust, influence, and cultural relevance?",
+  title: "High-Impact Panel",
+  subtitle: "Women, Media & the Future of Brand Power",
   accentColor: "#00B4A6",
   accentRgb: "0,180,166"
 }, {
   id: "ps-4",
-  time: "12:50",
-  format: "NETWORKING LUNCH",
-  title: "Cultivating Influence, Partnerships & Brand Growth",
-  subtitle: "Which Strategic Relationships Will Accelerate Your Media, Marketing & Brand Leadership Journey?",
-  accentColor: "#D4AF37",
-  accentRgb: "212,175,55",
-  isLunch: true
-}, {
-  id: "ps-5",
-  time: "13:20",
+  time: "13:30 - 14:00",
   format: "FIRECHAT",
-  title: "Brand Commercialisation, Digital Influence & Market Expansion",
-  subtitle: "Why does visibility without a commercial strategy limit growth, and how can brands capitalize on it?",
-  accentColor: "#FF2D87",
-  accentRgb: "255,45,135"
-}, {
-  id: "ps-6",
-  time: "14:00",
-  format: "STRATEGIC WORKSHOP",
-  title: "The Business of Consumer Influence, Storytelling & Brand Monetisation",
-  subtitle: "In what ways will the future of brand growth belong to organisations that understand culture, data, and consumer trust?",
-  accentColor: "#00B4A6",
-  accentRgb: "0,180,166"
-}, {
-  id: "ps-7",
-  time: "14:40",
-  format: "HIGH-IMPACT INDUSTRY PANEL",
-  title: "Advertising, Digital Culture & the Future of Consumer Engagement",
-  subtitle: "How are consumer attention, culture, and digital influence becoming high-value commercial assets?",
+  title: "Firechat",
+  subtitle: "Brand Commercialisation, Digital Influence & Market Expansion",
   accentColor: "#D4AF37",
   accentRgb: "212,175,55"
-}, {
-  id: "ps-8",
-  time: "15:20",
-  format: "FUTURE ECONOMY CONVERSATION",
-  title: "The Future of Africa's Communications, Media & Influence Economy",
-  subtitle: "How will innovation, storytelling, and women's leadership shape the future of Africa's global brand influence?",
-  accentColor: "#FF2D87",
-  accentRgb: "255,45,135"
-}, {
-  id: "ps-9",
-  time: "15:50",
-  format: "CLOSING KEYNOTE",
-  title: "Africa's Communications & Influence Economy Will Be Led by Women Who Build, Influence & Transform",
-  subtitle: "Will You Be One of the Women Defining Africa's Future Brand, Media & Consumer Economy?",
-  accentColor: "#00B4A6",
-  accentRgb: "0,180,166"
 }];
 
 const STRATEGIC_BENEFITS = [

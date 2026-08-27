@@ -80,74 +80,58 @@ const PROGRAMME_SESSIONS: ProgrammeSession[] = [
   {
     id: "pn-1",
     time: "11:00",
-    format: "OPENING KEYNOTE",
-    title: "Women Must Lead the Future of Leadership, Governance & Institutional Transformation",
-    subtitle: "Who Will Shape Africa's Future Leadership, Governance Standards & Strategic Decision-Making Power?",
+    format: "PROGRAMME DIRECTOR",
+    title: "Programme Director",
+    subtitle: "Welcome, Opening Remarks",
     accentColor: "#FF2D87"
   },
   {
     id: "pn-2",
-    time: "11:20",
-    format: "EXECUTIVE MASTERCLASS",
-    title: "Executive Leadership, Board Readiness & the Future of Strategic Influence",
-    subtitle: "How will the future belong to leaders who can influence, adapt, and govern through complexity?",
+    time: "11:00 - 11:45",
+    format: "OPENING KEYNOTE",
+    title: "Opening Keynote",
+    subtitle: "Pillars of Financial Resilience",
     accentColor: "#D4AF37"
   },
   {
     id: "pn-3",
-    time: "12:00",
-    format: "HIGH-IMPACT PANEL",
-    title: "Women, Power & the Future of Governance",
-    subtitle: "Why will the future of governance be defined by ethical leadership, strategic influence, and institutional trust?",
+    time: "11:45 - 12:00",
+    format: "Q&A SESSION",
+    title: "Q&A Session",
+    subtitle: "Q&A with Mr Johan Gouws",
     accentColor: "#00B4A6"
   },
   {
     id: "pn-4",
-    time: "12:50",
-    format: "NETWORKING LUNCH",
-    title: "Cultivating Influence, Leadership & Strategic Partnerships",
-    subtitle: "Which Relationships, Mentors & Strategic Alliances Will Accelerate Your Leadership Journey?",
+    time: "12:00 - 12:40",
+    format: "HIGH-IMPACT PANEL",
+    title: "High-Impact Panel",
+    subtitle: "Building personal resilience through financial planning",
+    accentColor: "#D4AF37"
+  },
+  {
+    id: "pn-5",
+    time: "12:40 - 12:50",
+    format: "SHORT BREAK",
+    title: "Short Break",
+    subtitle: "Short Break",
     accentColor: "#00B4A6",
     isLunch: true
   },
   {
-    id: "pn-5",
-    time: "13:20",
-    format: "FIRECHAT",
-    title: "Executive Influence, Reputation & Women-Led Leadership",
-    subtitle: "Why does leadership without influence limit long-term institutional impact, and how do we build authority?",
-    accentColor: "#FF2D87"
-  },
-  {
     id: "pn-6",
-    time: "14:00",
-    format: "STRATEGIC WORKSHOP",
-    title: "The Business of Governance, Ethical Leadership & Institutional Transformation",
-    subtitle: "In what ways will the future of leadership belong to institutions that build trust, accountability, and strategic agility?",
-    accentColor: "#00B4A6"
+    time: "12:50 - 13:30",
+    format: "MASTERCLASS",
+    title: "Masterclass",
+    subtitle: "Crucial Conversations: Turning High-Stakes Dialogue into Trust, Influence and Positive Outcomes",
+    accentColor: "#FF2D87"
   },
   {
     id: "pn-7",
-    time: "14:40",
-    format: "HIGH-IMPACT INDUSTRY PANEL",
-    title: "Leadership, Digital Transformation & the Future of Executive Decision-Making",
-    subtitle: "How are technology, innovation, and strategic agility reshaping modern executive leadership?",
-    accentColor: "#D4AF37"
-  },
-  {
-    id: "pn-8",
-    time: "15:20",
-    format: "FUTURE ECONOMY CONVERSATION",
-    title: "The Future of Africa's Leadership, Governance & Board Economy",
-    subtitle: "How will women's leadership, governance excellence, and institutional influence shape Africa's economic future?",
-    accentColor: "#FF2D87"
-  },
-  {
-    id: "pn-9",
-    time: "15:50",
-    format: "CLOSING KEYNOTE",
-    title: "Africa's Leadership & Governance Future Will Be Led by Women Who Influence, Transform & Build",
-    subtitle: "Will You Be One of the Women Defining Africa's Future Leadership & Governance Economy?",
+    time: "13:30 - 14:00",
+    format: "LEADERSHIP CONVERSATION",
+    title: "Leadership Conversation",
+    subtitle: "Leading from Within: Mastering the Mind, Strengthening the Body, and Aligning the Soul for Purposeful Living",
     accentColor: "#D4AF37"
   }
 ];

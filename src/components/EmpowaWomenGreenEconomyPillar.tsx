@@ -97,74 +97,50 @@ const ROI_METRICS: ROIMetric[] = [{
 }];
 const PROGRAMME_SESSIONS: ProgrammeSession[] = [{
   id: "ps-1",
-  time: "11:00 – 11:20",
-  format: "OPENING KEYNOTE",
-  title: "Women Must Lead Africa's Green Transition, Energy Future & Sustainable Industrial Growth",
-  subtitle: "Who Will Power Africa's Future Economy, Energy Security & Sustainable Competitiveness?",
-  accentColor: "#FF2D87",
-  accentRgb: "255,45,135"
+  time: "11:00",
+  format: "PROGRAMME DIRECTOR",
+  title: "Programme Director",
+  subtitle: "Stage Introduction & Proceedings",
+  accentColor: "#00B4A6",
+  accentRgb: "0,180,166"
 }, {
   id: "ps-2",
-  time: "11:20 – 12:00",
-  format: "EXECUTIVE MASTERCLASS",
-  title: "Climate Innovation, Clean Energy & the Future of Sustainable Enterprise",
-  subtitle: "How will sustainability, innovation, and the energy transition define the next era of industrial growth, and how can women leverage clean technologies to build future-focused enterprises?",
-  accentColor: "#D4AF37",
-  accentRgb: "212,175,55"
+  time: "11:00 - 11:20",
+  format: "OPENING KEYNOTE ADDRESS",
+  title: "Opening Keynote Address",
+  subtitle: "Green Finance, Market Access & Scaling Women-Led Sustainable Enterprises",
+  accentColor: "#FF2D87",
+  accentRgb: "255,45,135"
 }, {
   id: "ps-3",
-  time: "12:00 – 12:50",
-  format: "HIGH-IMPACT PANEL",
-  title: "Women, Energy & the Future of the Green Economy",
-  subtitle: "How will leadership, inclusion, and resource innovation shape the future of sustainable economic growth across Africa?",
-  accentColor: "#00B4A6",
-  accentRgb: "0,180,166"
+  time: "11:20 - 11:40",
+  format: "MASTERCLASS",
+  title: "Masterclass",
+  subtitle: "Powering Africa’s Green Future: Why Women’s Leadership Matters Now",
+  accentColor: "#D4AF37",
+  accentRgb: "212,175,55"
 }, {
   id: "ps-4",
-  time: "12:50 – 13:20",
-  format: "EXECUTIVE NETWORKING LUNCH",
-  title: "Cultivating Partnerships, Investment & Sustainable Growth",
-  subtitle: "Which Strategic Relationships Will Accelerate Your Sustainability, Energy & Infrastructure Growth Journey?",
-  accentColor: "#D4AF37",
-  accentRgb: "212,175,55"
-}, {
-  id: "ps-5",
-  time: "13:20 – 14:00",
-  format: "FIRECHAT",
-  title: "Green Finance, Market Access & Women-Led Enterprises",
-  subtitle: "Why is sustainability without commercialisation a missed economic opportunity, and how can green enterprises scale successfully?",
-  accentColor: "#FF2D87",
-  accentRgb: "255,45,135"
-}, {
-  id: "ps-6",
-  time: "14:00 – 14:40",
-  format: "STRATEGIC WORKSHOP",
-  title: "ESG, Climate Resilience & Sustainable Industrial Competitiveness",
-  subtitle: "How can organisations embed sustainability into their growth models to secure the future of business?",
+  time: "11:40 - 12:20",
+  format: "PANEL DISCUSSION",
+  title: "Panel Discussion",
+  subtitle: "Women, Energy & the Future of the Green Economy",
   accentColor: "#00B4A6",
   accentRgb: "0,180,166"
 }, {
-  id: "ps-7",
-  time: "14:40 – 15:20",
-  format: "HIGH-IMPACT INDUSTRY PANEL",
-  title: "Clean Energy, Infrastructure & the Future of Industrial Transformation",
-  subtitle: "How will the green economy create the next generation of African industrial leaders, and what role will women play?",
+  id: "ps-5",
+  time: "12:20 - 12:40",
+  format: "MASTERCLASS",
+  title: "Masterclass",
+  subtitle: "Green Finance, Market Access & Scaling Women-Led Sustainable Enterprises",
   accentColor: "#D4AF37",
   accentRgb: "212,175,55"
 }, {
-  id: "ps-8",
-  time: "15:20 – 15:50",
-  format: "FUTURE ECONOMY CONVERSATION",
-  title: "The Future of Africa's Green Economy & Women-Led Sustainable Transformation",
-  subtitle: "In what ways will innovation, sustainability, and women's leadership shape the future of Africa's economy?",
-  accentColor: "#FF2D87",
-  accentRgb: "255,45,135"
-}, {
-  id: "ps-9",
-  time: "15:50 – 16:00",
-  format: "CLOSING KEYNOTE",
-  title: "Africa's Green Economy Future Will Be Led by Women Who Build, Innovate & Transform",
-  subtitle: "Will You Be One of the Women Defining Africa's Sustainable Economic Future?",
+  id: "ps-6",
+  time: "12:40 - 12:50",
+  format: "SHORT BREAK",
+  title: "Short Break",
+  subtitle: "Short Break",
   accentColor: "#00B4A6",
   accentRgb: "0,180,166"
 }];
