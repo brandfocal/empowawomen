@@ -1126,11 +1126,10 @@ const SummitIntelligenceSection: React.FC = () => {
           overflow: "hidden",
           marginBottom: "32px"
         }}>
-          <img src="/empowawomen2025.jpg" alt="EmpowaWomen Summit" style={{
+          <img src="/EmpowaWomen2026-invite.jpg" alt="EmpowaWomen Summit" style={{
             width: "100%",
-            height: "280px",
-            objectFit: "cover",
-            objectPosition: "center 30%",
+            height: "auto",
+            objectFit: "contain",
             display: "block"
           }} />
           <div style={{
