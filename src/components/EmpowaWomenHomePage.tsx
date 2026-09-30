@@ -848,9 +848,12 @@ const AboutSection = () => {
             backgroundSize: "28px 28px"
         }} />
 
-        {/* Full-width interactive banner linked to the summit page */}
+        {/* Full-width interactive banner linked to the nomination page */}
         <a 
-            href="https://www.quicket.co.za/events/344315-empowawomen-leadership-summit-2026/#/"
+            href="https://www.empowaher.co.za/nominate"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nominate-banner"
             style={{
                 width: "100%",
                 display: "block",
@@ -862,8 +865,8 @@ const AboutSection = () => {
             }}
         >
             <img 
-                src="/invite/06-08-2026/EmpowaWomen-banner.png" 
-                alt="EmpowaWomen Banner" 
+                src="/EmpowaHer-Leadership-Summit2026.jpg" 
+                alt="EmpowaHer Leadership Summit 2026" 
                 style={{ 
                     width: "100%", 
                     height: "auto", 
@@ -879,6 +882,7 @@ const AboutSection = () => {
             />
             {/* Subtle hover overlay for interactivity */}
             <div 
+                className="nominate-overlay"
                 style={{
                     position: "absolute",
                     inset: 0,
@@ -907,7 +911,7 @@ const AboutSection = () => {
                     boxShadow: "0 8px 32px rgba(255,45,135,0.35)",
                     letterSpacing: "0.02em"
                 }}>
-                    Register For the Summit
+                    Submit Nomination
                 </span>
             </div>
         </a>
@@ -1229,6 +1233,23 @@ const AboutSection = () => {
         </div>
 
         <style>{`
+        .nominate-banner:hover .nominate-overlay {
+          opacity: 1 !important;
+        }
+        @media (hover: none) and (pointer: coarse) {
+          .nominate-overlay {
+            opacity: 1 !important;
+            background: linear-gradient(to top, rgba(10,10,15,0.7) 0%, transparent 60%) !important;
+            align-items: flex-end !important;
+            padding-bottom: 20px !important;
+          }
+        }
+        @media (max-width: 640px) {
+          .nominate-overlay span {
+            font-size: 13px !important;
+            padding: 8px 20px !important;
+          }
+        }
         @media (max-width: 900px) {
           .about-grid { flex-direction: column !important; }
           .about-left-col { width: 100% !important; min-height: auto !important; flex-direction: row !important; align-items: center !important; justify-content: space-between !important; }
